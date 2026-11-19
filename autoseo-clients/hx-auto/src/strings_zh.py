@@ -332,3 +332,20 @@ ARTICLES = {
 }
 
 PREFILL = "你好 HX Auto Service，我想询问关于我的车。车型和年份："
+
+# 第三轮服务页标签。页面内容在 copy/services_zh.json。
+SVC_UI = {
+    'signs_h2': '需要这项服务的迹象',
+    'intro_h2': '这项服务包括什么',
+    'steps_h2': '我们怎么做',
+    'checks_h2': '包括哪些项目，我们检查什么',
+    'makes_h2': '我们车间里见过的品牌',
+    'makes_note': '来自我们车间的实拍照片。只列出品牌名称，我们是独立车间。',
+    'photos_h2': '车间实拍',
+    'band_h2': '不确定是什么问题？',
+    'band_p': '把车子的情况 WhatsApp 给我们。价格和时间要看车子，请 WhatsApp 我们报价。',
+    'local': '车间位于 47 Jalan Indah 16/11, Taman Bukit Indah，靠近第二通道，服务依斯干达公主城和新山。',
+    'local_h2': '怎么找到我们',
+    'step': '步骤',
+    'index_more': '看看我们检查什么',
+}

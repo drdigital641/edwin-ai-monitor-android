@@ -332,3 +332,20 @@ ARTICLES = {
 }
 
 PREFILL = "Hi HX Auto Service, I'd like to ask about my car. Model and year: "
+
+# Round 3 service page labels. Page copy itself lives in copy/services_en.json.
+SVC_UI = {
+    'signs_h2': 'Signs you need this',
+    'intro_h2': 'What this service covers',
+    'steps_h2': 'What we do',
+    'checks_h2': "What's included and what we check",
+    'makes_h2': 'Makes seen in our bay',
+    'makes_note': 'From photos of cars in our workshop. Named as text only, we are an independent workshop.',
+    'photos_h2': 'From our bay',
+    'band_h2': 'Not sure what it is?',
+    'band_p': 'WhatsApp us what the car is doing. Price and time depend on the car, so WhatsApp us for a quote.',
+    'local': 'One workshop at 47 Jalan Indah 16/11, Taman Bukit Indah, near the Second Link, serving Iskandar Puteri and JB.',
+    'local_h2': 'Where to find us',
+    'step': 'Step',
+    'index_more': 'See what we check',
+}

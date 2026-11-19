@@ -332,3 +332,20 @@ ARTICLES = {
 }
 
 PREFILL = "Hai HX Auto Service, saya ingin bertanya tentang kereta saya. Model dan tahun: "
+
+# Label halaman servis pusingan 3. Teks halaman dalam copy/services_ms.json.
+SVC_UI = {
+    'signs_h2': 'Tanda anda perlukan servis ini',
+    'intro_h2': 'Apa yang servis ini liputi',
+    'steps_h2': 'Apa yang kami buat',
+    'checks_h2': 'Apa yang termasuk dan apa yang kami periksa',
+    'makes_h2': 'Jenama kereta di bengkel kami',
+    'makes_note': 'Daripada gambar kereta di bengkel kami. Nama sahaja, kami bengkel bebas.',
+    'photos_h2': 'Dari bengkel kami',
+    'band_h2': 'Tak pasti apa masalahnya?',
+    'band_p': 'WhatsApp kami apa yang berlaku pada kereta. Harga dan masa bergantung pada kereta, jadi WhatsApp kami untuk sebut harga.',
+    'local': 'Satu bengkel di 47 Jalan Indah 16/11, Taman Bukit Indah, dekat Second Link, melayani Iskandar Puteri dan JB.',
+    'local_h2': 'Cari kami',
+    'step': 'Langkah',
+    'index_more': 'Lihat apa yang kami periksa',
+}

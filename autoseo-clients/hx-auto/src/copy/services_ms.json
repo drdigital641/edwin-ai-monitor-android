@@ -1,0 +1,602 @@
+{
+ "diagnostics": {
+  "lead": "Lampu amaran menyala, atau kereta rasa pelik? Kami scan, baca keputusan dan terangkan dalam bahasa mudah sebelum sebarang pembaikan.",
+  "intro": "Kereta moden dikawal komputer. Bila ada masalah, lampu amaran menyala dan kereta menyimpan kod kerosakan. Diagnosis komputer, scan dan coding membaca kod itu supaya kami tahu mana nak periksa, bukan meneka. Dalam cuaca panas dan trafik sesak di Johor, kerosakan kecil pada sensor dan elektrik boleh jadi pembaikan besar kalau dibiarkan. Coding juga perlu selepas sesetengah alat ganti ditukar, supaya kereta menerima bahagian baru itu. Kami di Taman Bukit Indah, dekat Second Link, dan melayani pemandu di seluruh Iskandar Puteri dan JB.",
+  "card": "Diagnosis komputer, scan dan coding. Kami baca kod kerosakan, terangkan dalam bahasa mudah dan beri sebut harga sebelum membaiki.",
+  "signs": [
+   "Lampu check engine atau lampu amaran lain kekal menyala pada dashboard",
+   "Enjin kasar, bergegar atau tersangkut-sangkut bila mula bergerak",
+   "Penggunaan minyak tiba-tiba naik tanpa sebab yang jelas",
+   "Gear terasa tersentak atau kereta masuk mod limp",
+   "Alat ganti baru dipasang tetapi ada yang masih tak berfungsi",
+   "Kereta susah nak hidup tetapi bateri nampak okey"
+  ],
+  "steps": [
+   [
+    "Scan kereta",
+    "Kami sambung ke komputer kereta dan baca kod kerosakan yang tersimpan daripada pelbagai sistem, bukan enjin sahaja."
+   ],
+   [
+    "Terangkan apa yang kami jumpa",
+    "Kami beritahu maksud kod itu dalam bahasa mudah dan bahagian atau sistem mana yang mungkin terlibat."
+   ],
+   [
+    "Sebut harga sebelum kerja",
+    "Anda dapat sebut harga melalui WhatsApp atau secara berdepan. Tiada apa dibaiki atau ditukar sehingga anda setuju."
+   ],
+   [
+    "Baiki dan coding",
+    "Kami baiki kerosakan, kemudian buat coding atau penyesuaian supaya kereta mengenali alat ganti baru."
+   ],
+   [
+    "Uji pandu",
+    "Kami padam kod, scan semula dan bawa kereta ke jalan raya untuk pastikan kerosakan sudah hilang."
+   ],
+   [
+    "Serahan",
+    "Kami terangkan apa yang dibuat dan apa yang perlu diperhatikan, kemudian serahkan semula kunci anda."
+   ]
+  ],
+  "checks": [
+   "Scan modul kawalan kereta",
+   "Kod kerosakan yang tersimpan dan yang belum disahkan",
+   "Sejarah lampu amaran",
+   "Bacaan sensor secara langsung",
+   "Voltan bateri dan pengecasan",
+   "Semakan visual wayar dan penyambung",
+   "Coding selepas alat ganti ditukar",
+   "Scan semula selepas pembaikan"
+  ],
+  "faq": [
+   [
+    "Kenapa lampu check engine saya menyala?",
+    "Ini bermakna kereta ada menyimpan kerosakan. Puncanya boleh jadi kecil, seperti penutup tangki longgar atau sensor lemah, atau sesuatu yang serius. Lampu itu sahaja tak boleh beritahu yang mana. Scan membaca kod supaya kami boleh periksa punca sebenar. Bawa kereta ke sini dan kami scan."
+   ],
+   [
+    "Boleh saya terus memandu kalau lampu amaran menyala?",
+    "Kalau lampu menyala tetap dan kereta masih dipandu seperti biasa, biasanya anda boleh ke bengkel tidak lama lagi. Kalau lampu berkelip, kereta bergegar, atau ada bau hangus, berhenti dengan selamat dan hubungi kami. Terus memandu boleh merosakkan enjin."
+   ],
+   [
+    "Adakah scan boleh baiki masalah?",
+    "Tidak. Scan hanya mencari dan membaca kod kerosakan. Ia beritahu kami mana nak periksa. Lepas itu kami periksa kereta, terangkan apa yang kami jumpa dan sebut harga pembaikan. Memadam kod tanpa membaiki puncanya hanya membuat lampu menyala semula."
+   ],
+   [
+    "Apakah coding kereta dan bila ia diperlukan?",
+    "Sesetengah alat ganti, seperti modul, sensor dan bateri tertentu, mesti didaftarkan dengan komputer kereta selepas dipasang. Coding buat kerja itu. Tanpanya, kereta mungkin tunjuk amaran atau tak guna alat ganti baru dengan betul. Kami beritahu kalau pembaikan anda perlukannya. Tanya kami kalau tak pasti."
+   ],
+   [
+    "Berapa kos diagnosis komputer?",
+    "Ia bergantung pada kereta dan masalahnya, jadi kami tak beri harga tetap di sini. WhatsApp 011-6776 1138 dengan model kereta dan simptom, dan kami akan beritahu apa yang dijangka."
+   ],
+   [
+    "Boleh scan kereta kalau lampu amaran tak menyala?",
+    "Boleh. Sesetengah kerosakan disimpan tanpa lampu pada dashboard, dan scan masih boleh menunjukkannya. Kalau kereta berjalan kasar, tukar gear kasar atau guna lebih banyak minyak, scan ialah langkah pertama yang wajar sebelum sebarang alat ganti ditukar."
+   ]
+  ]
+ },
+ "service-oil": {
+  "lead": "Servis berkala memastikan enjin bersih, sejuk dan boleh diharap. Kami tukar minyak, periksa kereta dan beritahu apa yang perlu diberi perhatian.",
+  "intro": "Minyak enjin melincirkan, menyejukkan dan membersihkan bahagian bergerak dalam enjin anda. Lama-kelamaan ia rosak dan mengumpul kotoran. Cuaca panas dan trafik perlahan membuat minyak bekerja lebih kuat, jadi servis tepat pada masanya penting untuk kereta di Johor. Servis yang betul lebih daripada tukar minyak. Kami juga periksa penapis, cecair, tali sawat dan bahagian lain yang haus, supaya masalah kecil dikesan awal. Bawa kereta anda ke kami di Taman Bukit Indah, dekat Second Link. Kami melayani pemandu di seluruh Iskandar Puteri dan JB.",
+  "card": "Tukar minyak dan servis am. Kami periksa penapis, cecair dan bahagian yang haus, beritahu apa yang kami nampak dan beri sebut harga sebelum kerja tambahan.",
+  "signs": [
+   "Peringatan servis atau tukar minyak keluar pada dashboard",
+   "Bunyi enjin lebih kuat atau kasar berbanding dulu",
+   "Minyak pada dipstick nampak hitam, pekat atau berpasir",
+   "Penggunaan minyak naik perlahan-lahan sepanjang beberapa bulan",
+   "Lampu amaran tekanan minyak atau paras minyak menyala",
+   "Anda tak ingat bila servis terakhir"
+  ],
+  "steps": [
+   [
+    "Periksa kereta",
+    "Kami periksa paras dan keadaan minyak, cecair, penapis, tali sawat dan bahagian lain yang haus, dan scan kalau perlu."
+   ],
+   [
+    "Terangkan apa yang kami jumpa",
+    "Kami beritahu mana yang okey, mana yang haus dan mana yang boleh tunggu, dalam bahasa mudah."
+   ],
+   [
+    "Sebut harga sebelum kerja",
+    "Anda dapat sebut harga untuk servis dan sebarang item tambahan. Tiada kerja tambahan dibuat sehingga anda setuju."
+   ],
+   [
+    "Servis kereta",
+    "Kami keluarkan minyak lama, pasang minyak dan penapis baru, dan jalankan item servis yang dipersetujui."
+   ],
+   [
+    "Semak semula dan uji pandu",
+    "Kami periksa kebocoran, tambah cecair, reset peringatan servis dan uji pandu kereta."
+   ],
+   [
+    "Serahan",
+    "Kami serahkan semula kereta bersama nota jelas tentang apa yang dibuat dan bila perlu datang semula."
+   ]
+  ],
+  "checks": [
+   "Tukar minyak enjin dan penapis minyak",
+   "Semakan paras minyak dan kebocoran",
+   "Keadaan penapis udara",
+   "Paras minyak brek dan coolant",
+   "Keadaan tali sawat pemacu",
+   "Terminal dan cas bateri",
+   "Keadaan dan tekanan tayar",
+   "Reset peringatan servis"
+  ],
+  "faq": [
+   [
+    "Berapa kerap saya patut tukar minyak enjin?",
+    "Ia bergantung pada jenis minyak, enjin dan cara anda memandu. Buku manual kereta ada had jarak atau tempoh. Perjalanan pendek dan trafik sesak dikira penggunaan berat. WhatsApp model kereta anda dan kami akan beri nasihat. Trafik sesak dan perjalanan pendek dikira penggunaan berat."
+   ],
+   [
+    "Apa yang termasuk dalam servis kereta?",
+    "Sekurang-kurangnya, tukar minyak dan penapis minyak serta semakan cecair, penapis, tali sawat, brek dan tayar. Kami beritahu apa yang kami jumpa dan sebut harga sebarang kerja tambahan dahulu, supaya anda yang menentukan."
+   ],
+   [
+    "Boleh saya tukar minyak sahaja tanpa servis penuh?",
+    "Boleh. Anda boleh tukar minyak sahaja. Tetapi servis juga memeriksa bahagian sekeliling enjin, jadi kami cadangkan sekurang-kurangnya pemeriksaan ringkas pada masa yang sama. Kami akan terangkan apa yang kami nampak. Tak periksa boleh menyembunyikan kebocoran atau tali sawat yang haus."
+   ],
+   [
+    "Gred minyak mana patut kereta saya guna?",
+    "Guna gred dan spesifikasi dalam buku manual kereta anda, kerana enjin dibina untuk jenis tertentu. Kami semak spesifikasi manual untuk kereta anda dan terangkan pilihan itu sebelum mula. Guna minyak yang salah boleh merosakkan enjin lama-kelamaan."
+   ],
+   [
+    "Berapa kos servis?",
+    "Ia bergantung pada kereta anda, minyak dan penapis yang diperlukan, serta item tambahan. Kami tak beri harga tetap di sini. WhatsApp 011-6776 1138 dan kami akan beri sebut harga. Alat ganti atau cecair tambahan disebut harga secara berasingan sebelum kami pasang."
+   ],
+   [
+    "Berapa lama servis ambil masa, dan boleh saya tunggu?",
+    "Ia bergantung pada kereta dan apa yang pemeriksaan jumpa. Sila WhatsApp 011-6776 1138 atau telefon untuk tanya sebelum datang, dan kami akan beritahu apa yang dijangka untuk kereta anda. Kami tak akan tergesa-gesa servis hanya untuk kejar masa."
+   ]
+  ]
+ },
+ "engine-transmission": {
+  "lead": "Enjin kasar, bunyi pelik atau gear tukar kasar? Kami periksa enjin dan transmisi, terangkan puncanya dan beri sebut harga sebelum membaiki.",
+  "intro": "Enjin dan transmisi ialah nadi kereta anda. Ia bekerja keras di Johor, di mana cuaca panas dan trafik sesak memberi tekanan lebih pada minyak, coolant dan minyak gear. Kerosakan kecil, seperti kebocoran atau mounting haus, lebih murah dibaiki awal daripada selepas ia merebak. Kerja enjin dan transmisi merangkumi diagnosis, pembaikan dan penggantian bahagian yang haus. Kami mulakan dengan pemeriksaan dan scan yang betul supaya kami baiki punca sebenar. Cari kami di Taman Bukit Indah, dekat Second Link, melayani Iskandar Puteri dan JB.",
+  "card": "Diagnosis dan pembaikan enjin dan transmisi. Kami cari punca sebenar, terangkan dengan jelas dan beri sebut harga sebelum sebarang kerja bermula.",
+  "signs": [
+   "Enjin panas melampau atau jarum suhu naik dalam trafik",
+   "Bunyi ketukan, tik-tik atau mendengung dari ruang enjin",
+   "Gear tukar kasar, gelincir atau tersangkut antara gear",
+   "Minyak atau cecair menitis di bawah kereta bila parkir",
+   "Asap putih, biru atau hitam dari ekzos",
+   "Enjin bergegar masa idle atau kurang kuasa bila memotong"
+  ],
+  "steps": [
+   [
+    "Scan dan periksa",
+    "Kami scan kereta untuk kod kerosakan, kemudian periksa enjin, transmisi, cecair, mounting dan kebocoran."
+   ],
+   [
+    "Terangkan apa yang kami jumpa",
+    "Kami terangkan punca dalam bahasa mudah dan tunjukkan bahagian yang haus atau bocor kalau boleh."
+   ],
+   [
+    "Sebut harga sebelum kerja",
+    "Anda dapat sebut harga pembaikan. Kami mula hanya selepas anda setuju."
+   ],
+   [
+    "Baiki",
+    "Kami baiki atau tukar bahagian yang rosak dan isi semula minyak, coolant atau minyak gear mengikut keperluan."
+   ],
+   [
+    "Uji pandu",
+    "Kami scan semula, periksa kebocoran dan uji pandu kereta untuk pastikan ia berjalan dan tukar gear dengan betul."
+   ],
+   [
+    "Serahan",
+    "Kami terangkan apa yang dibuat dan apa yang perlu diperhatikan dalam beberapa minggu akan datang."
+   ]
+  ],
+  "checks": [
+   "Scan kod kerosakan",
+   "Paras dan keadaan minyak enjin",
+   "Paras coolant dan kebocoran",
+   "Paras dan keadaan minyak gear",
+   "Mounting enjin dan gearbox",
+   "Kebocoran minyak dan cecair yang kelihatan",
+   "Hos, tali sawat dan radiator",
+   "Idle dan tukar gear semasa uji pandu"
+  ],
+  "faq": [
+   [
+    "Kenapa enjin saya panas melampau?",
+    "Punca biasa ialah coolant kurang, kebocoran, kipas radiator lemah, termostat rosak atau water pump nak rosak. Kalau jarum naik tinggi, berhenti dengan selamat dan matikan enjin. Terus memandu boleh menyebabkan kerosakan teruk. Kami periksa puncanya dahulu. Biar enjin sejuk sebelum buka penutup radiator."
+   ],
+   [
+    "Kenapa kereta saya bergegar masa idle?",
+    "Ia boleh jadi mounting enjin haus, alat pencucuh kotor atau haus, kebocoran vakum atau sensor rosak. Gegaran sahaja tak beritahu yang mana satu. Kami scan dan periksa kereta, kemudian terangkan apa yang kami jumpa. Jangan abaikan gegaran yang makin teruk."
+   ],
+   [
+    "Apa maksud gear tukar kasar?",
+    "Ia boleh datang daripada minyak gear yang lama atau kurang, sensor rosak, atau kehausan dalam gearbox. Jangan abaikan. Kami scan kereta dan periksa minyak dahulu, kemudian beritahu pilihan anda sebelum sebarang pembaikan."
+   ],
+   [
+    "Seriuskah kebocoran minyak yang kecil?",
+    "Kebocoran kecil boleh jadi besar, dan minyak yang kurang boleh merosakkan enjin. Kebocoran juga boleh sampai ke tali sawat dan jalan. Semak paras minyak anda, tambah kalau kurang, dan biar kami cari puncanya."
+   ],
+   [
+    "Berapa kos pembaikan enjin atau gearbox?",
+    "Ia bergantung pada kereta dan apa yang rosak, jadi kami tak boleh beri angka yang adil tanpa memeriksanya. WhatsApp 011-6776 1138 dengan simptom dan kami akan beritahu cara untuk dapatkan sebut harga. Sebut harga yang jelas membantu anda membuat keputusan sebelum kerja bermula."
+   ],
+   [
+    "Patutkah saya baiki atau tukar gearbox?",
+    "Ia bergantung pada kerosakan dan kereta. Kadang-kadang tukar minyak atau baiki sensor sudah cukup. Kami periksa dahulu, terangkan pilihan dalam bahasa mudah dan sebut harga setiap satu, supaya anda boleh memutuskan. Keutamaan kami ialah membaiki punca dengan betul."
+   ]
+  ]
+ },
+ "aircond": {
+  "lead": "Aircond tiup angin panas atau berbau busuk? Kami periksa seluruh sistem, terangkan apa yang kami jumpa dan beri sebut harga sebelum sebarang pembaikan.",
+  "intro": "Di Johor, aircond yang berfungsi bukan kemewahan. Trafik perlahan, matahari terik dan kabin yang panas memenatkan pemandu. Sistem ini merangkumi kompresor, kondenser, blower, penapis dan paip di antaranya. Masalah penyejukan lemah boleh datang daripada kebocoran, bahagian kotor atau komponen yang nak rosak, jadi tambah gas sahaja mungkin tak selesaikan masalah. Anda mungkin pernah nampak banner Car Air Cond Flushing Service di hadapan kedai kami. Kami di Taman Bukit Indah, dekat Second Link, melayani Iskandar Puteri dan JB.",
+  "card": "Semakan, flushing dan pembaikan aircond. Kami cari kenapa ia tak sejuk, terangkan dengan jelas dan beri sebut harga sebelum sebarang kerja.",
+  "signs": [
+   "Aircond tiup angin panas atau hanya sedikit sejuk",
+   "Sejuk di lebuh raya tetapi lemah dalam trafik",
+   "Bau hapak atau masam bila dihidupkan",
+   "Aliran udara lemah walaupun kipas pada kelajuan tertinggi",
+   "Bunyi pelik bila aircond dihidupkan",
+   "Air menitis dalam kabin atau lantai basah"
+  ],
+  "steps": [
+   [
+    "Periksa sistem",
+    "Kami periksa penyejukan, aliran udara, kompresor, kondenser, kipas, paip dan penapis, dan cari kebocoran."
+   ],
+   [
+    "Terangkan apa yang kami jumpa",
+    "Kami beritahu kenapa ia tak sejuk dan apa yang diperlukan, dalam bahasa mudah."
+   ],
+   [
+    "Sebut harga sebelum kerja",
+    "Anda dapat sebut harga untuk pembaikan atau flushing. Kami mula hanya selepas anda setuju."
+   ],
+   [
+    "Baiki atau flush",
+    "Kami baiki kerosakan, flush sistem kalau perlu dan isi semula ke paras yang betul untuk kereta anda."
+   ],
+   [
+    "Uji semula penyejukan",
+    "Kami hidupkan aircond dan periksa penyejukan, aliran udara, bunyi dan kebocoran, kemudian uji pandu kalau perlu."
+   ],
+   [
+    "Serahan",
+    "Kami terangkan apa yang dibuat dan cara menjaga sistem ini sehari-hari."
+   ]
+  ],
+  "checks": [
+   "Prestasi penyejukan pada lubang udara",
+   "Kompresor berjalan dan bunyinya",
+   "Fungsi kondenser dan kipas radiator",
+   "Semakan kebocoran pada paip dan sambungan",
+   "Keadaan penapis udara kabin",
+   "Kelajuan blower dan aliran udara",
+   "Paip saliran untuk kebocoran air",
+   "Flushing sistem kalau perlu"
+  ],
+  "faq": [
+   [
+    "Kenapa aircond saya tiup angin panas?",
+    "Punca biasa ialah gas bocor, kompresor tak berfungsi, kondenser tersumbat, kipas rosak atau masalah elektrik. Kami periksa sistem dahulu, kemudian beritahu apa yang tak kena sebelum sebut harga sebarang pembaikan. Penapis kabin yang kotor juga boleh melemahkan penyejukan."
+   ],
+   [
+    "Adakah aircond saya hanya perlu tambah gas?",
+    "Kadang-kadang, tetapi gas biasanya tak habis sendiri. Kalau ia kurang, biasanya ada kebocoran di mana-mana. Tambah gas tanpa cari kebocoran bermakna penyejukan akan lemah semula. Kami semak kebocoran dahulu. Tanya kami dan kami akan terangkan apa yang ujian tunjukkan."
+   ],
+   [
+    "Kenapa aircond saya berbau busuk?",
+    "Evaporator yang lembap dan kotor atau penapis kabin yang tersumbat boleh menumbuhkan kulat dan bakteria. Itu menyebabkan bau hapak. Membersihkan dan menukar penapis selalunya membantu. Kami periksa puncanya dan terangkan pilihan anda. Hidupkan kipas seminit sebelum parkir boleh membantu menjaga ia kering."
+   ],
+   [
+    "Apakah flushing aircond?",
+    "Flushing membersihkan minyak lama, kotoran dan serpihan daripada saluran aircond. Ia selalunya dibuat bila bahagian utama sudah rosak atau ditukar. Kami beritahu sama ada kereta anda perlukannya selepas kami periksa."
+   ],
+   [
+    "Kenapa aircond saya lemah dalam trafik tetapi sejuk di lebuh raya?",
+    "Pada kelajuan rendah, udara yang melalui kondenser kurang, jadi kipas lemah, kondenser kotor atau gas kurang akan ketara. Kami periksa kipas dan kondenser, kemudian beritahu apa yang kami jumpa."
+   ],
+   [
+    "Berapa kos pembaikan aircond?",
+    "Ia bergantung pada kerosakan dan bahagian yang terlibat. Pembaikan kecil lebih murah daripada kompresor baru, jadi kami periksa dahulu. WhatsApp 011-6776 1138 dengan model kereta dan apa yang anda perasan."
+   ]
+  ]
+ },
+ "brakes-suspension-tyres": {
+  "lead": "Brek, suspensyen, tayar dan imbangan roda menentukan betapa selamat kereta anda berhenti dan dikawal. Kami periksa keempat-empatnya dan baiki apa yang perlu.",
+  "intro": "Brek memberhentikan kereta. Suspensyen memastikannya stabil dan selesa. Tayar ialah satu-satunya bahagian yang menyentuh jalan, dan penjajaran roda memastikan ia haus sama rata. Di Johor, hujan lebat, lubang jalan dan trafik sesak menghausnya lebih cepat daripada yang anda sangka. Perjalanan jauh di Second Link dan lebuh raya menambah lagi. Mengesan pad yang haus, penyerap hentak yang lemah atau tayar yang haus tak sekata awal memastikan pembaikan lebih kecil dan kereta lebih selamat. Kami di Taman Bukit Indah, dekat Second Link, melayani Iskandar Puteri dan JB.",
+  "card": "Brek, suspensyen, tayar dan imbangan roda. Kami periksa bagaimana kereta berhenti dan dikawal, terangkan dengan jelas dan beri sebut harga dahulu.",
+  "signs": [
+   "Bunyi mencicit, menggesel atau mengikis bila brek",
+   "Pedal brek terasa lembut, dalam atau bergetar bila brek",
+   "Stereng bergegar atau kereta tertarik ke satu sisi",
+   "Kereta melantun, condong atau berbunyi dentum bila lalu lubang dan bonggol",
+   "Tayar haus tak sekata atau ada retak dan benjol",
+   "Stereng tak lurus bila memandu lurus"
+  ],
+  "steps": [
+   [
+    "Periksa kereta",
+    "Kami periksa pad brek, cakera dan minyak brek, bahagian suspensyen, keadaan tayar dan penjajaran roda."
+   ],
+   [
+    "Terangkan apa yang kami jumpa",
+    "Kami beritahu mana yang haus, mana yang masih selamat dan mana yang boleh tunggu, dalam bahasa mudah."
+   ],
+   [
+    "Sebut harga sebelum kerja",
+    "Anda dapat sebut harga untuk setiap item. Tiada apa dibaiki atau ditukar sehingga anda setuju."
+   ],
+   [
+    "Baiki",
+    "Kami tukar atau baiki bahagian yang dipersetujui, dan tetapkan penjajaran roda serta tekanan tayar kalau perlu."
+   ],
+   [
+    "Uji pandu",
+    "Kami uji kereta di jalan raya untuk brek, rasa stereng, bunyi dan kestabilan lurus."
+   ],
+   [
+    "Serahan",
+    "Kami terangkan apa yang dibuat dan apa yang perlu diperhatikan semasa bahagian baru menyesuaikan diri."
+   ]
+  ],
+  "checks": [
+   "Ketebalan pad brek dan cakera",
+   "Paras dan keadaan minyak brek",
+   "Kebocoran dan kehausan penyerap hentak",
+   "Keadaan control arm dan bush",
+   "Kedalaman bunga tayar dan usia",
+   "Tekanan tayar dan kerosakan dinding tayar",
+   "Bacaan penjajaran roda",
+   "Stereng dan ball joint"
+  ],
+  "faq": [
+   [
+    "Kenapa brek saya mencicit?",
+    "Mencicit boleh bermakna pad haus, habuk, atau pad dan cakera yang licin berkilat. Bunyi menggesel biasanya bermakna pad sudah habis dan cakera sedang rosak. Jangan tunggu. Kami periksa brek dan beritahu apa yang diperlukan. Brek ialah perkara keselamatan, jadi jangan lengahkan."
+   ],
+   [
+    "Bagaimana saya tahu tayar perlu ditukar?",
+    "Periksa bunga tayar yang cetek, retak, benjol atau haus tak sekata. Tayar lama boleh jadi keras walaupun bunga masih ada. Kalau kereta tertarik atau bergetar, datanglah. Kami periksa tayar dan terangkan keadaannya sebelum sebut harga. Menukar kedudukan tayar dan menjaga tekanan yang betul juga membantu ia tahan lama."
+   ],
+   [
+    "Apa fungsi penjajaran roda?",
+    "Ia menetapkan roda pada sudut yang betul supaya kereta berjalan lurus dan tayar haus sama rata. Hentakan kuat daripada lubang jalan atau bahu jalan boleh mengubahnya. Kami periksa dan beritahu kalau ia perlu dilaras. Tayar haus tak sekata ialah tanda biasa penjajaran yang tak betul."
+   ],
+   [
+    "Kenapa stereng saya bergegar?",
+    "Punca biasa ialah tayar tak seimbang, rim bengkok, bahagian suspensyen haus atau cakera brek melengkung. Bila ia bergegar, contohnya pada kelajuan tinggi atau semasa brek, membantu kami mengesannya. Kami periksa kereta dahulu. Beritahu kami kalau ia berlaku pada kelajuan tertentu."
+   ],
+   [
+    "Berapa kerap saya patut periksa brek?",
+    "Periksa pada setiap servis, dan lebih awal kalau anda dengar bunyi atau pedal terasa lain. Trafik sesak menghaus pad lebih cepat. Kami periksa ketebalan pad dan cakera dan beritahu berapa lagi yang tinggal. Pedal yang lembut atau terlalu dalam juga perlu diperiksa."
+   ],
+   [
+    "Berapa harga pad brek atau tayar?",
+    "Ia bergantung pada kereta anda dan bahagian yang diperlukan, jadi kami tak senaraikan harga tetap di sini. WhatsApp 011-6776 1138 dengan model kereta anda dan kami akan beri sebut harga."
+   ]
+  ]
+ },
+ "battery-electrical": {
+  "lead": "Kereta lambat hidup, lampu malap atau ada benda tak berfungsi? Kami uji bateri dan sistem elektrik dan baiki kerosakan sebenar.",
+  "intro": "Bateri anda menghidupkan enjin dan membekalkan kuasa kepada elektronik. Cuaca panas teruk untuk bateri, dan perjalanan pendek dalam trafik bermakna ia tak selalu dicas penuh. Bateri yang lemah juga boleh nampak seperti kerosakan yang lebih besar. Sistem pengecasan merangkumi alternator, wayar dan fius, dan kerosakan pada mana-mana satu boleh membuat anda tersadai. Ujian memberitahu kami apa yang lemah sebelum ia rosak di jalan. Anda boleh cari kami di Taman Bukit Indah, dekat Second Link, dan kami melayani pemandu di seluruh Iskandar Puteri dan JB.",
+  "card": "Ujian bateri dan pembaikan elektrik. Kami periksa sistem hidup enjin dan pengecasan, cari kerosakan dan beri sebut harga sebelum menukar apa-apa.",
+  "signs": [
+   "Enjin berputar perlahan atau berbunyi klik bila memulas kunci",
+   "Lampu depan malap atau berkelip, terutama masa idle",
+   "Lampu amaran bateri menyala semasa memandu",
+   "Tingkap kuasa, kunci pusat atau radio buat hal",
+   "Kereta perlu dijumper (jumper bateri) lebih daripada sekali",
+   "Fius putus semula selepas ditukar"
+  ],
+  "steps": [
+   [
+    "Uji dan periksa",
+    "Kami uji bateri, motor penghidup dan output pengecasan, dan periksa terminal, wayar dan fius."
+   ],
+   [
+    "Terangkan apa yang kami jumpa",
+    "Kami beritahu sama ada masalahnya bateri, alternator, wayar atau perkara lain."
+   ],
+   [
+    "Sebut harga sebelum kerja",
+    "Anda dapat sebut harga sebelum kami tukar atau baiki apa-apa. Kami teruskan hanya selepas anda setuju."
+   ],
+   [
+    "Baiki atau tukar",
+    "Kami pasang bateri baru atau baiki bahagian yang rosak, dan bersihkan terminal serta sambungan."
+   ],
+   [
+    "Uji semula dan pandu",
+    "Kami uji semula hidup enjin dan pengecasan, periksa item elektrik dan bawa kereta memandu."
+   ],
+   [
+    "Serahan",
+    "Kami terangkan keputusan dan kongsi petua mudah supaya bateri tahan lama."
+   ]
+  ],
+  "checks": [
+   "Keadaan dan voltan bateri",
+   "Fungsi motor penghidup",
+   "Output pengecasan alternator",
+   "Terminal bateri dan kabel bumi",
+   "Fius dan geganti",
+   "Lampu, wiper dan tingkap",
+   "Wayar untuk kerosakan atau karat",
+   "Kebocoran arus semasa parkir"
+  ],
+  "faq": [
+   [
+    "Bagaimana saya tahu bateri kereta saya lemah?",
+    "Enjin berputar perlahan, lampu malap, lampu amaran bateri atau perlu dijumper (jumper bateri) ialah tanda biasa. Usia juga penting. Ujian cepat menunjukkan keadaannya, dan kami beritahu sama ada ia boleh kekal atau perlu ditukar. Lampu malap masa idle ialah amaran awal."
+   ],
+   [
+    "Berapa lama bateri kereta tahan?",
+    "Ia berbeza mengikut bateri, kereta, cuaca panas dan cara anda memandu. Perjalanan pendek dan cuaca panas Johor boleh memendekkan hayatnya. Daripada meneka, kami uji bateri anda dan beritahu keadaannya. Membiarkan lampu atau peranti terpasang juga boleh menghabiskan kuasanya."
+   ],
+   [
+    "Bateri atau alternator yang rosak?",
+    "Bateri yang kong selepas dijumper mungkin bermakna alternator tak mengecas. Bateri yang tak boleh menyimpan cas mungkin sudah haus. Kami uji kedua-duanya supaya anda hanya tukar yang rosak. Menukar bahagian yang salah membazir wang dan masa."
+   ],
+   [
+    "Kenapa bateri saya asyik kong?",
+    "Punca biasa ialah bateri lama, perjalanan pendek, sesuatu menyedut kuasa semasa parkir atau alternator lemah. Kami uji bateri dan pengecasan, dan periksa kebocoran arus, kemudian terangkan apa yang kami jumpa. Membaiki kebocoran arus menghentikan ia berulang."
+   ],
+   [
+    "Boleh baiki tingkap kuasa, lampu dan kerosakan elektrik lain?",
+    "Boleh, kami jejak kerosakan daripada fius, suis dan wayar hingga ke bahagian itu sendiri. Kami beritahu apa yang tak kena dan beri sebut harga dahulu. WhatsApp simptom kepada kami dan kami akan beritahu apa yang dijangka."
+   ],
+   [
+    "Berapa harga bateri baru?",
+    "Ia bergantung pada saiz dan jenis yang kereta anda perlukan. Kami tak senaraikan harga di sini. WhatsApp 011-6776 1138 dengan model kereta anda dan kami akan beri sebut harga. Terminal yang bersih dan ketat juga membantu kereta hidup."
+   ]
+  ]
+ },
+ "undercarriage": {
+  "lead": "Bunyi pelik atau kebocoran dari bawah? Kami periksa bahagian bawah kereta anda, tunjukkan apa yang haus dan terangkan apa yang penting.",
+  "intro": "Bahagian bawah kereta anda menanggung banyak hentakan. Ia membawa suspensyen, bahagian stereng, ekzos, aci pemacu, saluran minyak dan brek serta penutup pelindung. Lubang jalan, bonggol, jalan basah dan pemanduan jauh semuanya menghausnya. Banyak kerosakan tak nampak dari atas, jadi masalah tersembunyi sehingga jadi mahal. Pemeriksaan bawah kereta menaikkan kereta supaya kami boleh tengok setiap bahagian dengan betul dan terangkan apa yang kami nampak. Singgahlah ke kami di Taman Bukit Indah, dekat Second Link. Kami melayani pemandu di seluruh Iskandar Puteri dan JB.",
+  "card": "Pemeriksaan bawah kereta untuk suspensyen, stereng, ekzos, kebocoran dan kehausan. Kami tunjukkan apa yang kami jumpa dan beri sebut harga sebelum membaiki.",
+  "signs": [
+   "Bunyi dentum atau berkeriuk bila lalu bonggol dan lubang",
+   "Ekzos berbunyi lebih kuat atau berkeriut di bawah",
+   "Minyak, cecair atau air menitis di bawah kereta selepas parkir",
+   "Stereng terasa longgar atau kereta melencong di jalan",
+   "Kereta rendah sebelah atau nampak tak sekata",
+   "Anda baru terlanggar lubang atau bahu jalan dengan kuat"
+  ],
+  "steps": [
+   [
+    "Periksa bahagian bawah",
+    "Kami naikkan kereta dan tengok suspensyen, bahagian stereng, ekzos, aci pemacu, saluran dan penutup."
+   ],
+   [
+    "Terangkan apa yang kami jumpa",
+    "Kami tunjukkan apa yang haus, longgar atau bocor dan terangkan mana yang mendesak dan mana yang boleh tunggu."
+   ],
+   [
+    "Sebut harga sebelum kerja",
+    "Anda dapat sebut harga untuk sebarang pembaikan. Kami tak mula sehingga anda setuju."
+   ],
+   [
+    "Baiki",
+    "Kami tukar atau baiki bahagian yang haus, ketatkan yang longgar dan kukuhkan penutup."
+   ],
+   [
+    "Semak semula dan uji pandu",
+    "Kami tengok semula kawasan yang dibaiki, kemudian memandu kereta untuk periksa bunyi dan kawalan."
+   ],
+   [
+    "Serahan",
+    "Kami terangkan apa yang dibuat dan apa yang perlu diawasi."
+   ]
+  ],
+  "checks": [
+   "Penyerap hentak dan spring",
+   "Bush dan control arm",
+   "Ball joint dan tie rod end",
+   "Boot dan sambungan aci pemacu",
+   "Paip ekzos dan mounting",
+   "Kebocoran minyak, cecair dan coolant",
+   "Saluran brek dan minyak",
+   "Penutup bawah dan pengikat"
+  ],
+  "faq": [
+   [
+    "Apakah pemeriksaan bawah kereta?",
+    "Ia pemeriksaan visual dan secara langsung pada bahagian di bawah kereta anda, seperti suspensyen, stereng, ekzos dan saluran. Kami cari kehausan, kerosakan, kelonggaran dan kebocoran, kemudian terangkan apa yang kami jumpa. Banyak masalah bermula kecil dan mudah dibaiki awal."
+   ],
+   [
+    "Kenapa kereta saya berdentum bila lalu bonggol?",
+    "Bush haus, link longgar, penyerap hentak lemah atau mounting rosak semuanya boleh menyebabkannya. Kami perlu tengok di atas lif untuk tahu yang mana. Kami periksa, terangkan dan sebut harga sebelum sebarang pembaikan. Jangan abaikan bunyi baru."
+   ],
+   [
+    "Berapa kerap saya patut periksa bahagian bawah kereta?",
+    "Masa yang sesuai ialah pada setiap servis, dan selepas terlanggar lubang atau bahu jalan dengan kuat. Memandu dalam hujan Johor dan di jalan kasar boleh menghaus bahagian lebih cepat. Kami beritahu apa yang nampak okey. Muatan berat dan jalan banjir juga menambah kehausan."
+   ],
+   [
+    "Boleh saya tahu kalau ada kebocoran di bawah kereta saya?",
+    "Lihat kesan tompokan di tanah tempat anda parkir. Minyak gelap, coolant berwarna atau air jernih boleh bermakna perkara berbeza. Air aircond itu normal. Beritahu kami apa yang anda nampak dan kami akan menjejaknya. Jangan abaikan lopak yang asyik muncul semula."
+   ],
+   [
+    "Adakah pemeriksaan ini akan jumpa masalah yang saya tak nampak?",
+    "Itulah tujuannya. Banyak bahagian haus hanya kelihatan dari bawah. Kami beritahu apa yang kami nampak, susun mengikut tahap segera dan serahkan keputusan kepada anda. Kami tak akan memaksa kerja yang anda tak perlu."
+   ],
+   [
+    "Berapa kos pemeriksaan bawah kereta?",
+    "Sila WhatsApp 011-6776 1138 untuk bertanya tentang pemeriksaan itu. Sebarang pembaikan selepas itu bergantung pada bahagian dan kereta, dan kami sebut harga sebelum mula. Anda yang tentukan apa yang diteruskan."
+   ]
+  ]
+ },
+ "towing": {
+  "lead": "Kereta rosak atau tersangkut? Perkhidmatan tunda kami boleh bawa kereta anda ke bengkel kami di Taman Bukit Indah. Telefon atau WhatsApp kami.",
+  "intro": "Kereta rosak memang menekan, lagi-lagi di jalan sibuk atau dalam cuaca panas. Perkhidmatan tunda memindahkan kereta anda dengan selamat bila ia tak boleh dipandu, contohnya selepas bateri kong, enjin panas melampau, gearbox rosak atau kemalangan kecil. Menunda kereta ke bengkel membolehkan kerosakan diperiksa dengan betul, bukannya meneka di tepi jalan. Perkhidmatan tunda kami membawa kereta ke bengkel kami, di mana kami scan atau periksa dahulu. Kami di Taman Bukit Indah, dekat Second Link, melayani pemandu Iskandar Puteri dan JB.",
+  "card": "Perkhidmatan tunda ke bengkel kami di Taman Bukit Indah. Telefon atau WhatsApp dengan lokasi anda dan kami uruskan selebihnya.",
+  "signs": [
+   "Kereta tak boleh hidup dan jumper tak membantu",
+   "Enjin panas melampau dan anda terpaksa berhenti",
+   "Lampu amaran menyala dan kereta hilang kuasa",
+   "Gear tak boleh masuk atau kereta tak boleh bergerak",
+   "Tayar pancit tanpa tayar spare, atau rim rosak",
+   "Kemalangan kecil dan kereta tak selamat dipandu"
+  ],
+  "steps": [
+   [
+    "Telefon dengan lokasi anda",
+    "Telefon atau WhatsApp 011-6776 1138 dengan lokasi, model kereta dan apa yang berlaku."
+   ],
+   [
+    "Tunda ke bengkel",
+    "Kami aturkan untuk menunda kereta anda ke bengkel kami di Taman Bukit Indah."
+   ],
+   [
+    "Scan dan periksa",
+    "Bila kereta sudah di bay, kami scan dan periksa untuk cari puncanya."
+   ],
+   [
+    "Terangkan apa yang kami jumpa",
+    "Kami beritahu apa yang tak kena dan apa yang diperlukan, dalam bahasa mudah."
+   ],
+   [
+    "Sebut harga sebelum kerja",
+    "Anda dapat sebut harga sebelum sebarang pembaikan. Kami mula hanya selepas anda setuju."
+   ],
+   [
+    "Baiki dan semak semula",
+    "Kami baiki kereta, uji semula dan serahkan semula dengan penerangan yang jelas."
+   ]
+  ],
+  "checks": [
+   "Lokasi anda dan keadaan kereta",
+   "Menaikkan kereta ke atas kenderaan tunda dengan selamat",
+   "Penghantaran ke bengkel kami di Taman Bukit Indah",
+   "Scan komputer kereta",
+   "Pemeriksaan visual punca yang mungkin",
+   "Semakan bateri dan pengecasan",
+   "Semakan cecair dan kebocoran",
+   "Uji pandu selepas pembaikan"
+  ],
+  "faq": [
+   [
+    "Apa patut saya buat bila kereta rosak?",
+    "Alihkan ke tempat selamat kalau boleh dan hidupkan lampu hazard. Jauhkan semua orang daripada trafik. Kemudian telefon atau WhatsApp 011-6776 1138 dengan lokasi dan apa yang berlaku. Jangan berdiri di lorong trafik."
+   ],
+   [
+    "Apa butiran patut saya beri bila telefon?",
+    "Beritahu lokasi tepat anda, model kereta, apa yang berlaku dan sebarang lampu amaran. Gambar atau lokasi yang di-pin melalui WhatsApp membantu. Beritahu kalau kereta di tempat letak kereta atau di tepi jalan. Beritahu kalau kereta menghalang lorong."
+   ],
+   [
+    "Boleh tunda kereta saya dari mana-mana?",
+    "Sila telefon atau WhatsApp 011-6776 1138 dengan lokasi anda dan kami akan beritahu sama ada kami boleh membantu. Kami tak berjanji masa tiba, kerana ia bergantung pada lokasi anda dan keadaan. Kami tak berjanji sebarang masa tiba."
+   ],
+   [
+    "Berapa kos tunda?",
+    "Ia bergantung pada keadaan dan jarak, jadi kami tak boleh beri angka tetap di sini. Telefon atau WhatsApp 011-6776 1138 dengan lokasi anda dan kami akan beritahu sebelum kami alihkan kereta. Minta angka itu sebelum anda setuju."
+   ],
+   [
+    "Patutkah saya cuba memandu kereta yang panas melampau atau dalam mod limp?",
+    "Tidak. Terus memandu boleh menukar kerosakan kecil jadi mahal. Berhenti di tempat selamat, matikan enjin dan telefon kami. Tunda lebih selamat daripada mengambil risiko enjin atau gearbox rosak. Keselamatan diutamakan."
+   ],
+   [
+    "Apa jadi selepas kereta sampai ke bengkel?",
+    "Kami scan dan periksa, terangkan apa yang kami jumpa dan sebut harga sebelum sebarang kerja. Tiada apa dibaiki sehingga anda setuju. Bila pembaikan siap, kami uji semula kereta dan serahkan semula. Anda yang tentukan setiap langkah."
+   ]
+  ]
+ }
+}

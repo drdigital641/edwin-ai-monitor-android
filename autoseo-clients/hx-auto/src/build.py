@@ -224,7 +224,10 @@ def head(title, desc, path, graph, hero=False):
     css_v = ver(os.path.join(OUT, 'assets', 'site.css'))
     rob = '<meta name="robots" content="noindex, nofollow">' if NOINDEX else ''
     pre = (f'<link rel="preload" as="image" href="{u("images/hx/hero-1600.webp")}" imagesrcset="{hero_srcset()}" imagesizes="{HERO_SIZES}" '
-           f'type="image/webp" fetchpriority="high">') if hero else ''
+           f'type="image/webp" fetchpriority="high">') if hero is True else ''
+    if isinstance(hero, str) and hero in ENH:
+        pre = (f'<link rel="preload" as="image" href="{u("images/hx/" + hero + "-l.webp")}" imagesrcset="{u("images/hx/" + hero + "-l.webp")} 1000w, '
+               f'{img_full(hero)} 1600w" imagesizes="(max-width: 899px) 140vh, 100vw" type="image/webp" fetchpriority="high">')
     return f'''<!DOCTYPE html>
 <html lang="{L['hreflang']}">
 <head>
@@ -499,38 +502,100 @@ def home():
     return page('', H['title'], H['desc'], graph, body, '', True)
 
 
+# Round 3: per-service media. Hero + strip use enhanced photos where we have them; makes come only from the cars in those photos.
+SVC_MEDIA = {
+    'diagnostics': ('bmw-5-series-engine', ['mini-cooper-s-on-lift', 'mercedes-c-class-bay', 'land-rover-discovery-sport', 'mazda-3-engine']),
+    'service-oil': ('mercedes-c-class-bay', ['bmw-oil-and-filter', 'mercedes-oil-belt-parts', 'honda-jazz-engine', 'toyota-vellfire-bay']),
+    'engine-transmission': ('mazda-3-engine', ['honda-jazz-engine', 'bmw-5-series-engine', 'nissan-coils-and-oil', 'toyota-alphard-white']),
+    'aircond': ('aircond-flushing-banner', ['toyota-alphard-white', 'toyota-vellfire-bay', 'workshop-bays-overview', 'mercedes-c-class-bay']),
+    'brakes-suspension-tyres': ('bmw-5-series-on-lift', ['kia-cerato-on-lift', 'subaru-coilover-service', 'mini-cooper-s-on-lift', 'land-rover-discovery-sport']),
+    'battery-electrical': ('mini-cooper-s-on-lift', ['toyota-vellfire-bay', 'honda-jazz-engine', 'bmw-5-series-engine', 'toyota-alphard-white']),
+    'undercarriage': ('land-rover-discovery-sport', ['kia-cerato-on-lift', 'nissan-qashqai-on-lift', 'mercedes-van-two-post', 'bmw-5-series-on-lift']),
+    'towing': ('shopfront-forecourt', ['workshop-bays-overview', 'kia-cerato-on-lift', 'vellfire-on-lift-side', 'shopfront-signboard']),
+}
+STEM_MAKE = [('mercedes', 'Mercedes-Benz'), ('bmw', 'BMW'), ('alphard', 'Toyota Alphard'), ('vellfire', 'Toyota Vellfire'), ('honda', 'Honda'),
+             ('kia', 'Kia'), ('mazda', 'Mazda'), ('mini', 'Mini'), ('subaru', 'Subaru'), ('nissan', 'Nissan'), ('land-rover', 'Land Rover')]
+_COPY = {}
+
+
+def svc_copy(sid):
+    c = L['code']
+    if c not in _COPY:
+        _COPY[c] = json.load(open(os.path.join(HERE, 'copy', f'services_{c}.json'), encoding='utf8'))
+    return _COPY[c][sid]
+
+
+def svc_makes(stems):
+    out = []
+    for st in stems:
+        for k, m in STEM_MAKE:
+            if k in st and m not in out and m in F['brands_seen']:
+                out.append(m)
+    return out
+
+
+def svc_hero_img(stem, eager=True):
+    cap = S.CAPTIONS[stem]
+    if stem in ENH:
+        return (f'<img class="hero-img" src="{u("images/hx/" + stem + "-l.webp")}" srcset="{u("images/hx/" + stem + "-l.webp")} 1000w, {img_full(stem)} 1600w" '
+                f'sizes="(max-width: 899px) 140vh, 100vw" width="1600" height="1200" alt="{E(cap)}" fetchpriority="high" decoding="async">')
+    return f'<img class="hero-img" src="{img_full(stem)}" width="1600" height="1200" alt="{E(cap)}" fetchpriority="high" decoding="async">'
+
+
 def service(s):
+    C = svc_copy(s['id'])
+    V = S.SVC_UI
     path = f'services/{s["slug"]}/'
     trail = [(S.UI['nav_home'], ''), (S.UI['nav_services'], 'services/'), (s['name'], path)]
     pid = s['id'].replace('-', '_')
-    blocks = ''.join(f'<h2>{E(h)}</h2><p>{E(p)}</p>' for h, p in s['body'])
-    cta = f'<div class="act">{wa("service_" + pid, S.UI["wa_btn_long"], "btn-wa on-lt")}{call("service_" + pid, S.UI["call_btn"], "btn-call on-lt")}</div>'
-    gal = f'<div class="gal">{"".join(frame(x, "ph") for x in [s["photo"]] + s["photos"])}</div>'
+    hero_stem, strip = SVC_MEDIA[s['id']]
+    bc = ''.join(f'<a href="{pu(p)}">{E(n)}</a><span aria-hidden="true">/</span>' for n, p in trail[:-1]) + f'<span>{E(trail[-1][0])}</span>'
+    hero = (f'<section class="hero shero">{svc_hero_img(hero_stem)}<div class="wrap hero-in">'
+            f'<nav class="bc" aria-label="{E(S.UI["aria_breadcrumb"])}">{bc}</nav>'
+            f'<p class="hero-k">{E(s["name"])}</p><h1>{E(s["h1"])}</h1><p class="hero-l">{E(C["lead"])}</p>'
+            f'<div class="hero-cta">{wa("service_" + pid, S.UI["wa_btn"])}{call("service_" + pid, S.UI["call_btn"])}</div></div></section>')
+    signs = ''.join(f'<li class="rv" style="--d:{i % 3}">{E(x)}</li>' for i, x in enumerate(C['signs']))
+    intro = (f'<section class="sec lt"><div class="wrap s2"><div class="rv"><h2>{E(V["intro_h2"])}</h2><p class="big">{E(C["intro"])}</p></div>'
+             f'<div class="sbox rv"><h2>{E(V["signs_h2"])}</h2><ul class="signs">{signs}</ul></div></div></section>')
+    steps = ''.join(f'<li class="pr rv" style="--d:{i % 3}"><span class="pr-n" aria-hidden="true">{i + 1:02d}</span><div><h3>{E(h)}</h3><p>{E(d)}</p></div></li>'
+                    for i, (h, d) in enumerate(C['steps']))
+    steps = f'<section class="sec dk"><div class="wrap"><h2 class="rv">{E(V["steps_h2"])}</h2><ol class="prs">{steps}</ol></div></section>'
+    makes = svc_makes([hero_stem] + strip)
+    checks = ''.join(f'<li>{E(x)}</li>' for x in C['checks'])
+    mk = ''.join(f'<li>{E(m)}</li>' for m in makes)
+    checks = (f'<section class="sec lt"><div class="wrap s2"><div class="rv"><h2>{E(V["checks_h2"])}</h2><ul class="cks">{checks}</ul></div>'
+              f'<div class="rv"><h2>{E(V["makes_h2"])}</h2><ul class="mk mk-lt">{mk}</ul><p class="note">{E(V["makes_note"])}</p></div></div></section>')
+    photos = (f'<section class="sec dk"><div class="wrap"><h2 class="rv">{E(V["photos_h2"])}</h2>'
+              f'<div class="strip">{"".join(frame(x, "ph st4 rv") for x in strip)}</div></div></section>')
+    band = (f'<section class="band"><div class="wrap band-in"><div class="rv"><h2>{E(V["band_h2"])}</h2><p>{E(V["band_p"])}</p></div>'
+            f'<p class="act rv">{wa("service_" + pid + "_band", S.UI["wa_btn_long"])}</p></div></section>')
+    faq = faq_block(C['faq'], S.UI['faq_h2'], 'sec lt')
     others = ''.join(f'<a href="{pu("services/" + o["slug"] + "/")}">{E(o["name"])}</a>' for o in S.SERVICES if o['id'] != s['id'])
-    body = (page_head(s['h1'], s['lead'], trail)
-            + f'<section class="sec lt"><div class="wrap split"><div class="prose">{blocks}{cta}</div><div class="media">{gal}</div></div></section>'
-            + faq_block(s['faq'], S.UI['faq_h2'])
-            + f'<section class="sec lt silver"><div class="wrap"><h2>{E(S.UI["related"])}</h2><nav class="rel" aria-label="{E(S.UI["related"])}">{others}</nav></div></section>'
-            + ask_block('service_' + pid + '_end'))
+    tail = (f'<section class="sec lt silver"><div class="wrap s2"><div><h2>{E(S.UI["related"])}</h2><nav class="rel" aria-label="{E(S.UI["related"])}">{others}</nav></div>'
+            f'<div class="loc"><h2>{E(V["local_h2"])}</h2><p>{icon("pin")}<span>{E(V["local"])}</span></p>'
+            f'<p class="vlinks">{waze("service_" + pid, "lk on-lt")}{gmap("service_" + pid, "lk on-lt")}</p></div></div></section>')
+    body = hero + intro + steps + checks + photos + band + faq + tail
     graph = [business(), crumbs(trail),
              {'@type': 'Service', 'name': s['name'], 'serviceType': s['name'], 'description': s['desc'], 'url': pabs(path),
               'provider': {'@id': BIZ_ID}, 'areaServed': [{'@type': 'Place', 'name': c} for c in F['service_area']]},
-             faqld(s['faq'])]
-    return page(path, s['title'], s['desc'], graph, body, 'services/')
+             faqld(C['faq'])]
+    return page(path, s['title'], s['desc'], graph, body, 'services/', hero_stem)
 
 
 def services_index():
     X = S.SERVICES_INDEX
     trail = [(S.UI['nav_home'], ''), (S.UI['nav_services'], 'services/')]
-    rows = []
-    for s in S.SERVICES:
-        w, h, _, _ = PHOTOS[s['photo']]
-        rows.append(f'<li><a class="sv" href="{pu("services/" + s["slug"] + "/")}"><span class="sv-p"><img src="{img(s["photo"])}" width="{w}" height="{h}" '
-                    f'alt="{E(S.CAPTIONS[s["photo"]])}" loading="lazy" decoding="async"></span><span class="sv-x"><h2>{E(s["name"])}</h2>'
-                    f'<span>{E(s["card_line"])}</span></span>{icon("go")}</a></li>')
+    cards = []
+    for i, s in enumerate(S.SERVICES):
+        st = SVC_MEDIA[s['id']][0]
+        pic = (f'<img src="{u("images/hx/" + st + "-l.webp")}" width="1000" height="750" alt="{E(S.CAPTIONS[st])}" loading="lazy" decoding="async">'
+               if st in ENH else f'<img src="{img(st)}" alt="{E(S.CAPTIONS[st])}" loading="lazy" decoding="async">')
+        cards.append(f'<li class="rv" style="--d:{i % 2}"><a class="sx" href="{pu("services/" + s["slug"] + "/")}"><span class="sx-p">{pic}</span>'
+                     f'<span class="sx-x"><span class="sx-i">{icon(SVC_ICON[s["id"]])}</span><h2>{E(s["name"])}</h2><p>{E(svc_copy(s["id"])["card"])}</p>'
+                     f'<span class="sg-go"><span>{E(S.SVC_UI["index_more"])}</span>{icon("go")}</span></span></a></li>')
     body = (page_head(X['h1'], X['lead'], trail)
-            + f'<section class="sec lt"><div class="wrap">{diagram()}</div></section>'
-            + f'<section class="sec lt silver"><div class="wrap"><ul class="svl">{"".join(rows)}</ul></div></section>'
+            + f'<section class="sec lt"><div class="wrap"><ul class="sxs">{"".join(cards)}</ul></div></section>'
+            + f'<section class="sec lt silver"><div class="wrap">{diagram()}</div></section>'
             + ask_block('services'))
     graph = [business(), crumbs(trail), {'@type': 'ItemList', 'itemListElement': [
         {'@type': 'ListItem', 'position': i + 1, 'name': s['name'], 'url': pabs('services/' + s['slug'] + '/')} for i, s in enumerate(S.SERVICES)]}]

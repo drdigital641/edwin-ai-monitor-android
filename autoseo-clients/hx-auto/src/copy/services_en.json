@@ -1,0 +1,602 @@
+{
+ "diagnostics": {
+  "lead": "Warning light on, or the car just feels wrong? We scan it, read the results and explain them in plain words before any repair.",
+  "intro": "Modern cars run on computers. When something is wrong, a warning light comes on and the car stores a fault code. Computer diagnosis, scanning and coding reads those codes so we know where to look instead of guessing. In Johor heat and stop-and-go traffic, small sensor and electrical faults can grow into bigger repairs if ignored. Coding is also needed after some parts are replaced, so the car accepts the new part. We are at Taman Bukit Indah, near the Second Link, and we serve drivers across Iskandar Puteri and JB.",
+  "card": "Computer diagnosis, scanning and coding. We read the fault codes, explain them in plain words and quote before we repair.",
+  "signs": [
+   "Check engine or other warning light stays on the dashboard",
+   "Engine runs rough, shakes or hesitates when you pull away",
+   "Fuel use suddenly goes up for no clear reason",
+   "Gearbox feels jerky or the car goes into limp mode",
+   "A new part was fitted and something still does not work",
+   "Car struggles to start but the battery seems fine"
+  ],
+  "steps": [
+   [
+    "Scan the car",
+    "We connect to the car's computer and read the stored fault codes from its systems, not just the engine."
+   ],
+   [
+    "Explain what we found",
+    "We tell you what the codes mean in plain words and which parts or systems are likely involved."
+   ],
+   [
+    "Quote before work",
+    "You get a quote on WhatsApp or in person. Nothing is repaired or replaced until you say yes."
+   ],
+   [
+    "Repair and code",
+    "We fix the fault, then do any coding or adaptation so the car recognises the new part."
+   ],
+   [
+    "Test drive",
+    "We clear the codes, scan again and take the car out on the road to confirm the fault is gone."
+   ],
+   [
+    "Handover",
+    "We explain what was done and what to watch for, then hand your keys back."
+   ]
+  ],
+  "checks": [
+   "Scan of the car's control modules",
+   "Stored and pending fault codes",
+   "Warning light history",
+   "Live sensor readings",
+   "Battery and charging voltage",
+   "Visual check of wiring and connectors",
+   "Coding after part replacement",
+   "Rescan after the repair"
+  ],
+  "faq": [
+   [
+    "Why is my check engine light on?",
+    "It means the car has stored a fault. The cause can be small, like a loose cap or a weak sensor, or something serious. The light alone cannot tell you which. A scan reads the code so we can check the real cause. Bring the car in and we will scan it."
+   ],
+   [
+    "Can I keep driving with a warning light on?",
+    "If the light is steady and the car drives normally, you can usually get to a workshop soon. If it flashes, the car shakes, or you smell burning, stop safely and call us. Driving on can damage the engine."
+   ],
+   [
+    "Does a scan fix the problem?",
+    "No. A scan only finds and reads the fault codes. It tells us where to look. Then we inspect the car, explain what we found and quote the repair. Clearing a code without fixing the cause just lets the light return."
+   ],
+   [
+    "What is car coding and when is it needed?",
+    "Some parts, like certain modules, sensors and batteries, must be registered with the car's computer after fitting. Coding does that. Without it, the car may show warnings or not use the new part properly. We tell you if your repair needs it. Ask us if you are unsure."
+   ],
+   [
+    "How much does computer diagnosis cost?",
+    "It depends on the car and the problem, so we do not quote a fixed figure here. WhatsApp 011-6776 1138 with your car model and the symptoms, and we will tell you what to expect."
+   ],
+   [
+    "Can you scan the car if the warning light is not on?",
+    "Yes. Some faults are stored without a dashboard light, and a scan can still show them. If the car runs rough, shifts hard or uses more fuel, a scan is a sensible first step before any parts are changed."
+   ]
+  ]
+ },
+ "service-oil": {
+  "lead": "Regular servicing keeps your engine clean, cool and reliable. We change the oil, check the car over and tell you what needs attention.",
+  "intro": "Engine oil lubricates, cools and cleans the moving parts inside your engine. Over time it breaks down and collects dirt. Hot weather and slow traffic make oil work harder, so servicing on time matters for cars in Johor. A proper service is more than an oil change. We also check the filters, fluids, belts and other wear items, so small problems are caught early. Bring your car to us at Taman Bukit Indah, near the Second Link. We serve drivers across Iskandar Puteri and JB.",
+  "card": "Oil change and general servicing. We check filters, fluids and wear items, tell you what we see and quote before extra work.",
+  "signs": [
+   "Service interval or oil change reminder shows on the dashboard",
+   "Engine sounds louder or rougher than it used to",
+   "Oil on the dipstick looks black, thick or gritty",
+   "Fuel use creeps up over a few months",
+   "Oil pressure or oil level warning light comes on",
+   "You do not remember when the last service was"
+  ],
+  "steps": [
+   [
+    "Inspect the car",
+    "We check the oil level and condition, fluids, filters, belts and other wear items, and scan if needed."
+   ],
+   [
+    "Explain what we found",
+    "We tell you what is fine, what is wearing and what can wait, in plain words."
+   ],
+   [
+    "Quote before work",
+    "You get a quote for the service and any extra items. Nothing extra is done until you agree."
+   ],
+   [
+    "Service the car",
+    "We drain the old oil, fit the new oil and filter, and carry out the agreed service items."
+   ],
+   [
+    "Re-check and test drive",
+    "We check for leaks, top up fluids, reset the service reminder and test drive the car."
+   ],
+   [
+    "Handover",
+    "We hand back the car with a clear note on what was done and when to come back."
+   ]
+  ],
+  "checks": [
+   "Engine oil and oil filter change",
+   "Oil level and leak check",
+   "Air filter condition",
+   "Brake fluid and coolant levels",
+   "Drive belt condition",
+   "Battery terminals and charge",
+   "Tyre condition and pressure",
+   "Service reminder reset"
+  ],
+  "faq": [
+   [
+    "How often should I change engine oil?",
+    "It depends on the oil type, the engine and how you drive. Your owner's manual gives a distance or time limit. Short trips and heavy traffic count as hard use. WhatsApp us your car model and we will advise. Heavy traffic and short trips count as hard use."
+   ],
+   [
+    "What is included in a car service?",
+    "At minimum, an oil and oil filter change plus a check of fluids, filters, belts, brakes and tyres. We tell you what we find and quote any extra work first, so you decide what to do."
+   ],
+   [
+    "Can I change oil without a full service?",
+    "Yes. You can do an oil change on its own. But a service also checks the parts around the engine, so we suggest at least a quick inspection at the same time. We will explain what we see. Skipping a check can hide a leak or a worn belt."
+   ],
+   [
+    "Which oil grade should my car use?",
+    "Use the grade and specification in your owner's manual, because engines are built for a certain type. We check the manual specification for your car and explain the choice before we start. Using the wrong oil can harm the engine over time."
+   ],
+   [
+    "How much does a service cost?",
+    "It depends on your car, the oil and filters it needs, and any extra items. We do not quote a fixed price here. WhatsApp 011-6776 1138 and we will give you a quote. Extra parts or fluids are quoted separately before we fit them."
+   ],
+   [
+    "How long does a service take, and can I wait?",
+    "It depends on the car and what the inspection finds. Please WhatsApp 011-6776 1138 or call to check before you come, and we will tell you what to expect for your car. We will not rush a service just to hit a time."
+   ]
+  ]
+ },
+ "engine-transmission": {
+  "lead": "Rough running, strange noises or a gearbox that shifts hard? We inspect the engine and transmission, explain the cause and quote before we repair.",
+  "intro": "The engine and transmission are the heart of your car. They work hard in Johor, where heat and stop-and-go traffic put extra strain on oil, coolant and gearbox fluid. Small faults, like a leak or a worn mount, are cheaper to fix early than after they spread. Engine and transmission work covers diagnosis, repair and replacement of worn parts. We start with a proper inspection and scan so we repair the real cause. Find us at Taman Bukit Indah, near the Second Link, serving Iskandar Puteri and JB.",
+  "card": "Engine and transmission diagnosis and repair. We find the real cause, explain it clearly and quote before any work starts.",
+  "signs": [
+   "Engine overheats or the temperature needle climbs in traffic",
+   "Knocking, ticking or whining noise from the engine bay",
+   "Gearbox shifts hard, slips or hesitates between gears",
+   "Oil or fluid drips under the car when parked",
+   "White, blue or black smoke from the exhaust",
+   "Engine shakes at idle or lacks power when overtaking"
+  ],
+  "steps": [
+   [
+    "Scan and inspect",
+    "We scan the car for fault codes, then inspect the engine, transmission, fluids, mounts and leaks."
+   ],
+   [
+    "Explain what we found",
+    "We explain the cause in plain words and show you the worn or leaking parts where we can."
+   ],
+   [
+    "Quote before work",
+    "You get a quote for the repair. We start only after you agree to it."
+   ],
+   [
+    "Repair",
+    "We repair or replace the faulty parts and refill the oil, coolant or gearbox fluid as needed."
+   ],
+   [
+    "Test drive",
+    "We scan again, check for leaks and test drive the car to confirm it runs and shifts properly."
+   ],
+   [
+    "Handover",
+    "We go through what was done and what to watch for in the next few weeks."
+   ]
+  ],
+  "checks": [
+   "Fault code scan",
+   "Engine oil level and condition",
+   "Coolant level and leaks",
+   "Gearbox fluid level and condition",
+   "Engine and gearbox mounts",
+   "Visible oil and fluid leaks",
+   "Hoses, belts and radiator",
+   "Idle and shifting on a test drive"
+  ],
+  "faq": [
+   [
+    "Why is my engine overheating?",
+    "Common causes are low coolant, a leak, a weak radiator fan, a faulty thermostat or a failing water pump. If the needle goes high, stop safely and switch off. Driving on can cause serious damage. We check the cause first. Let the engine cool before opening the radiator cap."
+   ],
+   [
+    "Why does my car shake when idling?",
+    "It can be worn engine mounts, dirty or worn ignition parts, a vacuum leak or a sensor fault. The shake alone does not tell us which. We scan and inspect the car, then explain what we found. Do not ignore a shake that keeps getting worse."
+   ],
+   [
+    "What does a hard gear shift mean?",
+    "It can come from old or low gearbox fluid, a sensor fault, or wear inside the gearbox. Do not ignore it. We scan the car and check the fluid first, then tell you the options before any repair."
+   ],
+   [
+    "Is a small oil leak serious?",
+    "A small leak can become a bigger one, and low oil can damage the engine. Leaks also reach belts and the road. Check your oil level, top up if low, and let us find the source."
+   ],
+   [
+    "How much does engine or gearbox repair cost?",
+    "It depends on the car and what is wrong, so we cannot give a fair figure without inspecting it. WhatsApp 011-6776 1138 with the symptoms and we will tell you how to get a quote. A clear quote helps you decide before work begins."
+   ],
+   [
+    "Should I repair or replace the gearbox?",
+    "It depends on the fault and the car. Sometimes a fluid change or a sensor repair is enough. We inspect first, explain the options in plain words and quote each one, so you can decide. Our priority is to fix the cause properly."
+   ]
+  ]
+ },
+ "aircond": {
+  "lead": "Aircond blowing warm air or smelling bad? We check the whole system, explain what we find and quote before any repair.",
+  "intro": "In Johor, a working aircond is not a luxury. Traffic is slow, the sun is strong and a hot cabin tires the driver. The system includes the compressor, condenser, blower, filter and the pipes between them. A weak cooling problem can come from a leak, a dirty part or a failing component, so topping up gas alone may not solve it. You may have seen the Car Air Cond Flushing Service banner on our shopfront. We are at Taman Bukit Indah, near the Second Link, serving Iskandar Puteri and JB.",
+  "card": "Aircond checking, flushing and repair. We find why it is not cold, explain it plainly and quote before any work.",
+  "signs": [
+   "Aircond blows warm or only slightly cool air",
+   "Cooling is fine on the highway but weak in traffic",
+   "Musty or sour smell when you switch it on",
+   "Weak airflow even on the highest fan speed",
+   "Strange noise when the aircond is switched on",
+   "Water drips inside the cabin or the floor is wet"
+  ],
+  "steps": [
+   [
+    "Inspect the system",
+    "We check cooling, airflow, the compressor, condenser, fans, pipes and filter, and look for leaks."
+   ],
+   [
+    "Explain what we found",
+    "We tell you why it is not cold and what is needed, in plain words."
+   ],
+   [
+    "Quote before work",
+    "You get a quote for the repair or flushing. We start only after you agree."
+   ],
+   [
+    "Repair or flush",
+    "We fix the fault, flush the system where needed and refill it to the correct level for your car."
+   ],
+   [
+    "Re-test cooling",
+    "We run the aircond and check cooling, airflow, noise and leaks, then test drive if needed."
+   ],
+   [
+    "Handover",
+    "We explain what was done and how to care for the system day to day."
+   ]
+  ],
+  "checks": [
+   "Cooling performance at the vents",
+   "Compressor running and noise",
+   "Condenser and radiator fan operation",
+   "Leak check on pipes and joints",
+   "Cabin air filter condition",
+   "Blower speed and airflow",
+   "Drain pipe for water leaks",
+   "System flushing where needed"
+  ],
+  "faq": [
+   [
+    "Why is my aircond blowing warm air?",
+    "Common causes are a gas leak, a compressor that is not engaging, a blocked condenser, a faulty fan or an electrical fault. We check the system first, then tell you what is wrong before quoting any repair. A dirty cabin filter can also weaken the cooling."
+   ],
+   [
+    "Does my aircond just need a gas top-up?",
+    "Sometimes, but gas does not normally run out. If it is low, there is usually a leak somewhere. Topping up without finding the leak means the cooling will fade again. We check for the leak first. Ask us and we will explain what the test shows."
+   ],
+   [
+    "Why does my aircond smell bad?",
+    "A damp, dirty evaporator or a clogged cabin filter can grow mould and bacteria. That gives a musty smell. Cleaning and replacing the filter often helps. We check the cause and explain your options. Running the fan for a minute before parking can help keep it dry."
+   ],
+   [
+    "What is aircond flushing?",
+    "Flushing cleans old oil, dirt and debris out of the aircond lines. It is often done when a major part has failed or been replaced. We tell you whether your car needs it after we inspect it."
+   ],
+   [
+    "Why is my aircond weak in traffic but cold on the highway?",
+    "At low speed there is less air over the condenser, so a weak fan, a dirty condenser or low gas shows up. We check the fans and condenser, then tell you what we find."
+   ],
+   [
+    "How much does an aircond repair cost?",
+    "It depends on the fault and the parts involved. A small fix costs less than a new compressor, so we inspect first. WhatsApp 011-6776 1138 with your car model and what you notice."
+   ]
+  ]
+ },
+ "brakes-suspension-tyres": {
+  "lead": "Brakes, suspension, tyres and alignment decide how safely your car stops and handles. We check all four and fix what needs it.",
+  "intro": "Brakes stop the car. Suspension keeps it stable and comfortable. Tyres are the only part touching the road, and alignment keeps them wearing evenly. In Johor, heavy rain, potholes and stop-and-go traffic wear these parts faster than you expect. Long trips on the Second Link and highways add to it. Catching a worn pad, a weak shock absorber or an uneven tyre early keeps repairs smaller and the car safer. We are at Taman Bukit Indah, near the Second Link, serving Iskandar Puteri and JB.",
+  "card": "Brakes, suspension, tyres and alignment. We check how the car stops and handles, explain it clearly and quote first.",
+  "signs": [
+   "Squealing, grinding or scraping noise when you brake",
+   "Brake pedal feels soft, low or vibrates when braking",
+   "Steering wheel shakes or the car pulls to one side",
+   "Car bounces, leans or clunks over bumps and humps",
+   "Tyres wear unevenly or show cracks and bulges",
+   "Steering wheel is off-centre when driving straight"
+  ],
+  "steps": [
+   [
+    "Inspect the car",
+    "We check brake pads, discs and fluid, suspension parts, tyre condition and wheel alignment."
+   ],
+   [
+    "Explain what we found",
+    "We tell you what is worn, what is still safe and what can wait, in plain words."
+   ],
+   [
+    "Quote before work",
+    "You get a quote for each item. Nothing is repaired or replaced until you say yes."
+   ],
+   [
+    "Repair",
+    "We replace or fix the agreed parts, and set the alignment and tyre pressures where needed."
+   ],
+   [
+    "Test drive",
+    "We road test the car for braking, steering feel, noise and straight-line tracking."
+   ],
+   [
+    "Handover",
+    "We explain what was done and what to watch for as the new parts bed in."
+   ]
+  ],
+  "checks": [
+   "Brake pad and disc thickness",
+   "Brake fluid level and condition",
+   "Shock absorber leaks and wear",
+   "Control arm and bush condition",
+   "Tyre tread depth and age",
+   "Tyre pressure and sidewall damage",
+   "Wheel alignment readings",
+   "Steering and ball joints"
+  ],
+  "faq": [
+   [
+    "Why do my brakes squeal?",
+    "Squealing can mean worn pads, dust, or glazed pads and discs. A grinding sound usually means the pads are finished and the discs are being damaged. Do not wait. We inspect the brakes and tell you what is needed. Brakes are a safety item, so do not delay."
+   ],
+   [
+    "How do I know if my tyres need changing?",
+    "Check for low tread, cracks, bulges or uneven wear. Old tyres can harden even with good tread. If the car pulls or vibrates, come in. We inspect the tyres and explain the condition before quoting. Rotating tyres and keeping pressure right also helps them last."
+   ],
+   [
+    "What does wheel alignment do?",
+    "It sets the wheels at the correct angles so the car drives straight and tyres wear evenly. A hard knock from a pothole or kerb can throw it off. We check it and tell you if it needs adjusting. Uneven tyre wear is a common sign of poor alignment."
+   ],
+   [
+    "Why does my steering wheel shake?",
+    "Common causes are unbalanced tyres, a bent wheel, worn suspension parts or warped brake discs. Where it shakes, such as at speed or when braking, helps us find it. We inspect the car first. Tell us if it happens at certain speeds."
+   ],
+   [
+    "How often should I check my brakes?",
+    "Have them checked at every service, and sooner if you hear noise or the pedal feels different. Heavy traffic wears pads faster. We check pad and disc thickness and tell you how much is left. Soft or long pedal travel also needs a check."
+   ],
+   [
+    "How much do brake pads or tyres cost?",
+    "It depends on your car and the parts it needs, so we do not list fixed prices here. WhatsApp 011-6776 1138 with your car model and we will give you a quote."
+   ]
+  ]
+ },
+ "battery-electrical": {
+  "lead": "Car slow to start, lights dim or something stopped working? We test the battery and electrical system and fix the real fault.",
+  "intro": "Your battery starts the engine and powers the electronics. Heat is hard on batteries, and short trips in traffic mean they do not always recharge fully. A weak battery can also look like a bigger fault. The charging system includes the alternator, wiring and fuses, and a fault in any of them can leave you stuck. A test tells us what is weak before it fails on the road. You can reach us at Taman Bukit Indah, near the Second Link, and we serve drivers across Iskandar Puteri and JB.",
+  "card": "Battery testing and electrical repair. We check starting and charging, find the fault and quote before we replace anything.",
+  "signs": [
+   "Engine cranks slowly or clicks when you turn the key",
+   "Headlights dim or flicker, especially at idle",
+   "Battery warning light comes on while driving",
+   "Power windows, central locking or radio act up",
+   "Car needs a jump start more than once",
+   "Fuses blow again after being replaced"
+  ],
+  "steps": [
+   [
+    "Test and inspect",
+    "We test the battery, the starter and charging output, and inspect terminals, wiring and fuses."
+   ],
+   [
+    "Explain what we found",
+    "We tell you whether the problem is the battery, the alternator, the wiring or something else."
+   ],
+   [
+    "Quote before work",
+    "You get a quote before we replace or repair anything. We continue only after you agree."
+   ],
+   [
+    "Repair or replace",
+    "We fit the new battery or repair the faulty part, and clean the terminals and connections."
+   ],
+   [
+    "Re-test and drive",
+    "We test starting and charging again, check the electrical items and take the car for a drive."
+   ],
+   [
+    "Handover",
+    "We explain the result and share simple tips to help the battery last."
+   ]
+  ],
+  "checks": [
+   "Battery condition and voltage",
+   "Starter motor operation",
+   "Alternator charging output",
+   "Battery terminals and earth cable",
+   "Fuses and relays",
+   "Lights, wipers and windows",
+   "Wiring for damage or corrosion",
+   "Parasitic drain when parked"
+  ],
+  "faq": [
+   [
+    "How do I know if my car battery is weak?",
+    "Slow cranking, dim lights, a battery warning light or needing jump starts are common signs. Age matters too. A quick test shows the condition, and we tell you whether it can stay or should be replaced. Dim lights at idle are an early warning."
+   ],
+   [
+    "How long does a car battery last?",
+    "It varies with the battery, the car, the heat and how you drive. Short trips and Johor heat can shorten life. Rather than guess, we test yours and tell you its condition. Leaving lights or devices on can also drain it."
+   ],
+   [
+    "Is it the battery or the alternator?",
+    "A battery that is flat after a jump start may mean the alternator is not charging. A battery that will not hold charge may be worn out. We test both so you only replace what is faulty. Replacing the wrong part wastes money and time."
+   ],
+   [
+    "Why does my battery keep going flat?",
+    "Common causes are an old battery, short trips, something drawing power when parked or a weak alternator. We test the battery and the charging, and check for a drain, then explain what we find. Fixing the drain stops it happening again."
+   ],
+   [
+    "Can you fix power windows, lights and other electrical faults?",
+    "Yes, we trace the fault from the fuse, switch and wiring to the part itself. We tell you what is wrong and quote first. WhatsApp us the symptoms and we will tell you what to expect."
+   ],
+   [
+    "How much does a new battery cost?",
+    "It depends on the size and type your car needs. We do not list prices here. WhatsApp 011-6776 1138 with your car model and we will give you a quote. A clean, tight terminal also helps starting."
+   ]
+  ]
+ },
+ "undercarriage": {
+  "lead": "Strange noises or leaks from underneath? We check the underside of your car, show you what is worn and explain what matters.",
+  "intro": "The underside of your car takes a beating. It carries the suspension, steering parts, exhaust, drive shafts, fuel and brake lines and protective covers. Potholes, speed humps, wet roads and long drives all wear these parts. Many faults cannot be seen from above, so problems stay hidden until they get expensive. An undercarriage check puts the car up so we can look at each part properly and explain what we see. Visit us at Taman Bukit Indah, near the Second Link. We serve drivers across Iskandar Puteri and JB.",
+  "card": "Undercarriage check for suspension, steering, exhaust, leaks and wear. We show you what we find and quote before repairs.",
+  "signs": [
+   "Clunking or rattling noise over bumps and speed humps",
+   "Exhaust sounds louder or rattles underneath",
+   "Oil, fluid or water drips under the car after parking",
+   "Steering feels loose or the car wanders on the road",
+   "Car sits lower on one side or looks uneven",
+   "You hit a pothole or kerb hard recently"
+  ],
+  "steps": [
+   [
+    "Inspect underneath",
+    "We raise the car and look over the suspension, steering parts, exhaust, drive shafts, lines and covers."
+   ],
+   [
+    "Explain what we found",
+    "We show you what is worn, loose or leaking and explain what is urgent and what can wait."
+   ],
+   [
+    "Quote before work",
+    "You get a quote for any repair. We do not start until you agree to it."
+   ],
+   [
+    "Repair",
+    "We replace or fix the worn parts, tighten what is loose and secure any covers."
+   ],
+   [
+    "Re-check and test drive",
+    "We look at the repaired area again, then drive the car to check noise and handling."
+   ],
+   [
+    "Handover",
+    "We explain what was done and what to keep an eye on."
+   ]
+  ],
+  "checks": [
+   "Shock absorbers and springs",
+   "Bushes and control arms",
+   "Ball joints and tie rod ends",
+   "Drive shaft boots and joints",
+   "Exhaust pipes and mounts",
+   "Oil, fluid and coolant leaks",
+   "Brake and fuel lines",
+   "Under covers and fasteners"
+  ],
+  "faq": [
+   [
+    "What is an undercarriage check?",
+    "It is a visual and hands-on inspection of the parts under your car, such as suspension, steering, exhaust and lines. We look for wear, damage, looseness and leaks, then explain what we find. Many problems start small and are easy to fix early."
+   ],
+   [
+    "Why does my car clunk over bumps?",
+    "Worn bushes, loose links, weak shock absorbers or damaged mounts can all cause it. We need to see it on the lift to know which. We inspect, explain and quote before any repair. Do not ignore a new noise."
+   ],
+   [
+    "How often should I check the undercarriage?",
+    "A good time is at each service, and after a hard pothole or kerb hit. Driving in Johor rain and over rough roads can wear parts faster. We tell you what looks fine. Heavy loads and flooded roads also add wear."
+   ],
+   [
+    "Can I tell if there is a leak under my car?",
+    "Look for stains on the ground where you park. Dark oil, coloured coolant or clear water can mean different things. Aircond water is normal. Tell us what you see and we will trace it. Do not ignore a puddle that keeps coming back."
+   ],
+   [
+    "Will the check find problems I cannot see?",
+    "That is the purpose. Many worn parts only show up from underneath. We tell you what we see, rank it by urgency and leave the decision to you. We will not push work you do not need."
+   ],
+   [
+    "How much does an undercarriage check cost?",
+    "Please WhatsApp 011-6776 1138 to ask about the check. Any repair that follows depends on the parts and the car, and we quote that before we start. You decide what to go ahead with."
+   ]
+  ]
+ },
+ "towing": {
+  "lead": "Broken down or stuck? Our recovery towing service can bring your car to our workshop at Taman Bukit Indah. Call or WhatsApp us.",
+  "intro": "A breakdown is stressful, especially on a busy road or in the heat. Recovery towing moves your car safely when it cannot be driven, such as after a flat battery, an overheating engine, a failed gearbox or a minor accident. Towing it to a workshop lets the fault be checked properly, instead of a roadside guess. Our recovery towing service brings the car to our workshop, where we scan or inspect it first. We are at Taman Bukit Indah, near the Second Link, serving Iskandar Puteri and JB drivers.",
+  "card": "Recovery towing service to our Taman Bukit Indah workshop. Call or WhatsApp with your location and we take it from there.",
+  "signs": [
+   "Car will not start and a jump start does not help",
+   "Engine overheats and you have had to stop",
+   "Warning lights come on and the car loses power",
+   "Gearbox will not move into gear or the car will not drive",
+   "Flat tyre with no spare, or a wheel is damaged",
+   "Minor accident and the car is not safe to drive"
+  ],
+  "steps": [
+   [
+    "Call with your location",
+    "Call or WhatsApp 011-6776 1138 with your location, car model and what happened."
+   ],
+   [
+    "Recovery to the workshop",
+    "We arrange recovery of your car to our workshop at Taman Bukit Indah."
+   ],
+   [
+    "Scan and inspect",
+    "Once the car is in the bay, we scan and inspect it to find the cause."
+   ],
+   [
+    "Explain what we found",
+    "We tell you what is wrong and what is needed, in plain words."
+   ],
+   [
+    "Quote before work",
+    "You get a quote before any repair. We start only after you agree."
+   ],
+   [
+    "Repair and re-check",
+    "We repair the car, re-test it and hand it back with a clear explanation."
+   ]
+  ],
+  "checks": [
+   "Your location and the car's condition",
+   "Safe recovery onto the vehicle",
+   "Delivery to our Taman Bukit Indah workshop",
+   "Computer scan of the car",
+   "Visual inspection of the likely cause",
+   "Battery and charging check",
+   "Fluids and leak check",
+   "Test drive after repair"
+  ],
+  "faq": [
+   [
+    "What should I do when my car breaks down?",
+    "Move to a safe place if you can and switch on your hazard lights. Keep everyone away from traffic. Then call or WhatsApp 011-6776 1138 with your location and what happened. Do not stand in the traffic lane."
+   ],
+   [
+    "What details should I give when I call?",
+    "Tell us your exact location, your car model, what happened and any warning lights. A photo or a pinned location on WhatsApp helps. Say if the car is in a car park or on a roadside. Tell us if the car is blocking a lane."
+   ],
+   [
+    "Can you tow my car from anywhere?",
+    "Please call or WhatsApp 011-6776 1138 with your location and we will tell you if we can help. We do not promise arrival times, because they depend on where you are and the situation. We do not promise any arrival time."
+   ],
+   [
+    "How much does towing cost?",
+    "It depends on the situation and the distance, so we cannot give a fixed figure here. Call or WhatsApp 011-6776 1138 with your location and we will tell you before we move the car. Ask for the figure before you agree."
+   ],
+   [
+    "Should I try to drive a car that is overheating or in limp mode?",
+    "No. Driving on can turn a small fault into a costly one. Stop in a safe place, switch off the engine and call us. Towing is safer than risking a damaged engine or gearbox. Safety comes first."
+   ],
+   [
+    "What happens after the car reaches the workshop?",
+    "We scan and inspect it, explain what we found and quote before any work. Nothing is repaired until you agree. When the repair is done, we re-test the car and hand it back. You decide each step."
+   ]
+  ]
+ }
+}
