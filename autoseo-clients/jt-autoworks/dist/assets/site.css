@@ -7,7 +7,7 @@
 --paper:#F7F6F3;--steel:#E6EBF1;--ink:#131A26;--ink2:#46526B;--line:#CBD4E0;--on-navy:#C9D3E6;--white:#fff;
 --r:6px;--r2:4px;--wrap:1160px;--gut:20px;--bar:64px;
 --fh:Sora,"Noto Sans",sans-serif;--fb:"Noto Sans",sans-serif}
-:lang(zh-Hans){--fh:Sora,"JT SC","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;--fb:"Noto Sans","JT SC","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
+html:lang(zh-Hans){--fh:Sora,"JT SC","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;--fb:"Noto Sans","JT SC","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
 *,*::before,*::after{box-sizing:border-box}
 html,body{overflow-x:clip}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:80px}
