@@ -1312,24 +1312,24 @@
    "launch": "May 2023 BTO",
    "launch_basis": "firm",
    "launch_source": "HDB May 2023 sales brochure",
-   "status": "TODO",
-   "v4_set": "plantation-verge-v4 (drop 6afd470e5a6c17c86aa86e5b)",
-   "floor_plan": false,
+   "status": "DONE",
+   "v4_set": "plantation-verge-v4",
+   "floor_plan": true,
    "gsc_28d": {
     "clicks": 8,
     "impressions": 218,
     "position": 8.64
    },
-   "section": "A",
-   "waiting_for_images": "18 Nov 2026: no v4 set or drop, and this run could not move Base44 renders or the HDB plan into the site (no byte route from the Base44 sandbox to Bluehost). Official facts found: HDB May 2023 brochure https://assets.hdb.gov.sg/residential/buying-a-flat/finding-a-flat/sales-brochure/23MAYBTO_pdf_selection/plantation_verge.pdf (971 units, 7 blocks 14-18 storeys, Plantation Close; 2-room Flexi T1 40/38, T2 48/46, 3-room 69/66, 4-room 93/90, 5-room 113/110 sq m; 4-room plan PDF page 11 (printed p.19-20), clip x125-475 y436-768 pt). Needs a Maison Design Helper drop.",
+   "section": "DONE",
    "v4_drop": {
     "drop_id": "6afd470e5a6c17c86aa86e5b",
     "job": "maison-plantation-verge-v4",
     "site": "maisoninteriordesign.sg",
-    "status": "ready, 12 files, expires 25 Nov 2026, 2:34pm SGT (Grok Bot 19 Nov)",
+    "status": "published 19 Nov 2026 to images/new-launches/plantation-verge-v4/, cleared after live check",
     "plan": "see drop README",
     "gaps": "see drop README"
-   }
+   },
+   "built": "2026-11-19 (live 06:22 UTC, sha 3b1bddab, backup ~/backups-private/pageone-sync-before-preview-maison-interior-design-20261119-062220Z.tgz, tap CtaClick 6afe9620)"
   },
   {
    "slug": "pollen-collection",
@@ -1566,6 +1566,7 @@
   "towner-residences",
   "keat-hong-grange",
   "brickland-weave",
+  "plantation-verge",
   "plantation-edge-i-and-ii",
   "coastal-cabana",
   "bayshore-sails",
@@ -1576,7 +1577,6 @@
   "toa-payoh-hillside",
   "canninghill-piers",
   "amo-residence",
-  "plantation-verge",
   "the-myst",
   "lumina-grand",
   "norwood-grand",
