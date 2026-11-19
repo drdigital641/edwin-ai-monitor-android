@@ -447,7 +447,7 @@ def home():
     hero = f'''<section class="hero">
 <div class="hero-bg" aria-hidden="true"><img src="{img('cover')}" width="1600" height="1200" alt="" fetchpriority="high" decoding="async"><i class="hero-streak"></i></div>
 <div class="wrap hero-in">
-<p class="hero-k">{shield('hero-shield')}<span>HX AUTO SERVICE<small>PUSAT SERVIS KERETA</small></span></p>
+<p class="hero-k">{E(F['signboard_ms'])}</p>
 <h1>{h1}</h1>
 <p class="hero-l">{E(H['hero_line'])}</p>
 <div class="hero-cta">{wa('home_hero', S.UI['wa_btn'])}{call('home_hero', S.UI['call_btn'])}</div>

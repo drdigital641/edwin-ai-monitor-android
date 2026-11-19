@@ -107,20 +107,19 @@ address{font-style:normal}
 .hero-in>*{animation:rise .7s ease-out both}
 .hero-in>h1{animation-name:riseT;animation-delay:.05s}
 .hero-in>.hero-l{animation-delay:.15s}.hero-in>.hero-cta{animation-delay:.25s}
-.hero-k{display:flex;align-items:center;gap:12px;margin:0 0 22px;font:600 .95rem/1.1 var(--hd);letter-spacing:.16em;color:#fff}
-.hero-k small{display:block;margin-top:5px;font-size:.72rem;letter-spacing:.2em;color:var(--red-h)}
-.hero-shield{width:58px}
-.hero h1{font-size:clamp(2.55rem,11.4vw,5.8rem);line-height:.98;text-transform:uppercase;letter-spacing:.005em;color:#fff;margin:0 0 .32em;max-width:13ch}
-.hero h1 em{font-style:normal;color:var(--red-h);display:inline-block;position:relative}
+.hero-k{display:flex;align-items:center;gap:12px;margin:0 0 18px;font:600 .82rem/1.1 var(--hd);letter-spacing:.22em;text-transform:uppercase;color:var(--chrome)}
+.hero-k::before{content:"";width:34px;height:3px;background:var(--red);border-radius:2px}
+.hero h1{font-size:clamp(2.3rem,10.2vw,4.7rem);line-height:1;text-transform:uppercase;letter-spacing:.005em;color:#fff;margin:0 0 .32em;max-width:15ch}
+.hero h1 em{font-style:normal;color:var(--red-h)}
 .hero-l{font-size:1.12rem;color:var(--on-dk);max-width:38ch;margin:0 0 24px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:10px}
 .trust{list-style:none;margin:40px auto 0;padding-top:16px;padding-bottom:18px;display:grid;gap:10px;border-top:1px solid rgba(216,215,216,.16);position:relative}
 .trust li{display:flex;align-items:center;gap:10px;font-size:.92rem;color:var(--on-dk)}
 .trust .ic{color:var(--red-h)}
 @media (min-width:900px){
-  .hero{padding-top:96px}
-  .hero-shield{width:72px}
-  .trust{grid-template-columns:repeat(3,auto);justify-content:space-between;margin-top:72px;padding-top:20px;padding-bottom:22px}
+  .hero{padding-top:84px}
+  .hero-l{font-size:1.25rem}
+  .trust{grid-template-columns:repeat(3,auto);justify-content:space-between;margin-top:64px;padding-top:20px;padding-bottom:22px}
 }
 
 /* ---------- sections: charcoal and light alternate; chevron break under dark sections ---------- */
