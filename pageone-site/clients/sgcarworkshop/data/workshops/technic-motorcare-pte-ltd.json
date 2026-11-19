@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "technic-motorcare-pte-ltd",
+ "place_id": "ChIJ3Y86MC0a2jER1GGysadXn3g",
+ "place_id_checked_at": "2026-11-19",
+ "name": "TECHNIC MOTORCARE PTE LTD",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-19",
+ "address": {
+  "block": "",
+  "street": "8 Kung Chong Rd",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "159145",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-19",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6590296874",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-19"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-19"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-19",
+ "last_verified_at": "2026-11-19",
+ "collector_version": "agent-v5",
+ "hold": "held 20 Nov: 1 rating",
+ "estate": "bukit-merah-lane-3",
+ "planning_area": "Bukit Merah",
+ "region": "central"
+}

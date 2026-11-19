@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 85,
+ "websiteUri": "https://instagram.com/technikautolab?igshid=MjEwN2IyYWYwYw==",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 7:00 PM",
+  "Tuesday: 9:30 AM – 7:00 PM",
+  "Wednesday: 9:30 AM – 7:00 PM",
+  "Thursday: 9:30 AM – 7:00 PM",
+  "Friday: 9:30 AM – 7:00 PM",
+  "Saturday: 9:30 AM – 3:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention friendly, responsive staff who share their knowledge, a clean workshop with a comfortable waiting lounge, and help with aircon top-ups and modifications.",
+ "fetched_at": "2026-11-19",
+ "place_id": "ChIJ21N9P2cF2jERc1ut4aL9PfI",
+ "source": "google_places"
+}

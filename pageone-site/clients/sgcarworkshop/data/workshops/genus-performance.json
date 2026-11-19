@@ -1,0 +1,73 @@
+{
+ "schema_version": 1,
+ "slug": "genus-performance",
+ "place_id": "ChIJESxNHbcT2jER54qH8yTxiJI",
+ "place_id_checked_at": "2026-11-19",
+ "name": "Genus Performance",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-19",
+ "address": {
+  "block": "",
+  "street": "39 Woodlands Cl, #03-03 Mega @ Woodlands",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "737856",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-19",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6581888399",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-19"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-19"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-19",
+ "last_verified_at": "2026-11-19",
+ "collector_version": "agent-v5",
+ "estate": "woodlands-close",
+ "planning_area": "Woodlands",
+ "region": "north",
+ "lat": 1.438091431881193,
+ "lng": 103.8071191601408,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.8,
+  "count": 39,
+  "checked": "2026-11-19",
+  "source": "Google Places",
+  "source_date": "2026-11-19"
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "mobil-autofriend-services",
+ "place_id": "ChIJtcwDQxIV2jERTFUa6NKe6fY",
+ "place_id_checked_at": "2026-11-19",
+ "name": "Mobil Autofriend Services",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-19",
+ "address": {
+  "block": "",
+  "street": "593 Sembawang Rd",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "758452",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-19",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6592953167",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-19"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-19"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-19",
+ "last_verified_at": "2026-11-19",
+ "collector_version": "agent-v5",
+ "hold": "held 20 Nov: no OneMap coordinates (OneMap search returned 401); retry",
+ "estate": "yishun-industrial-park-a",
+ "planning_area": "Yishun",
+ "region": "north"
+}

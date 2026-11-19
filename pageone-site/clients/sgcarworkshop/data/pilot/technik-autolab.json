@@ -1,0 +1,41 @@
+{
+ "lede": "Technik Autolab at Corporation Drive, Jurong East is a car servicing and modification workshop.",
+ "chips": [
+  "Car servicing",
+  "Aircon",
+  "Modifications"
+ ],
+ "services": [
+  "Car servicing",
+  "Aircon gas refill",
+  "Grille installation",
+  "Modifications",
+  "Repairs"
+ ],
+ "themes": "Customers on Google Maps mention friendly, responsive staff who share their knowledge, a clean workshop with a comfortable waiting lounge, and help with aircon gas refills and modifications.",
+ "faqs": [
+  [
+   "What does Technik Autolab do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Aircon",
+  "Servicing",
+  "Modifications"
+ ],
+ "services_note": "Services listed on its Google Maps listing and mentioned by customers. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "BMW"
+ ],
+ "makes_note": "Makes mentioned by customers on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

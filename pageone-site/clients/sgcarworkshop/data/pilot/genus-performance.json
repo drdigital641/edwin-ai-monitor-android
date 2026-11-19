@@ -1,0 +1,45 @@
+{
+ "lede": "Genus Performance at Woodlands Close (MEGA@Woodlands) is a car repair, servicing and paintwork workshop.",
+ "chips": [
+  "Car servicing",
+  "Engine work",
+  "Spray painting"
+ ],
+ "services": [
+  "Car servicing",
+  "Car repair",
+  "Engine overhaul",
+  "Spray painting",
+  "Panel beating",
+  "Bumper scratch repair"
+ ],
+ "themes": "Customers on Google Maps mention clear updates during the job, spray painting results, quick help with an engine overheating issue and a repaired bumper scratch.",
+ "faqs": [
+  [
+   "What does Genus Performance do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "Spray painting",
+  "Servicing",
+  "Engine repair",
+  "Bumper repair"
+ ],
+ "services_note": "Services listed on its website and mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [
+  "Engine overhaul",
+  "Paint and refinishing",
+  "Precision panel beating"
+ ],
+ "makes": [],
+ "makes_note": "Not listed on its public pages. Ask the workshop about your car.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

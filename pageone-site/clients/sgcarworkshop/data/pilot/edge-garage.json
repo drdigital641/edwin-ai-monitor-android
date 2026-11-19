@@ -1,0 +1,43 @@
+{
+ "lede": "Edge Garage at Woodlands Close (MEGA@Woodlands) is a car servicing workshop.",
+ "chips": [
+  "Car servicing",
+  "Tyre rotation",
+  "Battery"
+ ],
+ "services": [
+  "Car servicing",
+  "Engine oil change",
+  "Air filter",
+  "Aircon filter",
+  "Battery replacement",
+  "Tyre rotation"
+ ],
+ "themes": "Customers on Google Maps mention friendly technicians who explain the work, quick servicing by appointment, and extras such as a tyre rotation during a service.",
+ "faqs": [
+  [
+   "What does Edge Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Battery",
+  "Tyres",
+  "Engine oil"
+ ],
+ "services_note": "Services listed on its Google Maps listing and mentioned by customers. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Mercedes-Benz"
+ ],
+ "makes_note": "Makes mentioned by customers on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

@@ -1,0 +1,38 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "tire_shop",
+  "car_rental",
+  "car_dealer",
+  "auto_parts_store",
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "store",
+  "establishment"
+ ],
+ "rating": 4.6,
+ "userRatingCount": 18,
+ "websiteUri": "http://www.facebook.com/edgegaragepteltd",
+ "paymentOptions": {
+  "acceptsCreditCards": false,
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 7:00 PM",
+  "Tuesday: 10:00 AM – 7:00 PM",
+  "Wednesday: 10:00 AM – 7:00 PM",
+  "Thursday: 10:00 AM – 7:00 PM",
+  "Friday: 10:00 AM – 7:00 PM",
+  "Saturday: 10:00 AM – 2:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention friendly technicians who explain the work, quick servicing by appointment, and extras such as a tyre rotation during a service.",
+ "fetched_at": "2026-11-19",
+ "place_id": "ChIJc6yHNwgT2jERodKChOiQ75U",
+ "source": "google_places"
+}

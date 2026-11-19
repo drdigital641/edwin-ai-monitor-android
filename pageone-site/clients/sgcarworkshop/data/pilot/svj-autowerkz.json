@@ -1,0 +1,43 @@
+{
+ "lede": "SVJ Autowerkz at Corporation Drive, Jurong East is a car servicing and repair workshop.",
+ "chips": [
+  "Car servicing",
+  "Gearbox",
+  "Diagnosis"
+ ],
+ "services": [
+  "Car servicing",
+  "Transmission oil change",
+  "Engine mount replacement",
+  "Fault diagnosis",
+  "Gearbox leak checks"
+ ],
+ "themes": "Customers on Google Maps mention mechanics who explain the car's condition, patient fault finding on hard-to-trace issues, and quotes given before work.",
+ "faqs": [
+  [
+   "What does SVJ Autowerkz do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Gearbox",
+  "Diagnosis",
+  "Transmission oil"
+ ],
+ "services_note": "Services listed on its Google Maps listing and mentioned by customers. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Mini",
+  "Mercedes-Benz"
+ ],
+ "makes_note": "Makes mentioned by customers on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

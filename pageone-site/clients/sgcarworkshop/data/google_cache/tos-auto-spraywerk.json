@@ -1,0 +1,37 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "home_goods_store",
+  "car_repair",
+  "building_materials_store",
+  "point_of_interest",
+  "service",
+  "store",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 174,
+ "websiteUri": "https://www.tosautospraywerk.com/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 7:00 PM",
+  "Tuesday: 10:00 AM – 7:00 PM",
+  "Wednesday: 10:00 AM – 7:00 PM",
+  "Thursday: 10:00 AM – 7:00 PM",
+  "Friday: 10:00 AM – 7:00 PM",
+  "Saturday: 10:00 AM – 5:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention paint matching, clear progress updates, quotes by WhatsApp from photos and quick turnaround on resprays and dent repairs.",
+ "fetched_at": "2026-11-19",
+ "place_id": "ChIJOwz2LCYT2jERf_l9mlnbcC4",
+ "source": "google_places"
+}

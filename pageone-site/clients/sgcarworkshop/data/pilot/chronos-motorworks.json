@@ -1,0 +1,44 @@
+{
+ "lede": "Chronos Motorworks at Corporation Drive, Jurong East is a car servicing and repair workshop.",
+ "chips": [
+  "Car servicing",
+  "Diagnostics",
+  "Repairs"
+ ],
+ "services": [
+  "Servicing",
+  "Diagnostics",
+  "Multi-point check",
+  "Brake check",
+  "Coolant repair",
+  "Spark plugs",
+  "Oil change"
+ ],
+ "themes": "Customers on Google Maps mention friendly mechanics, a clean workshop, clear explanations of the work and a step-by-step diagnostic approach.",
+ "faqs": [
+  [
+   "What does Chronos Motorworks do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Diagnostics",
+  "Cooling system",
+  "Brakes"
+ ],
+ "services_note": "Services mentioned on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "BMW"
+ ],
+ "makes_note": "Taken from what customers mention on Google Maps. Ask the workshop about your car.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}
