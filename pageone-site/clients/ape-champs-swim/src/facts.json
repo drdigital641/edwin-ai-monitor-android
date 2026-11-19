@@ -1,0 +1,77 @@
+{
+  "_note": "Single source of truth for the Ape Champs Swim preview. Edit here, run build.py, every page updates. Facts per Edwin's brief 19 Nov 2026 (client answers win over the old site).",
+  "site_key": "ape-champs-swim",
+  "origin": "https://pageonesingapore.com",
+  "base": "/preview/ape-champs-swim/",
+  "noindex": true,
+  "brand": "Ape Champs Swim",
+  "legal_name": "Ape Swimming Pte Ltd",
+  "uen": "202600447R",
+  "wa_number": "6589510121",
+  "wa_display": "+65 8951 0121",
+  "email": "hello@apechampsswim.com.sg",
+  "privacy_email": "privacy@apechampsswim.com.sg",
+  "old_site": "https://www.apechampsswim.com.sg/",
+  "wa_text": {
+    "default": "Hi, I would like to enquire about kids swimming lessons at my condo.",
+    "trial": "Hi, I would like to book a trial swimming lesson for my child at my condo.",
+    "rates": "Hi, I would like to ask about swimming lesson rates for my child at my condo.",
+    "programmes": "Hi, I would like to ask which swimming programme suits my child.",
+    "faq": "Hi, I have a question about kids swimming lessons at my condo.",
+    "area": "Hi, I would like to enquire about kids swimming lessons at my condo in {area}. My condo is: "
+  },
+  "ages": "6 months to about 12 years",
+  "coaches": "about 6",
+  "condos_regular": "about 7",
+  "areas": [
+    {"slug": "punggol", "name": "Punggol"},
+    {"slug": "sengkang", "name": "Sengkang"},
+    {"slug": "hougang", "name": "Hougang"},
+    {"slug": "tampines", "name": "Tampines"},
+    {"slug": "bukit-timah", "name": "Bukit Timah"},
+    {"slug": "upper-east-coast", "name": "Upper East Coast"}
+  ],
+  "programmes": [
+    {"id": "apestart", "name": "ApeStart™ Water Confidence", "short": "ApeStart™", "age": "0.5 to 4 years", "length": 30,
+     "lead": "Gentle, play-based introduction to the water.",
+     "points": ["Bubbles, floating and kicking", "Basic water safety", "Parents can be poolside"]},
+    {"id": "apecore", "name": "ApeCore™ Learn-to-Swim", "short": "ApeCore™", "age": "Starting level confirmed after the trial", "length": 45,
+     "lead": "Learn-to-swim with strong foundations for freestyle and backstroke.",
+     "points": ["Freestyle and backstroke foundations", "Aligned with SwimSafer® stages"]},
+    {"id": "swimsafer", "name": "SwimSafer® Programme", "short": "SwimSafer®", "age": "6 to 12 years", "length": 45,
+     "lead": "Follows Sport Singapore's SwimSafer® Stage 1 to 6 syllabus.",
+     "points": ["Water safety and survival skills", "Assessment-based progression"]},
+    {"id": "stroke", "name": "Stroke Refinement", "short": "Stroke Refinement", "age": "8 to 12 years", "length": 45,
+     "lead": "Technique across all four strokes.",
+     "points": ["All four strokes", "Endurance and lap swimming"]}
+  ],
+  "lesson_from": "$70",
+  "group": [
+    {"label": "1 to 2", "per_child": "$180", "total": "$360", "per_lesson": "$45"},
+    {"label": "1 to 3", "per_child": "$133", "total": "$400", "per_lesson": "$33"},
+    {"label": "1 to 4", "per_child": "$115", "total": "$460", "per_lesson": "$28.75"}
+  ],
+  "addons": [
+    "+ $10 per lesson for a female coach",
+    "+ $10 per lesson for special needs swimming lessons (each lesson 30 minutes)",
+    "+ $10 per lesson for competitive swimming training"
+  ],
+  "fee_notes": [
+    "Fees are billed per month or per block of lessons.",
+    "No hidden registration or admin fees.",
+    "Enquire to get your preferred schedule, coach and quotation."
+  ],
+  "reply_hours": [
+    ["Monday to Friday", "10am to 7pm"],
+    ["Saturday and Sunday", "9am to 5pm"],
+    ["Public holidays", "May vary"]
+  ],
+  "awards": [
+    {"name": "Water Explorer Award",
+     "purpose": "Recognises swimmers who have developed early water confidence and comfort, and are ready to progress into structured learn-to-swim programmes.",
+     "criteria": ["Blow bubbles with face comfortably in the water for at least 5 seconds", "Float independently (front or back) for at least 5 seconds", "Willingness to place face in water", "Readiness to progress into ApeCore™ Learn-to-Swim"]},
+    {"name": "ApeCore Ready Award",
+     "purpose": "Recognises swimmers who have developed stronger independence, control, and foundational movement skills in the water, and are ready for assessment-based progression.",
+     "criteria": ["Blow bubbles and hold breath with face in water for at least 5 seconds", "Front float and back float independently for at least 5 seconds each", "Streamline rocket kicks for at least 2 metres independently and comfortably", "Strong foundation in water confidence and independence", "Consistent body control and propulsion skills", "Readiness to progress into SwimSafer® 2.0 Stage 1"]}
+  ]
+}
