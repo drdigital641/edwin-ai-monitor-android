@@ -56,6 +56,25 @@ def waterline(fill="#082F49", tint="#0C3D5E"):
             % (d.replace("30", "34", 1), tint, d, fill))
 
 
+PHOTOS = {
+    "p1": ("img/pool-lesson-01-full.webp", 1536, 864, "A coach and children at a pool, in Ape Champs Swim caps, with branded kickboards."),
+    "p2": ("img/pool-lesson-02-full.webp", 2000, 924, "Children kicking on kickboards in a condo-style pool, in Ape Champs Swim caps."),
+    "p3": ("img/pool-lesson-03-full.webp", 720, 720, "A coach and two children underwater, in Ape Champs Swim caps."),
+    "p4": ("img/pool-lesson-04-full.webp", 720, 720, "A coach with two children on kickboards at a condo pool."),
+}
+
+
+def photo(key, cls="ph", eager=False):
+    src, w, h, cap = PHOTOS[key]
+    load = 'fetchpriority="high" decoding="async"' if eager else 'loading="lazy" decoding="async"'
+    return ('<figure class="%s" style="aspect-ratio:%d/%d"><img src="%s" width="%d" height="%d" alt="%s" %s>'
+            '<figcaption>%s</figcaption></figure>' % (cls, w, h, u(src), w, h, E(cap), load, E(cap)))
+
+
+def tiles():
+    return '<div class="tiles">%s%s</div>' % (photo("p3", "ph ph-sq"), photo("p4", "ph ph-sq"))
+
+
 NAV = [("programmes/", "Programmes"), ("rates/", "Rates"), ("areas/", "Areas"), ("faq/", "FAQ"), ("contact/", "Contact")]
 
 ORG_ID = abs_url("#org")
@@ -264,9 +283,7 @@ def build():
    <p class="lede">Same coach every week, for children from 6 months to 12 years.</p>
    <div class="cta-row">{wa_btn('whatsapp_home_hero', 'WhatsApp us to book a trial', 'trial', block=True)}</div>
   </div>
-  <ul class="hero-aside" aria-label="At a glance" style="list-style:none;margin-top:0">
-   <li><b>Condo pools only</b></li><li>{area_names}</li><li>SwimSafer&reg; syllabus</li><li>From $70 per lesson</li>
-  </ul>
+  <div class="hero-photo">{photo('p1', 'ph', True)}</div>
  </div>
  {waterline()}
 </section>
@@ -283,6 +300,7 @@ def build():
    <li><b>Not for</b><span>Adults. We are a kids' swim school.</span></li>
   </ul>
  </div>
+ <div class="wrap" style="margin-top:28px">{tiles()}</div>
 </section>
 
 <section class="band" id="where">
@@ -303,6 +321,7 @@ def build():
    <li><h3>Keep the same coach</h3><p>After the trial, your child keeps the same coach every week. We have {F['coaches']} coaches on the team.</p></li>
    <li><h3>Swim once a week</h3><p>Lessons run in blocks of 4: 30 minutes for the youngest, 45 minutes for older programmes.</p></li>
   </ol>
+  <div class="ph-row">{photo('p2')}</div>
   {sec_end('whatsapp_home_how', 'WhatsApp us to book a trial', 'trial')}
  </div>
 </section>
@@ -358,6 +377,7 @@ def build():
 <section class="page-hero"><div class="wrap"><!--CRUMBS--><h1>Kids' swimming programmes</h1>
 <p class="lede">Four levels, from first splashes to all four strokes. Your child's starting level is confirmed after the trial.</p>
 {wa_btn('whatsapp_programmes_hero', 'Ask which level suits my child', 'programmes', block=True)}</div></section>
+<section class="band" style="padding:8px 0 40px"><div class="wrap">{photo('p2')}<div style="margin-top:10px">{tiles()}</div></div></section>
 <section class="band deep"><div class="wrap"><h2>The four levels</h2><ul class="lanes">{lanes}</ul>
 <p class="sub" style="margin-top:20px">ApeCore&trade; and SwimSafer&reg; follow Sport Singapore's SwimSafer&reg; Stage 1 to 6 syllabus.</p></div></section>
 <section class="band"><div class="wrap"><h2>Our in-house confidence awards</h2>
@@ -383,6 +403,7 @@ def build():
 <h2 style="margin-top:36px;font-size:1.6rem">Good to know</h2><ul class="notes">{notes}</ul>
 <h2 style="margin-top:36px;font-size:1.6rem">Cancellations</h2>
 <p class="sub">Each lesson package includes 2 bad weather cancellations, 2 MC cancellations and 1 discretionary cancellation. After those are used, further cancellations are charged at 50% of the lesson fee. Lesson credits are non-refundable. Full rules: <a href="{u('terms/')}">terms and cancellation</a>.</p>
+<div class="ph-row">{photo('p1')}</div>
 <h2 style="margin-top:36px;font-size:1.6rem">Trial class</h2>
 <p class="sub">30 to 45 minutes, with a water assessment and a programme recommendation. Trial price: WhatsApp us to confirm.</p>
 {sec_end('whatsapp_rates', 'WhatsApp us for a quote', 'rates')}
