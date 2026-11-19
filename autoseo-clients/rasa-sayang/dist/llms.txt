@@ -1,0 +1,34 @@
+# Rasa Sayang Automotive Group Sdn Bhd
+
+> Hybrid, EV / new energy vehicle and supercar repair workshop in Shah Alam and Subang Jaya, Selangor, Malaysia. Company no. 202401033236 (1579084-X).
+
+- Shah Alam HQ: 21, Jalan Serendah 26/40, Seksyen 26, 40400 Shah Alam, Selangor, Malaysia (Waze https://waze.com/ul/hw281pps03)
+- Subang Jaya branch: 10, Jalan SS14/2, SS14, 47500 Subang Jaya, Selangor, Malaysia (Waze https://waze.com/ul/hw281rz2ue)
+- WhatsApp and phone: +60 16-664 1686 (https://wa.me/60166641686)
+- Facebook: https://www.facebook.com/rasasayangauto
+- Makes serviced: BMW, Mercedes-Benz, Porsche, Lamborghini, Ferrari, McLaren, Volvo, Rolls-Royce, Audi, Land Rover
+- Areas: Klang, Damansara, Cheras, Petaling Jaya, Puchong, USJ, Kuala Lumpur, Subang Jaya, Shah Alam
+- Opening hours: not published; WhatsApp to arrange a time
+
+## Services
+- [Hybrid and EV repair](https://autoseo.my/preview/rasa-sayang/services/hybrid-ev-repair/): High-voltage battery, ERAD motor, onboard charger and module work.
+- [Engine repair and overhaul](https://autoseo.my/preview/rasa-sayang/services/engine-repair-overhaul/): Engine repair, mounting, timing belt, gearbox and full overhaul.
+- [Supercar repair](https://autoseo.my/preview/rasa-sayang/services/supercar-repair/): Lamborghini, Ferrari, McLaren, Porsche and Rolls-Royce.
+- [Aircond repair](https://autoseo.my/preview/rasa-sayang/services/aircond-repair/): Compressor, condenser and cooling coil, hybrid systems included.
+- [Support for other workshops](https://autoseo.my/preview/rasa-sayang/services/workshop-technical-support/): Complex faults, electronics and new energy vehicle repairs.
+
+## Languages
+English at the site root, Bahasa Melayu at /ms/, Simplified Chinese at /zh/. Every page exists in all three.
+
+## Pages
+- https://autoseo.my/preview/rasa-sayang/ (BM: https://autoseo.my/preview/rasa-sayang/ms/, 中文: https://autoseo.my/preview/rasa-sayang/zh/)
+- https://autoseo.my/preview/rasa-sayang/services/ (BM: https://autoseo.my/preview/rasa-sayang/ms/services/, 中文: https://autoseo.my/preview/rasa-sayang/zh/services/)
+- https://autoseo.my/preview/rasa-sayang/about/ (BM: https://autoseo.my/preview/rasa-sayang/ms/about/, 中文: https://autoseo.my/preview/rasa-sayang/zh/about/)
+- https://autoseo.my/preview/rasa-sayang/contact/ (BM: https://autoseo.my/preview/rasa-sayang/ms/contact/, 中文: https://autoseo.my/preview/rasa-sayang/zh/contact/)
+- https://autoseo.my/preview/rasa-sayang/privacy/ (BM: https://autoseo.my/preview/rasa-sayang/ms/privacy/, 中文: https://autoseo.my/preview/rasa-sayang/zh/privacy/)
+- https://autoseo.my/preview/rasa-sayang/articles/ (BM: https://autoseo.my/preview/rasa-sayang/ms/articles/, 中文: https://autoseo.my/preview/rasa-sayang/zh/articles/)
+- https://autoseo.my/preview/rasa-sayang/services/hybrid-ev-repair/ (BM: https://autoseo.my/preview/rasa-sayang/ms/services/hybrid-ev-repair/, 中文: https://autoseo.my/preview/rasa-sayang/zh/services/hybrid-ev-repair/)
+- https://autoseo.my/preview/rasa-sayang/services/engine-repair-overhaul/ (BM: https://autoseo.my/preview/rasa-sayang/ms/services/engine-repair-overhaul/, 中文: https://autoseo.my/preview/rasa-sayang/zh/services/engine-repair-overhaul/)
+- https://autoseo.my/preview/rasa-sayang/services/supercar-repair/ (BM: https://autoseo.my/preview/rasa-sayang/ms/services/supercar-repair/, 中文: https://autoseo.my/preview/rasa-sayang/zh/services/supercar-repair/)
+- https://autoseo.my/preview/rasa-sayang/services/aircond-repair/ (BM: https://autoseo.my/preview/rasa-sayang/ms/services/aircond-repair/, 中文: https://autoseo.my/preview/rasa-sayang/zh/services/aircond-repair/)
+- https://autoseo.my/preview/rasa-sayang/services/workshop-technical-support/ (BM: https://autoseo.my/preview/rasa-sayang/ms/services/workshop-technical-support/, 中文: https://autoseo.my/preview/rasa-sayang/zh/services/workshop-technical-support/)

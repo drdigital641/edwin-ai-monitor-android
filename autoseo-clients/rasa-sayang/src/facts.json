@@ -1,0 +1,107 @@
+{
+  "_note": "Single source of truth for the Rasa Sayang Automotive AutoSEO preview. Use only these facts on the site. Do not invent contact details, hours, ratings, prices, reviewer names, staff names, a map pin, coordinates, awards, a founding year, GST, public-holiday terms, or any claim not listed here.",
+  "_source": "Bridge drop 6afef206b5b7d10ea48e40a0 (job rasa-sayang-preview-v1), facts.json sha256 0e9bb692..., 19 Nov 2026. Trimmed to the facts the build uses (same values); the full original stays in the drop and in /mnt/project-files/autoseo-my/rasa-sayang/.",
+  "name": "Rasa Sayang Automotive Group Sdn Bhd",
+  "short": "Rasa Sayang Automotive",
+  "legal_name": "Rasa Sayang Automotive Group Sdn Bhd",
+  "site_key": "rasa-sayang",
+  "also_called_do_not_use": {
+    "name": "Rasa Sayang Auto-mobile (spelled without the hyphen)",
+    "note": "This wording appears only in old-website page titles. The logo, Facebook page and company registration all say Automotive Group Sdn Bhd. Do not use it as the business name on the site."
+  },
+  "company_no": "202401033236 (1579084-X)",
+  "company_no_source": "Facebook About tab, 19 Nov 2026",
+  "category": "Hybrid, EV / new energy vehicle and supercar repair workshop",
+  "tagline_verbatim": "Specialized Repair Center for New Energy Vehicles and Supercars — Expert Diagnostics · Precision Repair · Technical Excellence",
+  "tagline_note": "This English line is from the Facebook bio. The bio is also in Chinese, but the exact Chinese wording was not captured. Localise carefully on the ZH pages. Do not invent a different slogan.",
+  "bio_specialise": "Specialise in Hybrid & EV / New Energy Vehicle Maintenance / Engine repair / Supercar repair / Engine overhaul / Aircond repair",
+  "b2b": "Technical support for other workshops on complex faults, electronic systems and NEV-related repairs.",
+  "systems_covered": [
+    "high-voltage electrical systems",
+    "battery systems",
+    "electric drive systems",
+    "electronic control modules",
+    "complex fault diagnostics"
+  ],
+  "founding_year": {
+    "publish": false,
+    "note": "The old website About page claims a founding year in the 1990s. The company registration number 202401033236 (1579084-X) points to a 2024 incorporation. Leave any founding year off the site unless Edwin confirms it."
+  },
+  "logo_line": "RASA SAYANG AUTOMOTIVE GROUP SDN. BHD.",
+  "preview": {
+    "base_url": "https://autoseo.my/preview/rasa-sayang/",
+    "base_path": "/preview/rasa-sayang/",
+    "noindex": true,
+    "preview_host": "autoseo.my"
+  },
+  "live": {
+    "base_url": null,
+    "domain": null,
+    "noindex": true,
+    "_note": "Domain is not settled. The domain linked on Facebook does not resolve; the old site is still live. Preview only. Do not touch DNS. Do not present either domain as the new site."
+  },
+  "autoseo": "https://autoseo.my/",
+  "footer_credit": "Website by AutoSEO.my",
+  "updated": "2026-11-19",
+  "locations": [
+    {
+      "id": "hq",
+      "role": "headquarters",
+      "label": "Shah Alam HQ",
+      "street": "21, Jalan Serendah 26/40, Seksyen 26",
+      "postcode": "40400",
+      "locality": "Seksyen 26",
+      "city": "Shah Alam",
+      "region": "Selangor",
+      "country": "MY",
+      "country_name": "Malaysia",
+      "one_line": "21, Jalan Serendah 26/40, Seksyen 26, 40400 Shah Alam, Selangor, Malaysia",
+      "waze": "https://waze.com/ul/hw281pps03",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=21%2C%20Jalan%20Serendah%2026%2F40%2C%20Seksyen%2026%2C%2040400%20Shah%20Alam%2C%20Selangor",
+      "geo": null,
+      "source": "Facebook About tab and bio, 19 Nov 2026. About tab lists only this address."
+    },
+    {
+      "id": "subang",
+      "role": "branch",
+      "label": "Subang Jaya",
+      "street": "10, Jalan SS14/2, SS14",
+      "postcode": "47500",
+      "locality": "SS14",
+      "city": "Subang Jaya",
+      "region": "Selangor",
+      "country": "MY",
+      "country_name": "Malaysia",
+      "one_line": "10, Jalan SS14/2, SS14, 47500 Subang Jaya, Selangor, Malaysia",
+      "waze": "https://waze.com/ul/hw281rz2ue",
+      "maps_url": "https://www.google.com/maps/search/?api=1&query=10%2C%20Jalan%20SS14%2F2%2C%20SS14%2C%2047500%20Subang%20Jaya%2C%20Selangor",
+      "geo": null,
+      "source": "Facebook bio only, 19 Nov 2026. Not listed on the About tab. A Chinese thank-you post about a grand opening exists, but the date and which branch it refers to were not captured. Do not invent an opening date."
+    }
+  ],
+  "hours": null,
+  "hours_note": "No opening hours are listed. Show none. Omit them from schema.",
+  "whatsapp": "60166641686",
+  "whatsapp_display": "016-664 1686",
+  "whatsapp_e164": "+60166641686",
+  "whatsapp_display_intl": "+60 16-664 1686",
+  "whatsapp_url": "https://wa.me/60166641686",
+  "whatsapp_prefill": "Hi Rasa Sayang Automotive, I'd like to ask about my car. Model and year: ",
+  "email": null,
+  "facebook": "https://www.facebook.com/rasasayangauto",
+  "facebook_share": "https://www.facebook.com/share/1J6mEdY3hZ/",
+  "facebook_page_name": "Rasa Sayang Automotive Group HQ -Shah Alam",
+  "reviews": {"publish": false},
+  "staff": {"publish_names": false},
+  "service_area": ["Klang", "Damansara", "Cheras", "Petaling Jaya", "Puchong", "USJ", "Kuala Lumpur", "Subang Jaya", "Shah Alam"],
+  "brands_serviced": ["BMW", "Mercedes-Benz", "Porsche", "Lamborghini", "Ferrari", "McLaren", "Volvo", "Rolls-Royce", "Audi", "Land Rover"],
+  "facebook_reels": {
+    "known": [
+      {"id": "999424563215859", "url": "https://www.facebook.com/reel/999424563215859", "caption_key": "reel_purosangue"},
+      {"id": "1450035600662905", "url": "https://www.facebook.com/reel/1450035600662905", "caption_key": "reel_intro"}
+    ],
+    "other_ids": ["1573078414839014", "930094736706708", "1691278449222218", "1106280828782940", "1576602537483481", "1085210454337791",
+                  "1401592595017233", "2693863764379674", "2200522057542157", "1450834953853911", "2083312828974963", "1096151146235422",
+                  "2203643263552203", "1753821452506694", "1068605289496811", "2280367489454277", "1753839645820800", "2653012265161517"]
+  }
+}
