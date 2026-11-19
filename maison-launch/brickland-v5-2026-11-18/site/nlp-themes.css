@@ -1,0 +1,30 @@
+/* Maison launch pages: theme picker (18 Nov 2026). Only linked on pages whose data has themes[]. Mobile first, 390px. */
+.nt-intro{margin:28px 0 0;max-width:46em;color:var(--ink2);line-height:1.6}
+.nt-pick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:0 0 14px;padding:4px;border:1px solid var(--line);border-radius:999px;background:#fbf8f3}
+.nt-chip{min-height:48px;padding:0 6px;border:0;border-radius:999px;background:transparent;color:var(--ink);font:500 15px/1 var(--sans);letter-spacing:.02em;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .2s,color .2s}
+.nt-chip[aria-pressed="true"]{background:var(--ink);color:#f4efe8}
+.nt-chip:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+@media(hover:hover){.nt-chip[aria-pressed="false"]:hover{background:var(--bg2)}}
+.nt-panel+.nt-panel{margin-top:36px}
+.js .nt-panel+.nt-panel{margin-top:0}
+.nt-panel[hidden]{display:none}
+.nt-th{font:400 26px/1.15 var(--serif);margin:0 0 4px;color:var(--ink)}
+.js .nt-th{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.nt-mood{margin:0 0 18px;color:var(--mute);font-size:15px;line-height:1.5}
+.nt-grid{display:grid;grid-template-columns:1fr;gap:28px}
+.nt-room{margin:0;display:flex;flex-direction:column}
+.nt-ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bg2);border-radius:4px}
+.nt-ph img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
+.nt-room figcaption{display:flex;flex-direction:column;gap:6px;padding:12px 0 0;flex:1}
+.nt-room h4{font:400 24px/1.15 var(--serif);margin:0;color:var(--ink)}
+.nt-room p{margin:0;color:var(--ink2);line-height:1.55;font-size:15px}
+.nt-room .nt-cap{font-size:13px;color:var(--mute)}
+.nt-room .nt-wa{align-self:flex-start;margin-top:8px}
+@media(min-width:800px){
+ .nt-pick{max-width:560px}
+ .nt-grid{grid-template-columns:1fr 1fr;gap:36px 28px}
+ .nt-ph{aspect-ratio:3/2}
+}
+/* six hero dots + arrows must fit 360px */
+@media(max-width:420px){.nv-ctl{gap:4px}.nv-dot{width:34px}.nt-pick{gap:2px;padding:3px}.nt-chip{font-size:14px;letter-spacing:0;padding:0 2px}}
+@media(prefers-reduced-motion:reduce){.nt-chip{transition:none}}

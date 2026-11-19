@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-18",
+ "updated": "2026-11-19",
  "rule": "Queue = section A (GSC PRIORITY: TODO pages with Google clicks in the last 28 days, most clicks then most impressions; Grok Bot re-pulls GSC before each daily run and may reorder A) then section B (all other TODO, launch date earliest first, planned/undated last). Daily build takes the top TODO in A until A is empty, then B. Hub order is separate: DONE first, then TODO by launch date (hub_order). ONE PAGE A DAY (Edwin 17 Nov 8:24am): 17 Nov was a one-off 3-page day (Merpati Meadow, Plantation Edge I & II, Coastal Cabana, all from ready v4 drops). From 18 Nov 2026 back to exactly 1 page per day in GSC (A) then launch-date (B) order.",
  "projects": [
   {
@@ -182,11 +182,13 @@
    "launch": "Aug 2021 BTO",
    "launch_basis": "firm",
    "launch_source": "HDB press release 11 Aug 2021 (Kallang/Whampoa)",
-   "status": "TODO",
+   "status": "DONE",
    "v4_set": "towner-v4",
    "floor_plan": true,
    "gsc_28d": null,
-   "section": "B"
+   "section": "DONE",
+   "built": "2026-11-18",
+   "note": "18 Nov 2026: built from the existing towner-v4 set (1600px renders, gen2 big=1600) and the HDB-authored Aug 2021 brochure plans (3-room p.10, 4-room both arrangements p.12; archive copy hosted by BTO HQ). Live sha b716a108, tap test ok."
   },
   {
    "slug": "canninghill-piers",
@@ -199,8 +201,12 @@
    "status": "TODO",
    "v4_set": "canninghill-piers-v4",
    "floor_plan": true,
-   "gsc_28d": null,
-   "section": "B"
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 15,
+    "position": 9.8
+   },
+   "section": "A"
   },
   {
    "slug": "amo-residence",
@@ -410,9 +416,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 1,
-    "impressions": 101,
-    "position": 9.29
+    "clicks": 2,
+    "impressions": 161,
+    "position": 9.19
    },
    "section": "A"
   },
@@ -443,8 +449,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 161,
-    "position": 9.57
+    "impressions": 244,
+    "position": 9.43
    },
    "section": "A"
   },
@@ -474,9 +480,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 4,
-    "impressions": 132,
-    "position": 8.72
+    "clicks": 5,
+    "impressions": 191,
+    "position": 8.43
    },
    "section": "A"
   },
@@ -489,14 +495,22 @@
    "launch_basis": "firm",
    "launch_source": "HDB June 2026 BTO (page facts)",
    "status": "TODO",
-   "v4_set": null,
+   "v4_set": "sembawang-portico-v4 (drop 6afd47312ee046ecf2e44439)",
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 7,
-    "impressions": 134,
-    "position": 8.7
+    "impressions": 187,
+    "position": 8.61
    },
-   "section": "A"
+   "section": "A",
+   "v4_drop": {
+    "drop_id": "6afd47312ee046ecf2e44439",
+    "job": "maison-sembawang-portico-v4",
+    "site": "maisoninteriordesign.sg",
+    "status": "ready, 11 files, expires 25 Nov 2026, 2:35pm SGT (Grok Bot 19 Nov)",
+    "plan": "see drop README",
+    "gaps": "see drop README"
+   }
   },
   {
    "slug": "woodgrove-acres",
@@ -511,8 +525,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 2,
-    "impressions": 57,
-    "position": 9.51
+    "impressions": 82,
+    "position": 8.94
    },
    "section": "A"
   },
@@ -654,9 +668,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 4,
-    "impressions": 102,
-    "position": 6.76
+    "clicks": 5,
+    "impressions": 127,
+    "position": 6.63
    },
    "section": "A"
   },
@@ -701,8 +715,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 2,
-    "impressions": 43,
-    "position": 12.44
+    "impressions": 49,
+    "position": 12.16
    },
    "section": "A"
   },
@@ -733,8 +747,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 13,
-    "position": 8.0
+    "impressions": 22,
+    "position": 7.68
    },
    "section": "A"
   },
@@ -793,8 +807,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 12,
-    "position": 13.83
+    "impressions": 15,
+    "position": 13.93
    },
    "section": "A"
   },
@@ -838,9 +852,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 2,
-    "impressions": 104,
-    "position": 9.06
+    "clicks": 3,
+    "impressions": 132,
+    "position": 9.14
    },
    "section": "A"
   },
@@ -855,8 +869,12 @@
    "status": "TODO",
    "v4_set": null,
    "floor_plan": false,
-   "gsc_28d": null,
-   "section": "B"
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 66,
+    "position": 12.67
+   },
+   "section": "A"
   },
   {
    "slug": "dakota-crest",
@@ -899,8 +917,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 48,
-    "position": 8.67
+    "impressions": 55,
+    "position": 8.58
    },
    "section": "A"
   },
@@ -916,9 +934,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 1,
-    "impressions": 40,
-    "position": 7.92
+    "clicks": 2,
+    "impressions": 57,
+    "position": 7.37
    },
    "section": "A"
   },
@@ -935,8 +953,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 3,
-    "impressions": 64,
-    "position": 9.91
+    "impressions": 85,
+    "position": 10.08
    },
    "section": "A"
   },
@@ -953,8 +971,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 11,
-    "position": 9.82
+    "impressions": 13,
+    "position": 9.0
    },
    "section": "A"
   },
@@ -971,8 +989,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 2,
-    "impressions": 39,
-    "position": 6.54
+    "impressions": 56,
+    "position": 5.93
    },
    "section": "A"
   },
@@ -1002,9 +1020,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 2,
-    "impressions": 136,
-    "position": 8.43
+    "clicks": 3,
+    "impressions": 158,
+    "position": 8.49
    },
    "section": "A"
   },
@@ -1021,8 +1039,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 30,
-    "position": 8.9
+    "impressions": 40,
+    "position": 9.07
    },
    "section": "A"
   },
@@ -1039,8 +1057,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 2,
-    "impressions": 220,
-    "position": 9.07
+    "impressions": 269,
+    "position": 8.83
    },
    "section": "A"
   },
@@ -1071,8 +1089,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 2,
-    "impressions": 91,
-    "position": 7.48
+    "impressions": 105,
+    "position": 7.34
    },
    "section": "A"
   },
@@ -1088,9 +1106,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 2,
-    "impressions": 39,
-    "position": 9.97
+    "clicks": 3,
+    "impressions": 52,
+    "position": 9.35
    },
    "section": "A"
   },
@@ -1106,9 +1124,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 2,
-    "impressions": 86,
-    "position": 10.57
+    "clicks": 3,
+    "impressions": 107,
+    "position": 10.26
    },
    "section": "A"
   },
@@ -1139,8 +1157,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 41,
-    "position": 11.85
+    "impressions": 44,
+    "position": 12.07
    },
    "section": "A"
   },
@@ -1155,8 +1173,12 @@
    "status": "TODO",
    "v4_set": null,
    "floor_plan": false,
-   "gsc_28d": null,
-   "section": "B"
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 61,
+    "position": 9.08
+   },
+   "section": "A"
   },
   {
    "slug": "newport-plaza-retail-podium",
@@ -1213,8 +1235,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 73,
-    "position": 7.92
+    "impressions": 118,
+    "position": 7.86
    },
    "section": "A"
   },
@@ -1257,8 +1279,12 @@
    "status": "TODO",
    "v4_set": null,
    "floor_plan": false,
-   "gsc_28d": null,
-   "section": "B"
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 51,
+    "position": 8.41
+   },
+   "section": "A"
   },
   {
    "slug": "plantation-creek-at-tengah",
@@ -1273,28 +1299,37 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 3,
-    "impressions": 41,
-    "position": 6.0
+    "impressions": 51,
+    "position": 6.43
    },
    "section": "A"
   },
   {
    "slug": "plantation-verge",
    "name": "Plantation Verge",
-   "type": "HDB",
-   "launch_sort": "9999",
-   "launch": "not on file",
-   "launch_basis": "none",
-   "launch_source": "",
+   "type": "BTO",
+   "launch_sort": "2023-05",
+   "launch": "May 2023 BTO",
+   "launch_basis": "firm",
+   "launch_source": "HDB May 2023 sales brochure",
    "status": "TODO",
-   "v4_set": null,
+   "v4_set": "plantation-verge-v4 (drop 6afd470e5a6c17c86aa86e5b)",
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 8,
-    "impressions": 186,
-    "position": 8.9
+    "impressions": 218,
+    "position": 8.64
    },
-   "section": "A"
+   "section": "A",
+   "waiting_for_images": "18 Nov 2026: no v4 set or drop, and this run could not move Base44 renders or the HDB plan into the site (no byte route from the Base44 sandbox to Bluehost). Official facts found: HDB May 2023 brochure https://assets.hdb.gov.sg/residential/buying-a-flat/finding-a-flat/sales-brochure/23MAYBTO_pdf_selection/plantation_verge.pdf (971 units, 7 blocks 14-18 storeys, Plantation Close; 2-room Flexi T1 40/38, T2 48/46, 3-room 69/66, 4-room 93/90, 5-room 113/110 sq m; 4-room plan PDF page 11 (printed p.19-20), clip x125-475 y436-768 pt). Needs a Maison Design Helper drop.",
+   "v4_drop": {
+    "drop_id": "6afd470e5a6c17c86aa86e5b",
+    "job": "maison-plantation-verge-v4",
+    "site": "maisoninteriordesign.sg",
+    "status": "ready, 12 files, expires 25 Nov 2026, 2:34pm SGT (Grok Bot 19 Nov)",
+    "plan": "see drop README",
+    "gaps": "see drop README"
+   }
   },
   {
    "slug": "pollen-collection",
@@ -1322,9 +1357,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 5,
-    "impressions": 48,
-    "position": 10.12
+    "clicks": 6,
+    "impressions": 57,
+    "position": 9.81
    },
    "section": "A"
   },
@@ -1368,9 +1403,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 1,
-    "impressions": 38,
-    "position": 11.29
+    "clicks": 2,
+    "impressions": 53,
+    "position": 10.36
    },
    "section": "A"
   },
@@ -1428,9 +1463,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 3,
-    "impressions": 142,
-    "position": 9.03
+    "clicks": 4,
+    "impressions": 181,
+    "position": 8.72
    },
    "section": "A"
   },
@@ -1461,8 +1496,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 41,
-    "position": 11.9
+    "impressions": 47,
+    "position": 11.13
    },
    "section": "A"
   },
@@ -1479,8 +1514,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 3,
-    "impressions": 80,
-    "position": 9.2
+    "impressions": 108,
+    "position": 9.04
    },
    "section": "A"
   },
@@ -1497,8 +1532,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 39,
-    "position": 7.97
+    "impressions": 46,
+    "position": 7.78
    },
    "section": "A"
   },
@@ -1514,20 +1549,21 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 1,
-    "impressions": 54,
-    "position": 9.96
+    "clicks": 2,
+    "impressions": 65,
+    "position": 9.86
    },
    "section": "A"
   }
  ],
  "gsc": {
-  "date": "2026-11-18",
+  "date": "2026-11-19",
   "window": "last 28 days",
-  "source": "Grok Bot section A refresh, 18 Nov 2026 10:11am SGT"
+  "source": "Grok Bot section A refresh, 19 Nov 2026 10:28am SGT"
  },
  "no_images_policy": "make",
  "hub_order": [
+  "towner-residences",
   "keat-hong-grange",
   "brickland-weave",
   "plantation-edge-i-and-ii",
@@ -1538,9 +1574,9 @@
   "plantation-dew",
   "sembawang-anchor",
   "toa-payoh-hillside",
-  "towner-residences",
   "canninghill-piers",
   "amo-residence",
+  "plantation-verge",
   "the-myst",
   "lumina-grand",
   "norwood-grand",
@@ -1610,7 +1646,6 @@
   "orchard-sophia",
   "parc-point",
   "plantation-creek-at-tengah",
-  "plantation-verge",
   "pollen-collection",
   "queens-arc",
   "shaw-tower",
