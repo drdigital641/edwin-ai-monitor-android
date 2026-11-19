@@ -6,7 +6,7 @@ FACTS = {
     'site': 'https://ktech.my/',
     'slug': 'mbmaster/',
     'wa': '60125462820',            # live header/footer WhatsApp (Autel Hooi)
-    'wa_andrew': '60125512820',     # Andrew, one-to-one MBMaster training (Edwin 19 Nov 2026; same number as JSON-LD ContactPoint Andrew)
+    'wa_andrew': '60189492820',     # Andrew, one-to-one MBMaster training (Edwin correction 19 Nov 2026)
     'app': 'MBMaster V1.5',
     'tabs': ['Identify', 'Software Read', 'EIS Boot/Simu', 'Single MCU Read/Write', 'Nec/OC', 'Coding',
              'Advanced Services', 'Special Functions', 'Program'],
