@@ -93,7 +93,7 @@ def org_schema():
     }
 
 
-def page(path, title, desc, body, h1_crumb=None, extra_schema=None, robots_note=None):
+def page(path, title, desc, body, h1_crumb=None, extra_schema=None, robots_note=None, head_extra="", hd_cls="hd"):
     url = abs_url(path)
     graph = [org_schema(), {"@type": "WebPage", "@id": url + "#page", "url": url, "name": title, "description": desc,
                             "isPartOf": {"@type": "WebSite", "@id": abs_url("#site"), "url": abs_url(), "name": BRAND,
@@ -140,12 +140,12 @@ def page(path, title, desc, body, h1_crumb=None, extra_schema=None, robots_note=
 <link rel="icon" href="{u('img/icon-192.png')}" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="{u('img/apple-touch-icon.png')}">
 <link rel="preload" href="{u('fonts/fraunces-wght.woff2')}" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="{u('site.css')}?v={V_CSS}">
+<link rel="stylesheet" href="{u('site.css')}?v={V_CSS}">{head_extra}
 <script type="application/ld+json">{ld}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="hd">
+<header class="{hd_cls}">
  <div class="wrap">
   <a class="brand" href="{u()}"><img src="{u('img/logo.webp')}" width="48" height="48" alt="Ape Champs Swim logo"><span>Ape Champs Swim</span></a>
   <nav class="nav" aria-label="Main">{nav}</nav>
@@ -276,19 +276,17 @@ def build():
 
     # ---------- HOME ----------
     home = f"""
-<section class="hero">
- <div class="wrap hero-grid">
-  <div class="hero-copy">
-   <h1>Kids' swim lessons at your condo pool</h1>
-   <p class="lede">Same coach every week, for children from 6 months to 12 years.</p>
-   <div class="cta-row">{wa_btn('whatsapp_home_hero', 'WhatsApp us to book a trial', 'trial', block=True)}</div>
-  </div>
-  <div class="hero-photo">{photo('p1', 'ph', True)}</div>
+<section class="hero-bg">
+ <img class="hero-img" src="{u(PHOTOS['p1'][0])}" width="1536" height="864" alt="{E(PHOTOS['p1'][3])}" fetchpriority="high" decoding="async">
+ <div class="hero-shade" aria-hidden="true"></div>
+ <div class="wrap hero-copy">
+  <h1>Kids' swim lessons at your condo pool</h1>
+  <p class="lede">Same coach every week, for children from 6 months to 12 years.</p>
+  <div class="cta-row">{wa_btn('whatsapp_home_hero', 'WhatsApp us to book a trial', 'trial', block=True)}</div>
  </div>
- {waterline()}
 </section>
 
-<section class="band deep" id="who">
+<section class="band deep blend" id="who">
  <div class="wrap who-grid">
   <div>
    <h2><span class="q">1</span>Who it's for</h2>
@@ -368,7 +366,9 @@ def build():
 """
     pages[""] = page("", "Kids Swimming Lessons at Your Condo Pool | Ape Champs Swim",
                      "Private kids' swim lessons at your condo pool in Punggol, Sengkang, Hougang, Tampines, Bukit Timah and Upper East Coast. Ages 6 months to 12. WhatsApp to book a trial.",
-                     home, extra_schema=[service_schema()])
+                     home, extra_schema=[service_schema()],
+                     head_extra='\n<link rel="preload" as="image" href="%s" fetchpriority="high">' % u(PHOTOS['p1'][0]),
+                     hd_cls="hd hd-over")
 
     # ---------- PROGRAMMES ----------
     awards = "".join('<div class="award"><h3>%s</h3><p>%s</p><p style="margin:.6em 0 0;font-weight:600">What the coach looks for</p><ul>%s</ul></div>'
