@@ -48,7 +48,7 @@ UI = {
     'hours_short': 'Mon to Sat 9:30am to 7:30pm (Thu from 9:00am). Sunday closed.',
     'review_src_google': 'Google review',
     'review_src_facebook': 'Facebook recommendation',
-    'reviews_note': 'Short extracts from reviews on our Google profile, first names only.',
+    'reviews_note': 'Short extracts from reviews on Google and Facebook, first names only.',
     'map_title': 'Map of HX Auto Service, 47 Jalan Indah 16/11, Taman Bukit Indah',
     'zones_label': 'Tap a part of the car',
     'also_label': 'Also at the workshop',

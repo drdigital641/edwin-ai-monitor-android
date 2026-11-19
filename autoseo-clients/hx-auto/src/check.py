@@ -22,7 +22,7 @@ BANNED = [r'lorem', r'\bTODO\b', r'\bTBD\b', r'placeholder', r'\bXXX\b', 'pa' + 
           r'aggregateRating', r'ratingValue', r'reviewRating', r'bestRating', r'out of 5', r'daripada 5', r'满分', '[\u2605\u2606\u2b50]',
           r'\b4\.0\b(?!\.)', r'Google rating', r'penilaian Google', r'评分',
           # Fix round 2 (Edwin, 19 Nov 2026): no June flyer promos, no review count, no photo grade.
-          r'\bflyer\b', r'RM\s?30', r'percuma', r'免费', r'传单', r'reviews on Google', r'ulasan di Google', r'Google 上有',
+          r'\bflyer\b', r'RM\s?30', r'percuma', r'免费', r'传单', r'\d+\s*reviews on Google', r'\d+\s*ulasan di Google', r'Google 上有\d',
           r'grayscale\(', r'mix-blend-mode', r'sepia\(']
 bad = 0
 FACTS = json.load(open(os.path.join(HERE, 'facts.json'), encoding='utf8'))

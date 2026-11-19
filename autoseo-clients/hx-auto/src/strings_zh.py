@@ -48,7 +48,7 @@ UI = {
     'hours_short': '星期一至星期六 上午9:30至晚上7:30（星期四上午9:00开始）。星期日休息。',
     'review_src_google': 'Google 评价',
     'review_src_facebook': 'Facebook 推荐',
-    'reviews_note': '摘自我们 Google 页面上的评价，保留原文，只显示名字。',
+    'reviews_note': '摘自 Google 和 Facebook 上的评价，保留原文，只显示名字。',
     'map_title': 'HX Auto Service 地图，47 Jalan Indah 16/11, Taman Bukit Indah',
     'zones_label': '点选车子的部位',
     'also_label': '修车厂也有',

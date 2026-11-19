@@ -422,7 +422,7 @@ def mosaic():
         else:
             pic = f'<img src="{img(s)}" width="720" height="900" alt="{E(cap)}" loading="lazy" decoding="async">'
         tiles.append(f'<figure class="mt mt-{k} rv" style="--d:{i % 3}"><button type="button" class="ph-b" data-full="{img_full(s)}" data-w="1600" data-h="1200" '
-                     f'data-cap="{E(cap)}" aria-label="{E(S.UI["photo_open"])}: {E(cap)}">{pic}</button><figcaption>{E(cap)}</figcaption></figure>')
+                     f'data-cap="{E(cap)}" aria-label="{E(S.UI["photo_open"])}: {E(cap)}">{pic}</button><figcaption><span>{E(cap)}</span></figcaption></figure>')
     brands = ''.join(f'<li>{E(b)}</li>' for b in F['brands_seen'])
     return (f'<section class="sec dk"><div class="wrap"><div class="sec-h rv"><h2>{E(S.HOME["mosaic_h2"])}</h2><p>{E(S.HOME["mosaic_p"])}</p></div>'
             f'<div class="bento">{"".join(tiles)}</div>'

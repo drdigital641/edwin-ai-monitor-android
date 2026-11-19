@@ -100,7 +100,7 @@ address{font-style:normal}
 @keyframes riseT{from{transform:translateY(16px)}to{transform:none}}
 .hero-k{display:flex;align-items:center;gap:12px;margin:0 0 14px;font:600 .8rem/1.1 var(--hd);letter-spacing:.22em;text-transform:uppercase;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
 .hero-k::before{content:"";width:34px;height:3px;background:var(--red);border-radius:2px}
-.hero h1{font-size:clamp(2.25rem,10vw,4.6rem);line-height:1;text-transform:uppercase;color:#fff;margin:0 0 .3em;max-width:15ch;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+.hero h1{font-size:clamp(2.25rem,10vw,4rem);line-height:1;text-transform:uppercase;color:#fff;margin:0 0 .3em;max-width:15ch;text-shadow:0 2px 18px rgba(0,0,0,.55)}
 .hero h1 em{font-style:normal;color:var(--red)}
 .hero-l{font-size:1.1rem;color:#F1F1EF;max-width:38ch;margin:0 0 22px;text-shadow:0 1px 10px rgba(0,0,0,.6)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:10px}
@@ -293,7 +293,7 @@ address{font-style:normal}
 .fb-base p{margin:0}
 .credit a{color:var(--on-dk);text-underline-offset:3px}
 @media (min-width:700px){.fb-in{grid-template-columns:repeat(2,1fr)}}
-@media (min-width:1000px){.fb{padding-bottom:48px}.fb-in{grid-template-columns:1.4fr 1fr 1.5fr .9fr;gap:36px}.fb-in>div:nth-child(3) .fb-nav{grid-template-columns:repeat(2,1fr);column-gap:20px}}
+@media (min-width:1000px){.fb{padding-bottom:48px}.fb-in{grid-template-columns:1.3fr 1fr 2fr .8fr;gap:36px}.fb-in>div:nth-child(3) .fb-nav{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px;align-items:start}}
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:1fr auto;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
   background:rgba(10,10,10,.96);border-top:var(--edge)}
 .dock .btn-wa,.dock .btn-call{min-height:50px}
@@ -355,7 +355,8 @@ address{font-style:normal}
 .mt img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease-out}
 .mt:hover img{transform:scale(1.04)}
 .mt figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 12px 10px;font-size:.8rem;line-height:1.3;color:#fff;pointer-events:none;
-  background:linear-gradient(180deg,rgba(10,10,10,0),rgba(10,10,10,.78));display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  background:linear-gradient(180deg,rgba(10,10,10,0),rgba(10,10,10,.78))}
+.mt figcaption span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .mt-L figcaption{font-size:.88rem;padding:36px 14px 12px}
 @media (min-width:900px){
   .bento{grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,15vw,200px);grid-auto-flow:dense;gap:10px}

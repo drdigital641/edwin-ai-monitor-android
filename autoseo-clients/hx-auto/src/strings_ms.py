@@ -48,7 +48,7 @@ UI = {
     'hours_short': 'Isnin hingga Sabtu 9:30 pagi hingga 7:30 malam (Khamis mulai 9:00 pagi). Ahad tutup.',
     'review_src_google': 'Ulasan Google',
     'review_src_facebook': 'Cadangan Facebook',
-    'reviews_note': 'Petikan ringkas daripada ulasan di profil Google kami, dalam bahasa asal. Nama pertama sahaja.',
+    'reviews_note': 'Petikan ringkas daripada ulasan di Google dan Facebook, dalam bahasa asal. Nama pertama sahaja.',
     'map_title': 'Peta HX Auto Service, 47 Jalan Indah 16/11, Taman Bukit Indah',
     'zones_label': 'Ketik bahagian kereta',
     'also_label': 'Turut ada di bengkel',
