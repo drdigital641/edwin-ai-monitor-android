@@ -51,9 +51,7 @@ UI = {
     'hours_short': 'Isnin hingga Sabtu 9:30 pagi hingga 7:30 malam (Khamis mulai 9:00 pagi). Ahad tutup.',
     'review_src_google': 'Ulasan Google',
     'review_src_facebook': 'Cadangan Facebook',
-    'reviews_note': 'Petikan ringkas daripada ulasan di Google dan Facebook, nama pertama sahaja.',
-    'rating_of': 'daripada 5',
-    'rating_count': 'daripada 21 ulasan Google',
+    'reviews_note': 'Petikan ringkas daripada ulasan di profil Google kami, dalam bahasa asal. Nama pertama sahaja.',
     'map_title': 'Peta HX Auto Service, 47 Jalan Indah 16/11, Taman Bukit Indah',
     'offers_note': 'Seperti yang diiklankan dalam flyer Facebook kami bulan Jun. Tanya di WhatsApp sama ada tawaran masih berjalan.',
     'zones_label': 'Ketik bahagian kereta',
@@ -95,16 +93,21 @@ HOME = {
     'desc': 'HX Auto Service, bengkel kereta di Taman Bukit Indah, Iskandar Puteri, Johor Bahru. Diagnostik komputer, servis, aircond, brek, suspensi dan tunda kereta. WhatsApp 011-6776 1138.',
     'h1': 'Bengkel kereta di Taman Bukit Indah, Johor',
     'hero_line': 'Imbas komputer dahulu, kemudian baiki dengan betul.',
-    'intro_h2': 'Apa yang kereta anda perlukan?',
-    'intro_p': 'HX Auto Service ialah bengkel kereta Bukit Indah, dekat dengan Second Link, untuk servis kereta Iskandar Puteri dan Johor Bahru. Ketik bahagian kereta untuk lihat apa yang kami buat di situ.',
-    'process_h2': 'Bagaimana kerja berjalan di bengkel',
-    'process_steps': [
-        ('WhatsApp kami', 'Hantar model, tahun dan apa yang anda perasan.'),
-        ('Imbasan komputer', 'Kami pasang pengimbas dan baca kod kerosakan.'),
-        ('Pembaikan', 'Kami baiki apa yang dijumpai oleh imbasan dan pemeriksaan.'),
-        ('Ambil kereta', 'Ambil kereta anda di Taman Bukit Indah.'),
+    'svc_h2': 'Apa yang kami baiki',
+    'svc_p': 'HX Auto Service ialah bengkel kereta Bukit Indah, dekat dengan Second Link, untuk servis kereta Iskandar Puteri dan Johor Bahru.',
+    'all_services': 'Semua servis',
+    'steps_h2': 'Bagaimana ia berjalan',
+    'steps': [
+        ('WhatsApp', 'Hantar model, tahun dan apa yang anda perasan.'),
+        ('Diagnosis', 'Kami pasang pengimbas, baca kod kerosakan dan periksa kereta.'),
+        ('Siap', 'Kami baiki apa yang dijumpai oleh imbasan dan pemeriksaan. Ambil kereta anda di Taman Bukit Indah.'),
     ],
-    'reviews_h2': 'Kata pemandu',
+    'trust_area': 'Taman Bukit Indah, dekat Second Link',
+    'trust_hours': 'Isnin hingga Sabtu sehingga 7:30 malam. Ahad tutup.',
+    'trust_reviews': '21 ulasan di Google',
+    'band_h2': 'Beritahu kami apa yang berlaku pada kereta anda.',
+    'band_p': 'WhatsApp model, tahun dan apa yang anda perasan.',
+    'reviews_h2': 'Apa kata pelanggan kami',
     'work_h2': 'Dalam bengkel',
     'work_line': 'Kereta sebenar dari bengkel kereta Bukit Indah kami. Ketik foto untuk lihat penuh.',
     'brands_label': 'Jenama yang pernah masuk bengkel',
@@ -282,20 +285,6 @@ SERVICES = [
 ]
 
 OFFERS = ['Imbasan komputer percuma', 'Pemeriksaan bawah kereta percuma', 'Ujian emisi RM30']
-
-# Petikan ulasan: ditafsir semula dengan setia daripada facts.json, nama pertama sahaja, tanpa bintang.
-REVIEWS = [
-    ('Winnie', 'facebook', 'Sudah empat tahun servis di sini. Bos jujur, cepat balas, harga berpatutan, dan dia carikan alat ganti.'),
-    ('Tan', 'google', 'Lexus 250 dengan getaran, mounting enjin, bunyi stereng dan sensor tayar. Semua selesai oleh Alex dan pasukannya.'),
-    ('Sean', 'google', 'Bos muda itu jumpa satu alat ganti dari KL ketika bengkel JB lain tidak dapat. Sangat berpuas hati.'),
-    ('Md', 'google', 'Hantar kereta untuk set suspensi dan penyerap hentak. Disyorkan untuk pemandu BMW, dan harganya berpatutan.'),
-    ('Wilson', 'google', 'Alex, pengurus bengkel, pakar mendiagnosis dan membaiki kereta Jepun dan Eropah.'),
-    ('Joelle', 'google', '"15 minit dari pusat pemeriksaan Tuas." Alex profesional.'),
-    ('admen', 'google', 'Bos muda yang peramah dan mudah berbual. Servis bagus, jujur dan rajin. Sangat disyorkan.'),
-    ('Sha', 'google', 'Alat ganti original, servis bagus, mudah berbual.'),
-    ('Riziq', 'facebook', 'Set suspensi dan penyerap hentak siap. Kerja bagus, berpatutan.'),
-    ('盈', 'google', 'Servis hebat daripada pasukan ini, sangat gembira.'),
-]
 
 FAQ_HOME = [
     ('Di mana HX Auto Service?', 'Di 47 Jalan Indah 16/11, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru. Bengkel ini dekat dengan Second Link.'),

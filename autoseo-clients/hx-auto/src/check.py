@@ -17,8 +17,13 @@ BANNED = [r'lorem', r'\bTODO\b', r'\bTBD\b', r'placeholder', r'\bXXX\b', 'pa' + 
           r'[a-z0-9._-]+@[a-z0-9-]+\.[a-z]{2,}', r'mailto:', r'\bIvan\b', r'\bVictor\b', 'hx' + r'auto\.my', 'hxauto' + r'\.',
           r'car ?wash', r'cuci kereta', r'洗车', r'\bReel \d', r'since\s+(19|20)\d\d', r'sejak\s+(19|20)\d\d', r'founded',
           r'authori[sz]ed dealer', r'official dealer', r'"latitude"', r'"geo"', r'Always open', r'24/7',
-          r'logo-(bmw|mercedes|benz|toyota|honda|lexus|audi|porsche|alpine|vw|volkswagen)']
+          r'logo-(bmw|mercedes|benz|toyota|honda|lexus|audi|porsche|alpine|vw|volkswagen)',
+          # Fix round 1 (Edwin, 19 Nov 2026): no star ratings or rating numbers anywhere.
+          r'aggregateRating', r'ratingValue', r'reviewRating', r'bestRating', r'out of 5', r'daripada 5', r'满分', '[\u2605\u2606\u2b50]',
+          r'\b4\.0\b(?!\.)', r'Google rating', r'penilaian Google', r'评分']
 bad = 0
+FACTS = json.load(open(os.path.join(HERE, 'facts.json'), encoding='utf8'))
+GOOGLE_TEXT = {s['text'] for s in FACTS['reviews']['snippets'] if s['src'] == 'google'}
 
 
 def fail(f, m):
@@ -38,6 +43,11 @@ for f in files:
         fail(f, 'em dash')
     if not f.endswith('.html'):
         continue
+    # every review quote must be a Google snippet from facts.json, word for word
+    import html as _h
+    for q in re.findall(r'<li class="qc[^"]*"><blockquote[^>]*><p>(.*?)</p>', t):
+        if _h.unescape(q) not in GOOGLE_TEXT:
+            fail(f, f'review text not verbatim from facts.json: {q[:60]}')
     if '<meta name="robots" content="noindex, nofollow">' not in t:
         fail(f, 'no noindex')
     if len(re.findall(r'<h1\b', t)) != 1:

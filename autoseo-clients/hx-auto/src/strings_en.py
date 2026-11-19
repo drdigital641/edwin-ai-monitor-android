@@ -51,9 +51,7 @@ UI = {
     'hours_short': 'Mon to Sat 9:30am to 7:30pm (Thu from 9:00am). Sunday closed.',
     'review_src_google': 'Google review',
     'review_src_facebook': 'Facebook recommendation',
-    'reviews_note': 'Short extracts from reviews on Google and Facebook, first names only.',
-    'rating_of': 'out of 5',
-    'rating_count': 'from 21 Google reviews',
+    'reviews_note': 'Short extracts from reviews on our Google profile, first names only.',
     'map_title': 'Map of HX Auto Service, 47 Jalan Indah 16/11, Taman Bukit Indah',
     'offers_note': 'As advertised on our June Facebook flyer. Ask on WhatsApp whether the offer is still running.',
     'zones_label': 'Tap a part of the car',
@@ -95,16 +93,21 @@ HOME = {
     'desc': 'HX Auto Service, a car workshop in Taman Bukit Indah, Iskandar Puteri, Johor Bahru. Computer diagnostics, service, aircond, brakes, suspension and towing. WhatsApp 011-6776 1138.',
     'h1': 'Car workshop in Taman Bukit Indah, Johor',
     'hero_line': 'Computer scan first, then the right repair.',
-    'intro_h2': 'What does your car need?',
-    'intro_p': 'HX Auto Service is a car workshop in Taman Bukit Indah, close to the Second Link, for car service in Iskandar Puteri and Johor Bahru. Tap a part of the car to see what we do there.',
-    'process_h2': 'How a job runs through the bay',
-    'process_steps': [
-        ('WhatsApp us', 'Send the model, year and what you notice.'),
-        ('Computer scan', 'We plug in the scanner and read the fault codes.'),
-        ('Repair', 'We fix what the scan and the checks turn up.'),
-        ('Collect', 'Pick up your car at Taman Bukit Indah.'),
+    'svc_h2': 'What we fix',
+    'svc_p': 'HX Auto Service is a car workshop in Taman Bukit Indah, close to the Second Link, for car service in Iskandar Puteri and Johor Bahru.',
+    'all_services': 'All services',
+    'steps_h2': 'How it works',
+    'steps': [
+        ('WhatsApp', 'Send the model, year and what you notice.'),
+        ('Diagnose', 'We plug in the scanner, read the fault codes and check the car.'),
+        ('Fixed', 'We repair what the scan and the checks turn up. Collect your car at Taman Bukit Indah.'),
     ],
-    'reviews_h2': 'What drivers say',
+    'trust_area': 'Taman Bukit Indah, close to the Second Link',
+    'trust_hours': 'Mon to Sat until 7:30pm. Sunday closed.',
+    'trust_reviews': '21 reviews on Google',
+    'band_h2': 'Tell us what your car is doing.',
+    'band_p': 'WhatsApp the model, year and what you notice.',
+    'reviews_h2': 'What our customers say',
     'work_h2': 'Inside the bay',
     'work_line': 'Real cars from our Bukit Indah workshop. Tap a photo to see it whole.',
     'brands_label': 'Makes seen in the bay',
@@ -282,20 +285,6 @@ SERVICES = [
 ]
 
 OFFERS = ['Free computer scan', 'Free undercarriage check', 'RM30 emission check']
-
-# Review extracts: paraphrased faithfully from facts.json, first names only, no stars.
-REVIEWS = [
-    ('Winnie', 'facebook', 'Four years of servicing here. Honest boss, quick response, fair prices, and he finds the parts.'),
-    ('Tan', 'google', 'Lexus 250 with vibration, engine mounts, steering noise and tyre sensors. All resolved by Alex and the team.'),
-    ('Sean', 'google', 'The young boss found a part from KL when other JB workshops could not. Really pleased.'),
-    ('Md', 'google', 'Sent my car for suspension and absorber sets. Recommended for BMW drivers, and the price is affordable.'),
-    ('Wilson', 'google', 'Alex, the workshop manager, is an expert at diagnosing and repairing Japanese and Continental cars.'),
-    ('Joelle', 'google', '"15 min from Tuas checkpoint." Alex is professional.'),
-    ('admen', 'google', 'Very nice, chatty young boss. Good service, honest and hard working. Strongly recommended.'),
-    ('Sha', 'google', 'Original parts, good service, easy to chat with.'),
-    ('Riziq', 'facebook', 'Suspension and absorber sets done. Good job, affordable.'),
-    ('盈', 'google', 'Great service from the team, really happy.'),
-]
 
 FAQ_HOME = [
     ('Where is HX Auto Service?', 'At 47 Jalan Indah 16/11, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru. The workshop is close to the Second Link.'),

@@ -51,9 +51,7 @@ UI = {
     'hours_short': '星期一至星期六 上午9:30至晚上7:30（星期四上午9:00开始）。星期日休息。',
     'review_src_google': 'Google 评价',
     'review_src_facebook': 'Facebook 推荐',
-    'reviews_note': '摘自 Google 和 Facebook 评价的简短内容，只显示名字。',
-    'rating_of': '满分5分',
-    'rating_count': '来自21则 Google 评价',
+    'reviews_note': '摘自我们 Google 页面上的评价，保留原文，只显示名字。',
     'map_title': 'HX Auto Service 地图，47 Jalan Indah 16/11, Taman Bukit Indah',
     'offers_note': '来自我们6月份的 Facebook 传单。请在 WhatsApp 询问优惠是否仍然有效。',
     'zones_label': '点选车子的部位',
@@ -95,16 +93,21 @@ HOME = {
     'desc': 'HX Auto Service，位于 Johor Bahru Iskandar Puteri Taman Bukit Indah 的修车厂。电脑诊断、保养、冷气、刹车、悬挂和拖车。WhatsApp 011-6776 1138。',
     'h1': 'Johor Taman Bukit Indah 修车厂',
     'hero_line': '先电脑扫描，再对症维修。',
-    'intro_h2': '你的车需要什么？',
-    'intro_p': 'HX Auto Service 是位于 Taman Bukit Indah 的修车厂，靠近 Second Link，提供 Iskandar Puteri 和 Johor Bahru 的汽车保养服务。点选车子的部位，看看我们在那里做什么。',
-    'process_h2': '一部车怎样走完维修流程',
-    'process_steps': [
-        ('WhatsApp 我们', '发车型、年份和你察觉到的情况。'),
-        ('电脑扫描', '我们接上扫描仪，读取故障码。'),
-        ('维修', '根据扫描和检查的结果进行维修。'),
-        ('取车', '到 Taman Bukit Indah 取车。'),
+    'svc_h2': '我们修什么',
+    'svc_p': 'HX Auto Service 是位于 Taman Bukit Indah 的修车厂，靠近 Second Link，提供 Iskandar Puteri 和 Johor Bahru 的汽车保养服务。',
+    'all_services': '所有服务',
+    'steps_h2': '怎么进行',
+    'steps': [
+        ('WhatsApp', '发车型、年份和你察觉到的情况。'),
+        ('诊断', '我们接上扫描仪，读取故障码，再检查车子。'),
+        ('修好', '根据扫描和检查的结果进行维修，然后到 Taman Bukit Indah 取车。'),
     ],
-    'reviews_h2': '车主怎么说',
+    'trust_area': 'Taman Bukit Indah，靠近 Second Link',
+    'trust_hours': '星期一至星期六营业至晚上7:30，星期日休息。',
+    'trust_reviews': 'Google 上有21则评价',
+    'band_h2': '告诉我们你的车出了什么状况。',
+    'band_p': 'WhatsApp 发车型、年份和你察觉到的情况。',
+    'reviews_h2': '顾客怎么说',
     'work_h2': '工位实拍',
     'work_line': '来自我们 Bukit Indah 修车厂的真实车辆。点选照片查看完整图片。',
     'brands_label': '工位上出现过的品牌',
@@ -282,20 +285,6 @@ SERVICES = [
 ]
 
 OFFERS = ['免费电脑扫描', '免费底盘检查', 'RM30 废气排放检查']
-
-# 评价摘录：忠实转述自 facts.json，只显示名字，没有星级。
-REVIEWS = [
-    ('Winnie', 'facebook', '在这里保养了四年。老板诚实、回复快、价钱公道，还会帮忙找零件。'),
-    ('Tan', 'google', 'Lexus 250 的抖动、引擎脚、方向盘异响和轮胎传感器问题，全部由 Alex 和团队解决。'),
-    ('Sean', 'google', '年轻的老板从 KL 找到了一个零件，而 JB 其他修车厂都找不到。非常满意。'),
-    ('Md', 'google', '把车送来换悬挂和避震器套件。推荐给开 BMW 的车主，价钱也实惠。'),
-    ('Wilson', 'google', '修车厂经理 Alex 擅长诊断和维修日本车和欧洲车。'),
-    ('Joelle', 'google', '“离大士关卡15分钟。”Alex 很专业。'),
-    ('admen', 'google', '年轻的老板很友善，很健谈。服务好、诚实又勤奋。强烈推荐。'),
-    ('Sha', 'google', '原厂零件，服务好，容易沟通。'),
-    ('Riziq', 'facebook', '悬挂和避震器套件已经做好。工作做得好，价钱实惠。'),
-    ('盈', 'google', '团队服务很好，非常满意。'),
-]
 
 FAQ_HOME = [
     ('HX Auto Service 在哪里？', '在 47 Jalan Indah 16/11, Taman Bukit Indah, 79100 Iskandar Puteri, Johor Bahru。修车厂靠近 Second Link。'),

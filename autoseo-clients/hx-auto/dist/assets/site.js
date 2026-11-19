@@ -1,4 +1,4 @@
-/* HX Auto Service site script: menu sheet, car diagram tabs, scan bar fill, lightbox for the -full photos, Wrapstar-style work carousel. No libraries. */
+/* HX Auto Service site script: menu sheet, car diagram tabs, scroll reveal, lightbox for the -full photos, Wrapstar-style work carousel. No libraries. */
 (function(){var d=document,R=d.documentElement;R.classList.add('js');
 var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 function ready(f){d.readyState!=='loading'?f():d.addEventListener('DOMContentLoaded',f)}
@@ -20,9 +20,11 @@ if(mb&&sh){var close=function(){sh.hidden=true;mb.setAttribute('aria-expanded','
   [].forEach.call(ms,function(m){m.addEventListener('click',function(){pick(m.getAttribute('data-z'))})});
   pick(g.getAttribute('data-zone'))});
 
-/* scan bar fills once it scrolls into view (end state shown with no JS or reduced motion) */
-[].forEach.call(d.querySelectorAll('.sb'),function(b){if(reduce||!('IntersectionObserver' in window)){b.classList.add('go');return}
-  var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){b.classList.add('go');io.disconnect()}},{threshold:.35});io.observe(b)});
+/* scroll reveal: .rv blocks fade up once as they enter (shown at once with no IntersectionObserver or reduced motion) */
+var rvs=d.querySelectorAll('.rv');
+if(reduce||!('IntersectionObserver' in window)){[].forEach.call(rvs,function(e){e.classList.add('in')})}
+else{var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  [].forEach.call(rvs,function(e){ro.observe(e)})}
 
 /* lightbox for the -full photos; a drag on the rail never opens it */
 var lb=d.getElementById('lb'),moved=false;

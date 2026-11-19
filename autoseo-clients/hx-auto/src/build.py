@@ -101,6 +101,12 @@ def icon(name):
         'prev': '<path d="M15 5l-7 7 7 7"/>', 'next': '<path d="M9 5l7 7-7 7"/>', 'x': '<path d="M6 6l12 12M18 6L6 18"/>',
         'menu': '<path d="M4 7h16M4 12h16M4 17h11"/>', 'go': '<path d="M5 12h13M13 6l6 6-6 6"/>',
         'tow': '<path d="M3 16h9V9h4l3 4v3h-2"/><circle cx="7" cy="17" r="2"/><circle cx="16" cy="17" r="2"/><path d="M12 9L6 4"/>',
+        'engine': '<path d="M4 10h2V8h3V6h6v2h2l2 3h1v5h-1l-2 2H9l-2-2H6v-2H4z"/><path d="M11 6V4h2v2"/>',
+        'snow': '<path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/><path d="M9.5 4.5L12 7l2.5-2.5M9.5 19.5L12 17l2.5 2.5"/>',
+        'disc': '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.5"/><path d="M12 3.5v3M20.5 12h-3M12 20.5v-3M3.5 12h3"/>',
+        'battery': '<rect x="3.5" y="7" width="17" height="12" rx="1.5"/><path d="M7 7V5h3v2M14 7V5h3v2M7 13h3M15.5 11.5v3M14 13h3"/>',
+        'lift': '<path d="M5 21V4M19 21V4M5 13h14"/><path d="M7.5 13l1.2-3h6.6l1.2 3"/><circle cx="9" cy="16" r="1.4"/><circle cx="15" cy="16" r="1.4"/>',
+        'quote': '<path d="M5 18v-4.5C5 9.5 7 7 10 6M14 18v-4.5c0-4 2-6.5 5-7.5"/><path d="M5 14h4v4H5zM14 14h4v4h-4z"/>',
         'oil': '<path d="M5 9h9l3-2 3 1-4 4H5zM5 9v8h11v-5"/><path d="M20 14c0 1-1 2-1 2s-1-1-1-2 1-2 1-2 1 1 1 2z"/>',
     }[name]
     return f'<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false">{p}</svg>'
@@ -162,7 +168,6 @@ def business():
                     'postalCode': LOC['postcode'], 'addressCountry': LOC['country']},
         'hasMap': LOC['maps_url'], 'sameAs': [FB],
         'openingHours': opening_hours(), 'openingHoursSpecification': opening_spec(),
-        'aggregateRating': {'@type': 'AggregateRating', 'ratingValue': R['google_rating'], 'reviewCount': R['google_count'], 'bestRating': 5, 'worstRating': 1},
         'areaServed': [{'@type': 'Place', 'name': c} for c in F['service_area']],
         'knowsAbout': [s['name'] for s in S.SERVICES],
         'contactPoint': {'@type': 'ContactPoint', 'telephone': F['whatsapp_e164'], 'contactType': 'customer service', 'availableLanguage': ['en', 'ms', 'zh']},
@@ -366,33 +371,44 @@ def diagram():
             f'<div class="zps">{panels}</div><div class="dg-also"><p>{E(S.UI["also_label"])}</p>{also}</div></div></div>')
 
 
-def scanbar():
-    ics = ['wa', 'scan', 'wrench', 'key']
-    n = len(S.HOME['process_steps'])
-    steps = ''.join(f'<li class="sb-s" style="--i:{i}"><span class="sb-i">{icon(ics[i])}</span><span class="sb-p">{(i + 1) * 100 // n}%</span>'
-                    f'<h3>{E(t)}</h3><p>{E(d)}</p></li>' for i, (t, d) in enumerate(S.HOME['process_steps']))
-    return (f'<section class="sec dk chev"><div class="wrap"><h2>{E(S.HOME["process_h2"])}</h2>'
-            f'<div class="sb"><div class="sb-rail" aria-hidden="true"><span class="sb-fill"></span></div><ol class="sb-l">{steps}</ol></div>'
-            f'<p class="act">{wa("process", S.UI["wa_btn_long"])}</p></div></section>')
+SVC_ICON = {'diagnostics': 'scan', 'service-oil': 'oil', 'engine-transmission': 'engine', 'aircond': 'snow',
+            'brakes-suspension-tyres': 'disc', 'battery-electrical': 'battery', 'undercarriage': 'lift', 'towing': 'tow'}
+# Photos on the home grid: the sharpest 12 (Laplacian variance measured on the live files, 19 Nov 2026).
+GRID = ['shopfront-signboard', 'workshop-bays-overview', 'mazda-3-engine', 'kia-cerato-on-lift', 'mercedes-c-class-bay', 'toyota-alphard-white',
+        'shopfront-forecourt', 'mercedes-van-two-post', 'nissan-coils-and-oil', 'toyota-vellfire-bay', 'honda-jazz-engine', 'aircond-flushing-banner']
+# Reviews: Google snippets from facts.json, shown exactly as captured. No stars, no rating, no Facebook items, never translated.
+GOOGLE_REVIEWS = [r for r in R['snippets'] if r['src'] == 'google']
 
 
-def gauge():
-    v, c = R['google_rating'], R['google_count']
-    frac = v / 5
-    # semicircle arc length for r=80 = pi*80 = 251.33
-    arc = 251.33
-    return (f'<div class="gg"><svg viewBox="0 0 200 116" aria-hidden="true" focusable="false"><path class="gg-bg" d="M20 100A80 80 0 0 1 180 100"/>'
-            f'<path class="gg-v" d="M20 100A80 80 0 0 1 180 100" style="--arc:{arc};--val:{arc * frac:.2f}"/></svg>'
-            f'<p class="gg-n"><strong>{v:.1f}</strong><span>{E(S.UI["rating_of"])}</span></p><p class="gg-c">{E(S.UI["rating_count"])}</p></div>')
+def services_grid():
+    cards = ''.join(f'<li class="rv" style="--d:{i % 4}"><a class="sg" href="{pu("services/" + s["slug"] + "/")}"><span class="sg-i">{icon(SVC_ICON[s["id"]])}</span>'
+                    f'<h3>{E(s["name"])}</h3><p>{E(s["card_line"])}</p><span class="sg-go">{icon("go")}</span></a></li>' for i, s in enumerate(S.SERVICES))
+    return (f'<section class="sec lt"><div class="wrap"><div class="sec-h rv"><h2>{E(S.HOME["svc_h2"])}</h2><p>{E(S.HOME["svc_p"])}</p></div>'
+            f'<ul class="sgs">{cards}</ul><p class="act rv"><a class="lk on-lt" href="{pu("services/")}"><span>{E(S.HOME["all_services"])}</span>{icon("go")}</a></p></div></section>')
+
+
+def steps_strip():
+    ics = ['wa', 'scan', 'wrench']
+    li = ''.join(f'<li class="st rv" style="--d:{i}"><span class="st-n">{i + 1}</span><span class="st-i">{icon(ics[i])}</span>'
+                 f'<h3>{E(t)}</h3><p>{E(d)}</p></li>' for i, (t, d) in enumerate(S.HOME['steps']))
+    return (f'<section class="sec dk chev"><div class="wrap"><h2 class="rv">{E(S.HOME["steps_h2"])}</h2><ol class="sts">{li}</ol>'
+            f'<p class="act rv">{wa("process", S.UI["wa_btn_long"])}</p></div></section>')
 
 
 def reviews_block():
-    card = lambda n, src, t: (f'<li class="qc"><blockquote><p>{E(t)}</p></blockquote><p class="qc-by"><span>{E(n)}</span>'
-                    f'{E(S.UI["review_src_google"] if src == "google" else S.UI["review_src_facebook"])}</p></li>')
-    first = ''.join(card(*r) for r in S.REVIEWS[:3])
-    rest = ''.join(card(*r) for r in S.REVIEWS[3:])
-    return (f'<section class="sec lt silver"><div class="wrap"><div class="rv-h"><h2>{E(S.HOME["reviews_h2"])}</h2>{gauge()}</div>'
-            f'<ul class="qcs">{first}</ul><details class="more"><summary>{E(S.UI["more_reviews"])} ({len(S.REVIEWS) - 3})</summary><ul class="qcs">{rest}</ul></details><p class="note">{E(S.UI["reviews_note"])}</p></div></section>')
+    lang = '' if L['code'] == 'en' else ' lang="en"'
+    card = lambda r, i: (f'<li class="qc rv" style="--d:{i % 3}"><blockquote{lang}><p>{E(r["text"])}</p></blockquote>'
+                         f'<p class="qc-by"><span>{E(r["name"])}</span>{E(S.UI["review_src_google"])}</p></li>')
+    first = ''.join(card(r, i) for i, r in enumerate(GOOGLE_REVIEWS[:3]))
+    rest = ''.join(card(r, i) for i, r in enumerate(GOOGLE_REVIEWS[3:]))
+    return (f'<section class="sec lt silver"><div class="wrap"><h2 class="rv">{E(S.HOME["reviews_h2"])}</h2>'
+            f'<ul class="qcs">{first}</ul><details class="more"><summary>{E(S.UI["more_reviews"])} ({len(GOOGLE_REVIEWS) - 3})</summary><ul class="qcs">{rest}</ul></details>'
+            f'<p class="note">{E(S.UI["reviews_note"])}</p></div></section>')
+
+
+def wa_band():
+    return (f'<section class="band"><div class="wrap band-in"><div class="rv"><h2>{E(S.HOME["band_h2"])}</h2><p>{E(S.HOME["band_p"])}</p></div>'
+            f'<p class="act rv">{wa("band", S.UI["wa_btn_long"])}</p></div></section>')
 
 
 def offers_block(cls='sec lt'):
@@ -427,21 +443,27 @@ def visit_block(place, cls='sec lt'):
 # ---------- pages ----------
 def home():
     H = S.HOME
+    h1 = E(H['h1']).replace('Taman Bukit Indah', '<em>Taman Bukit Indah</em>', 1)
     hero = f'''<section class="hero">
-<div class="hero-ph"><img src="{img('cover')}" width="1600" height="1200" alt="{E(S.CAPTIONS['cover'])}" fetchpriority="high" decoding="async"></div>
-<div class="hero-card">
-{shield('hero-shield')}
-<h1>{E(H['h1'])}</h1>
+<div class="hero-bg" aria-hidden="true"><img src="{img('cover')}" width="1600" height="1200" alt="" fetchpriority="high" decoding="async"><i class="hero-streak"></i></div>
+<div class="wrap hero-in">
+<p class="hero-k">{shield('hero-shield')}<span>HX AUTO SERVICE<small>PUSAT SERVIS KERETA</small></span></p>
+<h1>{h1}</h1>
 <p class="hero-l">{E(H['hero_line'])}</p>
 <div class="hero-cta">{wa('home_hero', S.UI['wa_btn'])}{call('home_hero', S.UI['call_btn'])}</div>
 </div>
+<ul class="trust wrap">
+<li>{icon('pin')}<span>{E(H['trust_area'])}</span></li>
+<li>{icon('clock')}<span>{E(H['trust_hours'])}</span></li>
+<li>{icon('quote')}<span>{E(H['trust_reviews'])}</span></li>
+</ul>
 </section>'''
-    intro = (f'<section class="sec lt"><div class="wrap"><div class="in-h"><h2>{E(H["intro_h2"])}</h2><p>{E(H["intro_p"])}</p></div>'
-             f'{diagram()}</div></section>')
     brands = ''.join(f'<li>{E(b)}</li>' for b in F['brands_seen'])
-    work = (f'<section class="sec dk chev"><div class="wrap"><h2>{E(H["work_h2"])}</h2><p class="sub">{E(H["work_line"])}</p></div>'
-            f'{carousel(CAROUSEL, H["work_h2"])}<div class="wrap"><h3 class="mk-h">{E(H["brands_label"])}</h3><ul class="mk">{brands}</ul></div></section>')
-    body = hero + intro + scanbar() + reviews_block() + work + offers_block() + faq_block(S.FAQ_HOME, S.UI['faq_h2']) + visit_block('home')
+    work = (f'<section class="sec dk chev"><div class="wrap"><h2 class="rv">{E(H["work_h2"])}</h2><p class="sub rv">{E(H["work_line"])}</p>'
+            f'<div class="pg">{"".join(frame(s, "ph rv") for s in GRID)}</div>'
+            f'<h3 class="mk-h">{E(H["brands_label"])}</h3><ul class="mk">{brands}</ul></div></section>')
+    body = (hero + services_grid() + steps_strip() + reviews_block() + work + offers_block() + wa_band()
+            + faq_block(S.FAQ_HOME, S.UI['faq_h2']) + visit_block('home'))
     graph = [business(), {'@type': 'WebSite', 'name': F['short'], 'url': pabs(), 'inLanguage': L['hreflang']},
              {'@type': 'WebPage', 'name': H['title'], 'url': pabs(), 'inLanguage': L['hreflang'], 'about': {'@id': BIZ_ID}},
              faqld(S.FAQ_HOME)]
@@ -577,7 +599,6 @@ def build():
 - Address: {LOC['one_line']}
 - WhatsApp and phone: {F['whatsapp_display_intl']} ({F['whatsapp_url']})
 - Opening hours (Google): {hrs}
-- Google rating: {R['google_rating']:.1f} from {R['google_count']} reviews (19 Nov 2026)
 - Facebook: {FB}
 - Waze: {LOC['waze']} / Google Maps: {LOC['maps_url']}
 - Makes seen in the workshop: {', '.join(F['brands_seen'])}
