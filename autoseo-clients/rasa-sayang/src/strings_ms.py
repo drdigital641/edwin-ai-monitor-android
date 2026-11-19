@@ -46,7 +46,6 @@ UI = {
     "faq_h2": "Soalan lazim",
     "jobs_h2": "Kerja yang telah kami siarkan",
     "watch_fb": "Tonton di Facebook",
-    "reel_other": "Reel",
     "last_updated": "Dikemas kini 19 November 2026",
     "hq_tag": "Ibu pejabat",
     "branch_tag": "Cawangan",
@@ -86,7 +85,11 @@ CAPTIONS = {
 
 REELS = {
     "reel_purosangue": "Servis kereta dan tetapan semula perisian Ferrari Purosangue",
-    "reel_intro": "Pengenalan syarikat",
+    "reel_hev_modules": "Pembaikan modul IGM Volvo XC90 T8, dan pembaikan EME hibrid BMW 330e / 530e / 740Le",
+    "reel_taycan": "Pembaikan Porsche Taycan EV",
+    "reel_gt3": "Pembaikan enjin Porsche GT3",
+    "reel_488": "Pembaikan turbo dan servis Ferrari 488 GTB",
+    "reel_lambo": "Lamborghini SVJ, SV dan Urus",
 }
 
 # Kerja yang dilihat dalam siaran Facebook mereka (facts.json jobs_seen_in_posts). Dipaparkan sebagai kerja yang telah dibuat, bukan senarai harga.
@@ -134,6 +137,7 @@ HOME = {
     "work_h2": "Kereta yang pernah kami kerjakan",
     "work_line": "Kerja sebenar dari bengkel kami di Shah Alam. Leret atau ketik pada foto.",
     "reels_h2": "Kerja terkini di Facebook",
+    "reels_line": "Video pendek dari bengkel kami. Mainkan di sini atau buka di Facebook.",
     "visit_h2": "Dua bengkel di Selangor",
     "visit_line": "Ibu pejabat Shah Alam dan cawangan Subang Jaya. WhatsApp kami sebelum datang.",
 }
@@ -290,6 +294,7 @@ PRIVACY = {
     "body": [
         ("Apa yang kami kumpul", "Apabila anda WhatsApp atau menelefon kami, kami melihat nama, nombor dan butiran kereta yang anda hantar. Kami hanya menggunakannya untuk membalas dan mengerjakan kereta anda."),
         ("Laman web ini", "Laman ini mengira ketikan pada butang WhatsApp, telefon, Facebook dan peta supaya kami tahu butang mana yang digunakan. Ia tidak menggunakan kuki pengiklanan."),
+        ("Video Facebook", "Reel di halaman utama kami dimainkan dalam pemain video Facebook sendiri. Facebook mungkin menetapkan kukinya sendiri apabila anda memainkannya."),
         ("Pilihan anda", "Anda boleh meminta kami memadam mesej dan butiran anda pada bila-bila masa. WhatsApp 016-664 1686."),
     ],
 }

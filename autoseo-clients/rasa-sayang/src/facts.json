@@ -91,17 +91,81 @@
   "facebook": "https://www.facebook.com/rasasayangauto",
   "facebook_share": "https://www.facebook.com/share/1J6mEdY3hZ/",
   "facebook_page_name": "Rasa Sayang Automotive Group HQ -Shah Alam",
-  "reviews": {"publish": false},
-  "staff": {"publish_names": false},
-  "service_area": ["Klang", "Damansara", "Cheras", "Petaling Jaya", "Puchong", "USJ", "Kuala Lumpur", "Subang Jaya", "Shah Alam"],
-  "brands_serviced": ["BMW", "Mercedes-Benz", "Porsche", "Lamborghini", "Ferrari", "McLaren", "Volvo", "Rolls-Royce", "Audi", "Land Rover"],
+  "reviews": {
+    "publish": false
+  },
+  "staff": {
+    "publish_names": false
+  },
+  "service_area": [
+    "Klang",
+    "Damansara",
+    "Cheras",
+    "Petaling Jaya",
+    "Puchong",
+    "USJ",
+    "Kuala Lumpur",
+    "Subang Jaya",
+    "Shah Alam"
+  ],
+  "brands_serviced": [
+    "BMW",
+    "Mercedes-Benz",
+    "Porsche",
+    "Lamborghini",
+    "Ferrari",
+    "McLaren",
+    "Volvo",
+    "Rolls-Royce",
+    "Audi",
+    "Land Rover"
+  ],
   "facebook_reels": {
-    "known": [
-      {"id": "999424563215859", "url": "https://www.facebook.com/reel/999424563215859", "caption_key": "reel_purosangue"},
-      {"id": "1450035600662905", "url": "https://www.facebook.com/reel/1450035600662905", "caption_key": "reel_intro"}
+    "_checked": "19 Nov 2026: each reel loaded in Facebook's embedded player (plugins/video.php). Captions below are taken from each reel's own Facebook caption (typos fixed). Max 6 shown on the site.",
+    "featured": [
+      {
+        "id": "999424563215859",
+        "caption_key": "reel_purosangue"
+      },
+      {
+        "id": "1401592595017233",
+        "caption_key": "reel_hev_modules"
+      },
+      {
+        "id": "2280367489454277",
+        "caption_key": "reel_taycan"
+      },
+      {
+        "id": "930094736706708",
+        "caption_key": "reel_gt3"
+      },
+      {
+        "id": "1576602537483481",
+        "caption_key": "reel_488"
+      },
+      {
+        "id": "1106280828782940",
+        "caption_key": "reel_lambo"
+      }
     ],
-    "other_ids": ["1573078414839014", "930094736706708", "1691278449222218", "1106280828782940", "1576602537483481", "1085210454337791",
-                  "1401592595017233", "2693863764379674", "2200522057542157", "1450834953853911", "2083312828974963", "1096151146235422",
-                  "2203643263552203", "1753821452506694", "1068605289496811", "2280367489454277", "1753839645820800", "2653012265161517"]
+    "embeddable_not_shown": {
+      "1450035600662905": "company intro (contact details caption)",
+      "2693863764379674": "company intro",
+      "2200522057542157": "company intro",
+      "1450834953853911": "company intro",
+      "1085210454337791": "Lamborghini SVJ wireless Android / Apple CarPlay update",
+      "2083312828974963": "opening-day thank-you (Chinese, no date in caption)",
+      "1096151146235422": "thank-you post",
+      "1753821452506694": "thank-you post"
+    },
+    "not_embeddable": [
+      "1573078414839014",
+      "1691278449222218",
+      "2203643263552203",
+      "1068605289496811",
+      "1753839645820800",
+      "2653012265161517"
+    ],
+    "not_embeddable_note": "Facebook: 'This video can't be embedded because it may contain content owned by someone else' (usually licensed music). Do not show."
   }
 }

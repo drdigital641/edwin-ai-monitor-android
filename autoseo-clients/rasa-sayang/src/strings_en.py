@@ -46,7 +46,6 @@ UI = {
     "faq_h2": "Questions",
     "jobs_h2": "Jobs we have posted",
     "watch_fb": "Watch on Facebook",
-    "reel_other": "Reel",
     "last_updated": "Last updated 19 November 2026",
     "hq_tag": "HQ",
     "branch_tag": "Branch",
@@ -86,7 +85,11 @@ CAPTIONS = {
 
 REELS = {
     "reel_purosangue": "Ferrari Purosangue car service and software reset",
-    "reel_intro": "Company introduction",
+    "reel_hev_modules": "Volvo XC90 T8 IGM module repair, and BMW 330e / 530e / 740Le hybrid EME repair",
+    "reel_taycan": "Porsche Taycan EV repair",
+    "reel_gt3": "Porsche GT3 engine repair",
+    "reel_488": "Ferrari 488 GTB turbo repair and service",
+    "reel_lambo": "Lamborghini SVJ, SV and Urus",
 }
 
 # Jobs seen in their Facebook posts (facts.json jobs_seen_in_posts). Shown as work done, not a price menu.
@@ -134,6 +137,7 @@ HOME = {
     "work_h2": "Cars we have worked on",
     "work_line": "Real jobs from our Shah Alam bay. Swipe or tap a photo.",
     "reels_h2": "Recent work on Facebook",
+    "reels_line": "Short videos from our bay. Play them here or open them on Facebook.",
     "visit_h2": "Two workshops in Selangor",
     "visit_line": "Shah Alam HQ and Subang Jaya branch. WhatsApp before you come in.",
 }
@@ -290,6 +294,7 @@ PRIVACY = {
     "body": [
         ("What we collect", "When you WhatsApp or call us, we see your name, number and the details you send about your car. We use them only to reply and to work on your car."),
         ("This website", "This site counts taps on its WhatsApp, call, Facebook and map buttons so we know which buttons are used. It does not use advertising cookies."),
+        ("Facebook videos", "The reels on our home page play in Facebook's own video player. Facebook may set its own cookies when you play one."),
         ("Your choices", "You can ask us to delete your messages and details at any time. WhatsApp 016-664 1686."),
     ],
 }

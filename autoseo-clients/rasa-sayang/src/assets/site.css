@@ -7,7 +7,8 @@
 :root{
   --black:#000;--carbon:#0d0e0f;--graphite:#18191b;--gunmetal:#26282b;
   --steel:#9a9999;--silver:#c2c1c1;--chrome:#e7e8e8;--white:#fff;
-  --crimson:#eb1c24;--crimson-deep:#b5121a;
+  --crimson:#eb1c24;--crimson-deep:#b5121a;--crimson-ink:#c3141b;
+  --paper:#f5f5f4;--mist:#e7e8e8;--ink:#111214;--ink-2:#4a4b4e;--line-d:rgba(17,18,20,.14);--line-d-hi:rgba(17,18,20,.32);
   --line:rgba(194,193,193,.2);--line-hi:rgba(231,232,232,.42);
   --head:"Barlow Condensed","Arial Narrow",sans-serif;
   --body:Manrope,"Segoe UI",Roboto,sans-serif;
@@ -149,18 +150,15 @@ address{font-style:normal}
 .cars{list-style:none;margin:.6rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
 .cars li{border:1px solid var(--line);padding:.32rem .6rem;font-size:.85rem;color:var(--silver)}
 
-/* reels */
-.reel-k{list-style:none;margin:1.2rem 0 0;padding:0;display:grid;gap:8px}
-.reel-k a{display:grid;grid-template-columns:44px 1fr;grid-template-rows:auto auto;column-gap:.9rem;align-items:center;padding:.9rem;
-  border:1px solid var(--line-hi);text-decoration:none;color:var(--white);background:var(--carbon)}
-.reel-i{grid-row:1/3;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--crimson);color:var(--crimson)}
-.reel-i .ic{fill:currentColor;stroke:none}
-.reel-t{font-weight:700;line-height:1.3}
-.reel-w{font-size:.85rem;color:var(--silver);text-decoration:underline;text-decoration-color:var(--crimson);text-underline-offset:.25em}
-.reel-m{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.reel-m a{display:flex;align-items:center;gap:.45rem;min-height:44px;padding:0 .6rem;border:1px solid var(--line);text-decoration:none;font-size:.85rem;color:var(--silver)}
-.reel-m .ic{width:14px;height:14px;fill:var(--crimson);stroke:none}
-
+/* reels: Facebook embedded players in true 9:16 frames, native horizontal scroll, never cropped */
+.reels{background:var(--carbon)}
+.rls{list-style:none;margin:1.2rem 0 0;padding:0 var(--g) .4rem;display:flex;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--gunmetal) transparent;-webkit-overflow-scrolling:touch}
+.rl{flex:0 0 min(64vw,270px);display:flex;flex-direction:column}
+.rl-f{position:relative;aspect-ratio:9/16;background:#000;border:1px solid var(--line-hi);overflow:hidden}
+.rl-f iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.rl-c{margin:.7rem 0 .2rem;font-weight:700;color:var(--white);font-size:.92rem;line-height:1.35;flex:1}
+.rl-a{display:inline-flex;align-items:center;gap:.45rem;min-height:44px;color:var(--silver);font-size:.88rem;text-decoration:underline;text-decoration-color:var(--crimson);text-underline-offset:.25em}
+.rl-a .ic{width:16px;height:16px}
 /* faq */
 .faq details{border-top:1px solid var(--line)}
 .faq details:last-of-type{border-bottom:1px solid var(--line)}
@@ -240,8 +238,6 @@ address{font-style:normal}
 .art-list:empty{min-height:0}
 
 @media (min-width:700px){
-  .reel-k{grid-template-columns:1fr 1fr}
-  .reel-m{grid-template-columns:repeat(6,1fr)}
   .locs{grid-template-columns:1fr 1fr}
   .locs.col{grid-template-columns:1fr}
   .gal{gap:12px}
@@ -277,7 +273,7 @@ address{font-style:normal}
   .hv::before,.hv::after{left:22px;right:22px;top:21px;bottom:auto;width:auto;height:2px}
   .hv::after{width:22%;right:auto;background:linear-gradient(90deg,transparent,var(--crimson) 40%,var(--crimson) 60%,transparent);animation:flowX 2.8s linear infinite}
   .node{grid-template-columns:1fr;gap:.8rem}
-  .wr-t{padding:0 max(var(--g),calc((100vw - var(--wrap))/2 + var(--g)))}
+  .wr-t,.rls{padding:0 max(var(--g),calc((100vw - var(--wrap))/2 + var(--g)))}
   .foot-in{grid-template-columns:1.1fr 2fr 1fr;}
   .foot-locs{grid-column:2/4;grid-row:1}
   .foot-talk{grid-column:1}
@@ -290,3 +286,51 @@ address{font-style:normal}
   .hv::after{display:none}
   .hv::before{background:var(--crimson-deep)}
 }
+
+/* light surfaces: everything below the hero alternates paper / mist / white; circ, reels, ask, header, footer stay dark */
+.sec:not(.circ):not(.reels):not(.ask){background:var(--paper);color:var(--ink-2);border-top:1px solid var(--line-d)}
+.sec:not(.circ):not(.reels):not(.ask).intro,.sec:not(.circ):not(.reels):not(.ask).faq,.sec:not(.circ):not(.reels):not(.ask).jobs{background:var(--mist)}
+.sec:not(.circ):not(.reels):not(.ask).work{background:var(--white)}
+.sec:not(.circ):not(.reels):not(.ask) h1,.sec:not(.circ):not(.reels):not(.ask) h2,.sec:not(.circ):not(.reels):not(.ask) h3{color:var(--ink)}
+.sec:not(.circ):not(.reels):not(.ask) p,.sec:not(.circ):not(.reels):not(.ask) li,.sec:not(.circ):not(.reels):not(.ask) address{color:var(--ink-2)}
+.sec:not(.circ):not(.reels):not(.ask) .sub,.sec:not(.circ):not(.reels):not(.ask) .reg{color:var(--ink-2)}
+.sec:not(.circ):not(.reels):not(.ask) a:not([class]){color:var(--ink);text-decoration:underline}
+.sec:not(.circ):not(.reels):not(.ask) a:not([class]):hover{color:var(--black)}
+.sec:not(.circ):not(.reels):not(.ask) .makes h3{color:var(--ink-2)}
+.sec:not(.circ):not(.reels):not(.ask) .makes ul{color:var(--ink)}
+.sec:not(.circ):not(.reels):not(.ask) .sp{border-color:var(--line-d)}
+.sec:not(.circ):not(.reels):not(.ask) .sp a{color:inherit;text-decoration:none}
+.sec:not(.circ):not(.reels):not(.ask) .sp-n{color:var(--crimson-ink)}
+.sec:not(.circ):not(.reels):not(.ask) .sp-h{color:var(--ink)}
+.sec:not(.circ):not(.reels):not(.ask) .sp-l{color:var(--ink-2)}
+.sec:not(.circ):not(.reels):not(.ask) .sp .ic{color:var(--ink)}
+.sec:not(.circ):not(.reels):not(.ask) .sp a:hover .ic,.sec:not(.circ):not(.reels):not(.ask) .sp a:focus-visible .ic{color:var(--crimson-ink)}
+.sec:not(.circ):not(.reels):not(.ask) .fr{border-color:var(--line-d)}
+.sec:not(.circ):not(.reels):not(.ask) .arr{color:var(--ink);border-color:var(--line-d-hi)}
+.sec:not(.circ):not(.reels):not(.ask) .arr:hover{border-color:var(--ink)}
+.sec:not(.circ):not(.reels):not(.ask) .dots i{background:#c9c9c9}
+.sec:not(.circ):not(.reels):not(.ask) .dots i.on{background:var(--crimson)}
+.sec:not(.circ):not(.reels):not(.ask) .cars-h{color:var(--ink)}
+.sec:not(.circ):not(.reels):not(.ask) .cars li{color:var(--ink-2);border-color:var(--line-d)}
+.sec:not(.circ):not(.reels):not(.ask).faq details{border-color:var(--line-d)}
+.sec:not(.circ):not(.reels):not(.ask).faq summary{color:var(--ink)}
+.sec:not(.circ):not(.reels):not(.ask).faq details p{color:var(--ink-2)}
+.visit .loc,.locs.col .loc{background:var(--white);border-color:var(--line-d-hi)}
+html body .sec.visit .loc .loc-t,html body .sec .locs.col .loc .loc-t{color:var(--ink)}
+.visit .loc address,.locs.col .loc address{color:var(--ink-2)}
+html body .sec.visit .loc .tag,html body .sec .locs.col .loc .tag{color:var(--ink);border-color:var(--crimson)}
+.sec:not(.circ):not(.reels):not(.ask) .lnk{color:var(--ink)}
+.sec:not(.circ):not(.reels):not(.ask) .areas{color:var(--ink-2)}
+.sec:not(.circ):not(.reels):not(.ask) .areas span{color:var(--ink)}
+.sec:not(.circ):not(.reels):not(.ask) .tabs a{color:var(--ink);border-color:var(--line-d-hi);text-decoration:none}
+.sec:not(.circ):not(.reels):not(.ask) .tabs a:hover{border-color:var(--ink)}
+.sec:not(.circ):not(.reels):not(.ask) .num a{color:var(--ink);text-decoration:none}
+.sec:not(.circ):not(.reels):not(.ask) .jl,.sec:not(.circ):not(.reels):not(.ask) .jl li{color:var(--ink-2)}
+.sec:not(.circ):not(.reels):not(.ask).motto blockquote p{color:var(--ink)}
+.sec:not(.circ):not(.reels):not(.ask).motto ul,.sec:not(.circ):not(.reels):not(.ask).motto li{color:var(--ink-2)}
+.sec:not(.circ):not(.reels):not(.ask) .btn-wa{background:var(--ink);color:var(--white);text-decoration:none}
+.sec:not(.circ):not(.reels):not(.ask) .btn-wa:hover{background:var(--black);color:var(--white)}
+.sec:not(.circ):not(.reels):not(.ask) .btn-call,.sec:not(.circ):not(.reels):not(.ask) .btn-line{background:transparent;color:var(--ink);border-color:var(--line-d-hi);text-decoration:none}
+.sec:not(.circ):not(.reels):not(.ask) .btn-call:hover,.sec:not(.circ):not(.reels):not(.ask) .btn-line:hover{border-color:var(--ink);color:var(--ink)}
+.makes li:not(:last-child)::after{color:var(--crimson-ink)}
+.sec:not(.circ):not(.reels):not(.ask) .makes li{color:var(--ink)}

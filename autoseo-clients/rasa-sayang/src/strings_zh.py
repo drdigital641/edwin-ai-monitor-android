@@ -46,7 +46,6 @@ UI = {
     "faq_h2": "常见问题",
     "jobs_h2": "我们发布过的维修项目",
     "watch_fb": "在 Facebook 观看",
-    "reel_other": "短片",
     "last_updated": "最后更新：2026 年 11 月 19 日",
     "hq_tag": "总部",
     "branch_tag": "分行",
@@ -86,7 +85,11 @@ CAPTIONS = {
 
 REELS = {
     "reel_purosangue": "Ferrari Purosangue 保养与软件重置",
-    "reel_intro": "公司介绍",
+    "reel_hev_modules": "Volvo XC90 T8 混合动力 IGM 模块维修，以及 BMW 330e / 530e / 740Le 混合动力 EME 维修",
+    "reel_taycan": "Porsche Taycan 电动车维修",
+    "reel_gt3": "Porsche GT3 引擎维修",
+    "reel_488": "Ferrari 488 GTB 涡轮维修与保养",
+    "reel_lambo": "Lamborghini SVJ、SV 与 Urus",
 }
 
 # 他们 Facebook 帖文中出现的维修项目（facts.json jobs_seen_in_posts）。以已完成的工作呈现，不是价目表。
@@ -134,6 +137,7 @@ HOME = {
     "work_h2": "我们维修过的车型",
     "work_line": "来自莎阿南维修位的真实案例。滑动或点按照片查看。",
     "reels_h2": "Facebook 上的近期作业",
+    "reels_line": "来自我们维修车间的短片，可在此播放，或在 Facebook 上观看。",
     "visit_h2": "雪兰莪两间维修中心",
     "visit_line": "莎阿南总部和梳邦再也分行。到访前请先 WhatsApp 我们。",
 }
@@ -290,6 +294,7 @@ PRIVACY = {
     "body": [
         ("我们收集什么", "当您 WhatsApp 或致电我们时，我们会看到您的姓名、号码和您发送的车辆详情。我们只用这些信息来回复您和维修您的车。"),
         ("本网站", "本网站会统计 WhatsApp、致电、Facebook 和地图按钮的点击次数，让我们知道哪些按钮有人使用。本网站不使用广告 cookies。"),
+        ("Facebook 视频", "首页的短片通过 Facebook 自己的视频播放器播放。播放时，Facebook 可能会设置其自己的 Cookie。"),
         ("您的选择", "您可以随时要求我们删除您的消息和资料。请 WhatsApp 016-664 1686。"),
     ],
 }

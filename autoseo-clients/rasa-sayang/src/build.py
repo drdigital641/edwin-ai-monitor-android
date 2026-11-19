@@ -341,16 +341,20 @@ def circuit():
 
 
 def reels():
-    known = F['facebook_reels']['known']
-    rows = ''.join(f'<li class="reel"><a href="{E(r["url"])}" target="_blank" rel="noopener" data-cta="facebook_reel_{i + 1}" data-ref="facebook_reel_{i + 1}">'
-                   f'<span class="reel-i">{icon("play")}</span><span class="reel-t">{E(S.REELS[r["caption_key"]])}</span>'
-                   f'<span class="reel-w">{E(S.UI["watch_fb"])}</span></a></li>' for i, r in enumerate(known))
-    n0 = len(known)
-    more = ''.join(f'<li><a href="https://www.facebook.com/reel/{rid}" target="_blank" rel="noopener" data-cta="facebook_reel_{n0 + i + 1}" '
-                   f'data-ref="facebook_reel_{n0 + i + 1}">{icon("play")}<span>{E(S.UI["reel_other"])} {n0 + i + 1:02d}</span></a></li>'
-                   for i, rid in enumerate(F['facebook_reels']['other_ids']))
-    return (f'<section class="sec reels"><div class="wrap"><h2>{E(S.HOME["reels_h2"])}</h2><ul class="reel-k">{rows}</ul>'
-            f'<ul class="reel-m">{more}</ul><p class="act">{fb("reels", S.UI["fb_btn"], "btn-line")}</p></div></section>')
+    """Up to 6 Facebook reels in 9:16 embedded players (checked embeddable 19 Nov 2026), horizontal native scroll, lazy-loaded.
+    Captions come from each reel's own Facebook caption (facts.json facebook_reels, strings REELS). No autoplay."""
+    cards = []
+    for i, r in enumerate(F['facebook_reels']['featured'][:6]):
+        url = f'https://www.facebook.com/reel/{r["id"]}'
+        cap = S.REELS[r['caption_key']]
+        src = 'https://www.facebook.com/plugins/video.php?href=' + urllib.parse.quote(url, safe='') + '&show_text=false&width=270&height=480'
+        cards.append(f'<li class="rl"><div class="rl-f"><iframe src="{E(src)}" title="{E(cap)}" loading="lazy" width="270" height="480" '
+                     f'allow="encrypted-media; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>'
+                     f'<p class="rl-c">{E(cap)}</p><a class="rl-a" href="{E(url)}" target="_blank" rel="noopener" data-cta="facebook_reel_{i + 1}" '
+                     f'data-ref="facebook_reel_{i + 1}">{icon("fb")}<span>{E(S.UI["watch_fb"])}</span></a></li>')
+    return (f'<section class="sec reels"><div class="wrap"><h2>{E(S.HOME["reels_h2"])}</h2><p class="sub">{E(S.HOME["reels_line"])}</p></div>'
+            f'<ul class="rls" aria-label="{E(S.HOME["reels_h2"])}">{"".join(cards)}</ul>'
+            f'<div class="wrap"><p class="act">{fb("reels", S.UI["fb_btn"], "btn-line")}</p></div></section>')
 
 
 def faq_block(faq, h2):
