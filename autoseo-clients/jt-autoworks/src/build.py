@@ -118,9 +118,9 @@ SVC_PATH = {'diagnostics': 'services/diagnostics/', 'aircon': 'services/aircon/'
             'ppi': 'services/pre-purchase-inspection/', 'towing': 'services/towing/', 'german': 'services/german-luxury-cars/'}
 PAGES = ['', 'packages/', 'services/'] + [SVC_PATH[k] for k in strings_en.SERVICE_ORDER] + ['find-us/', 'about/', 'areas/', 'articles/', 'privacy/']
 NAV = [('packages/', 'packages'), ('services/', 'services'), ('find-us/', 'find_us'), ('about/', 'about')]
-SVC_REEL = {'diagnostics': 'diagnostics', 'aircon': 'aircon', 'battery': 'battery', 'ev': 'ev_light', 'ppi': 'used_car', 'german': 'bmw5'}
+SVC_REEL = {'diagnostics': 'diagnostics', 'ppi': 'used_car', 'german': 'bmw5'}   # only reels with a real poster frame
 REEL_BY_TOPIC = {r['topic']: r for r in F['reels']}
-HOME_STRIP = ['aircon', 'battery', 'ev_owners', 'dash_lights', 'diagnostics', 'used_car', 'oil_leak', 'bmw5']
+HOME_STRIP = ['new_chapter', 'bmw5', 'used_car', 'diagnostics']   # Edwin's order, 20 Nov; tiles without a poster frame are skipped
 
 
 def logo(cls='wm'):
@@ -276,32 +276,76 @@ def crumb_html(trail):
 
 
 # ---------- shared blocks ----------
-def reel(topic, place, key=None, cap=None, with_wa=True):
-    """Tap-to-load Facebook reel facade (no Facebook script until a tap). A self-hosted MP4 replaces it when media has one."""
+def img(stem, alt, cls=None, eager=False, sizes=None):
+    """One <img> from the media manifest. Real photos use cover in CSS; designed posters always use contain (class poster-img)."""
+    m = MEDIA[stem]
+    c = f' class="{cls}"' if cls else ''
+    load = ' fetchpriority="high"' if eager == 'high' else ('' if eager else ' loading="lazy"')
+    return f'<img{c} src="{murl(stem)}" width="{m["w"]}" height="{m["h"]}" alt="{E(alt)}"{load} decoding="async">'
+
+
+def poster_fig(stem, alt, cap=None, cls='poster'):
+    if not has(stem):
+        return ''
+    fc = f'<figcaption>{E(cap)}</figcaption>' if cap else ''
+    return f'<figure class="{cls}">{img(stem, alt)}{fc}</figure>'
+
+
+def lap_block(photo, h, paras, link=None, cls='white', flip=False):
+    """Overlapping photo-and-text block (shared template: autoseo-template/blocks/soft-cards). Photo = real photo only."""
+    if not has(photo):
+        return f'<section class="sec {cls}"><div class="wrap prose"><h2>{E(h)}</h2>{"".join(f"<p>{E(p)}</p>" for p in paras)}{link or ""}</div></section>'
+    return f'''<section class="sec {cls}"><div class="wrap lap{' flip' if flip else ''}">
+<figure class="lap-img">{img(photo, S.PHOTOS.get(photo, ''))}</figure>
+<div class="lap-card"><h2>{E(h)}</h2>{''.join(f'<p>{E(p)}</p>' for p in paras)}{link or ''}</div>
+</div></section>'''
+
+
+def hero_block():
+    """Full-bleed photo hero (shared template: autoseo-template/blocks/photo-hero): real photo behind a transparent header,
+    white headline and WhatsApp on the photo, bottom fading into the next band."""
+    H = S.HOME
+    pic = ''
+    if has('hero-tall'):
+        wide = f'<source media="(min-width: 760px)" srcset="{murl("hero-wide")}" width="{MEDIA["hero-wide"]["w"]}" height="{MEDIA["hero-wide"]["h"]}">' if has('hero-wide') else ''
+        pic = f'<picture class="hero-bg">{wide}{img("hero-tall", S.PHOTOS["hero"], eager="high")}</picture>'
+    return f'''<section class="hero on-navy">{pic}<div class="wrap hero-in">
+<p class="kicker">{E(S.LOOK['kicker'])}</p>
+<h1>{E(H['h1'])}</h1><p class="hero-line">{E(H['line'])}</p>
+<div class="hero-cta">{wa('home_hero', 'home')}{call('home_hero', label=S.UI['call_short'], cls='go-ghost')}</div>
+</div></section>'''
+
+
+def reel(topic, place, key=None, cap=None, with_wa=True, eager=False):
+    """Video tile (shared template: autoseo-template/blocks/video-facade). Always shows the real 9:16 poster frame.
+    Self-hosted MP4 when media has video-<topic>: <video poster=...>. Otherwise an <img> facade of the poster frame that swaps
+    to the official Facebook embed on tap (no Facebook script before the tap). No poster frame = no tile (never an empty box)."""
     r = REEL_BY_TOPIC[topic]
     cap = cap or S.REELS[topic]
-    href = f'https://www.facebook.com/reel/{r["id"]}/'
-    src = 'https://www.facebook.com/plugins/video.php?href=' + urllib.parse.quote(href, safe='') + '&show_text=false&width=360&height=640'
+    thumb = f'reel-{r["id"]}'
     vid = f'video-{topic}'
+    if not has(thumb) and not has(vid):
+        return ''
+    play = '<span class="vf-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.2v13.6L19 12z"/></svg></span>'
     if has(vid):
         m = MEDIA[vid]
-        poster = f' poster="{murl(vid + "-poster")}"' if has(vid + '-poster') else ''
+        poster = f' poster="{murl(thumb)}"' if has(thumb) else ''
         box = (f'<div class="vf vf-own"><video muted playsinline loop preload="none"{poster} width="{m["w"]}" height="{m["h"]}" aria-label="{E(cap)}">'
                f'<source src="{murl(vid)}" type="video/mp4"></video><button class="vf-snd" type="button" aria-pressed="false">{E(S.UI["tap_sound"])}</button></div>')
     else:
-        thumb = f'reel-{r["id"]}'
-        im = (f'<img src="{murl(thumb)}" width="{MEDIA[thumb]["w"]}" height="{MEDIA[thumb]["h"]}" alt="" loading="lazy">' if has(thumb) else '<span class="vf-art"></span>')
-        box = (f'<div class="vf"><button class="vf-b" type="button" data-src="{E(src)}" aria-label="{E(S.UI["play"] + ": " + cap)}">{im}'
-               f'<span class="vf-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg></span>'
-               f'<span class="vf-cap">{E(cap)}</span><span class="vf-meta"><span class="num">{r["len"]}</span><span>Facebook</span></span></button></div>')
-    w = wa(f'{place}', key or f'reel_{topic}', label=S.UI['wa_short'], cls='wa-mini') if with_wa else ''
-    return box + w
+        href = f'https://www.facebook.com/reel/{r["id"]}/'
+        src = 'https://www.facebook.com/plugins/video.php?href=' + urllib.parse.quote(href, safe='') + '&show_text=false&width=360&height=640'
+        box = (f'<div class="vf"><button class="vf-b" type="button" data-src="{E(src)}" aria-label="{E(S.UI["play"] + ": " + cap)}">'
+               f'{img(thumb, "", eager=eager)}{play}<span class="vf-len num">{r["len"]}</span></button></div>')
+    w = wa(place, key or f'reel_{topic}', label=S.UI['wa_short'], cls='wa-mini') if with_wa else ''
+    return f'<figure class="reel">{box}<figcaption><span>{E(cap)}</span>{w}</figcaption></figure>'
 
 
 def pkg_cards(place_prefix):
-    P = F['packages']
+    """Package strip (shared template: autoseo-template/blocks/soft-cards): rounded card, real poster (contain), big price,
+    WhatsApp button on every card. Swipe strip on phones, three columns on desktop."""
     out = []
-    for p in P['items']:
+    for p in F['packages']['items']:
         lines = []
         if p['flush_bundle']:
             lines.append(f'<li>{E(S.PKG["flush"])}</li>')
@@ -310,20 +354,22 @@ def pkg_cards(place_prefix):
         if not p['flush_bundle'] and not p['windshield']:
             lines.append(f'<li class="no">{E(S.PKG["no_flush"])}</li>')
         name = S.PKG['name'].replace('{L}', p['letter'])
-        out.append(f'''<li class="{'pk-top' if p['id'] == 'a' else ''}">
-<div class="pk-l"><span class="pk-n"><b>{p['letter']}</b>{E(name.replace(p['letter'], '').strip() or name)}</span><span class="pk-p num">${p['price']}<small>{E(S.UI['for3'])}</small></span></div>
-<p class="pk-oil">{E(S.PKG['oil_line'].format(oil=p['oil'], litres=p['litres']))}</p>
+        fig = f'<div class="pk-img">{img(p["poster"], S.PKG["poster_alt"].replace("{L}", p["letter"]))}</div>' if has(p['poster']) else ''
+        out.append(f'''<li class="pk-c">{fig}<div class="pk-b">
+<p class="pk-tag"><b>{p['letter']}</b>{E(name)}</p>
+<h3 class="pk-oil">{E(S.PKG['oil_line'].format(oil=p['oil'], litres=p['litres']))}</h3>
+<p class="pk-p num">${p['price']}<small>{E(S.UI['for3'])}</small></p>
 <p class="pk-x num">{E(S.PKG['extra'].format(x=p['extra_per_litre']))}</p>
 <ul>{''.join(lines)}</ul>
 {wa(f"{place_prefix}_package_{p['id']}", f"pkg_{p['id']}", label=S.UI['pkg_wa'].replace('{L}', p['letter']))}
-</li>''')
+</div></li>''')
     return f'<ul class="pk">{"".join(out)}</ul>'
 
 
 def inc_block():
     P = F['packages']
     items = ''.join(f'<li>{E(S.PKG["common"][k].format(n=n))}</li>' for k, n in P['common'])
-    return (f'<div class="inc"><h3>{E(S.PKG["inc_h"])}</h3><ul>{items}</ul>'
+    return (f'<div class="inc"><h3>{E(S.PKG["inc_h"])}</h3><ul class="ticks2">{items}</ul>'
             f'<p>{E(S.PKG["brake_fluid"])} {E(S.PKG["lifetime"])} {E(S.PKG["visc"].format(v=" / ".join(P["viscosities"])))}</p></div>')
 
 
@@ -336,9 +382,12 @@ def process_block():
 
 def proof_block(place):
     items = ''.join(f'<li><h3>{E(T(a))}</h3><p>{E(T(b))}</p></li>' for a, b in S.PROOF['items'])
+    qs = ''.join(f'<figure class="q"><blockquote><p>{E(q)}</p></blockquote><figcaption>{E(S.LOOK["quote_src"])}</figcaption></figure>' for q in S.LOOK['quotes'])
     return f'''<section class="sec steel" id="proof"><div class="wrap">
 <div class="sec-h"><h2>{E(S.PROOF['h2'])}</h2></div>
 <ul class="pf">{items}</ul>
+<h3 class="qs-h">{E(S.LOOK['quotes_h'])}</h3>
+<div class="qs">{qs}</div>
 <div class="pf-foot"><p>{E(S.PROOF['note'])}</p>{ext('reviews', place, LK['reviews'], S.UI['reviews'], cls='more')}</div>
 </div></section>'''
 
@@ -347,11 +396,10 @@ def photo_rail():
     stems = [s for s in F['photos_real'] if has(s)]
     if len(stems) < 2:
         return ''
-    figs = ''.join(f'<figure><img src="{murl(s)}" width="{MEDIA[s]["w"]}" height="{MEDIA[s]["h"]}" alt="{E(S.PHOTOS[s])}" loading="lazy" '
-                   f'style="object-position:{MEDIA[s].get("pos", "50% 50%")}"><figcaption>{E(S.PHOTOS[s])}</figcaption></figure>' for s in stems)
+    figs = ''.join(f'<figure>{img(s, S.PHOTOS[s])}<figcaption>{E(S.PHOTOS[s])}</figcaption></figure>' for s in stems)
     dots = ''.join('<i></i>' for _ in stems)
     return f'''<section class="sec navy on-navy" id="photos"><div class="wrap">
-<div class="sec-h"><h2>{E(S.PHOTOS['h2'])}</h2></div>
+<div class="sec-h"><h2>{E(S.PHOTOS['h2'])}</h2><p>{E(S.LOOK['gallery_lead'])}</p></div>
 <div class="rail"><div class="rail-t">{figs}</div>
 <div class="rail-c"><button type="button" class="arr" data-dir="-1" aria-label="{E(S.UI['prev'])}">{icon('prev')}</button><button type="button" class="arr" data-dir="1" aria-label="{E(S.UI['next'])}">{icon('next')}</button><span class="dots" aria-hidden="true">{dots}</span></div></div>
 </div></section>'''
@@ -379,7 +427,7 @@ def ask(place, key, h=None, line=None):
 def page_head(path, trail, h1, lead, key):
     return f'''<section class="ph on-navy"><div class="wrap">{crumb_html(trail)}
 <h1>{E(h1)}</h1><p class="lead">{E(lead)}</p>
-<div class="ph-cta">{wa(slug(path) + '_head', key)}{call(slug(path) + '_head')}</div></div></section>'''
+<div class="ph-cta">{wa(slug(path) + '_head', key)}{call(slug(path) + '_head', cls='go-ghost')}</div></div></section>'''
 
 
 def slug(path):
@@ -390,46 +438,36 @@ def slug(path):
 # ---------- page bodies ----------
 def home():
     H = S.HOME
-    hero_r = REEL_BY_TOPIC['new_chapter']
-    chips = ''.join(f'<li><b>{E(a)}</b><span>{E(b)}</span></li>' for a, b in H['chips'])
-    strip = ''.join(f'<li>{reel(t, "home_reel_" + t)}</li>' for t in HOME_STRIP)
-    svcs = ''.join(f'<li><a href="{pu(SVC_PATH[k])}"><b>{E(S.SERVICES[k]["name"])}</b><span>{E(S.SERVICES[k]["card"])}</span>{icon("go")}</a></li>' for k in strings_en.SERVICE_ORDER)
-    oth = ''.join(f'<li><b>{E(a)}</b><span>{E(b)}</span></li>' for a, b in S.OTHER_SERVICES['items'])
-    poster = ''
-    if has('location-poster'):
-        m = MEDIA['location-poster']
-        poster = f'<figure class="poster"><img src="{murl("location-poster")}" width="{m["w"]}" height="{m["h"]}" alt="{E(S.GATE["poster_alt"])}" loading="lazy"></figure>'
-    return f'''<section class="hero on-navy"><div class="wrap">
-<div class="hero-text"><h1>{E(H['h1'])}</h1><p class="hero-line">{E(H['line'])}</p>
-<div class="hero-cta">{wa('home_hero', 'home')}{call('home_hero', label=S.UI['call_short'])}</div></div>
-<div class="split"><div>{reel('new_chapter', 'home_hero_reel', with_wa=False)}</div><ul class="chips">{chips}</ul></div>
+    strip = ''.join(f'<li>{x}</li>' for x in (reel(t, 'home_reel_' + t, eager=True) for t in HOME_STRIP) if x)
+    svcs = ''.join(f'<li><a href="{pu(SVC_PATH[k])}"><b>{E(S.SERVICES[k]["name"])}</b><span>{E(S.SERVICES[k]["card"])}</span><i class="go-i">{icon("go")}</i></a></li>' for k in strings_en.SERVICE_ORDER)
+    oth = ''.join(f'<li><b>{E(a)}</b> <span>{E(b)}</span></li>' for a, b in S.OTHER_SERVICES['items'])
+    poster = poster_fig('location-poster', S.GATE['poster_alt'])
+    return f'''{hero_block()}
+<section class="sec navy on-navy band-v" id="videos"><div class="wrap">
+<div class="sec-h"><h2>{E(S.LOOK['reels_h'])}</h2><p>{E(S.LOOK['reels_lead'])}</p></div>
+<ul class="reels">{strip}</ul>
+<p class="sec-more">{ext('facebook', 'home_reels_more', LK['facebook_videos'], S.UI['watch_more'], cls='more')}</p>
 </div></section>
 <section class="sec paper" id="packages"><div class="wrap">
-<div class="sec-h"><h2>{E(S.PKG['h2'])}</h2><p>{E(S.PKG['lead'])}</p></div>
+<div class="sec-h"><p class="eyebrow">{E(S.LOOK['pkg_kicker'])}</p><h2>{E(S.PKG['h2'])}</h2><p>{E(S.PKG['lead'])}</p></div>
 {pkg_cards('home')}
 {inc_block()}
-<p style="margin-top:18px"><a class="more" href="{pu('packages/')}">{E(S.UI['see_packages'])}</a></p>
+<p class="sec-more"><a class="more" href="{pu('packages/')}">{E(S.UI['see_packages'])}</a></p>
 </div></section>
-<section class="sec white" id="about"><div class="wrap prose">
-<h2>{E(H['intro_h'])}</h2><p>{E(H['intro'])}</p><p>{E(H['lounge'])}</p></div></section>
+{lap_block('mercedes-c-class-on-lift-4x5', H['intro_h'], [H['intro'], H['lounge']], f'<a class="more" href="{pu("about/")}">{E(S.LOOK["about_more"])}</a>')}
 {process_block()}
 {proof_block('home')}
-<section class="sec paper" id="services"><div class="wrap">
+<section class="sec white" id="services"><div class="wrap">
 <div class="sec-h"><h2>{E(H['svc_h'])}</h2><p>{E(S.UI['all_makes'])}</p></div>
 <ul class="svl">{svcs}</ul>
 <ul class="oth">{oth}</ul>
-<p style="margin-top:22px"><a class="more" href="{pu('services/')}">{E(S.UI['see_services'])}</a></p>
-</div></section>
-<section class="sec navy on-navy" id="reels"><div class="wrap">
-<div class="sec-h"><h2>{E(S.UI['reel_more'])}</h2></div>
-<ul class="reels">{strip}</ul>
-<p style="margin-top:16px">{ext('facebook', 'home_reels_more', LK['facebook_videos'], S.UI['watch_more'], cls='more')}</p>
+<p class="sec-more"><a class="more" href="{pu('services/')}">{E(S.UI['see_services'])}</a></p>
 </div></section>
 {photo_rail()}
 <section class="sec paper" id="gate1"><div class="wrap way">
 <div><h2>{E(S.GATE['h2'])}</h2><p>{E(S.GATE['lead'])}</p>{way_sign()}
 <div class="btns">{ext('directions', 'home_gate', LK['directions'], S.UI['directions'], cls='go-line', ic='nav')}<a class="more" href="{pu('find-us/')}">{E(S.UI['see_find'])}</a></div></div>
-<div>{poster}<h3 style="margin-top:18px">{E(S.UI['hours_h'])}</h3>{hours_table()}</div>
+<div>{poster}<div class="hrs-card"><h3>{E(S.UI['hours_h'])}</h3>{hours_table()}</div></div>
 </div></section>
 <section class="sec white" id="faq"><div class="wrap"><h2>{E(S.UI['faq_h'])}</h2>{faq_html(H['faq'])}</div></section>
 {ask('home', 'home')}'''
@@ -438,26 +476,15 @@ def home():
 def packages_page(path):
     P = S.PACKAGES
     trail = [('', S.UI['home']), (path, S.UI['packages'])]
-    posters = ''
-    figs = []
-    for p in F['packages']['items']:
-        k = p['poster']
-        if has(k):
-            m = MEDIA[k]
-            figs.append(f'<figure><img src="{murl(k)}" width="{m["w"]}" height="{m["h"]}" alt="{E(S.PKG["poster_alt"].replace("{L}", p["letter"]))}" loading="lazy"><figcaption>{E(S.PKG["name"].replace("{L}", p["letter"]))}</figcaption></figure>')
-    if figs:
-        posters = f'<section class="sec white"><div class="wrap"><div class="posters">{"".join(figs)}</div></div></section>'
-    comb = ''
-    if has('package-all'):
-        m = MEDIA['package-all']
-        comb = f'<figure class="poster" style="max-width:720px;margin-top:22px"><img src="{murl("package-all")}" width="{m["w"]}" height="{m["h"]}" alt="{E(S.PKG["combined_alt"])}" loading="lazy"><figcaption>{E(P["compare_h"])}</figcaption></figure>'
     chk = ''.join(f'<li>{E(S.CHECK_50[g])}</li>' for g in F['check_50_groups'])
+    n50 = S.OTHER_SERVICES['items'][3][0]
+    comb = poster_fig('package-all', S.PKG['combined_alt'], P['compare_h'], cls='poster poster-wide')
+    p50 = poster_fig('poster-50', S.LOOK['poster_alt'].replace('{name}', n50))
     body = f'''{page_head(path, trail, P['h1'], P['lead'], 'packages')}
 <section class="sec paper"><div class="wrap">{pkg_cards('packages')}{inc_block()}{comb}</div></section>
-{posters}
-<section class="sec steel"><div class="wrap two"><div><h2>{E(S.OTHER_SERVICES['items'][3][0])}</h2><ul class="ticks">{chk}</ul></div>
+<section class="sec white"><div class="wrap two"><div><h2>{E(n50)}</h2><ul class="ticks2 cols">{chk}</ul>{p50}</div>
 <div class="side"><h3>{E(S.UI['hours_h'])}</h3>{hours_table()}<div class="btns">{wa('packages_side', 'packages')}</div></div></div></section>
-<section class="sec white"><div class="wrap"><h2>{E(S.UI['faq_h'])}</h2>{faq_html(P['faq'])}</div></section>
+<section class="sec paper"><div class="wrap"><h2>{E(S.UI['faq_h'])}</h2>{faq_html(P['faq'])}</div></section>
 {ask('packages', 'packages')}'''
     return body, [org_ld(), crumb_ld(trail), faq_ld(P['faq'])]
 
@@ -465,43 +492,39 @@ def packages_page(path):
 def services_page(path):
     P = S.SERVICES_PAGE
     trail = [('', S.UI['home']), (path, S.UI['services'])]
-    svcs = ''.join(f'<li><a href="{pu(SVC_PATH[k])}"><b>{E(S.SERVICES[k]["name"])}</b><span>{E(S.SERVICES[k]["card"])}</span>{icon("go")}</a></li>' for k in strings_en.SERVICE_ORDER)
-    oth = ''.join(f'<li><b>{E(a)}</b><span>{E(b)}</span></li>' for a, b in S.OTHER_SERVICES['items'])
+    svcs = ''.join(f'<li><a href="{pu(SVC_PATH[k])}"><b>{E(S.SERVICES[k]["name"])}</b><span>{E(S.SERVICES[k]["card"])}</span><i class="go-i">{icon("go")}</i></a></li>' for k in strings_en.SERVICE_ORDER)
+    oth = ''.join(f'<li><b>{E(a)}</b> <span>{E(b)}</span></li>' for a, b in S.OTHER_SERVICES['items'])
     body = f'''{page_head(path, trail, P['h1'], P['lead'], 'services')}
 <section class="sec paper"><div class="wrap"><ul class="svl">{svcs}</ul>
-<h2 style="margin-top:44px">{E(S.OTHER_SERVICES['h2'])}</h2><ul class="oth">{oth}</ul>
-<p style="margin-top:22px"><a class="more" href="{pu('packages/')}">{E(S.UI['see_packages'])}</a></p></div></section>
+<h2 class="mt">{E(S.OTHER_SERVICES['h2'])}</h2><ul class="oth">{oth}</ul>
+<p class="sec-more"><a class="more" href="{pu('packages/')}">{E(S.UI['see_packages'])}</a></p></div></section>
 {process_block()}
 {ask('services', 'services')}'''
     return body, [org_ld(), crumb_ld(trail)]
+
+
+SVC_POSTER = {'ev': 'ev-graphic', 'ppi': 'poster-ppi', 'towing': 'poster-towing', 'german': 'poster-luxury'}
 
 
 def service_page(k, path):
     V = S.SERVICES[k]
     trail = [('', S.UI['home']), ('services/', S.UI['services']), (path, V['name'])]
     key = k
-    if k == 'ppi':
-        lst = ''.join(f'<li>{E(S.CHECK_50[g])}</li>' for g in F['check_50_groups'])
-    elif k == 'german':
+    if k == 'german':
         lst = ''.join(f'<li>{E(m)}</li>' for m in F['makes'])
     else:
         lst = ''.join(f'<li>{E(x)}</li>' for x in V['list'])
-    extra = ''
-    if k == 'german':
-        extra = f'<p style="margin-top:12px"><b>{E(S.UI["all_makes"])}</b></p>'
-    if k == 'ev':
-        extra = f'<p style="margin-top:14px">{E(V["tags"])}</p><div class="tags">' + ''.join(f'<span>{E(t)}</span>' for t in F['ev_hashtags']) + '</div>'
-        if has('ev-graphic'):
-            m = MEDIA['ev-graphic']
-            extra += f'<figure class="poster" style="margin-top:16px"><img src="{murl("ev-graphic")}" width="{m["w"]}" height="{m["h"]}" alt="JT Autoworks EV specialist graphic" loading="lazy"></figure>'
+    extra = f'<p class="note"><b>{E(S.UI["all_makes"])}</b></p>' if k == 'german' else ''
+    poster = poster_fig(SVC_POSTER[k], S.LOOK['poster_alt'].replace('{name}', V['name'])) if k in SVC_POSTER else ''
     side_reel = ''
     if k in SVC_REEL:
-        side_reel = f'<div class="svc-reel" style="margin-top:22px">{reel(SVC_REEL[k], "service_" + slug(path) + "_reel", key)}</div>'
+        r = reel(SVC_REEL[k], 'service_' + slug(path) + '_reel', key)
+        side_reel = f'<div class="svc-reel">{r}</div>' if r else ''
     links = f'<div class="btns"><a class="more" href="{pu("packages/")}">{E(S.UI["see_packages"])}</a><a class="more" href="{pu("find-us/")}">{E(S.UI["see_find"])}</a></div>'
     body = f'''{page_head(path, trail, V['h1'], V['lead'], key)}
 <section class="sec paper"><div class="wrap two">
-<div class="prose">{''.join(f'<p>{E(T(p))}</p>' for p in V['body'])}{links}</div>
-<aside class="side"><h3>{E(V['list_h'])}</h3><ul class="ticks">{lst}</ul>{extra}{side_reel}</aside>
+<div class="prose">{''.join(f'<p>{E(T(p))}</p>' for p in V['body'])}{links}{side_reel}</div>
+<aside class="side"><h3>{E(V['list_h'])}</h3><ul class="ticks2">{lst}</ul>{extra}{poster}</aside>
 </div></section>
 {process_block()}
 {ask('service_' + slug(path), key)}'''
@@ -512,22 +535,19 @@ def find_page(path):
     P = S.FIND
     trail = [('', S.UI['home']), (path, S.UI['find_us'])]
     lm = ''.join(f'<li>{E(S.GATE["landmarks"][x])}</li>' for x in F['landmarks'])
-    poster = ''
-    if has('location-poster'):
-        m = MEDIA['location-poster']
-        poster = f'<figure class="poster"><img src="{murl("location-poster")}" width="{m["w"]}" height="{m["h"]}" alt="{E(S.GATE["poster_alt"])}" loading="lazy"><figcaption>{E(S.GATE["poster_labels"])}</figcaption></figure>'
+    poster = poster_fig('location-poster', S.GATE['poster_alt'], S.GATE['poster_labels'])
     a = F['address']
     body = f'''{page_head(path, trail, P['h1'], P['lead'], 'find_us')}
 <section class="sec paper"><div class="wrap way">
 <div><h2>{E(S.UI['address_h'])}</h2><p>{E(a['display'])}</p>{way_sign()}
 <div class="btns">{ext('directions', 'findus', LK['directions'], S.UI['directions'], cls='go-line', ic='nav')}{ext('map', 'findus', LK['maps'], S.UI['maps'], cls='go-line', ic='pin')}</div>
-<p style="margin-top:18px">{E(S.GATE['lost'])}</p></div>
+<p class="note">{E(S.GATE['lost'])}</p></div>
 <div>{poster}</div>
 </div>
 <div class="wrap"><div class="map"><iframe src="{E(LK['map_embed_keyless'])}" title="{E(S.UI['map_title'])}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div>
 </section>
 <section class="sec white"><div class="wrap two">
-<div><h2>{E(S.GATE['landmarks_h'])}</h2><ul class="lm">{lm}</ul></div>
+<div><h2>{E(S.GATE['landmarks_h'])}</h2><ul class="ticks2">{lm}</ul></div>
 <div class="side"><h3>{E(S.UI['hours_h'])}</h3>{hours_table()}
 <div class="btns">{wa('findus', 'find_us')}{call('findus')}</div>
 <div class="btns">{ext('reviews', 'findus', LK['reviews'], S.UI['reviews'], cls='more')}{ext('review_write', 'findus', LK['write_review'], S.UI['write_review'], cls='more')}</div></div>
@@ -541,7 +561,7 @@ def about_page(path):
     trail = [('', S.UI['home']), (path, S.UI['about'])]
     vals = ''.join(f'<li><b>{E(a)}</b><span>{E(b)}</span></li>' for a, b in P['values'])
     body = f'''{page_head(path, trail, P['h1'], P['lead'], 'about')}
-<section class="sec paper"><div class="wrap prose">{''.join(f'<p>{E(T(p))}</p>' for p in P['body'])}<p>{E(P['lounge'])}</p></div></section>
+{lap_block('shopfront-corridor-tighter-4x5', P['h1'], [T(p) for p in P['body']] + [P['lounge']], cls='paper')}
 <section class="sec white"><div class="wrap"><h2>{E(P['values_h'])}</h2><ul class="vals">{vals}</ul></div></section>
 {photo_rail()}
 {proof_block('about')}

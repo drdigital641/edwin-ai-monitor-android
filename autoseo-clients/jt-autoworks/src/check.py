@@ -20,6 +20,10 @@ if not F['flags']['show_owner_name']:
 bad = 0
 
 
+_M = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'media', 'manifest.json'), encoding='utf8'))
+LIVE_MEDIA = {'media/' + v['file'] for v in _M.values() if v.get('sha256')}   # published by Bridge drop_publish, checked by sha256 in the upload step
+
+
 def fail(f, m):
     global bad
     bad += 1
@@ -70,8 +74,8 @@ for f in files:
             json.loads(j)
         except Exception as e:
             fail(f, f'bad JSON-LD {e}')
-    for src in re.findall(r'(?:src|href|poster)="/preview/jt-autoworks/((?:media|assets)/[^"?]+)', t):
-        if not os.path.exists(os.path.join(DIST, src)):
+    for src in re.findall(r'(?:src|srcset|href|poster)="/preview/jt-autoworks/((?:media|assets)/[^"?]+)', t):
+        if not os.path.exists(os.path.join(DIST, src)) and src not in LIVE_MEDIA:
             fail(f, 'missing file ' + src)
     if '--need-media' in sys.argv:
         for need in ('media/og.jpg', 'media/logo'):

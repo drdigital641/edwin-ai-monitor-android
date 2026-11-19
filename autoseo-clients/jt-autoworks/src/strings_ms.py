@@ -99,7 +99,7 @@ PKG = {
     'no_flush': 'Tiada set pembersih enjin atau pembersih cermin depan',
     'brake_fluid': 'Minyak brek hanya dibasuh apabila pad brek diganti.',
     'lifetime': 'Pelanggan pakej mendapat pemeriksaan percuma seumur hidup.',
-    'visc': 'Gred minyak yang ditawarkan: {v}.',
+    'visc': 'Gred minyak pada poster: {v}.',
     'poster_alt': 'Poster harga Pakej {L} JT Autoworks',
     'combined_alt': 'Pakej servis A, B dan C JT Autoworks bersebelahan',
 }
@@ -112,16 +112,16 @@ PROCESS = {
         ('Periksa dan diagnosis', 'Kami cari punca masalah sebelum bercakap tentang alat ganti.'),
         ('Sebut harga percuma', 'Anda mendapat sebut harga tanpa obligasi dan tanpa bayaran.'),
         ('Baiki yang perlu sahaja', 'Alat ganti hanya diganti apabila memang perlu.'),
-        ('Ambil kereta anda', 'Kami terangkan apa yang telah dilakukan.'),
+        ('Ambil kereta anda', 'Kereta anda di tangan yang baik.'),
     ],
 }
 
 PROOF = {
     'h2': 'Mengapa pemandu kembali lagi',
     'items': [
-        ('Upah $50, tiada alat ganti', 'Masalah turbo yang disebut hampir $2,000 di tempat lain dibaiki di sini dengan upah $50, tanpa menukar sebarang alat ganti.'),
+        ('Upah $50', 'Masalah turbo yang disebut hampir $2,000 di tempat lain dibaiki di sini dengan upah $50, tanpa sebarang caj alat ganti.'),
         ('Masalah yang terlepas pandang di bengkel lain', 'BMW 5 Series yang asyik tersentak-sentak telah diperiksa di tempat lain. Kami mengesan puncanya yang sebenar.'),
-        ('Sejak 2018. Seorang mekanik.', 'Satu hubungan yang dibina atas kepercayaan. Ramai pelanggan mengikuti {tech} sejak 2018.'),
+        ('Sejak 2018. Seorang mekanik.', 'Satu hubungan yang dibina atas kepercayaan.'),
     ],
     'note': 'JT Autoworks dibuka di Premier @ Kaki Bukit pada Mei 2026.',
     'reviews_line': 'Baca apa yang pelanggan tulis di Google.',
@@ -129,10 +129,11 @@ PROOF = {
 
 PHOTOS = {
     'h2': 'Di dalam bengkel',
-    'google-01': 'Papan tanda JT Autoworks di unit #02-52',
-    'google-02': 'Unit #02-52 di Premier @ Kaki Bukit',
-    'google-05': 'Sebuah Mercedes-Benz di atas lif di JT Autoworks',
-    'google-06': 'Sebuah Volkswagen Golf Cabriolet di atas lif di JT Autoworks',
+    'shopfront-corridor-tighter-4x5': 'Papan tanda JT Autoworks di unit #02-52',
+    'mercedes-c-class-on-lift-4x5': 'Sebuah Mercedes-Benz di atas lif di JT Autoworks',
+    'volkswagen-golf-cabriolet-on-lift-4x5': 'Sebuah Volkswagen Golf Cabriolet di atas lif di JT Autoworks',
+    'shopfront-corridor-4x5': 'Bahagian depan JT Autoworks di Premier @ Kaki Bukit',
+    'hero': 'Bahagian depan JT Autoworks di unit #02-52, Premier @ Kaki Bukit',
 }
 
 GATE = {
@@ -159,8 +160,8 @@ SERVICES = {
         'h1': 'Diagnosis kereta di Kaki Bukit, punca masalah dahulu',
         'lead': 'Lampu amaran, kereta tersentak-sentak, bunyi yang tidak diketahui puncanya? Kami diagnosis sebelum menukar apa-apa.',
         'body': [
-            'Banyak pembaikan menelan kos lebih tinggi kerana alat ganti ditukar sehingga masalah hilang. Kami buat sebaliknya: kami cari punca masalah, tunjukkan apa yang kami jumpa, dan barulah sebut harga.',
-            'Satu kerja turbo yang disebut hampir $2,000 di tempat lain dibaiki di sini dengan upah $50 tanpa alat ganti. Masalah BMW 5 Series tersentak-sentak yang terlepas pandang di bengkel lain telah dikesan dan dibaiki.',
+            'Banyak pembaikan menelan kos lebih tinggi kerana alat ganti ditukar sehingga masalah hilang. Kami buat sebaliknya: diagnosis yang betul dahulu, tiada main teka dan tiada penggantian alat ganti yang tidak perlu.',
+            'Satu kerja turbo yang disebut hampir $2,000 di tempat lain dibaiki di sini dengan upah $50 tanpa caj alat ganti. Masalah BMW 5 Series tersentak-sentak yang terlepas pandang di bengkel lain telah dikesan dan dibaiki.',
         ],
         'list_h': 'Apa yang kami periksa',
         'list': ['Lampu amaran pada papan pemuka', 'Tersentak-sentak, teragak-agak dan enjin kasar', 'Masalah enjin dan kebocoran', 'Masalah elektrik', 'Lampu amaran EV'],
@@ -172,7 +173,7 @@ SERVICES = {
         'h1': 'Baiki aircond kereta di Kaki Bukit',
         'lead': 'Menambah gas tanpa mencari kebocoran hanya menangguhkan masalah. Kami cari kebocoran dahulu.',
         'body': [
-            'Jika aircond anda panas semula beberapa minggu selepas tambah gas, gas bocor di suatu tempat. Kami kesan kebocoran sebelum menukar apa-apa, kemudian beri sebut harga tanpa obligasi dan tanpa bayaran.',
+            'Tambah gas sahaja tidak menghentikan kebocoran. Kami cari sebab aircond bocor sebelum menukar apa-apa, kemudian beri sebut harga tanpa obligasi dan tanpa bayaran.',
             'Basuh aircond dan tambah gas juga termasuk dalam setiap pakej servis.',
         ],
         'list_h': 'Kerja aircond',
@@ -186,7 +187,7 @@ SERVICES = {
         'lead': 'Kami uji bateri dahulu. Anda hanya menukarnya jika memang perlu.',
         'body': [
             'Kereta sukar dihidupkan tidak semestinya bateri sudah mati. Kami uji bateri dan sistem pengecasan dahulu supaya anda tidak membayar untuk bateri yang tidak diperlukan.',
-            'Banyak kereta Eropah yang lebih baharu memerlukan bateri baharu didaftarkan dan dikodkan pada kereta. Kami lakukannya sebagai sebahagian daripada kerja ini.',
+            'Banyak kereta moden memerlukan bateri baharu didaftarkan dan dikodkan pada kereta. Kami lakukannya sebagai sebahagian daripada kerja ini.',
         ],
         'list_h': 'Kerja bateri',
         'list': ['Ujian bateri dan pengecasan', 'Ganti hanya apabila perlu', 'Pendaftaran dan pengekodan bateri'],
@@ -214,7 +215,8 @@ SERVICES = {
         'body': [
             'Kereta terpakai nampak bersih tetapi mungkin menyembunyikan masalah yang mahal. Bawa kepada kami sebelum anda membuat keputusan, kami akan memeriksanya dan memberitahu anda dengan jelas apa yang kami temui.',
         ],
-        'list_h': 'Pemeriksaan 50 titik kami meliputi',
+        'list_h': 'Apa yang kami periksa',
+        'list': ['Enjin dan kotak gear', 'Brek dan suspensi', 'Aircond dan elektronik', 'Kebocoran, kehausan dan tanda kemalangan'],
     },
     'towing': {
         'name': 'Tunda 24/7', 'card': 'Tunda diaturkan sepanjang masa, untuk kereta dan EV.',
@@ -287,7 +289,7 @@ PACKAGES = {
         ('Berapa banyak servis dalam satu pakej?', 'Setiap pakej merangkumi 3 servis.'),
         ('Apakah perbezaan antara pakej?', 'Pakej A menggunakan 6L Liqui Moly Top Tec ($628). Pakej B menggunakan 6L Castrol Edge ($528). Kedua-duanya termasuk pembersih enjin Liqui Moly, bahan tambah minyak dan pembersih pic penyuntik, serta pembersih cermin depan Liqui Moly 50ml. Pakej C menggunakan 4L Castrol Edge ($428) tanpa set pembersih enjin atau pembersih cermin depan.'),
         ('Bagaimana jika kereta saya perlukan lebih minyak?', 'Minyak tambahan ialah $29 setiap liter untuk Pakej A dan $20 setiap liter untuk Pakej B dan C.'),
-        ('Gred minyak apa yang boleh saya pilih?', '5W-40, 5W-30 atau 0W20.'),
+        ('Gred minyak apa yang disenaraikan dalam pakej?', 'Poster pakej menyenaraikan 5W-40, 5W-30 dan 0W20.'),
         ('Adakah minyak brek termasuk?', 'Minyak brek hanya dibasuh apabila pad brek diganti.'),
         ('Adakah apa-apa selepas 3 servis?', 'Pelanggan pakej mendapat pemeriksaan percuma seumur hidup.'),
     ],
@@ -304,7 +306,7 @@ FIND = {
     'title': 'Cara mencari JT Autoworks di Premier @ Kaki Bukit, Gate 1',
     'meta': 'JT Autoworks terletak di 8 Kaki Bukit Ave 4, #02-52, Premier @ Kaki Bukit, Singapore 415875. Masuk melalui Gate 1. Peta, arah dan waktu operasi.',
     'h1': 'Cara mencari kami di Premier @ Kaki Bukit',
-    'lead': 'Gate 1, kemudian unit #02-52 di tingkat 2.',
+    'lead': 'Masuk melalui Gate 1, kemudian cari unit #02-52.',
 }
 
 ABOUT = {
@@ -314,14 +316,14 @@ ABOUT = {
     'lead': 'Bengkel baharu di Kaki Bukit, dengan tabiat lama: diagnosis dahulu.',
     'body': [
         'JT Autoworks dibuka di unit #02-52, Premier @ Kaki Bukit, pada Mei 2026. Bengkelnya baharu. Pendekatannya tidak.',
-        'Sejak 2018. Seorang mekanik. Satu hubungan yang dibina atas kepercayaan. Ramai pelanggan mengikuti {tech} sejak 2018 dan kini datang ke Kaki Bukit untuk pendekatan berterus terang yang sama: cari punca masalah, terangkan, dan ganti hanya apabila perlu.',
+        'Sejak 2018. Seorang mekanik. Satu hubungan yang dibina atas kepercayaan. Pendekatannya tetap sama: cari punca sebenar, baiki masalah sebenar, dan ganti alat ganti hanya apabila perlu.',
         'Kami fokus pada kereta Eropah dan EV serta mengalu-alukan semua jenama. Sebut harga diberi tanpa obligasi dan tanpa bayaran, dan tiga pakej servis berharga sepenuhnya.',
     ],
     'values_h': 'Apa yang boleh anda harapkan',
-    'values': [('Mesra dan sabar', 'Tanyalah apa sahaja. Kami terangkan apa yang kami jumpa dalam bahasa mudah.'),
+    'values': [('Cepat membalas', 'WhatsApp soalan anda dan kami cepat membalas.'),
                ('Diagnosis jujur', 'Punca masalah dahulu. Tiada main teka dan tiada alat ganti yang tidak perlu.'),
                ('Harga jelas', 'Harga pakej sepenuhnya, dan sebut harga tanpa bayaran.'),
-               ('Kerja boleh dipercayai', 'Kami beritahu dengan jelas apa yang dilakukan dan sebabnya.')],
+               ('Kerja boleh dipercayai', 'Kerja mahir, dibuat dengan betul pada kali pertama.')],
     'lounge': 'Semasa menunggu, ada ruang rehat dengan minuman percuma.',
 }
 
@@ -359,4 +361,20 @@ SCHEMA = {
 }
 LLMS = {
     'intro': 'JT Autoworks (JT AUTOWORKS PTE. LTD.) ialah bengkel kereta diagnosis dahulu di Premier @ Kaki Bukit, Singapore, yang fokus pada kereta Eropah dan EV, semua jenama dialu-alukan.',
+}
+
+# ---------- redesign blocks (20 Nov) ----------
+LOOK = {
+    'poster_alt': 'Poster JT Autoworks: {name}',
+    'kicker': 'Premier @ Kaki Bukit, Gate 1, #02-52',
+    'reels_h': 'Sorotan video',
+    'reels_lead': 'Klip pendek dari bengkel. Ketik video untuk menontonnya.',
+    'pkg_kicker': 'Harga jelas',
+    'quotes_h': 'Kata pelanggan',
+    'quotes': ['Pengetahuan beliau tentang kereta dan kemahiran membaiki memang terbaik.',
+               'Saya langsung tidak risau membiarkan mereka mengurus servis dan pembaikan kereta saya!',
+               'Saya percaya integriti dan kejujuran ialah sifat paling penting dalam perniagaan membaiki kereta.'],
+    'quote_src': 'Daripada ulasan Google',
+    'about_more': 'Tentang bengkel',
+    'gallery_lead': 'Foto sebenar dari unit #02-52.',
 }

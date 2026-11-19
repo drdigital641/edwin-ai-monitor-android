@@ -44,3 +44,17 @@ Every AutoSEO site must ship in English, Simplified Chinese and Malay from the f
 
 - CCH Automotive (`autoseo-clients/cch-automotive/`), first site on the shared module, 18 Nov 2026.
 - Older AutoSEO sites (AutoSEO.my, Carzy World, Hybrid World, EMATS, AP Car, K Tech) have the same pattern inside their own build.py; move them onto this module the next time each is rebuilt. Benz World has no generator in the repo yet (see the migration note in /mnt/project-files/autoseo-my/site-template/).
+
+## Look v2 blocks (Edwin, 20 Nov 2026: "too boxy and square")
+
+New AutoSEO sites start from `blocks/`, not from plain bordered boxes. Reference build: `autoseo-clients/jt-autoworks/` (preview https://autoseo.my/preview/jt-autoworks/).
+
+| Block | Files | What it is |
+|---|---|---|
+| Photo hero | `blocks.py` `photo_hero()`, `blocks.css` "photo hero" + "header" | Full-bleed real shopfront or bay photo behind a transparent header (white glass after 24px of scroll), white H1 and the WhatsApp CTA on the photo, bottom fading into the next band. Phone uses a 4:5 or taller crop, desktop a wide photo. Real photos only. |
+| Video facade | `video_tile()`, `reel_strip()`, `blocks.css` "video facade" + "swipe strip", `blocks.js` | 9:16 tile that shows the real poster frame and a clear play icon from first paint. Self-hosted MP4: `<video poster>`. Otherwise an `<img>` facade that swaps to the official Facebook embed on tap (no Facebook script before the tap). No poster frame means no tile: never an empty or black box. Strip: ~64vw on phones, 4 across on desktop. |
+| Soft cards | `soft_card()`, `soft_cards()`, `lap_block()`, `blocks.css` "package strip" + "overlapping" + "FAQ" | Rounded (18 to 24px) cards with soft shadows and no hard borders: package strip with the real poster (contain), big price and a WhatsApp button on every card; overlapping photo-and-text block; soft FAQ rows. |
+| Colour bands | `blocks.css` "colour bands" | Full-width bands that alternate navy and light, each rising over the last with rounded top corners. |
+| Floating bar | `blocks.css` "floating mobile bar", `blocks.js` | Pill WhatsApp + Call bar on phones, hidden while the hero buttons are on screen. |
+
+How to use: copy the `:root` tokens from `blocks.css` and recolour them from the client's logo (keep radii, shadows, spacing), paste the block CSS into the site stylesheet, include `blocks.js` (or the same code in site.js), and render with the `blocks.py` functions, passing CTA HTML from the site's own `wa()`/`call()` helpers so `data-cta`/`data-ref` stay per site. Mix layouts on the home page: one swipe strip (videos), one overlap block, one package strip; do not repeat one square tile everywhere. Designed posters always `object-fit: contain`; real photos `cover`. Check at 390px, then 360px and desktop.

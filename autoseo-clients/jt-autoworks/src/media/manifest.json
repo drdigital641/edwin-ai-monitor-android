@@ -1,1 +1,155 @@
-{"og": {"file": "og.jpg", "w": 1200, "h": 630, "note": "interim text card until the Dev Desk media drop (real signboard/logo) arrives"}}
+{
+ "og": {
+  "file": "og.jpg",
+  "w": 1200,
+  "h": 630,
+  "note": "interim text card (built here); real-photo og to follow"
+ },
+ "logo": {
+  "file": "logo.webp",
+  "w": 990,
+  "h": 331,
+  "sha256": "01c2780b52fb1e1414ebfdea3b89d6ac87e373b41b75daf481551bcbdf9643f4",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "hero-wide": {
+  "file": "shopfront-corridor.webp",
+  "w": 945,
+  "h": 533,
+  "sha256": "7b5ff4ecf65b7f6f22033f7fa85d51eeaa0b9c717b9f47a0047a2b199a445ae7",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "hero-tall": {
+  "file": "shopfront-corridor-tighter-4x5.webp",
+  "w": 945,
+  "h": 1181,
+  "sha256": "3340073ee27c18868854e85f1e27ce35a4defe2527a682d9b693e5699bb6f9ed",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "shopfront-corridor-4x5": {
+  "file": "shopfront-corridor-4x5.webp",
+  "w": 426,
+  "h": 533,
+  "sha256": "4a87de3963ba14fabb1842682538d5cddd23e2ac1646e8c2bc92325a0793c554",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "shopfront-corridor-tighter-4x5": {
+  "file": "shopfront-corridor-tighter-4x5.webp",
+  "w": 945,
+  "h": 1181,
+  "sha256": "3340073ee27c18868854e85f1e27ce35a4defe2527a682d9b693e5699bb6f9ed",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "mercedes-c-class-on-lift-4x5": {
+  "file": "mercedes-c-class-on-lift-4x5.webp",
+  "w": 1200,
+  "h": 1500,
+  "sha256": "afbb8bb9abbf115744d3df7532d834f0ad7b0d73e7403573550b168ee3865587",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "volkswagen-golf-cabriolet-on-lift-4x5": {
+  "file": "volkswagen-golf-cabriolet-on-lift-4x5.webp",
+  "w": 1200,
+  "h": 1500,
+  "sha256": "248820c6da4d7adbb04a0f5ee6647b5ed257beaf6d1e74a02e77d8afbcea8b88",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "package-a": {
+  "file": "package-a-liquimoly-628.webp",
+  "w": 1254,
+  "h": 1254,
+  "sha256": "a7a9db7f3827cec0a553555d9b8961f0e4c5de15efebc182b6fbddb6ea2d9ee5",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "package-b": {
+  "file": "package-b-castrol-edge-6l-528.webp",
+  "w": 1254,
+  "h": 1254,
+  "sha256": "b280ac5f63813ac7e399af197797b46fb3ef252a31223bb80f97fb5354237d71",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "package-c": {
+  "file": "package-c-castrol-edge-4l-428.webp",
+  "w": 1254,
+  "h": 1254,
+  "sha256": "d1e1a3882d22b00936cef62285ae795b21d957c1faf9c2e48158b29c56ec6222",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "package-all": {
+  "file": "packages-a-b-c-combined.webp",
+  "w": 1254,
+  "h": 1254,
+  "sha256": "8ad083957996590f83c2e05947d5f02edb90dd6666360a5313ee9a7a33fe2d53",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "location-poster": {
+  "file": "our-location-map-hours.webp",
+  "w": 1448,
+  "h": 1086,
+  "sha256": "3c7167de2e5439e27f073065f78819903f618b4599261151975fb62e40482010",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "ev-graphic": {
+  "file": "ev-specialist-poster.webp",
+  "w": 1600,
+  "h": 954,
+  "sha256": "2846052d5cb6a3d88a2fc0d57491f5ac66f0d9afa84c3afeb0946a3f257b82f0",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "poster-50": {
+  "file": "poster-50-points-check.webp",
+  "w": 1254,
+  "h": 1254,
+  "sha256": "e7172baae3f7487fb3553112e5dab40428881b3f1305edb72c3ac1d7c88b7ef4",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "poster-luxury": {
+  "file": "poster-luxury-cars-expert-care.webp",
+  "w": 1254,
+  "h": 1254,
+  "sha256": "98d2915c22264d687a2ade84869298388b5942ac5637a66aa474ff568cc1b6d4",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "poster-ppi": {
+  "file": "poster-buying-2nd-hand-car.webp",
+  "w": 526,
+  "h": 526,
+  "sha256": "4740452e1261bdeb0cea5c992d8f891d621de15107f1e5bce543558752a92d8a",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "poster-towing": {
+  "file": "poster-towing-24-7.webp",
+  "w": 1254,
+  "h": 1254,
+  "sha256": "3ca39324b1b64e190596f42184566fa09cfba71141856f75b4ac18001540c864",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "reel-1524129446111337": {
+  "file": "reel-1524129446111337.webp",
+  "w": 720,
+  "h": 1280,
+  "sha256": "90915100a599375e9c9f6791dabbcb142dec98f4c48927472c807cde56839537",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "reel-1472913717848166": {
+  "file": "reel-1472913717848166.webp",
+  "w": 720,
+  "h": 1280,
+  "sha256": "af902ae4c77d10d7a61addaf7960ae983dcabdc45fa3e1de7566d8144500f974",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "reel-2182430029186112": {
+  "file": "reel-2182430029186112.webp",
+  "w": 720,
+  "h": 1280,
+  "sha256": "f8370ea583ccef3806596f61189668003b8a27203d8e9f8033764e820302569a",
+  "live": "published by Bridge drop 20 Nov 2026"
+ },
+ "reel-1424081312861520": {
+  "file": "reel-1424081312861520.webp",
+  "w": 720,
+  "h": 1280,
+  "sha256": "d6745e32f83b534889a58c412320af0171c7c5e92f71ecf6f18d90a01d803345",
+  "live": "published by Bridge drop 20 Nov 2026"
+ }
+}

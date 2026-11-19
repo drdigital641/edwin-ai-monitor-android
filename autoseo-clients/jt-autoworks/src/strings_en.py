@@ -99,7 +99,7 @@ PKG = {
     'no_flush': 'No flush bundle or windshield cleaner',
     'brake_fluid': 'Brake fluid flushing is done only when brake pads are changed.',
     'lifetime': 'Package customers get lifetime free checking.',
-    'visc': 'Oil grades offered: {v}.',
+    'visc': 'Oil grades on the posters: {v}.',
     'poster_alt': 'JT Autoworks Package {L} price poster',
     'combined_alt': 'JT Autoworks service packages A, B and C side by side',
 }
@@ -112,16 +112,16 @@ PROCESS = {
         ('Inspect and diagnose', 'We find the root cause before we talk about parts.'),
         ('Quote, no charge', 'You get a quote with no obligation and no charge.'),
         ('Repair only what is needed', 'Parts are replaced only when they really need replacing.'),
-        ('Collect your car', 'We walk you through what was done.'),
+        ('Collect your car', 'Your car is in good hands.'),
     ],
 }
 
 PROOF = {
     'h2': 'Why drivers come back',
     'items': [
-        ('$50 labour, no parts', 'A turbo problem quoted near $2,000 elsewhere was fixed here for $50 labour, with no parts replaced.'),
+        ('$50 labour', 'A turbo problem quoted near $2,000 elsewhere was fixed here for $50 labour, with no components charged.'),
         ('The fault another workshop missed', 'A BMW 5 Series that kept jerking had been seen elsewhere. We traced the real cause.'),
-        ('Since 2018. One mechanic.', 'One relationship built on trust. Many customers have followed {tech} since 2018.'),
+        ('Since 2018. One mechanic.', 'One relationship built on trust.'),
     ],
     'note': 'JT Autoworks opened at Premier @ Kaki Bukit in May 2026.',
     'reviews_line': 'Read what customers wrote on Google.',
@@ -129,10 +129,11 @@ PROOF = {
 
 PHOTOS = {
     'h2': 'Inside the workshop',
-    'google-01': 'The JT Autoworks signboard at unit #02-52',
-    'google-02': 'Unit #02-52 at Premier @ Kaki Bukit',
-    'google-05': 'A Mercedes-Benz on the lift at JT Autoworks',
-    'google-06': 'A Volkswagen Golf Cabriolet on the lift at JT Autoworks',
+    'shopfront-corridor-tighter-4x5': 'The JT Autoworks signboard at unit #02-52',
+    'mercedes-c-class-on-lift-4x5': 'A Mercedes-Benz on the lift at JT Autoworks',
+    'volkswagen-golf-cabriolet-on-lift-4x5': 'A Volkswagen Golf Cabriolet on the lift at JT Autoworks',
+    'shopfront-corridor-4x5': 'The JT Autoworks shopfront at Premier @ Kaki Bukit',
+    'hero': 'The JT Autoworks shopfront at unit #02-52, Premier @ Kaki Bukit',
 }
 
 GATE = {
@@ -159,8 +160,8 @@ SERVICES = {
         'h1': 'Car diagnostics in Kaki Bukit, root cause first',
         'lead': 'Warning light, jerking, a noise you cannot place? We diagnose before we replace.',
         'body': [
-            'Many repairs cost more than they should because parts are changed until the problem goes away. We work the other way round: we find the root cause, show you what we found, and only then quote.',
-            'One turbo job quoted near $2,000 elsewhere was fixed here for $50 labour with no parts. A BMW 5 Series jerking fault that another workshop missed was traced and fixed.',
+            'Many repairs cost more than they should because parts are changed until the problem goes away. We work the other way round: proper diagnosis first, no guesswork and no unnecessary parts replacement.',
+            'One turbo job quoted near $2,000 elsewhere was fixed here for $50 labour with no components charged. A BMW 5 Series jerking fault that another workshop missed was traced and fixed.',
         ],
         'list_h': 'What we look at',
         'list': ['Warning lights on the dashboard', 'Jerking, hesitation and rough running', 'Engine faults and leaks', 'Electrical faults', 'EV warning lights'],
@@ -172,7 +173,7 @@ SERVICES = {
         'h1': 'Car aircon repair in Kaki Bukit',
         'lead': 'Topping up gas without finding the leak only buys time. We find the leak first.',
         'body': [
-            'If your aircon goes warm again a few weeks after a top-up, the gas is escaping somewhere. We trace the leak before anything is replaced, then quote with no obligation and no charge.',
+            'A gas top-up alone does not stop a leak. We find why the aircon is leaking before anything is replaced, then quote with no obligation and no charge.',
             'Aircon flushing and gas top-up is also part of every service package.',
         ],
         'list_h': 'Aircon work',
@@ -186,7 +187,7 @@ SERVICES = {
         'lead': 'We test the battery first. You replace it only if it needs replacing.',
         'body': [
             'A slow start is not always a dead battery. We test the battery and charging first so you do not pay for a battery you did not need.',
-            'Many newer European cars need the new battery registered and coded to the car. We do that as part of the job.',
+            'Many modern cars need the new battery registered and coded to the car. We do that as part of the job.',
         ],
         'list_h': 'Battery work',
         'list': ['Battery and charging test', 'Replacement only when needed', 'Battery registration and coding'],
@@ -214,7 +215,8 @@ SERVICES = {
         'body': [
             'A used car can look clean and still hide an expensive problem. Bring it to us before you commit and we will inspect it and tell you plainly what we find.',
         ],
-        'list_h': 'Our 50-point check covers',
+        'list_h': 'What we check',
+        'list': ['Engine and gearbox', 'Brakes and suspension', 'Aircon and electronics', 'Leaks, wear and accident signs'],
     },
     'towing': {
         'name': '24/7 towing', 'card': 'Towing arranged around the clock, for cars and EVs.',
@@ -287,7 +289,7 @@ PACKAGES = {
         ('How many services does a package cover?', 'Each package covers 3 services.'),
         ('What is the difference between the packages?', 'Package A uses 6L of Liqui Moly Top Tec ($628). Package B uses 6L of Castrol Edge ($528). Both include a Liqui Moly engine flush, oil additive and injection cleaner, and a 50ml Liqui Moly windshield cleaner. Package C uses 4L of Castrol Edge ($428) without the flush bundle or windshield cleaner.'),
         ('What if my car needs more oil?', 'Extra oil is $29 per litre on Package A and $20 per litre on Packages B and C.'),
-        ('Which oil grades can I choose?', '5W-40, 5W-30 or 0W20.'),
+        ('Which oil grades do the packages list?', 'The package posters list 5W-40, 5W-30 and 0W20.'),
         ('Is brake fluid included?', 'Brake fluid flushing is done only when brake pads are changed.'),
         ('Is there anything after the 3 services?', 'Package customers get lifetime free checking.'),
     ],
@@ -304,7 +306,7 @@ FIND = {
     'title': 'How to find JT Autoworks at Premier @ Kaki Bukit, Gate 1',
     'meta': 'JT Autoworks is at 8 Kaki Bukit Ave 4, #02-52, Premier @ Kaki Bukit, Singapore 415875. Enter through Gate 1. Map, directions and opening hours.',
     'h1': 'How to find us at Premier @ Kaki Bukit',
-    'lead': 'Gate 1, then unit #02-52 on level 2.',
+    'lead': 'Come in through Gate 1, then look for unit #02-52.',
 }
 
 ABOUT = {
@@ -314,14 +316,14 @@ ABOUT = {
     'lead': 'A new workshop in Kaki Bukit, built on an old habit: diagnose first.',
     'body': [
         'JT Autoworks opened at unit #02-52, Premier @ Kaki Bukit, in May 2026. The workshop is new. The approach is not.',
-        'Since 2018. One mechanic. One relationship built on trust. Many customers have followed {tech} since 2018 and now come to Kaki Bukit for the same straight approach: find the root cause, explain it, and replace only when necessary.',
+        'Since 2018. One mechanic. One relationship built on trust. The approach stays the same: find the real cause, fix the real problem, and replace parts only when necessary.',
         'We focus on European cars and EVs and welcome every make. Quotes come with no obligation and no charge, and the three service packages are priced in full.',
     ],
     'values_h': 'What you can expect',
-    'values': [('Friendly and patient', 'Ask anything. We explain what we found in plain words.'),
+    'values': [('Quick to reply', 'WhatsApp us your question and we reply quickly.'),
                ('Honest diagnosis', 'Root cause first. No guesswork and no unnecessary parts.'),
                ('Clear prices', 'Package prices in full, and quotes with no charge.'),
-               ('Reliable work', 'We tell you plainly what was done and why.')],
+               ('Reliable work', 'Expert workmanship, done right the first time.')],
     'lounge': 'While you wait, there is a lounge with complimentary drinks.',
 }
 
@@ -359,4 +361,20 @@ SCHEMA = {
 }
 LLMS = {
     'intro': 'JT Autoworks (JT AUTOWORKS PTE. LTD.) is a diagnose-first car workshop at Premier @ Kaki Bukit, Singapore, focused on European cars and EVs, all makes welcome.',
+}
+
+# ---------- redesign blocks (20 Nov) ----------
+LOOK = {
+    'poster_alt': 'JT Autoworks poster: {name}',
+    'kicker': 'Premier @ Kaki Bukit, Gate 1, #02-52',
+    'reels_h': 'Video highlights',
+    'reels_lead': 'Short clips from the workshop. Tap a video to play it.',
+    'pkg_kicker': 'Clear prices',
+    'quotes_h': 'In customers\' words',
+    'quotes': ['His knowledge of car and repair skills is top notch.',
+               'I never have any worries at all to let them handle my servicing and repairs!',
+               'I believe integrity and honesty is the most important trait in car repair business.'],
+    'quote_src': 'From a Google review',
+    'about_more': 'About the workshop',
+    'gallery_lead': 'Real photos from unit #02-52.',
 }

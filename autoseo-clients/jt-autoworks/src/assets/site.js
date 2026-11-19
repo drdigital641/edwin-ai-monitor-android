@@ -11,6 +11,14 @@ if(mb&&sh){var close=function(){sh.hidden=true;mb.setAttribute('aria-expanded','
   sh.addEventListener('click',function(e){if(e.target===sh||e.target.closest('.sheet-x')||e.target.closest('a'))close()});
   d.addEventListener('keydown',function(e){if(e.key==='Escape'&&!sh.hidden)close()})}
 
+/* header: transparent over the photo / navy head, white glass after 24px of scroll */
+var top=d.querySelector('.top');
+if(top){var sol=function(){top.classList.toggle('solid',(window.scrollY||0)>24)};sol();addEventListener('scroll',sol,{passive:true})}
+
+/* floating WhatsApp bar waits until the hero buttons scroll away (no double CTA on the first screen) */
+var hc=d.querySelector('.hero-cta'),mbar=d.querySelector('.mbar');
+if(hc&&mbar&&'IntersectionObserver' in window){new IntersectionObserver(function(es){mbar.classList.toggle('off',es[0].isIntersecting)},{threshold:0}).observe(hc)}
+
 /* reveal once (shown at once with reduced motion or no IntersectionObserver) */
 var rvs=d.querySelectorAll('.rv');
 if(reduce||!('IntersectionObserver' in window)){[].forEach.call(rvs,function(e){e.classList.add('in')})}
@@ -19,7 +27,7 @@ else{var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.is
 
 /* Facebook reel facades: no Facebook script or frame until a tap */
 d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.vf-b');if(!b)return;
-  var f=d.createElement('iframe');f.src=b.getAttribute('data-src');f.title=b.getAttribute('aria-label');
+  var f=d.createElement('iframe');f.setAttribute('loading','eager');f.src=b.getAttribute('data-src');f.title=b.getAttribute('aria-label');
   f.setAttribute('allow','autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share');f.setAttribute('allowfullscreen','');
   b.parentNode.replaceChild(f,b)});
 

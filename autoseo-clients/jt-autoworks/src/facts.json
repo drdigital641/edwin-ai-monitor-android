@@ -85,6 +85,7 @@
     "turbo_labour": "$50",
     "since_line": "Since 2018. One mechanic. One relationship built on trust."
   },
-  "photos_real": ["google-01", "google-02", "google-05", "google-06"],
+  "photos_real": ["shopfront-corridor-tighter-4x5", "mercedes-c-class-on-lift-4x5", "volkswagen-golf-cabriolet-on-lift-4x5", "shopfront-corridor-4x5"],
+  "ppi_groups": ["Engine & Gearbox", "Brakes & Suspension", "Aircon & Electronics", "Leaks, Wear & Accident Signs"],
   "preview": {"base_path": "/preview/jt-autoworks/", "url": "https://autoseo.my/preview/jt-autoworks/"}
 }
