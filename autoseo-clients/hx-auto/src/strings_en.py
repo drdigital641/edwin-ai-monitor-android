@@ -56,7 +56,7 @@ UI = {
 
 CAPTIONS = {
     'cover': 'HX Auto Service shopfront in Taman Bukit Indah with the Pusat Servis Kereta signboard',
-    'og': 'HX Auto Service shopfront and signboard, Taman Bukit Indah, Iskandar Puteri',
+    'og': 'A white Nissan GT-R on the lift at HX Auto Service, with the HX shield on the wall',
     'shopfront-signboard': 'The HX Auto Service shopfront at 47 Jalan Indah 16/11, with the Pusat Servis Kereta signboard',
     'shopfront-forecourt': 'The forecourt in Taman Bukit Indah, with cars in the yard and on the lift',
     'honda-hrv-front': 'A Honda HR-V at the workshop forecourt',
@@ -349,3 +349,26 @@ SVC_UI = {
     'step': 'Step',
     'index_more': 'See what we check',
 }
+
+# Homepage revamp v1 (Edwin, 20 Nov 2026): short hero, trust strip, photo service tiles.
+HOME.update({
+    'h1': 'Car workshop in Bukit Indah, Johor',
+    'hero_line': 'Computer diagnostics, servicing and repairs. Continental and Japanese cars.',
+    'svc_h2': 'What we fix',
+    'svc_p': 'Swipe to pick a service.',
+    'mosaic_p': 'Real cars in our bay. Tap a photo to see it larger.',
+    'trust': ['Taman Bukit Indah, Iskandar Puteri', 'Mon to Sat 9:30am to 7:30pm', 'Continental and Japanese makes', 'Near the Second Link'],
+    'trust_label': 'Quick facts',
+    'tiles': {
+        'diagnostics': ('Diagnostics', 'Scan and fault codes'),
+        'service-oil': ('Service and oil', 'Oil change and servicing'),
+        'engine-transmission': ('Engine and gearbox', 'Engine and transmission repair'),
+        'aircond': ('Aircond', 'Cooling, flushing and repair'),
+        'brakes-suspension-tyres': ('Brakes and suspension', 'Brakes, tyres and alignment'),
+        'battery-electrical': ('Battery and electrical', 'Battery and wiring faults'),
+        'undercarriage': ('Undercarriage', 'Underside check on the lift'),
+        'towing': ('Towing', 'Recovery to our workshop'),
+    },
+    'all_tile': ('All services', 'See every service'),
+    'shop_cap': 'The HX Auto Service shopfront at 47 Jalan Indah 16/11, Taman Bukit Indah',
+})

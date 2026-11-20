@@ -118,6 +118,7 @@ def icon(name):
         'scan': '<rect x="3.5" y="5" width="17" height="11" rx="1.5"/><path d="M8 20h8M12 16v4M6.5 11.5h2l1.3-2.6 2 5 1.4-2.4h4.3"/>',
         'wrench': '<path d="M14.6 4.4a4 4 0 0 0-4.9 5.3L4 15.4 6.6 18l5.7-5.7a4 4 0 0 0 5.3-4.9l-2.4 2.4-2.3-.6-.6-2.3z"/>',
         'key': '<circle cx="8" cy="15" r="3.4"/><path d="M10.4 12.6L19 4M16 7l2.4 2.4M14 9l1.8 1.8"/>',
+        'car': '<path d="M4 15.5V12l2-4.5h12l2 4.5v3.5zM4 12h16"/><circle cx="7.5" cy="16.5" r="1.6"/><circle cx="16.5" cy="16.5" r="1.6"/>',
         'clock': '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
         'prev': '<path d="M15 5l-7 7 7 7"/>', 'next': '<path d="M9 5l7 7-7 7"/>', 'x': '<path d="M6 6l12 12M18 6L6 18"/>',
         'menu': '<path d="M4 7h16M4 12h16M4 17h11"/>', 'go': '<path d="M5 12h13M13 6l6 6-6 6"/>',
@@ -183,7 +184,7 @@ def business():
         '@type': ['AutoRepair', 'AutomotiveBusiness', 'LocalBusiness'], '@id': BIZ_ID,
         'name': F['name'], 'legalName': F['legal_name'], 'url': pabs(), 'description': S.HOME['desc'],
         'identifier': {'@type': 'PropertyValue', 'propertyID': 'Company registration number (Malaysia)', 'value': F['company_no']},
-        'logo': absu('images/logo-transparent.png'), 'image': [absu('images/cover.webp'), absu('images/og.webp')],
+        'logo': absu('images/logo-transparent.png'), 'image': [absu('images/cover.webp'), absu('images/og.jpg')],
         'telephone': F['whatsapp_e164'],
         'address': {'@type': 'PostalAddress', 'streetAddress': LOC['street'], 'addressLocality': LOC['city'], 'addressRegion': LOC['region'],
                     'postalCode': LOC['postcode'], 'addressCountry': LOC['country']},
@@ -223,8 +224,8 @@ def shield(cls, lazy=False):
 def head(title, desc, path, graph, hero=False):
     css_v = ver(os.path.join(OUT, 'assets', 'site.css'))
     rob = '<meta name="robots" content="noindex, nofollow">' if NOINDEX else ''
-    pre = (f'<link rel="preload" as="image" href="{u("images/hx/hero-1600.webp")}" imagesrcset="{hero_srcset()}" imagesizes="{HERO_SIZES}" '
-           f'type="image/webp" fetchpriority="high">') if hero is True else ''
+    pre = (f'<link rel="preload" as="image" href="{u("images/hx/hero-gtr-portrait.webp")}" media="(max-width: 899px)" type="image/webp" fetchpriority="high">\n'
+           f'<link rel="preload" as="image" href="{u("images/hx/hero-gtr-wide.webp")}" media="(min-width: 900px)" type="image/webp" fetchpriority="high">') if hero is True else ''
     if isinstance(hero, str) and hero in ENH:
         pre = (f'<link rel="preload" as="image" href="{u("images/hx/" + hero + "-l.webp")}" imagesrcset="{u("images/hx/" + hero + "-l.webp")} 1000w, '
                f'{img_full(hero)} 1600w" imagesizes="(max-width: 899px) 140vh, 100vw" type="image/webp" fetchpriority="high">')
@@ -245,16 +246,16 @@ def head(title, desc, path, graph, hero=False):
 <meta property="og:title" content="{E(title)}">
 <meta property="og:description" content="{E(desc)}">
 <meta property="og:url" content="{pabs(path)}">
-<meta property="og:image" content="{absu('images/og.webp')}">
-<meta property="og:image:secure_url" content="{absu('images/og.webp')}">
-<meta property="og:image:type" content="image/webp">
+<meta property="og:image" content="{absu('images/og.jpg')}">
+<meta property="og:image:secure_url" content="{absu('images/og.jpg')}">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{E(S.CAPTIONS['og'])}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{E(title)}">
 <meta name="twitter:description" content="{E(desc)}">
-<meta name="twitter:image" content="{absu('images/og.webp')}">
+<meta name="twitter:image" content="{absu('images/og.jpg')}">
 <link rel="icon" type="image/png" sizes="512x512" href="{u('images/favicon-512.png')}">
 <link rel="apple-touch-icon" href="{u('images/favicon-512.png')}">
 <link rel="preload" as="font" type="font/woff2" href="{u('assets/fonts/oswald-var.woff2')}" crossorigin>
@@ -398,10 +399,10 @@ def diagram():
 SVC_ICON = {'diagnostics': 'scan', 'service-oil': 'oil', 'engine-transmission': 'engine', 'aircond': 'snow',
             'brakes-suspension-tyres': 'disc', 'battery-electrical': 'battery', 'undercarriage': 'lift', 'towing': 'tow'}
 # Home bento mosaic: 5 large 4:3 frames (the drop's suggested big tiles) and 8 4:5 tiles, all full colour.
-MOSAIC = [('shopfront-signboard', 'L'), ('bmw-5-series-engine', 's'), ('kia-cerato-on-lift', 's'),
-          ('workshop-bays-overview', 'L'), ('mini-cooper-s-on-lift', 's'), ('land-rover-discovery-sport', 's'),
+MOSAIC = [('honda-jazz-engine', 'L'), ('bmw-5-series-engine', 's'), ('kia-cerato-on-lift', 's'),
+          ('shopfront-forecourt', 'L'), ('mini-cooper-s-on-lift', 's'), ('land-rover-discovery-sport', 's'),
           ('mercedes-c-class-bay', 'L'), ('bmw-5-series-on-lift', 's'), ('mazda-3-engine', 's'),
-          ('toyota-alphard-white', 'L'), ('toyota-vellfire-bay', 's'), ('shopfront-forecourt', 's'),
+          ('toyota-alphard-white', 'L'), ('toyota-vellfire-bay', 's'), ('amg-matte-card', 's'),
           ('aircond-flushing-banner', 'L')]
 # Reviews: Google and Facebook snippets from facts.json, shown exactly as captured. No stars, no rating, never translated.
 REVIEWS = R['snippets']
@@ -418,7 +419,13 @@ def services_grid():
 def mosaic():
     tiles = []
     for i, (s, k) in enumerate(MOSAIC):
-        cap = S.CAPTIONS[s]
+        cap = S.CAPTIONS.get(s) or S.CAPTIONS['mercedes-amg-matte']
+        if s == 'amg-matte-card':
+            src = u('images/hx/amg-matte-card.webp')
+            tiles.append(f'<figure class="mt mt-s rv" style="--d:{i % 3}"><button type="button" class="ph-b" data-full="{src}" data-w="960" data-h="1200" '
+                         f'data-cap="{E(cap)}" aria-label="{E(S.UI["photo_open"])}: {E(cap)}"><img src="{src}" width="960" height="1200" alt="{E(cap)}" loading="lazy" decoding="async"></button>'
+                         f'<figcaption><span>{E(cap)}</span></figcaption></figure>')
+            continue
         if k == 'L':
             pic = (f'<img src="{u("images/hx/" + s + "-l.webp")}" srcset="{u("images/hx/" + s + "-l.webp")} 1000w, {img_full(s)} 1600w" '
                    f'sizes="(min-width: 900px) 50vw, 100vw" width="1000" height="750" alt="{E(cap)}" loading="lazy" decoding="async">')
@@ -475,6 +482,7 @@ def page_head(h1, lead, trail):
 def find_block():
     """Find us: the one place on the home page with the opening hours, plus a lazy Google Maps embed (address search, no coordinates)."""
     return (f'<section class="sec lt"><div class="wrap find"><div class="find-x"><h2>{E(S.HOME["find_h2"])}</h2><p>{E(S.HOME["find_p"])}</p>'
+            f'<figure class="shop"><img src="{u("images/hx/shopfront-signboard-l.webp")}" width="1000" height="750" alt="{E(S.HOME["shop_cap"])}" loading="lazy" decoding="async"></figure>'
             f'<address>{E(LOC["one_line"])}</address><p class="vlinks">{waze("home", "lk on-lt")}{gmap("home", "lk on-lt")}</p>'
             f'<div class="hbox"><h3>{icon("clock")}{E(S.HOME["hours_h"])}</h3>{hours_table()}</div></div>'
             f'<div class="map find-m"><iframe src="{E(LOC["maps_embed"])}" title="{E(S.UI["map_title"])}" loading="lazy" '
@@ -482,19 +490,56 @@ def find_block():
 
 
 # ---------- pages ----------
+HOME_TILES = {'diagnostics': 'bmw-lift-card', 'service-oil': 'vios-red-card', 'engine-transmission': 'amg-matte-card',
+              'aircond': 'aircond-flushing-banner', 'brakes-suspension-tyres': 'mini-card', 'battery-electrical': 'hrv-card',
+              'undercarriage': 'qashqai-card', 'towing': 'alphard-card'}
+TRUST_IC = ['pin', 'clock', 'car', 'nav']
+
+
+def tile_src(stem):
+    return u(f'images/hx/{stem}-t.webp') if stem in ENH else u(f'images/hx/{stem}.webp')
+
+
+def trust_strip():
+    li = ''.join(f'<li>{icon(TRUST_IC[i])}<span>{E(x)}</span></li>' for i, x in enumerate(S.HOME['trust']))
+    return f'<section class="trust" aria-label="{E(S.HOME["trust_label"])}"><ul class="wrap trust-in">{li}</ul></section>'
+
+
+def service_tiles():
+    T = S.HOME['tiles']
+    tiles = []
+    for s in S.SERVICES:
+        name, line = T[s['id']]
+        tiles.append(f'<li class="tl"><a href="{pu("services/" + s["slug"] + "/")}"><img src="{tile_src(HOME_TILES[s["id"]])}" width="960" height="1200" '
+                     f'alt="" loading="lazy" decoding="async"><span class="tl-x"><span class="tl-i">{icon(SVC_ICON[s["id"]])}</span>'
+                     f'<strong>{E(name)}</strong><span>{E(line)}</span></span></a></li>')
+    an, al = S.HOME['all_tile']
+    tiles.append(f'<li class="tl tl-all"><a href="{pu("services/")}"><span class="tl-x"><span class="tl-i">{icon("go")}</span>'
+                 f'<strong>{E(an)}</strong><span>{E(al)}</span></span></a></li>')
+    return (f'<section class="sec dk svs"><div class="wrap"><div class="sec-h rv"><h2>{E(S.HOME["svc_h2"])}</h2><p class="sw-hint">{E(S.HOME["svc_p"])}</p></div></div>'
+            f'<div class="wr tls-w"><ul class="wr-t tls" tabindex="0" aria-label="{E(S.HOME["svc_h2"])}">{"".join(tiles)}</ul>'
+            f'<div class="wrap wr-c"><button type="button" class="arr" data-dir="-1" aria-label="{E(S.UI["prev"])}">{icon("prev")}</button>'
+            f'<button type="button" class="arr" data-dir="1" aria-label="{E(S.UI["next"])}">{icon("next")}</button></div></div></section>')
+
+
+def bay_banner():
+    return (f'<figure class="bay-b"><img src="{u("images/hx/bays-overview-wide.webp")}" width="1440" height="810" '
+            f'alt="{E(S.CAPTIONS["workshop-bays-overview"])}" loading="lazy" decoding="async"></figure>')
+
+
 def home():
     H = S.HOME
-    h1 = E(H['h1']).replace('Taman Bukit Indah', '<em>Taman Bukit Indah</em>', 1)
-    hero = f'''<section class="hero">
-<img class="hero-img" src="{u('images/hx/hero-1600.webp')}" srcset="{hero_srcset()}" sizes="{HERO_SIZES}" width="1600" height="900" alt="{E(S.CAPTIONS['shopfront-signboard'])}" fetchpriority="high" decoding="async">
+    logo = (f'<img class="hero-shield" src="{u("images/logo-transparent.webp")}" width="488" height="412" alt="{E(F["short"])}" decoding="async">')
+    hero = f'''<section class="hero hero2">
+<picture class="hero-pic"><source media="(min-width: 900px)" srcset="{u('images/hx/hero-gtr-wide.webp')}" width="1600" height="900"><img class="hero-img" src="{u('images/hx/hero-gtr-portrait.webp')}" width="960" height="1200" alt="{E(S.CAPTIONS['og'])}" fetchpriority="high" decoding="async"></picture>
 <div class="wrap hero-in">
-<p class="hero-k">{E(F['signboard_ms'])}</p>
-<h1>{h1}</h1>
+{logo}
+<h1>{E(H['h1'])}</h1>
 <p class="hero-l">{E(H['hero_line'])}</p>
-<div class="hero-cta">{wa('home_hero', S.UI['wa_btn'])}{call('home_hero', S.UI['call_btn'])}</div>
+<div class="hero-cta">{wa('home_hero', S.UI['wa_btn'], 'btn-wa btn-red')}{call('home_hero', S.UI['call_btn'])}</div>
 </div>
 </section>'''
-    body = (hero + services_grid() + mosaic() + reviews_block() + steps_strip() + wa_band()
+    body = (hero + trust_strip() + service_tiles() + bay_banner() + mosaic() + reviews_block() + steps_strip() + wa_band()
             + faq_block(S.FAQ_HOME, S.UI['faq_h2'], 'sec dk') + find_block())
     graph = [business(), {'@type': 'WebSite', 'name': F['short'], 'url': pabs(), 'inLanguage': L['hreflang']},
              {'@type': 'WebPage', 'name': H['title'], 'url': pabs(), 'inLanguage': L['hreflang'], 'about': {'@id': BIZ_ID}},
@@ -661,6 +706,7 @@ def build():
         shutil.copy(os.path.join(HERE, 'assets', 'fonts', f), os.path.join(OUT, 'assets', 'fonts', f))
     # Web sizes of the enhanced photo set (made from the drop originals in images/hd/ on the server; see ENH).
     shutil.copytree(os.path.join(HERE, 'images', 'hx'), os.path.join(OUT, 'images', 'hx'))
+    shutil.copy(os.path.join(HERE, 'images', 'og.jpg'), os.path.join(OUT, 'images', 'og.jpg'))
     shutil.copy(os.path.join(HERE, 'p1-cta.js'), os.path.join(OUT, 'p1-cta.js'))
     names = [n for n in dir(strings_en) if n.isupper()]
     missing = [f'{c}: {n}' for c, mod in STRINGS.items() for n in names if not hasattr(mod, n)]

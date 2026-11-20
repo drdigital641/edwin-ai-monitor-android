@@ -56,7 +56,7 @@ UI = {
 
 CAPTIONS = {
     'cover': 'Depan kedai HX Auto Service di Taman Bukit Indah dengan papan tanda Pusat Servis Kereta',
-    'og': 'Depan kedai dan papan tanda HX Auto Service, Taman Bukit Indah, Iskandar Puteri',
+    'og': 'Nissan GT-R putih di atas lif di HX Auto Service, dengan logo HX di dinding',
     'shopfront-signboard': 'Depan kedai HX Auto Service di 47 Jalan Indah 16/11, dengan papan tanda Pusat Servis Kereta',
     'shopfront-forecourt': 'Halaman bengkel di Taman Bukit Indah, dengan kereta di halaman dan di atas lif',
     'honda-hrv-front': 'Sebuah Honda HR-V di halaman bengkel',
@@ -349,3 +349,26 @@ SVC_UI = {
     'step': 'Langkah',
     'index_more': 'Lihat apa yang kami periksa',
 }
+
+# Halaman utama v1 (Edwin, 20 Nov 2026).
+HOME.update({
+    'h1': 'Bengkel kereta di Bukit Indah, Johor',
+    'hero_line': 'Diagnostik komputer, servis dan baiki. Kereta Continental dan Jepun.',
+    'svc_h2': 'Apa yang kami baiki',
+    'svc_p': 'Leret untuk pilih servis.',
+    'mosaic_p': 'Kereta sebenar di bengkel kami. Ketik foto untuk lihat lebih besar.',
+    'trust': ['Taman Bukit Indah, Iskandar Puteri', 'Isnin hingga Sabtu 9:30pg hingga 7:30mlm', 'Jenama Continental dan Jepun', 'Dekat Second Link'],
+    'trust_label': 'Fakta ringkas',
+    'tiles': {
+        'diagnostics': ('Diagnostik', 'Scan dan kod kerosakan'),
+        'service-oil': ('Servis dan minyak', 'Tukar minyak dan servis'),
+        'engine-transmission': ('Enjin dan gearbox', 'Baiki enjin dan transmisi'),
+        'aircond': ('Aircond', 'Sejuk, flushing dan baiki'),
+        'brakes-suspension-tyres': ('Brek dan suspensi', 'Brek, tayar dan alignment'),
+        'battery-electrical': ('Bateri dan elektrik', 'Masalah bateri dan wayar'),
+        'undercarriage': ('Bawah kereta', 'Periksa bawah kereta di lif'),
+        'towing': ('Tunda', 'Tunda ke bengkel kami'),
+    },
+    'all_tile': ('Semua servis', 'Lihat semua servis'),
+    'shop_cap': 'Kedai HX Auto Service di 47 Jalan Indah 16/11, Taman Bukit Indah',
+})

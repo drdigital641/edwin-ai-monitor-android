@@ -56,7 +56,7 @@ UI = {
 
 CAPTIONS = {
     'cover': 'HX Auto Service 位于 Taman Bukit Indah 的店面，招牌写着 Pusat Servis Kereta',
-    'og': 'HX Auto Service 店面和招牌，Taman Bukit Indah, Iskandar Puteri',
+    'og': 'HX Auto Service 车间升降台上的白色 Nissan GT-R，墙上有 HX 标志',
     'shopfront-signboard': 'HX Auto Service 位于 47 Jalan Indah 16/11 的店面，招牌写着 Pusat Servis Kereta',
     'shopfront-forecourt': 'Taman Bukit Indah 的前院，院子里和升降机上都有车',
     'honda-hrv-front': '停在修车厂前院的 Honda HR-V',
@@ -349,3 +349,26 @@ SVC_UI = {
     'step': '步骤',
     'index_more': '看看我们检查什么',
 }
+
+# 首页改版 v1（Edwin，2026年11月20日）。
+HOME.update({
+    'h1': '柔佛 Bukit Indah 修车厂',
+    'hero_line': '电脑诊断、保养和维修。欧洲车和日本车都修。',
+    'svc_h2': '我们修什么',
+    'svc_p': '左右滑动选择服务。',
+    'mosaic_p': '我们车间的真实车辆。点选照片看大图。',
+    'trust': ['Taman Bukit Indah, Iskandar Puteri', '周一至周六 9:30am 至 7:30pm', '欧洲车和日本车', '靠近第二通道'],
+    'trust_label': '快速了解',
+    'tiles': {
+        'diagnostics': ('电脑诊断', '扫描读取故障码'),
+        'service-oil': ('保养换油', '换机油和保养'),
+        'engine-transmission': ('引擎和变速箱', '引擎和变速箱维修'),
+        'aircond': ('冷气', '冷气检查、清洗和维修'),
+        'brakes-suspension-tyres': ('刹车和悬挂', '刹车、轮胎和四轮定位'),
+        'battery-electrical': ('电池和电路', '电池和电路问题'),
+        'undercarriage': ('底盘检查', '升降台上检查底盘'),
+        'towing': ('拖车', '拖到我们的车间'),
+    },
+    'all_tile': ('全部服务', '查看所有服务'),
+    'shop_cap': 'HX Auto Service 店面，47 Jalan Indah 16/11, Taman Bukit Indah',
+})
