@@ -56,7 +56,7 @@ UI = {
 
 CAPTIONS = {
     'cover': 'HX Auto Service shopfront in Taman Bukit Indah with the Pusat Servis Kereta signboard',
-    'og': 'A white Nissan GT-R on the lift at HX Auto Service, with the HX shield on the wall',
+    'og': 'A black Mercedes-Benz C-Class head-on in the bay at HX Auto Service',
     'shopfront-signboard': 'The HX Auto Service shopfront at 47 Jalan Indah 16/11, with the Pusat Servis Kereta signboard',
     'shopfront-forecourt': 'The forecourt in Taman Bukit Indah, with cars in the yard and on the lift',
     'honda-hrv-front': 'A Honda HR-V at the workshop forecourt',

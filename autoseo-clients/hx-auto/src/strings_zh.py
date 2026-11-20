@@ -56,7 +56,7 @@ UI = {
 
 CAPTIONS = {
     'cover': 'HX Auto Service 位于 Taman Bukit Indah 的店面，招牌写着 Pusat Servis Kereta',
-    'og': 'HX Auto Service 车间升降台上的白色 Nissan GT-R，墙上有 HX 标志',
+    'og': 'HX Auto Service 车间里正面的黑色 Mercedes-Benz C-Class',
     'shopfront-signboard': 'HX Auto Service 位于 47 Jalan Indah 16/11 的店面，招牌写着 Pusat Servis Kereta',
     'shopfront-forecourt': 'Taman Bukit Indah 的前院，院子里和升降机上都有车',
     'honda-hrv-front': '停在修车厂前院的 Honda HR-V',

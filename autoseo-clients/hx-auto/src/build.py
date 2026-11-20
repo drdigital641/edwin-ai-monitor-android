@@ -184,7 +184,7 @@ def business():
         '@type': ['AutoRepair', 'AutomotiveBusiness', 'LocalBusiness'], '@id': BIZ_ID,
         'name': F['name'], 'legalName': F['legal_name'], 'url': pabs(), 'description': S.HOME['desc'],
         'identifier': {'@type': 'PropertyValue', 'propertyID': 'Company registration number (Malaysia)', 'value': F['company_no']},
-        'logo': absu('images/logo-transparent.png'), 'image': [absu('images/cover.webp'), absu('images/og.jpg')],
+        'logo': absu('images/logo-transparent.png'), 'image': [absu('images/cover.webp'), absu('images/og.jpg') + '?v=2'],
         'telephone': F['whatsapp_e164'],
         'address': {'@type': 'PostalAddress', 'streetAddress': LOC['street'], 'addressLocality': LOC['city'], 'addressRegion': LOC['region'],
                     'postalCode': LOC['postcode'], 'addressCountry': LOC['country']},
@@ -224,8 +224,8 @@ def shield(cls, lazy=False):
 def head(title, desc, path, graph, hero=False):
     css_v = ver(os.path.join(OUT, 'assets', 'site.css'))
     rob = '<meta name="robots" content="noindex, nofollow">' if NOINDEX else ''
-    pre = (f'<link rel="preload" as="image" href="{u("images/hx/hero-gtr-portrait.webp")}" media="(max-width: 899px)" type="image/webp" fetchpriority="high">\n'
-           f'<link rel="preload" as="image" href="{u("images/hx/hero-gtr-wide.webp")}" media="(min-width: 900px)" type="image/webp" fetchpriority="high">') if hero is True else ''
+    pre = (f'<link rel="preload" as="image" href="{u("images/hx/hero-merc-portrait.webp")}" imagesrcset="{u("images/hx/hero-merc-portrait.webp")} 1080w" imagesizes="100vw" media="(max-width: 899px)" type="image/webp" fetchpriority="high">\n'
+           f'<link rel="preload" as="image" href="{u("images/hx/hero-merc-wide.webp")}" imagesrcset="{u("images/hx/hero-merc-wide.webp")} 1920w" imagesizes="100vw" media="(min-width: 900px)" type="image/webp" fetchpriority="high">') if hero is True else ''
     if isinstance(hero, str) and hero in ENH:
         pre = (f'<link rel="preload" as="image" href="{u("images/hx/" + hero + "-l.webp")}" imagesrcset="{u("images/hx/" + hero + "-l.webp")} 1000w, '
                f'{img_full(hero)} 1600w" imagesizes="(max-width: 899px) 140vh, 100vw" type="image/webp" fetchpriority="high">')
@@ -246,8 +246,8 @@ def head(title, desc, path, graph, hero=False):
 <meta property="og:title" content="{E(title)}">
 <meta property="og:description" content="{E(desc)}">
 <meta property="og:url" content="{pabs(path)}">
-<meta property="og:image" content="{absu('images/og.jpg')}">
-<meta property="og:image:secure_url" content="{absu('images/og.jpg')}">
+<meta property="og:image" content="{absu('images/og.jpg') + '?v=2'}">
+<meta property="og:image:secure_url" content="{absu('images/og.jpg') + '?v=2'}">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -255,7 +255,7 @@ def head(title, desc, path, graph, hero=False):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{E(title)}">
 <meta name="twitter:description" content="{E(desc)}">
-<meta name="twitter:image" content="{absu('images/og.jpg')}">
+<meta name="twitter:image" content="{absu('images/og.jpg') + '?v=2'}">
 <link rel="icon" type="image/png" sizes="512x512" href="{u('images/favicon-512.png')}">
 <link rel="apple-touch-icon" href="{u('images/favicon-512.png')}">
 <link rel="preload" as="font" type="font/woff2" href="{u('assets/fonts/oswald-var.woff2')}" crossorigin>
@@ -531,7 +531,7 @@ def home():
     H = S.HOME
     logo = (f'<img class="hero-shield" src="{u("images/logo-transparent.webp")}" width="488" height="412" alt="{E(F["short"])}" decoding="async">')
     hero = f'''<section class="hero hero2">
-<picture class="hero-pic"><source media="(min-width: 900px)" srcset="{u('images/hx/hero-gtr-wide.webp')}" width="1600" height="900"><img class="hero-img" src="{u('images/hx/hero-gtr-portrait.webp')}" width="960" height="1200" alt="{E(S.CAPTIONS['og'])}" fetchpriority="high" decoding="async"></picture>
+<picture class="hero-pic"><source media="(min-width: 900px)" srcset="{u('images/hx/hero-merc-wide.webp')} 1920w" sizes="100vw" width="1920" height="1080"><img class="hero-img" src="{u('images/hx/hero-merc-portrait.webp')}" srcset="{u('images/hx/hero-merc-portrait.webp')} 1080w" sizes="100vw" width="1080" height="1350" alt="{E(S.CAPTIONS['og'])}" fetchpriority="high" decoding="async"></picture>
 <div class="wrap hero-in">
 {logo}
 <h1>{E(H['h1'])}</h1>

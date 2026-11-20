@@ -56,7 +56,7 @@ UI = {
 
 CAPTIONS = {
     'cover': 'Depan kedai HX Auto Service di Taman Bukit Indah dengan papan tanda Pusat Servis Kereta',
-    'og': 'Nissan GT-R putih di atas lif di HX Auto Service, dengan logo HX di dinding',
+    'og': 'Mercedes-Benz C-Class hitam di bengkel HX Auto Service',
     'shopfront-signboard': 'Depan kedai HX Auto Service di 47 Jalan Indah 16/11, dengan papan tanda Pusat Servis Kereta',
     'shopfront-forecourt': 'Halaman bengkel di Taman Bukit Indah, dengan kereta di halaman dan di atas lif',
     'honda-hrv-front': 'Sebuah Honda HR-V di halaman bengkel',
