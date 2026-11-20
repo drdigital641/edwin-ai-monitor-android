@@ -1,0 +1,11 @@
+deno test --no-check -A --import-map tests/importmap.json tests/serverAdmin.test.ts
+1. cron ALLOWLIST: only approved programs, safe characters, acme flags checked ... ok
+2. redaction: secrets never listed or logged; base sha uses redacted text ... ok
+3. cron: edit/add with private before-record, sha-only log, read-only lines, race, rollback, fail-closed ... ok
+4. guard: grants only, no delete, API keys refused, session works ... ok
+5. dns: own domains only, policy, expected_old_value, private records, no secrets in log ... ok
+ok | 5 passed | 0 failed
+
+Existing suites on the patched copy: htaccessSafe 8/8, cpanelChokepoint 3/3, liveEdit 3/3, sitesView 1/1, needsYou 12/12, dropFolder 6/6, runnerKey 9/9, bulkWrite 4/4, move3Sites 8/8, unlockGuard 5/5. All pass, 0 failed.
+
+What test 4 proves: Cron/add_line and Cron/edit_line without the grant -> refused; Cron/remove_line, ZoneEdit/remove_zone_record, Fileman/fileop unlink, Cron/set_email -> "not allowed"; real bridgeServerCron and bridgeServerDns entry points with X-Bridge-Key (full key) -> HTTP 403 "signed-in session only"; the same calls as a signed-in admin session -> 200.

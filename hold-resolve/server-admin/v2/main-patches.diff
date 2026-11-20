@@ -1,0 +1,59 @@
+--- base44/shared/cpanel.ts (append at end of file)
++
++// ---------- SERVER ADMIN: CRON + DNS (Edwin 20 Nov 2026) ----------
++// Two narrow admin surfaces, reachable ONLY through shared/serverAdmin.ts (signed-in Claude session, every call logged):
++//   cron: list, add a line, edit one line of THIS account's crontab (no delete, no other Cron function).
++//   DNS : read, add and edit A/AAAA/CNAME/TXT records in zones of THIS account's own domains (no delete, no NS/MX/SOA).
++// A changing call must run inside withAdminGrant(<exact key>) which only serverAdmin.ts opens, after its own validation
++// and after the before-record is written. Reads need no grant.
++const ADMIN_READ = new Set(['Cron/listcron', 'ZoneEdit/fetchzone_records']);
++const ADMIN_WRITE = new Set(['Cron/add_line', 'Cron/edit_line', 'ZoneEdit/add_zone_record', 'ZoneEdit/edit_zone_record']);
++const adminGrants = new Map<string, number>();
++export async function withAdminGrant<T>(key: string, fn: () => Promise<T>): Promise<T> {
++  if (!ADMIN_WRITE.has(key)) throw new ChokepointError('admin grant for ' + key + ' is not a changing call this bridge may make');
++  adminGrants.set(key, (adminGrants.get(key) || 0) + 1);
++  try { return await fn(); } finally {
++    const n = (adminGrants.get(key) || 1) - 1;
++    if (n) adminGrants.set(key, n); else adminGrants.delete(key);
++  }
++}
++export async function api2Admin(module: string, func: string, params: Record<string, string>) {
++  const key = module + '/' + func;
++  const write = ADMIN_WRITE.has(key);
++  if (!write && !ADMIN_READ.has(key)) throw new ChokepointError('cPanel call ' + key + ' is not allowed (cron and DNS: no delete, nothing else)');
++  if (write && !adminGrants.has(key)) throw new ChokepointError(key + ' outside the guarded cron/DNS path');
++  const body = new URLSearchParams({ cpanel_jsonapi_user: CPANEL.user, cpanel_jsonapi_apiversion: '2', cpanel_jsonapi_module: module, cpanel_jsonapi_func: func, ...params });
++  const response = await fetchWithRetry(CPANEL.host + '/json-api/cpanel', {
++    method: 'POST', redirect: 'manual', headers: { ...authHeader(), 'Content-Type': 'application/x-www-form-urlencoded' }, body,
++  }, write ? 1 : 3);
++  if (!response.ok) throw new Error('cPanel ' + key + ' failed: HTTP ' + response.status);
++  const result = (await readJson(response, key)).cpanelresult;
++  const rows: any[] = Array.isArray(result?.data) ? result.data : [];
++  const bad = rows.find((r) => r && (r.result === 0 || r.status === 0 || r.err || r.reason || (r.statusmsg && /fail|error|denied|invalid/i.test(String(r.statusmsg)) && r.status !== 1)));
++  if (!result || result.error || result.event?.result !== 1 || (write && bad)) {
++    throw new Error('cPanel ' + key + ' failed: ' + String(result?.error || bad?.err || bad?.reason || bad?.statusmsg || 'unverified response').slice(0, 400));
++  }
++  return rows;
++}
+
+--- base44/shared/bridgeOps.ts (append at end of file)
++
++// SERVER ADMIN records (cron + DNS, 20 Nov 2026): the exact before/after text of every cron/DNS change, kept OFF the log in the
++// private folder (mode 0700, outside public_html, inside the cPanel choke point's private zone). BridgeLog gets only the sha256.
++export const ADMIN_RECORD_ROOT = PRIVATE_ROOT + '/server-admin';
++export async function putAdminRecord(name: string, text: string) {
++  if (!/^(cron|dns)-\d{8}T\d{6}Z-[a-z]+-[0-9a-f]{12}\.txt$/.test(name)) throw new BridgeError('Bad server-admin record name', 400);
++  const abs = ADMIN_RECORD_ROOT + '/' + name;
++  const bytes = new TextEncoder().encode(text);
++  await ensureDirTree(splitAbs(abs).dir, '0700', PRIVATE_ROOT);
++  await putBytes(abs, bytes);
++  const want = await sha256(bytes);
++  if ((await contentSha(abs)) !== want) throw new BridgeError('The server-admin record could not be verified on the server', 502);
++  return { path: abs.replace(CPANEL.home, '~'), sha256: want, bytes: bytes.length };
++}
+
+--- base44/entities/BridgeLog.jsonc
+         "runner_image"
++        "runner_image",
++        "cron",
++        "dns"
