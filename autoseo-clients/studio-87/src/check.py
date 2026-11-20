@@ -72,6 +72,12 @@ for f in files:
     for k in ('og:title', 'og:description', 'og:image', 'og:url'):
         if f'property="{k}"' not in t:
             fail(f, 'missing ' + k)
+    want = (build.F['preview']['origin'] + build.F['preview']['base_path'] if not build.LIVE else CANON) + 'media/og.jpg'
+    for k in ('og:image', 'og:image:secure_url', 'twitter:image'):
+        if not re.search(r'(?:property|name)="' + k + '" content="' + re.escape(want) + '"', t):
+            fail(f, k + ' is not the resolving share URL ' + want)
+    if 'og:image:type" content="image/jpeg"' not in t or 'og:image:width" content="1200"' not in t or 'og:image:height" content="630"' not in t:
+        fail(f, 'og:image type/width/height')
     if not re.search(r'og:url" content="' + re.escape(CANON + p) + '"', t):
         fail(f, 'og:url not on the live domain')
     for bq in re.findall(r'<blockquote[^>]*>(.*?)</blockquote>', t, re.S):

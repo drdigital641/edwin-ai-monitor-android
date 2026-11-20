@@ -100,6 +100,11 @@ def absu(p=''):
     return SITE + p
 
 
+def share_url(p=''):
+    # Share images (og:image / twitter:image) must resolve NOW: preview host while on preview, live origin only after go-live (--live).
+    return (SITE if LIVE else F['preview']['origin'] + F['preview']['base_path']) + p
+
+
 def pu(p=''):
     return u(I18N.page_path(L, p))
 
@@ -203,12 +208,15 @@ def head(path, title, meta, ld, hero=None):
 <meta property="og:title" content="{E(title)}">
 <meta property="og:description" content="{E(meta)}">
 <meta property="og:url" content="{pabs(path)}">
-<meta property="og:image" content="{absu('media/og.jpg')}">
+<meta property="og:image" content="{share_url('media/og.jpg')}">
+<meta property="og:image:secure_url" content="{share_url('media/og.jpg')}">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{E(S.PHOTOS['og'])}">
 {I18N.og_locale_tags(L)}
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{share_url('media/og.jpg')}">
 {pre}
 <link rel="stylesheet" href="{u('assets/site.css')}?v={ver(css)}">
 {ldj}
