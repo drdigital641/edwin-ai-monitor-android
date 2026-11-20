@@ -270,7 +270,7 @@ p{text-wrap:pretty}
 .crumb li+li::before{content:"/";margin-right:8px;color:var(--gold)}
 .crumb a{color:var(--ink-on-dark);text-decoration:none}
 .crumb a[aria-current]{color:var(--white)}
-.page-head+.band{padding-top:calc(72px + 10px)}
+.page-head+.band{padding-top:calc(var(--slant) + 56px)}
 
 /* ---------- services hub ---------- */
 .jump{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px}
