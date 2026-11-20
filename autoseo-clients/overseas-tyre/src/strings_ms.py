@@ -5,11 +5,11 @@ SVC_ORDER = ['tyres', 'alignment', 'servicing', 'brakes', 'battery', 'diagnostic
 UI = {
     'skip': 'Terus ke kandungan', 'menu': 'Menu', 'close': 'Tutup menu', 'lang': 'Bahasa',
     'home': 'Utama', 'services': 'Servis', 'about': 'Tentang kami', 'contact': 'Hubungi', 'articles': 'Artikel', 'privacy': 'Privasi',
-    'wa_btn': 'WhatsApp kami', 'wa_hero': 'WhatsApp kami sekarang', 'call_btn': 'Telefon kami', 'call_short': 'Telefon',
+    'wa_btn': 'WhatsApp kami', 'wa_hero': 'WhatsApp kami', 'call_btn': 'Telefon kami', 'call_short': 'Telefon',
     'wa_label': 'WhatsApp', 'manager': 'Pengurus Bertugas', 'landline': 'Talian bengkel', 'email': 'E-mel', 'facebook': 'Facebook',
     'maps': 'Google Maps', 'waze': 'Waze', 'reviews_link': 'Baca ulasan Google kami', 'michelin_link': 'Pencari pengedar Michelin',
     'hours_h': 'Waktu operasi', 'closed': 'Tutup', 'wed_closed': 'Tutup setiap hari Rabu',
-    'open_days': 'Isnin, Selasa, Khamis hingga Ahad', 'wed': 'Rabu', 'hours_time': '9.30 pagi hingga 7.30 malam',
+    'open_days': 'Isnin–Selasa, Khamis–Ahad', 'wed': 'Rabu', 'hours_time': '9.30 pagi hingga 7.30 malam',
     'hours_line': 'Buka 9.30 pagi hingga 7.30 malam, tutup setiap hari Rabu',
     'address_h': 'Alamat bengkel', 'find_h': 'Cari bengkel kami', 'contact_h': 'Hubungi kami',
     'see_service': 'Lagi tentang servis ini', 'all_services': 'Semua servis', 'see_about': 'Tentang bengkel kami', 'see_contact': 'Alamat dan waktu operasi',

@@ -82,8 +82,9 @@ address{font-style:normal}
 .hero-in{position:relative;margin-top:-92px}
 .hero h1{max-width:15ch;text-shadow:0 2px 18px rgba(10,20,40,.45)}
 .hero-line{font-size:1.08rem;color:rgba(255,255,255,.9);max-width:34ch}
-.hero-cta{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:6px}
-.hero-cta a{padding-left:16px;padding-right:16px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px;max-width:100%}
+.hero-cta a{padding-left:16px;padding-right:16px;flex:1 1 auto;min-width:0}
+.hero-cta a:last-child{flex:0 0 auto}
 .hero-rate{display:inline-flex;align-items:center;gap:.45em;margin-top:16px;min-height:44px;color:#fff;font:700 .98rem var(--disp);text-decoration:underline;text-decoration-color:rgba(232,180,35,.8);text-underline-offset:6px}
 .hero-rate .ic{color:var(--y)}
 .hero-in>*{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
@@ -96,7 +97,7 @@ address{font-style:normal}
  .hero-ph{position:absolute;inset:0;aspect-ratio:auto}
  .hero-ph::after{background:linear-gradient(180deg,rgba(22,37,68,.35) 0,rgba(22,37,68,0) 18%,rgba(22,37,68,0) 50%,rgba(22,37,68,.8) 78%,var(--deep) 100%)}
  .hero-in{margin:0 auto;width:100%}
- .hero-cta{display:flex}
+ .hero-cta{display:flex}.hero-cta a{flex:0 0 auto}
 }
 
 /* ---------- sections and rising bands ---------- */
@@ -209,10 +210,11 @@ address{font-style:normal}
 .card-s .mt,.mt{margin-top:1.2em}
 .hrs{width:100%;border-collapse:collapse;font-size:1.02rem}
 .hrs th,.hrs td{text-align:left;padding:12px 0;border-bottom:1px solid var(--line);vertical-align:top}
-.hrs td{white-space:nowrap;padding-left:12px;text-align:right;font-weight:700;font-family:var(--disp)}
+.hrs td{white-space:normal;padding-left:12px;text-align:right;font-weight:700;font-family:var(--disp)}
 .hrs .off th,.hrs .off td{color:#7a5a00}
 .hrs .off{background:linear-gradient(90deg,rgba(232,180,35,.22),rgba(232,180,35,0))}
 .hrs .off th{padding-left:8px}
+.hrs .nw{white-space:nowrap}
 .note{font-size:.95rem;color:var(--ink2);margin:12px 0 0}
 .ticks{list-style:none;margin:0;padding:0}
 .ticks li{position:relative;padding:8px 0 8px 32px;border-bottom:1px solid var(--line)}

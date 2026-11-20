@@ -192,8 +192,13 @@ def header(path, over_photo):
 <main id="main">'''
 
 
+def nw_time(s):
+    """Keep each clock time on one line ('9.30 pagi' never splits); the range may break at the separator word."""
+    return re.sub(r'([^\s至]*\d[\d:.]*\s?(?:am|pm|pagi|malam)?)', lambda m: f'<span class="nw">{m.group(1)}</span>' if m.group(1).strip() else '', E(s))
+
+
 def hours_table(cls='hrs'):
-    return (f'<table class="{cls}"><tbody><tr><th>{E(S.UI["open_days"])}</th><td class="num">{E(S.UI["hours_time"])}</td></tr>'
+    return (f'<table class="{cls}"><tbody><tr><th>{", ".join(f'<span class="nw">{E(x)}</span>' for x in S.UI["open_days"].split(", "))}</th><td class="num">{nw_time(S.UI["hours_time"])}</td></tr>'
             f'<tr class="off"><th>{E(S.UI["wed"])}</th><td>{E(S.UI["closed"])}</td></tr></tbody></table>')
 
 

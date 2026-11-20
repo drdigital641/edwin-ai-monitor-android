@@ -10,7 +10,7 @@ UI = {
     'wa_label': 'WhatsApp', 'manager': 'In-Charge Manager', 'landline': 'Workshop line', 'email': 'Email', 'facebook': 'Facebook',
     'maps': 'Google Maps', 'waze': 'Waze', 'reviews_link': 'Read our Google reviews', 'michelin_link': 'Michelin dealer locator',
     'hours_h': 'Opening hours', 'closed': 'Closed', 'wed_closed': 'Closed on Wednesdays',
-    'open_days': 'Mon, Tue, Thu to Sun', 'wed': 'Wednesday', 'hours_time': '9:30am to 7:30pm',
+    'open_days': 'Mon–Tue, Thu–Sun', 'wed': 'Wednesday', 'hours_time': '9:30am to 7:30pm',
     'hours_line': 'Open 9:30am to 7:30pm, closed on Wednesdays',
     'address_h': 'Workshop address', 'find_h': 'Find the workshop', 'contact_h': 'Talk to us',
     'see_service': 'More about this service', 'all_services': 'All services', 'see_about': 'About the workshop', 'see_contact': 'Address and hours',
