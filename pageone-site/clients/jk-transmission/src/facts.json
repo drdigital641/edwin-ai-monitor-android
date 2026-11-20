@@ -1,0 +1,352 @@
+{
+  "_note": "Single source of truth for the J & K Transmission preview (from Bridge drop 6affcc237e4c96b65652cfd0 facts.json, 20 Nov 2026). Invent nothing. Combined 16 years = team experience, never company age (incorporated 7 Jan 2025). No reviews, ratings, warranty, prices, turnaround or staff other than Jason.",
+  "site_key": "jk-transmission",
+  "name": "J & K Transmission Specialist Pte Ltd",
+  "short": "J & K Transmission",
+  "legal_name": "J & K TRANSMISSION SPECIALIST PTE. LTD.",
+  "uen": "202502803H",
+  "base_url": "https://pageonesingapore.com/preview/jk-transmission/",
+  "base_path": "/preview/jk-transmission/",
+  "noindex": true,
+  "promise": "We only repair what is needed.",
+  "taglines": [
+    "Professional Gearbox Repair & Overhaul",
+    "Trusted Transmission Specialists For All Your Needs"
+  ],
+  "experience": "Combined 16 years of experience",
+  "self_description": "We are a small humble gearbox repair shop situated in the west. We are new on Facebook, but we are definitely not new in this industry.",
+  "address": {
+    "unit": "#02-03",
+    "building": "REVV (Revv West Enterprise Hub)",
+    "street": "1 Corporation Drive",
+    "postcode": "619775",
+    "locality": "Jurong West",
+    "country": "SG",
+    "one_line": "1 Corporation Drive @ REVV, #02-03, Singapore 619775",
+    "lines": [
+      "1 Corporation Drive @ REVV",
+      "#02-03",
+      "Singapore 619775"
+    ],
+    "plus_code": "8PGF+56 Singapore"
+  },
+  "geo": {
+    "lat": 1.3254301,
+    "lng": 103.7230288
+  },
+  "maps_url": "https://www.google.com/maps/place/J+%26+K+Transmission+Specialist+Pte+Ltd/@1.32543,103.723029,17z/data=!4m6!3m5!1s0x31da053afed6e7c7:0x1ef59799bf564400!8m2!3d1.3254301!4d103.7230288!16s%2Fg%2F11m6f37z6q",
+  "maps_embed": "https://www.google.com/maps?q=1.3254301,103.7230288&z=17&output=embed",
+  "hours": [
+    {
+      "days": "Monday to Friday",
+      "short": "Mon to Fri",
+      "time": "9:00am to 6:00pm",
+      "schema": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    {
+      "days": "Saturday",
+      "short": "Sat",
+      "time": "9:00am to 3:00pm",
+      "schema": [
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "15:00"
+    },
+    {
+      "days": "Sunday and public holidays",
+      "short": "Sun & PH",
+      "time": "Closed"
+    }
+  ],
+  "whatsapp": "6582215899",
+  "whatsapp_contact": "Jason",
+  "phone_e164": "+6582215899",
+  "phone_display": "8221 5899",
+  "phone_intl": "+65 8221 5899",
+  "prefill": "Hi Jason, I'd like to ask about a gearbox issue. My car is: ",
+  "email": "jkts.sales@gmail.com",
+  "facebook": "https://www.facebook.com/jnktrans/",
+  "footer_credit": "Website by Page One Singapore",
+  "footer_credit_url": "https://pageonesingapore.com/",
+  "vehicles": [
+    "Hybrid",
+    "Japanese",
+    "Korean",
+    "Continental"
+  ],
+  "confirmed_jobs": [
+    {
+      "vehicle": "Honda Vezel Hybrid",
+      "work": "double-clutch gearbox overhaul"
+    },
+    {
+      "vehicle": "Audi A6",
+      "work": "reconditioned Transmission Control Unit, programming and transmission fluid"
+    }
+  ],
+  "areas": [
+    "West Singapore",
+    "Jurong West"
+  ],
+  "photos": {
+    "hero": {
+      "file": "workshop-hero",
+      "w": 1599,
+      "h": 899,
+      "pos": "50% 28%",
+      "alt": "J & K Transmission Specialist workshop at REVV #02-03, with the lit blue-on-white signboard and cars in the service bays",
+      "cap": "The workshop at REVV #02-03: lit signboard, two-post lift and a clean grey floor"
+    },
+    "lift": {
+      "file": "honda-on-lift-gearbox-stand",
+      "w": 1200,
+      "h": 1600,
+      "pos": "50% 28%",
+      "alt": "A Honda on the two-post lift with the gearbox removed onto a yellow stand in the REVV workshop",
+      "cap": "A Honda on the lift, gearbox out on a yellow stand"
+    },
+    "bench": {
+      "file": "gearbox-teardown-bench",
+      "w": 1600,
+      "h": 1205,
+      "pos": "50% 50%",
+      "alt": "An open gearbox case, clutch packs, gears and filter laid out on the stainless workbench during an overhaul",
+      "cap": "Overhaul on the bench: case, clutch packs, planetary gears, differential and filter"
+    },
+    "vezel": {
+      "file": "honda-vezel-gearbox-on-floor",
+      "w": 720,
+      "h": 1280,
+      "pos": "50% 26%",
+      "alt": "A blue Honda Vezel in the workshop with the gearbox removed and sitting on the floor",
+      "cap": "A blue Honda Vezel, bumper off, gearbox out on the floor"
+    },
+    "jack": {
+      "file": "auto-gearbox-on-trans-jack",
+      "w": 720,
+      "h": 1280,
+      "pos": "50% 32%",
+      "alt": "A dark car on the two-post lift with the automatic gearbox lowered onto an orange transmission jack",
+      "cap": "Automatic gearbox lowered onto the orange transmission jack"
+    },
+    "housing": {
+      "file": "open-gearbox-housing",
+      "w": 1500,
+      "h": 1500,
+      "pos": "50% 50%",
+      "alt": "Open aluminium gearbox housing on a blue stand, with bearings in the differential area visible",
+      "cap": "Open gearbox housing, bearings and differential area in view"
+    },
+    "plates": {
+      "file": "valve-body-plates-clutch-packs",
+      "w": 1500,
+      "h": 1500,
+      "pos": "50% 50%",
+      "alt": "Valve body separator plates and clutch packs laid out on the stainless workbench",
+      "cap": "Valve body plates and clutch packs laid out on the bench"
+    },
+    "solenoids": {
+      "file": "valve-body-solenoids",
+      "w": 1500,
+      "h": 1500,
+      "pos": "50% 50%",
+      "alt": "Transmission valve body and solenoids on the workbench, with a separator plate and clutch pack alongside",
+      "cap": "Valve body and solenoids, with the separator plate alongside"
+    },
+    "gears": {
+      "file": "gearbox-gears-clutch-packs",
+      "w": 1500,
+      "h": 1500,
+      "pos": "50% 50%",
+      "alt": "Gearbox internals on the bench: gears, shafts, clutch packs, friction plates and a chain-type drum",
+      "cap": "Gears, shafts, clutch packs and friction plates on the bench"
+    }
+  },
+  "strip": [
+    "bench",
+    "lift",
+    "solenoids",
+    "vezel",
+    "housing",
+    "jack",
+    "plates",
+    "gears"
+  ],
+  "symptoms": [
+    {
+      "id": "jerk",
+      "label": "Jerking or slipping",
+      "wa": "jerking / slipping",
+      "text": "A jerk between gears, or revs that climb without the car pulling, can start in several places: the fluid, the clutch packs or the valve body. Guessing gets expensive, so we check first and repair only what is needed.",
+      "tip": "Tell Jason when it happens: pulling off, at one gear change, or all the time."
+    },
+    {
+      "id": "delay",
+      "label": "Slow to engage D or R",
+      "wa": "delayed gear engagement",
+      "text": "A pause before Drive or Reverse catches is worth checking early. Fluid condition, solenoids and wear-and-tear parts are all on our list, and the checks come before any parts.",
+      "tip": "Mention if it is worse on a cold start or after a long drive."
+    },
+    {
+      "id": "light",
+      "label": "Warning light or limp mode",
+      "wa": "warning light / limp mode",
+      "text": "A gearbox warning light or limp mode means the car has flagged a problem it does not like. Reading what the car reports is the first step. TCU / TCM repair and programming is one of our services.",
+      "tip": "A photo of the dashboard light on WhatsApp helps."
+    },
+    {
+      "id": "dct",
+      "label": "Hybrid DCT shudder",
+      "wa": "hybrid DCT shudder",
+      "text": "Shudder or judder on take-off in a hybrid double-clutch gearbox is work we do. We have overhauled a Honda Vezel Hybrid double-clutch gearbox, and DCT repair and replacement is one of our services.",
+      "tip": "Send Jason the model, year and whether it shudders cold, warm or both."
+    }
+  ],
+  "services": [
+    {
+      "id": "gearbox-overhaul",
+      "icon": "gear",
+      "name": "Gearbox overhaul & repair",
+      "line": "Automatic, double-clutch (DCT) and hybrid transmissions.",
+      "page": "gearbox-overhaul/",
+      "photo": "bench"
+    },
+    {
+      "id": "dct",
+      "icon": "clutch",
+      "name": "Double-clutch (DCT) repair & replacement",
+      "line": "Including hybrid double-clutch gearboxes.",
+      "page": "double-clutch-dct/",
+      "photo": "vezel"
+    },
+    {
+      "id": "mechatronics",
+      "icon": "solenoid",
+      "name": "Reconditioned mechatronics & solenoid replacement",
+      "line": "The electro-hydraulic parts that control the shifts.",
+      "page": "gearbox-overhaul/",
+      "photo": "solenoids"
+    },
+    {
+      "id": "tcu",
+      "icon": "chip",
+      "name": "TCU / TCM repair & programming",
+      "line": "Transmission Control Unit and Module work.",
+      "page": "tcu-repair/",
+      "photo": "jack"
+    },
+    {
+      "id": "valve-body",
+      "icon": "valve",
+      "name": "Valve body servicing",
+      "line": "Servicing the valve body that routes the gearbox's hydraulic pressure.",
+      "page": "gearbox-overhaul/",
+      "photo": "plates"
+    },
+    {
+      "id": "torque-converter",
+      "icon": "ring",
+      "name": "Torque converter repair",
+      "line": "For automatic gearboxes.",
+      "page": "gearbox-overhaul/",
+      "photo": "housing"
+    },
+    {
+      "id": "flywheel",
+      "icon": "chain",
+      "name": "Flywheel & pulley chain replacement",
+      "line": "Replaced when inspection shows they need it.",
+      "page": "gearbox-overhaul/",
+      "photo": "gears"
+    },
+    {
+      "id": "wear-parts",
+      "icon": "clutch",
+      "name": "Wear-and-tear transmission parts",
+      "line": "Clutch packs, friction plates and the like.",
+      "page": "gearbox-overhaul/",
+      "photo": "gears"
+    },
+    {
+      "id": "fluids",
+      "icon": "drop",
+      "name": "Transmission fluid (ATF / DCTF) & engine oil servicing",
+      "line": "Fluid changes for automatic and double-clutch gearboxes.",
+      "page": "services/",
+      "photo": "lift"
+    }
+  ],
+  "steps": [
+    {
+      "name": "Diagnose",
+      "text": "Tell Jason what the car is doing. The car comes in and we find where the problem really is.",
+      "photo": "lift"
+    },
+    {
+      "name": "Open and inspect",
+      "text": "When the gearbox has to come apart, it is laid out on the bench so every part can be seen.",
+      "photo": "bench"
+    },
+    {
+      "name": "Repair only what is needed",
+      "text": "Worn or faulty parts are fixed or replaced. The parts that are fine stay in.",
+      "photo": "solenoids"
+    },
+    {
+      "name": "Refit and test",
+      "text": "The gearbox goes back in and the car is checked before it is handed back to you.",
+      "photo": "jack"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Where is J & K Transmission?",
+      "a": "At 1 Corporation Drive @ REVV, #02-03, Singapore 619775, in the Revv West Enterprise Hub, Jurong West. The Google Maps listing is linked on the Contact page."
+    },
+    {
+      "q": "What are your opening hours?",
+      "a": "Monday to Friday 9:00am to 6:00pm and Saturday 9:00am to 3:00pm. We are closed on Sundays and public holidays."
+    },
+    {
+      "q": "Who do I WhatsApp?",
+      "a": "WhatsApp Jason on +65 8221 5899. Tell him the car model and what the gearbox is doing. The same number takes calls."
+    },
+    {
+      "q": "What does \"we only repair what is needed\" mean?",
+      "a": "We check the gearbox first and fix the parts that are actually worn or faulty. We do not assume the whole unit has to be replaced."
+    },
+    {
+      "q": "Which cars do you work on?",
+      "a": "Hybrid, Japanese, Korean and Continental cars. Past jobs include a Honda Vezel Hybrid double-clutch gearbox overhaul and an Audi A6 with a reconditioned Transmission Control Unit, programming and fresh transmission fluid. For a specific model, WhatsApp Jason to confirm."
+    },
+    {
+      "q": "What gearbox work do you do?",
+      "a": "Gearbox overhaul and repair (automatic, double-clutch and hybrid), DCT repair and replacement, reconditioned mechatronics and solenoid replacement, TCU / TCM repair and programming, valve body servicing, torque converter repair, flywheel and pulley chain replacement, wear-and-tear transmission parts, and transmission fluid (ATF / DCTF) and engine oil servicing."
+    },
+    {
+      "q": "How much does a gearbox overhaul cost?",
+      "a": "It depends on the car and on what the inspection finds, so we do not list prices here. WhatsApp Jason to confirm for your car."
+    },
+    {
+      "q": "How long does an overhaul take?",
+      "a": "It depends on the gearbox and the parts it needs. WhatsApp Jason to confirm the timing for your car."
+    },
+    {
+      "q": "Do you give a warranty?",
+      "a": "WhatsApp Jason to confirm what applies to your job."
+    },
+    {
+      "q": "How much experience does the team have?",
+      "a": "The team has a combined 16 years of experience in gearbox and transmission work."
+    }
+  ]
+}
