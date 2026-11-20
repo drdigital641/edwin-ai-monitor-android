@@ -1,0 +1,4 @@
+Add these three properties to base44/entities/PortfolioSite.jsonc (inside "properties", alphabetical order):
+    "backoff_until": { "description": "Do not check this homepage again before this time (back-off after a failed or timed-out check)", "type": "string" },
+    "fail_streak": { "description": "Failed or timed-out checks in a row; reset to 0 on the next good check", "type": "number" },
+    "light_at": { "description": "When the homepage was last looked at by the 30-minute light check (full check time stays in refreshed_at)", "type": "string" },
