@@ -1,0 +1,52 @@
+{
+  "_note": "Site facts for the MCS Auto Spray Painting AutoSEO preview. Mirrors the dropped facts.json (Bridge drop 6affcf1fb3066edc1e6030f5, facts.json sha256 f4ecd67aea4b4773bfcf81ae528566f989f29597ac0e86665ad2f242b788f212, 20 Nov 2026). Use only these facts. No company number, prices, warranty, turnaround times, reviewer names or quotes, founding year, public-holiday hours, drive times, dealer status or Singapore branch.",
+  "name": "MCS Auto Spray Painting",
+  "legal_name": "MCS Auto Spray Painting",
+  "site_key": "mcs-auto-spray-painting",
+  "signboard": "MCS AUTO SPRAY PAINTING / MCS BODY & PAINT / PUSAT KECANTIKAN KERETA",
+  "signboard_malay": "Pusat Kecantikan Kereta",
+  "logo_line": "MCS BODY & PAINT",
+  "contact_name": "MCS 小龙 / Ah Long",
+  "preview": {"origin": "https://autoseo.my", "base_path": "/preview/mcs-auto-spray-painting/"},
+  "live": {"domain": null},
+  "address": {
+    "street": "No. 57, Jalan Indah 16/11, Taman Bukit Indah",
+    "unit": "57",
+    "postcode": "79000",
+    "locality": "Taman Bukit Indah",
+    "city": "Iskandar Puteri",
+    "city_metro": "Johor Bahru",
+    "region": "Johor",
+    "region_formal": "Johor Darul Ta'zim",
+    "country": "MY",
+    "one_line": "No. 57, Jalan Indah 16/11, Taman Bukit Indah, 79000 Iskandar Puteri, Johor Darul Ta'zim, Malaysia",
+    "lines": ["No. 57, Jalan Indah 16/11", "Taman Bukit Indah", "79000 Iskandar Puteri", "Johor Darul Ta'zim, Malaysia"]
+  },
+  "geo": {"lat": 1.478931, "lng": 103.6645659, "plus_code": "FMH7+HR"},
+  "hours": [
+    {"days": ["Monday"], "opens": "09:00", "closes": "19:00"},
+    {"days": ["Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "17:00"},
+    {"days": ["Saturday", "Sunday"], "opens": "09:00", "closes": "19:00"}
+  ],
+  "hours_closed": ["Tuesday"],
+  "whatsapp": {"e164": "+60165562998", "display": "016-556 2998", "intl": "+60 16-556 2998", "url": "https://wa.me/60165562998"},
+  "phone": {"e164": "+60165562998", "display": "016-556 2998", "tel": "tel:+60165562998"},
+  "email": "mcs01092020@gmail.com",
+  "links": {
+    "facebook": "https://www.facebook.com/MCS99999",
+    "youtube": "https://www.youtube.com/channel/UCneixiwujyfrSu9zGkfHvGQ",
+    "maps": "https://www.google.com/maps/place/MCS+auto+spray+painting/@1.478931,103.6645659,17z/data=!3m1!4b1!4m6!3m5!1s0x31da7334a2c0c273:0x2e4dc3e240918966!8m2!3d1.478931!4d103.6645659!16s%2Fg%2F1hf239djx",
+    "maps_cid": "https://maps.google.com/?cid=3336538275464710502",
+    "maps_embed": "https://maps.google.com/maps?cid=3336538275464710502&hl=en&output=embed",
+    "directions": "https://www.google.com/maps/dir/?api=1&destination=1.478931%2C103.6645659",
+    "fb_video_aikka": "https://www.facebook.com/MCS99999/videos/aikka-the-paint-master-aikka-blue-crystal-blue-purple-crystal-2tone-crystalmcsau/1924871151230099/",
+    "fb_video_glasurit": "https://www.facebook.com/MCS99999/videos/mercedes-benz-black-crystal-brand-of-glasurit-923-447-high-quality-clear-coat-ge/743778280083418/"
+  },
+  "reviews": {"google_rating": "4.5", "google_count": 65, "as_of": "2026-11-20", "aggregateRating_schema": false},
+  "areas": ["Taman Bukit Indah", "Iskandar Puteri", "Johor Bahru"],
+  "chips": [
+    {"key": "cyan", "hex": "#48A6CA", "photo": "vellfire-front"},
+    {"key": "green", "hex": "#1F3D2B", "photo": "lotus-booth"},
+    {"key": "black", "hex": "#0B0B0D", "photo": "mclaren-shopfront"}
+  ]
+}
