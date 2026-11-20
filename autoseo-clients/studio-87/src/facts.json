@@ -1,0 +1,36 @@
+{
+  "_note": "Studio 87 facts, copied from Bridge drop 6affda1dff2244c8ee44d100 facts.json (sha256 f65f5908..., 20 Nov 2026). Only these facts go on the site. GBP wins for NAP. No email, no SSM, no prices, no review quotes, no aggregateRating, no second phone.",
+  "name": "Studio 87",
+  "site_key": "studio-87",
+  "established_year": 2017,
+  "category": "Hair salon",
+  "preview": {"origin": "https://autoseo.my", "base_path": "/preview/studio-87/"},
+  "live": {"origin": "https://studio87.com.my", "base_path": "/"},
+  "address": {
+    "street": "B70, Tingkat Bawah, Jalan Bukit Sekilau, Perkampungan Bukit Ubi",
+    "lines": ["B70, Tingkat Bawah, Jalan Bukit Sekilau", "Perkampungan Bukit Ubi", "25200 Kuantan, Pahang, Malaysia"],
+    "postcode": "25200", "city": "Kuantan", "region": "Pahang", "country": "MY",
+    "one_line": "B70, Tingkat Bawah, Jalan Bukit Sekilau, Perkampungan Bukit Ubi, 25200 Kuantan, Pahang, Malaysia"
+  },
+  "geo": {"lat": 3.82042, "lng": 103.322658},
+  "hours": [
+    {"days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "10:00", "closes": "18:00"},
+    {"days": ["Sunday"], "opens": "11:00", "closes": "18:00"}
+  ],
+  "phone": {"e164": "+60179773168", "display": "017-977 3168", "intl": "+60 17-977 3168", "tel": "tel:+60179773168"},
+  "whatsapp": {"url": "https://wa.me/60179773168", "e164": "+60179773168", "display": "017-977 3168"},
+  "phone_conflict": "Facebook directories list landline 09-509 3717. Not published until Edwin confirms. GBP mobile 017-977 3168 is the only published number.",
+  "links": {
+    "maps": "https://www.google.com/maps/search/?api=1&query=Studio%2087%2C%20B70%2C%20Jalan%20Bukit%20Sekilau%2C%2025200%20Kuantan",
+    "maps_coords": "https://www.google.com/maps?q=3.82042,103.322658",
+    "maps_embed": "https://www.google.com/maps?q=Studio%2087%2C%20B70%2C%20Jalan%20Bukit%20Sekilau%2C%2025200%20Kuantan&ll=3.82042,103.322658&z=17&output=embed",
+    "facebook": "https://www.facebook.com/studio87hairstudio",
+    "instagram": "https://www.instagram.com/studio870407/",
+    "instagram_handle": "@studio870407"
+  },
+  "vision": "Feel confident when you step out from Studio 87..... That's our vision .",
+  "reviews": {"rating": "4.9", "count": 45, "as_of": "2026-11-20", "schema": false},
+  "staff": [{"name": "Sabrina", "role": "stylist credited on official Facebook posts"}],
+  "areas": ["Kuantan", "Pahang"],
+  "bridge_drop_id": "6affda1dff2244c8ee44d100"
+}

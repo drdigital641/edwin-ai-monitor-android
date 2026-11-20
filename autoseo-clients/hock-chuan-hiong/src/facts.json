@@ -1,0 +1,40 @@
+{
+  "_source": "Edwin brief 20 Nov 2026 + Bridge drop 6afff0a4aea6ab5ec3d17153 facts.json (GBP verified 20 Nov 2026). Only these facts are published.",
+  "site_base": "https://autoseo.my/preview/hock-chuan-hiong/",
+  "share_base": "https://autoseo.my/preview/hock-chuan-hiong/",
+  "_go_live": "Live domain TBC. Go-live = set site_base to https://<domain>/ (canonical, hreflang, og:url, schema, sitemap.xml, llms.txt follow). Move share_base only after the domain answers 200 over SSL.",
+  "slug": "hock-chuan-hiong",
+  "cta_site_key": "hock-chuan-hiong",
+  "name": "Hock Chuan Hiong 福荃香肉乾至尊",
+  "name_en": "Hock Chuan Hiong",
+  "name_zh": "福荃香",
+  "name_zh_full": "福荃香肉乾至尊",
+  "address": {
+    "street": "40-00-01, Lorong Batu Nilam 1D",
+    "locality": "Bandar Bukit Tinggi 1",
+    "postcode": "41200",
+    "city": "Klang",
+    "region": "Selangor",
+    "country": "MY",
+    "country_name": "Malaysia",
+    "one_line": "40-00-01, Lorong Batu Nilam 1D, Bandar Bukit Tinggi 1, 41200 Klang, Selangor, Malaysia",
+    "lines": ["40-00-01, Lorong Batu Nilam 1D", "Bandar Bukit Tinggi 1", "41200 Klang, Selangor, Malaysia"]
+  },
+  "phone": {"e164": "+60102349328", "tel": "tel:+60102349328", "display": "+60 10-234 9328"},
+  "whatsapp": {"url": "https://wa.me/60102349328", "display": "+60 10-234 9328"},
+  "email": "hchiongfood@gmail.com",
+  "hours": [{"days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "09:00", "closes": "20:00"}],
+  "geo": {"lat": 3.0096117, "lng": 101.437707, "_note": "GBP URL viewport centre"},
+  "rating": {"value": "4.6", "count": 125, "source": "Google"},
+  "since_signage": "1996",
+  "non_halal": true,
+  "heritage_stall": "Gerai 106, Jalan Besar, Pandamaran",
+  "links": {
+    "gbp": "https://www.google.com/maps/place/Hock+Chuan+Hiong+%E7%A6%8F%E8%8D%83%E9%A6%99%E8%82%89%E4%B9%BE%E8%87%B3%E5%B0%8A/@3.0096117,101.437707,17z/data=!3m1!4b1!4m6!3m5!1s0x31cdad9274a974c3:0x9015173573fe23a0",
+    "map_embed": "https://www.google.com/maps?q=Hock+Chuan+Hiong+%E7%A6%8F%E8%8D%83%E9%A6%99%E8%82%89%E4%B9%BE%E8%87%B3%E5%B0%8A,+Lorong+Batu+Nilam+1D,+Bandar+Bukit+Tinggi+1,+41200+Klang&z=17&output=embed",
+    "facebook": "https://www.facebook.com/hchiongfood",
+    "instagram": "https://www.instagram.com/hockchuanhiongfood/",
+    "threads": "https://www.threads.com/@hockchuanhiongfood",
+    "reels": ["2712941005775949", "1682776806737415", "1998572620816257", "1153093887174431"]
+  }
+}
