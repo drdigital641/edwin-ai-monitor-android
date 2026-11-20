@@ -1,0 +1,21 @@
+{
+"shopfront-night-hero": [1200, 1500, "50% 40%", "LT Automart shopfront at night on Jalan Dato Sulaiman, Taman Century, with its red and gold signboard", "Kedai LT Automart di Jalan Dato Sulaiman, Taman Century pada waktu malam dengan papan tanda merah dan emas", "LT Automart 位于Taman Century的店面夜景，红金色招牌"],
+"shopfront-sign-wide": [1500, 843, "50% 30%", "LT Automart signboard: Aksesori Kereta, Tinted Film", "Papan tanda LT Automart: Aksesori Kereta, Tinted Film", "LT Automart 招牌：汽车配件与隔热膜"],
+"ambient-light-install-wide": [1600, 900, "50% 55%", "Technician fitting ambient lighting inside a blue Mercedes-Benz at LT Automart", "Juruteknik memasang lampu ambien dalam Mercedes-Benz biru di LT Automart", "技师在LT Automart为蓝色奔驰安装车内氛围灯"],
+"ambient-light-install-card": [1080, 1350, "45% 50%", "Ambient light installation in a Mercedes-Benz", "Pemasangan lampu ambien Mercedes-Benz", "奔驰车内氛围灯安装"],
+"audio-wall-team": [1080, 1350, "30% 50%", "LT Automart team member with Alpine, Focal and Mohawk car audio stock in the showroom", "Pasukan LT Automart dengan stok audio kereta Alpine, Focal dan Mohawk di bilik pameran", "LT Automart 店内的Alpine、Focal、Mohawk汽车音响货架"],
+"android-player-alphard": [1080, 1350, "50% 40%", "Soundstream Android player fitted in a Toyota Alphard dashboard", "Pemain Android Soundstream dipasang pada papan pemuka Toyota Alphard", "丰田Alphard安装的Soundstream安卓大屏"],
+"android-player-vellfire": [871, 1088, "50% 20%", "Android head unit with 360 camera view in a Toyota MPV", "Unit kepala Android dengan paparan kamera 360 dalam MPV Toyota", "丰田MPV安卓大屏与360全景影像"],
+"alphard-cockpit-upgrade": [1080, 1350, "50% 50%", "Toyota Alphard cockpit after an interior upgrade with a GR-style steering wheel", "Kokpit Toyota Alphard selepas naik taraf dalaman dengan stereng gaya GR", "丰田Alphard内饰升级，GR风格方向盘"],
+"gr-steering-wheel": [1080, 1351, "50% 50%", "GR-style Toyota steering wheel and digital meter after installation", "Stereng Toyota gaya GR dan meter digital selepas dipasang", "安装后的GR风格丰田方向盘与数字仪表"],
+"soundproofing-door": [899, 1123, "50% 45%", "Door panel lined with soundproofing mat during an audio upgrade", "Panel pintu dilapik bahan kalis bunyi semasa naik taraf audio", "音响升级时车门铺设隔音材料"],
+"boot-spoiler-fitting": [1080, 1350, "60% 50%", "Technician aligning a boot lip spoiler on a red Mercedes-Benz", "Juruteknik melaraskan spoiler but pada Mercedes-Benz merah", "技师为红色奔驰对位安装尾翼"],
+"alphard-rear-lt-plate": [720, 900, "50% 50%", "Toyota Alphard rear after a facelift conversion, with an LT Automart plate", "Bahagian belakang Toyota Alphard selepas penukaran facelift, dengan plat LT Automart", "加装LT Automart车牌的丰田Alphard改装后尾部"],
+"jbl-audio-display": [720, 900, "50% 60%", "JBL speakers and amplifiers on display in the LT Automart showroom", "Pameran pembesar suara dan amplifier JBL di bilik pameran LT Automart", "LT Automart 店内JBL喇叭与功放展示"],
+"leather-interior-retrim": [576, 720, "50% 50%", "Tan leather seats after an interior upgrade", "Tempat duduk kulit perang selepas naik taraf dalaman", "内饰升级后的棕色真皮座椅"],
+"marble-flooring-panels": [576, 720, "50% 50%", "Marble-pattern MPV floor panels ready for fitting", "Panel lantai MPV corak marmar sedia dipasang", "待安装的MPV大理石纹地板"],
+"reel-console-box-poster": [720, 1280, "50% 50%", "Console box upgrade reel", "Video naik taraf kotak konsol", "中央扶手箱升级短片"],
+"reel-estima-console-poster": [720, 1280, "50% 50%", "Toyota Estima interior installation reel", "Video pemasangan dalaman Toyota Estima", "丰田Estima内饰安装短片"],
+"reel-jbl-display-poster": [720, 1280, "50% 50%", "JBL audio showroom reel", "Video bilik pameran audio JBL", "JBL音响展示短片"],
+"reel-pilot-seats-poster": [720, 1280, "50% 50%", "Alphard / Vellfire pilot seats reel", "Video tempat duduk pilot Alphard / Vellfire", "Alphard / Vellfire 航空座椅短片"]
+}

@@ -1,0 +1,101 @@
+{
+ "_note": "LT Automart AutoSEO site, publishable facts only (from Bridge drop 6b004343 facts.json, 20 Nov 2026; GBP = source of truth for NAP). Staff numbers, email, ratings and promos are deliberately NOT in this file. Not here = not on the site.",
+ "name": "LT Automart",
+ "google_listing_name": "LT Automart car accessories",
+ "legal_name": "LT AUTOMART TRADING SDN. BHD.",
+ "company_no": "201401023487 (1099574-M)",
+ "since": "2014",
+ "own_line": "More than 10 years car accessories at Johor",
+ "address": {
+  "street": "183, Jalan Dato Sulaiman",
+  "area": "Taman Century",
+  "postcode": "80250",
+  "city": "Johor Bahru",
+  "region": "Johor",
+  "country": "MY",
+  "lines": [
+   "183, Jalan Dato Sulaiman",
+   "Taman Century",
+   "80250 Johor Bahru, Johor"
+  ],
+  "one_line": "183, Jalan Dato Sulaiman, Taman Century, 80250 Johor Bahru, Johor, Malaysia"
+ },
+ "geo": {
+  "lat": 1.4871998,
+  "lng": 103.7628627
+ },
+ "place_id": "ChIJR2v2rjpt2jERvL_cwhO4MWk",
+ "hours": {
+  "opens": "10:00",
+  "closes": "20:30",
+  "days": [
+   "Monday",
+   "Tuesday",
+   "Wednesday",
+   "Thursday",
+   "Friday",
+   "Saturday",
+   "Sunday"
+  ]
+ },
+ "phone": {
+  "e164": "+60127166110",
+  "display": "012-716 6110",
+  "display_intl": "+60 12-716 6110",
+  "tel": "tel:+60127166110"
+ },
+ "whatsapp": {
+  "url": "https://wa.me/60127166110"
+ },
+ "links": {
+  "maps": "https://maps.app.goo.gl/mFmHRWmEGgaL2gK78",
+  "maps_embed": "https://www.google.com/maps?q=place_id:ChIJR2v2rjpt2jERvL_cwhO4MWk&output=embed",
+  "reviews": "https://search.google.com/local/reviews?placeid=ChIJR2v2rjpt2jERvL_cwhO4MWk",
+  "waze": "https://waze.com/ul/hw23b3nty9",
+  "facebook": "https://www.facebook.com/582524871869400",
+  "tiktok": "https://www.tiktok.com/@ltautomart"
+ },
+ "brands": [
+  "Alpine",
+  "JBL",
+  "Soundstream",
+  "Mohawk",
+  "MB Quart",
+  "Focal",
+  "Carrozzeria",
+  "Kelon"
+ ],
+ "reels": [
+  {
+   "stem": "reel-console-box-poster",
+   "url": "https://www.tiktok.com/@ltautomart/video/7699044638220471570"
+  },
+  {
+   "stem": "reel-pilot-seats-poster",
+   "url": "https://www.tiktok.com/@ltautomart/video/7706479214500810002"
+  },
+  {
+   "stem": "reel-jbl-display-poster",
+   "url": "https://www.tiktok.com/@ltautomart/video/7707146635058367750"
+  },
+  {
+   "stem": "reel-estima-console-poster",
+   "url": "https://www.tiktok.com/@ltautomart/video/7703870612774653236"
+  }
+ ],
+ "reviews": [
+  {
+   "author": "William Ngoh",
+   "text": "Went to LT for android player and got it done very fast! Was skeptical at first and afraid of all the upselling or hard selling of higher end products but didnt face any at all.. Friendly staff recommended and explained on some features and boss is very friendly too. This will definitely be the only shop i will be patronizing from now on. 👍🏻👍🏻"
+  },
+  {
+   "author": "ila ali",
+   "text": "I recently purchased an Android player and installed a GR steering from LT Automart, and I couldn’t be happier with the experience. The salesman, Mr. Jie, was extremely knowledgeable and patient, taking the time to answer all my questions thoroughly. What impressed me most was their honesty and transparency in pricing — no hidden costs, no gimmicks."
+  },
+  {
+   "author": "Nobodyz",
+   "text": "Went to install auto tailgate for my car. Staff was very friendly, patient and nice. Made sure everything is ok and went through with me. Price is reasonable as well (speaking as a Malaysian working in sg)."
+  }
+ ],
+ "do_not_use": "Staff WhatsApp numbers and the email (not on GBP; Edwin 20 Nov: main number only); prices or promos from Facebook; star rating, score or review count; 'authorised dealer'; warranty or guarantee claims; LTA/JPJ tint compliance claims; 'Taman Abad'; hours other than GBP 10:00-20:30 daily; LTautomark.com."
+}
