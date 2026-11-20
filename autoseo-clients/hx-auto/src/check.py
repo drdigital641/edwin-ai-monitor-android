@@ -57,8 +57,8 @@ for f in files:
         fail(f, 'canonical not on the live domain')
     if re.search(r'(?:href|src)="/(?!/)', t) or 'preview/hx-auto' in re.sub(r'https://autoseo\.my/preview/hx-auto/[^"]*', '', t):
         fail(f, 'root-absolute or preview-path link (links must be page-relative)')
-    if 'og:url" content="https://autoseo.my/preview/hx-auto/' not in t:
-        fail(f, 'og:url not on the preview host')
+    if 'og:url" content="https://hxautoservice.com.my/' not in t:
+        fail(f, 'og:url not on the live domain')
     if len(re.findall(r'<h1\b', t)) != 1:
         fail(f, 'H1 count != 1')
     if 'p1-cta.js' not in t:
@@ -67,7 +67,7 @@ for f in files:
         fail(f, 'footer credit')
     if len(re.findall(r'hreflang="(en|ms|zh-Hans|x-default)" href=', t)) != 4:
         fail(f, 'hreflang block')
-    if 'og:image" content="https://autoseo.my/preview/hx-auto/images/og.jpg?v=3"' not in t:
+    if 'og:image" content="https://hxautoservice.com.my/images/og.jpg?v=3"' not in t:
         fail(f, 'og:image')
     if not re.search(r'<nav class="ut"', t):
         fail(f, 'language switcher (underline tabs) missing')

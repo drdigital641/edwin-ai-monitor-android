@@ -21,7 +21,7 @@ F = json.load(open(os.path.join(HERE, 'facts.json'), encoding='utf8'))
 # canonical / hreflang / schema / sitemap / robots / llms are on the live domain, og:image + twitter:image + og:url stay on the
 # working preview-host URLs until https://hxautoservice.com.my/ answers 200 over SSL (then set SHARE_LIVE = True).
 LIVE_DOMAIN = 'hxautoservice.com.my'
-SHARE_LIVE = False
+SHARE_LIVE = True
 ORIGIN, BASE = 'https://' + LIVE_DOMAIN, '@@B@@/'
 NOINDEX = False   # preview noindex = Host-conditional X-Robots-Tag in autoseo.my/preview/.htaccess, never a meta tag
 SITE = ORIGIN + '/'
