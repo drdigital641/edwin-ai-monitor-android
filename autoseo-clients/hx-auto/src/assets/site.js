@@ -67,3 +67,12 @@ if(lb&&lb.showModal){var li=lb.querySelector('img'),lc=lb.querySelector('.lb-c')
     requestAnimationFrame(tick)}
   requestAnimationFrame(tick)});
 })})();
+
+/* hero mosaic: every ~4.5s one tile fades to another thumbnail. Off for reduced motion. */
+(function(){var d=document,m=d.querySelector('.mz');if(!m||(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))return;var pool;try{pool=JSON.parse(m.getAttribute('data-pool'))}catch(e){return}
+  var imgs=[].slice.call(m.querySelectorAll('img')),n=imgs.length,i=0,used=imgs.map(function(x){return x.getAttribute('src')});
+  var vis=function(el){return el.offsetParent!==null};
+  setInterval(function(){if(d.hidden)return;var t=imgs[i%n];i++;if(!vis(t))return;
+    var next=pool.filter(function(p){return used.indexOf(p[0])<0})[0];if(!next)return;
+    var old=t.getAttribute('src');t.style.opacity='0';
+    setTimeout(function(){t.src=next[0];t.alt=next[1];used[used.indexOf(old)]=next[0];t.style.opacity='1'},520)},4500)})();

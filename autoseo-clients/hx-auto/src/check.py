@@ -10,7 +10,7 @@ DIST = os.path.join(HERE, '..', 'dist')
 sys.path.insert(0, HERE)
 from build import PHOTOS  # noqa: E402
 
-OK_IMAGES = set(PHOTOS) | {'hx/' + s + x for s in ('shopfront-signboard', 'shopfront-forecourt', 'workshop-bays-overview', 'aircond-flushing-banner', 'mercedes-c-class-bay', 'bmw-5-series-engine', 'bmw-5-series-on-lift', 'land-rover-discovery-sport', 'mini-cooper-s-on-lift', 'kia-cerato-on-lift', 'toyota-alphard-white', 'toyota-vellfire-bay', 'mazda-3-engine', 'honda-jazz-engine') for x in ('-t', '-l', '-xl')} | {'hx/hero-960', 'hx/hero-1600', 'hx/hero-2400'} | {'hx/' + s for s in ('hero-merc-portrait', 'hero-merc-wide', 'bays-overview-wide', 'amg-matte-card', 'bmw-lift-card', 'mini-card', 'vios-red-card', 'qashqai-card', 'hrv-card', 'alphard-card')} | {s + '-full' for s in PHOTOS} | {'cover', 'og', 'logo-transparent', 'logo-on-black', 'favicon-512'}
+OK_IMAGES = set(PHOTOS) | {'hx/' + s + x for s in ('shopfront-signboard', 'shopfront-forecourt', 'workshop-bays-overview', 'aircond-flushing-banner', 'mercedes-c-class-bay', 'bmw-5-series-engine', 'bmw-5-series-on-lift', 'land-rover-discovery-sport', 'mini-cooper-s-on-lift', 'kia-cerato-on-lift', 'toyota-alphard-white', 'toyota-vellfire-bay', 'mazda-3-engine', 'honda-jazz-engine') for x in ('-t', '-l', '-xl')} | {'hx/hero-960', 'hx/hero-1600', 'hx/hero-2400'} | {'hx/sq-' + s for s in ('mercedes-c-class-bay', 'toyota-alphard-white', 'mazda-3-engine', 'honda-jazz-engine', 'shopfront-signboard', 'aircond-flushing-banner', 'bmw-5-series-on-lift', 'mini-cooper-s-on-lift', 'workshop-bays-overview', 'toyota-vellfire-bay', 'kia-cerato-on-lift', 'land-rover-discovery-sport', 'bmw-5-series-engine', 'shopfront-forecourt')} | {'hx/' + s for s in ('hero-merc-portrait', 'hero-merc-wide', 'bays-overview-wide', 'amg-matte-card', 'bmw-lift-card', 'mini-card', 'vios-red-card', 'qashqai-card', 'hrv-card', 'alphard-card')} | {s + '-full' for s in PHOTOS} | {'cover', 'og', 'logo-transparent', 'logo-on-black', 'favicon-512'}
 # Words are split so this file never trips a repo-wide grep.
 BANNED = [r'lorem', r'\bTODO\b', r'\bTBD\b', r'placeholder', r'\bXXX\b', 'pa' + r'ge[\s-]*o' + 'ne', 'pageo' + 'nesingapore',
           '019' + r'[\s-]*319[\s-]*9113', r'\+?60\s*19[\s-]*319[\s-]*9113', '6019' + '3199113',
@@ -61,7 +61,7 @@ for f in files:
         fail(f, 'footer credit')
     if len(re.findall(r'hreflang="(en|ms|zh-Hans|x-default)" href=', t)) != 4:
         fail(f, 'hreflang block')
-    if '--live' not in sys.argv and 'og:image" content="https://autoseo.my/preview/hx-auto/images/og.jpg?v=2"' not in t:
+    if '--live' not in sys.argv and 'og:image" content="https://autoseo.my/preview/hx-auto/images/og.jpg?v=3"' not in t:
         fail(f, 'og:image')
     if not re.search(r'<nav class="ut"', t):
         fail(f, 'language switcher (underline tabs) missing')
