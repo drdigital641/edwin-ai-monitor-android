@@ -64,7 +64,7 @@ STEPS = [
     ('Collect your car', 'Pick up your car at Jalan Indah 16/11 and look over the finish with us.'),
 ]
 
-SERVICE_ORDER = ['spray-painting', 'custom-colour', 'body-repair', 'paint-protection', 'rims-calipers-engine',
+SERVICE_ORDER = ['spray-painting', 'custom-colour', 'body-repair', 'paint-protection', 'polish-coating', 'rims-calipers-engine',
                  'interior-repair', 'carbon-bodykits', 'insurance-windscreen', 'motorbike']
 
 SERVICES = {
@@ -79,37 +79,35 @@ SERVICES = {
         'points': ['Full-car respray', 'Single panels, bumpers and doors', 'Colour matched to your car', 'Booth spray and clear coat'],
     },
     'custom-colour': {
-        'zone': 'Custom colour', 'short': 'Colour matching, candy and pearl finishes.',
+        'zone': 'Custom colour', 'short': 'Candy, pearl and colour-flip finishes, and colour matching.',
         'title': 'Custom Car Colour, Candy & Pearl Paint in Johor Bahru | MCS Auto Spray Painting',
         'meta': 'Custom colour matching with candy and pearl finishes at MCS Auto Spray Painting, Taman Bukit Indah, Iskandar Puteri. See our candy-cyan Toyota Vellfire.',
         'h1': 'Custom colour, candy and pearl finishes',
         'lead': 'The candy-cyan Toyota Vellfire on this site was painted in our booth. Bring us your colour idea.',
         'paras': ['Custom colour starts with a conversation. Share a photo, a colour you like or a sample, and we talk through how it will look in daylight, in shade and at night.',
                   'We also colour-match existing paint, so a repaired panel sits right next to the original.'],
-        'points': ['Candy and pearl finishes', 'Colour matching for repairs', 'Full colour changes', 'Advice before any paint is mixed'],
+        'points': ['Candy, pearl and colour-flip finishes', 'Colour matching for repairs', 'Full colour changes', 'Advice before any paint is mixed'],
         'posted': 'Posted on our Facebook page:',
         'posted_aikka': 'Aikka two-tone crystal colour job',
-        'posted_glasurit': 'Mercedes-Benz black crystal job with Glasurit clear coat',
     },
     'body-repair': {
-        'zone': 'Body repair', 'short': 'Accident damage repaired, prepped and resprayed.',
+        'zone': 'Body repair', 'short': 'Knocking, dent and accident repair, then a matched respray.',
         'title': 'Accident Body Repair in Bukit Indah, Johor | MCS Auto Spray Painting',
         'meta': 'Accident body repair at MCS Auto Spray Painting, Taman Bukit Indah, Iskandar Puteri: dents, damaged panels and bumpers repaired and resprayed in our booth.',
         'h1': 'Accident body repair in Bukit Indah',
-        'lead': 'Dents, cracked bumpers and damaged panels repaired, then painted to match.',
+        'lead': 'Knocking and dent work, cracked bumpers and damaged panels repaired, then painted to match.',
         'paras': ['After a knock, send us photos of the damage from a few angles. We look at what can be repaired and what needs replacing, then prep and respray in the booth.',
                   'If the repair goes through your insurer, we can help with the claim too.'],
-        'points': ['Dents and panel damage', 'Bumper repair and respray', 'Paint matched to the rest of the car', 'Insurance claim help'],
+        'points': ['Knocking and dent repair', 'Accident panel and bumper repair', 'Paint matched to the rest of the car', 'Insurance claim help'],
     },
     'paint-protection': {
-        'zone': 'Nippon AI-PPS', 'short': 'Spray-on paint protection for a finished car.',
+        'zone': 'Nippon AI-PPS', 'short': 'Spray-on paint protection film, clear or coloured, no seams or glue.',
         'title': 'Nippon AI-PPS Paint Protection in Iskandar Puteri | MCS Auto Spray Painting',
-        'meta': 'Nippon AI-PPS spray-on paint protection at MCS Auto Spray Painting, Taman Bukit Indah, Iskandar Puteri, Johor. WhatsApp 016-556 2998.',
+        'meta': 'Nippon AI-PPS spray-on paint protection film, clear or coloured, at MCS Auto Spray Painting, Taman Bukit Indah, Iskandar Puteri, Johor. WhatsApp 016-556 2998.',
         'h1': 'Nippon AI-PPS paint protection',
-        'lead': 'A spray-on protection layer for your paint, applied at our Bukit Indah workshop.',
-        'paras': ['Nippon AI-PPS is a spray-on paint protection. It suits a car fresh from a respray or a car whose paint you want to keep looking good.',
-                  'WhatsApp us your model and year and we will explain how it is applied.'],
-        'points': ['Spray-on application', 'For new paint or existing paint', 'Done at our workshop', 'Ask us how it is applied'],
+        'lead': 'Nippon AI-PPS is sprayed on as a clear or coloured protective film, with no seams and no glue.',
+        'paras': ['Because it is sprayed on, AI-PPS covers the panel without the joins or glue lines of a stuck-on film. It helps the paint resist stone chips and light scratches, and light marks can be polished out.', 'It suits a car fresh from a respray or a car whose paint you want to keep looking good. WhatsApp us your model and year and we will explain how it is applied.'],
+        'points': ['Clear or coloured finish', 'Sprayed on: no seams, no glue', 'Helps resist stone chips and light scratches', 'Light marks can be polished out'],
     },
     'rims-calipers-engine': {
         'zone': 'Rims and calipers', 'short': 'Rim, brake caliper and engine-bay painting.',
@@ -122,14 +120,14 @@ SERVICES = {
         'points': ['Rim painting', 'Brake caliper painting', 'Engine-bay painting', 'Colours to match or contrast your car'],
     },
     'interior-repair': {
-        'zone': 'Interior and seats', 'short': 'Seat, steering-wheel and roof-lining repair, door-card retrims.',
+        'zone': 'Interior and seats', 'short': 'Leather seat repair and reupholstery, diamond-quilt and custom colours, steering wheel and roof lining.',
         'title': 'Car Seat & Interior Repair, Reupholstery in Bukit Indah | MCS Auto Spray Painting',
         'meta': 'Seat, steering-wheel and roof-lining repair, reupholstery and door-card retrims at MCS Auto Spray Painting, Taman Bukit Indah, Iskandar Puteri.',
         'h1': 'Seat and interior repair, reupholstery',
         'lead': 'Torn seats, a worn steering wheel or a sagging roof lining, fixed in our upholstery bay.',
-        'paras': ['Our interior bay handles seat repair and reupholstery, steering-wheel and roof-lining repair, and door-card retrims. The two-tone beige and black seats and door card on this page are one of our retrims.',
+        'paras': ['Our interior bay handles leather seat repair and reupholstery, including diamond-quilt stitching and custom colours, plus steering-wheel and roof-lining repair and door-card retrims. The two-tone beige and black seats and door card on this page are one of our retrims.',
                   'Send photos of the interior and tell us the look you want.'],
-        'points': ['Seat repair and reupholstery', 'Steering-wheel repair', 'Roof-lining repair', 'Door-card retrims'],
+        'points': ['Leather seat repair and reupholstery', 'Diamond-quilt stitching and custom colours', 'Steering-wheel and roof-lining repair', 'Door-card retrims'],
     },
     'carbon-bodykits': {
         'zone': 'Carbon and body kits', 'short': 'Carbon-fibre repair and custom body kits.',
@@ -234,9 +232,74 @@ PHOTOS = {
 }
 
 SCHEMA = {
-    'description': 'Auto spray painting and body repair workshop in Taman Bukit Indah, Iskandar Puteri, Johor: full and panel spray painting, custom candy and pearl colours, accident body repair, Nippon AI-PPS paint protection, interior repair, insurance and windscreen claims, motorbike spray.',
+    'description': 'Auto spray painting and body repair workshop in Taman Bukit Indah, Iskandar Puteri, Johor: full and panel spray painting, custom candy and pearl colours, accident body repair, Nippon AI-PPS paint protection, polishing, ceramic coating and PPF, interior repair, insurance and windscreen claims, motorbike spray.',
 }
 
 LLMS = {
     'intro': 'Auto spray painting, body repair and interior workshop in Taman Bukit Indah, Iskandar Puteri, Johor Bahru, Malaysia. Signboard: Pusat Kecantikan Kereta.',
+}
+
+# ---------- Facebook enrichment (Edwin, 20 Nov 2026): new service, home bands, new photos ----------
+PREFILL.update({
+    'polish-coating': "Hi MCS Auto Spray Painting, I'd like to ask about polishing / ceramic coating / PPF. Model and year: ",
+    'photo': "Hi MCS Auto Spray Painting, here is a photo of my car. Model and year: ",
+    'colour-consult': "Hi MCS Auto Spray Painting, I'd like to book a colour consultation at your colour lounge. Model and year: ",
+})
+SERVICES['polish-coating'] = {
+    'zone': 'Polish, coating and PPF', 'short': 'Polishing, ceramic coating and PPF or wrapping.',
+    'title': 'Car Polishing, Ceramic Coating & PPF in Bukit Indah | MCS Auto Spray Painting',
+    'meta': 'Polishing, ceramic coating and PPF / wrapping at MCS Auto Spray Painting, Taman Bukit Indah, Iskandar Puteri, Johor. WhatsApp 016-556 2998.',
+    'h1': 'Polishing, ceramic coating and PPF',
+    'lead': 'Finishing work for new or existing paint: polishing, ceramic coating, and PPF or wrapping.',
+    'paras': ['After a respray, or on paint that has lost its shine, polishing brings the gloss back. Ceramic coating and PPF or wrapping add a layer on top of the paint.',
+              'Tell us on WhatsApp which one you have in mind, with your model and year, and send a photo of the paint as it is now.'],
+    'points': ['Polishing', 'Ceramic coating', 'PPF and wrapping', 'Photo first, then advice'],
+}
+SERVICES_PAGE.update({
+    'paint_h': 'Paint systems',
+    'paint_p': 'We work with an AkzoNobel paint system alongside Nippon AI-PPS; you will see the signage in the shop.',
+})
+UI.update({'alt_suffix': ', MCS Auto Spray Painting, Iskandar Puteri'})
+HOME.update({
+    'ba_h': 'Before and after', 'ba_p': 'Real MCS jobs, straight from our workshop.', 'ba_wa': 'Send us a photo of your car',
+    'ba_label': 'Before and after photos',
+    'show_h': 'See the colour before you choose it',
+    'show_p': 'Come into our colour lounge and look at real painted sample panels: solids, candy, pearl, chameleon colour-shift, holographic and carbon-weave.',
+    'show_wa': 'Book a colour consultation', 'show_label': 'Colour sample walls',
+    'reels_h': 'Watch real jobs on Facebook Reels', 'reels_p': 'Short clips from the workshop, posted on our Facebook page.',
+    'reel_tag': 'Facebook Reel', 'reel_views': '22K+ views on Facebook', 'reels_label': 'Facebook Reels',
+    'reels': ['Nippon AI-PPS spray-on protection demo', 'Blue pearl paint that shifts colour in the light', 'See all MCS Reels on Facebook'],
+})
+# alt text (what is visible; the page adds UI['alt_suffix']) for the photos from the MCS Facebook page (drop 6affdd2345c3eab90d6f61ce)
+PHOTOS.update({
+    'bmw-candy-red-hero': 'Glossy candy-red BMW 3-Series after a full respray, three-quarter front view, MCS AUTO SPRAY PAINTING plate frame',
+    'bmw-candy-red-front': 'The same candy-red BMW 3-Series head-on, LED headlights on and trees reflected in the bonnet',
+    'bmw-gloss-detail': 'Close-up of the candy-red BMW front wing, headlight and alloy wheel, showing the depth of the gloss',
+    'bmw-before-after-front': 'Before and after: BMW 3-Series front in white, then in glossy candy red',
+    'bmw-before-after-rear': 'Before and after: BMW 318i rear in white, then in glossy candy red',
+    'bmw-seats-before-after': 'Before and after: worn black leather BMW front seats, then re-trimmed in red leather with black side panels',
+    'bmw-red-black-front-seat': 'Red-and-black leather front seat in the BMW, seen through the open door',
+    'colour-showroom': 'MCS colour lounge with walls of painted colour samples, a table and velvet chairs',
+    'swatch-wall-candy': 'Swatch wall of carbon-look, flake, chameleon, blue, yellow, green and red samples',
+    'swatch-wall-chameleon': 'Purple-blue chameleon colour-shift samples above yellow, blue, silver and holographic samples',
+    'swatch-panels-carbon-pearl': 'Wood-pattern and carbon-weave sample panels above pearl and holographic samples',
+    'honda-accord-two-tone-4x5': 'Green Honda Accord with a black carbon-look bonnet, LED headlight and gold wheel',
+    'burgundy-diamond-seat': 'Burgundy leather bench seat with diamond-quilt stitching',
+    'tan-diamond-seat': 'Tan leather seat with diamond-quilted centre panels inside the MCS shop',
+})
+CAPS = {  # short captions for the new photos
+    'bmw-candy-red-hero': 'Candy-red BMW 3-Series respray',
+    'bmw-candy-red-front': 'Same BMW, head-on',
+    'bmw-gloss-detail': 'Gloss depth on the candy-red BMW',
+    'bmw-before-after-front': 'BMW 3-Series: white to candy red, front',
+    'bmw-before-after-rear': 'Same BMW, rear',
+    'bmw-seats-before-after': 'BMW seats: worn black leather to red-and-black re-trim',
+    'bmw-red-black-front-seat': 'Red-and-black BMW front seat',
+    'colour-showroom': 'Our colour lounge',
+    'swatch-wall-candy': 'Solids, candy and flake samples',
+    'swatch-wall-chameleon': 'Chameleon colour-shift and holographic samples',
+    'swatch-panels-carbon-pearl': 'Carbon-weave and pearl samples',
+    'honda-accord-two-tone-4x5': 'Green and black two-tone Honda Accord with carbon-look bonnet',
+    'burgundy-diamond-seat': 'Burgundy diamond-stitch leather seat',
+    'tan-diamond-seat': 'Tan diamond-quilted seat rebuild',
 }

@@ -17,7 +17,7 @@ BANNED = [r'lorem', r'\bTODO\b', r'\bTBD\b', r'placeholder', r'\bXXX\b', 'pa' + 
           r'\bRM\s?\d', r'\bfrom RM\b', r'S\$\d', r'\bSSM\b', r'\d{6,}-[A-Z]\b', r'Sdn\.? Bhd', r'company no',
           r'instagram', r'tiktok', r'\bwaze\b', r'Singapore branch', r'cawangan Singapura', r'新加坡分行', r'新加坡分店',
           'Overseas ' + 'Tyre', 'HX ' + 'Auto', r'Supra', r'<blockquote', r'official (3M|Nippon|Glasurit|Aikka|HyperTint|HyperFilm)',
-          r'authori[sz]ed dealer', r'official dealer', r'81200', r'Skudai', r'Friday[^.<"]{0,30}7:00 ?pm', r'"Friday"[^}]*"19:00"', r'grayscale\(', r'mix-blend-mode']
+          r'authori[sz]ed dealer', r'official dealer', r'81200', r'Skudai', r'Glasurit', r'\bPPG\b', r'Standox', r'Spies\s*Hecker', r'RM\s?8,?500', r'RM\s?3,?000', r'\bhiring\b', r'jawatan kosong', r'招聘', r'Friday[^.<"]{0,30}7:00 ?pm', r'"Friday"[^}]*"19:00"', r'grayscale\(', r'mix-blend-mode']
 LOGO_FILES = re.compile(r'(3m|nippon|glasurit|aikka|hypertint|hyperfilm)[^"/]*\.(png|webp|svg|jpg)', re.I)
 BASE = build.BASE
 WA = 'https://wa.me/60165562998?text='

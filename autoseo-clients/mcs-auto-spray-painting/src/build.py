@@ -62,25 +62,83 @@ SERVER_MEDIA = {  # placed by Bridge drop_publish 20 Nov 2026
     'media/logo-transparent.png': 'ed9b4a95881b99ff2b68164aaec3d5ce49bd4b826f50f1caf5452d84935b13f6',
     'media/favicon-512.png': '85bae8fe99f422e5791e5fa564365deea83774ea5b842088a4b638dab0299255',
 }
+# Photos from the MCS Facebook page (Bridge drop 6affdd2345c3eab90d6f61ce, manifest.json, placed 20 Nov 2026 into media/ as
+# WebP + JPG pairs). Served as <picture> (WebP, JPG fallback). stem: (w, h, object-position, whole). whole = native 9:16
+# before/after composite with MCS's own labels burned in: always shown whole (contain), never cropped.
+FB_MEDIA = {
+    'bmw-candy-red-hero':         (1080, 1350, '50% 55%', False),
+    'bmw-candy-red-front':        (1080, 1350, '50% 60%', False),
+    'bmw-gloss-detail':           (1080, 1350, '50% 50%', False),
+    'bmw-before-after-front':     (1080, 1920, '50% 50%', True),
+    'bmw-before-after-rear':      (1080, 1920, '50% 50%', True),
+    'bmw-seats-before-after':     (1080, 1920, '50% 50%', True),
+    'bmw-red-black-front-seat':   (1080, 1350, '45% 50%', False),
+    'colour-showroom':            (1080, 1350, '50% 45%', False),
+    'swatch-wall-candy':          (1080, 1350, '50% 40%', False),
+    'swatch-wall-chameleon':      (936, 1170, '50% 40%', False),
+    'swatch-panels-carbon-pearl': (936, 1170, '50% 30%', False),
+    'honda-accord-two-tone-4x5':  (922, 1152, '50% 50%', False),
+    'burgundy-diamond-seat':      (916, 1145, '50% 55%', False),
+    'tan-diamond-seat':           (1086, 1358, '50% 50%', False),
+}
+SERVER_MEDIA.update({  # sha256 as placed by drop_publish 20 Nov 2026
+    'media/bmw-candy-red-hero.webp': 'ba568b86964435904fb8941b11f727c18bb69ac4b3c4005ba26f4032ca4d0806',
+    'media/bmw-candy-red-hero.jpg': 'a48cbe175b3a4c99a3361707c03338cac03423a45f6175aceea204f87405dc56',
+    'media/bmw-candy-red-front.webp': '9605b9c47adecbbd5a08909972186ccb7b5870d9346f30e22858aeb2a4ea2ada',
+    'media/bmw-candy-red-front.jpg': 'b230087ada5d0ce5cb3de73f60b6f04fd12d5aa8498526b8bd4a081d2634965f',
+    'media/bmw-gloss-detail.webp': 'eddc6ce8a76c7d82118742ea5b05342ca95f71218256761733cee039a9aa293d',
+    'media/bmw-gloss-detail.jpg': '00d51dfd243a9b4965b4ba759387d4cd0c1c2c9d06455405cf965b0deea7d3aa',
+    'media/bmw-before-after-front.webp': '38b038c110696c0f347463046c451f9a4b5cd945940c0b2b777d258f4b56ae76',
+    'media/bmw-before-after-front.jpg': 'a81b91606474f949fa5a911ce9678bdeaab1d6400d0f7694f62ce69c800d3a49',
+    'media/bmw-before-after-rear.webp': '65f36cf1cf5e537b0a6c93385a12ddec68b9cc3cd11c6d867884c65c353ba530',
+    'media/bmw-before-after-rear.jpg': 'd089f05004a4add5e78bfc5c560dd9fee29cbc2550d7d42754e1ce640adb2af0',
+    'media/bmw-seats-before-after.webp': '4ba151f5c1749c6a51aade449db68e0c7ad59ed094205251a203af1a3c558f07',
+    'media/bmw-seats-before-after.jpg': '47b1c90ed731975131cc02da45a8e927f6669a00add875be6cd427f4a9db3b40',
+    'media/bmw-red-black-front-seat.webp': 'ffa0283c9e49a00426ef5c66e115f544f59013fbc8ae911bbf855c53afcc0b8d',
+    'media/bmw-red-black-front-seat.jpg': '8651022e904cce1bcb5b4a9e8940fb22cbcc7fcfa7b22aea05ad3f3543c8ce5d',
+    'media/colour-showroom.webp': '2d7f3d15ba469292a566bb607b34f81f73113a55e051d35eb57c94f371913f94',
+    'media/colour-showroom.jpg': '310aa3154f7c67bd35f9b9b66fffa2001319efcb626f4410659f95623e4f7f4a',
+    'media/swatch-wall-candy.webp': 'f9a51a5b67cdc82e37fe1c0f1db571a3e50031c90aec2b82e2a23be4b9dab10a',
+    'media/swatch-wall-candy.jpg': '4cfeb7fc967760c4caf1e31c483f8f05a330e0780f3198a94d7b756c9bc6c45e',
+    'media/swatch-wall-chameleon.webp': 'f31b98a12d863c836532599ac76a5da000fd625e047eea48521ea9877230a764',
+    'media/swatch-wall-chameleon.jpg': '4dd88babb2eea7582a8554b4d880e2714c74d217edbee58f2decd4bfa020b4bb',
+    'media/swatch-panels-carbon-pearl.webp': 'e3057bcbee07ed39ecbecca68114142821bcb8a89d5c13347a2166f89c89b758',
+    'media/swatch-panels-carbon-pearl.jpg': '188334abc0512e717befa1d47ec4058a8e7136b66cec147092773c2df03115ae',
+    'media/honda-accord-two-tone-4x5.webp': '6b04b0aeffc7d89b0fd9893c26b31702781b63391a96505aa618fe5ac9af27f2',
+    'media/honda-accord-two-tone-4x5.jpg': '284309f75e5857366aa025f421d28caa4e2bdb45b6ea441d28ea069d38af3d18',
+    'media/burgundy-diamond-seat.webp': 'e98f9f1a787db1925b2fb70db678707eb5b0aa591506a8a6ec452844ac20b720',
+    'media/burgundy-diamond-seat.jpg': 'd11553ad3ee3b89c14f14435fd2ab590a2a91b43cd6cb5f0eb28a827e34656d4',
+    'media/tan-diamond-seat.webp': '8290d3fe36e54f231c57842f01e2e1eb9b1aa183d3b66b9216c46c47efd805d0',
+    'media/tan-diamond-seat.jpg': '82b8a199b76dab38aa1b87e8c4bb08e7b4d2aa179cfc1109a01f5044e260e2e6',
+    # also placed (16:9 landscape master of the Honda, not used on a page yet)
+    'media/honda-accord-two-tone.webp': '7e1e0a0ffabf8f8202fe09a154a444bacf21e8c1d7dbb2538148f2915f454a77',
+    'media/honda-accord-two-tone.jpg': '8fcdbfc8dccc8b58a01f46b3f4d0623c3c05d4696752af632524301783bb33e0',
+})
 
 SVC_PATH = {'spray-painting': 'services/spray-painting/', 'custom-colour': 'services/custom-colour/',
             'body-repair': 'services/accident-body-repair/', 'paint-protection': 'services/nippon-ai-pps-paint-protection/',
             'rims-calipers-engine': 'services/rims-calipers-engine-bay/', 'interior-repair': 'services/interior-repair-reupholstery/',
             'carbon-bodykits': 'services/carbon-fibre-body-kits/', 'insurance-windscreen': 'services/insurance-windscreen-claims/',
-            'motorbike': 'services/motorbike-spray/'}
+            'motorbike': 'services/motorbike-spray/', 'polish-coating': 'services/polishing-ceramic-coating-ppf/'}
 SVC_PHOTOS = {  # real photos per service (facts.json services[].photos); first = zone + page photo
-    'spray-painting': ['panels-booth', 'shopfront-booth', 'vellfire-booth', 'mclaren-shopfront'],
-    'custom-colour': ['vellfire-front', 'vellfire-rear', 'vellfire-booth', 'handover'],
-    'body-repair': ['shopfront-booth', 'panels-booth', 'vellfire-booth'],
+    'spray-painting': ['panels-booth', 'bmw-before-after-rear', 'shopfront-booth', 'vellfire-booth'],
+    'custom-colour': ['vellfire-front', 'bmw-candy-red-hero', 'swatch-wall-chameleon', 'vellfire-rear', 'handover'],
+    'body-repair': ['shopfront-booth', 'bmw-before-after-front', 'panels-booth'],
     'paint-protection': ['vellfire-rear', 'vellfire-front'],
+    'polish-coating': ['bmw-gloss-detail', 'bmw-candy-red-front'],
     'rims-calipers-engine': ['mclaren-shopfront', 'vellfire-front'],
-    'interior-repair': ['seats', 'door-panel', 'upholstery-bay'],
-    'carbon-bodykits': ['lotus-booth', 'mclaren-shopfront'],
+    'interior-repair': ['seats', 'bmw-seats-before-after', 'burgundy-diamond-seat', 'tan-diamond-seat', 'door-panel'],
+    'carbon-bodykits': ['lotus-booth', 'honda-accord-two-tone-4x5', 'swatch-panels-carbon-pearl'],
     'insurance-windscreen': ['vellfire-unit-57', 'shopfront-booth'],
     'motorbike': ['motorbike', 'upholstery-bay'],
 }
 SWATCH = ['#48A6CA', '#EC060E', '#C5C8CC']
-GALLERY = ['vellfire-front', 'mclaren-shopfront', 'lotus-booth', 'vellfire-booth', 'vellfire-rear', 'panels-booth', 'handover', 'vellfire-unit-57']
+GALLERY = ['bmw-candy-red-hero', 'honda-accord-two-tone-4x5', 'vellfire-front', 'bmw-candy-red-front', 'mclaren-shopfront', 'tan-diamond-seat',
+           'lotus-booth', 'bmw-gloss-detail', 'burgundy-diamond-seat', 'vellfire-rear', 'bmw-red-black-front-seat', 'vellfire-booth',
+           'panels-booth', 'handover', 'vellfire-unit-57']
+BA = ['bmw-before-after-front', 'bmw-before-after-rear', 'bmw-seats-before-after']
+SHOWROOM = ['colour-showroom', 'swatch-wall-candy', 'swatch-wall-chameleon', 'swatch-panels-carbon-pearl']
+REELS = [('fb_reel_aipps', 'bmw-gloss-detail', True), ('fb_reel_pearl', 'swatch-wall-chameleon', False), ('fb_reels', 'colour-showroom', False)]
 PAGES = ['', 'services/'] + [SVC_PATH[k] for k in strings_en.SERVICE_ORDER] + ['about/', 'contact/', 'articles/', 'privacy/']
 NAV = [('services/', 'services'), ('about/', 'about'), ('contact/', 'contact')]
 
@@ -153,11 +211,25 @@ def mail(place, cls=None):
 
 
 def img(stem, alt, eager=False, cls=None, sizes=None):
+    if stem in FB_MEDIA:  # WebP with JPG fallback; alt says what is visible + the business and place
+        w, h, pos, _ = FB_MEDIA[stem]
+        c = f' class="{cls}"' if cls else ''
+        load = ' fetchpriority="high"' if eager == 'high' else ('' if eager else ' loading="lazy"')
+        return (f'<picture class="pc"><source type="image/webp" srcset="{u("media/" + stem + ".webp")}">'
+                f'<img{c} src="{u("media/" + stem + ".jpg")}" width="{w}" height="{h}" alt="{E(alt + S.UI["alt_suffix"])}" style="object-position:{pos}"{load} decoding="async"></picture>')
     f, w, h, pos = MEDIA[stem]
     c = f' class="{cls}"' if cls else ''
     st = f' style="object-position:{pos}"' if pos else ''
     load = ' fetchpriority="high"' if eager == 'high' else ('' if eager else ' loading="lazy"')
     return f'<img{c} src="{murl(stem)}" width="{w}" height="{h}" alt="{E(alt)}"{st}{load} decoding="async">'
+
+
+def cap(stem):
+    return S.CAPS.get(stem, S.PHOTOS[stem])
+
+
+def whole(stem):
+    return stem in FB_MEDIA and FB_MEDIA[stem][3]
 
 
 def logo():
@@ -284,7 +356,7 @@ def org_ld():
         'openingHoursSpecification': [{'@type': 'OpeningHoursSpecification', 'dayOfWeek': h['days'], 'opens': h['opens'], 'closes': h['closes']} for h in F['hours']],
         'contactPoint': [{'@type': 'ContactPoint', 'contactType': 'customer service', 'telephone': F['whatsapp']['e164'], 'url': F['whatsapp']['url'],
                           'availableLanguage': ['en', 'ms', 'zh']}],
-        'sameAs': [LK['facebook'], LK['youtube'], LK['maps_cid']],
+        'sameAs': [LK['facebook'], LK['fb_reels'], LK['youtube'], LK['maps_cid']],
         'areaServed': [{'@type': 'Place', 'name': n} for n in F['areas']],
         'makesOffer': [{'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': S.SERVICES[k]['h1'], 'url': pabs(SVC_PATH[k])}} for k in S.SERVICE_ORDER],
     }
@@ -300,7 +372,7 @@ def service_ld(k):
     s = S.SERVICES[k]
     return {'@context': 'https://schema.org', '@type': 'Service', 'name': s['h1'], 'description': s['meta'], 'url': pabs(SVC_PATH[k]),
             'provider': {'@id': SITE + '#business'}, 'areaServed': [{'@type': 'Place', 'name': n} for n in F['areas']],
-            'image': absu('media/' + MEDIA[SVC_PHOTOS[k][0]][0])}
+            'image': absu('media/' + (SVC_PHOTOS[k][0] + '.jpg' if SVC_PHOTOS[k][0] in FB_MEDIA else MEDIA[SVC_PHOTOS[k][0]][0]))}
 
 
 def crumb_html(trail):
@@ -359,7 +431,7 @@ def booth(compact=False):
 
 
 def gallery(place):
-    figs = ''.join(f'<li><figure>{img(s, S.PHOTOS[s])}<figcaption>{E(S.PHOTOS[s])}</figcaption></figure></li>' for s in GALLERY)
+    figs = ''.join(f'<li><figure>{img(s, S.PHOTOS[s])}<figcaption>{E(cap(s))}</figcaption></figure></li>' for s in GALLERY)
     G = S.HOME
     return f'''<section class="band dk" id="finished"><div class="wrap">
 <div class="sec-h"><h2>{E(G['proof_h'])}</h2></div>
@@ -369,6 +441,45 @@ def gallery(place):
 <div class="gl" aria-label="{E(S.UI['gallery_label'])}" role="region"><ul class="glide" data-speed="0.035">{figs}</ul>
 <div class="wrap gl-c"><button type="button" class="arr" data-dir="-1" aria-label="{E(S.UI['prev'])}">{icon('prev')}</button><button type="button" class="arr" data-dir="1" aria-label="{E(S.UI['next'])}">{icon('next')}</button></div></div>
 </section>'''
+
+
+def before_after(place):
+    H = S.HOME
+    cards = ''.join(f'<li><figure class="ba-f">{img(s, S.PHOTOS[s])}<figcaption>{E(cap(s))}</figcaption></figure></li>' for s in BA)
+    return f'''<section class="band dk" id="before-after"><div class="wrap">
+<div class="sec-h"><h2>{E(H['ba_h'])}</h2><p>{E(H['ba_p'])}</p></div>
+<ul class="rail ba" aria-label="{E(H['ba_label'])}">{cards}</ul>
+<div class="btns rail-cta">{wa(place + '_before_after', 'photo', label=H['ba_wa'])}</div>
+</div></section>'''
+
+
+def showroom(place):
+    H = S.HOME
+    lead = SHOWROOM[0]
+    cards = ''.join(f'<li><figure class="sw-f">{img(s, S.PHOTOS[s])}<figcaption>{E(cap(s))}</figcaption></figure></li>' for s in SHOWROOM[1:])
+    return f'''<section class="band sv curve" id="colour-lounge"><div class="wrap">
+<div class="show">
+<div class="show-tx"><h2>{E(H['show_h'])}</h2><p>{E(H['show_p'])}</p>
+<div class="btns">{wa(place + '_colour_consult', 'colour-consult', label=H['show_wa'])}</div></div>
+<figure class="sw-f sw-lead">{img(lead, S.PHOTOS[lead])}<figcaption>{E(cap(lead))}</figcaption></figure>
+</div>
+<ul class="rail sw" aria-label="{E(H['show_label'])}">{cards}</ul>
+</div></section>'''
+
+
+def reels(place):
+    H = S.HOME
+    play = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg>'
+    cards = []
+    for i, (lk, stem, views) in enumerate(REELS):
+        v = f'<span class="rl-v">{E(H["reel_views"])}</span>' if views else ''
+        cards.append(f'<li><a class="rl" href="{E(LK[lk])}" target="_blank" rel="noopener" data-cta="facebook_{place}_reel_{i + 1}" data-ref="facebook_{place}_reel_{i + 1}">'
+                     f'{img(stem, S.PHOTOS[stem])}<span class="rl-tag">{play}{E(H["reel_tag"])}</span>'
+                     f'<span class="rl-tx"><b>{E(H["reels"][i])}</b>{v}</span></a></li>')
+    return f'''<section class="band dk" id="reels"><div class="wrap">
+<div class="sec-h"><h2>{E(H['reels_h'])}</h2><p>{E(H['reels_p'])}</p></div>
+<ul class="rail rls" aria-label="{E(H['reels_label'])}">{''.join(cards)}</ul>
+</div></section>'''
 
 
 def visit(place):
@@ -399,7 +510,8 @@ def page_head(trail, h1, lead, photo=None, place=None, key='default'):
 
 # ---------- pages ----------
 def home():
-    return hero() + promise() + zones('home') + booth() + gallery('home') + visit('home') + band('home')
+    return (hero() + promise() + zones('home') + before_after('home') + showroom('home') + booth() + gallery('home') + reels('home')
+            + visit('home') + band('home'))
 
 
 def services_page(path):
@@ -411,7 +523,7 @@ def services_page(path):
         cards.append(f'<li><a href="{pu(SVC_PATH[k])}"><figure>{img(ph, S.PHOTOS[ph])}</figure><span class="sc-t"><b>{E(s["h1"])}</b><span>{E(s["short"])}</span></span></a></li>')
     body = page_head(trail, P['h1'], P['lead'], None, 'services') + f'''<section class="band lt curve"><div class="wrap">
 <ul class="scards">{''.join(cards)}</ul>
-<div class="onestop"><h2>{E(P['one_stop_h'])}</h2><p>{E(P['one_stop'])}</p></div>
+<div class="onestop"><h2>{E(P['one_stop_h'])}</h2><p>{E(P['one_stop'])}</p><h3>{E(P['paint_h'])}</h3><p>{E(P['paint_p'])}</p></div>
 </div></section>''' + booth(True) + band('services')
     return body, [org_ld(), crumb_ld(trail)]
 
@@ -420,12 +532,12 @@ def service_page(k, path):
     s = S.SERVICES[k]
     trail = [('', S.UI['home']), ('services/', S.UI['services']), (path, s['zone'])]
     photos = SVC_PHOTOS[k]
-    more = ''.join(f'<figure class="frame">{img(p, S.PHOTOS[p])}<figcaption>{E(S.PHOTOS[p])}</figcaption></figure>' for p in photos[1:])
+    more = ''.join(f'<figure class="frame{" whole" if whole(p) else ""}">{img(p, S.PHOTOS[p])}<figcaption>{E(cap(p))}</figcaption></figure>' for p in photos[1:])
     pts = ''.join(f'<li>{icon("tick")}<span>{E(x)}</span></li>' for x in s['points'])
     posted = ''
     if k == 'custom-colour':
         posted = (f'<div class="posted"><p>{E(s["posted"])}</p><ul><li>{ext("facebook", "service_video_aikka", LK["fb_video_aikka"], s["posted_aikka"], cls="more")}</li>'
-                  f'<li>{ext("facebook", "service_video_glasurit", LK["fb_video_glasurit"], s["posted_glasurit"], cls="more")}</li></ul></div>')
+                  f'<li>{ext("facebook", "service_reel_pearl", LK["fb_reel_pearl"], S.HOME["reels"][1], cls="more")}</li></ul></div>')
     others = ''.join(f'<li><a href="{pu(SVC_PATH[o])}"><i style="--c:{SWATCH[i % 3]}"></i>{E(S.SERVICES[o]["zone"])}</a></li>'
                      for i, o in enumerate(S.SERVICE_ORDER) if o != k)
     body = page_head(trail, s['h1'], s['lead'], photos[0], f'service_{k}', k) + f'''<section class="band lt curve"><div class="wrap split">
@@ -575,7 +687,7 @@ def main():
     a = F['address']
     lines = [f'# {NAME}', '', f'> {S.LLMS["intro"]}', '',
              f'- Address: {a["one_line"]}', f'- WhatsApp and phone: {F["whatsapp"]["intl"]} ({F["whatsapp"]["url"]})',
-             f'- Email: {F["email"]}', f'- Hours: {S.HOURS_SHORT}', f'- Google Maps: {LK["maps"]}', f'- Facebook: {LK["facebook"]}',
+             f'- Email: {F["email"]}', f'- Hours: {S.HOURS_SHORT}', f'- Google Maps: {LK["maps"]}', f'- Facebook: {LK["facebook"]} (Reels: {LK["fb_reels"]})',
              '', '## Services']
     lines += [f'- {S.SERVICES[k]["h1"]}: {absu(SVC_PATH[k])}' for k in S.SERVICE_ORDER]
     lines += ['', '## Pages']

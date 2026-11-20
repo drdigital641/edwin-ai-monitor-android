@@ -62,7 +62,7 @@ STEPS = [
     ('Ambil kereta anda', 'Ambil kereta di Jalan Indah 16/11 dan semak kemasannya bersama kami.'),
 ]
 
-SERVICE_ORDER = ['spray-painting', 'custom-colour', 'body-repair', 'paint-protection', 'rims-calipers-engine',
+SERVICE_ORDER = ['spray-painting', 'custom-colour', 'body-repair', 'paint-protection', 'polish-coating', 'rims-calipers-engine',
                  'interior-repair', 'carbon-bodykits', 'insurance-windscreen', 'motorbike']
 
 SERVICES = {
@@ -77,37 +77,35 @@ SERVICES = {
         'points': ['Spray penuh kereta', 'Panel, bampar dan pintu', 'Warna dipadankan dengan kereta anda', 'Spray dalam bilik dan clear coat'],
     },
     'custom-colour': {
-        'zone': 'Warna custom', 'short': 'Padanan warna, kemasan candy dan pearl.',
+        'zone': 'Warna custom', 'short': 'Kemasan candy, pearl dan colour-flip, serta padanan warna.',
         'title': 'Warna Custom, Cat Candy & Pearl di Johor Bahru | MCS Auto Spray Painting',
         'meta': 'Padanan warna custom dengan kemasan candy dan pearl di MCS Auto Spray Painting, Taman Bukit Indah, Iskandar Puteri. Lihat Toyota Vellfire candy cyan kami.',
         'h1': 'Warna custom, kemasan candy dan pearl',
         'lead': 'Toyota Vellfire candy cyan di laman ini dicat di bilik spray kami. Bawa idea warna anda.',
         'paras': ['Warna custom bermula dengan perbincangan. Kongsi gambar, warna yang anda suka atau sampel, dan kami bincang rupanya di bawah cahaya siang, di tempat teduh dan pada waktu malam.',
                   'Kami juga padankan warna cat sedia ada, supaya panel yang dibaiki sepadan dengan cat asal.'],
-        'points': ['Kemasan candy dan pearl', 'Padanan warna untuk pembaikan', 'Tukar warna penuh', 'Nasihat sebelum cat dibancuh'],
+        'points': ['Kemasan candy, pearl dan colour-flip', 'Padanan warna untuk pembaikan', 'Tukar warna penuh', 'Nasihat sebelum cat dibancuh'],
         'posted': 'Dikongsi di Facebook kami:',
         'posted_aikka': 'Kerja warna crystal dua tona Aikka',
-        'posted_glasurit': 'Kerja Mercedes-Benz black crystal dengan clear coat Glasurit',
     },
     'body-repair': {
-        'zone': 'Baiki body', 'short': 'Kerosakan kemalangan dibaiki, disediakan dan dispray semula.',
+        'zone': 'Baiki body', 'short': 'Ketuk, kemek dan baiki kemalangan, kemudian spray sepadan.',
         'title': 'Baiki Body Kemalangan di Bukit Indah, Johor | MCS Auto Spray Painting',
         'meta': 'Baiki body kemalangan di MCS Auto Spray Painting, Taman Bukit Indah, Iskandar Puteri: kemek, panel dan bampar rosak dibaiki dan dispray semula di bilik spray kami.',
         'h1': 'Baiki body kemalangan di Bukit Indah',
-        'lead': 'Kemek, bampar retak dan panel rosak dibaiki, kemudian dicat supaya sepadan.',
+        'lead': 'Kerja ketuk dan kemek, bampar retak dan panel rosak dibaiki, kemudian dicat supaya sepadan.',
         'paras': ['Selepas berlanggar, hantar gambar kerosakan dari beberapa sudut. Kami lihat apa yang boleh dibaiki dan apa yang perlu diganti, kemudian sediakan dan spray semula di bilik spray.',
                   'Jika pembaikan melalui syarikat insurans anda, kami boleh bantu dengan tuntutan juga.'],
-        'points': ['Kemek dan kerosakan panel', 'Baiki dan spray semula bampar', 'Cat dipadankan dengan bahagian lain kereta', 'Bantuan tuntutan insurans'],
+        'points': ['Baiki ketuk dan kemek', 'Baiki panel dan bampar kemalangan', 'Cat dipadankan dengan bahagian lain kereta', 'Bantuan tuntutan insurans'],
     },
     'paint-protection': {
-        'zone': 'Nippon AI-PPS', 'short': 'Perlindungan cat jenis sembur untuk kereta yang siap.',
+        'zone': 'Nippon AI-PPS', 'short': 'Filem perlindungan cat jenis sembur, jernih atau berwarna, tanpa sambungan atau gam.',
         'title': 'Perlindungan Cat Nippon AI-PPS di Iskandar Puteri | MCS Auto Spray Painting',
-        'meta': 'Perlindungan cat sembur Nippon AI-PPS di MCS Auto Spray Painting, Taman Bukit Indah, Iskandar Puteri, Johor. WhatsApp 016-556 2998.',
+        'meta': 'Filem perlindungan cat Nippon AI-PPS jenis sembur, jernih atau berwarna, di MCS Auto Spray Painting, Taman Bukit Indah, Iskandar Puteri, Johor. WhatsApp 016-556 2998.',
         'h1': 'Perlindungan cat Nippon AI-PPS',
-        'lead': 'Lapisan perlindungan jenis sembur untuk cat kereta anda, dibuat di bengkel kami di Bukit Indah.',
-        'paras': ['Nippon AI-PPS ialah perlindungan cat jenis sembur. Ia sesuai untuk kereta yang baru dispray atau kereta yang catnya mahu dijaga.',
-                  'WhatsApp model dan tahun kereta anda dan kami akan terangkan cara ia dibuat.'],
-        'points': ['Disembur pada cat', 'Untuk cat baharu atau cat sedia ada', 'Dibuat di bengkel kami', 'Tanya kami cara ia dibuat'],
+        'lead': 'Nippon AI-PPS disembur sebagai filem pelindung jernih atau berwarna, tanpa sambungan dan tanpa gam.',
+        'paras': ['Kerana ia disembur, AI-PPS meliputi panel tanpa garis sambungan atau gam seperti filem tampal. Ia membantu cat menahan serpihan batu dan calar ringan, dan kesan ringan boleh digilap.', 'Ia sesuai untuk kereta yang baru dispray atau kereta yang catnya mahu dijaga. WhatsApp model dan tahun kereta anda, dan kami terangkan cara ia dibuat.'],
+        'points': ['Kemasan jernih atau berwarna', 'Disembur: tiada sambungan, tiada gam', 'Bantu tahan serpihan batu dan calar ringan', 'Kesan ringan boleh digilap'],
     },
     'rims-calipers-engine': {
         'zone': 'Rim dan caliper', 'short': 'Cat rim, caliper brek dan ruang enjin.',
@@ -120,14 +118,14 @@ SERVICES = {
         'points': ['Cat rim', 'Cat caliper brek', 'Cat ruang enjin', 'Warna sepadan atau kontras dengan kereta'],
     },
     'interior-repair': {
-        'zone': 'Dalaman dan kerusi', 'short': 'Baiki kerusi, stereng dan siling, retrim panel pintu.',
+        'zone': 'Dalaman dan kerusi', 'short': 'Baiki kerusi kulit dan upholstery semula, jahitan berlian dan warna custom, stereng dan siling.',
         'title': 'Baiki Kerusi & Dalaman Kereta, Upholstery di Bukit Indah | MCS Auto Spray Painting',
         'meta': 'Baiki kerusi, stereng dan siling, upholstery semula dan retrim panel pintu di MCS Auto Spray Painting, Taman Bukit Indah, Iskandar Puteri.',
         'h1': 'Baiki kerusi dan dalaman, upholstery',
         'lead': 'Kerusi koyak, stereng lusuh atau siling kendur, dibaiki di ruang upholstery kami.',
-        'paras': ['Ruang dalaman kami mengendalikan baiki kerusi dan upholstery semula, baiki stereng dan siling, serta retrim panel pintu. Kerusi dan panel pintu dua tona kuning air dan hitam di halaman ini ialah salah satu retrim kami.',
+        'paras': ['Ruang dalaman kami mengendalikan baiki kerusi kulit dan upholstery semula, termasuk jahitan berlian (diamond-quilt) dan warna custom, serta baiki stereng dan siling, dan retrim panel pintu. Kerusi dan panel pintu dua tona kuning air dan hitam di halaman ini ialah salah satu retrim kami.',
                   'Hantar gambar dalaman kereta dan beritahu rupa yang anda mahu.'],
-        'points': ['Baiki kerusi dan upholstery semula', 'Baiki stereng', 'Baiki siling kereta', 'Retrim panel pintu'],
+        'points': ['Baiki kerusi kulit dan upholstery semula', 'Jahitan berlian dan warna custom', 'Baiki stereng dan siling', 'Retrim panel pintu'],
     },
     'carbon-bodykits': {
         'zone': 'Karbon dan body kit', 'short': 'Baiki gentian karbon dan body kit custom.',
@@ -231,9 +229,73 @@ PHOTOS = {
 }
 
 SCHEMA = {
-    'description': 'Bengkel spray cat dan baiki body di Taman Bukit Indah, Iskandar Puteri, Johor: spray penuh dan panel, warna custom candy dan pearl, baiki body kemalangan, perlindungan cat Nippon AI-PPS, baiki dalaman, tuntutan insurans dan cermin depan, spray motosikal.',
+    'description': 'Bengkel spray cat dan baiki body di Taman Bukit Indah, Iskandar Puteri, Johor: spray penuh dan panel, warna custom candy dan pearl, baiki body kemalangan, perlindungan cat Nippon AI-PPS, gilap, ceramic coating dan PPF, baiki dalaman, tuntutan insurans dan cermin depan, spray motosikal.',
 }
 
 LLMS = {
     'intro': 'Bengkel spray cat, baiki body dan dalaman di Taman Bukit Indah, Iskandar Puteri, Johor Bahru, Malaysia. Papan tanda: Pusat Kecantikan Kereta.',
+}
+
+# ---------- Facebook enrichment (Edwin, 20 Nov 2026): servis baharu, jalur halaman utama, gambar baharu ----------
+PREFILL.update({
+    'polish-coating': 'Hai MCS Auto Spray Painting, saya ingin bertanya tentang gilap / ceramic coating / PPF. Model dan tahun: ',
+    'photo': 'Hai MCS Auto Spray Painting, ini gambar kereta saya. Model dan tahun: ',
+    'colour-consult': 'Hai MCS Auto Spray Painting, saya ingin tempah sesi konsultasi warna di ruang warna anda. Model dan tahun: ',
+})
+SERVICES['polish-coating'] = {
+    'zone': 'Gilap, coating dan PPF', 'short': 'Gilap, ceramic coating dan PPF atau wrapping.',
+    'title': 'Gilap Kereta, Ceramic Coating & PPF di Bukit Indah | MCS Auto Spray Painting',
+    'meta': 'Gilap, ceramic coating dan PPF / wrapping di MCS Auto Spray Painting, Taman Bukit Indah, Iskandar Puteri, Johor. WhatsApp 016-556 2998.',
+    'h1': 'Gilap kereta, ceramic coating dan PPF',
+    'lead': 'Kerja kemasan untuk cat baharu atau cat sedia ada: gilap, ceramic coating, dan PPF atau wrapping.',
+    'paras': ['Selepas spray semula, atau pada cat yang sudah hilang kilat, gilap mengembalikan kilauan. Ceramic coating dan PPF atau wrapping menambah satu lapisan di atas cat.',
+              'Beritahu kami di WhatsApp yang mana satu anda mahu, bersama model dan tahun, dan hantar gambar cat seperti sekarang.'],
+    'points': ['Gilap', 'Ceramic coating', 'PPF dan wrapping', 'Gambar dahulu, kemudian nasihat'],
+}
+SERVICES_PAGE.update({
+    'paint_h': 'Sistem cat',
+    'paint_p': 'Kami menggunakan sistem cat AkzoNobel bersama Nippon AI-PPS; papan tandanya boleh dilihat di kedai.',
+})
+UI.update({'alt_suffix': ', MCS Auto Spray Painting, Iskandar Puteri'})
+HOME.update({
+    'ba_h': 'Sebelum dan selepas', 'ba_p': 'Kerja sebenar MCS, terus dari bengkel kami.', 'ba_wa': 'Hantar gambar kereta anda',
+    'ba_label': 'Gambar sebelum dan selepas',
+    'show_h': 'Lihat warna sebelum anda memilih',
+    'show_p': 'Datang ke ruang warna kami dan lihat panel sampel yang benar-benar dicat: warna solid, candy, pearl, chameleon yang bertukar warna, holografik dan anyaman karbon.',
+    'show_wa': 'Tempah konsultasi warna', 'show_label': 'Dinding sampel warna',
+    'reels_h': 'Tonton kerja sebenar di Facebook Reels', 'reels_p': 'Klip pendek dari bengkel, dikongsi di Facebook kami.',
+    'reel_tag': 'Facebook Reel', 'reel_views': '22K+ tontonan di Facebook', 'reels_label': 'Facebook Reels',
+    'reels': ['Demo perlindungan sembur Nippon AI-PPS', 'Cat blue pearl yang bertukar warna di bawah cahaya', 'Lihat semua Reels MCS di Facebook'],
+})
+PHOTOS.update({
+    'bmw-candy-red-hero': 'BMW 3-Series merah candy berkilat selepas spray penuh, pandangan depan sisi, bingkai plat MCS AUTO SPRAY PAINTING',
+    'bmw-candy-red-front': 'BMW 3-Series merah candy yang sama dari depan, lampu LED menyala dan pokok terpantul pada bonet',
+    'bmw-gloss-detail': 'Gambar dekat fender depan, lampu dan rim BMW merah candy, menunjukkan kedalaman kilat',
+    'bmw-before-after-front': 'Sebelum dan selepas: bahagian depan BMW 3-Series berwarna putih, kemudian merah candy berkilat',
+    'bmw-before-after-rear': 'Sebelum dan selepas: bahagian belakang BMW 318i berwarna putih, kemudian merah candy berkilat',
+    'bmw-seats-before-after': 'Sebelum dan selepas: kerusi depan BMW kulit hitam yang lusuh, kemudian dibalut semula dengan kulit merah dan panel sisi hitam',
+    'bmw-red-black-front-seat': 'Kerusi depan kulit merah dan hitam dalam BMW, dilihat melalui pintu yang terbuka',
+    'colour-showroom': 'Ruang warna MCS dengan dinding sampel warna yang dicat, meja dan kerusi baldu',
+    'swatch-wall-candy': 'Dinding sampel warna: rupa karbon, flake, chameleon, biru, kuning, hijau dan merah',
+    'swatch-wall-chameleon': 'Sampel chameleon ungu-biru yang bertukar warna, di atas sampel kuning, biru, perak dan holografik',
+    'swatch-panels-carbon-pearl': 'Panel sampel corak kayu dan anyaman karbon, di atas sampel pearl dan holografik',
+    'honda-accord-two-tone-4x5': 'Honda Accord hijau dengan bonet rupa karbon hitam, lampu LED dan rim emas',
+    'burgundy-diamond-seat': 'Kerusi bangku kulit burgundy dengan jahitan berlian',
+    'tan-diamond-seat': 'Kerusi kulit coklat muda dengan panel tengah jahitan berlian, di dalam kedai MCS',
+})
+CAPS = {
+    'bmw-candy-red-hero': 'BMW 3-Series merah candy selepas spray',
+    'bmw-candy-red-front': 'BMW yang sama, dari depan',
+    'bmw-gloss-detail': 'Kilat mendalam pada BMW merah candy',
+    'bmw-before-after-front': 'BMW 3-Series: putih ke merah candy, depan',
+    'bmw-before-after-rear': 'BMW yang sama, belakang',
+    'bmw-seats-before-after': 'Kerusi BMW: kulit hitam lusuh ke balutan merah-hitam',
+    'bmw-red-black-front-seat': 'Kerusi depan BMW merah-hitam',
+    'colour-showroom': 'Ruang warna kami',
+    'swatch-wall-candy': 'Sampel solid, candy dan flake',
+    'swatch-wall-chameleon': 'Sampel chameleon dan holografik',
+    'swatch-panels-carbon-pearl': 'Sampel anyaman karbon dan pearl',
+    'honda-accord-two-tone-4x5': 'Honda Accord dua tona hijau dan hitam dengan bonet rupa karbon',
+    'burgundy-diamond-seat': 'Kerusi kulit burgundy jahitan berlian',
+    'tan-diamond-seat': 'Kerusi jahitan berlian coklat muda, dibina semula',
 }

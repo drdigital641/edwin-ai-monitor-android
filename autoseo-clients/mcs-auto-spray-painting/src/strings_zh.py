@@ -62,7 +62,7 @@ STEPS = [
     ('取车', '到 Jalan Indah 16/11 取车，和我们一起查看漆面效果。'),
 ]
 
-SERVICE_ORDER = ['spray-painting', 'custom-colour', 'body-repair', 'paint-protection', 'rims-calipers-engine',
+SERVICE_ORDER = ['spray-painting', 'custom-colour', 'body-repair', 'paint-protection', 'polish-coating', 'rims-calipers-engine',
                  'interior-repair', 'carbon-bodykits', 'insurance-windscreen', 'motorbike']
 
 SERVICES = {
@@ -77,37 +77,35 @@ SERVICES = {
         'points': ['全车重喷', '单片、保险杠和车门', '按原车颜色调色', '喷漆房喷涂与清漆'],
     },
     'custom-colour': {
-        'zone': '定制颜色', 'short': '调色配色，糖果色与珍珠色漆面。',
+        'zone': '定制颜色', 'short': '糖果色、珍珠色与变色漆面，以及调色配色。',
         'title': '新山定制车色、糖果色与珍珠色喷漆 | MCS Auto Spray Painting',
         'meta': 'MCS Auto Spray Painting 提供糖果色与珍珠色的定制调色，位于依斯干达公主城武吉英达花园。看看我们的糖果青蓝 Toyota Vellfire。',
         'h1': '定制颜色，糖果色与珍珠色漆面',
         'lead': '本网站上的糖果青蓝 Toyota Vellfire 就是在我们喷漆房完成的。把您的颜色想法带来吧。',
         'paras': ['定制颜色从沟通开始。分享一张照片、您喜欢的颜色或色板，我们会一起讨论它在白天、阴影下和夜晚的效果。',
                   '我们也为原车漆调色，让修补的板件与原漆一致。'],
-        'points': ['糖果色与珍珠色漆面', '修补时的颜色匹配', '全车改色', '调漆之前先给建议'],
+        'points': ['糖果色、珍珠色与变色漆面', '修补时的颜色匹配', '全车改色', '调漆之前先给建议'],
         'posted': '已发布在我们的 Facebook 专页：',
         'posted_aikka': 'Aikka 双色水晶改色作品',
-        'posted_glasurit': '使用 Glasurit 清漆的 Mercedes-Benz 黑水晶作品',
     },
     'body-repair': {
-        'zone': '钣金维修', 'short': '事故损伤修复、打底并重新喷漆。',
+        'zone': '钣金维修', 'short': '敲打整形、凹陷与事故维修，再配色重喷。',
         'title': '武吉英达事故钣金维修，柔佛 | MCS Auto Spray Painting',
         'meta': 'MCS Auto Spray Painting 位于依斯干达公主城武吉英达花园，提供事故钣金维修：凹陷、受损板件和保险杠修复后在喷漆房重新喷漆。',
         'h1': '武吉英达事故钣金维修',
-        'lead': '凹陷、破裂的保险杠和受损板件，修复后喷漆配色。',
+        'lead': '敲打整形、凹陷、破裂的保险杠和受损板件，修复后喷漆配色。',
         'paras': ['发生碰撞后，从几个角度拍下损坏部位发给我们。我们会判断哪些可以修、哪些需要更换，然后打底并在喷漆房重新喷漆。',
                   '如果维修经由您的保险公司处理，我们也可以协助索赔。'],
-        'points': ['凹陷与板件损伤', '保险杠修复与重喷', '与全车颜色一致', '协助保险索赔'],
+        'points': ['敲打整形与凹陷修复', '事故板件与保险杠维修', '与全车颜色一致', '协助保险索赔'],
     },
     'paint-protection': {
-        'zone': 'Nippon AI-PPS', 'short': '为完工车辆喷涂漆面保护。',
+        'zone': 'Nippon AI-PPS', 'short': '喷涂式漆面保护膜，透明或有色，无接缝、无胶。',
         'title': '依斯干达公主城 Nippon AI-PPS 漆面保护 | MCS Auto Spray Painting',
-        'meta': 'MCS Auto Spray Painting 提供 Nippon AI-PPS 喷涂式漆面保护，位于柔佛依斯干达公主城武吉英达花园。WhatsApp 016-556 2998。',
+        'meta': 'MCS Auto Spray Painting 提供 Nippon AI-PPS 喷涂式漆面保护膜，透明或有色，位于柔佛依斯干达公主城武吉英达花园。WhatsApp 016-556 2998。',
         'h1': 'Nippon AI-PPS 漆面保护',
-        'lead': '一层喷涂式的漆面保护，在我们武吉英达的车厂施工。',
-        'paras': ['Nippon AI-PPS 是一种喷涂式漆面保护，适合刚重新喷漆的车，也适合想好好保养原漆的车。',
-                  '用 WhatsApp 发来车型和年份，我们会向您说明施工方式。'],
-        'points': ['喷涂施工', '适用于新漆或原车漆', '在我们车厂施工', '欢迎询问施工方式'],
+        'lead': 'Nippon AI-PPS 以喷涂方式形成透明或有色的保护膜，没有接缝，也不用胶。',
+        'paras': ['因为是喷上去的，AI-PPS 覆盖整片板件，没有贴膜的接缝或胶痕。它有助漆面抵抗石子撞击和轻微刮痕，轻微痕迹可以抛光去除。', '适合刚重新喷漆的车，也适合想好好保养原漆的车。用 WhatsApp 发来车型和年份，我们为您讲解施工方式。'],
+        'points': ['透明或有色效果', '喷涂施工：无接缝、无胶', '有助抵抗石子撞击和轻微刮痕', '轻微痕迹可抛光去除'],
     },
     'rims-calipers-engine': {
         'zone': '轮毂与卡钳', 'short': '轮毂、刹车卡钳和引擎舱喷漆。',
@@ -120,14 +118,14 @@ SERVICES = {
         'points': ['轮毂喷漆', '刹车卡钳喷漆', '引擎舱喷漆', '与车身同色或撞色'],
     },
     'interior-repair': {
-        'zone': '内饰与座椅', 'short': '座椅、方向盘和车顶内衬维修，门板翻新。',
+        'zone': '内饰与座椅', 'short': '真皮座椅维修与翻新（菱格缝线、定制颜色），方向盘和车顶内衬维修。',
         'title': '武吉英达汽车座椅与内饰维修、翻新 | MCS Auto Spray Painting',
         'meta': 'MCS Auto Spray Painting 提供座椅、方向盘和车顶内衬维修、座椅翻新以及门板翻新，位于依斯干达公主城武吉英达花园。',
         'h1': '座椅与内饰维修、翻新',
         'lead': '座椅破损、方向盘磨旧或车顶内衬下垂，都在我们的内饰间修复。',
-        'paras': ['我们的内饰间负责座椅维修与翻新、方向盘和车顶内衬维修，以及门板翻新。本页的米色配黑色双色座椅和门板就是我们的翻新作品之一。',
+        'paras': ['我们的内饰间负责真皮座椅维修与翻新，包括菱格缝线和定制颜色，也做方向盘和车顶内衬维修以及门板翻新。本页的米色配黑色双色座椅和门板就是我们的翻新作品之一。',
                   '发来车内照片，告诉我们您想要的样子。'],
-        'points': ['座椅维修与翻新', '方向盘维修', '车顶内衬维修', '门板翻新'],
+        'points': ['真皮座椅维修与翻新', '菱格缝线与定制颜色', '方向盘与车顶内衬维修', '门板翻新'],
     },
     'carbon-bodykits': {
         'zone': '碳纤维与包围', 'short': '碳纤维维修与定制包围套件。',
@@ -231,9 +229,73 @@ PHOTOS = {
 }
 
 SCHEMA = {
-    'description': '位于柔佛依斯干达公主城武吉英达花园的汽车喷漆与钣金车厂：全车与局部喷漆、糖果色与珍珠色定制、事故钣金维修、Nippon AI-PPS 漆面保护、内饰维修、保险与挡风玻璃索赔、摩托车喷漆。',
+    'description': '位于柔佛依斯干达公主城武吉英达花园的汽车喷漆与钣金车厂：全车与局部喷漆、糖果色与珍珠色定制、事故钣金维修、Nippon AI-PPS 漆面保护、抛光、陶瓷镀晶与 PPF、内饰维修、保险与挡风玻璃索赔、摩托车喷漆。',
 }
 
 LLMS = {
     'intro': '位于马来西亚新山依斯干达公主城武吉英达花园的汽车喷漆、钣金与内饰车厂。招牌：Pusat Kecantikan Kereta。',
+}
+
+# ---------- Facebook 内容补充（Edwin，2026 年 11 月 20 日）：新服务、首页区块、新照片 ----------
+PREFILL.update({
+    'polish-coating': '你好，MCS Auto Spray Painting，我想询问抛光 / 陶瓷镀晶 / PPF。车型和年份：',
+    'photo': '你好，MCS Auto Spray Painting，这是我的车辆照片。车型和年份：',
+    'colour-consult': '你好，MCS Auto Spray Painting，我想预约到你们的选色室做选色咨询。车型和年份：',
+})
+SERVICES['polish-coating'] = {
+    'zone': '抛光、镀晶与 PPF', 'short': '抛光、陶瓷镀晶，以及 PPF 或贴膜。',
+    'title': '武吉英达汽车抛光、陶瓷镀晶与 PPF | MCS Auto Spray Painting',
+    'meta': 'MCS Auto Spray Painting 提供抛光、陶瓷镀晶与 PPF／贴膜服务，位于柔佛依斯干达公主城武吉英达花园。WhatsApp 016-556 2998。',
+    'h1': '抛光、陶瓷镀晶与 PPF',
+    'lead': '新漆或原车漆的收尾工作：抛光、陶瓷镀晶，以及 PPF 或贴膜。',
+    'paras': ['重新喷漆后，或漆面失去光泽时，抛光能让光泽回来。陶瓷镀晶和 PPF 或贴膜则在漆面上再加一层。',
+              '在 WhatsApp 告诉我们您想做哪一项，附上车型和年份，并发一张漆面现况的照片。'],
+    'points': ['抛光', '陶瓷镀晶', 'PPF 与贴膜', '先看照片，再给建议'],
+}
+SERVICES_PAGE.update({
+    'paint_h': '漆料系统',
+    'paint_p': '我们使用 AkzoNobel 漆料系统，并搭配 Nippon AI-PPS；店内可以看到相关标识。',
+})
+UI.update({'alt_suffix': '，MCS Auto Spray Painting，依斯干达公主城'})
+HOME.update({
+    'ba_h': '前后对比', 'ba_p': 'MCS 的真实作品，直接来自我们的车厂。', 'ba_wa': '发一张您的车辆照片给我们',
+    'ba_label': '前后对比照片',
+    'show_h': '选色之前，先看实板',
+    'show_p': '欢迎来我们的选色室，看真正喷好的样板：素色、糖果色、珍珠色、变色龙变色漆、镭射幻彩和碳纤维纹。',
+    'show_wa': '预约选色咨询', 'show_label': '色板墙',
+    'reels_h': '在 Facebook Reels 看真实作业', 'reels_p': '车厂里的短片，发布在我们的 Facebook 专页。',
+    'reel_tag': 'Facebook Reel', 'reel_views': 'Facebook 上 22K+ 次观看', 'reels_label': 'Facebook Reels',
+    'reels': ['Nippon AI-PPS 喷涂保护示范', '在光线下会变色的蓝珍珠漆', '在 Facebook 查看 MCS 全部 Reels'],
+})
+PHOTOS.update({
+    'bmw-candy-red-hero': '全车重喷后光亮的糖果红 BMW 3 系，前侧视角，装有 MCS AUTO SPRAY PAINTING 车牌框',
+    'bmw-candy-red-front': '同一辆糖果红 BMW 3 系正面，LED 大灯亮起，引擎盖映出树影',
+    'bmw-gloss-detail': '糖果红 BMW 前翼子板、大灯和轮毂特写，可见漆面光泽的深度',
+    'bmw-before-after-front': '前后对比：BMW 3 系车头原为白色，重喷后为光亮糖果红',
+    'bmw-before-after-rear': '前后对比：BMW 318i 车尾原为白色，重喷后为光亮糖果红',
+    'bmw-seats-before-after': '前后对比：磨旧的黑色真皮 BMW 前座，翻新为红色真皮配黑色侧片',
+    'bmw-red-black-front-seat': '从打开的车门看到 BMW 内的红黑真皮前座',
+    'colour-showroom': 'MCS 选色室：整面墙的喷漆色板、桌子和丝绒椅',
+    'swatch-wall-candy': '色板墙：碳纤维纹、金属片、变色龙、蓝、黄、绿和红色样板',
+    'swatch-wall-chameleon': '紫蓝色变色龙样板，下方是黄、蓝、银和镭射幻彩样板',
+    'swatch-panels-carbon-pearl': '木纹和碳纤维纹样板，下方是珍珠色和镭射幻彩样板',
+    'honda-accord-two-tone-4x5': '绿色 Honda Accord，黑色碳纤维纹引擎盖、LED 大灯和金色轮毂',
+    'burgundy-diamond-seat': '菱格缝线的酒红色真皮长座椅',
+    'tan-diamond-seat': 'MCS 店内的棕褐色真皮座椅，中间为菱格缝线',
+})
+CAPS = {
+    'bmw-candy-red-hero': '糖果红 BMW 3 系重喷',
+    'bmw-candy-red-front': '同一辆 BMW 正面',
+    'bmw-gloss-detail': '糖果红 BMW 的漆面光泽',
+    'bmw-before-after-front': 'BMW 3 系：白色改糖果红，车头',
+    'bmw-before-after-rear': '同一辆 BMW，车尾',
+    'bmw-seats-before-after': 'BMW 座椅：磨旧黑皮翻新为红黑配色',
+    'bmw-red-black-front-seat': 'BMW 红黑前座',
+    'colour-showroom': '我们的选色室',
+    'swatch-wall-candy': '素色、糖果色与金属片样板',
+    'swatch-wall-chameleon': '变色龙与镭射幻彩样板',
+    'swatch-panels-carbon-pearl': '碳纤维纹与珍珠色样板',
+    'honda-accord-two-tone-4x5': '绿黑双色 Honda Accord，碳纤维纹引擎盖',
+    'burgundy-diamond-seat': '酒红色菱格缝线真皮座椅',
+    'tan-diamond-seat': '棕褐色菱格座椅翻新',
 }
