@@ -35,10 +35,10 @@
     "preview_host": "autoseo.my"
   },
   "live": {
-    "base_url": null,
-    "domain": null,
-    "noindex": true,
-    "_note": "Domain is not settled. The domain linked on Facebook does not resolve; the old site is still live. Preview only. Do not touch DNS. Do not present either domain as the new site."
+    "base_url": "https://rasasayangautomotive.com/",
+    "domain": "rasasayangautomotive.com",
+    "noindex": false,
+    "_note": "LIVE 20 Nov 2026 (Edwin approved 9:28pm SGT). Bluehost addon domain, docroot public_html/autoseo.my/preview/rasa-sayang (same files as the preview). One switch: src/site.json. Never link rasasayangauto.com (does not resolve)."
   },
   "autoseo": "https://autoseo.my/",
   "footer_credit": "Website by AutoSEO.my",

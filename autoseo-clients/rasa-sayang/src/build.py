@@ -5,8 +5,8 @@ edit updates every page in every language.
 Facts: facts.json. Copy: strings_en.py, strings_ms.py, strings_zh.py (same keys). Output: ../dist/ (English at the root,
 Bahasa Melayu at ms/, Simplified Chinese at zh/). Switcher, hreflang, og:locale and sitemap language entries come from the
 shared AutoSEO template ../../../autoseo-template/autoseo_i18n.py.
-  python3 build.py                 -> preview build for https://autoseo.my/preview/rasa-sayang/ (noindex, nofollow)
-  python3 build.py --live DOMAIN   -> build for https://DOMAIN/ (still noindex until Edwin approves go-live)
+  python3 build.py   -> build from site.json (one switch: live_domain + live). LIVE since 20 Nov 2026 on
+                        https://rasasayangautomotive.com/ (addon docroot = autoseo.my/preview/rasa-sayang, same files).
 Then python3 check.py (pre-upload gate) before any upload through the Bridge (sync_from_github, base_path preview/rasa-sayang).
 Photos are NOT in this repo: they were placed on the server from Bridge drops 6afef206... and 6afef249... into images/."""
 import hashlib, html, json, os, shutil, sys, urllib.parse
@@ -19,14 +19,22 @@ STRINGS = {'en': strings_en, 'ms': strings_ms, 'zh': strings_zh}
 S, L = strings_en, I18N.LANGS[0]  # current language; build() switches both
 
 F = json.load(open(os.path.join(HERE, 'facts.json'), encoding='utf8'))
-LIVE = '--live' in sys.argv
-if LIVE:
-    DOMAIN = sys.argv[sys.argv.index('--live') + 1]
-    ORIGIN, BASE = f'https://{DOMAIN}', '/'
-else:
-    ORIGIN, BASE = 'https://autoseo.my', F['preview']['base_path']
-NOINDEX = True  # preview: always. Live: set False only when Edwin approves go-live.
-SITE = ORIGIN + BASE
+# ONE-SWITCH GO-LIVE (20 Nov 2026, autoseo-template/golive): host-dependent output comes from site.json only.
+#   live_domain empty -> canonical etc. on the preview URL, meta noindex.
+#   live_domain set   -> canonical / hreflang / JSON-LD / sitemap / robots / llms on https://<live_domain>/.
+#   live true         -> og:url, og:image and twitter:image on the live domain too, and no meta noindex (the preview host still
+#                        gets X-Robots-Tag noindex from autoseo.my/preview/.htaccess, Host-conditional).
+# Links and assets are page-relative (@@B@@ is swapped per page depth at write time), so one set of files works at the domain
+# root and under /preview/rasa-sayang/.
+CFG = json.load(open(os.path.join(HERE, 'site.json'), encoding='utf8'))
+LIVE_DOMAIN = (CFG.get('live_domain') or '').strip('/').lower()
+LIVE = bool(CFG.get('live')) and bool(LIVE_DOMAIN)
+PREVIEW = CFG['preview_url']
+SITE = f'https://{LIVE_DOMAIN}/' if LIVE_DOMAIN else PREVIEW
+SHARE = SITE if LIVE else PREVIEW
+OG = CFG.get('og_image', 'images/og.jpg') + (f"?v={CFG['og_version']}" if CFG.get('og_version') else '')
+BASE = '@@B@@/'
+NOINDEX = not LIVE
 OUT = os.path.join(HERE, '..', 'dist')
 E = html.escape
 HQ, SUB = F['locations'][0], F['locations'][1]
@@ -38,6 +46,10 @@ def u(p=''):
 
 def absu(p=''):
     return SITE + p
+
+
+def shu(p=''):
+    return SHARE + p
 
 
 def pu(p=''):
@@ -162,7 +174,7 @@ def business():
         'name': F['name'], 'legalName': F['legal_name'], 'alternateName': F['short'], 'url': pabs(),
         'description': S.HOME['desc'], 'slogan': F['tagline_verbatim'],
         'identifier': {'@type': 'PropertyValue', 'propertyID': 'Company registration number (Malaysia)', 'value': F['company_no']},
-        'logo': absu('images/logo-transparent.png'), 'image': [absu('images/cover.webp'), absu('images/og.webp')],
+        'logo': absu('images/logo-transparent.png'), 'image': [absu('images/cover.webp'), shu(OG)],
         'telephone': F['whatsapp_e164'], 'address': postal(HQ), 'hasMap': HQ['waze'], 'sameAs': [FB],
         'areaServed': [{'@type': 'City', 'name': c} for c in F['service_area']] + [{'@type': 'AdministrativeArea', 'name': 'Selangor'}],
         'knowsAbout': [s['name'] for s in S.SERVICES] + F['brands_serviced'],
@@ -175,7 +187,7 @@ def business():
 def branch():
     return {'@type': ['AutoRepair', 'LocalBusiness'], '@id': SUB_ID, 'name': f"{F['short']} ({SUB['label']})",
             'url': pabs('contact/'), 'telephone': F['whatsapp_e164'], 'address': postal(SUB), 'hasMap': SUB['waze'],
-            'parentOrganization': {'@id': BIZ_ID}, 'image': absu('images/og.webp')}
+            'parentOrganization': {'@id': BIZ_ID}, 'image': shu(OG)}
 
 
 def crumbs(items):
@@ -220,17 +232,17 @@ def head(title, desc, path, graph, hero=False):
 {I18N.og_locale_tags(L)}
 <meta property="og:title" content="{E(title)}">
 <meta property="og:description" content="{E(desc)}">
-<meta property="og:url" content="{pabs(path)}">
-<meta property="og:image" content="{absu('images/og.webp')}">
-<meta property="og:image:secure_url" content="{absu('images/og.webp')}">
-<meta property="og:image:type" content="image/webp">
+<meta property="og:url" content="{shu(I18N.page_path(L, path))}">
+<meta property="og:image" content="{shu(OG)}">
+<meta property="og:image:secure_url" content="{shu(OG)}">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{E(S.CAPTIONS['og'])}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{E(title)}">
 <meta name="twitter:description" content="{E(desc)}">
-<meta name="twitter:image" content="{absu('images/og.webp')}">
+<meta name="twitter:image" content="{shu(OG)}">
 <link rel="icon" type="image/png" sizes="512x512" href="{u('images/favicon-512.png')}">
 <link rel="apple-touch-icon" href="{u('images/favicon-512.png')}">
 <link rel="preload" as="font" type="font/woff2" href="{u('assets/fonts/barlow-condensed-800.woff2')}" crossorigin>
@@ -498,6 +510,10 @@ def build():
     for f in os.listdir(os.path.join(HERE, 'assets', 'fonts')):
         shutil.copy(os.path.join(HERE, 'assets', 'fonts', f), os.path.join(OUT, 'assets', 'fonts', f))
     shutil.copy(os.path.join(HERE, 'p1-cta.js'), os.path.join(OUT, 'p1-cta.js'))
+    os.makedirs(os.path.join(OUT, 'images'), exist_ok=True)
+    shutil.copy(os.path.join(HERE, 'og.jpg'), os.path.join(OUT, 'images', 'og.jpg'))
+    key = open(os.path.join(HERE, 'indexnow-key.txt')).read().strip()  # IndexNow key file at the docroot (public by design)
+    open(os.path.join(OUT, key + '.txt'), 'w').write(key)  # share image (JPG 1200x630); other photos live on the server only
     names = [n for n in dir(strings_en) if n.isupper()]
     missing = [f'{c}: {n}' for c, mod in STRINGS.items() for n in names if not hasattr(mod, n)]
     for n in ('UI', 'CAPTIONS', 'HOME', 'REELS'):
@@ -513,6 +529,8 @@ def build():
         for p, h in pages.items():
             d = os.path.join(OUT, I18N.page_path(L, p))
             os.makedirs(d, exist_ok=True)
+            depth = I18N.page_path(L, p).count('/')
+            h = h.replace('@@B@@/', '../' * depth if depth else './')
             open(os.path.join(d, 'index.html'), 'w', encoding='utf8').write(h)
             built.append(I18N.page_path(L, p))
         if L is I18N.DEFAULT:
