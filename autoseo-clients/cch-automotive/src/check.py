@@ -7,7 +7,9 @@ sys.path.insert(0, HERE)
 import strings_en, strings_ms, strings_zh
 CREDIT = {'en': strings_en.UI['credit'], 'ms': strings_ms.UI['credit'], 'zh': strings_zh.UI['credit']}
 HTML_LANG = {'en': 'en', 'ms': 'ms', 'zh': 'zh-Hans'}
-DIST = os.path.join(HERE, '..', 'dist')
+LIVE = '--live' in sys.argv  # check ../dist-live (indexable live build) instead of the noindex preview
+DIST = os.path.join(HERE, '..', 'dist-live' if LIVE else 'dist')
+PREFIX = '/' if LIVE else '/preview/cch-automotive/'
 BANNED = [r'lorem', r'\bTODO\b', 'pa'+r'ge\s*o'+'ne', 'pageo'+'nesingapore', r'012[-\s]?820[-\s]?1559', r'12[-\s]?820[-\s]?1559', r'018[-\s]?789[-\s]?3055',
           r'melaka', r'malacca', r'aggregateRating', r'openingHours', r'ratingValue', r'reviewCount', r'placeholder', r'\bXXX', r'\bSLUG\b',
           r'\bMon(day)?\s*[-–]\s*(Fri|Sat|Sun)', r'\b\d{1,2}(:\d\d)?\s?(am|pm)\b', r'\bopen daily\b', r'\b24/7\b', r'authori[sz]ed dealer',
@@ -28,7 +30,10 @@ for f in files:
         if n_loc != 39 or n_alt != n_loc * 4: fail(f, f'sitemap {n_loc} locs / {n_alt} hreflang links (want 39 / 156)')
     if not f.endswith('.html'):
         continue
-    if '<meta name="robots" content="noindex, nofollow">' not in t: fail(f, 'no noindex')
+    if LIVE:
+        if 'noindex' in t: fail(f, 'noindex on a live page')
+        if 'autoseo.my/preview' in t or '"/preview/' in t: fail(f, 'preview URL on a live page')
+    elif '<meta name="robots" content="noindex, nofollow">' not in t: fail(f, 'no noindex')
     if len(re.findall(r'<h1\b', t)) != 1: fail(f, 'H1 count != 1')
     if 'p1-cta.js' not in t: fail(f, 'no tracker')
     rel = os.path.relpath(f, DIST).replace(os.sep, '/')
@@ -53,10 +58,11 @@ for f in files:
     for j in re.findall(r'<script type="application/ld\+json">(.*?)</script>', t, re.S):
         try: json.loads(j)
         except Exception as e: fail(f, f'bad JSON-LD {e}')
-    for src in re.findall(r'src="/preview/cch-automotive/images/([^"]+)"', t):
+    for src in re.findall(r'src="' + re.escape(PREFIX) + r'images/([^"]+)"', t):
         if 'audi' in src: fail(f, 'audi image used')
+        if LIVE and not os.path.exists(os.path.join(DIST, 'images', src)): fail(f, 'missing image ' + src)
 import shutil, tempfile
-tmp = tempfile.mkdtemp(); shutil.copytree(DIST, os.path.join(tmp, 'preview', 'cch-automotive'))  # cta_check resolves /preview/... from a site root
+tmp = tempfile.mkdtemp(); shutil.copytree(DIST, tmp if LIVE else os.path.join(tmp, 'preview', 'cch-automotive'), dirs_exist_ok=True)  # cta_check resolves /preview/... from a site root
 r = subprocess.run([sys.executable, '/mnt/project-files/tracking/cta_check.py', '--dir', tmp], capture_output=True, text=True)
 shutil.rmtree(tmp)
 print(r.stdout.strip())

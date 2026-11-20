@@ -5,7 +5,7 @@ Facts: facts.json. Copy: strings_en.py, strings_ms.py, strings_zh.py (same keys)
 Bahasa Melayu at ms/, Simplified Chinese at zh/). Language switcher, hreflang, og:locale and sitemap.xml language entries
 come from the shared AutoSEO template ../../../autoseo-template/autoseo_i18n.py (Edwin's rule, 18 Nov 2026).
   python3 build.py            -> preview build for https://autoseo.my/preview/cch-automotive/ (noindex, nofollow)
-  python3 build.py --live DOMAIN  -> live build at https://DOMAIN/ (still noindex until Edwin says go live; remove NOINDEX then)
+  python3 build.py --live DOMAIN  -> live build at https://DOMAIN/ into ../dist-live (indexable: Edwin approved go-live 19 Nov 2026)
 Then: python3 check.py (banned words, CTA tracker, one H1, schema) before any upload through the Bridge."""
 import hashlib, html, json, os, shutil, sys, urllib.parse
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -23,9 +23,10 @@ if LIVE:
     ORIGIN, BASE = f'https://{DOMAIN}', '/'
 else:
     ORIGIN, BASE = 'https://autoseo.my', F['preview']['base_path']
-NOINDEX = True  # preview: always. Live: set False only when Edwin approves go-live.
+NOINDEX = not LIVE  # preview: always noindex. Live (cchautomotive.my): Edwin approved go-live 19 Nov 2026.
 SITE = ORIGIN + BASE
-OUT = os.path.join(HERE, '..', 'dist')
+OUT = os.path.join(HERE, '..', 'dist-live' if LIVE else 'dist')
+INDEXNOW_KEY = 'c7e4a19f58d2b603e1f94a7d2c85b0e6'  # public IndexNow key (file served at /<key>.txt on the live domain)
 E = html.escape
 
 def u(p=''):
@@ -433,6 +434,10 @@ def build():
     os.makedirs(os.path.join(OUT, 'images'), exist_ok=True)  # new logo set (18 Nov); photos live on the server only
     for f in os.listdir(os.path.join(HERE, 'assets', 'logo')):
         shutil.copy(os.path.join(HERE, 'assets', 'logo', f), os.path.join(OUT, 'images', f))
+    if LIVE:  # the job photos (copied from the preview server 20 Nov 2026, sha256 checked) ship with the live site
+        for f in os.listdir(os.path.join(HERE, 'assets', 'photos')):
+            shutil.copy(os.path.join(HERE, 'assets', 'photos', f), os.path.join(OUT, 'images', f))
+        open(os.path.join(OUT, INDEXNOW_KEY + '.txt'), 'w').write(INDEXNOW_KEY)
     global S, L
     missing = [f'{c}: {n}' for c, mod in STRINGS.items() for n in ('UI', 'HOME', 'FAQ_HOME', 'SERVICES', 'SERVICES_INDEX', 'ABOUT',
                'CONTACT', 'PRIVACY', 'ARTICLES', 'PREFILL', 'CAPTIONS', 'CARS_FROM_POSTS') if not hasattr(mod, n)]

@@ -1,0 +1,39 @@
+# CCH Automotive Sdn Bhd
+
+> Automotive repair shop and Continental car specialist in Likas Baharu, Kota Kinabalu, Sabah, Malaysia. "Professional in Conti Car", with more than 10 years of experience.
+
+- Address: Lot 5, Batu 5½, Jalan Tuaran, Likas Baharu, 88450 Kota Kinabalu, Sabah, Malaysia (The Jalan Tuaran Bypass area)
+- WhatsApp and phone: +60 10-935 9391 (https://wa.me/60109359391)
+- Email: cchautomotive6@gmail.com
+- Facebook: https://www.facebook.com/profile.php?id=100083124710565
+- Map: https://www.google.com/maps/search/?api=1&query=Lot%205%2C%20Batu%205%C2%BD%2C%20Jalan%20Tuaran%2C%20Likas%20Baharu%2C%2088450%20Kota%20Kinabalu%2C%20Sabah
+- Makes: Mercedes-Benz, BMW, Audi, Volkswagen and other makes shown in our work photos
+- Engine oil: Alpine Germany engine oil
+- Opening hours: not published; WhatsApp to arrange a time
+
+## Services
+- [Car troubleshooting](https://cchautomotive.my/services/car-troubleshooting/): Warning lights, odd noises and faults that come and go.
+- [Engine and gearbox repair](https://cchautomotive.my/services/engine-gearbox-repair/): Engine faults, gearbox and transmission work, mountings.
+- [Computer diagnostics](https://cchautomotive.my/services/computer-diagnostics/): Reading the car's systems to find what is really wrong.
+- [Module programming and coding](https://cchautomotive.my/services/module-programming-coding/): Programming modules and coding features on European cars.
+- [Car service and maintenance](https://cchautomotive.my/services/car-service-maintenance/): Oil changes with Alpine Germany oil, filters and fluids.
+- [Aircond service and repair](https://cchautomotive.my/services/aircond-service-repair/): Aircond not cold? Service, repair and cooling coil work.
+- [Electrical and hybrid](https://cchautomotive.my/services/electrical-hybrid/): Electrical faults and hybrid cars, as listed on our flyer.
+
+## Languages
+English at the site root, Bahasa Melayu at /ms/, Simplified Chinese at /zh/. Every page exists in all three.
+
+## Pages
+- https://cchautomotive.my/ (BM: https://cchautomotive.my/ms/, 中文: https://cchautomotive.my/zh/)
+- https://cchautomotive.my/services/ (BM: https://cchautomotive.my/ms/services/, 中文: https://cchautomotive.my/zh/services/)
+- https://cchautomotive.my/about/ (BM: https://cchautomotive.my/ms/about/, 中文: https://cchautomotive.my/zh/about/)
+- https://cchautomotive.my/contact/ (BM: https://cchautomotive.my/ms/contact/, 中文: https://cchautomotive.my/zh/contact/)
+- https://cchautomotive.my/privacy/ (BM: https://cchautomotive.my/ms/privacy/, 中文: https://cchautomotive.my/zh/privacy/)
+- https://cchautomotive.my/articles/ (BM: https://cchautomotive.my/ms/articles/, 中文: https://cchautomotive.my/zh/articles/)
+- https://cchautomotive.my/services/car-troubleshooting/ (BM: https://cchautomotive.my/ms/services/car-troubleshooting/, 中文: https://cchautomotive.my/zh/services/car-troubleshooting/)
+- https://cchautomotive.my/services/engine-gearbox-repair/ (BM: https://cchautomotive.my/ms/services/engine-gearbox-repair/, 中文: https://cchautomotive.my/zh/services/engine-gearbox-repair/)
+- https://cchautomotive.my/services/computer-diagnostics/ (BM: https://cchautomotive.my/ms/services/computer-diagnostics/, 中文: https://cchautomotive.my/zh/services/computer-diagnostics/)
+- https://cchautomotive.my/services/module-programming-coding/ (BM: https://cchautomotive.my/ms/services/module-programming-coding/, 中文: https://cchautomotive.my/zh/services/module-programming-coding/)
+- https://cchautomotive.my/services/car-service-maintenance/ (BM: https://cchautomotive.my/ms/services/car-service-maintenance/, 中文: https://cchautomotive.my/zh/services/car-service-maintenance/)
+- https://cchautomotive.my/services/aircond-service-repair/ (BM: https://cchautomotive.my/ms/services/aircond-service-repair/, 中文: https://cchautomotive.my/zh/services/aircond-service-repair/)
+- https://cchautomotive.my/services/electrical-hybrid/ (BM: https://cchautomotive.my/ms/services/electrical-hybrid/, 中文: https://cchautomotive.my/zh/services/electrical-hybrid/)
