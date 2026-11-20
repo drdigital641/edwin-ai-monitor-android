@@ -11,30 +11,30 @@
 - Areas: Taman Bukit Indah, Iskandar Puteri, Johor Bahru
 
 ## Services
-- [Computer diagnostics and coding](https://autoseo.my/preview/hx-auto/services/computer-diagnostics-coding/): Warning light on? We scan the car first.
-- [Service and oil change](https://autoseo.my/preview/hx-auto/services/car-service-oil-change/): Engine oil, filter and a general check.
-- [Engine and transmission](https://autoseo.my/preview/hx-auto/services/engine-transmission-repair/): Engine repair and transmission service.
-- [Aircond](https://autoseo.my/preview/hx-auto/services/aircond-service/): Aircond service and flushing.
-- [Brakes, suspension, tyres and alignment](https://autoseo.my/preview/hx-auto/services/brakes-suspension-tyres-alignment/): Stop, steer and ride right.
-- [Battery and electrical](https://autoseo.my/preview/hx-auto/services/battery-electrical-repair/): Slow starts and electrical faults.
-- [Undercarriage check](https://autoseo.my/preview/hx-auto/services/undercarriage-check/): A look underneath, on the lift.
-- [Towing and recovery](https://autoseo.my/preview/hx-auto/services/towing-recovery/): Car will not move? Call us.
+- [Computer diagnostics and coding](https://hxautoservice.com.my/services/computer-diagnostics-coding/): Warning light on? We scan the car first.
+- [Service and oil change](https://hxautoservice.com.my/services/car-service-oil-change/): Engine oil, filter and a general check.
+- [Engine and transmission](https://hxautoservice.com.my/services/engine-transmission-repair/): Engine repair and transmission service.
+- [Aircond](https://hxautoservice.com.my/services/aircond-service/): Aircond service and flushing.
+- [Brakes, suspension, tyres and alignment](https://hxautoservice.com.my/services/brakes-suspension-tyres-alignment/): Stop, steer and ride right.
+- [Battery and electrical](https://hxautoservice.com.my/services/battery-electrical-repair/): Slow starts and electrical faults.
+- [Undercarriage check](https://hxautoservice.com.my/services/undercarriage-check/): A look underneath, on the lift.
+- [Towing and recovery](https://hxautoservice.com.my/services/towing-recovery/): Car will not move? Call us.
 
 ## Languages
 English at the site root, Bahasa Melayu at /ms/, Simplified Chinese at /zh/. Every page exists in all three.
 
 ## Pages
-- https://autoseo.my/preview/hx-auto/ (BM: https://autoseo.my/preview/hx-auto/ms/, 中文: https://autoseo.my/preview/hx-auto/zh/)
-- https://autoseo.my/preview/hx-auto/services/ (BM: https://autoseo.my/preview/hx-auto/ms/services/, 中文: https://autoseo.my/preview/hx-auto/zh/services/)
-- https://autoseo.my/preview/hx-auto/about/ (BM: https://autoseo.my/preview/hx-auto/ms/about/, 中文: https://autoseo.my/preview/hx-auto/zh/about/)
-- https://autoseo.my/preview/hx-auto/contact/ (BM: https://autoseo.my/preview/hx-auto/ms/contact/, 中文: https://autoseo.my/preview/hx-auto/zh/contact/)
-- https://autoseo.my/preview/hx-auto/privacy/ (BM: https://autoseo.my/preview/hx-auto/ms/privacy/, 中文: https://autoseo.my/preview/hx-auto/zh/privacy/)
-- https://autoseo.my/preview/hx-auto/articles/ (BM: https://autoseo.my/preview/hx-auto/ms/articles/, 中文: https://autoseo.my/preview/hx-auto/zh/articles/)
-- https://autoseo.my/preview/hx-auto/services/computer-diagnostics-coding/ (BM: https://autoseo.my/preview/hx-auto/ms/services/computer-diagnostics-coding/, 中文: https://autoseo.my/preview/hx-auto/zh/services/computer-diagnostics-coding/)
-- https://autoseo.my/preview/hx-auto/services/car-service-oil-change/ (BM: https://autoseo.my/preview/hx-auto/ms/services/car-service-oil-change/, 中文: https://autoseo.my/preview/hx-auto/zh/services/car-service-oil-change/)
-- https://autoseo.my/preview/hx-auto/services/engine-transmission-repair/ (BM: https://autoseo.my/preview/hx-auto/ms/services/engine-transmission-repair/, 中文: https://autoseo.my/preview/hx-auto/zh/services/engine-transmission-repair/)
-- https://autoseo.my/preview/hx-auto/services/aircond-service/ (BM: https://autoseo.my/preview/hx-auto/ms/services/aircond-service/, 中文: https://autoseo.my/preview/hx-auto/zh/services/aircond-service/)
-- https://autoseo.my/preview/hx-auto/services/brakes-suspension-tyres-alignment/ (BM: https://autoseo.my/preview/hx-auto/ms/services/brakes-suspension-tyres-alignment/, 中文: https://autoseo.my/preview/hx-auto/zh/services/brakes-suspension-tyres-alignment/)
-- https://autoseo.my/preview/hx-auto/services/battery-electrical-repair/ (BM: https://autoseo.my/preview/hx-auto/ms/services/battery-electrical-repair/, 中文: https://autoseo.my/preview/hx-auto/zh/services/battery-electrical-repair/)
-- https://autoseo.my/preview/hx-auto/services/undercarriage-check/ (BM: https://autoseo.my/preview/hx-auto/ms/services/undercarriage-check/, 中文: https://autoseo.my/preview/hx-auto/zh/services/undercarriage-check/)
-- https://autoseo.my/preview/hx-auto/services/towing-recovery/ (BM: https://autoseo.my/preview/hx-auto/ms/services/towing-recovery/, 中文: https://autoseo.my/preview/hx-auto/zh/services/towing-recovery/)
+- https://hxautoservice.com.my/ (BM: https://hxautoservice.com.my/ms/, 中文: https://hxautoservice.com.my/zh/)
+- https://hxautoservice.com.my/services/ (BM: https://hxautoservice.com.my/ms/services/, 中文: https://hxautoservice.com.my/zh/services/)
+- https://hxautoservice.com.my/about/ (BM: https://hxautoservice.com.my/ms/about/, 中文: https://hxautoservice.com.my/zh/about/)
+- https://hxautoservice.com.my/contact/ (BM: https://hxautoservice.com.my/ms/contact/, 中文: https://hxautoservice.com.my/zh/contact/)
+- https://hxautoservice.com.my/privacy/ (BM: https://hxautoservice.com.my/ms/privacy/, 中文: https://hxautoservice.com.my/zh/privacy/)
+- https://hxautoservice.com.my/articles/ (BM: https://hxautoservice.com.my/ms/articles/, 中文: https://hxautoservice.com.my/zh/articles/)
+- https://hxautoservice.com.my/services/computer-diagnostics-coding/ (BM: https://hxautoservice.com.my/ms/services/computer-diagnostics-coding/, 中文: https://hxautoservice.com.my/zh/services/computer-diagnostics-coding/)
+- https://hxautoservice.com.my/services/car-service-oil-change/ (BM: https://hxautoservice.com.my/ms/services/car-service-oil-change/, 中文: https://hxautoservice.com.my/zh/services/car-service-oil-change/)
+- https://hxautoservice.com.my/services/engine-transmission-repair/ (BM: https://hxautoservice.com.my/ms/services/engine-transmission-repair/, 中文: https://hxautoservice.com.my/zh/services/engine-transmission-repair/)
+- https://hxautoservice.com.my/services/aircond-service/ (BM: https://hxautoservice.com.my/ms/services/aircond-service/, 中文: https://hxautoservice.com.my/zh/services/aircond-service/)
+- https://hxautoservice.com.my/services/brakes-suspension-tyres-alignment/ (BM: https://hxautoservice.com.my/ms/services/brakes-suspension-tyres-alignment/, 中文: https://hxautoservice.com.my/zh/services/brakes-suspension-tyres-alignment/)
+- https://hxautoservice.com.my/services/battery-electrical-repair/ (BM: https://hxautoservice.com.my/ms/services/battery-electrical-repair/, 中文: https://hxautoservice.com.my/zh/services/battery-electrical-repair/)
+- https://hxautoservice.com.my/services/undercarriage-check/ (BM: https://hxautoservice.com.my/ms/services/undercarriage-check/, 中文: https://hxautoservice.com.my/zh/services/undercarriage-check/)
+- https://hxautoservice.com.my/services/towing-recovery/ (BM: https://hxautoservice.com.my/ms/services/towing-recovery/, 中文: https://hxautoservice.com.my/zh/services/towing-recovery/)

@@ -51,8 +51,14 @@ for f in files:
     for q in re.findall(r'<li class="qc[^"]*"><blockquote[^>]*><p>(.*?)</p>', t):
         if _h.unescape(q) not in GOOGLE_TEXT:
             fail(f, f'review text not verbatim from facts.json: {q[:60]}')
-    if '<meta name="robots" content="noindex, nofollow">' not in t:
-        fail(f, 'no noindex')
+    if re.search(r'<meta name="robots"', t):
+        fail(f, 'meta robots present (preview noindex is the Host-conditional header only)')
+    if not re.search(r'<link rel="canonical" href="https://hxautoservice\.com\.my/', t):
+        fail(f, 'canonical not on the live domain')
+    if re.search(r'(?:href|src)="/(?!/)', t) or 'preview/hx-auto' in re.sub(r'https://autoseo\.my/preview/hx-auto/[^"]*', '', t):
+        fail(f, 'root-absolute or preview-path link (links must be page-relative)')
+    if 'og:url" content="https://autoseo.my/preview/hx-auto/' not in t:
+        fail(f, 'og:url not on the preview host')
     if len(re.findall(r'<h1\b', t)) != 1:
         fail(f, 'H1 count != 1')
     if 'p1-cta.js' not in t:
@@ -61,7 +67,7 @@ for f in files:
         fail(f, 'footer credit')
     if len(re.findall(r'hreflang="(en|ms|zh-Hans|x-default)" href=', t)) != 4:
         fail(f, 'hreflang block')
-    if '--live' not in sys.argv and 'og:image" content="https://autoseo.my/preview/hx-auto/images/og.jpg?v=3"' not in t:
+    if 'og:image" content="https://autoseo.my/preview/hx-auto/images/og.jpg?v=3"' not in t:
         fail(f, 'og:image')
     if not re.search(r'<nav class="ut"', t):
         fail(f, 'language switcher (underline tabs) missing')

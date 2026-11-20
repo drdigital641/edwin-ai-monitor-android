@@ -17,14 +17,15 @@ STRINGS = {'en': strings_en, 'ms': strings_ms, 'zh': strings_zh}
 S, L = strings_en, I18N.LANGS[0]
 
 F = json.load(open(os.path.join(HERE, 'facts.json'), encoding='utf8'))
-LIVE = '--live' in sys.argv
-if LIVE:
-    DOMAIN = sys.argv[sys.argv.index('--live') + 1]
-    ORIGIN, BASE = f'https://{DOMAIN}', '/'
-else:
-    ORIGIN, BASE = 'https://autoseo.my', F['preview']['base_path']
-NOINDEX = True
-SITE = ORIGIN + BASE
+# GO-LIVE (20 Nov 2026): one set of files serves both hosts. Links are page-relative (placeholder swapped at write time),
+# canonical / hreflang / schema / sitemap / robots / llms are on the live domain, og:image + twitter:image + og:url stay on the
+# working preview-host URLs until https://hxautoservice.com.my/ answers 200 over SSL (then set SHARE_LIVE = True).
+LIVE_DOMAIN = 'hxautoservice.com.my'
+SHARE_LIVE = False
+ORIGIN, BASE = 'https://' + LIVE_DOMAIN, '@@B@@/'
+NOINDEX = False   # preview noindex = Host-conditional X-Robots-Tag in autoseo.my/preview/.htaccess, never a meta tag
+SITE = ORIGIN + '/'
+SHARE = SITE if SHARE_LIVE else 'https://autoseo.my' + F['preview']['base_path']
 OUT = os.path.join(HERE, '..', 'dist')
 E = html.escape
 LOC = F['locations'][0]
@@ -39,6 +40,10 @@ def u(p=''):
 
 def absu(p=''):
     return SITE + p
+
+
+def shu(p=''):
+    return SHARE + p
 
 
 def pu(p=''):
@@ -184,7 +189,7 @@ def business():
         '@type': ['AutoRepair', 'AutomotiveBusiness', 'LocalBusiness'], '@id': BIZ_ID,
         'name': F['name'], 'legalName': F['legal_name'], 'url': pabs(), 'description': S.HOME['desc'],
         'identifier': {'@type': 'PropertyValue', 'propertyID': 'Company registration number (Malaysia)', 'value': F['company_no']},
-        'logo': absu('images/logo-transparent.png'), 'image': [absu('images/cover.webp'), absu('images/og.jpg') + '?v=3'],
+        'logo': absu('images/logo-transparent.png'), 'image': [absu('images/cover.webp'), shu('images/og.jpg') + '?v=3'],
         'telephone': F['whatsapp_e164'],
         'address': {'@type': 'PostalAddress', 'streetAddress': LOC['street'], 'addressLocality': LOC['city'], 'addressRegion': LOC['region'],
                     'postalCode': LOC['postcode'], 'addressCountry': LOC['country']},
@@ -244,9 +249,9 @@ def head(title, desc, path, graph, hero=False):
 {I18N.og_locale_tags(L)}
 <meta property="og:title" content="{E(title)}">
 <meta property="og:description" content="{E(desc)}">
-<meta property="og:url" content="{pabs(path)}">
-<meta property="og:image" content="{absu('images/og.jpg') + '?v=3'}">
-<meta property="og:image:secure_url" content="{absu('images/og.jpg') + '?v=3'}">
+<meta property="og:url" content="{shu(I18N.page_path(L, path))}">
+<meta property="og:image" content="{shu('images/og.jpg') + '?v=3'}">
+<meta property="og:image:secure_url" content="{shu('images/og.jpg') + '?v=3'}">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -254,7 +259,7 @@ def head(title, desc, path, graph, hero=False):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{E(title)}">
 <meta name="twitter:description" content="{E(desc)}">
-<meta name="twitter:image" content="{absu('images/og.jpg') + '?v=3'}">
+<meta name="twitter:image" content="{shu('images/og.jpg') + '?v=3'}">
 <link rel="icon" type="image/png" sizes="512x512" href="{u('images/favicon-512.png')}">
 <link rel="apple-touch-icon" href="{u('images/favicon-512.png')}">
 <link rel="preload" as="font" type="font/woff2" href="{u('assets/fonts/oswald-var.woff2')}" crossorigin>
@@ -745,6 +750,8 @@ def build():
         for p, h in pages.items():
             d = os.path.join(OUT, I18N.page_path(L, p))
             os.makedirs(d, exist_ok=True)
+            depth = I18N.page_path(L, p).count('/')
+            h = h.replace('@@B@@/', '../' * depth if depth else './')
             open(os.path.join(d, 'index.html'), 'w', encoding='utf8').write(h)
             built.append(I18N.page_path(L, p))
         if L is I18N.DEFAULT:

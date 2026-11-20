@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://autoseo.my/preview/hx-auto/sitemap.xml
+Sitemap: https://hxautoservice.com.my/sitemap.xml
