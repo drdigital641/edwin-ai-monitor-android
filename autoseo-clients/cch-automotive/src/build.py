@@ -17,20 +17,26 @@ STRINGS = {'en': strings_en, 'ms': strings_ms, 'zh': strings_zh}
 S, L = strings_en, I18N.LANGS[0]  # current language; build() switches both per language
 
 F = json.load(open(os.path.join(HERE, 'facts.json'), encoding='utf8'))
+# ONE SET OF FILES (Edwin 20 Nov 2026 8:55am SGT): cchautomotive.my is served straight from the preview folder
+# autoseo.my/preview/cch-automotive/ (Page One method). So every in-site link, image, CSS and script URL is RELATIVE
+# to the page (works at /preview/cch-automotive/ and at the domain root), while canonical, hreflang, OG, schema,
+# sitemap and robots use https://cchautomotive.my/. No meta noindex in the pages: the preview address is hidden by
+# the Host-conditional X-Robots-Tag in autoseo.my/preview/.htaccess (only when Host is autoseo.my).
+#   python3 build.py                 -> ../dist (upload to autoseo.my preview/cch-automotive)
+#   python3 build.py --live DOMAIN   -> ../dist-live (old separate copy, kept only for reference)
 LIVE = '--live' in sys.argv
-if LIVE:
-    DOMAIN = sys.argv[sys.argv.index('--live') + 1]
-    ORIGIN, BASE = f'https://{DOMAIN}', '/'
-else:
-    ORIGIN, BASE = 'https://autoseo.my', F['preview']['base_path']
-NOINDEX = not LIVE  # preview: always noindex. Live (cchautomotive.my): Edwin approved go-live 19 Nov 2026.
+DOMAIN = sys.argv[sys.argv.index('--live') + 1] if LIVE else F['live']['domain']
+ORIGIN, BASE = f'https://{DOMAIN}', '/'
+NOINDEX = False
 SITE = ORIGIN + BASE
 OUT = os.path.join(HERE, '..', 'dist-live' if LIVE else 'dist')
+CUR = ''  # site path of the page being built (e.g. 'ms/services/x/'); u() makes links relative to it
 INDEXNOW_KEY = 'c7e4a19f58d2b603e1f94a7d2c85b0e6'  # public IndexNow key (file served at /<key>.txt on the live domain)
 E = html.escape
 
 def u(p=''):
-    return BASE + p
+    rel = '../' * CUR.count('/') + p
+    return rel or './'
 
 def absu(p=''):
     return SITE + p
@@ -434,11 +440,11 @@ def build():
     os.makedirs(os.path.join(OUT, 'images'), exist_ok=True)  # new logo set (18 Nov); photos live on the server only
     for f in os.listdir(os.path.join(HERE, 'assets', 'logo')):
         shutil.copy(os.path.join(HERE, 'assets', 'logo', f), os.path.join(OUT, 'images', f))
-    if LIVE:  # the job photos (copied from the preview server 20 Nov 2026, sha256 checked) ship with the live site
+    if True:  # the job photos (copied from the preview server 20 Nov 2026, sha256 checked) ship with the live site
         for f in os.listdir(os.path.join(HERE, 'assets', 'photos')):
             shutil.copy(os.path.join(HERE, 'assets', 'photos', f), os.path.join(OUT, 'images', f))
         open(os.path.join(OUT, INDEXNOW_KEY + '.txt'), 'w').write(INDEXNOW_KEY)
-    global S, L
+    global S, L, CUR
     missing = [f'{c}: {n}' for c, mod in STRINGS.items() for n in ('UI', 'HOME', 'FAQ_HOME', 'SERVICES', 'SERVICES_INDEX', 'ABOUT',
                'CONTACT', 'PRIVACY', 'ARTICLES', 'PREFILL', 'CAPTIONS', 'CARS_FROM_POSTS') if not hasattr(mod, n)]
     missing += [f'{c}: UI.{k}' for c, mod in STRINGS.items() for k in strings_en.UI if k not in mod.UI]
@@ -447,9 +453,13 @@ def build():
     built = []
     for L in I18N.LANGS:
         S = STRINGS[L['code']]
-        pages = {'': home(), 'services/': services_index(), 'about/': about(), 'contact/': contact(), 'privacy/': privacy(), 'articles/': articles()}
-        for s in S.SERVICES:
-            pages[f'services/{s["slug"]}/'] = service(s)
+        makers = [('', home), ('services/', services_index), ('about/', about), ('contact/', contact), ('privacy/', privacy), ('articles/', articles)]
+        makers += [(f'services/{s["slug"]}/', (lambda s=s: service(s))) for s in S.SERVICES]
+        pages = {}
+        for p, fn in makers:
+            CUR = I18N.page_path(L, p)
+            pages[p] = fn()
+        CUR = ''
         for p, h in pages.items():
             d = os.path.join(OUT, I18N.page_path(L, p))
             os.makedirs(d, exist_ok=True)

@@ -12,28 +12,28 @@
 - Opening hours: not published; WhatsApp to arrange a time
 
 ## Services
-- [Car troubleshooting](https://autoseo.my/preview/cch-automotive/services/car-troubleshooting/): Warning lights, odd noises and faults that come and go.
-- [Engine and gearbox repair](https://autoseo.my/preview/cch-automotive/services/engine-gearbox-repair/): Engine faults, gearbox and transmission work, mountings.
-- [Computer diagnostics](https://autoseo.my/preview/cch-automotive/services/computer-diagnostics/): Reading the car's systems to find what is really wrong.
-- [Module programming and coding](https://autoseo.my/preview/cch-automotive/services/module-programming-coding/): Programming modules and coding features on European cars.
-- [Car service and maintenance](https://autoseo.my/preview/cch-automotive/services/car-service-maintenance/): Oil changes with Alpine Germany oil, filters and fluids.
-- [Aircond service and repair](https://autoseo.my/preview/cch-automotive/services/aircond-service-repair/): Aircond not cold? Service, repair and cooling coil work.
-- [Electrical and hybrid](https://autoseo.my/preview/cch-automotive/services/electrical-hybrid/): Electrical faults and hybrid cars, as listed on our flyer.
+- [Car troubleshooting](https://cchautomotive.my/services/car-troubleshooting/): Warning lights, odd noises and faults that come and go.
+- [Engine and gearbox repair](https://cchautomotive.my/services/engine-gearbox-repair/): Engine faults, gearbox and transmission work, mountings.
+- [Computer diagnostics](https://cchautomotive.my/services/computer-diagnostics/): Reading the car's systems to find what is really wrong.
+- [Module programming and coding](https://cchautomotive.my/services/module-programming-coding/): Programming modules and coding features on European cars.
+- [Car service and maintenance](https://cchautomotive.my/services/car-service-maintenance/): Oil changes with Alpine Germany oil, filters and fluids.
+- [Aircond service and repair](https://cchautomotive.my/services/aircond-service-repair/): Aircond not cold? Service, repair and cooling coil work.
+- [Electrical and hybrid](https://cchautomotive.my/services/electrical-hybrid/): Electrical faults and hybrid cars, as listed on our flyer.
 
 ## Languages
 English at the site root, Bahasa Melayu at /ms/, Simplified Chinese at /zh/. Every page exists in all three.
 
 ## Pages
-- https://autoseo.my/preview/cch-automotive/ (BM: https://autoseo.my/preview/cch-automotive/ms/, 中文: https://autoseo.my/preview/cch-automotive/zh/)
-- https://autoseo.my/preview/cch-automotive/services/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/)
-- https://autoseo.my/preview/cch-automotive/about/ (BM: https://autoseo.my/preview/cch-automotive/ms/about/, 中文: https://autoseo.my/preview/cch-automotive/zh/about/)
-- https://autoseo.my/preview/cch-automotive/contact/ (BM: https://autoseo.my/preview/cch-automotive/ms/contact/, 中文: https://autoseo.my/preview/cch-automotive/zh/contact/)
-- https://autoseo.my/preview/cch-automotive/privacy/ (BM: https://autoseo.my/preview/cch-automotive/ms/privacy/, 中文: https://autoseo.my/preview/cch-automotive/zh/privacy/)
-- https://autoseo.my/preview/cch-automotive/articles/ (BM: https://autoseo.my/preview/cch-automotive/ms/articles/, 中文: https://autoseo.my/preview/cch-automotive/zh/articles/)
-- https://autoseo.my/preview/cch-automotive/services/car-troubleshooting/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/car-troubleshooting/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/car-troubleshooting/)
-- https://autoseo.my/preview/cch-automotive/services/engine-gearbox-repair/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/engine-gearbox-repair/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/engine-gearbox-repair/)
-- https://autoseo.my/preview/cch-automotive/services/computer-diagnostics/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/computer-diagnostics/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/computer-diagnostics/)
-- https://autoseo.my/preview/cch-automotive/services/module-programming-coding/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/module-programming-coding/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/module-programming-coding/)
-- https://autoseo.my/preview/cch-automotive/services/car-service-maintenance/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/car-service-maintenance/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/car-service-maintenance/)
-- https://autoseo.my/preview/cch-automotive/services/aircond-service-repair/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/aircond-service-repair/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/aircond-service-repair/)
-- https://autoseo.my/preview/cch-automotive/services/electrical-hybrid/ (BM: https://autoseo.my/preview/cch-automotive/ms/services/electrical-hybrid/, 中文: https://autoseo.my/preview/cch-automotive/zh/services/electrical-hybrid/)
+- https://cchautomotive.my/ (BM: https://cchautomotive.my/ms/, 中文: https://cchautomotive.my/zh/)
+- https://cchautomotive.my/services/ (BM: https://cchautomotive.my/ms/services/, 中文: https://cchautomotive.my/zh/services/)
+- https://cchautomotive.my/about/ (BM: https://cchautomotive.my/ms/about/, 中文: https://cchautomotive.my/zh/about/)
+- https://cchautomotive.my/contact/ (BM: https://cchautomotive.my/ms/contact/, 中文: https://cchautomotive.my/zh/contact/)
+- https://cchautomotive.my/privacy/ (BM: https://cchautomotive.my/ms/privacy/, 中文: https://cchautomotive.my/zh/privacy/)
+- https://cchautomotive.my/articles/ (BM: https://cchautomotive.my/ms/articles/, 中文: https://cchautomotive.my/zh/articles/)
+- https://cchautomotive.my/services/car-troubleshooting/ (BM: https://cchautomotive.my/ms/services/car-troubleshooting/, 中文: https://cchautomotive.my/zh/services/car-troubleshooting/)
+- https://cchautomotive.my/services/engine-gearbox-repair/ (BM: https://cchautomotive.my/ms/services/engine-gearbox-repair/, 中文: https://cchautomotive.my/zh/services/engine-gearbox-repair/)
+- https://cchautomotive.my/services/computer-diagnostics/ (BM: https://cchautomotive.my/ms/services/computer-diagnostics/, 中文: https://cchautomotive.my/zh/services/computer-diagnostics/)
+- https://cchautomotive.my/services/module-programming-coding/ (BM: https://cchautomotive.my/ms/services/module-programming-coding/, 中文: https://cchautomotive.my/zh/services/module-programming-coding/)
+- https://cchautomotive.my/services/car-service-maintenance/ (BM: https://cchautomotive.my/ms/services/car-service-maintenance/, 中文: https://cchautomotive.my/zh/services/car-service-maintenance/)
+- https://cchautomotive.my/services/aircond-service-repair/ (BM: https://cchautomotive.my/ms/services/aircond-service-repair/, 中文: https://cchautomotive.my/zh/services/aircond-service-repair/)
+- https://cchautomotive.my/services/electrical-hybrid/ (BM: https://cchautomotive.my/ms/services/electrical-hybrid/, 中文: https://cchautomotive.my/zh/services/electrical-hybrid/)

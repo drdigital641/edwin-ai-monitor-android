@@ -20,10 +20,10 @@
     "preview_host": "autoseo.my"
   },
   "live": {
-    "base_url": null,
-    "domain": null,
-    "noindex": true,
-    "_note": "No domain has been given yet. Preview only. Do not touch DNS."
+    "base_url": "https://cchautomotive.my/",
+    "domain": "cchautomotive.my",
+    "noindex": false,
+    "_note": "Edwin approved go-live 19 Nov 2026. 20 Nov: the domain is served straight from the preview folder (one set of files). Do not touch DNS."
   },
   "autoseo": "https://autoseo.my/",
   "footer_credit": "Website by AutoSEO.my",

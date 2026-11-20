@@ -9,7 +9,6 @@ CREDIT = {'en': strings_en.UI['credit'], 'ms': strings_ms.UI['credit'], 'zh': st
 HTML_LANG = {'en': 'en', 'ms': 'ms', 'zh': 'zh-Hans'}
 LIVE = '--live' in sys.argv  # check ../dist-live (indexable live build) instead of the noindex preview
 DIST = os.path.join(HERE, '..', 'dist-live' if LIVE else 'dist')
-PREFIX = '/' if LIVE else '/preview/cch-automotive/'
 BANNED = [r'lorem', r'\bTODO\b', 'pa'+r'ge\s*o'+'ne', 'pageo'+'nesingapore', r'012[-\s]?820[-\s]?1559', r'12[-\s]?820[-\s]?1559', r'018[-\s]?789[-\s]?3055',
           r'melaka', r'malacca', r'aggregateRating', r'openingHours', r'ratingValue', r'reviewCount', r'placeholder', r'\bXXX', r'\bSLUG\b',
           r'\bMon(day)?\s*[-–]\s*(Fri|Sat|Sun)', r'\b\d{1,2}(:\d\d)?\s?(am|pm)\b', r'\bopen daily\b', r'\b24/7\b', r'authori[sz]ed dealer',
@@ -30,10 +29,12 @@ for f in files:
         if n_loc != 39 or n_alt != n_loc * 4: fail(f, f'sitemap {n_loc} locs / {n_alt} hreflang links (want 39 / 156)')
     if not f.endswith('.html'):
         continue
-    if LIVE:
-        if 'noindex' in t: fail(f, 'noindex on a live page')
-        if 'autoseo.my/preview' in t or '"/preview/' in t: fail(f, 'preview URL on a live page')
-    elif '<meta name="robots" content="noindex, nofollow">' not in t: fail(f, 'no noindex')
+    # One set of files for cchautomotive.my and the preview (20 Nov 2026): no meta noindex (the preview address is
+    # hidden by the Host-conditional X-Robots-Tag header), no preview URLs, canonical on the live domain.
+    if 'noindex' in t: fail(f, 'meta noindex in a page')
+    if 'autoseo.my/preview' in t or '"/preview/' in t: fail(f, 'preview URL in a page')
+    if '<link rel="canonical" href="https://cchautomotive.my/' not in t: fail(f, 'canonical not on cchautomotive.my')
+    if re.search(r'(href|src)="/(?!/)', t): fail(f, 'root-relative link (must be page-relative to work in both places)')
     if len(re.findall(r'<h1\b', t)) != 1: fail(f, 'H1 count != 1')
     if 'p1-cta.js' not in t: fail(f, 'no tracker')
     rel = os.path.relpath(f, DIST).replace(os.sep, '/')
@@ -58,9 +59,9 @@ for f in files:
     for j in re.findall(r'<script type="application/ld\+json">(.*?)</script>', t, re.S):
         try: json.loads(j)
         except Exception as e: fail(f, f'bad JSON-LD {e}')
-    for src in re.findall(r'src="' + re.escape(PREFIX) + r'images/([^"]+)"', t):
-        if 'audi' in src: fail(f, 'audi image used')
-        if LIVE and not os.path.exists(os.path.join(DIST, 'images', src)): fail(f, 'missing image ' + src)
+    for src in re.findall(r'(?:src|data-full)="((?:\.\./)*)images/([^"]+)"', t):
+        if 'audi' in src[1]: fail(f, 'audi image used')
+        if not os.path.exists(os.path.join(DIST, 'images', src[1])): fail(f, 'missing image ' + src[1])
 import shutil, tempfile
 tmp = tempfile.mkdtemp(); shutil.copytree(DIST, tmp if LIVE else os.path.join(tmp, 'preview', 'cch-automotive'), dirs_exist_ok=True)  # cta_check resolves /preview/... from a site root
 r = subprocess.run([sys.executable, '/mnt/project-files/tracking/cta_check.py', '--dir', tmp], capture_output=True, text=True)
