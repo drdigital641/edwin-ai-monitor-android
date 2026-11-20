@@ -24,35 +24,36 @@ d.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest(
 var wf=d.querySelector('form[data-wa]');if(wf)wf.addEventListener('submit',function(e){e.preventDefault();var g=function(n){var x=wf.elements[n];return x?String(x.value||'').trim():''};
  var m=wf.getAttribute('data-prefill')+(g('car')||'')+(g('issue')?'\nIssue: '+g('issue'):'')+(g('msg')?'\n'+g('msg'):'')+(g('name')?'\nName: '+g('name'):'');
  location.href='https://wa.me/'+wf.getAttribute('data-wa')+'?text='+encodeURIComponent(m)});
-/* photo strip: Wrapstar behaviour. Native finger drag, continuous rAF autoplay over clones, vertical scroll never pauses,
-   only a ~350ms hold or a horizontal drag pauses, resume 1.5s after release, hover pauses (mouse), reduced motion = no autoplay. */
+/* photo strip: Wrapstar carousel behaviour. Native horizontal finger swipe (overflow-x:auto, scroll-snap proximity),
+   continuous rAF autoplay over clones (snap off only while autoplaying), vertical page scroll never pauses it,
+   a horizontal swipe, a ~350ms hold or mouse hover pauses, resume 1.5s after release, reduced motion = no autoplay. */
 [].forEach.call(d.querySelectorAll('[data-strip]'),function(st){var vp=st.querySelector('.strip-vp'),tr=st.querySelector('.strip-tr');if(!vp||!tr)return;
  var orig=[].slice.call(tr.children);orig.forEach(function(c){var k=c.cloneNode(true);k.setAttribute('aria-hidden','true');[].forEach.call(k.querySelectorAll('img'),function(i){i.loading='lazy';i.alt=''});tr.appendChild(k)});
- var W=0,x=0,v=reduce?0:-32,paused=false,hover=false,rt=0,tw=null,last=0,vis=true;
+ var W=0,pos=0,v=reduce?0:32,user=false,hover=false,rt=0,last=0,vis=true,mine=0;
  function measure(){W=tr.children[orig.length].offsetLeft-tr.children[0].offsetLeft}
- function wrap(){if(!W)return;while(x<=-W)x+=W;while(x>0)x-=W}
- function paint(){tr.style.transform='translate3d('+x.toFixed(2)+'px,0,0)'}
+ function auto(on){vp.classList.toggle('auto',on)}
+ function hold(){user=true;clearTimeout(rt);auto(false)}
+ function release(){clearTimeout(rt);rt=setTimeout(function(){user=false;pos=vp.scrollLeft},1500)}
  function step(t){var dt=last?Math.min(64,t-last):16;last=t;
-  if(tw){var p=Math.min(1,(t-tw.t0)/320),e=1-Math.pow(1-p,3);x=tw.a+(tw.b-tw.a)*e;if(p>=1)tw=null}
-  else if(!paused&&!hover&&vis&&v)x+=v*dt/1000;
-  wrap();paint();requestAnimationFrame(step)}
- function pause(){paused=true;clearTimeout(rt)}
- function resume(){clearTimeout(rt);rt=setTimeout(function(){paused=false},1500)}
+  if(!user&&!hover&&vis&&v&&W){auto(true);if(Math.abs(vp.scrollLeft-Math.round(pos))>2)pos=vp.scrollLeft;pos+=v*dt/1000;if(pos>=W)pos-=W;mine=t;vp.scrollLeft=Math.round(pos)}
+  requestAnimationFrame(step)}
  measure();addEventListener('resize',measure);
  if('IntersectionObserver' in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(vp);
  requestAnimationFrame(step);
- var sx=0,sy=0,bx=0,mode='',ht=0,pid=null;
- vp.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse'&&e.button)return;sx=e.clientX;sy=e.clientY;bx=x;mode='';pid=e.pointerId;tw=null;
-  clearTimeout(ht);ht=setTimeout(function(){if(!mode){mode='hold';pause()}},350);if(e.pointerType==='mouse'){mode='drag';pause();vp.setPointerCapture(pid);vp.classList.add('drag')}});
- vp.addEventListener('pointermove',function(e){if(e.pointerId!==pid)return;var dx=e.clientX-sx,dy=e.clientY-sy;
-  if(!mode||mode==='hold'){if(Math.abs(dx)>8&&Math.abs(dx)>Math.abs(dy)){mode='drag';clearTimeout(ht);pause();try{vp.setPointerCapture(pid)}catch(_){}vp.classList.add('drag')}
-   else if(mode!=='hold'&&Math.abs(dy)>8){mode='scroll';clearTimeout(ht)}}
-  if(mode==='drag'){x=bx+dx;wrap();e.preventDefault()}});
- function up(e){if(e.pointerId!==pid)return;clearTimeout(ht);if(mode==='drag'||mode==='hold')resume();mode='';pid=null;vp.classList.remove('drag')}
- vp.addEventListener('pointerup',up);vp.addEventListener('pointercancel',up);
- vp.addEventListener('click',function(e){if(Math.abs(x-bx)>6)e.preventDefault()},true);
- vp.addEventListener('mouseenter',function(){hover=true});vp.addEventListener('mouseleave',function(){hover=false});
- function nudge(dir){var c=tr.children[1].offsetLeft-tr.children[0].offsetLeft;pause();tw={a:x,b:x-dir*c,t0:performance.now()};resume()}
+ /* touch: decide direction; vertical drags are left to the page and never pause */
+ var sx=0,sy=0,dir='',ht=0;
+ vp.addEventListener('touchstart',function(e){var p=e.touches[0];sx=p.clientX;sy=p.clientY;dir='';clearTimeout(ht);ht=setTimeout(function(){if(!dir){dir='hold';hold()}},350)},{passive:true});
+ vp.addEventListener('touchmove',function(e){if(dir)return;var p=e.touches[0],dx=Math.abs(p.clientX-sx),dy=Math.abs(p.clientY-sy);
+  if(dx>8&&dx>dy){dir='x';clearTimeout(ht);hold()}else if(dy>8){dir='y';clearTimeout(ht)}},{passive:true});
+ vp.addEventListener('touchend',function(){clearTimeout(ht);if(dir==='x'||dir==='hold')release();dir=''},{passive:true});
+ vp.addEventListener('touchcancel',function(){clearTimeout(ht);if(dir==='x'||dir==='hold')release();dir=''},{passive:true});
+ /* trackpad / wheel / momentum scrolls that are not ours count as the user; loop the clones both ways */
+ vp.addEventListener('scroll',function(){if(performance.now()-mine<60)return;/* our own autoplay step */
+  if(W&&user){if(vp.scrollLeft>=W)vp.scrollLeft-=W;else if(vp.scrollLeft<=0)vp.scrollLeft+=W}
+  if(user&&dir!=='x'&&dir!=='hold')release()},{passive:true});
+ vp.addEventListener('wheel',function(e){if(Math.abs(e.deltaX)>Math.abs(e.deltaY)){hold();release()}},{passive:true});
+ vp.addEventListener('mouseenter',function(){hover=true;auto(false)});vp.addEventListener('mouseleave',function(){hover=false;pos=vp.scrollLeft});
+ function nudge(k){var c=tr.children[1].offsetLeft-tr.children[0].offsetLeft;hold();if(k<0&&vp.scrollLeft<c)vp.scrollLeft+=W;vp.scrollBy({left:k*c,behavior:reduce?'auto':'smooth'});release()}
  var pv=st.querySelector('[data-prev]'),nx=st.querySelector('[data-next]');pv&&pv.addEventListener('click',function(){nudge(-1)});nx&&nx.addEventListener('click',function(){nudge(1)});
 });
 })})();

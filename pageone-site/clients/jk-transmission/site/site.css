@@ -152,21 +152,23 @@ p{margin:0 0 1em;text-wrap:pretty}
 /* overhaul path: photo and text overlap, steps joined by a cobalt line */
 .path{list-style:none;margin:0;padding:0;display:grid;gap:34px;counter-reset:st}
 .path li{position:relative;counter-increment:st}
-.path figure{margin:0;border-radius:var(--r-l);overflow:hidden;aspect-ratio:4/3;box-shadow:var(--sh2);background:var(--wall-l)}
+.path figure{margin:0;border-radius:var(--r-l);overflow:hidden;aspect-ratio:3/4;box-shadow:var(--sh2);background:var(--wall-l)}
 .path figure img{width:100%;height:100%;object-fit:cover}
-.path .card{position:relative;margin:-46px 14px 0;background:#fff;border-radius:var(--r);padding:18px 20px 16px;box-shadow:var(--sh1)}
+.path .card{position:relative;margin:12px 0 0;background:#fff;border-radius:var(--r);padding:18px 20px 16px;box-shadow:var(--sh1)}
 .path .card h3{display:flex;align-items:center;gap:12px;margin-bottom:.35em}
 .path .card h3::before{content:counter(st);flex:none;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;font:700 1rem/1 var(--fh)}
 .path .card p{margin:0;font-size:1rem;color:var(--ink2)}
 .path figcaption{position:absolute;left:0;right:0;top:0;padding:12px 14px 30px;font-size:.84rem;line-height:1.35;color:#fff;background:linear-gradient(180deg,rgba(6,18,31,.7),rgba(6,18,31,0))}
 @media(min-width:760px){.path{grid-template-columns:1fr 1fr;gap:40px 28px}}
-@media(min-width:1100px){.path{grid-template-columns:repeat(4,1fr)}.path .card{margin:-40px 10px 0}}
+@media(min-width:1100px){.path{grid-template-columns:repeat(4,1fr)}.path .card{margin:12px 0 0}}
 
 /* proof: Wrapstar-behaviour photo strip (native finger drag, rAF autoplay with clones) */
 .strip{position:relative;margin-top:8px}
-.strip-vp{overflow:hidden;touch-action:pan-y;cursor:grab;-webkit-user-select:none;user-select:none;padding:6px 0 10px}
-.strip-vp.drag{cursor:grabbing}
-.strip-tr{display:flex;gap:14px;width:max-content;padding:0 var(--gut);will-change:transform}
+.strip-vp{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:none;overscroll-behavior-x:contain;padding:6px 0 10px}
+.strip-vp::-webkit-scrollbar{display:none}
+.strip-vp.auto{scroll-snap-type:none}
+.shot{scroll-snap-align:start;scroll-margin-left:var(--gut)}
+.strip-tr{display:flex;gap:14px;width:max-content;padding:0 var(--gut)}
 .shot{position:relative;flex:none;width:74vw;max-width:320px;aspect-ratio:4/5;margin:0;border-radius:var(--r-l);overflow:hidden;background:#20364d;box-shadow:0 22px 44px -26px rgba(0,0,0,.8)}
 .shot img{width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
 .shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:48px 16px 16px;font:500 .95rem/1.35 var(--fb);color:#fff;background:linear-gradient(180deg,rgba(6,18,31,0),rgba(6,18,31,.86) 62%)}
@@ -286,3 +288,20 @@ p{margin:0 0 1em;text-wrap:pretty}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .svc3 .card h3::before{display:none}
 .svc3 .card h3 a{color:var(--ink);text-decoration:none}
+
+/* QA 20 Nov: phone hero shows the whole REVV signboard: photo panel under the header, text below on ink */
+@media(max-width:899px){
+ .hero{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;min-height:0;background:var(--ink)}
+ .hero::before{display:none}
+ .hero-img{position:relative;inset:auto;z-index:0;margin-top:var(--hdr);width:100%;height:auto;aspect-ratio:16/10}
+ .hero-img img{position:absolute;inset:0;width:100%;height:100%;object-position:50% 40%}
+ .hero-img::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(180deg,rgba(11,31,51,0),var(--ink))}
+ .hero-in{position:relative;z-index:1;padding-top:14px;padding-bottom:84px}
+ .gears{top:auto;bottom:90px;right:-90px;width:230px;height:230px;opacity:.28}
+ .js .hdr.over:not(.solid){background:var(--ink)}
+ .phead{padding-top:calc(var(--hdr) + 22px);padding-bottom:22px}
+ .phead .lede{margin-bottom:14px}
+ html{scroll-padding-bottom:calc(var(--bar) + 24px)}
+ main{padding-bottom:0}
+ .waform{padding-bottom:calc(var(--bar) + 24px)}
+}

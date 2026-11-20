@@ -112,7 +112,8 @@
       "h": 1600,
       "pos": "50% 28%",
       "alt": "A Honda on the two-post lift with the gearbox removed onto a yellow stand in the REVV workshop",
-      "cap": "A Honda on the lift, gearbox out on a yellow stand"
+      "cap": "A Honda on the lift, gearbox out on a yellow stand",
+      "step_pos": "50% 50%"
     },
     "bench": {
       "file": "gearbox-teardown-bench",
@@ -136,7 +137,8 @@
       "h": 1280,
       "pos": "50% 32%",
       "alt": "A dark car on the two-post lift with the automatic gearbox lowered onto an orange transmission jack",
-      "cap": "Automatic gearbox lowered onto the orange transmission jack"
+      "cap": "Automatic gearbox lowered onto the orange transmission jack",
+      "step_pos": "50% 72%"
     },
     "housing": {
       "file": "open-gearbox-housing",
@@ -191,7 +193,7 @@
     },
     {
       "id": "delay",
-      "label": "Slow to engage D or R",
+      "label": "Slow to engage D or R",
       "wa": "delayed gear engagement",
       "text": "A pause before Drive or Reverse catches is worth checking early. Fluid condition, solenoids and wear-and-tear parts are all on our list, and the checks come before any parts.",
       "tip": "Mention if it is worse on a cold start or after a long drive."

@@ -56,11 +56,11 @@ def a_map(ref, text='Open in Google Maps', cls='btn-line'):
     return '<a class="%s" href="%s" target="_blank" rel="noopener" data-cta="map" data-ref="%s">%s<span>%s</span></a>' % (cls, e(F['maps_url']), ref, ic('pin'), e(text))
 
 P = F['photos']
-def pic(k, sizes='(min-width:900px) 40vw, 92vw', lazy=True, cls='', cap=True, pos=None, high=False):
+def pic(k, sizes='(min-width:900px) 40vw, 92vw', lazy=True, cls='', cap=True, pos=None, high=False, capt=None):
     p = P[k]; ld = ' loading="lazy" decoding="async"' if lazy else (' fetchpriority="high"' if high else '')
     img = ('<picture><source type="image/webp" srcset="%s"><img src="%s" width="%d" height="%d" alt="%s" style="object-position:%s"%s></picture>'
            % (u('images/%s.webp' % p['file']), u('images/%s.jpg' % p['file']), p['w'], p['h'], e(p['alt']), pos or p['pos'], ld))
-    fc = '<figcaption>%s</figcaption>' % e(p['cap']) if cap else ''
+    fc = '<figcaption>%s</figcaption>' % e(capt or p['cap']) if cap else ''
     return '<figure class="%s">%s%s</figure>' % (cls, img, fc)
 
 NAV = [('', 'Home'), ('services/', 'Services'), ('about/', 'About'), ('faq/', 'FAQ'), ('contact/', 'Contact')]
@@ -165,7 +165,7 @@ def parts_list(link=True):
     return '<ul class="parts">' + ''.join(li) + '</ul>'
 
 def path_steps():
-    li = ''.join(f'<li>{pic(s["photo"], "(min-width:1100px) 25vw, (min-width:760px) 45vw, 92vw")}<div class="card"><h3>{e(s["name"])}</h3><p>{e(s["text"])}</p></div></li>' for s in F['steps'])
+    li = ''.join(f'<li>{pic(s["photo"], "(min-width:1100px) 25vw, (min-width:760px) 45vw, 92vw", pos=P[s["photo"]].get("step_pos"))}<div class="card"><h3>{e(s["name"])}</h3><p>{e(s["text"])}</p></div></li>' for s in F['steps'])
     return '<ol class="path">' + li + '</ol>'
 
 def strip(title='Real gearbox work at REVV', lede='Every photo is from the workshop at #02-03. Drag sideways, or hold to pause.'):
@@ -226,7 +226,8 @@ def services():
     cards = [('gearbox-overhaul/', 'Gearbox overhaul & repair', 'Automatic, DCT and hybrid gearboxes opened, inspected and repaired.', 'housing'),
              ('double-clutch-dct/', 'Double-clutch (DCT) repair', 'DCT repair and replacement, hybrid double-clutch included.', 'vezel'),
              ('tcu-repair/', 'TCU / TCM repair & programming', 'Transmission Control Unit and Module repair and programming.', 'solenoids')]
-    lis = ''.join(f'<li>{pic(p, "(min-width:900px) 30vw, 92vw")}<div class="card"><h3><a href="{u(h)}">{e(t)}</a></h3><p>{e(d)}</p></div></li>' for h, t, d, p in cards)
+    capx = {'vezel': 'A blue Honda Vezel in the workshop, bumper off'}
+    lis = ''.join(f'<li>{pic(p, "(min-width:900px) 30vw, 92vw", capt=capx.get(p))}<div class="card"><h3><a href="{u(h)}">{e(t)}</a></h3><p>{e(d)}</p></div></li>' for h, t, d, p in cards)
     body += f'<section class="band"><div class="wrap"><div class="band-h"><h2>Service pages</h2></div><ol class="path svc3" style="counter-reset:none">{lis}</ol></div></section>'
     body += selector().replace('class="band"', 'class="band white dado"', 1) + ask('services_ask')
     return page('services/', 'Gearbox & Transmission Services, Jurong West | J & K Transmission',
@@ -303,7 +304,7 @@ def faq():
 
 def contact():
     trail = [('', 'Home'), ('contact/', 'Contact')]
-    body = phead('Contact J & K Transmission at REVV, Jurong West', 'WhatsApp Jason is the fastest way. Send the car model and what the gearbox is doing.', trail, btns=True)
+    body = phead('Contact J & K Transmission at REVV, Jurong West', 'WhatsApp Jason is the fastest way: send the car model and the symptom.', trail, btns=False)
     sel = ''.join('<option>%s</option>' % e(s['label']) for s in F['symptoms']) + '<option>Something else</option>'
     body += f'''<section class="band white dado"><div class="wrap split"><div>
 <h2>Message Jason</h2><form class="waform" data-wa="{F['whatsapp']}" data-prefill="{e(F['prefill'])}" data-ref="whatsapp_contact">
