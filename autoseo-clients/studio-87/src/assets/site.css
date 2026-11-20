@@ -3,13 +3,15 @@
    Bodoni Moda (headings) + Albert Sans (body) + Noto Serif SC subset (中文). Mobile first at 390px. */
 @font-face{font-family:"Bodoni Moda";src:url(fonts/bodonimoda.woff2) format("woff2");font-weight:400 700;font-style:normal;font-display:swap}
 @font-face{font-family:"Albert Sans";src:url(fonts/albertsans.woff2) format("woff2");font-weight:400 600;font-style:normal;font-display:swap}
+/* Bodoni's hairline 4 reads as 1 on phones (client feedback 20 Nov): headings take their digits from Albert Sans */
+@font-face{font-family:"S87 Num";src:url(fonts/albertsans.woff2) format("woff2");font-weight:400 600;font-display:swap;unicode-range:U+0030-0039}
 @font-face{font-family:"S87 SC";src:url(fonts/notoserifsc-sub.woff2) format("woff2");font-weight:400 700;font-display:swap;
 unicode-range:U+2E80-2FFF,U+3000-303F,U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+FF00-FFEF}
 
 :root{--black:#0A0A0A;--black2:#141210;--ch:#C9A96E;--ch-l:#D4B57E;--ch-d:#7E6334;--ivory:#F7F1E8;--cream:#EDE4D4;--ink:#1A1612;--ink2:#564C42;
 --on-black:#D9D1C4;--line:rgba(26,22,18,.14);--line-d:rgba(247,241,232,.16);
 --r-s:8px;--r:10px;--r-l:12px;--wrap:1160px;--gut:16px;--bar:64px;
---fh:"Bodoni Moda","S87 SC",Georgia,serif;--fb:"Albert Sans","S87 SC",-apple-system,"Segoe UI",sans-serif;
+--fh:"S87 Num","Bodoni Moda","S87 SC",Georgia,serif;--fb:"Albert Sans","S87 SC",-apple-system,"Segoe UI",sans-serif;
 --sh:0 18px 40px -26px rgba(26,22,18,.55)}
 @media(min-width:900px){:root{--gut:32px;--bar:76px}}
 *,*::before,*::after{box-sizing:border-box}
@@ -181,7 +183,7 @@ color:var(--ivory);font:500 .95rem/1.35 var(--fb)}
 /* proof: typographic rating band */
 .proof-in{display:grid;gap:8px;align-items:center}
 @media(min-width:700px){.proof-in{grid-template-columns:auto 1fr;gap:44px}}
-.proof-n{font:500 clamp(5rem,22vw,9rem)/.9 var(--fh);color:var(--ch-d);margin:0;letter-spacing:-.02em}
+.proof-n{font:500 clamp(4.6rem,20vw,8rem)/.9 var(--fb);color:var(--ch-d);margin:0;letter-spacing:-.03em;font-variant-numeric:lining-nums}
 .proof h2{margin-bottom:.35em}
 .proof p{color:var(--ink2);margin-bottom:.4em}
 
