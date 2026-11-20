@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19",
+ "updated": "2026-11-20",
  "rule": "Queue = section A (GSC PRIORITY: TODO pages with Google clicks in the last 28 days, most clicks then most impressions; Grok Bot re-pulls GSC before each daily run and may reorder A) then section B (all other TODO, launch date earliest first, planned/undated last). Daily build takes the top TODO in A until A is empty, then B. Hub order is separate: DONE first, then TODO by launch date (hub_order). ONE PAGE A DAY (Edwin 17 Nov 8:24am): 17 Nov was a one-off 3-page day (Merpati Meadow, Plantation Edge I & II, Coastal Cabana, all from ready v4 drops). From 18 Nov 2026 back to exactly 1 page per day in GSC (A) then launch-date (B) order.",
  "projects": [
   {
@@ -494,23 +494,24 @@
    "launch": "16 Jun 2026 BTO",
    "launch_basis": "firm",
    "launch_source": "HDB June 2026 BTO (page facts)",
-   "status": "TODO",
-   "v4_set": "sembawang-portico-v4 (drop 6afd47312ee046ecf2e44439)",
-   "floor_plan": false,
+   "status": "DONE",
+   "v4_set": "sembawang-portico-v4",
+   "floor_plan": true,
    "gsc_28d": {
     "clicks": 7,
     "impressions": 187,
     "position": 8.61
    },
-   "section": "A",
+   "section": "DONE",
    "v4_drop": {
     "drop_id": "6afd47312ee046ecf2e44439",
     "job": "maison-sembawang-portico-v4",
     "site": "maisoninteriordesign.sg",
-    "status": "ready, 11 files, expires 25 Nov 2026, 2:35pm SGT (Grok Bot 19 Nov)",
+    "status": "published 20 Nov 2026 to images/new-launches/sembawang-portico-v4/, cleared after live check",
     "plan": "see drop README",
     "gaps": "see drop README"
-   }
+   },
+   "built": "2026-11-20 (live 06:23 UTC, sha 95ad89ca, backup ~/backups-private/pageone-sync-before-preview-maison-interior-design-20261120-062329Z.tgz, tap CtaClick 6affe790)"
   },
   {
    "slug": "woodgrove-acres",
