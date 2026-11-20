@@ -3,7 +3,7 @@
 One facts file (facts.json) + this template = every page. Run: python3 build.py  -> ../site/
 Photos/logos are NOT in the repo: they were placed in preview/jk-transmission/images/ from Bridge drop 6affcc237e4c96b65652cfd0.
 Go-live later: set base_url/base_path in facts.json to the live domain and "/", noindex false, rebuild, sync."""
-import json, os, shutil, hashlib, html, urllib.parse, datetime
+import json, os, re, shutil, hashlib, html, urllib.parse, datetime
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, '..', 'site')
 F = json.load(open(os.path.join(HERE, 'facts.json'), encoding='utf8'))
@@ -132,7 +132,7 @@ def footer():
 <div><h3>Find us</h3><ul><li><a href="{e(F['maps_url'])}" target="_blank" rel="noopener" data-cta="map" data-ref="map_footer">{ic('pin')}<span>1 Corporation Drive @ REVV, #02-03, Singapore 619775</span></a></li></ul></div>
 <div><h3>Opening hours</h3><ul class="muted">{hrs}</ul></div>
 </div>
-<div class="ft-base"><span>&copy; {datetime.date.today().year} {e(F['legal_name'])} (UEN {F['uen']})</span><a href="{u('privacy/')}">Privacy</a><a href="{F['footer_credit_url']}" rel="noopener">{e(F['footer_credit'])}</a></div>
+<div class="ft-base"><span>&copy; {datetime.date.today().year} {e(F['legal_name'])} (UEN {F['uen']})</span><a href="{u('privacy/')}">Privacy</a></div>
 </div></footer>
 <div class="mbar">{a_wa('whatsapp_mobile_bar')}{a_call('call_mobile_bar', 'Call')}</div>
 <script src="{u('site.js')}?v={V_JS}" defer></script>
@@ -346,6 +346,17 @@ def notfound():
 PAGES = {'index.html': home, 'services/index.html': services, 'gearbox-overhaul/index.html': overhaul, 'double-clutch-dct/index.html': dct,
          'tcu-repair/index.html': tcu, 'about/index.html': about, 'faq/index.html': faq, 'contact/index.html': contact, 'privacy/index.html': privacy, '404.html': notfound}
 
+def relativize(h, p):
+    """Page-relative links so the same files work on the live domain root and in any folder (404 stays root-absolute)."""
+    if p == '404.html': return h
+    pre = '../' * p.count('/')
+    def fix(m):
+        v = m.group(2)
+        if v.startswith('//'): return m.group(0)
+        r = pre + v[1:]
+        return m.group(1) + (r or './') + '"'
+    return re.sub(r'((?:href|src|srcset|data-src)=")(/[^"]*)"', fix, h)
+
 def main():
     if os.path.isdir(OUT): shutil.rmtree(OUT)
     os.makedirs(OUT)
@@ -353,11 +364,19 @@ def main():
     shutil.copytree(os.path.join(HERE, 'fonts'), os.path.join(OUT, 'fonts'))
     for p, fn in PAGES.items():
         os.makedirs(os.path.dirname(os.path.join(OUT, p)) or OUT, exist_ok=True)
-        open(os.path.join(OUT, p), 'w', encoding='utf8').write(fn())
+        open(os.path.join(OUT, p), 'w', encoding='utf8').write(relativize(fn(), p))
     urls = [k[:-len('index.html')] for k in PAGES if k.endswith('index.html') and k != 'privacy/index.html'] + ['privacy/']
     sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(
         '  <url><loc>%s</loc><lastmod>%s</lastmod></url>\n' % (absu(x), TODAY) for x in urls) + '</urlset>\n'
     open(os.path.join(OUT, 'sitemap.xml'), 'w').write(sm)
+    if F.get('indexnow_key'): open(os.path.join(OUT, F['indexnow_key'] + '.txt'), 'w').write(F['indexnow_key'])
+    hrs = '; '.join('%s %s' % (h['days'], h['time']) for h in F['hours'])
+    llms = ['# ' + F['name'], '', '> Gearbox and automatic transmission specialist workshop in Jurong West, Singapore.', '',
+            '- Address: ' + F['address']['one_line'], '- Hours: ' + hrs, '- WhatsApp: +' + F['whatsapp'], '- Email: ' + F['email'],
+            '- UEN: ' + F['uen'], '', '## Services'] + ['- ' + s['name'] for s in F['services']] + ['', '## Pages'] + \
+           ['- [%s](%s%s)' % (t, ABS, p) for t, p in [('Home', ''), ('Services', 'services/'), ('Gearbox overhaul', 'gearbox-overhaul/'), ('Double-clutch DCT', 'double-clutch-dct/'), ('TCU repair', 'tcu-repair/'), ('About', 'about/'), ('FAQ', 'faq/'), ('Contact', 'contact/')]]
+    open(os.path.join(OUT, 'llms.txt'), 'w', encoding='utf8').write('\n'.join(llms) + '\n')
+    open(os.path.join(OUT, 'robots.txt'), 'w').write('User-agent: *\nAllow: /\n\nSitemap: %ssitemap.xml\n' % ABS)
     print('built', len(PAGES), 'pages ->', os.path.normpath(OUT))
 
 if __name__ == '__main__': main()

@@ -5,9 +5,9 @@
   "short": "J & K Transmission",
   "legal_name": "J & K TRANSMISSION SPECIALIST PTE. LTD.",
   "uen": "202502803H",
-  "base_url": "https://pageonesingapore.com/preview/jk-transmission/",
-  "base_path": "/preview/jk-transmission/",
-  "noindex": true,
+  "base_url": "https://jktransmissionspecialist.com/",
+  "base_path": "/",
+  "noindex": false,
   "promise": "We only repair what is needed.",
   "taglines": [
     "Professional Gearbox Repair & Overhaul",
@@ -350,5 +350,9 @@
       "q": "How much experience does the team have?",
       "a": "The team has a combined 16 years of experience in gearbox and transmission work."
     }
-  ]
+  ],
+  "live_domain": "jktransmissionspecialist.com",
+  "live": true,
+  "preview_url": "https://pageonesingapore.com/preview/jk-transmission/",
+  "indexnow_key": "16f5b7960ac5acd829acc127b1c08e37"
 }

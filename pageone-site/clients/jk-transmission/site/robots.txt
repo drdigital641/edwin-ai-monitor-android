@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jktransmissionspecialist.com/sitemap.xml
