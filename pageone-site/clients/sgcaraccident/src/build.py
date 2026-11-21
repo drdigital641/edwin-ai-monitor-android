@@ -359,7 +359,7 @@ def step_html(lang, slug, s):
     end = ""
     if s.get("cta"):
         h += '<div class="endcta">%s%s<a class="btn btn-ghost block" href="%s">%s</a></div>' % (
-            hotline(lang, s["cta"], slug + ":end"), "".join('<a class="btn btn-sign block" href="%s">%s</a>' % (url(lang, u), E(n)) for n, u in s.get("cta_links", [])),
+            "" if s.get("helpbox") else hotline(lang, s["cta"], slug + ":end"), "".join('<a class="btn btn-sign block" href="%s">%s</a>' % (url(lang, u), E(n)) for n, u in s.get("cta_links", [])),
             url(lang), E(t["start_over"]))
         end = " data-end"
     return '<section class="step"%s>%s</section>' % (end, h)

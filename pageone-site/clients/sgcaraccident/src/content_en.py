@@ -213,7 +213,7 @@ FLOWS = {
                     "Repairs usually start after the claim is assessed. Ask before you repair, so you don't put your claim at risk.",
                     "If the other insurer gives you trouble, GIA suggests approaching that insurer directly. Your own insurer can explain the options under your policy."],
              "warn": "We can't promise that the other driver's insurer will accept liability or pay for repairs. Liability and claim acceptance are assessed by the insurers involved."},
-            {"h": "Need help with your third-party claim?", "tab": "Get help",
+            {"h": "Your next step", "tab": "Get help",
              "p": ["Let us help you understand the next steps and arrange suitable accident repair assistance."],
              "helpbox": {"h": "Need help with your third-party claim?", "p": "No pressure. Pick what's easiest for you.", "wa": "third-party", "pathway": "third_party", "form": "third_party"},
              "cta": "third-party", "cta_links": [["Find my insurer's reporting centre", "insurers/"]]},
