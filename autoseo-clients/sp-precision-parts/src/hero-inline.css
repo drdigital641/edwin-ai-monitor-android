@@ -1,7 +1,9 @@
-/* 22 Nov 12:29am (Edwin): previous product showcase photo as a soft background behind the logo */
+/* 22 Nov (Edwin 12:29am + 12:37am): product showcase photo as a soft faded background. Source is 580x440 (no larger original), so never upscaled: whole photo, contain, max native width, edges masked into the black */
 .hero{position:relative;isolation:isolate;overflow:hidden}
-.hero-bg{position:absolute;inset:0;z-index:-2}
-.hero-bg picture,.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,18,19,.72) 0,rgba(15,18,19,.58) 45%,rgba(15,18,19,.7) 100%)}
+.hero-bg{position:absolute;inset:0;z-index:-2;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.hero-bg picture{display:block;width:min(580px,100%)}
+.hero-bg img{display:block;width:100%;height:auto;max-width:580px;object-fit:contain;opacity:.42;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 55%,transparent 100%)}
+@media(max-width:899px){.hero-bg{align-items:flex-start;padding-top:88px}}
+@media(min-width:900px){.hero-bg{padding-right:min(36vw,460px)}}
 .langs a{white-space:nowrap}
 @media(max-width:380px){.langs a{padding:7px 8px}.top-in{gap:8px}.logo{height:34px}}
