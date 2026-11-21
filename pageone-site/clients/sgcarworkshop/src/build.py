@@ -6,6 +6,7 @@ llms.txt name that address, robots.txt says Disallow: / . Internal links and ass
 preview address and on the real domain. LIVE = True switches every absolute URL to https://sgcarworkshop.sg/ and opens robots.txt.
 Pages never carry a noindex tag: hiding the preview is done by a server header outside the pages (MASTER-RULES 4.3).
 """
+import hw_site
 import datetime
 import hashlib
 import html
@@ -335,7 +336,7 @@ def claim_form(e, depth):
             '</form></section>') % (E(e['name']), pre(depth), CLAIM_ENDPOINT, sid, opts)
 
 
-def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra_js='', index=True, why=''):
+def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra_js='', index=True, why='', head_extra='', tail=''):
     assert len(title) <= 60, (path, len(title), title)
     assert len(desc) <= 160, (path, len(desc))
     depth = path.count('/')
@@ -375,7 +376,7 @@ def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
 <link rel="stylesheet" href="{p}assets/dir.css?v={V}">
 <script>document.documentElement.className+=' js'</script>
-{gk}{ld}</head>
+{gk}{ld}{head_extra}</head>
 <body{' class="has-bar"' if bar else ''}>
 {header(depth)}
 <main id="main">
@@ -386,7 +387,7 @@ def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra
 <script src="{p}assets/dir.js?v={V_DIR}" defer></script>
 {('<script src="%sassets/ask.js?v=%s" defer></script>' % (p, V)) if path == '' else ''}
 {('<script src="%sassets/livephone.js?v=%s" defer></script>' % (p, V)) if extra_js else ''}
-</body>
+{tail}</body>
 </html>
 '''
     out = out.replace('</body>', sprite(out) + '\n</body>', 1)
@@ -1066,6 +1067,8 @@ def call_icon(e, page_path):
 def rating_line(e):
     """Edwin 3 Nov 2026: Google rating + rating count + checked month-year + See Google reviews link. Skipped (empty) when there is no rating or checked date.
     Wording is "Google ratings" (Edwin 3 Nov 2026); the link text stays "See Google reviews"."""
+    if e.get('no_score'):
+        return ''   # Edwin 21 Nov 2026: no overall Google score on this listing (client mini-site uses "See our reviews on Google")
     g = GCACHE.get(e['slug']) or {}
     gr = e.get('google_rating') or {}   # data/workshops/<slug>.json, source Google Places (founder listing: the owner's own Google profile, with count_text)
     n, r, fa = gr.get('count') or g.get('userRatingCount'), gr.get('rating') or g.get('rating'), gr.get('checked') or g.get('fetched_at')
@@ -2712,6 +2715,7 @@ def build():
         estate_service(k, cat, v)
     for e in PAID:
         listing(e)
+    hw_site.run(sys.modules[__name__])   # Hon Win Motor mini-site (paid Premium client, Edwin 21 Nov 2026): replaces its listing page + adds sub-pages
     for e in ENTRIES:
         if e['tier'] == 'free':
             basic_page(e)
@@ -2743,6 +2747,7 @@ def build():
         {'listings': {e['slug']: {'n': e['name'], 'm': e['phone']} for e in ENTRIES if e.get('phone')}}, ensure_ascii=False, separators=(',', ':')))
     for i, part in enumerate(cards_parts()):   # split so no file passes the Bridge's ~1 MB write limit (11 Nov 2026)
         open(OUT + '/assets/' + part_name(i), 'w', encoding='utf-8').write(json.dumps({'cards': part}, ensure_ascii=False, separators=(',', ':')))
+    hw_site.write_assets(OUT)
     make_icons()
     folder_fillers()
 
@@ -2780,6 +2785,7 @@ def build():
         if 'workshops/%s/' % e['slug'] in NOINDEX:
             continue   # thin pages stay out of llms.txt until they have enough content
         lines.append('- [%s](%sworkshops/%s/): %s, %s%s' % (e['name'], BASE, e['slug'], CAT[e['category']]['name'] + ', ' + TIERS[e['tier']]['label'], e['area_label'], (' (own website: %s)' % e['url']) if e['tier'] == 'premium_leadgen' else ''))
+    lines += ['', '## Hon Win Motor (Featured, paid): profile, services and nearby areas'] + hw_site.LLMS
     lines += ['', '## For AI agents: claiming a listing',
               'AI agents are welcome to claim or verify a workshop listing for its owner. Full guide: %sfor-ai-agents/' % BASE,
               '1. Find the workshop page (%sworkshops/<listing_id>/); the listing id is the last part of the address and is shown in the claim form.' % BASE,

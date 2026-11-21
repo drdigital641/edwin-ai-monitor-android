@@ -103,6 +103,10 @@ for e in ENTRIES:
         print('MISSING PAGE', e['slug'], e['tier']); bad += 1; continue
     h = open(f, encoding='utf-8').read()
     r = audit(h); r['both_buttons'] = both_buttons(h)
+    if e.get('minisite'):   # own mini-site layout (src/hw_site.py): count its own blocks; the Google link stands in for the rating line (21 Nov 2026 no-score rule)
+        _gal = len(re.findall(r'<div class="hw-gal">.*?</div>', h, re.S) and re.findall(r'<figure><img', re.search(r'<div class="hw-gal">(.*?)</div>', h, re.S).group(1)))
+        r.update(photos=_gal + ('class="hw-hero-img"' in h), gallery=_gal, services_detail=h.count('<li><a href="') and len(re.findall(r'<ul class="hw-cards">(.*?)</ul>', h, re.S)[0].split('<li>')) - 1,
+                 faqs=len(re.findall(r'<details><summary>', h)), address='class="hw-plate"' in h, map='class="hw-map' in h and 'maps/embed' in h, rating='See our reviews on Google' in h)
     if e['slug'] == 'wei-car-spray-painting': wei = r   # the Verified sample; a Basic card such as wei-s-alignment-specialist must not replace it
     rows.append((e, r))
 cols = FEAT + CONV + ['both_buttons']
@@ -496,6 +500,8 @@ for _f in files:
     if 'http-equiv="refresh"' in _h or 'This folder is not a page' in _h or _rel == '404.html': continue
     if '<header class="top">' not in _h or '<footer class="ft">' not in _h or '<main id="main">' not in _h: print('page lacks the shared header, main or footer', _rel); bad += 1
 for _e in ENTRIES:
+    if _e.get('minisite'):
+        continue   # own mini-site (src/hw_site.py, Edwin 21 Nov 2026): custom layout, not the block template
     _h = open(os.path.join(root, 'workshops', _e['slug'], 'index.html'), encoding='utf-8').read()
     _m = re.search(r'<main id="main">(.*?)</main>', _h, re.S)
     _bl, _left = _blocks(_m.group(1))

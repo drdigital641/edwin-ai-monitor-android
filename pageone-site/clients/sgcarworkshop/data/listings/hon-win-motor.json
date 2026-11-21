@@ -1,0 +1,199 @@
+{
+ "slug": "hon-win-motor",
+ "tier": "premium_leadgen",
+ "place_id": "ChIJ-bSN1ssX2jER-SbNNJfI4WM",
+ "name": "Hon Win Motor",
+ "domain": "honwin.sg",
+ "url": "https://honwin.sg/",
+ "category": "general-servicing-repair",
+ "categories": [
+  "general-servicing-repair",
+  "car-aircon-repair",
+  "spray-painting-bodywork",
+  "gearbox-repair"
+ ],
+ "regions": [
+  "north-east"
+ ],
+ "region": "north-east",
+ "regions_note": "Defu Industrial Estate is in the Hougang planning area, North-East region (URA). Address: 6 Defu Lane 10.",
+ "area_label": "Defu Lane, Hougang",
+ "estate": "defu-industrial-estate",
+ "lat": 1.359057119420834,
+ "lon": 103.8948428184969,
+ "no_score": true,
+ "title": "Hon Win Motor | Car Workshop, Defu Lane, Hougang",
+ "desc": "Hon Win Motor, 6 Defu Lane 10: car servicing, repairs, aircon and accident claims for passenger cars. Quote before work starts. WhatsApp 9171 8466.",
+ "card_img": {
+  "f": "hw/workshop-front.webp",
+  "alt": "Hon Win Motor Trading signboard and workshop at 6 Defu Lane 10"
+ },
+ "card_text": [
+  "Full car workshop in Defu Industrial Estate, mainly passenger cars.",
+  "Servicing, engine and gearbox repairs, aircon and accident claims."
+ ],
+ "lede": "Hon Win Motor is a car workshop at 6 Defu Lane 10 in Defu Industrial Estate, Hougang. It services and repairs mainly passenger cars: Japanese, Korean and Continental, petrol and hybrid. Work covers servicing, engine, electrical and gearbox repairs, aircon, and accident repairs with insurance claims. A quote is given before any work starts. WhatsApp or call 9171 8466.",
+ "services": [
+  {
+   "n": "Car servicing",
+   "d": "Engine oil and oil filter, an OBD diagnostic scan, fluid top-ups and a full safety check. Spark plugs and gearbox oil are changed only if needed.",
+   "p": null
+  },
+  {
+   "n": "Engine and electrical repairs",
+   "d": "Warning lights, starting and battery faults, alternators, starter motors, lamps, wiring, water pumps and turbos, up to top and full engine overhauls.",
+   "p": null
+  },
+  {
+   "n": "Gearbox overhaul and repair",
+   "d": "Automatic, manual, CVT and DCT gearboxes repaired and overhauled in-house.",
+   "p": null
+  },
+  {
+   "n": "Car aircon repair",
+   "d": "Gas top-up and leak check, cooling coil replacement, and compressor, condenser and blower repairs.",
+   "p": null
+  },
+  {
+   "n": "Accident repair and insurance claims",
+   "d": "Accident repairs and body work, with help on the insurance claim. WhatsApp photos of the damage first.",
+   "p": null
+  },
+  {
+   "n": "Dash cams and accessories",
+   "d": "Front and rear dash cams, parking mode wiring, reverse cameras, parking sensors and head units.",
+   "p": null
+  }
+ ],
+ "price_note": "Prices depend on the car and the job. The workshop gives a quote before any work starts.",
+ "phone": "+6591718466",
+ "phone_show": "9171 8466",
+ "whatsapp": "6591718466",
+ "email": "honwinmotor@gmail.com",
+ "addresses": [
+  {
+   "label": null,
+   "street": "6 Defu Lane 10, #01-544",
+   "postal": "539187",
+   "note": "Defu Industrial Estate, Hougang."
+  }
+ ],
+ "map_url": "https://www.google.com/maps/search/?api=1&query=Hon%20Win%20Motor&query_place_id=ChIJ-bSN1ssX2jER-SbNNJfI4WM",
+ "hours": [
+  [
+   "Mon to Fri",
+   "10am to 7pm"
+  ],
+  [
+   "Sat",
+   "10am to 3pm"
+  ],
+  [
+   "Sun",
+   "Closed"
+  ]
+ ],
+ "hours_ld": [
+  [
+   [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday"
+   ],
+   "10:00",
+   "19:00"
+  ],
+  [
+   [
+    "Saturday"
+   ],
+   "10:00",
+   "15:00"
+  ]
+ ],
+ "hours_note": "Hours from its Google Business Profile (checked November 2026). WhatsApp before you visit on a public holiday.",
+ "social": [
+  "https://www.facebook.com/profile.php?id=61577472525279",
+  "https://www.tiktok.com/@hon.win.motor",
+  "https://www.instagram.com/honwinmotor"
+ ],
+ "reviews": {
+  "text": "See our reviews on Google.",
+  "url": "https://www.google.com/maps/search/?api=1&query=Hon%20Win%20Motor&query_place_id=ChIJ-bSN1ssX2jER-SbNNJfI4WM",
+  "label": "See our reviews on Google"
+ },
+ "photos": [
+  {
+   "f": "hw/workshop-front.webp",
+   "alt": "Hon Win Motor Trading signboard above the workshop at 6 Defu Lane 10, Defu Industrial Estate",
+   "cap": "The workshop at Defu Lane 10, under the red Hon Win Motor Trading signboard."
+  },
+  {
+   "f": "hw/car-on-lift.webp",
+   "alt": "Toyota hybrid raised on a lift for servicing at Hon Win Motor",
+   "cap": "A hybrid up on the lift for servicing."
+  },
+  {
+   "f": "hw/mechanic-engine-bay.webp",
+   "alt": "Hon Win Motor mechanic working in the engine bay of a red Hyundai",
+   "cap": "Work in the engine bay of a Hyundai."
+  },
+  {
+   "f": "hw/engine-overhaul.webp",
+   "alt": "Hon Win Motor mechanic working on an engine removed from a car",
+   "cap": "An engine out of the car for an overhaul."
+  },
+  {
+   "f": "hw/gearbox-overhaul.webp",
+   "alt": "Hon Win Motor mechanic working on a gearbox removed for overhaul",
+   "cap": "A gearbox out of the car for overhaul."
+  },
+  {
+   "f": "hw/aircon-cooling-coil.webp",
+   "alt": "New aircon cooling coil and expansion valve ready to be fitted at Hon Win Motor",
+   "cap": "A new aircon cooling coil and expansion valve, ready to fit."
+  }
+ ],
+ "faqs": [
+  [
+   "Which cars does Hon Win Motor work on?",
+   "Mainly passenger cars: Japanese, Korean and Continental, petrol and hybrid. Its website also names Mercedes-Benz, Audi, Porsche and Volvo, and diesel vehicles."
+  ],
+  [
+   "Do I need an appointment?",
+   "Walk-ins are welcome. WhatsApp 9171 8466 first to check the workshop is free."
+  ],
+  [
+   "Will I know the price before work starts?",
+   "Yes. The car is checked first and a quote is given before any work starts."
+  ],
+  [
+   "My car cannot be driven. What do I do?",
+   "WhatsApp or call 9171 8466. Towing is free when the repair is done at the workshop."
+  ],
+  [
+   "How can I pay?",
+   "Cash, scan to pay, bank transfer, or Atome instalments."
+  ]
+ ],
+ "source": {
+  "name": "Google Places (place_id ChIJ-bSN1ssX2jER-SbNNJfI4WM): name, address, mobile, hours",
+  "services": "honwin.sg pages read 21 Nov 2026 (home, services, 7 service pages, contact, promotions)",
+  "accident": "Edwin, 21 Nov 2026 (client is a full workshop incl. accident claims); Google review themes mention spray paint and repair work",
+  "photos": "Client's own site honwin.sg/wp-content/uploads, copied 21 Nov 2026 via the Controller sandbox, resized to webp (640px, hero 1080px)"
+ },
+ "left_out": [
+  "overall Google score and review count (21 Nov rule)",
+  "homepage stats 98% 5-star, 100% satisfaction (unprovable)",
+  "homepage testimonials (stock template portraits)",
+  "all prices (pages disagree: servicing from $88 vs $98)",
+  "24-hour towing number 8337 6377 (site shows two different numbers)",
+  "hours 8am-6pm and 9:30am variants on some site pages (Google hours used)",
+  "stock/unsplash photos on its site"
+ ],
+ "_order": 14,
+ "og_img": "hw/og.jpg",
+ "minisite": true
+}
