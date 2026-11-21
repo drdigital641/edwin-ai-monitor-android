@@ -1,0 +1,36 @@
+--- entry.base.ts	2026-11-21 23:54:55.386232500 +0000
++++ entry.ts	2026-11-21 23:54:55.401791183 +0000
+@@ -16,6 +16,12 @@
+ const clip = (v: unknown, n: number) => String(v ?? '').replace(/[\u0000-\u001f\u007f<>]/g, ' ').trim().slice(0, n);
+ const bare = (h: string) => String(h || '').toLowerCase().replace(/^https?:\/\//, '').replace(/\/.*$/, '').replace(/^www\./, '');
+ const PREVIEW_HOSTS = ['pageonesingapore.com', 'autoseo.my'];
++// 22 Nov 2026: built-in portfolio sites have no Client row (clientSites NOT_CLIENTS), so article_last for them always
++// answered 404 "Unknown client slug" (Danny/Alicia every night). They are accepted and nothing is stored: the dashboard
++// reads their article date from the site's own sitemap/hub. Old runner slug names are mapped to the Client slug.
++const BUILTIN_SITES: Record<string, string> = { alicia: 'aliciaongproperty.com', danny: 'dannychuafinancial.com', sggarage: 'sggarage.com',
++  cleanic: 'cleanicdetailing.com', sofacare: 'sofacaresg.com', pageone: 'pageonesingapore.com' };
++const SLUG_ALIASES: Record<string, string> = { lilian: 'lilian-properties' };
+
+ export default async function (req: Request) {
+   if (req.method !== 'POST') return Response.json({ ok: false, error: 'method' }, { status: 405 });
+@@ -55,7 +61,8 @@
+   }
+
+   if (op === 'article_last') {
+-    const slug = clip(p?.slug, 80);
++    const asked = clip(p?.slug, 80);
++    const slug = SLUG_ALIASES[asked] || asked;
+     if (!/^[a-z0-9][a-z0-9-]{1,79}$/.test(slug)) return Response.json({ ok: false, error: 'slug must be the Controller client slug' }, { status: 400 });
+     const date = clip(p?.date, 10);
+     if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return Response.json({ ok: false, error: 'date must be YYYY-MM-DD (SGT)' }, { status: 400 });
+@@ -64,6 +71,10 @@
+     const url = clip(p?.url, 400);
+     let host = '';
+     try { const u = new URL(url); if (u.protocol === 'https:' && !u.username && !u.password && !u.port) host = bare(u.hostname); } catch { /* bad */ }
++    if (BUILTIN_SITES[slug]) {
++      if (host !== BUILTIN_SITES[slug]) return Response.json({ ok: false, error: 'url must be https on ' + BUILTIN_SITES[slug] }, { status: 400 });
++      return Response.json({ ok: true, slug, date, builtin: true, stored: false, note: 'built-in site: the dashboard reads its own sitemap and hub' }, { headers: { 'Cache-Control': 'no-store' } });
++    }
+     let rows: any[] = (await E.Client.filter({ slug }, '-created_date', 3).catch(() => [])).filter((c: any) => !c.is_partner);
+     // 18 Nov 2026: some slugs have an old duplicate row with no domain (aivs, star-performance, new-zen-werkz). Use the
+     // one row whose domain is the URL's host; still refuse if that does not single one out.

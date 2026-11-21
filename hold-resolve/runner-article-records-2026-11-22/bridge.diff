@@ -1,0 +1,198 @@
+# Bridge app 6ac6d47b4ec84148578914c7: diff -ruN ra-base/base44 ra/base44 (44,713 bytes in full)
+# NOTE: the shared/runnerOpenapi.ts hunk is one 17 KB JSON line (old and new). It is NOT reproduced here; see the
+# summary at the end of this file (version 1.5.0 -> 1.6.0 and a new "/bridgeRunnerArticle" POST path, createArticleRecord).
+# Everything else below is the diff output unchanged.
+diff -ruN ra-base/base44/functions/bridgeRunnerArticle/entry.ts ra/base44/functions/bridgeRunnerArticle/entry.ts
+--- ra-base/base44/functions/bridgeRunnerArticle/entry.ts	1970-01-01 00:00:00.000000000 +0000
++++ ra/base44/functions/bridgeRunnerArticle/entry.ts	2026-11-21 23:48:31.287064904 +0000
+@@ -0,0 +1,6 @@
++import { bridgeTool } from '../../shared/handler.ts';
++import { runnerArticle } from '../../shared/runnerArticle.ts';
++
++// RUNNER ARTICLE RECORDS (22 Nov 2026): create one Base44 Article record for a site rendered from records (SofaCare).
++// POST https://blue-bridge-pilot.base44.app/functions/bridgeRunnerArticle  body { site, article, hero_path?, request_id?, dry_run? }
++export default bridgeTool('runner_article', (body, ctx) => runnerArticle(body, ctx));
+diff -ruN ra-base/base44/shared/crawlerLogs.ts ra/base44/shared/crawlerLogs.ts
+--- ra-base/base44/shared/crawlerLogs.ts	2026-11-21 23:48:09.301443515 +0000
++++ ra/base44/shared/crawlerLogs.ts	2026-11-21 23:48:09.336709403 +0000
+@@ -455,6 +455,23 @@
+   return JSON.parse(text);
+ }
+
++// RUNNER ARTICLE RECORDS (22 Nov 2026): the same pinned-key signature, sent to another of Edwin's Base44 apps
++// (e.g. SofaCare SG) whose function verifies it with the public key only. Returns the HTTP status and JSON, so the
++// caller can pass a 4xx validation answer straight back to the runner.
++export async function signedAppCall(base44: any, appId: string, fn: string, payload: Record<string, unknown>, timeoutMs = 60_000): Promise<{ status: number; json: any }> {
++  if (!/^[a-f0-9]{24}$/.test(appId) || !/^[A-Za-z0-9_]+$/.test(fn)) throw new Error('bad app or function name');
++  const { key, kid } = await signingKey(base44);
++  const body = JSON.stringify({ ...payload, sent_at: new Date().toISOString() });
++  const sig = await crypto.subtle.sign({ name: 'ECDSA', hash: 'SHA-256' }, key, new TextEncoder().encode(body));
++  const res = await fetch('https://base44.app/api/apps/' + appId + '/functions/' + fn, {
++    method: 'POST', headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify({ payload: body, sig: b64u(sig), kid }), signal: AbortSignal.timeout(timeoutMs),
++  });
++  const text = await res.text();
++  let json: any = null; try { json = JSON.parse(text); } catch { json = { ok: false, error: text.slice(0, 200) }; }
++  return { status: res.status, json };
++}
++
+ // ---------- read-only checks for the report ----------
+ export async function inventory(base44: any) {
+   const out: any = { at: new Date().toISOString() };
+diff -ruN ra-base/base44/shared/handler.ts ra/base44/shared/handler.ts
+--- ra-base/base44/shared/handler.ts	2026-11-21 23:48:09.303055436 +0000
++++ ra/base44/shared/handler.ts	2026-11-21 23:48:09.337378688 +0000
+@@ -101,7 +101,7 @@
+           return await deny('This key can only run the go-live tool', 403, authMeta);
+         }
+         if (scope === 'runner' && !RUNNER_KEY_ACTIONS.has(action)) {
+-          return await deny('The runner key cannot use this tool (allowed: list, read, write, write_many, sitemap, IndexNow, Controller reads, article image)', 403, authMeta);
++          return await deny('The runner key cannot use this tool (allowed: list, read, write, write_many, sitemap, IndexNow, Controller reads, article image, article record)', 403, authMeta);
+         }
+         if (scope.startsWith('site:')) {
+           if (!SITE_KEY_ACTIONS.has(action)) return await deny('This key can only list, read and write files', 403, authMeta);
+@@ -177,6 +177,7 @@
+   const d: Record<string, unknown> = {};
+   if (typeof body?.op === 'string') d.op = body.op.slice(0, 20);
+   if (typeof body?.slug === 'string') d.slug = body.slug.slice(0, 80);
++  if (typeof body?.article?.slug === 'string') d.slug = body.article.slug.slice(0, 80);
+   for (const k of ['paths', 'urls', 'files']) if (Array.isArray(body?.[k])) d[k] = body[k].length;
+   if (body?.dry_run === true) d.dry_run = true;
+   return JSON.stringify(d);
+diff -ruN ra-base/base44/shared/imageGate.ts ra/base44/shared/imageGate.ts
+--- ra-base/base44/shared/imageGate.ts	2026-11-21 23:48:09.303476839 +0000
++++ ra/base44/shared/imageGate.ts	2026-11-21 23:48:09.319605558 +0000
+@@ -32,16 +32,43 @@
+   }
+   return '';
+ }
+-function heroImg(html: string): string {
+-  // First <img> after the H1 (skips header logos); falls back to the first <img> inside <article> or <main>.
+-  const h1 = html.search(/<h1\b/i);
+-  const scopes = [h1 >= 0 ? html.slice(h1) : '', (html.match(/<(article|main)\b[\s\S]*$/i) || [''])[0]];
+-  for (const s of scopes) {
+-    for (const t of s.match(/<img\b[^>]*>/gi) || []) {
+-      const src = attr(t, 'src');
+-      if (src && !/logo|icon|avatar|portrait|badge|favicon|author/i.test(src + ' ' + attr(t, 'class'))) return src;
+-    }
++// HERO DETECTION (22 Nov 2026 fix, Plan with Ben block): templates put the hero in different places (Page One
++// article-hero inside the prose, Ben's phero-bg BEFORE the H1, AutoSEO photo heroes), and pages end with "Related
++// pages" cards that carry OTHER articles' photos. The old rule (first <img> after the H1) skipped Ben's phero, skipped
++// the badge photos and then read the first related card (9fa8a9b970b6.webp) as the hero, so every runner article on
++// that template was refused. Order now, so the gate and every template agree:
++//   1. the <img fetchpriority="high"> outside header/nav/footer (the page's LCP hero; every template marks it),
++//   2. the first <img> with "hero" in its own class or in the class of the element that holds it,
++//   3. the old rule, but only inside the main content: header, nav, footer, aside and everything from the first
++//      related/cards block or "Related" heading onwards are ignored.
++const SKIP_IMG = /logo|icon|avatar|portrait|badge|favicon|author/i;
++function stripChrome(html: string): string {
++  return html.replace(/<(header|nav|footer|aside)\b[\s\S]*?<\/\1>/gi, ' ');
++}
++function cutRelated(html: string): string {
++  const m = html.search(/<[a-z]+\b[^>]*\bclass\s*=\s*["'][^"']*\b(acards?|related[a-z-]*|more-articles|card-grid)\b|<h[2-4]\b[^>]*>\s*(related|more articles|you may also|read next)/i);
++  return m >= 0 ? html.slice(0, m) : html;
++}
++function usable(t: string): string {
++  const src = attr(t, 'src');
++  return src && !SKIP_IMG.test(src + ' ' + attr(t, 'class')) ? src : '';
++}
++export function heroImg(html: string): string {
++  const body = stripChrome(html.replace(/<head\b[\s\S]*?<\/head>/i, ' '));
++  const imgs = body.match(/<img\b[^>]*>/gi) || [];
++  for (const t of imgs) if (/\sfetchpriority\s*=\s*["']?high/i.test(t) && usable(t)) return usable(t);
++  const re = /<img\b[^>]*>/gi; let m: RegExpExecArray | null;
++  while ((m = re.exec(body))) {
++    const t = m[0], src = usable(t);
++    if (!src) continue;
++    const before = body.slice(Math.max(0, m.index - 400), m.index);
++    const opener = (before.match(/<(?:figure|div|section|picture|span)\b[^>]*>(?![\s\S]*<\/(?:figure|div|section|picture|span)>)/gi) || []).pop() || '';
++    if (/hero/i.test(attr(t, 'class')) || /hero/i.test(attr(opener, 'class'))) return src;
+   }
++  const main = cutRelated(body);
++  const h1 = main.search(/<h1\b/i);
++  const scopes = [h1 >= 0 ? main.slice(h1) : '', (main.match(/<(article|main)\b[\s\S]*$/i) || [''])[0]];
++  for (const s of scopes) for (const t of s.match(/<img\b[^>]*>/gi) || []) { const src = usable(t); if (src) return src; }
+   return '';
+ }
+ const base = (u: string) => decodeURIComponent((u.split(/[?#]/)[0].split('/').pop() || '')).toLowerCase();
+diff -ruN ra-base/base44/shared/runner.ts ra/base44/shared/runner.ts
+--- ra-base/base44/shared/runner.ts	2026-11-21 23:48:09.304703647 +0000
++++ ra/base44/shared/runner.ts	2026-11-21 23:48:09.337229257 +0000
+@@ -34,6 +34,8 @@
+ // checked before the scope, so a key can never reach it.
+ export const RUNNER_KEY_ACTIONS: ReadonlySet<string> = new Set([
+   'list', 'read', 'write', 'write_many', 'runner_sitemap', 'runner_indexnow', 'runner_controller', 'runner_image',
++  // 22 Nov 2026: Base44 Article records for sites rendered from records (bridgeRunnerArticle, runnerArticle.ts).
++  'runner_article',
+ ]);
+
+ const bare = (h: string) => h.toLowerCase().replace(/^www\./, '');
+diff -ruN ra-base/base44/shared/runnerArticle.ts ra/base44/shared/runnerArticle.ts
+--- ra-base/base44/shared/runnerArticle.ts	1970-01-01 00:00:00.000000000 +0000
++++ ra/base44/shared/runnerArticle.ts	2026-11-21 23:48:31.282482404 +0000
+@@ -0,0 +1,57 @@
++// RUNNER ARTICLE RECORDS (Edwin 22 Nov 2026, PERMANENT): some sites are rendered every hour from Base44 Article records
++// (SofaCare: autoPublishSofaCareStage at :17 in the Alicia app). A page file written straight to Bluehost is dropped from
++// the hub and sitemap by the next rebuild. For those sites the runner sends the article HERE and the Bridge creates the
++// record in the site's own Base44 app, signed with the Bridge's pinned key (the target app holds only the public key;
++// the apps share no secret). The site's next hourly publish renders the page, hub card, sitemap, llms.txt and IndexNow.
++//   POST https://blue-bridge-pilot.base44.app/functions/bridgeRunnerArticle
++//   body { site, article: {...}, hero_path?, request_id?, dry_run? }
++// The hero: send article.hero_image = an existing https://media.base44.com/... URL, OR hero_path = the JPEG that
++// generateArticleImage wrote for this slug (images/articles/<slug>.jpg); the Bridge reads it from Bluehost and the target
++// app uploads it to its own Base44 storage (media URL). All content checks run in the target app (one source of truth)
++// and come back as 422 with the list of problems; nothing is created unless every check passes.
++import { BridgeError, readLiveFile } from './bridgeOps.ts';
++import { signedAppCall } from './crawlerLogs.ts';
++
++export const ARTICLE_RECORD_SITES: Readonly<Record<string, { appId: string; fn: string; domain: string; urlOf: (slug: string) => string }>> = Object.freeze({
++  sofacare: { appId: '6a9c4351b2a32e6fb4dc814c', fn: 'runnerArticleIngest', domain: 'sofacaresg.com', urlOf: (s: string) => `https://sofacaresg.com/articles/${s}.html` },
++});
++
++const FIELDS = ['title', 'slug', 'keyword', 'h1', 'meta_description', 'excerpt', 'content', 'faqs', 'hero_image', 'hero_image_alt', 'related_service', 'published_date'];
++const clip = (v: unknown, n: number) => String(v ?? '').replace(/[\u0000-\u001f\u007f]/g, '').trim().slice(0, n);
++
++export async function runnerArticle(body: any, ctx: { base44: any }) {
++  const site = String(body?.site || '');
++  const target = ARTICLE_RECORD_SITES[site];
++  if (!target) throw new BridgeError('Article records are made only for: ' + Object.keys(ARTICLE_RECORD_SITES).join(', ') + '. For other sites write the page with bridgeWrite.', 400);
++  const a = body?.article;
++  if (!a || typeof a !== 'object' || Array.isArray(a)) throw new BridgeError('article must be an object with the Article fields', 400);
++  const article: Record<string, unknown> = {};
++  for (const f of FIELDS) if (a[f] !== undefined) article[f] = typeof a[f] === 'string' ? String(a[f]).slice(0, 60_000) : a[f];
++  const slug = String(article.slug || '');
++  if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug) || slug.length > 60) throw new BridgeError('article.slug must be lowercase-hyphen, at most 60 characters', 400);
++  let hero_b64: string | undefined, hero_name: string | undefined;
++  if (body?.hero_path !== undefined && body?.hero_path !== null && body?.hero_path !== '') {
++    const rel = String(body.hero_path).replace(/^\/+/, '');
++    if (!new RegExp(`^images/articles/${slug}\\.(jpg|jpeg|png|webp)$`).test(rel)) throw new BridgeError(`hero_path must be images/articles/${slug}.jpg (the file generateArticleImage made for this slug)`, 400);
++    const f: any = await readLiveFile(site, rel);
++    if (!f?.content_base64) throw new BridgeError('hero_path is not an image file', 400);
++    if (f.content_base64.length > 2_800_000) throw new BridgeError('hero image over 2 MB', 400);
++    hero_b64 = f.content_base64; hero_name = rel.split('/').pop();
++  } else if (!/^https:\/\/media\.base44\.com\//.test(String(article.hero_image || ''))) {
++    throw new BridgeError('send hero_path (images/articles/<slug>.jpg from generateArticleImage) or article.hero_image (an https://media.base44.com/ URL)', 400);
++  }
++  const payload: Record<string, unknown> = {
++    purpose: 'runner_article', site, request_id: clip(body?.request_id, 80) || crypto.randomUUID(),
++    dry_run: body?.dry_run === true, article, ...(hero_b64 ? { hero_b64, hero_name } : {}),
++  };
++  let r: { status: number; json: any };
++  try { r = await signedAppCall(ctx.base44, target.appId, target.fn, payload, 90_000); }
++  catch (e) { throw new BridgeError('Site app not reachable: ' + String(e instanceof Error ? e.message : e).slice(0, 200), 502); }
++  const j = r.json || {};
++  if (r.status >= 400 || j.ok !== true) {
++    const err = new BridgeError(String(j.error || 'refused').slice(0, 300) + (Array.isArray(j.problems) && j.problems.length ? ': ' + j.problems.slice(0, 12).join('; ').slice(0, 1500) : ''), r.status >= 400 && r.status < 500 ? r.status : 502);
++    throw err;
++  }
++  const { ok: _ok, ...rest } = j;
++  return { site, slug, url: target.urlOf(slug), ...rest };
++}
+diff -ruN ra-base/base44/shared/runnerOpenapi.ts ra/base44/shared/runnerOpenapi.ts
+[hunk omitted: one-line JSON constant; summary below]
+
+# runnerOpenapi.ts summary (pretty-printed diff of the parsed JSON, no secrets; only env var NAME BRIDGE_RUNNER_KEY appears, as before):
+#  - info.version "1.5.0-runner" -> "1.6.0-runner"
+#  - new path "/bridgeRunnerArticle" post, operationId createArticleRecord, x-openai-isConsequential true,
+#    body { site (enum sofacare), article{title,slug,keyword,h1,meta_description,excerpt,content,faqs,hero_image?,hero_image_alt,related_service(sofa|mattress),published_date},
+#    hero_path?, request_id?, dry_run? } with an example; responses 200/400/401/403/409/422/429/502.
