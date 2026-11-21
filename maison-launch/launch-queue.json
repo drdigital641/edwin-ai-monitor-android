@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20",
+ "updated": "2026-11-21",
  "rule": "Queue = section A (GSC PRIORITY: TODO pages with Google clicks in the last 28 days, most clicks then most impressions; Grok Bot re-pulls GSC before each daily run and may reorder A) then section B (all other TODO, launch date earliest first, planned/undated last). Daily build takes the top TODO in A until A is empty, then B. Hub order is separate: DONE first, then TODO by launch date (hub_order). ONE PAGE A DAY (Edwin 17 Nov 8:24am): 17 Nov was a one-off 3-page day (Merpati Meadow, Plantation Edge I & II, Coastal Cabana, all from ready v4 drops). From 18 Nov 2026 back to exactly 1 page per day in GSC (A) then launch-date (B) order.",
  "projects": [
   {
@@ -203,8 +203,8 @@
    "floor_plan": true,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 15,
-    "position": 9.8
+    "impressions": 18,
+    "position": 8.83
    },
    "section": "A"
   },
@@ -233,8 +233,12 @@
    "status": "TODO",
    "v4_set": "the-myst-v4",
    "floor_plan": true,
-   "gsc_28d": null,
-   "section": "B"
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 29,
+    "position": 6.31
+   },
+   "section": "A"
   },
   {
    "slug": "lumina-grand",
@@ -275,8 +279,12 @@
    "status": "TODO",
    "v4_set": null,
    "floor_plan": false,
-   "gsc_28d": null,
-   "section": "B"
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 20,
+    "position": 15.0
+   },
+   "section": "A"
   },
   {
    "slug": "newport-residences",
@@ -416,9 +424,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 2,
-    "impressions": 161,
-    "position": 9.19
+    "clicks": 5,
+    "impressions": 311,
+    "position": 9.41
    },
    "section": "A"
   },
@@ -448,9 +456,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 1,
-    "impressions": 244,
-    "position": 9.43
+    "clicks": 3,
+    "impressions": 336,
+    "position": 9.42
    },
    "section": "A"
   },
@@ -480,9 +488,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 5,
-    "impressions": 191,
-    "position": 8.43
+    "clicks": 8,
+    "impressions": 303,
+    "position": 8.25
    },
    "section": "A"
   },
@@ -526,8 +534,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 2,
-    "impressions": 82,
-    "position": 8.94
+    "impressions": 112,
+    "position": 9.16
    },
    "section": "A"
   },
@@ -640,8 +648,12 @@
    "status": "TODO",
    "v4_set": null,
    "floor_plan": false,
-   "gsc_28d": null,
-   "section": "B"
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 2,
+    "position": 3.0
+   },
+   "section": "A"
   },
   {
    "slug": "bayshore-oasis",
@@ -670,8 +682,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 5,
-    "impressions": 127,
-    "position": 6.63
+    "impressions": 164,
+    "position": 6.6
    },
    "section": "A"
   },
@@ -716,8 +728,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 2,
-    "impressions": 49,
-    "position": 12.16
+    "impressions": 68,
+    "position": 12.09
    },
    "section": "A"
   },
@@ -748,8 +760,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 22,
-    "position": 7.68
+    "impressions": 32,
+    "position": 7.72
    },
    "section": "A"
   },
@@ -778,8 +790,12 @@
    "status": "TODO",
    "v4_set": null,
    "floor_plan": false,
-   "gsc_28d": null,
-   "section": "B"
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 25,
+    "position": 6.96
+   },
+   "section": "A"
   },
   {
    "slug": "bedok-north-springs",
@@ -807,9 +823,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 1,
-    "impressions": 15,
-    "position": 13.93
+    "clicks": 2,
+    "impressions": 23,
+    "position": 11.61
    },
    "section": "A"
   },
@@ -854,8 +870,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 3,
-    "impressions": 132,
-    "position": 9.14
+    "impressions": 164,
+    "position": 9.15
    },
    "section": "A"
   },
@@ -872,8 +888,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 66,
-    "position": 12.67
+    "impressions": 106,
+    "position": 11.84
    },
    "section": "A"
   },
@@ -917,9 +933,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 1,
-    "impressions": 55,
-    "position": 8.58
+    "clicks": 2,
+    "impressions": 70,
+    "position": 8.44
    },
    "section": "A"
   },
@@ -935,9 +951,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 2,
-    "impressions": 57,
-    "position": 7.37
+    "clicks": 4,
+    "impressions": 99,
+    "position": 7.13
    },
    "section": "A"
   },
@@ -953,9 +969,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 3,
-    "impressions": 85,
-    "position": 10.08
+    "clicks": 8,
+    "impressions": 142,
+    "position": 9.65
    },
    "section": "A"
   },
@@ -971,9 +987,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 1,
-    "impressions": 13,
-    "position": 9.0
+    "clicks": 2,
+    "impressions": 26,
+    "position": 6.46
    },
    "section": "A"
   },
@@ -989,9 +1005,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 2,
-    "impressions": 56,
-    "position": 5.93
+    "clicks": 3,
+    "impressions": 87,
+    "position": 5.46
    },
    "section": "A"
   },
@@ -1022,8 +1038,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 3,
-    "impressions": 158,
-    "position": 8.49
+    "impressions": 204,
+    "position": 8.36
    },
    "section": "A"
   },
@@ -1040,8 +1056,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 40,
-    "position": 9.07
+    "impressions": 61,
+    "position": 10.02
    },
    "section": "A"
   },
@@ -1058,8 +1074,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 2,
-    "impressions": 269,
-    "position": 8.83
+    "impressions": 353,
+    "position": 8.58
    },
    "section": "A"
   },
@@ -1089,9 +1105,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 2,
-    "impressions": 105,
-    "position": 7.34
+    "clicks": 3,
+    "impressions": 142,
+    "position": 7.11
    },
    "section": "A"
   },
@@ -1108,8 +1124,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 3,
-    "impressions": 52,
-    "position": 9.35
+    "impressions": 72,
+    "position": 9.21
    },
    "section": "A"
   },
@@ -1125,9 +1141,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 3,
-    "impressions": 107,
-    "position": 10.26
+    "clicks": 4,
+    "impressions": 173,
+    "position": 9.51
    },
    "section": "A"
   },
@@ -1158,8 +1174,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 44,
-    "position": 12.07
+    "impressions": 54,
+    "position": 11.57
    },
    "section": "A"
   },
@@ -1176,8 +1192,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 61,
-    "position": 9.08
+    "impressions": 88,
+    "position": 9.12
    },
    "section": "A"
   },
@@ -1220,8 +1236,12 @@
    "status": "TODO",
    "v4_set": null,
    "floor_plan": false,
-   "gsc_28d": null,
-   "section": "B"
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 26,
+    "position": 6.08
+   },
+   "section": "A"
   },
   {
    "slug": "ocbc-punggol",
@@ -1236,8 +1256,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 118,
-    "position": 7.86
+    "impressions": 174,
+    "position": 7.98
    },
    "section": "A"
   },
@@ -1282,8 +1302,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 51,
-    "position": 8.41
+    "impressions": 69,
+    "position": 8.23
    },
    "section": "A"
   },
@@ -1300,8 +1320,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 3,
-    "impressions": 51,
-    "position": 6.43
+    "impressions": 63,
+    "position": 8.1
    },
    "section": "A"
   },
@@ -1359,8 +1379,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 6,
-    "impressions": 57,
-    "position": 9.81
+    "impressions": 73,
+    "position": 9.55
    },
    "section": "A"
   },
@@ -1404,9 +1424,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 2,
-    "impressions": 53,
-    "position": 10.36
+    "clicks": 5,
+    "impressions": 100,
+    "position": 11.02
    },
    "section": "A"
   },
@@ -1449,8 +1469,12 @@
    "status": "TODO",
    "v4_set": null,
    "floor_plan": false,
-   "gsc_28d": null,
-   "section": "B"
+   "gsc_28d": {
+    "clicks": 1,
+    "impressions": 122,
+    "position": 9.57
+   },
+   "section": "A"
   },
   {
    "slug": "verandah-at-kallang",
@@ -1464,9 +1488,9 @@
    "v4_set": null,
    "floor_plan": false,
    "gsc_28d": {
-    "clicks": 4,
-    "impressions": 181,
-    "position": 8.72
+    "clicks": 6,
+    "impressions": 240,
+    "position": 8.4
    },
    "section": "A"
   },
@@ -1497,8 +1521,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 47,
-    "position": 11.13
+    "impressions": 66,
+    "position": 10.82
    },
    "section": "A"
   },
@@ -1515,8 +1539,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 3,
-    "impressions": 108,
-    "position": 9.04
+    "impressions": 148,
+    "position": 8.94
    },
    "section": "A"
   },
@@ -1533,8 +1557,8 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 1,
-    "impressions": 46,
-    "position": 7.78
+    "impressions": 58,
+    "position": 7.98
    },
    "section": "A"
   },
@@ -1551,16 +1575,16 @@
    "floor_plan": false,
    "gsc_28d": {
     "clicks": 2,
-    "impressions": 65,
-    "position": 9.86
+    "impressions": 80,
+    "position": 9.46
    },
    "section": "A"
   }
  ],
  "gsc": {
-  "date": "2026-11-19",
+  "date": "2026-11-21",
   "window": "last 28 days",
-  "source": "Grok Bot section A refresh, 19 Nov 2026 10:28am SGT"
+  "source": "Grok Bot section A refresh, 21 Nov 2026 10:11am SGT"
  },
  "no_images_policy": "make",
  "hub_order": [
