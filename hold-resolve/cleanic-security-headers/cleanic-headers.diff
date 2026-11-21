@@ -1,0 +1,22 @@
+diff --git a/base44/shared/liveGuard.ts b/base44/shared/liveGuard.ts
+@@ -459,6 +459,29 @@
++const SEC_BLOCK = /^# BEGIN Page One security headers v\d+[^\n]*\n(?:#[^\n]*\n)*<IfModule mod_headers\.c>\n((?:[^\n]*\n)+?)<\/IfModule>\n# END Page One security headers v\d+\n\n?/;
++const SEC_HEADER_LINE = /^Header always set (Strict-Transport-Security|X-Content-Type-Options|X-Frame-Options|Referrer-Policy|Permissions-Policy|Content-Security-Policy|Content-Security-Policy-Report-Only) "[^"\n\\%]*"$/;
++function stripSecurityBlock(text: string): string | null {
++  const m = SEC_BLOCK.exec(text);
++  if (!m) return text;
++  const lines = m[1].replace(/\n$/, '').split('\n');
++  if (!lines.length || !lines.every((l) => SEC_HEADER_LINE.test(l))) return null;
++  return text.slice(m[0].length);
++}
++export function frozenHeadersOnlyChange(liveBytes: Uint8Array, newBytes: Uint8Array): boolean {
++  let live: string, next: string;
++  try { const d = new TextDecoder('utf-8', { fatal: true }); live = d.decode(liveBytes); next = d.decode(newBytes); } catch { return false; }
++  if (/\r/.test(live) || /\r/.test(next)) return false;
++  const a = stripSecurityBlock(live), b = stripSecurityBlock(next);
++  return a !== null && b !== null && a === b;
++}
+@@ -499,6 +522,7 @@
+   const frozen = frozenProblem(site, rel, live.state === 'absent');
++  if (frozen && args.htaccess === true && rel === '.htaccess' && live.state === 'present' && frozenHeadersOnlyChange(live.bytes, newBytes)) return null;
+   if (frozen) return refuse(frozen);
