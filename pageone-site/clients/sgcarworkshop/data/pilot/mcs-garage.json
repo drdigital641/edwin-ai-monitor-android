@@ -1,0 +1,41 @@
+{
+ "lede": "MCS Garage at First East Centre, Kaki Bukit is a general car repair workshop.",
+ "chips": [
+  "Repairs",
+  "Servicing",
+  "Aesthetics"
+ ],
+ "services": [
+  "General car repairs",
+  "Fault finding",
+  "Electrical fault fixing",
+  "Aesthetic work",
+  "Restoration of older cars"
+ ],
+ "themes": "Customers on Google Maps mention friendly staff, a wide range of jobs from small faults to a full restoration of a Maserati, and help with a late-evening electrical problem.",
+ "faqs": [
+  [
+   "What does MCS Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Diagnostics",
+  "Servicing"
+ ],
+ "services_note": "Services mentioned by customers on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "BMW",
+  "Maserati"
+ ],
+ "makes_note": "Makes mentioned by customers on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

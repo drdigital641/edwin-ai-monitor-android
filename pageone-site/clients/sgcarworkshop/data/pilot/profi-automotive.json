@@ -1,0 +1,42 @@
+{
+ "lede": "Profi Automotive at Kaki Bukit Road 2, Kaki Bukit is a continental car servicing and diagnostics workshop.",
+ "chips": [
+  "Diagnostics",
+  "Servicing",
+  "Conti cars"
+ ],
+ "services": [
+  "Car servicing",
+  "Check engine light diagnostics",
+  "Speed sensor replacement",
+  "Engine mount replacement",
+  "Oil change"
+ ],
+ "themes": "Customers on Google Maps mention quick replies, diagnosis of check engine lights and rattles, and a same-day turnaround on some jobs.",
+ "faqs": [
+  [
+   "What does Profi Automotive do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Diagnostics",
+  "Servicing",
+  "Engine"
+ ],
+ "services_note": "Services mentioned by customers on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Mercedes-Benz",
+  "Hyundai"
+ ],
+ "makes_note": "Makes mentioned by customers on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

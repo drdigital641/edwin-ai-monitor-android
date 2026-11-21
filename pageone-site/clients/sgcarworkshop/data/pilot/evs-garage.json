@@ -1,0 +1,40 @@
+{
+ "lede": "EVS GARAGE at First East Centre, Kaki Bukit is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Pre-purchase checks",
+  "Mercedes"
+ ],
+ "services": [
+  "Car servicing",
+  "Engine mounting replacement",
+  "Pre-purchase inspection",
+  "Repairs"
+ ],
+ "themes": "Customers on Google Maps mention detailed explanations, photos of replaced parts, pre-purchase inspections and Mercedes-Benz experience.",
+ "faqs": [
+  [
+   "What does EVS GARAGE do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Engine",
+  "Diagnostics"
+ ],
+ "services_note": "Services mentioned by customers on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Mercedes-Benz"
+ ],
+ "makes_note": "Makes mentioned by customers on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

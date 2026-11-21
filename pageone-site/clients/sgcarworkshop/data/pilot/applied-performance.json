@@ -1,0 +1,36 @@
+{
+ "lede": "Applied Performance at First East Centre, Kaki Bukit is a performance and general car repair workshop.",
+ "chips": [
+  "Performance",
+  "Diagnostics",
+  "Repairs"
+ ],
+ "services": [
+  "Check engine light diagnosis",
+  "General car repairs",
+  "Performance work"
+ ],
+ "themes": "Customers on Google Maps mention the owner's knowledge and enthusiasm, and help sorting out a check engine light.",
+ "faqs": [
+  [
+   "What does Applied Performance do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Diagnostics",
+  "Engine"
+ ],
+ "services_note": "Services mentioned by customers on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "Makes mentioned by customers on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

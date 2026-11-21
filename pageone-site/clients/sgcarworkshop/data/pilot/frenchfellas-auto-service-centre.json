@@ -1,0 +1,45 @@
+{
+ "lede": "FrenchFellas Auto Service Centre at Soon Lee Street, Pioneer is a general car repair, paint and car electrical workshop.",
+ "chips": [
+  "Repairs",
+  "Aircon",
+  "Electrical"
+ ],
+ "services": [
+  "Car repairs",
+  "Paint jobs",
+  "Air-con cooling coil replacement",
+  "OBD2 scans and electrical fault work",
+  "Lighting retrofits",
+  "Car audio and wiring"
+ ],
+ "themes": "Customers on Google Maps mention regular status updates, plain-language explanations, repair, paint and electrical work, and an air-con job done in a day.",
+ "faqs": [
+  [
+   "What does FrenchFellas Auto Service Centre do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Aircon",
+  "Diagnostics",
+  "Bodywork",
+  "Audio",
+  "Modifications"
+ ],
+ "services_note": "Services mentioned by customers on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Citroen",
+  "Toyota"
+ ],
+ "makes_note": "Makes mentioned by customers on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

@@ -36,9 +36,38 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-21"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-21",
  "last_verified_at": "2026-11-21",
- "collector_version": "agent-v5"
+ "collector_version": "agent-v5",
+ "estate": "woodlands-avenue-12",
+ "planning_area": "Woodlands",
+ "region": "north",
+ "lat": 1.440720283637868,
+ "lng": 103.819698065782,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 13,
+  "checked": "2026-11-21",
+  "source": "Google Places",
+  "source_date": "2026-11-21"
+ }
 }

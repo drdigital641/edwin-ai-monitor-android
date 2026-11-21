@@ -1,0 +1,33 @@
+{
+ "lede": "Unicorn Automotive at Kaki Bukit Road 2, Kaki Bukit is a general car repair and troubleshooting workshop.",
+ "chips": [
+  "Repairs",
+  "Diagnostics"
+ ],
+ "services": [
+  "General car repairs",
+  "Fault diagnosis and troubleshooting"
+ ],
+ "themes": "Customers on Google Maps mention an owner who explains what is wrong and takes time to diagnose problems properly.",
+ "faqs": [
+  [
+   "What does Unicorn Automotive do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Diagnostics"
+ ],
+ "services_note": "Services mentioned by customers on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "Makes mentioned by customers on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

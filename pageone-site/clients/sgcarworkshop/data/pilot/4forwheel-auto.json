@@ -1,0 +1,38 @@
+{
+ "lede": "4forwheel Auto at First East Centre, Kaki Bukit is a general car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Aircon",
+  "Repairs"
+ ],
+ "services": [
+  "Car servicing",
+  "General repairs",
+  "Air-con repair",
+  "Car inspection and checks"
+ ],
+ "themes": "Customers on Google Maps mention clear explanations of what the car needs, thorough checks, itemised breakdowns and a quick air-con repair.",
+ "faqs": [
+  [
+   "What does 4forwheel Auto do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Servicing",
+  "Aircon",
+  "Diagnostics"
+ ],
+ "services_note": "Services mentioned by customers on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "Makes mentioned by customers on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

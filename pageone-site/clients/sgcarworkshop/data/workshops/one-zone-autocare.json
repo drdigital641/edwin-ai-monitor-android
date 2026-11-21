@@ -40,5 +40,9 @@
  "tier": "basic",
  "first_seen_at": "2026-11-21",
  "last_verified_at": "2026-11-21",
- "collector_version": "agent-v5"
+ "collector_version": "agent-v5",
+ "estate": "soon-lee-street-pioneer",
+ "planning_area": "Pioneer",
+ "region": "west",
+ "hold": "hold: same mobile as live listing ONE ZONE AUTOMOTIVE"
 }

@@ -1,0 +1,43 @@
+{
+ "lede": "SteadiAudio at Ascent@Gambas, Woodlands is a car audio and electrical installation workshop.",
+ "chips": [
+  "Audio",
+  "Wrap",
+  "Electrical"
+ ],
+ "services": [
+  "Android head unit installation",
+  "Audio hardware installation",
+  "Dash cam installation",
+  "Window tint",
+  "Roof wrap",
+  "Ambience lighting",
+  "Bumper lip fitting",
+  "Car servicing"
+ ],
+ "themes": "Customers on Google Maps mention neat cabling on head unit installs, roof wrap and ambient lighting work, and a friendly, approachable owner.",
+ "faqs": [
+  [
+   "What does SteadiAudio do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Audio",
+  "Wrap",
+  "Servicing",
+  "Modifications"
+ ],
+ "services_note": "Services mentioned by customers on Google Maps. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "Makes mentioned by customers on Google Maps.",
+ "good_to_know": [],
+ "card_rules": "2026-11-05"
+}

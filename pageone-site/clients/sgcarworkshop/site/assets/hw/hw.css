@@ -19,14 +19,28 @@
 .hw-lead{font-size:1.1rem;color:var(--ink2);max-width:60ch}
 .hw-h3{margin-top:34px}
 .hw-fine{font-size:.9rem;color:var(--ink2)}
-/* sub navigation */
-.hw-sub{background:var(--ink);color:#fff;position:relative;z-index:2}
-.hw-sub .hw-w{display:flex;align-items:center;gap:14px}
-.hw-sub-name{font-family:"HW Display",sans-serif;font-size:1.1rem;white-space:nowrap;color:var(--amb)}
-.hw-sub ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.hw-sub ul::-webkit-scrollbar{display:none}
-.hw-sub a{display:block;color:#fff;text-decoration:none;padding:13px 10px;white-space:nowrap;font-weight:700;font-size:.95rem;border-bottom:3px solid transparent}
-.hw-sub a[aria-current]{border-bottom-color:var(--amb)}
+/* own header (Edwin 21 Nov 2026: replaces the directory header; menu wraps, never scrolls sideways) */
+.hw-top{background:var(--ink);color:#fff;font-size:16px;position:relative;z-index:2}
+.hw-top-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:6px}
+.hw-brand{color:#fff;text-decoration:none;display:flex;flex-direction:column;line-height:1.15}
+.hw .hw-brand,.hw .hw-nav a,.hw .hw-top-call{color:#fff}
+.hw-brand span{font-family:"HW Display",sans-serif;font-size:1.45rem;color:var(--amb)}
+.hw-brand small{font-size:.8rem;color:#C9D1D6}
+.hw-top-call{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border:2px solid var(--amb);border-radius:999px;text-decoration:none;font-weight:700;white-space:nowrap}
+.hw-top-call svg{width:18px;height:18px;fill:currentColor}
+.hw-nav ul{display:grid;grid-template-columns:repeat(4,1fr);gap:0 4px;list-style:none;margin:0 auto;padding-bottom:4px}
+.hw-nav a{display:flex;align-items:center;justify-content:center;min-height:44px;text-decoration:none;font-weight:700;font-size:.9rem;border-bottom:3px solid transparent;text-align:center}
+.hw-nav a[aria-current]{border-bottom-color:var(--amb)}
+@media(min-width:760px){.hw-nav ul{display:flex;gap:6px}.hw-nav a{padding:0 12px}}
+/* own footer */
+.hw-ft{background:var(--ink);color:#DDE3E6;font-size:15px;padding:36px 0 96px}
+.hw-ft h2{color:#fff;font-size:1.2rem}
+.hw-ft a{color:#fff}
+.hw-ft ul{list-style:none;margin:0;padding:0;columns:2}
+.hw-ft li{padding:4px 0}
+.hw-ft-cols{display:grid;gap:22px}
+@media(min-width:760px){.hw-ft-cols{grid-template-columns:repeat(3,1fr)}}
+.hw-ft-dir{border-top:1px solid #33404C;margin-top:22px;padding-top:16px;font-size:.88rem;color:#B6C0C6}
 /* buttons */
 .hw-acts{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
 .hw-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:10px;font-weight:700;text-decoration:none;font-size:1rem;touch-action:manipulation;-webkit-tap-highlight-color:rgba(242,183,5,.3);transition:transform .15s ease-out}
@@ -150,3 +164,21 @@
 .hw-bar .hw-call{background:#fff;color:#18222C;border:2px solid #18222C}
 @media (prefers-reduced-motion:reduce){.hw *{animation:none!important;transition:none!important}}
 @media (min-width:860px){.hw-acts{max-width:620px}.hw-hero .hw-btn{flex:1 1 0}}
+/* articles */
+.hw-arts time{display:block;font-size:.85rem;color:var(--ink2);padding:0 16px 14px}
+.hw-art-head{padding-top:32px}
+.hw-art-head h1{font-size:clamp(2rem,6vw,3.2rem)}
+.hw-art-hero{margin:0 auto 8px}
+.hw-art-hero img{width:100%;height:auto;border-radius:10px;display:block}
+.hw-prose h2{margin-top:1.4em;font-size:clamp(1.45rem,4vw,1.9rem)}
+.hw-list{padding-left:1.2em;margin:0 0 1em}
+.hw-list li{margin:.35em 0}
+.hw-related{margin-top:1.6em;padding:14px 16px;background:#fff;border-left:4px solid var(--red);border-radius:6px}
+/* phone hero (Edwin 21 Nov 2026): show the whole signboard; photo on top at its own shape, text below */
+@media (max-width:759px){
+.hw-hero{display:block;min-height:0}
+.hw-hero-img{position:relative;inset:auto;z-index:0}
+.hw-hero-img img{height:auto;aspect-ratio:1080/765;object-fit:contain;display:block}
+.hw-hero-img:after{background:linear-gradient(180deg,rgba(24,34,44,0) 70%,rgba(24,34,44,1) 100%)}
+.hw-hero-txt{padding-top:18px}
+}

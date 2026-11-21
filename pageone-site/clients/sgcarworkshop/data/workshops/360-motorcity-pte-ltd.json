@@ -40,5 +40,9 @@
  "tier": "basic",
  "first_seen_at": "2026-11-21",
  "last_verified_at": "2026-11-21",
- "collector_version": "agent-v5"
+ "collector_version": "agent-v5",
+ "estate": "woodlands-avenue-12",
+ "planning_area": "Woodlands",
+ "region": "north",
+ "hold": "hold: motorcycle workshop (reviews are about bikes), no OneMap coordinates"
 }
