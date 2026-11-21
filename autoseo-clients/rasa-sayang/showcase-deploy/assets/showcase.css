@@ -1,0 +1,21 @@
+/* Rasa Sayang recent-jobs showcase: one job file per row, photos in a native swipe strip at their real shape (never cropped). */
+.sec.show:not(.circ):not(.reels):not(.ask){background:var(--white)}
+.show .sjob{display:grid;gap:1.1rem;padding:2rem 0;border-top:1px solid var(--line-d);min-width:0}
+.show .sub+.sjob{border-top:0;padding-top:1.4rem}
+.show .sj-n{display:block;font:600 .85rem/1 var(--head);color:var(--crimson-ink);letter-spacing:.06em;margin-bottom:.45rem}
+.show .sj-h{font:800 clamp(1.45rem,5.6vw,2rem)/1.02 var(--head),var(--cjk);text-transform:uppercase;margin:0 0 .6rem}
+:lang(zh-Hans) .show .sj-h{line-height:1.25}
+.show .sj-t p{max-width:60ch}
+.show .sj-l{margin:.2rem 0 0}
+.show .sj-l a{display:inline-flex;align-items:center;min-height:44px;font-weight:700}
+.show .strip{display:flex;gap:8px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--line-d-hi) transparent;
+  margin:0 calc(var(--g) * -1);padding:0 var(--g) .6rem;-webkit-overflow-scrolling:touch}
+.show .strip .fr-b{flex:none;width:auto;height:auto;padding:0;border:1px solid var(--line-d);background:#000;cursor:zoom-in;scroll-snap-align:start;touch-action:manipulation}
+.show .strip img{height:min(54vh,330px);width:auto;max-width:none}
+.show .act{margin-top:1.6rem}
+@media (min-width:900px){
+  .show .sjob{grid-template-columns:minmax(0,.8fr) minmax(0,1.5fr);gap:2.4rem;align-items:start;padding:2.6rem 0}
+  .show .strip{margin:0;padding:0 0 .6rem}
+  .show .strip img{height:380px}
+}
+@media (prefers-reduced-motion:reduce){.show .strip{scroll-behavior:auto}}
