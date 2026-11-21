@@ -566,6 +566,7 @@ for _f in files:
     for _u in re.findall(r'<img[^>]*?\bsrc="([^"]+)"|property="og:image" content="([^"]+)"|"image":\s*"([^"]+)"', _t):
         _u = next(x for x in _u if x)
         _h = urlparse(_u).netloc
+        if _u.startswith('https://pageonesingapore.com/preview/sgcarworkshop/assets/img/hw/articles/') and os.path.isfile(os.path.join(root, _u.split('/preview/sgcarworkshop/')[1])): continue   # same file, Bridge IMAGE GATE host (Hon Win articles, 21 Nov 2026)
         if _h and _h not in ('sgcarworkshop.sg', 'www.sgcarworkshop.sg'):
             if _h in SET_IMG['hosts']: HOTLINK.add(_u)
             else: print('IMAGE not on sgcarworkshop.sg', _rel, _u[:90]); bad += 1

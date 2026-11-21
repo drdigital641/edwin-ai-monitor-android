@@ -318,7 +318,7 @@ def run(B):
 {paid_note()}
 </div>'''
         page(path, a['title'], a['desc'], body, [ld, faq_ld(a['faqs']), dict(crld, **{'@context': 'https://schema.org'})],
-             og=a['img'], bar=bar(a['wa']), h1=a['h1'], head_extra=head_extra(depth), tail=tail(depth), chrome=(hw_head(path), hw_foot(path)))
+             og='https://pageonesingapore.com/preview/sgcarworkshop/assets/img/' + a['img'], bar=bar(a['wa']), h1=a['h1'], head_extra=head_extra(depth), tail=tail(depth), chrome=(hw_head(path), hw_foot(path)))
         LLMS.append('- [%s](%s): %s' % (a['h1'], url, a['desc']))
 
 
