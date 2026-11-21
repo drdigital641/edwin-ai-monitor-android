@@ -22,7 +22,7 @@ for p in pages:
     for a in re.findall(r'<a [^>]*href="(?:https://wa\.me|tel:|mailto:)[^>]*>', h):
         if 'data-cta=' not in a: bad.append(f'{rel}: untracked CTA {a[:80]}')
     for n in re.findall(r'wa\.me/(\d+)', h):
-        if n != '60168556611': bad.append(f'{rel}: wrong WA number {n}')
+        if n != F['whatsapp']['url'].rsplit('/',1)[1]: bad.append(f'{rel}: wrong WA number {n}')
     for k in ('rel="canonical"', 'hreflang="x-default"', 'og:image', 'application/ld+json'):
         if k not in h: bad.append(f'{rel}: missing {k}')
     if h.count('hreflang="') < 4: bad.append(f'{rel}: hreflang')
@@ -32,6 +32,12 @@ for p in pages:
     if len(d) > 175: bad.append(f'{rel}: meta {len(d)} chars')
     for src in re.findall(r'(?:src|srcset|href)="(/preview/sp-precision-parts/(?:media|assets)/[^"?]+)', h):
         if not os.path.exists(os.path.join(DIST, src.split('/preview/sp-precision-parts/')[1])): bad.append(f'{rel}: missing file {src}')
+old = ['016-855 6611', '+60168556611', '60168556611', '16-855 6611']
+for p in pages + [os.path.join(DIST, 'llms.txt'), os.path.join(DIST, 'sitemap.xml')]:
+    h = open(p, encoding='utf8').read()
+    for o in old:
+        if o in h: bad.append(f'{os.path.relpath(p, DIST)}: OLD PHONE {o}')
+    if p.endswith('.html') and F['phone']['e164'] not in h: bad.append(f'{os.path.relpath(p, DIST)}: new phone missing')
 if len(pages) != 36: bad.append(f'page count {len(pages)}')
 sm = open(os.path.join(DIST, 'sitemap.xml')).read()
 if sm.count('<url>') != 36: bad.append('sitemap url count %d' % sm.count('<url>'))

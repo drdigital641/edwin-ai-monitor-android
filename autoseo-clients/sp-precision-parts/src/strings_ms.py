@@ -7,7 +7,7 @@ UI = {
     'home': 'Utama', 'products': 'Produk', 'finder': 'Cari pad untuk kereta', 'locator': 'Cari bengkel',
     'join': 'Untuk bengkel', 'faq': 'Soalan lazim', 'contact': 'Hubungi kami', 'articles': 'Artikel', 'privacy': 'Privasi',
     'breadcrumb': 'Laluan halaman',
-    'wa_btn': 'Semak kereta saya di WhatsApp', 'wa_short': 'WhatsApp', 'call_btn': 'Telefon 016-855 6611', 'call_short': 'Telefon',
+    'wa_btn': 'Semak kereta saya di WhatsApp', 'wa_short': 'WhatsApp', 'call_btn': 'Telefon {PHONE}', 'call_short': 'Telefon',
     'join_btn': 'Mohon jadi bengkel sah', 'locator_btn': 'Cari bengkel',
     'finder_btn': 'Buka pencari pad', 'see_more': 'Lihat butiran', 'all_products': 'Semua produk',
     'tagline': 'Pengedar sah alat ganti brek Monaer di Skudai, Johor.',
@@ -240,7 +240,7 @@ FAQ_PAGE = {
 
 CONTACT = {
     'title': 'Hubungi S & P Precision Parts | Pengedar Monaer, Skudai Johor',
-    'meta': 'Hubungi S & P Precision Parts Sdn Bhd, pengedar sah alat ganti brek Monaer: 016-855 6611, No. 15 Jalan Selesa Indah 9, 81300 Skudai, Johor.',
+    'meta': 'Hubungi S & P Precision Parts Sdn Bhd, pengedar sah alat ganti brek Monaer: {PHONE}, No. 15 Jalan Selesa Indah 9, 81300 Skudai, Johor.',
     'h1': 'Hubungi S & P Precision Parts',
     'lead': 'WhatsApp ialah cara paling cepat untuk hubungi kami.',
     'about_h': 'Tentang kami',

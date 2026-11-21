@@ -7,7 +7,7 @@ UI = {
     'home': 'Home', 'products': 'Products', 'finder': 'Part finder', 'locator': 'Find a workshop',
     'join': 'For workshops', 'faq': 'FAQ', 'contact': 'Contact', 'articles': 'Articles', 'privacy': 'Privacy',
     'breadcrumb': 'Breadcrumb',
-    'wa_btn': 'Check my car on WhatsApp', 'wa_short': 'WhatsApp', 'call_btn': 'Call 016-855 6611', 'call_short': 'Call',
+    'wa_btn': 'Check my car on WhatsApp', 'wa_short': 'WhatsApp', 'call_btn': 'Call {PHONE}', 'call_short': 'Call',
     'join_btn': 'Apply to become authorised', 'locator_btn': 'Find a workshop',
     'finder_btn': 'Open the part finder', 'see_more': 'See details', 'all_products': 'All products',
     'tagline': 'Authorised Monaer brake parts distributor in Skudai, Johor.',
@@ -240,7 +240,7 @@ FAQ_PAGE = {
 
 CONTACT = {
     'title': 'Contact S & P Precision Parts | Monaer Distributor, Skudai Johor',
-    'meta': 'Contact S & P Precision Parts Sdn Bhd, authorised Monaer brake parts distributor: 016-855 6611, No. 15 Jalan Selesa Indah 9, 81300 Skudai, Johor.',
+    'meta': 'Contact S & P Precision Parts Sdn Bhd, authorised Monaer brake parts distributor: {PHONE}, No. 15 Jalan Selesa Indah 9, 81300 Skudai, Johor.',
     'h1': 'Contact S & P Precision Parts',
     'lead': 'WhatsApp is the fastest way to reach us.',
     'about_h': 'About us',

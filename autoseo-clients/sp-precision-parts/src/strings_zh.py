@@ -7,7 +7,7 @@ UI = {
     'home': '首页', 'products': '产品', 'finder': '查刹车片', 'locator': '找维修厂',
     'join': '维修厂合作', 'faq': '常见问题', 'contact': '联系我们', 'articles': '文章', 'privacy': '隐私',
     'breadcrumb': '页面路径',
-    'wa_btn': '用 WhatsApp 查我的车', 'wa_short': 'WhatsApp', 'call_btn': '致电 016-855 6611', 'call_short': '致电',
+    'wa_btn': '用 WhatsApp 查我的车', 'wa_short': 'WhatsApp', 'call_btn': '致电 {PHONE}', 'call_short': '致电',
     'join_btn': '申请成为授权维修厂', 'locator_btn': '找维修厂',
     'finder_btn': '打开刹车片查询', 'see_more': '查看详情', 'all_products': '全部产品',
     'tagline': '新山士姑来授权 Monaer 刹车配件代理。',
@@ -240,7 +240,7 @@ FAQ_PAGE = {
 
 CONTACT = {
     'title': '联系 S & P Precision Parts | Monaer 代理 士姑来',
-    'meta': '联系 Monaer 刹车配件授权代理 S & P Precision Parts Sdn Bhd：016-855 6611，No. 15 Jalan Selesa Indah 9, 81300 Skudai, Johor。',
+    'meta': '联系 Monaer 刹车配件授权代理 S & P Precision Parts Sdn Bhd：{PHONE}，No. 15 Jalan Selesa Indah 9, 81300 Skudai, Johor。',
     'h1': '联系 S & P Precision Parts',
     'lead': '用 WhatsApp 联系我们最快。',
     'about_h': '关于我们',

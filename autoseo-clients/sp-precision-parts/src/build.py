@@ -24,6 +24,24 @@ S, L = strings_en, I18N.LANGS[0]
 CFG = GL.load(os.path.join(HERE, 'site.json'))
 F = json.load(open(os.path.join(HERE, 'facts.json'), encoding='utf8'))
 BASE = CFG.preview_path if not CFG.live else '/'
+
+
+def _fill(v):
+    # Phone lives ONLY in facts.json; strings carry {PHONE} / {PHONE_INTL} tokens.
+    if isinstance(v, str):
+        return v.replace('{PHONE}', F['phone']['display']).replace('{PHONE_INTL}', F['phone']['display_intl'])
+    if isinstance(v, dict):
+        return {k: _fill(x) for k, x in v.items()}
+    if isinstance(v, list):
+        return [_fill(x) for x in v]
+    if isinstance(v, tuple):
+        return tuple(_fill(x) for x in v)
+    return v
+
+
+for _m in STRINGS.values():
+    for _k in [k for k in vars(_m) if k.isupper()]:
+        setattr(_m, _k, _fill(getattr(_m, _k)))
 OUT = os.path.join(HERE, '..', 'dist')
 E = html.escape
 LK = F['links']
