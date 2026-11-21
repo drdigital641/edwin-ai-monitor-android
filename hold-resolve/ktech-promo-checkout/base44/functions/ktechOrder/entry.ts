@@ -74,7 +74,7 @@ async function ipHash(req: Request): Promise<string> {
 }
 
 function newRef(now: Date) {
-  const ymd = now.toISOString().slice(2, 10).replace(/-/g, '');
+  const ymd = new Date(now.getTime() + 8 * 3600_000).toISOString().slice(2, 10).replace(/-/g, '');  // Malaysia date
   const abc = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   const r = crypto.getRandomValues(new Uint8Array(5));
   return `KT-MAX-${ymd}-` + Array.from(r, (x) => abc[x % abc.length]).join('');
