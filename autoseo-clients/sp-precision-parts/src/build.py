@@ -211,7 +211,8 @@ def head(path, title, meta, ld):
     zh = L['code'] == 'zh'
     font = f'<link rel="preload" href="{u("assets/fonts/saira-700.woff2")}" as="font" type="font/woff2" crossorigin>'
     font += f'<link rel="preload" href="{u("assets/fonts/notosanssc-700.woff2" if zh else "assets/fonts/publicsans.woff2")}" as="font" type="font/woff2" crossorigin>'
-    hero = f'<link rel="preload" as="image" type="image/webp" href="{u("media/fb/sp-monaer-sp-precision-logo.webp")}" fetchpriority="high">' if path == '' else ''
+    hero = (f'<link rel="preload" as="image" type="image/webp" href="{u("media/monaer-kit.webp")}" fetchpriority="high">'
+            f'<link rel="preload" as="image" type="image/webp" href="{u("media/fb/sp-monaer-sp-precision-logo.webp")}">') if path == '' else ''
     ldj = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ld)
     return f'''<!doctype html>
 <html lang="{L['hreflang']}">
@@ -454,7 +455,9 @@ def join_teaser(place):
 # ---------- pages ----------
 def home():
     H = S.HOME
-    hero = f'''<section class="hero"><div class="wrap hero-g"><div class="hero-in"><h1>{E(H['h1'])}</h1><p class="hero-l">{E(S.FB['hero_line'])}</p>
+    bg = (f'<div class="hero-bg" aria-hidden="true"><picture><source type="image/webp" srcset="{u("media/monaer-kit.webp")}">'
+          f'<img src="{u("media/monaer-kit.jpg")}" width="580" height="440" alt="" fetchpriority="high" decoding="async"></picture></div>')
+    hero = f'''<section class="hero">{bg}<div class="wrap hero-g"><div class="hero-in"><h1>{E(H['h1'])}</h1><p class="hero-l">{E(S.FB['hero_line'])}</p>
 <div class="btns">{wa('home_hero')}<a class="b-ghost" href="{pu(P_LOC)}" data-cta="locator_home_hero" data-ref="locator_home_hero">{icon('pin')}<span>{E(S.UI['locator_btn'])}</span></a></div></div>
 <figure class="hero-logo">{fbpic('sp-monaer-sp-precision-logo', eager=True, alt=S.CAP['sp-monaer-sp-precision-logo'])}</figure></div></section>'''
     stock = f'''<section class="band concrete"><div class="wrap"><h2>{E(S.FB['stock_h'])}</h2><p class="sub">{E(S.FB['stock_p'])}</p>
