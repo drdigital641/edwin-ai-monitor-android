@@ -338,10 +338,10 @@ def workshop_cards():
     return me + rest
 
 
-def locator_block(place):
+def locator_block(place, tag='p'):
     R = S.LOCATOR
     chips = f'<button type="button" class="st on" data-state="">{E(R["all"])}</button>' + ''.join(f'<button type="button" class="st" data-state="{E(s)}">{E(s)}</button>' for s in F['states'])
-    return f'''<div class="loc"><p class="loc-h">{E(R["state_h"])}</p><div class="states" role="group" aria-label="{E(R['state_h'])}">{chips}</div>
+    return f'''<div class="loc"><{tag} class="loc-h">{E(R["state_h"])}</{tag}><div class="states" role="group" aria-label="{E(R['state_h'])}">{chips}</div>
 <ul class="wss" id="wss">{workshop_cards()}</ul>
 <div class="loc-empty" id="ws-none"><h3>{E(R['empty_h'])}</h3><p>{E(R['empty_p'])}</p>
 <div class="btns">{wa(place + '_ask', S.PREFILL['locator'], R['ask_btn'])}</div></div></div>'''
@@ -429,7 +429,7 @@ def locator_page(path):
     R = S.LOCATOR
     trail = [('', S.UI['home']), (path, S.UI['locator'])]
     body = (page_head(trail, R['h1'], R['lead'], wa('locator', S.PREFILL['locator'], R['ask_btn'])) +
-            f'<section class="band paper"><div class="wrap">{locator_block("locator")}</div></section>' + join_teaser('locator') + faq_band(R['faqs']))
+            f'<section class="band paper"><div class="wrap">{locator_block("locator", "h2")}</div></section>' + join_teaser('locator') + faq_band(R['faqs']))
     return body, [org_ld(), crumb_ld(trail), faq_ld(R['faqs'])]
 
 
