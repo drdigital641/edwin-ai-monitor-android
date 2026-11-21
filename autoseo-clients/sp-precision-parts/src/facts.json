@@ -1,0 +1,87 @@
+{
+ "_note": "Publishable facts only. Sources: client name card + banner (Edwin, 21 Nov 2026); product claims and part examples from Monaer Brake System Malaysia's public Facebook page (read 21 Nov 2026, saved in research/). Edwin 21 Nov: 'authorised distributor', no territory claim.",
+ "name": "S & P Precision Parts",
+ "legal_name": "S & P Precision Parts Sdn Bhd",
+ "company_no": "202501042777 (1644185-P)",
+ "brand": "Monaer",
+ "brand_zh": "摩纳尔",
+ "tagline": "High Quality, Reliable, Precision",
+ "phone": {
+  "display": "016-855 6611",
+  "display_intl": "+60 16-855 6611",
+  "e164": "+60168556611",
+  "tel": "tel:+60168556611"
+ },
+ "whatsapp": {
+  "url": "https://wa.me/60168556611"
+ },
+ "email": "Lpcarauto89@outlook.com",
+ "address": {
+  "lines": [
+   "No. 15, Jalan Selesa Indah 9",
+   "Taman Selesa Indah",
+   "81300 Skudai, Johor"
+  ],
+  "street": "No. 15, Jalan Selesa Indah 9",
+  "area": "Taman Selesa Indah",
+  "city": "Skudai",
+  "postcode": "81300",
+  "region": "Johor",
+  "country": "MY",
+  "one_line": "No. 15, Jalan Selesa Indah 9, Taman Selesa Indah, 81300 Skudai, Johor"
+ },
+ "links": {
+  "facebook": "https://www.facebook.com/share/1JMmkjhr97/",
+  "maps": "https://www.google.com/maps/search/?api=1&query=No.+15+Jalan+Selesa+Indah+9+Taman+Selesa+Indah+81300+Skudai+Johor",
+  "waze": "https://waze.com/ul?q=Jalan%20Selesa%20Indah%209%2C%20Skudai%2C%20Johor&navigate=yes",
+  "maps_embed": "https://www.google.com/maps?q=Jalan+Selesa+Indah+9,+Taman+Selesa+Indah,+81300+Skudai,+Johor&output=embed"
+ },
+ "catalogue_samples": [
+  {
+   "m": "M0307",
+   "type": "pad",
+   "fits": [
+    "Audi RS4 Avant (B9/8W5/8WD) 17",
+    "Audi A6L (C8/488) 18",
+    "Audi A8L (D5/4N) 17",
+    "VW Touareg (CR7) 18"
+   ],
+   "pack": 4,
+   "src": "Monaer Brake System Malaysia Facebook post, 20 Nov 2026"
+  }
+ ],
+ "workshops": [],
+ "states": [
+  "Johor",
+  "Kuala Lumpur",
+  "Selangor",
+  "Putrajaya",
+  "Negeri Sembilan",
+  "Melaka",
+  "Pahang",
+  "Perak",
+  "Penang",
+  "Kedah",
+  "Perlis",
+  "Kelantan",
+  "Terengganu",
+  "Sabah",
+  "Sarawak",
+  "Labuan"
+ ],
+ "makes": [
+  "Perodua",
+  "Proton",
+  "Toyota",
+  "Honda",
+  "Nissan",
+  "Mazda",
+  "Mitsubishi",
+  "Hyundai",
+  "Kia",
+  "Mercedes-Benz",
+  "BMW",
+  "Volkswagen",
+  "Other"
+ ]
+}
