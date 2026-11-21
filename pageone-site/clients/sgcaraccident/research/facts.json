@@ -2255,19 +2255,201 @@
   },
   {
    "slug": "liberty",
-   "name": "Liberty Insurance Pte Ltd",
+   "name": "Liberty Pte. Limited (UEN 201538069C)",
    "centres": [
     {
      "name": "CarTimes Autolution Pte Ltd",
      "address": "32 Old Toh Tuck Road, #02-10/11 I.Biz Centre, Singapore 597658",
      "postal": "597658",
      "hours": "",
-     "notes": "For accident reporting only (as stated)"
+     "notes": "For accident reporting only"
+    },
+    {
+     "name": "CarTimes Autolution Pte Ltd",
+     "address": "160 Sin Ming Drive, #02-04 Sin Ming AutoCity, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "Dickson Auto Care Centre Pte Ltd",
+     "address": "29 Ubi Road 4, Singapore 408619",
+     "postal": "408619",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "Ding Auto Pte Ltd",
+     "address": "12 Tampines North Drive 4, #07-25/26 Stellar @ Tampines, Singapore 529435",
+     "postal": "529435",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "Ding Auto Pte Ltd",
+     "address": "176 Sin Ming Drive, #04-06, Singapore 575721 (Sin Ming Autocare)",
+     "postal": "575721",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "Ding Auto Pte Ltd",
+     "address": "60 Jalan Lam Huat, #06-46/47, Singapore 737869 (Carros Centre)",
+     "postal": "737869",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "Mitsubishi HC Capital Asia Pacific Pte Ltd",
+     "address": "No. 8 Fourth Lok Yang Road, Singapore 629705",
+     "postal": "629705",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "Kan Fook Sing Motor Workshop",
+     "address": "Blk 8 JTC Defu Industrial City, #04-29 Defu South Street 1, Singapore 533758",
+     "postal": "533758",
+     "hours": "",
+     "notes": "Preferred workshop (cars, light commercial and commercial)"
+    },
+    {
+     "name": "Lai Huat (Meng Kee) Motor Pte Ltd",
+     "address": "160 Sin Ming Road, #04-01 Sin Ming AutoCity, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "Sng Ah Tee Motor & Panel Service Pte Ltd",
+     "address": "7 Soon Lee Street, #05-18 iSPACE, Singapore 627608",
+     "postal": "627608",
+     "hours": "",
+     "notes": "Preferred workshop (cars, light commercial and commercial)"
+    },
+    {
+     "name": "Success United Pte Ltd",
+     "address": "2 Kaki Bukit Avenue 2, #01-33 Kaki Bukit AutoHub, Singapore 417921",
+     "postal": "417921",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "BYD by JC Pte Ltd",
+     "address": "30 Teban Gardens Crescent, Singapore 608927",
+     "postal": "608927",
+     "hours": "",
+     "notes": "Preferred workshop, BYD only"
+    },
+    {
+     "name": "Eurokars Services Pte. Ltd.",
+     "address": "27A Tanjong Penjuru, Singapore 609042",
+     "postal": "609042",
+     "hours": "",
+     "notes": "Preferred workshop (private and high-end cars)"
+    },
+    {
+     "name": "MBM Wheelpower Pte Ltd",
+     "address": "160 Sin Ming, #06-02 Sin Ming AutoCity, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": "Preferred workshop (private and high-end cars)"
+    },
+    {
+     "name": "Motorway Car Care Centre Pte Ltd",
+     "address": "1094 Lower Delta Road Motorway Building, Singapore 169205",
+     "postal": "169205",
+     "hours": "",
+     "notes": "Preferred workshop (private and high-end cars)"
+    },
+    {
+     "name": "Motorway Car Care Centre Pte Ltd",
+     "address": "4 Jalan Besut, Singapore 619557",
+     "postal": "619557",
+     "hours": "",
+     "notes": "Preferred workshop (private and high-end cars)"
+    },
+    {
+     "name": "Optima Werkz Pte Ltd",
+     "address": "10 Ang Mo Kio Industrial Park 2A, #01-05, Singapore 568047",
+     "postal": "568047",
+     "hours": "",
+     "notes": "Preferred workshop (private and high-end cars)"
+    },
+    {
+     "name": "Premium AutoCare Centre",
+     "address": "24 Benoi Sector, Singapore 629857",
+     "postal": "629857",
+     "hours": "",
+     "notes": "Preferred workshop (private and high-end cars)"
+    },
+    {
+     "name": "SR EV Automotive Pte. Ltd.",
+     "address": "23 Synergy @ KB, #01-12 Kaki Bukit Road 4, Singapore 417801",
+     "postal": "417801",
+     "hours": "",
+     "notes": "Preferred workshop, Tesla Approved Collision Centre"
+    },
+    {
+     "name": "ASM Automotive Services Pte Ltd",
+     "address": "16 Tuas Avenue 6, Singapore 639303",
+     "postal": "639303",
+     "hours": "",
+     "notes": "Preferred workshop (commercial vehicles)"
+    },
+    {
+     "name": "Automotive Glass Works Pte Ltd",
+     "address": "Blk 5032 Ang Mo Kio Industrial Park 2, #01-281, Singapore 569535",
+     "postal": "569535",
+     "hours": "",
+     "notes": "Windscreen claims"
+    },
+    {
+     "name": "Automotive Glass Works Pte Ltd",
+     "address": "1 Kaki Bukit Ave 6, #01-64 Blk C AutoBay, Singapore 417883",
+     "postal": "417883",
+     "hours": "",
+     "notes": "Windscreen claims"
+    },
+    {
+     "name": "Automotive Glass Works Pte Ltd",
+     "address": "Blk 1005 Bukit Merah Lane 2, #01-14, Singapore 159671",
+     "postal": "159671",
+     "hours": "",
+     "notes": "Windscreen claims"
+    },
+    {
+     "name": "Glass-Fix Pte Ltd",
+     "address": "52 Ubi Ave 3 #04-42 Frontier @ Ubi, Singapore 408867",
+     "postal": "408867",
+     "hours": "",
+     "notes": "Windscreen claims"
+    },
+    {
+     "name": "Glass-Fix Pte Ltd",
+     "address": "No 48 Toh Guan Road East, #03-128 Enterprise Hub, Singapore 608586",
+     "postal": "608586",
+     "hours": "",
+     "notes": "Windscreen claims"
+    },
+    {
+     "name": "Glass-Fix Pte Ltd",
+     "address": "39 Woodlands Close, #04-66B MEGA@Woodlands, Singapore 737856",
+     "postal": "737856",
+     "hours": "",
+     "notes": "Windscreen claims"
+    },
+    {
+     "name": "Glazity Auto Pte Ltd",
+     "address": "32 Old Toh Tuck Road, #02-04 I.Biz Centre, Singapore 597653",
+     "postal": "597653",
+     "hours": "",
+     "notes": "Windscreen claims"
     }
    ],
    "source_url": "https://www.libertyinternational.com/sg/claims/claim-vehicle-individual",
-   "read": "2026-11-19",
-   "notes": "Page https://www.libertyinternational.com/sg/claims/claim-vehicle-individual; also lists preferred repair workshops (not reporting centres, omitted)."
+   "read": "2026-11-21",
+   "notes": "Page heading 'Liberty's Preferred Workshops' (32 entries). Step 1: Call 1800-LIBERTY (5423 789). Only CarTimes Old Toh Tuck is marked 'for Accident Reporting only'. Omitted: Sanfu (motorcycle only), SC Auto and The One Holdings (buses only). Workshop phone numbers not shown on site."
   },
   {
    "slug": "sompo",

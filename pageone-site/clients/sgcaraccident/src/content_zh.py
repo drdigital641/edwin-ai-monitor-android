@@ -40,6 +40,7 @@ T = {
     "prep_statement": "准备您的事故陈述",
     "updated": "最后查证：{d}", "in_short": "简单来说", "next_step": "您的下一步",
     "hotline": "24 小时热线（来自保险公司网站）",
+    "hotline_plain": "理赔热线（来自保险公司网站）",
     "js": {
         "loading": "加载中……", "places": "{name} 名单上共有 {n} 个地点", "full": "查看 {name} 的完整名单",
         "src": "来源：{name} 自己的名单，查证日期 {d}。", "dir": "路线", "hours": "营业时间",

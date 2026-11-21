@@ -180,7 +180,7 @@ NAMES = {  # display name, what the source list is (EN, ZH)
     "directasia": ("DirectAsia", "authorised workshops", "授权车厂名单"),
     "budgetdirect": ("Budget Direct", "authorised workshops and accident reporting centres", "授权车厂和事故报案中心名单"),
     "msig": ("MSIG", "motor claims workshops", "汽车索赔车厂名单"),
-    "liberty": ("Liberty Insurance", "accident reporting point", "事故报案点"),
+    "liberty": ("Liberty Insurance", "accident reporting point and preferred workshops", "事故报案点和首选车厂名单"),
     "sompo": ("Sompo", "ExcelDrive workshops and accident reporting centres", "ExcelDrive车厂和事故报案中心名单"),
     "allianz": ("Allianz", "Motor Protect workshop list", "Motor Protect车厂名单"),
     "singlife": ("Singlife", "authorised car repairers", "授权修车厂名单"),
@@ -191,6 +191,7 @@ HOTLINES = {
     "aig": ("6338 6200", "https://aig.sg/car-claim"),
     "tokiomarine": ("1800 225 8647", "https://www.tokiomarine.com/sg/en/non-life/claim/step-by-step-claim-guide/motor-claims-process.html"),
     "singlife": ("+65 6333 2222", "https://singlife.com/en/claims/lifestyle/car"),
+    "liberty": ("1800-LIBERTY (5423 789)", "https://www.libertyinternational.com/sg/claims/claim-vehicle-individual", "plain"),  # Liberty's page does not say 24-hour
 }
 def tel(n):
     return "tel:" + re.sub(r"[^\d+]", "", n if n.startswith(("+", "1800")) else "+65" + n)
@@ -457,8 +458,9 @@ def insurer_page(lang, ins):
     faq_h, faq_sd = faq_block(lang, faq)
     hl = ""
     if ins["slug"] in HOTLINES:
-        num, su = HOTLINES[ins["slug"]]
-        hl = '<div class="hl"><p class="lbl">%s</p><a class="btn btn-ghost block" href="%s">%s</a><p class="fine"><a href="%s" rel="noopener">%s</a></p></div>' % (E(t["hotline"]), tel(num), E(n + " " + num), E(su), E(t["source"]))
+        num, su = HOTLINES[ins["slug"]][:2]
+        lbl = t["hotline_plain"] if HOTLINES[ins["slug"]][2:] else t["hotline"]
+        hl = '<div class="hl"><p class="lbl">%s</p><a class="btn btn-ghost block" href="%s">%s</a><p class="fine"><a href="%s" rel="noopener">%s</a></p></div>' % (E(lbl), tel(num), E(n + " " + num), E(su), E(t["source"]))
     src = hl + src
     body = '<h1 class="page-h1">%s</h1><p class="lead">%s</p>%s<div class="remind">%s</div>%s<div class="ins-list">%s</div>%s<div class="endcta">%s<a class="btn btn-ghost block" href="%s">%s</a></div>%s' % (
         E(P["h1"].replace("{name}", n)), E(P["lead"]), src, E(FACT_TEXT[lang]["gia_24h"]), jump, "".join(out), src,

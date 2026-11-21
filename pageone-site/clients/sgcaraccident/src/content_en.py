@@ -43,6 +43,7 @@ T = {
     "prep_statement": "Prepare your accident statement",
     "updated": "Last checked {d}", "in_short": "In short", "next_step": "Your next step",
     "hotline": "24-hour hotline (from the insurer's website)",
+    "hotline_plain": "Claims hotline (from the insurer's website)",
     "js": {
         "loading": "Loading…", "places": "{n} places on {name}'s list", "full": "See the full list for {name}",
         "src": "Source: {name}'s own list, checked on {d}.", "dir": "Directions", "hours": "Hours",
