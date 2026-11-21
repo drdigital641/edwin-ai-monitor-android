@@ -5,7 +5,9 @@
 .pm-grid{display:grid;gap:10px;grid-template-areas:"h" "p" "i"}
 .pm-h{grid-area:h}.pm-poster{grid-area:p}.pm-i{grid-area:i}
 .pm-hero h1,.pm-ph h1{font-size:clamp(24px,6.4vw,54px);line-height:1.04;margin:2px 0 4px;text-transform:uppercase}
-.pm-hero .line,.pm-ph .line{font-size:15px;color:var(--ink2);margin:0;max-width:40ch}
+.pm-band h2{font-size:clamp(24px,6.4vw,44px);line-height:1.04;margin:2px 0 4px;text-transform:uppercase}
+.pm-band{padding:30px 0 34px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pm-hero .line,.pm-ph .line,.pm-band .line{font-size:15px;color:var(--ink2);margin:0;max-width:40ch}
 .pm-poster{margin:0;background:var(--ink);padding:6px;border:1px solid #000;box-shadow:0 24px 40px -28px rgba(0,0,0,.6);position:relative}
 .pm-poster img{width:100%;height:auto;aspect-ratio:1078/992;object-fit:contain;object-position:center;background:var(--ink);pointer-events:none;-webkit-user-drag:none}
 .pm-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:0}

@@ -104,10 +104,12 @@ def ended_box(c):
 
 
 def home_hero(L):
+    # 22 Nov 2026 (Edwin): the promo is no longer the hero. It is the first section right AFTER the original scanner
+    # hero, so it carries an H2 (the page keeps its one H1 in the hero) and the poster loads lazily.
     c = L['code']
-    return (f'<section class="hero pm-hero" id="ms906max-promo"><div class="wrap"><div class="pm-grid" data-promo-live>'
-            f'<div class="pm-h"><h1>{e(T(c, "home_h1"))}</h1><p class="line">{e(T(c, "home_line"))}</p></div>'
-            f'{poster(c, True)}{info(L, False)}</div>{ended_box(c)}</div></section>')
+    return (SSI_IF + f'<section class="sec pm-band" id="ms906max-promo"><div class="wrap"><div class="pm-grid" data-promo-live>'
+            f'<div class="pm-h"><h2>{e(T(c, "home_h1"))}</h2><p class="line">{e(T(c, "home_line"))}</p></div>'
+            f'{poster(c, False)}{info(L, False)}</div>{ended_box(c)}</div></section>' + SSI_END)
 
 
 def head(L, title, desc, ld, og_alt, extra=''):
