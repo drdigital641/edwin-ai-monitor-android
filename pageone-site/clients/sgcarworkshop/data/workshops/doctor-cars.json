@@ -36,7 +36,7 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-21"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-21",
  "last_verified_at": "2026-11-21",
@@ -44,7 +44,31 @@
  "estate": "ubi-road-1",
  "planning_area": "Geylang",
  "region": "central",
- "hold": "hold: no OneMap coordinates for 537037 (OneMap 401)",
- "held_on": "2026-11-22",
- "hold_code": "live_check_failed"
+ "lat": 1.3397653,
+ "lng": 103.890114,
+ "geo_source": "google_maps_manual",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.9,
+  "count": 124,
+  "checked": "2026-11-21",
+  "source": "Google Places",
+  "source_date": "2026-11-21"
+ },
+ "locality": "Kim Chuan Terrace"
 }

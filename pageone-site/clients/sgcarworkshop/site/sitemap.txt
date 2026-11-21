@@ -23,6 +23,7 @@ https://sgcarworkshop.sg/areas/macpherson-road/
 https://sgcarworkshop.sg/areas/north-east/
 https://sgcarworkshop.sg/areas/north/
 https://sgcarworkshop.sg/areas/paya-ubi-industrial-park/
+https://sgcarworkshop.sg/areas/sin-ming-bishan/
 https://sgcarworkshop.sg/areas/sin-ming-industrial-estate/
 https://sgcarworkshop.sg/areas/sin-ming-industrial-estate/gearbox-repair/
 https://sgcarworkshop.sg/areas/sin-ming-industrial-estate/spray-painting-bodywork/
@@ -188,6 +189,7 @@ https://sgcarworkshop.sg/workshops/daiha-auto-service/
 https://sgcarworkshop.sg/workshops/de-sheng-trading/
 https://sgcarworkshop.sg/workshops/dhm-otomotive-werkz/
 https://sgcarworkshop.sg/workshops/ding-auto/
+https://sgcarworkshop.sg/workshops/doctor-cars/
 https://sgcarworkshop.sg/workshops/doctor-gearbox/
 https://sgcarworkshop.sg/workshops/dreamworks-garage/
 https://sgcarworkshop.sg/workshops/e-care-auto-services/
@@ -357,6 +359,7 @@ https://sgcarworkshop.sg/workshops/motoricarz-garage/
 https://sgcarworkshop.sg/workshops/motoserv-car-service-centre-bukit-batok/
 https://sgcarworkshop.sg/workshops/motoserv-car-service-centre-sembawang/
 https://sgcarworkshop.sg/workshops/motoserv-car-service-centre-serangoon-garden/
+https://sgcarworkshop.sg/workshops/motoserv-car-service-centre-upper-thomson-mobil-1-carcare/
 https://sgcarworkshop.sg/workshops/mr-gearbox-by-motoserv/
 https://sgcarworkshop.sg/workshops/mt-autoservice/
 https://sgcarworkshop.sg/workshops/mta-auto-solutions/

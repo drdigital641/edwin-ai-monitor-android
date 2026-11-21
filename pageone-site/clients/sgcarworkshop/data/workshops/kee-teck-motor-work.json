@@ -36,7 +36,7 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-07"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-07",
  "last_verified_at": "2026-11-07",
@@ -44,6 +44,30 @@
  "estate": "toh-guan-enterprise-hub",
  "planning_area": "Jurong East",
  "region": "west",
- "hold": "hold: no written Google review to source a card",
- "hold_code": "not_enough_facts"
+ "lat": 1.3376451991357,
+ "lng": 103.7546831574749,
+ "geo_source": "onemap_same_postal",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 1,
+  "checked": "2026-11-07",
+  "source": "Google Places",
+  "source_date": "2026-11-07"
+ }
 }

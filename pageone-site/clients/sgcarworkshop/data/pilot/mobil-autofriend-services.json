@@ -1,0 +1,33 @@
+{
+ "lede": "Mobil Autofriend Services at 593 Sembawang Road is a car servicing and repair workshop.",
+ "chips": [
+  "Oil change",
+  "Repairs"
+ ],
+ "services": [
+  "Oil change with Mobil engine oils",
+  "Repair service",
+  "Engine diagnostics",
+  "Car restoration"
+ ],
+ "themes": "",
+ "faqs": [
+  [
+   "What does Mobil Autofriend Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its Mobil workshop page",
+ "stories": [],
+ "mentioned_services": [],
+ "card_rules": "2026-11-05",
+ "services_note": "Services listed on its Mobil workshop page. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Makes mentioned by customers on Google Maps.",
+ "specialties": [],
+ "good_to_know": []
+}

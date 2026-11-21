@@ -1801,6 +1801,8 @@ def daily_tag(e):
 
 def hours_tags(e):
     """Opening tags on the workshop page, worked out from the Google Maps hours (card rules, Edwin 5 Nov 2026)."""
+    if e['slug'] in GCACHE and not GCACHE[e['slug']].get('weekdayDescriptions'):   # Edwin 22 Nov 2026: no cached hours -> point to Google Maps
+        return '<ul class="ctags" aria-label="Opening"><li class="ct"><a href="%s" rel="nofollow noopener noreferrer" target="_blank" data-cta="maps_%s">See opening hours on Google Maps</a></li></ul>' % (E(gm_url(e), True), e['slug'])
     f = FACTS.get(e['slug'])
     if not f:
         return ''
@@ -1933,6 +1935,8 @@ def b_hours(x):
     hrs = g.get('weekdayDescriptions') or []
     if hrs:
         rows.append('<h3>Opening hours</h3><ul class="hrs-list">%s</ul>' % ''.join('<li>%s</li>' % E(clean(h)) for h in hrs))
+    elif g.get('fetched_at'):
+        rows.append('<h3>Opening hours</h3><p><a href="%s" rel="nofollow noopener noreferrer" target="_blank" data-cta="maps_%s">See opening hours on Google Maps</a></p>' % (E(gm_url(e), True), e['slug']))
     po = g.get('paymentOptions') or {}
     pay = [n for k, n in (('acceptsCreditCards', 'credit cards'), ('acceptsDebitCards', 'debit cards'), ('acceptsNfc', 'contactless')) if po.get(k)]
     if pay:

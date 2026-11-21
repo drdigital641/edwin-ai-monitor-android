@@ -36,14 +36,38 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-15"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-15",
  "last_verified_at": "2026-11-15",
  "collector_version": "agent-v5",
- "hold": "hold: only 1 Google rating; recheck when it has more",
  "estate": "kaki-bukit-industrial-estate",
  "planning_area": "Bedok",
  "region": "east",
- "hold_code": "not_enough_facts"
+ "lat": 1.332765271303135,
+ "lng": 103.9026757806407,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 1,
+  "checked": "2026-11-15",
+  "source": "Google Places",
+  "source_date": "2026-11-15"
+ }
 }

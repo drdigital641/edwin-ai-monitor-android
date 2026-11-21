@@ -36,7 +36,7 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-10"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-10",
  "last_verified_at": "2026-11-10",
@@ -44,6 +44,30 @@
  "estate": "carros-centre-jalan-lam-huat",
  "planning_area": "Woodlands",
  "region": "north",
- "hold": "hold: 1 rating and no written review",
- "hold_code": "not_enough_facts"
+ "lat": 1.430875170022137,
+ "lng": 103.7523467761918,
+ "geo_source": "onemap_same_postal",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 1,
+  "checked": "2026-11-10",
+  "source": "Google Places",
+  "source_date": "2026-11-10"
+ }
 }

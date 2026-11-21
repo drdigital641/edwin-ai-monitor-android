@@ -1,0 +1,31 @@
+{
+ "lede": "24 Hours Jump Start Service at 21 Bukit Batok Cres is a car repair workshop listed on Google Maps.",
+ "chips": [
+  "Jump start",
+  "Car repair"
+ ],
+ "services": [
+  "Car battery jump start (named in its Google listing)",
+  "General servicing and repair"
+ ],
+ "themes": "",
+ "faqs": [
+  [
+   "What does 24 Hours Jump Start Service do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing. Ask the workshop for its full list.",
+ "makes": [],
+ "makes_note": "Makes mentioned by customers on Google Maps.",
+ "specialties": [],
+ "good_to_know": []
+}

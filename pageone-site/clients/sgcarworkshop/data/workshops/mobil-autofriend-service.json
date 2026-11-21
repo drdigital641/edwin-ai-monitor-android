@@ -36,15 +36,39 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-19"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-19",
  "last_verified_at": "2026-11-19",
  "collector_version": "agent-v5",
- "hold": "held 20 Nov: no OneMap coordinates (OneMap search returned 401); retry",
  "estate": "corporation-drive-jurong-east",
  "planning_area": "Jurong East",
  "region": "west",
- "hold_code": "live_check_failed",
- "held_on": "2026-11-20"
+ "lat": 1.3228883,
+ "lng": 103.7198721,
+ "geo_source": "google_maps_manual",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 5,
+  "checked": "2026-11-19",
+  "source": "Google Places",
+  "source_date": "2026-11-19"
+ },
+ "locality": "Jurong Port Road"
 }

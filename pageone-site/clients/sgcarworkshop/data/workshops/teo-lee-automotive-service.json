@@ -36,14 +36,38 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-11"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-11",
  "last_verified_at": "2026-11-11",
  "collector_version": "agent-v5",
- "estate": "sin-ming-industrial-estate",
+ "estate": "upper-thomson-road",
  "planning_area": "Bishan",
  "region": "central",
- "hold": "hold: Upper Thomson Road has no estate yet (add one when 3+ shops there qualify)",
- "hold_code": "no_estate"
+ "lat": 1.370934778045466,
+ "lng": 103.8282414534195,
+ "geo_source": "onemap",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 10,
+  "checked": "2026-11-11",
+  "source": "Google Places",
+  "source_date": "2026-11-11"
+ }
 }

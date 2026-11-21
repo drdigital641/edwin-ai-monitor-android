@@ -36,7 +36,7 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-08"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-08",
  "last_verified_at": "2026-11-08",
@@ -44,6 +44,30 @@
  "estate": "bukit-batok-crescent",
  "planning_area": "Bukit Batok",
  "region": "west",
- "hold": "hold: no written Google review to source a card",
- "hold_code": "not_enough_facts"
+ "lat": 1.339051107118691,
+ "lng": 103.7590387125838,
+ "geo_source": "onemap_same_postal",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4,
+  "count": 1,
+  "checked": "2026-11-08",
+  "source": "Google Places",
+  "source_date": "2026-11-08"
+ }
 }

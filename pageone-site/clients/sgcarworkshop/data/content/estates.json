@@ -27,6 +27,15 @@
   "intro": "Sin Ming Industrial Estate, including Sin Ming Drive and the Sin Ming AutoCity and Autocare buildings, is in the middle of Singapore near Bishan."
  },
  {
+  "slug": "upper-thomson-road",
+  "name": "Upper Thomson Road",
+  "town": "sin-ming-bishan",
+  "keywords": [
+   "upper thomson"
+  ],
+  "intro": "Upper Thomson Road runs north through Thomson past Sin Ming towards Lower Peirce, with car service centres at its petrol stations."
+ },
+ {
   "slug": "toh-guan-enterprise-hub",
   "name": "Toh Guan Road East and Enterprise Hub",
   "town": "toh-guan-jurong-east",

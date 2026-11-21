@@ -36,15 +36,39 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-19"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-19",
  "last_verified_at": "2026-11-19",
  "collector_version": "agent-v5",
- "hold": "held 20 Nov: no OneMap coordinates (OneMap search returned 401); retry",
  "estate": "yishun-industrial-park-a",
  "planning_area": "Yishun",
  "region": "north",
- "hold_code": "live_check_failed",
- "held_on": "2026-11-20"
+ "lat": 1.4404442,
+ "lng": 103.824523,
+ "geo_source": "google_maps_manual",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.9,
+  "count": 11,
+  "checked": "2026-11-19",
+  "source": "Google Places",
+  "source_date": "2026-11-19"
+ },
+ "locality": "Sembawang Road"
 }

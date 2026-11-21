@@ -11,7 +11,7 @@ RedirectMatch 301 ^/areas/macpherson/general\-servicing\-repair/?$ /areas/macphe
 RedirectMatch 301 ^/areas/newton\-novena/general\-servicing\-repair/?$ /areas/bukit-timah-road-newton/
 RedirectMatch 301 ^/areas/pandan\-loop/general\-servicing\-repair/?$ /areas/pandan-light-industries-park/
 RedirectMatch 301 ^/areas/serangoon\-north/general\-servicing\-repair/?$ /areas/serangoon-garden-way/
-RedirectMatch 301 ^/areas/sin\-ming\-bishan/general\-servicing\-repair/?$ /areas/sin-ming-industrial-estate/
+RedirectMatch 301 ^/areas/sin\-ming\-bishan/general\-servicing\-repair/?$ /areas/sin-ming-bishan/
 RedirectMatch 301 ^/areas/tampines/general\-servicing\-repair/?$ /areas/tampines/
 RedirectMatch 301 ^/areas/toa\-payoh/general\-servicing\-repair/?$ /areas/toa-payoh-industrial-park/
 RedirectMatch 301 ^/areas/toh\-guan\-jurong\-east/general\-servicing\-repair/?$ /areas/toh-guan-jurong-east/
