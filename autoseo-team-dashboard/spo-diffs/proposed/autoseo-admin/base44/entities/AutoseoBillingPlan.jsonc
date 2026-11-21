@@ -1,0 +1,26 @@
+{
+  // AutoSEO's OWN billing of its clients, in RM (Edwin 20 Nov 2026). Never Page One's SGD billing. Server-only:
+  // the page reads and writes it through the admin function; no user role can read it directly.
+  "name": "AutoseoBillingPlan",
+  "type": "object",
+  "properties": {
+    "client_id": { "type": "string", "description": "Controller Client id (AutoSEO brand)" },
+    "plan": { "type": "string", "description": "Plan name, e.g. Monthly SEO" },
+    "amount": { "type": "number", "description": "Amount per period in RM" },
+    "currency": { "type": "string", "enum": ["MYR"] },
+    "status": { "type": "string", "enum": ["", "paid", "due", "failed", "not_billed"] },
+    "period_start": { "type": "string", "description": "YYYY-MM-DD" },
+    "period_end": { "type": "string", "description": "YYYY-MM-DD" },
+    "handled_at": { "type": "string", "description": "When the alert was marked handled (ISO)" },
+    "handled_for": { "type": "string", "description": "period_end the handled alert was about" },
+    "updated_by": { "type": "string" },
+    "updated_at": { "type": "string" }
+  },
+  "required": ["client_id"],
+  "rls": {
+    "create": { "user_condition": { "role": "no_user" } },
+    "read": { "user_condition": { "role": "no_user" } },
+    "update": { "user_condition": { "role": "no_user" } },
+    "delete": { "user_condition": { "role": "no_user" } }
+  }
+}
