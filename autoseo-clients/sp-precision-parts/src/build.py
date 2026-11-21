@@ -249,7 +249,7 @@ def header(path):
     def cur(p):
         return ' aria-current="page"' if path == p or (p == 'products/' and path.startswith('products/')) else ''
     nav = ''.join(f'<a href="{pu(p)}"{cur(p)}>{E(S.UI[k])}</a>' for p, k in NAV)
-    sheet = ''.join(f'<a href="{pu(p)}"{cur(p)}>{E(lab(k))}</a>' for p, k in [('', 'home')] + NAV + [(P_HUB, 'hub')])
+    sheet = ''.join(f'<a href="{pu(p)}"{cur(p)}>{E(lab(k))}</a>' for p, k in [('', 'home')] + NAV + ([] if path == 'articles/' else [(P_HUB, 'hub')]))
     return f'''<body class="lang-{L['code']}{' is-home' if path == '' else ''}">
 <a class="skip" href="#main">{E(S.UI['skip'])}</a>
 <header class="top"><div class="wrap top-in">
@@ -267,10 +267,13 @@ def header(path):
 <main id="main">'''
 
 
+CUR = {'path': ''}
+
+
 def footer():
     a = F['address']
     prod = ''.join(f'<li><a href="{pu(gpath(g[0]))}">{E(S.PG[g[0]]["name"])}</a></li>' for g in GROUPS)
-    nav = ''.join(f'<li><a href="{pu(p)}">{E(lab(k))}</a></li>' for p, k in NAV[1:] + [(P_HUB, 'hub'), ('articles/', 'articles')])
+    nav = ''.join(f'<li><a href="{pu(p)}">{E(lab(k))}</a></li>' for p, k in NAV[1:] + ([] if CUR['path'] == 'articles/' else [(P_HUB, 'hub')]) + [('articles/', 'articles')])
     return f'''</main>
 <footer class="foot"><div class="wrap">
 <div class="foot-g">
@@ -619,6 +622,8 @@ def state_page(slug):
 
 
 def render(path):
+    # The Bridge image gate reads any new link on the articles hub as an article card, so the hub page keeps its old link set.
+    CUR['path'] = path
     if path == '':
         H = S.HOME
         return head(path, H['title'], H['meta'], [org_ld(), site_ld(), faq_ld(H['faq'])]) + header(path) + home() + footer()
