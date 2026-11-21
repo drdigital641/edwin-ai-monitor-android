@@ -1,0 +1,1 @@
+Takedown set (Edwin 21 Nov 2026): holding pages that replace the 24 preview pages, empty sitemap.xml, llms.txt. Original site = ../dist (commit 4250ea1) + Bridge backups. To restore: sync ../dist again.
