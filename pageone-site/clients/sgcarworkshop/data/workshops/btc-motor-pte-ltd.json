@@ -44,5 +44,6 @@
  "estate": "kaki-bukit-industrial-estate",
  "planning_area": "Bedok",
  "region": "east",
- "hold": "hold: only 4 ratings, one says it is a company lorry servicing centre; recheck it is a car workshop"
+ "hold": "hold: only 4 ratings, one says it is a company lorry servicing centre; recheck it is a car workshop",
+ "hold_code": "not_car_workshop"
 }

@@ -44,5 +44,7 @@
  "hold": "held 20 Nov: same mobile as live card 3k-autocare-taman-jurong",
  "estate": "corporation-drive-jurong-east",
  "planning_area": "Jurong East",
- "region": "west"
+ "region": "west",
+ "hold_code": "duplicate",
+ "held_on": "2026-11-20"
 }

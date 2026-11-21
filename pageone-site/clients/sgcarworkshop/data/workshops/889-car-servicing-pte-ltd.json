@@ -44,5 +44,7 @@
  "estate": "kaki-bukit-industrial-estate",
  "planning_area": "Bedok",
  "region": "east",
- "hold": "hold: two sampled reviews allege overcharging; recheck later"
+ "hold": "hold: two sampled reviews allege overcharging; recheck later",
+ "held_on": "2026-11-22",
+ "hold_code": "complaints"
 }

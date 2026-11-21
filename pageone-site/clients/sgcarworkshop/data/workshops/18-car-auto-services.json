@@ -44,5 +44,6 @@
  "estate": "bukit-batok-crescent",
  "planning_area": "Bukit Batok",
  "region": "west",
- "hold": "hold: 2 of 3 Google reviews are complaints"
+ "hold": "hold: 2 of 3 Google reviews are complaints",
+ "hold_code": "complaints"
 }

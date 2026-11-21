@@ -44,5 +44,7 @@
  "hold": "held 19 Nov: 2 of 5 sampled Google comments are serious complaints about after-sales service and product faults (low rating 3.4 from 5). Also fits car accessory/electronics fitting, partly lorry work.",
  "estate": "soon-lee-street-pioneer",
  "planning_area": "Pioneer",
- "region": "west"
+ "region": "west",
+ "hold_code": "complaints",
+ "held_on": "2026-11-19"
 }

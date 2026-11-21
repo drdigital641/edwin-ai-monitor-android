@@ -44,5 +44,6 @@
  "estate": "sin-ming-industrial-estate",
  "planning_area": "Bishan",
  "region": "central",
- "hold": "hold: reviews are mainly about used car sales, not workshop work"
+ "hold": "hold: reviews are mainly about used car sales, not workshop work",
+ "hold_code": "not_car_workshop"
 }

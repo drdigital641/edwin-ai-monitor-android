@@ -44,5 +44,6 @@
  "estate": "carros-centre-jalan-lam-huat",
  "planning_area": "Woodlands",
  "region": "north",
- "hold": "hold: a review describes a dispute case with the workshop"
+ "hold": "hold: a review describes a dispute case with the workshop",
+ "hold_code": "complaints"
 }

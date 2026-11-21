@@ -44,5 +44,7 @@
  "hold": "held 20 Nov: no OneMap coordinates (OneMap search returned 401); retry",
  "estate": "yishun-industrial-park-a",
  "planning_area": "Yishun",
- "region": "north"
+ "region": "north",
+ "hold_code": "live_check_failed",
+ "held_on": "2026-11-20"
 }

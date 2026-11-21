@@ -44,5 +44,6 @@
  "estate": "sin-ming-industrial-estate",
  "planning_area": "Bishan",
  "region": "central",
- "hold": "hold: only 2 ratings, one an overselling complaint"
+ "hold": "hold: only 2 ratings, one an overselling complaint",
+ "hold_code": "complaints"
 }

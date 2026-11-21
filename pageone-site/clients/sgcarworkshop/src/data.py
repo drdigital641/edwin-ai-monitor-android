@@ -112,6 +112,10 @@ def record_problems(r):
                     out.append("own_site phone %s missing %s" % (p.get("e164"), k))
             if not str(p.get("source_url", "")).startswith("http"):
                 out.append("own_site phone source_url must be a URL")
+    if r.get("hold") and r.get("status") != "active":   # Edwin 22 Nov 2026: every held card carries a reason code (src/holds.py CODES)
+        import holds as _holds
+        if r.get("hold_code") not in _holds.CODES:
+            out.append("held record needs hold_code (python3 src/holds.py backfill)")
     if r.get("status") == "active":
         if not mobiles or not any(p.get("whatsapp") is True for p in mobiles):
             out.append("ACTIVE record needs a mobile with whatsapp true")

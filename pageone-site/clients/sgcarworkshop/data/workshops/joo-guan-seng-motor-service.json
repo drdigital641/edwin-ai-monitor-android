@@ -44,5 +44,7 @@
  "hold": "held 20 Nov: no OneMap coordinates (OneMap search returned 401); retry",
  "estate": "corporation-drive-jurong-east",
  "planning_area": "Jurong East",
- "region": "west"
+ "region": "west",
+ "hold_code": "live_check_failed",
+ "held_on": "2026-11-20"
 }

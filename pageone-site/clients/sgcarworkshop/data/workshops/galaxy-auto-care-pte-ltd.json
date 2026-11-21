@@ -44,5 +44,6 @@
  "hold": "hold: a sampled review alleges damage to the car; recheck later",
  "estate": "kaki-bukit-industrial-estate",
  "planning_area": "Kaki Bukit",
- "region": "east"
+ "region": "east",
+ "hold_code": "complaints"
 }

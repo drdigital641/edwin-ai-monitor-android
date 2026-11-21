@@ -44,5 +44,6 @@
  "estate": "sin-ming-industrial-estate",
  "planning_area": "Bishan",
  "region": "central",
- "hold": "hold: 2 of 5 sampled reviews are serious complaints; not featured"
+ "hold": "hold: 2 of 5 sampled reviews are serious complaints; not featured",
+ "hold_code": "complaints"
 }

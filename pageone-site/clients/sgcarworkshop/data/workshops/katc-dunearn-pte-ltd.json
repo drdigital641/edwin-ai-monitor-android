@@ -44,5 +44,6 @@
  "estate": "carros-centre-jalan-lam-huat",
  "planning_area": "Woodlands",
  "region": "north",
- "hold": "hold: Google mobile and unit #02-44 identical to mr-gearbox-by-motoserv (gearbox.sg confirms #02-43/44 for MR Gearbox); plus brake-failure complaint; recheck before rebuild"
+ "hold": "hold: Google mobile and unit #02-44 identical to mr-gearbox-by-motoserv (gearbox.sg confirms #02-43/44 for MR Gearbox); plus brake-failure complaint; recheck before rebuild",
+ "hold_code": "duplicate"
 }

@@ -44,5 +44,6 @@
  "hold": "hold: 2 of 5 sampled reviews are serious complaints; not featured",
  "estate": "paya-ubi-industrial-park",
  "planning_area": "Geylang",
- "region": "central"
+ "region": "central",
+ "hold_code": "complaints"
 }

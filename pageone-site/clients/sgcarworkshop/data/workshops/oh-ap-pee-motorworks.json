@@ -44,5 +44,7 @@
  "hold": "held 19 Nov: 2 of 4 sampled Google comments are serious complaints, one alleging marks and damage to a car after repair. Low rating (3.3 from 4).",
  "estate": "bukit-merah-lane-3",
  "planning_area": "Bukit Merah",
- "region": "central"
+ "region": "central",
+ "hold_code": "complaints",
+ "held_on": "2026-11-19"
 }

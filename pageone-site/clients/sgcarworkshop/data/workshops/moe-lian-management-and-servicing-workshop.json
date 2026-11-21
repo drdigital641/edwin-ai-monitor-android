@@ -44,5 +44,6 @@
  "estate": "yishun-industrial-park-a",
  "planning_area": "Yishun",
  "region": "north",
- "hold": "hold: only 2 ratings"
+ "hold": "hold: only 2 ratings",
+ "hold_code": "not_enough_facts"
 }

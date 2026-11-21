@@ -44,5 +44,6 @@
  "estate": "toh-guan-enterprise-hub",
  "planning_area": "Jurong East",
  "region": "west",
- "hold": "hold: no written Google review to source a card"
+ "hold": "hold: no written Google review to source a card",
+ "hold_code": "not_enough_facts"
 }

@@ -44,5 +44,6 @@
  "estate": "toh-guan-enterprise-hub",
  "planning_area": "Jurong East",
  "region": "west",
- "hold": "hold: motorcycle workshop, and complaints in Google sample"
+ "hold": "hold: motorcycle workshop, and complaints in Google sample",
+ "hold_code": "complaints"
 }

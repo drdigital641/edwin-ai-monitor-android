@@ -44,5 +44,7 @@
  "hold": "held 20 Nov: same mobile as live card mt-autoservice",
  "estate": "woodlands-avenue-12",
  "planning_area": "Woodlands",
- "region": "north"
+ "region": "north",
+ "hold_code": "duplicate",
+ "held_on": "2026-11-20"
 }

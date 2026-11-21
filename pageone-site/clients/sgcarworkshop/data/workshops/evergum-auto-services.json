@@ -44,5 +44,6 @@
  "hold": "hold: a sampled review alleges dishonesty and damage; not featured",
  "estate": "ubi-road-1",
  "planning_area": "Geylang",
- "region": "central"
+ "region": "central",
+ "hold_code": "complaints"
 }

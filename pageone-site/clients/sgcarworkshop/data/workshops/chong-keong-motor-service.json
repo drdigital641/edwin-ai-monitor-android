@@ -44,5 +44,6 @@
  "hold": "hold: only 1 Google rating; recheck when it has more",
  "estate": "kaki-bukit-industrial-estate",
  "planning_area": "Bedok",
- "region": "east"
+ "region": "east",
+ "hold_code": "not_enough_facts"
 }

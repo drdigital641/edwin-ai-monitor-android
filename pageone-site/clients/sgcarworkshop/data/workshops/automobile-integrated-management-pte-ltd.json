@@ -44,5 +44,6 @@
  "hold": "hold: only 1 Google rating; recheck when it has more",
  "estate": "ubi-road-1",
  "planning_area": "Geylang",
- "region": "central"
+ "region": "central",
+ "hold_code": "not_enough_facts"
 }

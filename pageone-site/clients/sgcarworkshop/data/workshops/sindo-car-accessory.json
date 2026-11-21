@@ -44,5 +44,6 @@
  "estate": "yishun-industrial-street-1",
  "planning_area": "Yishun",
  "region": "north",
- "hold": "hold: 2 of 5 sampled reviews are complaints, one alleges dishonesty; not featured"
+ "hold": "hold: 2 of 5 sampled reviews are complaints, one alleges dishonesty; not featured",
+ "hold_code": "complaints"
 }

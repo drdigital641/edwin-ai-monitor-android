@@ -44,5 +44,7 @@
  "hold": "held 19 Nov: All sampled Google comments are about motorcycles and scooters (NC750X, tyre change on a bike), so it looks like a motorcycle workshop, not a car workshop.",
  "estate": "soon-lee-street-pioneer",
  "planning_area": "Pioneer",
- "region": "west"
+ "region": "west",
+ "hold_code": "not_car_workshop",
+ "held_on": "2026-11-19"
 }

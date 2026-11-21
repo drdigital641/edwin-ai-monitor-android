@@ -44,5 +44,7 @@
  "estate": "ubi-road-1",
  "planning_area": "Geylang",
  "region": "central",
- "hold": "hold: no OneMap coordinates for 537037 (OneMap 401)"
+ "hold": "hold: no OneMap coordinates for 537037 (OneMap 401)",
+ "held_on": "2026-11-22",
+ "hold_code": "live_check_failed"
 }

@@ -44,5 +44,6 @@
  "estate": "carros-centre-jalan-lam-huat",
  "planning_area": "Woodlands",
  "region": "north",
- "hold": "hold: 1 rating and no written review"
+ "hold": "hold: 1 rating and no written review",
+ "hold_code": "not_enough_facts"
 }

@@ -44,5 +44,6 @@
  "estate": "bukit-batok-crescent",
  "planning_area": "Bukit Batok",
  "region": "west",
- "hold": "hold: reviews describe motorcycle work only"
+ "hold": "hold: reviews describe motorcycle work only",
+ "hold_code": "not_car_workshop"
 }

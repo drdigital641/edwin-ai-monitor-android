@@ -44,5 +44,7 @@
  "hold": "held 19 Nov: Two or more sampled Google reviews allege dishonesty or a failed repair; hold for owner review.",
  "estate": "bukit-merah-lane-3",
  "planning_area": "Bukit Merah",
- "region": "central"
+ "region": "central",
+ "hold_code": "complaints",
+ "held_on": "2026-11-19"
 }

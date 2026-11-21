@@ -44,5 +44,7 @@
  "hold": "held 19 Nov: same mobile as live card gt-auto-sg",
  "estate": "carros-centre-jalan-lam-huat",
  "planning_area": "Woodlands",
- "region": "north"
+ "region": "north",
+ "hold_code": "duplicate",
+ "held_on": "2026-11-19"
 }

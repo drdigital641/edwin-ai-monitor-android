@@ -44,5 +44,6 @@
  "hold": "hold: a sampled review alleges dishonesty over an aircon part; recheck later",
  "estate": "amk-industrial-park-2",
  "planning_area": "Ang Mo Kio",
- "region": "north-east"
+ "region": "north-east",
+ "hold_code": "complaints"
 }

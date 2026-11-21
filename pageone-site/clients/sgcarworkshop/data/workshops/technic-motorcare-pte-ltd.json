@@ -44,5 +44,7 @@
  "hold": "held 20 Nov: 1 rating",
  "estate": "bukit-merah-lane-3",
  "planning_area": "Bukit Merah",
- "region": "central"
+ "region": "central",
+ "hold_code": "not_enough_facts",
+ "held_on": "2026-11-20"
 }

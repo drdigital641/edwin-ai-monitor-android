@@ -44,5 +44,7 @@
  "estate": "woodlands-avenue-12",
  "planning_area": "Woodlands",
  "region": "north",
- "hold": "hold: motorcycle workshop (reviews are about bikes), no OneMap coordinates"
+ "hold": "hold: motorcycle workshop (reviews are about bikes), no OneMap coordinates",
+ "held_on": "2026-11-22",
+ "hold_code": "not_car_workshop"
 }

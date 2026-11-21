@@ -44,5 +44,6 @@
  "estate": "bukit-batok-crescent",
  "planning_area": "Bukit Batok",
  "region": "west",
- "hold": "hold: no written Google review to source a card"
+ "hold": "hold: no written Google review to source a card",
+ "hold_code": "not_enough_facts"
 }

@@ -44,5 +44,6 @@
  "estate": "carros-centre-jalan-lam-huat",
  "planning_area": "Woodlands",
  "region": "north",
- "hold": "hold: sampled review describes an impersonation dispute; recheck later"
+ "hold": "hold: sampled review describes an impersonation dispute; recheck later",
+ "hold_code": "complaints"
 }

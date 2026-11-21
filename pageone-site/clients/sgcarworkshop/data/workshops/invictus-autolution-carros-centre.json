@@ -44,5 +44,6 @@
  "estate": "carros-centre-jalan-lam-huat",
  "planning_area": "Woodlands",
  "region": "north",
- "hold": "hold: serious dishonesty complaint in sampled reviews; not featured"
+ "hold": "hold: serious dishonesty complaint in sampled reviews; not featured",
+ "hold_code": "complaints"
 }

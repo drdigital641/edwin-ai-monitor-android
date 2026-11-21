@@ -44,5 +44,7 @@
  "hold": "held 19 Nov: e-bike repair shop, not a car workshop",
  "estate": "soon-lee-street-pioneer",
  "planning_area": "Pioneer",
- "region": "west"
+ "region": "west",
+ "hold_code": "not_car_workshop",
+ "held_on": "2026-11-19"
 }

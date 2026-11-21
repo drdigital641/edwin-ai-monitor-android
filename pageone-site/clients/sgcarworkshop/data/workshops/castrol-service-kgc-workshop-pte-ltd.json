@@ -44,5 +44,7 @@
  "hold": "held 20 Nov: 2 ratings; name/slug clash with live card castrol-service",
  "estate": "corporation-drive-jurong-east",
  "planning_area": "Jurong East",
- "region": "west"
+ "region": "west",
+ "hold_code": "duplicate",
+ "held_on": "2026-11-20"
 }

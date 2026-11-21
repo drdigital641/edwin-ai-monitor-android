@@ -44,5 +44,6 @@
  "estate": "sin-ming-industrial-estate",
  "planning_area": "Bishan",
  "region": "central",
- "hold": "hold: Upper Thomson Road has no estate yet (add one when 3+ shops there qualify)"
+ "hold": "hold: Upper Thomson Road has no estate yet (add one when 3+ shops there qualify)",
+ "hold_code": "no_estate"
 }

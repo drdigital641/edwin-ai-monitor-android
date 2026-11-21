@@ -44,5 +44,6 @@
  "hold": "hold: same mobile as Castrol Service (same unit group); recheck which business owns it",
  "estate": "amk-industrial-park-2",
  "planning_area": "Ang Mo Kio",
- "region": "north-east"
+ "region": "north-east",
+ "hold_code": "duplicate"
 }

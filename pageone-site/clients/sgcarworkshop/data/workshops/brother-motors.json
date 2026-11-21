@@ -44,5 +44,6 @@
  "estate": "yishun-industrial-park-a",
  "planning_area": "Yishun",
  "region": "north",
- "hold": "hold: motorcycle shop (reviews are about bikes), not a car workshop"
+ "hold": "hold: motorcycle shop (reviews are about bikes), not a car workshop",
+ "hold_code": "not_car_workshop"
 }

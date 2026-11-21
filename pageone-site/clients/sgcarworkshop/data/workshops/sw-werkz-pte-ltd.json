@@ -44,5 +44,6 @@
  "estate": "kaki-bukit-industrial-estate",
  "planning_area": "Bedok",
  "region": "east",
- "hold": "hold: 3 of 5 sampled reviews are complaints, one mentions dishonesty; not featured"
+ "hold": "hold: 3 of 5 sampled reviews are complaints, one mentions dishonesty; not featured",
+ "hold_code": "complaints"
 }

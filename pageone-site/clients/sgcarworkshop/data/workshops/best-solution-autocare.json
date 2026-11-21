@@ -44,5 +44,6 @@
  "hold": "hold: only 2 Google ratings (3.0); recheck when it has more",
  "estate": "paya-ubi-industrial-park",
  "planning_area": "Geylang",
- "region": "central"
+ "region": "central",
+ "hold_code": "not_enough_facts"
 }

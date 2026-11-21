@@ -44,5 +44,6 @@
  "estate": "bukit-batok-crescent",
  "planning_area": "Bukit Batok",
  "region": "west",
- "hold": "hold: no workshop estate (address is an HDB block, likely mobile service)"
+ "hold": "hold: no workshop estate (address is an HDB block, likely mobile service)",
+ "hold_code": "no_estate"
 }

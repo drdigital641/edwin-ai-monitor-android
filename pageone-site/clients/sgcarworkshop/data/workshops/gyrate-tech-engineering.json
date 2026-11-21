@@ -44,5 +44,7 @@
  "hold": "held 19 Nov: Customers on Google describe it as a motorcycle repair shop (chain, stands, exhaust welding, bike oil), so it is not a car workshop.",
  "estate": "defu-industrial-estate",
  "planning_area": "Hougang",
- "region": "north-east"
+ "region": "north-east",
+ "hold_code": "not_car_workshop",
+ "held_on": "2026-11-19"
 }

@@ -44,5 +44,7 @@
  "estate": "ubi-road-1",
  "planning_area": "Geylang",
  "region": "central",
- "hold": "hold: same address as Doctor Cars (likely same shop, \"DrCar\"), no OneMap coordinates"
+ "hold": "hold: same address as Doctor Cars (likely same shop, \"DrCar\"), no OneMap coordinates",
+ "held_on": "2026-11-22",
+ "hold_code": "duplicate"
 }

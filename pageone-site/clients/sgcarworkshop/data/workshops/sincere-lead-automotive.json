@@ -44,5 +44,6 @@
  "estate": "toh-guan-enterprise-hub",
  "planning_area": "Jurong East",
  "region": "west",
- "hold": "hold: complaint in a 3-review Google sample"
+ "hold": "hold: complaint in a 3-review Google sample",
+ "hold_code": "complaints"
 }

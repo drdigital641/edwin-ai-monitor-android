@@ -44,5 +44,6 @@
  "estate": "paya-ubi-industrial-park",
  "planning_area": "Geylang",
  "region": "central",
- "hold": "hold: address is an office in Paya Lebar Square (claims service), not a workshop in Paya Ubi Industrial Park; recheck location"
+ "hold": "hold: address is an office in Paya Lebar Square (claims service), not a workshop in Paya Ubi Industrial Park; recheck location",
+ "hold_code": "not_car_workshop"
 }

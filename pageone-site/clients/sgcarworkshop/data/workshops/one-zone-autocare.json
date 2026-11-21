@@ -44,5 +44,7 @@
  "estate": "soon-lee-street-pioneer",
  "planning_area": "Pioneer",
  "region": "west",
- "hold": "hold: same mobile as live listing ONE ZONE AUTOMOTIVE"
+ "hold": "hold: same mobile as live listing ONE ZONE AUTOMOTIVE",
+ "held_on": "2026-11-22",
+ "hold_code": "duplicate"
 }

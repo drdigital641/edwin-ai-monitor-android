@@ -44,5 +44,6 @@
  "estate": "sin-ming-industrial-estate",
  "planning_area": "Bishan",
  "region": "central",
- "hold": "hold: only 2 ratings; Google unit #01-12 is the same as star-9-workshop (different mobile); recheck before rebuild"
+ "hold": "hold: only 2 ratings; Google unit #01-12 is the same as star-9-workshop (different mobile); recheck before rebuild",
+ "hold_code": "duplicate"
 }

@@ -44,5 +44,6 @@
  "hold": "hold: only 2 Google ratings; recheck when it has more",
  "estate": "soon-lee-street-pioneer",
  "planning_area": "Pioneer",
- "region": "west"
+ "region": "west",
+ "hold_code": "not_enough_facts"
 }

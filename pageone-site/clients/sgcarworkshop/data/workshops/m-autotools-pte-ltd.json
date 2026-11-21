@@ -44,5 +44,6 @@
  "estate": "carros-centre-jalan-lam-huat",
  "planning_area": "Woodlands",
  "region": "north",
- "hold": "hold: own website shows a workshop equipment supplier (Corghi), not a car workshop"
+ "hold": "hold: own website shows a workshop equipment supplier (Corghi), not a car workshop",
+ "hold_code": "not_car_workshop"
 }

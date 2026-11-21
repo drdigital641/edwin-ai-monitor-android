@@ -44,5 +44,6 @@
  "estate": "toh-guan-enterprise-hub",
  "planning_area": "Jurong East",
  "region": "west",
- "hold": "hold: motorcycle and scooter workshop, not cars"
+ "hold": "hold: motorcycle and scooter workshop, not cars",
+ "hold_code": "not_car_workshop"
 }
