@@ -1,0 +1,3 @@
+/* ktech.my MS906 MAX promo: client-side SUPPLEMENT only. The server (Apache SSI + .htaccess) already swaps to the
+   ended state; this only covers a page cached before the end time. Built from promo.json. */
+(function(){var E=Date.parse('2026-12-31T23:59:59+08:00');function run(){if(Date.now()<=E)return;var a=document.querySelectorAll('[data-promo-live]'),b=document.querySelectorAll('[data-promo-ended]'),i;for(i=0;i<a.length;i++)a[i].hidden=true;for(i=0;i<b.length;i++)b[i].hidden=false}if(document.readyState!=='loading')run();else document.addEventListener('DOMContentLoaded',run);setInterval(run,60000)})();

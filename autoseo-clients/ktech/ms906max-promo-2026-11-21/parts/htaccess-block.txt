@@ -1,0 +1,18 @@
+# K Tech Autel MS906 MAX promo (21 Nov 2026), generated from promo.json by ms906max-promo build.py.
+# SSI picks the live/ended block on the home, promo, tools-index and MS906 Pro pages (DATE_GMT = UTC).
+Options +IncludesNOEXEC
+SSILegacyExprParser on
+<If "%{REQUEST_URI} =~ m#^/((ms|zh)/)?(autel-ms906-max-promo/|autel-diagnostic-tools/|autel-diagnostic-tools/maxisys-ms906pro/)?(index\.html)?$#">
+  SetOutputFilter INCLUDES
+</If>
+----- rewrite rules (after the https redirects) -----
+# Buy now: /go/ms906max-buy/ decides at tap time. Server clock (%{TIME}) is UTC-7; promo ends 2026-12-31T23:59:59+08:00.
+RewriteCond %{TIME} <20261231090000
+RewriteRule ^go/ms906max-buy/?$ https://wa.me/60125462820?text=Hi\%20K\%20Tech\%2C\%20I\%20want\%20to\%20buy\%20the\%20Autel\%20MS906\%20MAX\%20at\%20RM5\%2C800\%20\%28promo\%20until\%2031\%20Dec\%202026\%29. [R=302,L,NE]
+RewriteRule ^go/ms906max-buy/?$ https://ktech.my/autel-ms906-max-promo/ [R=302,L]
+RewriteCond %{TIME} <20261231090000
+RewriteRule ^ms/go/ms906max-buy/?$ https://wa.me/60125462820?text=Hai\%20K\%20Tech\%2C\%20saya\%20mahu\%20beli\%20Autel\%20MS906\%20MAX\%20pada\%20harga\%20RM5\%2C800\%20\%28promosi\%20sehingga\%2031\%20Dis\%202026\%29. [R=302,L,NE]
+RewriteRule ^ms/go/ms906max-buy/?$ https://ktech.my/ms/autel-ms906-max-promo/ [R=302,L]
+RewriteCond %{TIME} <20261231090000
+RewriteRule ^zh/go/ms906max-buy/?$ https://wa.me/60125462820?text=\%E4\%BD\%A0\%E5\%A5\%BD\%20K\%20Tech\%EF\%BC\%8C\%E6\%88\%91\%E6\%83\%B3\%E4\%BB\%A5\%20RM5\%2C800\%20\%E8\%B4\%AD\%E4\%B9\%B0\%20Autel\%20MS906\%20MAX\%EF\%BC\%88\%E4\%BF\%83\%E9\%94\%80\%E8\%87\%B3\%202026\%E5\%B9\%B412\%E6\%9C\%8831\%E6\%97\%A5\%EF\%BC\%89\%E3\%80\%82 [R=302,L,NE]
+RewriteRule ^zh/go/ms906max-buy/?$ https://ktech.my/zh/autel-ms906-max-promo/ [R=302,L]
