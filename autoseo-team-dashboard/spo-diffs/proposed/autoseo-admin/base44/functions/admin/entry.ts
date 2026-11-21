@@ -84,6 +84,13 @@ export default async function (req: Request) {
   }
 
   if (CONTROLLER_ACTIONS.includes(action)) return signed(E, CONTROLLER, 'autoseo-controller', email, action, {});
+
+  // Security review 21 Nov 2026: billing and sales also need the Controller's AutoSEO allowlist (defence in depth on top
+  // of this app's invite list). One signed 'me' call; anything but ok:true stops here with the Controller's code.
+  if (SALES_ACTIONS[action] || action.startsWith('billing_')) {
+    const gate: any = await (await signed(E, CONTROLLER, 'autoseo-controller', email, 'me', {})).json().catch(() => null);
+    if (!gate?.ok) return reply({ ok: false, code: String(gate?.code || 'not_allowed') }, gate?.code === 'not_set' ? 503 : 403);
+  }
   if (SALES_ACTIONS[action]) return signed(E, SALES, 'autoseo-sales', email, SALES_ACTIONS[action], salesArgs(SALES_ACTIONS[action], b));
 
   // ---------- billing: AutoSEO's own records (RM). No Stripe. ----------
