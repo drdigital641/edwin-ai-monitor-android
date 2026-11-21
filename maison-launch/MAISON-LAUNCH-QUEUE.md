@@ -11,46 +11,45 @@ No v4 set on the next project: policy 'make' (make = create the Base44 v4 set + 
 
 | # | Project | Type | Clicks | Impr. | Pos. | Launch | v4 set | Floor plan |
 |---|---|---|---|---|---|---|---|---|
-| 1 | Sembawang Brook | BTO | 8 | 303 | 8.25 | 16 Jun 2026 BTO | N | N |
-| 2 | Garden Waterfront I & II @ Tengah | HDB | 8 | 142 | 9.65 | not on file | N | N |
-| 3 | Verandah @ Kallang | HDB | 6 | 240 | 8.4 | not on file | N | N |
-| 4 | Queen's Arc | HDB | 6 | 73 | 9.55 | not on file | N | N |
-| 5 | Berlayar Rise | BTO | 5 | 311 | 9.41 | 16 Jun 2026 BTO | N | N |
-| 6 | Luxus Hills Phase 10 | Landed | 5 | 164 | 6.6 | Sep 2026 (unofficial) | N | N |
-| 7 | Tanjong Tree Residences @ Hougang | HDB | 5 | 100 | 11.02 | not on file | N | N |
-| 8 | Lakeside View | BTO | 4 | 173 | 9.51 | not on file | N | N |
-| 9 | Fernvale Sails | HDB | 4 | 99 | 7.13 | not on file | N | N |
-| 10 | Kebun Baru Ridge | BTO | 3 | 336 | 9.42 | 16 Jun 2026 BTO | N | N |
-| 11 | Jurong Arcadia | HDB | 3 | 204 | 8.36 | not on file | N | N |
-| 12 | Chai Chee Green | HDB | 3 | 164 | 9.15 | not on file | N | N |
-| 13 | Woodgrove Edge | HDB | 3 | 148 | 8.94 | not on file | N | N |
-| 14 | Kim Keat Heights | HDB | 3 | 142 | 7.11 | not on file | N | N |
-| 15 | Heart of Yew Tee | HDB | 3 | 87 | 5.46 | not on file | N | N |
-| 16 | Kovan Wellspring | HDB | 3 | 72 | 9.21 | not on file | N | N |
-| 17 | Plantation Creek @ Tengah | HDB | 3 | 63 | 8.1 | not on file | N | N |
-| 18 | Kent Heights | BTO | 2 | 353 | 8.58 | not on file | N | N |
-| 19 | Woodgrove Acres | BTO | 2 | 112 | 9.16 | 16 Jun 2026 BTO | N | N |
-| 20 | Yishun Beacon | HDB | 2 | 80 | 9.46 | not on file | N | N |
-| 21 | Farrer Park Fields | HDB | 2 | 70 | 8.44 | not on file | N | N |
-| 22 | Dorset Gardens | Condo | 2 | 68 | 12.09 | H1 2027 planned | N | N |
-| 23 | Grand Dunman | Condo | 2 | 26 | 6.46 | not on file | N | N |
-| 24 | Belgravia Ace | Landed | 2 | 23 | 11.61 | not on file | N | N |
-| 25 | OCBC Punggol | Commercial | 1 | 174 | 7.98 | not on file | N | N |
-| 26 | UrbanVille @ Woodlands | HDB | 1 | 122 | 9.57 | not on file | N | N |
-| 27 | Chong Pang City integrated development | Commercial | 1 | 106 | 11.84 | not on file | N | N |
-| 28 | Matilda Riverside | HDB | 1 | 88 | 9.12 | not on file | N | N |
-| 29 | Parc Point | Commercial | 1 | 69 | 8.23 | not on file | N | N |
-| 30 | Woodgrove Ascent | HDB | 1 | 66 | 10.82 | not on file | N | N |
-| 31 | Jurong West Crystal | HDB | 1 | 61 | 10.02 | not on file | N | N |
-| 32 | Woodlands South Plains | HDB | 1 | 58 | 7.98 | not on file | N | N |
-| 33 | MacPherson Weave | HDB | 1 | 54 | 11.57 | not on file | N | N |
-| 34 | 39 Robinson Road | Commercial | 1 | 32 | 7.72 | not on file | N | N |
-| 35 | The Myst | Condo | 1 | 29 | 6.31 | 24 Jun 2023 preview | Y | Y |
-| 36 | Novo Place | EC | 1 | 26 | 6.08 | not on file | N | N |
-| 37 | Altura | EC | 1 | 25 | 6.96 | not on file | N | N |
-| 38 | The Orie | Condo | 1 | 20 | 15.0 | Jan 2025 | N | N |
-| 39 | CanningHill Piers | Condo | 1 | 18 | 8.83 | 5 Nov 2021 preview | Y | Y |
-| 40 | Thomson Reserve | Condo | 1 | 2 | 3.0 | Oct 2026 | N | N |
+| 1 | Garden Waterfront I & II @ Tengah | HDB | 8 | 142 | 9.65 | not on file | N | N |
+| 2 | Verandah @ Kallang | HDB | 6 | 240 | 8.4 | not on file | N | N |
+| 3 | Queen's Arc | HDB | 6 | 73 | 9.55 | not on file | N | N |
+| 4 | Berlayar Rise | BTO | 5 | 311 | 9.41 | 16 Jun 2026 BTO | N | N |
+| 5 | Luxus Hills Phase 10 | Landed | 5 | 164 | 6.6 | Sep 2026 (unofficial) | N | N |
+| 6 | Tanjong Tree Residences @ Hougang | HDB | 5 | 100 | 11.02 | not on file | N | N |
+| 7 | Lakeside View | BTO | 4 | 173 | 9.51 | not on file | N | N |
+| 8 | Fernvale Sails | HDB | 4 | 99 | 7.13 | not on file | N | N |
+| 9 | Kebun Baru Ridge | BTO | 3 | 336 | 9.42 | 16 Jun 2026 BTO | N | N |
+| 10 | Jurong Arcadia | HDB | 3 | 204 | 8.36 | not on file | N | N |
+| 11 | Chai Chee Green | HDB | 3 | 164 | 9.15 | not on file | N | N |
+| 12 | Woodgrove Edge | HDB | 3 | 148 | 8.94 | not on file | N | N |
+| 13 | Kim Keat Heights | HDB | 3 | 142 | 7.11 | not on file | N | N |
+| 14 | Heart of Yew Tee | HDB | 3 | 87 | 5.46 | not on file | N | N |
+| 15 | Kovan Wellspring | HDB | 3 | 72 | 9.21 | not on file | N | N |
+| 16 | Plantation Creek @ Tengah | HDB | 3 | 63 | 8.1 | not on file | N | N |
+| 17 | Kent Heights | BTO | 2 | 353 | 8.58 | not on file | N | N |
+| 18 | Woodgrove Acres | BTO | 2 | 112 | 9.16 | 16 Jun 2026 BTO | N | N |
+| 19 | Yishun Beacon | HDB | 2 | 80 | 9.46 | not on file | N | N |
+| 20 | Farrer Park Fields | HDB | 2 | 70 | 8.44 | not on file | N | N |
+| 21 | Dorset Gardens | Condo | 2 | 68 | 12.09 | H1 2027 planned | N | N |
+| 22 | Grand Dunman | Condo | 2 | 26 | 6.46 | not on file | N | N |
+| 23 | Belgravia Ace | Landed | 2 | 23 | 11.61 | not on file | N | N |
+| 24 | OCBC Punggol | Commercial | 1 | 174 | 7.98 | not on file | N | N |
+| 25 | UrbanVille @ Woodlands | HDB | 1 | 122 | 9.57 | not on file | N | N |
+| 26 | Chong Pang City integrated development | Commercial | 1 | 106 | 11.84 | not on file | N | N |
+| 27 | Matilda Riverside | HDB | 1 | 88 | 9.12 | not on file | N | N |
+| 28 | Parc Point | Commercial | 1 | 69 | 8.23 | not on file | N | N |
+| 29 | Woodgrove Ascent | HDB | 1 | 66 | 10.82 | not on file | N | N |
+| 30 | Jurong West Crystal | HDB | 1 | 61 | 10.02 | not on file | N | N |
+| 31 | Woodlands South Plains | HDB | 1 | 58 | 7.98 | not on file | N | N |
+| 32 | MacPherson Weave | HDB | 1 | 54 | 11.57 | not on file | N | N |
+| 33 | 39 Robinson Road | Commercial | 1 | 32 | 7.72 | not on file | N | N |
+| 34 | The Myst | Condo | 1 | 29 | 6.31 | 24 Jun 2023 preview | Y | Y |
+| 35 | Novo Place | EC | 1 | 26 | 6.08 | not on file | N | N |
+| 36 | Altura | EC | 1 | 25 | 6.96 | not on file | N | N |
+| 37 | The Orie | Condo | 1 | 20 | 15.0 | Jan 2025 | N | N |
+| 38 | CanningHill Piers | Condo | 1 | 18 | 8.83 | 5 Nov 2021 preview | Y | Y |
+| 39 | Thomson Reserve | Condo | 1 | 2 | 3.0 | Oct 2026 | N | N |
 
 ## B) Everything else (launch date, earliest first; planned/unconfirmed, then no date on file, last)
 
@@ -116,6 +115,7 @@ No v4 set on the next project: policy 'make' (make = create the Base44 v4 set + 
 | Sembawang Anchor | Nov 2026 BTO |
 | Toa Payoh Hillside | Nov 2026 BTO |
 | Towner Residences | Aug 2021 BTO |
+| Sembawang Brook | 17 Jun 2026 BTO |
 | Sembawang Portico | 16 Jun 2026 BTO |
 | Plantation Verge | May 2023 BTO |
 

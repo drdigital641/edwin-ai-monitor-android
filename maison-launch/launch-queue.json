@@ -480,19 +480,21 @@
    "slug": "sembawang-brook",
    "name": "Sembawang Brook",
    "type": "BTO",
-   "launch_sort": "2026-06-16",
-   "launch": "16 Jun 2026 BTO",
+   "launch_sort": "2026-06-17",
+   "launch": "17 Jun 2026 BTO",
    "launch_basis": "firm",
-   "launch_source": "HDB June 2026 BTO (page facts)",
-   "status": "TODO",
-   "v4_set": null,
-   "floor_plan": false,
+   "launch_source": "HDB press release 17 Jun 2026 SGT (drop README)",
+   "status": "DONE",
+   "v4_set": "sembawang-brook-v4",
+   "floor_plan": true,
    "gsc_28d": {
     "clicks": 8,
     "impressions": 303,
     "position": 8.25
    },
-   "section": "A"
+   "section": "DONE",
+   "v4_drop": "6b00fff6ea57a46fcb9da718",
+   "built": "2026-11-21"
   },
   {
    "slug": "sembawang-portico",
