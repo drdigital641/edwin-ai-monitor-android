@@ -6,17 +6,69 @@
 //    AutoSEO allowlist and returns only AutoSEO-brand rows through teamRow(). Read only.
 // 3) Billing: AutoSEO's OWN records for billing its clients in RM (entity AutoseoBillingPlan in this app, server-only
 //    RLS). No Stripe call of any kind until a key is added and reviewed. Page One billing is never read here.
-// 4) Sales network: forwarded to the AutoSEO Sales Web app (same SalesNode data as autoseo.my/sales), signed with the
-//    same key (audience 'autoseo-sales'), so no PIN or token ever reaches the browser or this app.
+// 4) Sales network (Edwin 21 Nov 9:11am SGT: ONE app): SalesNode + SalesSettings live in THIS app now (copied from the
+//    old AutoSEO Sales Web app, legacyId kept). Same rules as the old /sales page. Server-only RLS.
 // 5) The private key is made here on first use and stored in LinkKey (no user can read it). Only an admin of this app
 //    can read the PUBLIC key (action link_public_key) to give to the Controller and Sales Web in a reviewed checkpoint.
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.44';
 import { generateLinkKey, signLink, LINK_MAX_BODY } from '../../shared/linkAuth.ts';
 
 const CONTROLLER = 'https://base44.app/api/apps/6ac7f2548a9c3877449e2772/functions/autoseoLink';
-const SALES = 'https://auto-seo-sales-web-675618e9.base44.app/api/sales-web';
 const CONTROLLER_ACTIONS = ['me', 'team_clients'];                       // v1: read only (no memo, no new client)
 const SALES_ACTIONS: Record<string, string> = { sales_data: 'data', sales_add: 'add', sales_remove: 'remove', sales_settings: 'settings' };
+const MAX_NODES = 500;
+const DEFAULT_SPLIT = { customer: 300, direct: 60, referral: 40 };
+const cleanName = (v: unknown) => String(v ?? '').replace(/[\u0000-\u001f\u007f<>]/g, '').replace(/\s+/g, ' ').trim().slice(0, 60);
+const nodeOut = (n: any) => ({ id: String(n.id), name: String(n.name || ''), role: String(n.role || ''), parentId: String(n.parentId || '') });
+async function readSplit(E: any) {
+  const r: any = (await E.SalesSettings.filter({ key: 'main' }).catch(() => []))[0];
+  return r ? { customer: Number(r.customer ?? 300), direct: Number(r.direct ?? 60), referral: Number(r.referral ?? 40) } : { ...DEFAULT_SPLIT };
+}
+// Same checks as the old Sales Web: numbers 0..1,000,000 with 2 decimals, customer > 0, direct + referral <= customer.
+function checkSplit(v: any) {
+  const out: any = {};
+  for (const k of ['customer', 'direct', 'referral']) {
+    const n = Number(v?.[k]);
+    if (!Number.isFinite(n) || n < 0 || n > 1_000_000 || Math.round(n * 100) !== n * 100) return { error: 'number' };
+    out[k] = n;
+  }
+  if (out.customer <= 0) return { error: 'number' };
+  if (out.direct + out.referral > out.customer) return { error: 'too_much' };
+  return { split: out };
+}
+async function sales(E: any, action: string, b: any) {
+  const all: any[] = (await E.SalesNode.list('createdAt', MAX_NODES + 50).catch(() => [])) || [];
+  const byId = new Map(all.map((n) => [n.id, n]));
+  if (action === 'data') return reply({ ok: true, nodes: all.map(nodeOut), settings: await readSplit(E) });
+  if (action === 'settings') {
+    const r: any = checkSplit(b?.settings);
+    if (r.error) return reply({ ok: false, code: r.error }, 400);
+    const row: any = (await E.SalesSettings.filter({ key: 'main' }).catch(() => []))[0];
+    if (row) await E.SalesSettings.update(row.id, r.split); else await E.SalesSettings.create({ key: 'main', ...r.split });
+    return reply({ ok: true, settings: r.split });
+  }
+  if (action === 'add') {
+    const name = cleanName(b?.name);
+    const parent = byId.get(String(b?.parentId || ''));
+    if (!name) return reply({ ok: false, code: 'name' }, 400);
+    if (!parent) return reply({ ok: false, code: 'parent' }, 400);
+    if (all.length >= MAX_NODES) return reply({ ok: false, code: 'full' }, 400);
+    const created = await E.SalesNode.create({ name, role: 'salesperson', parentId: parent.id, createdAt: new Date().toISOString() });
+    return reply({ ok: true, node: nodeOut(created) });
+  }
+  if (action === 'remove') {
+    const node = byId.get(String(b?.id || ''));
+    if (!node) return reply({ ok: false, code: 'parent' }, 404);
+    if (node.role === 'centre') return reply({ ok: false, code: 'invalid' }, 400);
+    // Referrals move up one level to the removed person's parent (same as the old /sales page).
+    const kids = all.filter((n) => n.parentId === node.id);
+    const parentIsCentre = byId.get(node.parentId)?.role === 'centre';
+    for (const k of kids) await E.SalesNode.update(k.id, { parentId: node.parentId, role: parentIsCentre ? k.role : 'salesperson' });
+    await E.SalesNode.delete(node.id);
+    return reply({ ok: true, moved: kids.length });
+  }
+  return reply({ ok: false, code: 'invalid' }, 400);
+}
 const BILL_STATUS = ['', 'paid', 'due', 'failed', 'not_billed'];
 const ID_RE = /^[a-f0-9]{24}$/;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -51,15 +103,6 @@ async function signed(E: any, url: string, aud: string, actor: string, action: s
   }
 }
 
-function salesArgs(action: string, b: any) {
-  if (action === 'add') return { name: s(b?.name, 60), parentId: s(b?.parentId, 64) };
-  if (action === 'remove') return { id: s(b?.id, 64) };
-  if (action === 'settings') {
-    const x = b?.settings || {};
-    return { settings: { customer: Number(x.customer), direct: Number(x.direct), referral: Number(x.referral) } };
-  }
-  return {};
-}
 
 const planOut = (p: any) => ({
   client_id: String(p.client_id), plan: String(p.plan || ''), amount: typeof p.amount === 'number' ? p.amount : null, currency: 'MYR',
@@ -91,7 +134,7 @@ export default async function (req: Request) {
     const gate: any = await (await signed(E, CONTROLLER, 'autoseo-controller', email, 'me', {})).json().catch(() => null);
     if (!gate?.ok) return reply({ ok: false, code: String(gate?.code || 'not_allowed') }, gate?.code === 'not_set' ? 503 : 403);
   }
-  if (SALES_ACTIONS[action]) return signed(E, SALES, 'autoseo-sales', email, SALES_ACTIONS[action], salesArgs(SALES_ACTIONS[action], b));
+  if (SALES_ACTIONS[action]) return sales(E, SALES_ACTIONS[action], b);
 
   // ---------- billing: AutoSEO's own records (RM). No Stripe. ----------
   const P = E.AutoseoBillingPlan;
