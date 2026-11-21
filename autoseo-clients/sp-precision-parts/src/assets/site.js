@@ -47,4 +47,29 @@
       window.open(url, '_blank', 'noopener');
     });
   });
+
+  // stock strips: arrows + dots, swipe by scroll-snap, never auto-slides
+  $$('[data-strip]').forEach(function (st) {
+    var t = $('.strip-t', st), items = $$('.strip-t > li', st), dots = $('.strip-d', st);
+    items.forEach(function () { dots.appendChild(d.createElement('i')); });
+    var ds = $$('i', dots);
+    function step() { return items.length > 1 ? items[1].offsetLeft - items[0].offsetLeft : t.clientWidth; }
+    function mark() { var i = Math.round(t.scrollLeft / step()); ds.forEach(function (x, k) { x.classList.toggle('on', k === i); }); }
+    $$('.strip-b', st).forEach(function (b) { b.addEventListener('click', function () { t.scrollBy({ left: step() * +b.getAttribute('data-dir'), behavior: 'smooth' }); }); });
+    t.addEventListener('scroll', function () { window.requestAnimationFrame(mark); }, { passive: true });
+    mark();
+  });
+
+  // reels: poster + play icon; a tap loads the Facebook player in the same 9:16 box (with sound)
+  $$('[data-reel]').forEach(function (box) {
+    var btn = $('.reel-play', box);
+    btn.addEventListener('click', function () {
+      var f = d.createElement('iframe');
+      f.src = 'https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(box.getAttribute('data-reel')) + '&show_text=false&autoplay=true&mute=0';
+      f.title = btn.getAttribute('aria-label');
+      f.allow = 'autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      box.replaceChild(f, btn);
+    });
+  });
 })();

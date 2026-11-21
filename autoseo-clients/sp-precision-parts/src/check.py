@@ -38,9 +38,9 @@ for p in pages + [os.path.join(DIST, 'llms.txt'), os.path.join(DIST, 'sitemap.xm
     for o in old:
         if o in h: bad.append(f'{os.path.relpath(p, DIST)}: OLD PHONE {o}')
     if p.endswith('.html') and F['phone']['e164'] not in h: bad.append(f'{os.path.relpath(p, DIST)}: new phone missing')
-if len(pages) != 36: bad.append(f'page count {len(pages)}')
+if len(pages) != 87: bad.append(f'page count {len(pages)}')
 sm = open(os.path.join(DIST, 'sitemap.xml')).read()
-if sm.count('<url>') != 36: bad.append('sitemap url count %d' % sm.count('<url>'))
+if sm.count('<url>') != 87: bad.append('sitemap url count %d' % sm.count('<url>'))
 from PIL import Image
 if Image.open(os.path.join(DIST, 'media', 'og.jpg')).size != (1200, 630): bad.append('og size')
 if F['workshops'] and not all(w.get('confirmed') for w in F['workshops']): bad.append('unconfirmed workshop in facts.json')

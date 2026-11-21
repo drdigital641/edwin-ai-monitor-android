@@ -46,11 +46,11 @@ OUT = os.path.join(HERE, '..', 'dist')
 E = html.escape
 LK = F['links']
 NAME = F['name']
-TODAY = '2026-11-21'
+TODAY = '2026-11-22'
 IMG = {'monaer-kit': (580, 440), 'monaer-pads': (430, 230), 'monaer-box': (310, 220), 'monaer-care': (270, 240), 'sp-banner': (1280, 753), 'sp-name-card': (1280, 731)}
 
 # id, slug, photo
-GROUPS = [('pads', 'brake-pads', 'monaer-pads'), ('discs', 'brake-discs', 'monaer-box'), ('care', 'brake-fluid-care', 'monaer-care')]
+GROUPS = [('pads', 'brake-pads', 'sp-monaer-brake-pads-stock-honda'), ('discs', 'brake-discs', 'sp-monaer-product-range-graphic'), ('care', 'brake-fluid-care', 'monaer-care')]
 GP = {g[0]: {'slug': g[1], 'photo': g[2]} for g in GROUPS}
 
 
@@ -59,7 +59,14 @@ def gpath(g):
 
 
 P_FINDER, P_LOC, P_JOIN = 'part-finder/', 'find-a-workshop/', 'become-authorised-workshop/'
-PAGES = ['', 'products/'] + [gpath(g[0]) for g in GROUPS] + [P_FINDER, P_LOC, P_JOIN, 'faq/', 'contact/', 'articles/', 'privacy/']
+P_HUB = 'brake-parts-supply/'
+STATE_SLUGS = [x['slug'] for x in strings_en.STATES]
+
+
+def spath(slug):
+    return f'{P_HUB}{slug}/'
+
+PAGES = ['', 'products/'] + [gpath(g[0]) for g in GROUPS] + [P_FINDER, P_LOC, P_JOIN, 'faq/', 'contact/', 'articles/', 'privacy/', P_HUB] + [spath(x) for x in STATE_SLUGS]
 NAV = [('products/', 'products'), (P_FINDER, 'finder'), (P_LOC, 'locator'), (P_JOIN, 'join'), ('faq/', 'faq'), ('contact/', 'contact')]
 
 
@@ -90,7 +97,7 @@ def icon(name):
         'pin': '<path d="M12 21s-6.4-5.5-6.4-10.9a6.4 6.4 0 0 1 12.8 0C18.4 15.5 12 21 12 21z"/><circle cx="12" cy="10.1" r="2.2"/>',
         'nav': '<path d="M20 4L3.5 10.6l7 2.6 2.6 7z"/>', 'mail': '<path d="M3.5 6h17v12h-17z"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/>',
         'menu': '<path d="M4 7h16M4 12h16M4 17h16"/>', 'x': '<path d="M6 6l12 12M18 6L6 18"/>',
-        'go': '<path d="M5 12h13M13 6l6 6-6 6"/>', 'search': '<circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/>',
+        'go': '<path d="M5 12h13M13 6l6 6-6 6"/>', 'back': '<path d="M19 12H6M11 6l-6 6 6 6"/>', 'play': '<path d="M8 5.5v13l11-6.5z"/>', 'search': '<circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/>',
         'fb': '<path d="M14 8.5h2.5V5H14a3.5 3.5 0 0 0-3.5 3.5V11H8v3.5h2.5V21H14v-6.5h2.5L17 11h-3V8.5z"/>',
         'tick': '<path d="M5 12.5l4.5 4.5L19 7.5"/>', 'tool': '<path d="M14.5 5.5a4 4 0 0 0-5 5L4 16l4 4 5.500-5.5a4 4 0 0 0 5-5l-2.800 2.800-2.200-2.200z"/>',
         'car': '<path d="M4 16v-4l2-5h12l2 5v4"/><path d="M3 16h18v2H3z"/><circle cx="7.500" cy="14" r="1"/><circle cx="16.500" cy="14" r="1"/>',
@@ -113,12 +120,75 @@ def call(place, label=None, cls='b-call'):
     return cta('call', place, F['phone']['tel'], label or S.UI['call_btn'], cls, 'call', blank=False)
 
 
+FBM = F['fb_media']
+
+
 def pic(stem, eager=False, cls=None):
+    if stem in FBM:
+        return fbpic(stem, eager, cls)
     w, h = IMG[stem]
     c = f' class="{cls}"' if cls else ''
     load = ' fetchpriority="high"' if eager else ' loading="lazy"'
     return (f'<picture><source type="image/webp" srcset="{u(f"media/{stem}.webp")}">'
             f'<img{c} src="{u(f"media/{stem}.jpg")}" width="{w}" height="{h}" alt="{E(S.ALT[stem])}"{load} decoding="async"></picture>')
+
+
+def fbpic(stem, eager=False, cls=None, alt=None):
+    """Client Facebook photo from media/fb/. 4:5 frames crop with the manifest's object-position; brand graphics stay native."""
+    m = FBM[stem]
+    c = f' class="{cls}"' if cls else ''
+    st = f' style="object-position:{m["pos"]}"' if m['pos'] != 'center' else ''
+    load = ' fetchpriority="high"' if eager else ' loading="lazy"'
+    a = S.CAP[stem] if alt is None else alt
+    return (f'<picture><source type="image/webp" srcset="{u(f"media/fb/{stem}.webp")}">'
+            f'<img{c} src="{u(f"media/fb/{stem}.jpg")}" width="{m["w"]}" height="{m["h"]}" alt="{E(a)}"{st}{load} decoding="async"></picture>')
+
+
+def tile(stem, eager=False):
+    """4:5 photo frame with the caption on a gradient inside the frame."""
+    return f'<figure class="tile">{fbpic(stem, eager)}<figcaption>{E(S.CAP[stem])}</figcaption></figure>'
+
+
+STOCK = ['sp-monaer-warehouse-pallet', 'sp-monaer-brake-pads-stock-honda', 'sp-monaer-proton-x50-x70-pads', 'sp-monaer-perodua-myvi-brake-pads',
+         'sp-monaer-honda-city-jazz-pads', 'sp-monaer-toyota-estima-lexus-pads', 'sp-monaer-mazda-3-brake-pads', 'sp-monaer-ford-ranger-brake-pads',
+         'sp-monaer-kia-optima-proton-x70-pads', 'sp-monaer-bmw-mini-brake-pads', 'sp-monaer-mercedes-bmw-pads', 'sp-monaer-brembo-gt6-pads']
+DELIVER = ['sp-monaer-delivery-boot-boxes', 'sp-branded-carton-johor-delivery', 'sp-monaer-delivery-boot-parcels']
+
+
+def strip(stems, label, place):
+    """Swipe strip of 4:5 tiles. Arrows + dots, scroll-snap, no auto-slide."""
+    tiles = ''.join(f'<li>{tile(x)}</li>' for x in stems)
+    return (f'<div class="strip" data-strip><ul class="strip-t" aria-label="{E(label)}" tabindex="0">{tiles}</ul>'
+            f'<div class="strip-c"><button type="button" class="strip-b" data-dir="-1" aria-label="{E(S.FB["prev"])}">{icon("back")}</button>'
+            f'<div class="strip-d" aria-hidden="true"></div>'
+            f'<button type="button" class="strip-b" data-dir="1" aria-label="{E(S.FB["next"])}">{icon("go")}</button></div></div>')
+
+
+def wide_band():
+    return (f'<section class="band wallb"><div class="wrap wall-g"><figure class="wall">{fbpic("sp-monaer-brake-pads-stock-honda-wide")}</figure>'
+            f'<div><h2>{E(S.FB["wall_h"])}</h2><p>{E(S.FB["wall_p"])}</p></div></div></section>')
+
+
+def deliver_band(place):
+    t = ''.join(f'<li>{tile(x)}</li>' for x in DELIVER)
+    return (f'<section class="band paper"><div class="wrap"><h2>{E(S.FB["deliver_h"])}</h2><p class="sub">{E(S.FB["deliver_p"])}</p>'
+            f'<ul class="trio">{t}</ul><div class="btns">{wa(place + "_deliver", S.PREFILL["locator"])}</div></div></section>')
+
+
+def reels(place):
+    out = ''
+    for i, url in enumerate(F['reels']):
+        poster = ['sp-monaer-delivery-boot-boxes', 'sp-monaer-brake-pads-stock-honda'][i]
+        out += (f'<li class="reel"><div class="reel-box" data-reel="{E(url)}"><button type="button" class="reel-play" aria-label="{E(S.FB["reel_play"])}: {E(S.FB["reel_caps"][i])}">'
+                f'{fbpic(poster, alt="")}<span class="reel-ic">{icon("play")}</span></button></div>'
+                f'<div class="reel-t"><p>{E(S.FB["reel_caps"][i])}</p>{wa(f"{place}_reel{i + 1}", S.PREFILL["pads"], S.FB["reel_wa"], "b-wa sm")}'
+                f'{cta("facebook", f"{place}_reel{i + 1}", url, S.FB["reel_open"], "chip", "fb")}</div></li>')
+    return f'<section class="band ink"><div class="wrap"><h2>{E(S.FB["reels_h"])}</h2><p class="sub">{E(S.FB["reels_p"])}</p><ul class="reels">{out}</ul></div></section>'
+
+
+def state_cards(skip=None):
+    li = ''.join(f'<li><a href="{pu(spath(x["slug"]))}">{icon("pin")}<span>{E(x["name"])}</span></a></li>' for x in S.STATES if x['slug'] != skip)
+    return f'<ul class="stl">{li}</ul>'
 
 
 def logo():
@@ -141,7 +211,7 @@ def head(path, title, meta, ld):
     zh = L['code'] == 'zh'
     font = f'<link rel="preload" href="{u("assets/fonts/saira-700.woff2")}" as="font" type="font/woff2" crossorigin>'
     font += f'<link rel="preload" href="{u("assets/fonts/notosanssc-700.woff2" if zh else "assets/fonts/publicsans.woff2")}" as="font" type="font/woff2" crossorigin>'
-    hero = f'<link rel="preload" as="image" type="image/webp" href="{u("media/monaer-kit.webp")}" fetchpriority="high">' if path == '' else ''
+    hero = f'<link rel="preload" as="image" type="image/webp" href="{u("media/fb/sp-monaer-sp-precision-logo.webp")}" fetchpriority="high">' if path == '' else ''
     ldj = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in ld)
     return f'''<!doctype html>
 <html lang="{L['hreflang']}">
@@ -155,13 +225,13 @@ def head(path, title, meta, ld):
 <meta property="og:site_name" content="{E(NAME)}">
 <meta property="og:title" content="{E(title)}">
 <meta property="og:description" content="{E(meta)}">
-<meta property="og:image:alt" content="{E(S.ALT['monaer-kit'])}">
+<meta property="og:image:alt" content="{E(S.FB['brand_h'])}">
 {I18N.og_locale_tags(L)}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{E(title)}">
 <meta name="twitter:description" content="{E(meta)}">
-<meta name="twitter:image:alt" content="{E(S.ALT['monaer-kit'])}">
-<meta name="theme-color" content="#0E1A22">
+<meta name="twitter:image:alt" content="{E(S.FB['brand_h'])}">
+<meta name="theme-color" content="#0F1213">
 <link rel="icon" href="{u('media/favicon-32.png')}" sizes="32x32" type="image/png">
 <link rel="icon" href="{u('media/icon-192.png')}" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="{u('media/apple-touch-icon.png')}">
@@ -171,11 +241,15 @@ def head(path, title, meta, ld):
 </head>'''
 
 
+def lab(k):
+    return S.STATE['hub_nav'] if k == 'hub' else S.UI[k]
+
+
 def header(path):
     def cur(p):
         return ' aria-current="page"' if path == p or (p == 'products/' and path.startswith('products/')) else ''
     nav = ''.join(f'<a href="{pu(p)}"{cur(p)}>{E(S.UI[k])}</a>' for p, k in NAV)
-    sheet = ''.join(f'<a href="{pu(p)}"{cur(p)}>{E(S.UI[k])}</a>' for p, k in [('', 'home')] + NAV)
+    sheet = ''.join(f'<a href="{pu(p)}"{cur(p)}>{E(lab(k))}</a>' for p, k in [('', 'home')] + NAV + [(P_HUB, 'hub')])
     return f'''<body class="lang-{L['code']}{' is-home' if path == '' else ''}">
 <a class="skip" href="#main">{E(S.UI['skip'])}</a>
 <header class="top"><div class="wrap top-in">
@@ -196,7 +270,7 @@ def header(path):
 def footer():
     a = F['address']
     prod = ''.join(f'<li><a href="{pu(gpath(g[0]))}">{E(S.PG[g[0]]["name"])}</a></li>' for g in GROUPS)
-    nav = ''.join(f'<li><a href="{pu(p)}">{E(S.UI[k])}</a></li>' for p, k in NAV[1:] + [('articles/', 'articles')])
+    nav = ''.join(f'<li><a href="{pu(p)}">{E(lab(k))}</a></li>' for p, k in NAV[1:] + [(P_HUB, 'hub'), ('articles/', 'articles')])
     return f'''</main>
 <footer class="foot"><div class="wrap">
 <div class="foot-g">
@@ -234,7 +308,7 @@ def org_ld():
                         'addressRegion': a['region'], 'addressCountry': a['country']},
             'hasMap': LK['maps'], 'brand': {'@type': 'Brand', 'name': F['brand'], 'alternateName': F['brand_zh']},
             'contactPoint': [{'@type': 'ContactPoint', 'contactType': 'sales', 'telephone': F['phone']['e164'], 'url': F['whatsapp']['url'], 'availableLanguage': ['en', 'ms', 'zh']}],
-            'areaServed': [{'@type': 'State', 'name': 'Johor'}, {'@type': 'Country', 'name': 'Malaysia'}]}
+            'areaServed': [{'@type': 'City', 'name': 'Skudai'}, {'@type': 'City', 'name': 'Johor Bahru'}, {'@type': 'State', 'name': 'Johor'}, {'@type': 'Country', 'name': 'Malaysia'}]}
 
 
 def site_ld():
@@ -255,7 +329,7 @@ def faq_ld(items):
 def product_ld(g, path):
     d = S.PG[g]
     return {'@context': 'https://schema.org', '@type': 'Product', 'name': f"{F['brand']} {d['name']}", 'description': d['meta'], 'url': canon(path),
-            'image': CFG.share_base + f"media/{GP[g]['photo']}.jpg" if hasattr(CFG, 'share_base') else CFG.og_image(),
+            'image': CFG.share_base + (f"media/fb/{GP[g]['photo']}.jpg" if GP[g]['photo'] in FBM else f"media/{GP[g]['photo']}.jpg"),
             'brand': {'@type': 'Brand', 'name': F['brand']}, 'category': d['name']}
 
 
@@ -278,8 +352,11 @@ def steps():
     return f'<section class="band ink"><div class="wrap"><h2>{E(S.UI["steps_h"])}</h2><ol class="steps">{st}</ol><div class="btns">{wa("steps")}</div></div></section>'
 
 
+NATIVE = {'sp-monaer-sp-precision-logo', 'sp-monaer-product-range-graphic', 'sp-monaer-brake-pads-stock-honda-wide'}
+
+
 def page_head(trail, h1, lead, btns, photo=None):
-    ph = f'<figure class="ph-ph">{pic(photo, eager=True)}</figure>' if photo else f'<div class="ph-disc" aria-hidden="true">{disc("disc still")}</div>'
+    ph = f'<figure class="ph-ph{" native" if photo in NATIVE else ""}">{pic(photo, eager=True)}</figure>' if photo else f'<figure class="ph-ph ph-logo">{fbpic("sp-monaer-sp-precision-logo", True)}</figure>'
     return f'''<section class="ph"><div class="wrap ph-g"><div class="ph-t">{crumb_html(trail)}<h1>{E(h1)}</h1><p class="lead">{E(lead)}</p>
 <div class="btns">{btns}</div></div>{ph}</div></section>'''
 
@@ -325,7 +402,7 @@ def part_rows():
         fits = ''.join(f'<li>{E(x)}</li>' for x in c['fits'])
         txt = S.PREFILL['pads'] + c['m']
         rows += f'''<li class="part" data-q="{E((c['m'] + ' ' + ' '.join(c['fits'])).lower())}">
-<div class="part-no"><b>{E(c['m'])}</b><span>{E(P['type_pad'])}</span><small>{E(P['pack_4'])}</small></div>
+<div class="part-no"><b>{E(c['m'])}</b><span>{E(P['type_pad'])}</span>{('<small>' + E(P['pack_4']) + '</small>') if c.get('pack') == 4 else ''}</div>
 <div class="part-fit"><h3>{E(P['cols'][2])}</h3><ul>{fits}</ul></div>
 {wa('finder_part', txt, S.UI['wa_short'], 'b-wa sm')}</li>'''
     return rows
@@ -374,33 +451,35 @@ def join_teaser(place):
 # ---------- pages ----------
 def home():
     H = S.HOME
-    hero = f'''<section class="hero"><div class="hero-ph">{pic('monaer-kit', eager=True)}</div>
-<div class="hero-disc" aria-hidden="true">{disc()}</div>
-<div class="wrap hero-in"><h1>{E(H['h1'])}</h1><p class="hero-l">{E(H['line'])}</p>
-<div class="btns">{wa('home_hero')}<a class="b-ghost" href="{pu(P_LOC)}" data-cta="locator_home_hero" data-ref="locator_home_hero">{icon('pin')}<span>{E(S.UI['locator_btn'])}</span></a></div>
-</div></section>'''
+    hero = f'''<section class="hero"><div class="wrap hero-g"><div class="hero-in"><h1>{E(H['h1'])}</h1><p class="hero-l">{E(S.FB['hero_line'])}</p>
+<div class="btns">{wa('home_hero')}<a class="b-ghost" href="{pu(P_LOC)}" data-cta="locator_home_hero" data-ref="locator_home_hero">{icon('pin')}<span>{E(S.UI['locator_btn'])}</span></a></div></div>
+<figure class="hero-logo">{fbpic('sp-monaer-sp-precision-logo', eager=True, alt=S.CAP['sp-monaer-sp-precision-logo'])}</figure></div></section>'''
+    stock = f'''<section class="band concrete"><div class="wrap"><h2>{E(S.FB['stock_h'])}</h2><p class="sub">{E(S.FB['stock_p'])}</p>
+{strip(STOCK, S.FB['strip_label'], 'home')}</div></section>'''
     two = ''
     for (h, p, k), ic in zip(H['two'], ('car', 'tool')):
         href, lab = (pu(P_FINDER), S.UI['finder_btn']) if k == 'finder' else (pu(P_JOIN), S.UI['join_btn'])
         two += f'<li class="door door-{k}"><span class="door-ic">{icon(ic)}</span><h3>{E(h)}</h3><p>{E(p)}</p><a class="more" href="{href}" data-cta="{k}_home_doors" data-ref="{k}_home_doors"><span>{E(lab)}</span>{icon("go")}</a></li>'
-    doors = f'<section class="band steel lift"><div class="wrap"><h2>{E(H["two_h"])}</h2><ul class="doors">{two}</ul></div></section>'
+    doors = f'<section class="band paper"><div class="wrap"><h2>{E(H["two_h"])}</h2><ul class="doors">{two}</ul></div></section>'
     why = ''.join(f'<li><h3>{E(h)}</h3><p>{E(p)}</p></li>' for h, p in H['why'])
     feel = ''.join(f'<li>{icon("tick")}<span>{E(x)}</span></li>' for x in H['feel'])
-    whyb = f'''<section class="band ink lift"><div class="wrap"><h2>{E(H['why_h'])}</h2><p class="sub">{E(H['why_p'])}</p>
+    whyb = f'''<section class="band teal"><div class="wrap"><h2>{E(H['why_h'])}</h2><p class="sub">{E(H['why_p'])}</p>
 <ul class="why">{why}</ul>
-<div class="feel"><figure>{pic('monaer-pads')}</figure><div><h3>{E(H['feel_h'])}</h3><ul class="ticks">{feel}</ul><p class="fine">{E(H['feel_note'])}</p></div></div>
+<div class="feel"><figure class="label-card">{fbpic('sp-monaer-product-range-graphic')}<figcaption>{E(S.FB['brand_h'])}</figcaption></figure><div><h3>{E(H['feel_h'])}</h3><ul class="ticks">{feel}</ul><p class="fine">{E(H['feel_note'])}</p></div></div>
 </div></section>'''
     c = H['compare_cols']
     rows = ''.join(f'<tr><th scope="row">{E(a)}</th><td class="us">{E(b)}</td><td>{E(d)}</td></tr>' for a, b, d in H['compare_rows'])
-    comp = f'''<section class="band steel lift"><div class="wrap narrow"><h2>{E(H['compare_h'])}</h2><p class="sub">{E(H['compare_p'])}</p>
+    comp = f'''<section class="band concrete"><div class="wrap narrow"><h2>{E(H['compare_h'])}</h2><p class="sub">{E(H['compare_p'])}</p>
 <div class="cmp"><table><thead><tr><td></td><th scope="col" class="us">{E(c[1])}</th><th scope="col">{E(c[2])}</th></tr></thead><tbody>{rows}</tbody></table></div></div></section>'''
-    cards = ''.join(f'''<li class="pc"><a href="{pu(gpath(g))}"><figure>{pic(GP[g]['photo'])}</figure><h3>{E(S.PG[g]['name'])}</h3><p>{E(S.PG[g]['line'])}</p><span class="more"><span>{E(S.UI['see_more'])}</span>{icon('go')}</span></a></li>''' for g in GP)
-    rng = f'<section class="band paper lift"><div class="wrap"><h2>{E(H["range_h"])}</h2><ul class="pcs">{cards}</ul></div></section>'
-    fnd = f'''<section class="band steel lift" id="finder"><div class="wrap"><h2>{E(H['finder_h'])}</h2><p class="sub">{E(H['finder_p'])}</p>
+    cards = ''.join(f'''<li class="pc"><a href="{pu(gpath(g))}"><figure{' class="native"' if GP[g]['photo'] in NATIVE else ''}>{pic(GP[g]['photo'])}</figure><h3>{E(S.PG[g]['name'])}</h3><p>{E(S.PG[g]['line'])}</p><span class="more"><span>{E(S.UI['see_more'])}</span>{icon('go')}</span></a></li>''' for g in GP)
+    rng = f'<section class="band paper"><div class="wrap"><h2>{E(H["range_h"])}</h2><ul class="pcs">{cards}</ul></div></section>'
+    fnd = f'''<section class="band concrete" id="finder"><div class="wrap"><h2>{E(H['finder_h'])}</h2><p class="sub">{E(H['finder_p'])}</p>
 <div class="finder-g">{finder_block('home_finder')}</div>
 <p class="more-row"><a class="more" href="{pu(P_FINDER)}"><span>{E(S.UI['finder_btn'])}</span>{icon('go')}</a></p></div></section>'''
-    loc = f'''<section class="band paper lift"><div class="wrap"><h2>{E(H['locator_h'])}</h2><p class="sub">{E(H['locator_p'])}</p>{locator_block('home_locator')}</div></section>'''
-    return hero + doors + whyb + rng + fnd + comp + loc + join_teaser('home') + steps() + faq_band(H['faq'])
+    loc = f'''<section class="band paper"><div class="wrap"><h2>{E(H['locator_h'])}</h2><p class="sub">{E(H['locator_p'])}</p>{locator_block('home_locator')}</div></section>'''
+    sts = f'''<section class="band concrete"><div class="wrap"><h2>{E(S.FB['states_h'])}</h2><p class="sub">{E(S.FB['states_p'])}</p>{state_cards()}</div></section>'''
+    return (hero + stock + wide_band() + deliver_band('home') + doors + whyb + reels('home') + rng + fnd + comp + loc + sts +
+            join_teaser('home') + steps() + faq_band(H['faq']))
 
 
 def products_page(path):
@@ -409,10 +488,11 @@ def products_page(path):
     secs = ''
     for i, (g, _, photo) in enumerate(GROUPS):
         d = S.PG[g]
+        nat = ' class="native"' if photo in NATIVE else ''
         pts = ''.join(f'<li>{icon("tick")}<span>{E(x)}</span></li>' for x in d['points'][:4])
-        secs += f'''<article class="row{' flip' if i % 2 else ''}"><figure>{pic(photo)}</figure><div><h2>{E(d['name'])}</h2><p>{E(d['line'])}</p><ul class="ticks">{pts}</ul>
+        secs += f'''<article class="row{' flip' if i % 2 else ''}"><figure{nat}>{pic(photo)}</figure><div><h2>{E(d['name'])}</h2><p>{E(d['line'])}</p><ul class="ticks">{pts}</ul>
 <div class="btns">{wa('product_' + g, S.PREFILL[g])}<a class="more" href="{pu(gpath(g))}"><span>{E(S.UI['see_more'])}</span>{icon('go')}</a></div></div></article>'''
-    body = (page_head(trail, P['h1'], P['lead'], wa('products'), 'monaer-kit') + f'<section class="band paper"><div class="wrap">{secs}<p class="fine">{E(S.UI["maker_note"])}</p></div></section>' +
+    body = (page_head(trail, P['h1'], P['lead'], wa('products'), 'sp-monaer-product-range-graphic') + f'<section class="band paper"><div class="wrap">{secs}<p class="fine">{E(S.UI["maker_note"])}</p></div></section>' +
             steps() + join_teaser('products'))
     return body, [org_ld(), crumb_ld(trail)]
 
@@ -424,7 +504,13 @@ def group_page(g):
     pts = ''.join(f'<li>{icon("tick")}<span>{E(x)}</span></li>' for x in d['points'])
     bod = ''.join(f'<li>{E(x)}</li>' for x in d['body'])
     others = ''.join(f'<li><a class="chip" href="{pu(gpath(o))}">{E(S.PG[o]["name"])}</a></li>' for o in GP if o != g)
-    extra = f'<section class="band steel"><div class="wrap"><h2>{E(S.HOME["finder_h"])}</h2><div class="finder-g">{finder_block("product_" + g)}</div></div></section>' if g != 'care' else ''
+    if g == 'pads':
+        rg = f'<section class="band concrete"><div class="wrap"><h2>{E(S.FB["ranges_h"])}</h2><p class="sub">{E(S.FB["ranges_p"])}</p>{strip(STOCK[2:], S.FB["ranges_h"], "pads")}</div></section>'
+    elif g == 'discs':
+        rg = f'<section class="band concrete"><div class="wrap"><h2>{E(S.FB["stock_h"])}</h2><p class="sub">{E(S.FB["discs_ranges_p"])}</p><ul class="trio">{"".join(f"<li>{tile(x)}</li>" for x in ["sp-monaer-warehouse-pallet", "sp-monaer-brake-system-cartons", "sp-branded-carton-johor-delivery"])}</ul></div></section>'
+    else:
+        rg = ''
+    extra = rg + (f'<section class="band steel"><div class="wrap"><h2>{E(S.HOME["finder_h"])}</h2><div class="finder-g">{finder_block("product_" + g)}</div></div></section>' if g != 'care' else '')
     body = (page_head(trail, d['h1'], d['lead'], wa('product_' + g, S.PREFILL[g]) + call('product_' + g, cls='b-ghost'), GP[g]['photo']) +
             f'''<section class="band paper"><div class="wrap two"><div><h2>{E(d['name'])}</h2><ul class="ticks big">{pts}</ul><p class="fine">{E(S.UI['maker_note'])}</p></div>
 <div class="note-card"><h2>{E(d['body_h'])}</h2><ul class="dots">{bod}</ul><p class="fine">{E(S.UI['safety'])}</p><div class="btns">{wa('product_' + g + '_signs', S.PREFILL[g], S.UI['wa_short'], 'b-wa sm')}</div></div></div></section>''' +
@@ -436,7 +522,7 @@ def finder_page(path):
     P = S.FINDER
     trail = [('', S.UI['home']), (path, S.UI['finder'])]
     rd = ''.join(f'<li><h3>{E(h)}</h3><p>{E(p)}</p></li>' for h, p in P['read'])
-    body = (page_head(trail, P['h1'], P['lead'], wa('finder')) +
+    body = (page_head(trail, P['h1'], P['lead'], wa('finder'), 'sp-monaer-brake-pads-stock-honda') +
             f'<section class="band steel"><div class="wrap"><h2>{E(P["search_h"])}</h2><div class="finder-g">{finder_block("finder")}</div><p class="fine">{E(S.UI["safety"])}</p></div></section>' +
             f'<section class="band paper"><div class="wrap two"><div><h2>{E(P["read_h"])}</h2><ul class="read">{rd}</ul></div><figure class="read-ph">{pic("monaer-pads")}</figure></div></section>' +
             steps() + faq_band(P['faqs']))
@@ -446,8 +532,9 @@ def finder_page(path):
 def locator_page(path):
     R = S.LOCATOR
     trail = [('', S.UI['home']), (path, S.UI['locator'])]
-    body = (page_head(trail, R['h1'], R['lead'], wa('locator', S.PREFILL['locator'], R['ask_btn'])) +
-            f'<section class="band paper"><div class="wrap">{locator_block("locator", "h2")}</div></section>' + join_teaser('locator') + faq_band(R['faqs']))
+    body = (page_head(trail, R['h1'], R['lead'], wa('locator', S.PREFILL['locator'], R['ask_btn']), 'sp-monaer-delivery-boot-parcels') +
+            f'<section class="band paper"><div class="wrap">{locator_block("locator", "h2")}</div></section>' +
+            f'<section class="band concrete"><div class="wrap"><h2>{E(S.FB["states_h"])}</h2><p class="sub">{E(S.FB["states_p"])}</p>{state_cards()}</div></section>' + join_teaser('locator') + faq_band(R['faqs']))
     return body, [org_ld(), crumb_ld(trail), faq_ld(R['faqs'])]
 
 
@@ -455,7 +542,7 @@ def join_page(path):
     J = S.JOIN
     trail = [('', S.UI['home']), (path, S.UI['join'])]
     get = ''.join(f'<li><span class="n" aria-hidden="true">{icon("tick")}</span><div><h3>{E(h)}</h3><p>{E(p)}</p></div></li>' for h, p in J['get'])
-    body = (page_head(trail, J['h1'], J['lead'], f'<a class="b-wa" href="#apply">{icon("go")}<span>{E(S.UI["join_btn"])}</span></a>' + call('join', cls='b-ghost'), 'monaer-kit') +
+    body = (page_head(trail, J['h1'], J['lead'], f'<a class="b-wa" href="#apply">{icon("go")}<span>{E(S.UI["join_btn"])}</span></a>' + call('join', cls='b-ghost'), 'sp-branded-carton-johor-delivery') +
             f'''<section class="band paper"><div class="wrap two"><div><h2>{E(J['get_h'])}</h2><ul class="get">{get}</ul></div>
 <div class="send-card" id="apply"><h2>{E(J['form_h'])}</h2><p>{E(J['form_p'])}</p>{join_form('join')}</div></div></section>''' + faq_band(J['faqs']))
     return body, [org_ld(), crumb_ld(trail), faq_ld(J['faqs'])]
@@ -472,7 +559,7 @@ def contact_page(path):
     C = S.CONTACT
     a = F['address']
     trail = [('', S.UI['home']), (path, S.UI['contact'])]
-    body = page_head(trail, C['h1'], C['lead'], wa('contact', S.PREFILL['contact'], 'WhatsApp ' + F['phone']['display']) + call('contact', cls='b-ghost'), 'sp-name-card') + f'''<section class="band paper"><div class="wrap two">
+    body = page_head(trail, C['h1'], C['lead'], wa('contact', S.PREFILL['contact'], 'WhatsApp ' + F['phone']['display']) + call('contact', cls='b-ghost'), 'sp-monaer-sp-precision-logo') + f'''<section class="band paper"><div class="wrap two">
 <div class="note-card"><h2>{E(S.UI['address_h'])}</h2><address>{E(F['legal_name'])}<br>{'<br>'.join(E(x) for x in a['lines'])}<br>Malaysia</address>
 <p class="fine">{E(S.UI['company'])} {E(F['company_no'])}</p>
 <div class="chips">{cta('map', 'contact', LK['maps'], S.UI['maps'], 'chip', 'pin')}{cta('waze', 'contact', LK['waze'], S.UI['waze'], 'chip', 'nav')}
@@ -498,10 +585,49 @@ def privacy_page(path):
     return body, [org_ld(), crumb_ld(trail)]
 
 
+def hub_page(path):
+    T = S.STATE
+    trail = [('', S.UI['home']), (path, T['hub_nav'])]
+    rows = ''.join(f'''<li class="stc"><a href="{pu(spath(x['slug']))}"><h2>{E(x['name'])}</h2><p>{E(x['line'])}</p><span class="more"><span>{E(T['card_go'].format(state=x['name']))}</span>{icon('go')}</span></a></li>''' for x in S.STATES)
+    body = (page_head(trail, T['hub_h1'], T['hub_lead'], wa('hub', S.PREFILL['locator']), 'sp-monaer-warehouse-pallet') +
+            f'<section class="band paper"><div class="wrap"><ul class="stcs">{rows}</ul></div></section>' + deliver_band('hub') + join_teaser('hub'))
+    return body, [org_ld(), crumb_ld(trail)]
+
+
+def state_page(slug):
+    T = S.STATE
+    x = next(z for z in S.STATES if z['slug'] == slug)
+    n = x['name']
+    f = lambda t: t.format(state=n)
+    path = spath(slug)
+    trail = [('', S.UI['home']), (P_HUB, T['hub_nav']), (path, n)]
+    sup = ''.join(f'<li><h3>{E(h)}</h3><p>{E(p)}</p></li>' for h, p in T['supply'])
+    how = ''.join(f'<li><span class="n" aria-hidden="true">{i + 1}</span><div><h3>{E(f(h))}</h3><p>{E(f(p))}</p></div></li>' for i, (h, p) in enumerate(T['how']))
+    faqs = [(f(q), f(a)) for q, a in T['faq']]
+    photo = 'sp-branded-carton-johor-delivery' if slug == 'johor' else STOCK[2 + STATE_SLUGS.index(slug) % 10]
+    btn = wa('state_' + slug.replace('-', '_'), f(T['prefill']))
+    body = (page_head(trail, f(T['h1']), f(T['lead']), btn + call('state_' + slug.replace('-', '_'), cls='b-ghost'), photo) +
+            f'''<section class="band paper"><div class="wrap narrow"><p class="about">{E(x['line'])}</p><p class="fine">{E(f(T['honest']))}</p></div></section>
+<section class="band teal"><div class="wrap"><h2>{E(f(T['supply_h']))}</h2><ul class="why">{sup}</ul><p class="more-row"><a class="more" href="{pu(gpath('pads'))}"><span>{E(S.PG['pads']['name'])}</span>{icon('go')}</a> <a class="more" href="{pu(gpath('discs'))}"><span>{E(S.PG['discs']['name'])}</span>{icon('go')}</a></p></div></section>
+<section class="band concrete"><div class="wrap"><h2>{E(S.FB['stock_h'])}</h2><p class="sub">{E(S.FB['stock_p'])}</p>{strip(STOCK, S.FB['strip_label'], 'state')}</div></section>
+<section class="band ink"><div class="wrap"><h2>{E(f(T['how_h']))}</h2><ol class="steps">{how}</ol><div class="btns">{btn}</div></div></section>''' +
+            (deliver_band('state_johor') if slug == 'johor' else '') +
+            f'''<section class="band blue"><div class="wrap join-t"><div><h2>{E(f(T['join_h']))}</h2><p>{E(T['join_p'])}</p></div>
+<a class="b-solid" href="{pu(P_JOIN)}" data-cta="join_state" data-ref="join_state"><span>{E(S.UI['join_btn'])}</span>{icon('go')}</a></div></section>
+<section class="band steel"><div class="wrap narrow"><h2>{E(S.UI['faq_h'])}</h2>{qa(faqs)}<h2 class="others-h">{E(T['others_h'])}</h2>{state_cards(slug)}</div></section>''')
+    return body, [org_ld(), crumb_ld(trail), faq_ld(faqs)], f(T['title']), f(T['meta'])
+
+
 def render(path):
     if path == '':
         H = S.HOME
         return head(path, H['title'], H['meta'], [org_ld(), site_ld(), faq_ld(H['faq'])]) + header(path) + home() + footer()
+    if path.startswith(P_HUB) and path != P_HUB:
+        b, ld, t, m = state_page(path[len(P_HUB):].strip('/'))
+        return head(path, t, m, ld) + header(path) + b + footer()
+    if path == P_HUB:
+        b, ld = hub_page(path)
+        return head(path, S.STATE['hub_title'], S.STATE['hub_meta'], ld) + header(path) + b + footer()
     if path.startswith('products/') and path != 'products/':
         g = next(x for x in GP if gpath(x) == path)
         b, ld = group_page(g)
@@ -577,7 +703,9 @@ def main():
              f'- Company: {F["legal_name"]} ({F["company_no"]})', f'- Brand: {F["brand"]} ({F["brand_zh"]})', '', '## Products']
     lines += [f'- [{S.PG[g]["name"]}]({CFG.canon(gpath(g))}): {S.PG[g]["line"]}' for g in GP]
     lines += ['', '## For drivers', f'- [{S.FINDER["h1"]}]({CFG.canon(P_FINDER)})', f'- [{S.LOCATOR["h1"]}]({CFG.canon(P_LOC)})',
-              '', '## For workshops', f'- [{S.JOIN["h1"]}]({CFG.canon(P_JOIN)})', '', '## Pages']
+              '', '## For workshops', f'- [{S.JOIN["h1"]}]({CFG.canon(P_JOIN)})', f'- [{S.STATE["hub_h1"]}]({CFG.canon(P_HUB)})']
+    lines += [f'- [{S.STATE["h1"].format(state=x["name"])}]({CFG.canon(spath(x["slug"]))})' for x in S.STATES]
+    lines += ['', '## Pages']
     for LL in I18N.LANGS:
         for p in PAGES:
             lines.append(f'- [{LL["label"]}] {CFG.canon(I18N.page_path(LL, p))}')

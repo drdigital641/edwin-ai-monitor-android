@@ -31,7 +31,7 @@
   "one_line": "No. 15, Jalan Selesa Indah 9, Taman Selesa Indah, 81300 Skudai, Johor"
  },
  "links": {
-  "facebook": "https://www.facebook.com/share/1JMmkjhr97/",
+  "facebook": "https://www.facebook.com/profile.php?id=61574165936301",
   "maps": "https://www.google.com/maps/search/?api=1&query=No.+15+Jalan+Selesa+Indah+9+Taman+Selesa+Indah+81300+Skudai+Johor",
   "waze": "https://waze.com/ul?q=Jalan%20Selesa%20Indah%209%2C%20Skudai%2C%20Johor&navigate=yes",
   "maps_embed": "https://www.google.com/maps?q=Jalan+Selesa+Indah+9,+Taman+Selesa+Indah,+81300+Skudai,+Johor&output=embed"
@@ -48,6 +48,111 @@
    ],
    "pack": 4,
    "src": "Monaer Brake System Malaysia Facebook post, 20 Nov 2026"
+  },
+  {
+   "m": "M0518",
+   "type": "pad",
+   "fits": [
+    "BMW F40, F48",
+    "MINI F60"
+   ],
+   "src": "client Facebook photo (box label), drop 6b01bd76, 21 Nov 2026"
+  },
+  {
+   "m": "M2505",
+   "type": "pad",
+   "fits": [
+    "Proton X50 (front)"
+   ],
+   "src": "client Facebook photo (box label), drop 6b01bd76, 21 Nov 2026"
+  },
+  {
+   "m": "M6811",
+   "type": "pad",
+   "fits": [
+    "Proton X70, Kia, Hyundai (rear)"
+   ],
+   "src": "client Facebook photo (box label), drop 6b01bd76, 21 Nov 2026"
+  },
+  {
+   "m": "M4305",
+   "type": "pad",
+   "fits": [
+    "Toyota Estima ACR50, ANH20, AGH30 (front)"
+   ],
+   "src": "client Facebook photo (box label), drop 6b01bd76, 21 Nov 2026"
+  },
+  {
+   "m": "M5201",
+   "type": "pad",
+   "fits": [
+    "Toyota / Lexus (rear)"
+   ],
+   "src": "client Facebook photo (box label), drop 6b01bd76, 21 Nov 2026"
+  },
+  {
+   "m": "M6023",
+   "type": "pad",
+   "fits": [
+    "Mazda 3 BP, 19 inch (front)"
+   ],
+   "src": "client Facebook photo (box label), drop 6b01bd76, 21 Nov 2026"
+  },
+  {
+   "m": "M3037",
+   "type": "pad",
+   "fits": [
+    "Ford Ranger T6, T7 (front)"
+   ],
+   "src": "client Facebook photo (box label), drop 6b01bd76, 21 Nov 2026"
+  },
+  {
+   "m": "MCK022",
+   "type": "pad",
+   "fits": [
+    "Perodua Myvi M300 05 (front)"
+   ],
+   "src": "client Facebook photo (box label), drop 6b01bd76, 21 Nov 2026"
+  },
+  {
+   "m": "M7612",
+   "type": "pad",
+   "fits": [
+    "Brembo GT6 caliper 189.6 x 87.6 (front)"
+   ],
+   "src": "client Facebook photo (box label), drop 6b01bd76, 21 Nov 2026"
+  },
+  {
+   "m": "M0970",
+   "type": "pad",
+   "fits": [
+    "Mercedes-Benz W177, C118, V167 (front)"
+   ],
+   "src": "client Facebook photo (box label), drop 6b01bd76, 21 Nov 2026"
+  },
+  {
+   "m": "M0521",
+   "type": "pad",
+   "fits": [
+    "BMW F10, F06 (front)"
+   ],
+   "src": "client Facebook photo (box label), drop 6b01bd76, 21 Nov 2026"
+  },
+  {
+   "m": "M8103",
+   "type": "pad",
+   "fits": [
+    "Kia Optima K5 (front)"
+   ],
+   "src": "client Facebook photo (box label), drop 6b01bd76, 21 Nov 2026"
+  },
+  {
+   "m": "M2915",
+   "type": "pad",
+   "fits": [
+    "Toyota Hilux"
+   ],
+   "src": "client Facebook photo (box label), drop 6b01bd76, 21 Nov 2026"
   }
  ],
  "workshops": [],
@@ -83,5 +188,107 @@
   "BMW",
   "Volkswagen",
   "Other"
- ]
+ ],
+ "reels": [
+  "https://www.facebook.com/reel/1236064784830400/",
+  "https://www.facebook.com/reel/954090909969068/"
+ ],
+ "fb_media": {
+  "sp-monaer-sp-precision-logo": {
+   "w": 1254,
+   "h": 1254,
+   "pos": "center"
+  },
+  "sp-monaer-product-range-graphic": {
+   "w": 1080,
+   "h": 1147,
+   "pos": "center"
+  },
+  "sp-branded-carton-johor-delivery": {
+   "w": 1280,
+   "h": 1600,
+   "pos": "center"
+  },
+  "sp-monaer-brake-pads-stock-honda": {
+   "w": 648,
+   "h": 810,
+   "pos": "center"
+  },
+  "sp-monaer-warehouse-pallet": {
+   "w": 1280,
+   "h": 1600,
+   "pos": "center"
+  },
+  "sp-monaer-brake-system-cartons": {
+   "w": 1280,
+   "h": 1600,
+   "pos": "center"
+  },
+  "sp-monaer-delivery-boot-boxes": {
+   "w": 960,
+   "h": 1200,
+   "pos": "center"
+  },
+  "sp-monaer-delivery-boot-parcels": {
+   "w": 960,
+   "h": 1200,
+   "pos": "center"
+  },
+  "sp-monaer-proton-x50-x70-pads": {
+   "w": 1152,
+   "h": 1440,
+   "pos": "center top"
+  },
+  "sp-monaer-bmw-mini-brake-pads": {
+   "w": 1152,
+   "h": 1440,
+   "pos": "center top"
+  },
+  "sp-monaer-toyota-estima-lexus-pads": {
+   "w": 960,
+   "h": 1200,
+   "pos": "center"
+  },
+  "sp-monaer-mazda-3-brake-pads": {
+   "w": 960,
+   "h": 1200,
+   "pos": "center"
+  },
+  "sp-monaer-ford-ranger-brake-pads": {
+   "w": 1152,
+   "h": 1440,
+   "pos": "center"
+  },
+  "sp-monaer-perodua-myvi-brake-pads": {
+   "w": 1152,
+   "h": 1440,
+   "pos": "center"
+  },
+  "sp-monaer-brembo-gt6-pads": {
+   "w": 1152,
+   "h": 1440,
+   "pos": "center"
+  },
+  "sp-monaer-honda-city-jazz-pads": {
+   "w": 960,
+   "h": 1200,
+   "pos": "center"
+  },
+  "sp-monaer-mercedes-bmw-pads": {
+   "w": 960,
+   "h": 1200,
+   "pos": "center"
+  },
+  "sp-monaer-kia-optima-proton-x70-pads": {
+   "w": 1152,
+   "h": 1440,
+   "pos": "center top"
+  },
+  "sp-monaer-brake-pads-stock-honda-wide": {
+   "w": 1080,
+   "h": 810,
+   "pos": "center"
+  }
+ },
+ "_fb_note": "fb_media: client Facebook photos (Bridge drop 6b01bd7605d7eda61265516e, 21 Nov 2026), in media/fb/. 4:5 set = object-fit cover + pos; logo, range graphic and -wide = native aspect (contain)."
 }
