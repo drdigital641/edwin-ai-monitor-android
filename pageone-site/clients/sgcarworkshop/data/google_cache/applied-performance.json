@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 24,
+ "websiteUri": "https://web.facebook.com/Applied-Performance-350162341677580/?_rdc=1&_rdr",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 11:00 AM – 7:00 PM",
+  "Tuesday: 11:00 AM – 7:00 PM",
+  "Wednesday: 11:00 AM – 7:00 PM",
+  "Thursday: 11:00 AM – 7:00 PM",
+  "Friday: 11:00 AM – 7:00 PM",
+  "Saturday: 11:00 AM – 7:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-21",
+ "place_id": "ChIJa15P6e4X2jERVw9RhdVkYVs",
+ "source": "google_places"
+}

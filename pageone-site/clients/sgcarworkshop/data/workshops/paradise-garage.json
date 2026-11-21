@@ -1,0 +1,44 @@
+{
+ "schema_version": 1,
+ "slug": "paradise-garage",
+ "place_id": "ChIJhQsv3O4X2jERYNkETqBM7ro",
+ "place_id_checked_at": "2026-11-21",
+ "name": "Paradise Garage",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-21",
+ "address": {
+  "block": "",
+  "street": "10 Kaki Bukit Rd 2, #03-23 First East Centre",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "417868",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-21",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6590218139",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-21"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-21"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-21",
+ "last_verified_at": "2026-11-21",
+ "collector_version": "agent-v5"
+}
