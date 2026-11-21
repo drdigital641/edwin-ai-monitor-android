@@ -1,0 +1,87 @@
+diff -ru glb/base44/shared/goLive.ts gl/base44/shared/goLive.ts
+--- glb/base44/shared/goLive.ts	2026-11-21 12:08:18.454921159 +0000
++++ gl/base44/shared/goLive.ts	2026-11-21 12:08:18.502387037 +0000
+@@ -61,7 +61,11 @@
+   const files = (listed.entries as any[]).filter((x) => x.type === 'file' && x.readable && /\.html?$/i.test(x.path)).map((x) => x.path as string);
+   const hasRobots = (listed.entries as any[]).some((x) => x.path === join(e.base, 'robots.txt') && x.type === 'file');
+   const extra = ['sitemap.xml', 'robots.txt', 'llms.txt'].map((n) => join(e.base, n)).filter((p) => (listed.entries as any[]).some((x) => x.path === p && x.type === 'file'));
+-  const all = [...files, ...extra];
++  // Text assets (CSS/JS/JSON/webmanifest) can carry /preview/<slug>/ paths too (21 Nov 2026: sgcaraccident centre lists).
++  // Files over 600 KB and *.min.js vendor bundles are skipped; a file without a preview path is read but never written.
++  const ASSET_RE = /\.(css|js|mjs|json|webmanifest)$/i;
++  const assets = (listed.entries as any[]).filter((x) => x.type === 'file' && x.readable && ASSET_RE.test(x.path) && !/\.min\.js$/i.test(x.path) && !(x.size > 600_000)).map((x) => x.path as string);
++  const all = [...files, ...extra, ...assets];
+   let changed = 0, skipped = 0, remaining = 0; const errors: string[] = [];
+   await mapLimit(all, 4, async (rel) => {
+     if (errors.length) return;
+@@ -70,7 +74,8 @@
+       const r: any = await readLiveFile(e.site, rel);
+       if (typeof r.content !== 'string') { skipped++; return; }
+       // robots.txt: only the Sitemap line is retargeted; Disallow rules and everything else stay as the site has them.
+-      const next = rel.endsWith('.xml') ? P.retargetXml(r.content, m) : rel.endsWith('.txt') ? P.retargetText(r.content, m) : P.retargetHtml(r.content, m, { is404: /(^|\/)404\.html?$/i.test(rel) });
++      const next = rel.endsWith('.xml') ? P.retargetXml(r.content, m) : rel.endsWith('.txt') ? P.retargetText(r.content, m)
++        : ASSET_RE.test(rel) ? P.retargetAsset(r.content, m) : P.retargetHtml(r.content, m, { is404: /(^|\/)404\.html?$/i.test(rel) });
+       if (next === r.content) { skipped++; return; }
+       const bytes = new TextEncoder().encode(next);
+       await writeFile(e.site, rel, bytes, r.base_sha256, { publisher: true });   // retarget only: skips the new-page image/CTA gates, keeps hold, sha and backup
+@@ -165,7 +170,7 @@
+   const canonTag = (home.match(/<link\b[^>]*\brel=["']canonical["'][^>]*>/i) || [])[0] || '';
+   const canon = (canonTag.match(/\bhref=["']([^"']+)["']/i) || [])[1] || '';
+   res.push({ name: m.live ? 'home canonical = live domain' : 'home canonical = preview', ok: !canon || canon.startsWith(m.canonicalBase), info: canon || 'no canonical tag (not added)' });
+-  if (m.live) res.push({ name: 'no preview URL left on home', ok: !home.includes(m.previewHost + m.previewPath) && !home.includes(m.previewPath + '/'), info: 'checked' });
++  if (m.live) res.push({ name: 'no preview URL left on home', ok: !home.includes(m.previewHost + m.previewPath) && !home.includes(m.previewPath), info: 'checked' });
+   const imgs = [...new Set([...home.matchAll(/<meta\b[^>]*>/gi)].map((t) => t[0]).filter((t) => /(?:property|name)=["'](?:og:image|twitter:image)["']/i.test(t)).map((t) => (t.match(/\bcontent=["']([^"']+)["']/i) || [])[1]).filter(Boolean))];
+   if (!imgs.length) res.push({ name: 'og/twitter image present', ok: false, info: 'none found on home' });
+   await Promise.all(imgs.map((u) => job('og/twitter image ' + u.replace(/^https:\/\//, ''), async () => { const r = await hit(u, true); const sz = P.jpegSize(r.buf);
+diff -ru glb/base44/shared/goLivePure.ts gl/base44/shared/goLivePure.ts
+--- glb/base44/shared/goLivePure.ts	2026-11-21 12:08:18.455066719 +0000
++++ gl/base44/shared/goLivePure.ts	2026-11-21 12:08:18.501931897 +0000
+@@ -52,7 +52,8 @@
+   // Every other absolute preview/live link in the body (anchors, scripts, styles) follows the state too.
+   html = retargetText(html, m);
+   // Root-absolute paths: live = served from the domain root, so /preview/<slug>/x becomes /x; off = the reverse.
+-  html = m.live ? stripPreviewPrefix(html, m.previewPath) : addPreviewPrefix(html, m.previewPath);
++  // Live also strips the prefix from inline data (data-base=, JSON in <script>, inline style url()) via stripPreviewPaths.
++  html = m.live ? stripPreviewPaths(stripPreviewPrefix(html, m.previewPath), m.previewPath) : addPreviewPrefix(html, m.previewPath);
+   // noindex: off on the live host, on while switched off. The 404 page always keeps its noindex.
+   if (!opts.is404) html = m.live ? removeNoindex(html) : ensureNoindex(html);
+   return html;
+@@ -79,6 +80,20 @@
+     .replace(/url\((['"]?)\/(?!\/|preview\/)/g, (_x, q) => 'url(' + q + pre + '/');
+ }
+ 
++// LIVE only (21 Nov 2026, sgcaraccident.sg): any root-relative /preview/<slug>/ path left after the attribute pass, in any
++// text file (data-* attributes, JSON data files, inline JSON, CSS url(), JS strings), becomes /. Absolute preview URLs are
++// already swapped to the live domain by retargetText first, so what remains here is root-relative. Only matches the
++// prefix when it starts a path (after a quote, ( , = or whitespace), so a longer name like /preview/<slug>-x is left alone.
++export function stripPreviewPaths(text: string, previewPath: string): string {
++  const pre = esc(previewPath.replace(/\/$/, ''));
++  return text.replace(new RegExp('(["\'(=\\s,])' + pre + '(?:/|(?=["\')?#]))', 'g'), '$1/');
++}
++// Text assets inside the site folder (CSS, JS, JSON, webmanifest): swap absolute preview URLs, then root-relative paths.
++export function retargetAsset(text: string, m: Mk): string {
++  const t = retargetText(text, m);
++  return m.live ? stripPreviewPaths(t, m.previewPath) : t;
++}
++
+ export function robotsTxt(m: Mk) { return `User-agent: *\nAllow: /\n\nSitemap: ${m.canonicalBase}sitemap.xml\n`; }
+ 
+ // Rewrites loc/hreflang URLs inside an EXISTING sitemap.xml (keeps lastmod and the page list the site already has).
+diff -ru glb/base44/tests/goLive.test.ts gl/base44/tests/goLive.test.ts
+--- glb/base44/tests/goLive.test.ts	2026-11-21 12:08:18.458839415 +0000
++++ gl/base44/tests/goLive.test.ts	2026-11-21 12:08:31.753517168 +0000
+@@ -21,3 +21,14 @@
+ t('domain', () => { assert.equal(g.cleanDomain('https://WWW.X.com.my/a'), 'x.com.my'); assert.equal(g.cleanDomain('bad domain'), ''); assert.equal(g.cleanDomain('localhost'), ''); });
+ t('dns verdict', () => { assert.ok(g.dnsVerdict(['173.254.31.20']).ok); assert.ok(!g.dnsVerdict(['173.254.31.20', '1.2.3.4']).ok); assert.ok(!g.dnsVerdict([]).ok); });
+ t('own jpg og kept, webp replaced', () => { const c = cfg(true); const o = g.retargetHtml('<meta property="og:image" content="https://autoseo.my/preview/x/images/a.jpg"><meta name="twitter:image" content="https://autoseo.my/preview/x/images/a.webp">', c); assert.ok(o.includes('https://x.com.my/images/a.jpg') && o.includes('https://x.com.my/images/og.jpg?v=2')); });
++t('live strips root-relative preview paths everywhere (data-base, JSON, css url)', () => {
++  const c = cfg(true);
++  const html = '<body data-base="/preview/x/"><a href="/preview/x/a/">a</a><script type="application/json">{"u":"/preview/x/b/","v":"/preview/x-two/"}</script><div style="background:url(/preview/x/i.jpg)"></div></body>';
++  const o = g.retargetHtml(html, c);
++  assert.ok(o.includes('data-base="/"') && o.includes('href="/a/"') && o.includes('"u":"/b/"') && o.includes('url(/i.jpg)'));
++  assert.ok(o.includes('"/preview/x-two/"'));
++  assert.equal(g.retargetHtml(o, c), o);
++  const j = g.retargetAsset('{"url":"/preview/x/insurers/aig/","abs":"https://autoseo.my/preview/x/a/","home":"/preview/x"}', c);
++  assert.equal(j, '{"url":"/insurers/aig/","abs":"https://x.com.my/a/","home":"/"}');
++  assert.equal(g.retargetAsset('{"url":"/preview/x/a/"}', cfg(false)), '{"url":"/preview/x/a/"}');
++});

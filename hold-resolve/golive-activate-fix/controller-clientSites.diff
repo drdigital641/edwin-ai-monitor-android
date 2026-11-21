@@ -1,0 +1,164 @@
+--- cb/entry.ts	2026-11-21 12:09:22.167791347 +0000
++++ cn/entry.ts	2026-11-21 12:09:49.644690474 +0000
+@@ -271,10 +271,15 @@
+   const check_dns = ips.length > 0 && ips.every((ip) => ip === SERVER_IP);
+   if (!ips.length) notes.push('DNS: no A record yet.'); else if (!check_dns) notes.push(`DNS points to ${[...new Set(ips)].join(', ')}, not ${SERVER_IP}.`);
+   const http = await fetchText(`http://${d}/?golive=${Date.now()}`);
+-  const check_site = http.text.includes(`name="p1-site" content="${fresh.slug}"`);
++  // Hand-built sites carry no p1-site tag: the domain serves this client's folder when its home <title> matches the preview's.
++  const titleOf = (h: string) => metaOf(h, /<title>([^<]*)<\/title>/i);
++  let previewTitle = '';
++  if (fresh.custom && !http.text.includes('name="p1-site"')) previewTitle = titleOf((await fetchText(`${PAGEONE}/preview/${fresh.slug}/`)).text);
++  const sameSite = (h: string) => h.includes(`name="p1-site" content="${fresh.slug}"`) || (!!previewTitle && titleOf(h) === previewTitle);
++  const check_site = sameSite(http.text);
+   if (!check_site) notes.push(http.status ? `Site: the domain answers (${http.status}) but not with this client's site yet. Check the addon domain folder.` : 'Site: the domain does not answer yet.');
+   const https = await fetchText(`https://${d}/?golive=${Date.now()}`);
+-  const check_ssl = https.ok && https.text.includes(`name="p1-site" content="${fresh.slug}"`);
++  const check_ssl = https.ok && sameSite(https.text);
+   if (check_site && !check_ssl) notes.push('https: not ready yet (AutoSSL usually takes a few hours after DNS).');
+   let check_gsc_code = false;
+   if (fresh.gsc_method === 'html' && fresh.gsc_code) {
+@@ -297,7 +302,8 @@
+     const live: any = await basics(new URL(`https://${d}/`)).catch(() => null);
+     if (live?.ok) await recordScore(E, fresh.slug, fresh.name, 'golive', `https://${d}/`, live, `New website launched on ${d} by Page One.`, await speed(new URL(`https://${d}/`)).catch(() => null)).catch(() => null);
+   }
+-  if (allDone) patch.status = 'live';
++  // A hand-built site is only live once the go-live switch has moved its pages to the domain (fresh.golive).
++  if (allDone && (!fresh.custom || fresh.golive)) patch.status = 'live';
+   const updated = await E.Client.update(fresh.id, patch);
+   return updated;
+ }
+@@ -355,6 +361,49 @@
+   return { files: files.length, changed, urls: urls.length, indexnow };
+ }
+ 
++// ONE-SWITCH go-live for hand-built sites (Edwin 20 Nov): the Bridge does the full switch (pages, data files, asset paths,
++// canonical/og/schema/sitemap/robots, noindex off, host-aware .htaccess, post-check with automatic rollback).
++// 21 Nov 2026 (sgcaraccident.sg): Activate pressed before DNS/https were ready was refused and never tried again, so the
++// domain served the preview pages with /preview/<slug>/ asset paths (no CSS). Now a refusal by the domain gate keeps the
++// client in "Going live" with design_job golive_waiting, and check / check_all (every Clients page open) / set_status live
++// run the switch again by themselves as soon as the domain is ready. Never marks a client live without a passed switch.
++async function runGoLive(E: any, c: any): Promise<any> {
++  const back = c.status === 'live' && c.golive ? 'live' : 'activating';
++  try {
++    const key = Deno.env.get('BRIDGE_GOLIVE_KEY');
++    if (!key) throw new Error('BRIDGE_GOLIVE_KEY is not set in this app.');
++    const site = String(c.brand || '').toLowerCase() === 'autoseo' ? 'autoseo' : 'pageone';
++    const resp = await fetch('https://blue-bridge-pilot.base44.app/functions/bridgeGoLive', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Bridge-Key': key },
++      body: JSON.stringify({ op: 'flip', slug: c.slug, site, domain: c.domain, live: true }), signal: AbortSignal.timeout(170_000) });
++    const r: any = await resp.json().catch(() => ({}));
++    if (!resp.ok || r?.ok === false && !r.checks && !r.refused) throw new Error(String(r?.error || 'Bridge answered ' + resp.status).slice(0, 400));
++    if (r.refused && r.status && !r.status.can_go_live && !(r.checks || []).length) {
++      // Domain not ready yet (DNS or https). Nothing was changed; wait and retry by itself.
++      await E.Client.update(c.id, { status: back, design_job: 'golive_waiting', design_progress: 20,
++        golive_status: { ...(c.golive_status || {}), live: false, refused: true, waiting: true, detail: r.detail || '', checks: [], at: new Date().toISOString() },
++        design_step: 'Waiting for the domain (' + String(r.status.detail || r.detail || 'DNS or https not ready').slice(0, 200) + '). The switch runs by itself as soon as DNS points here and https works: each time the Clients page opens, or tap Check now.' });
++      return { ok: false, waiting: true, detail: r.detail };
++    }
++    if (r.refused || r.partial || !r.ok) {
++      const bad = (r.checks || []).filter((x: any) => !x.ok).map((x: any) => x.name).join('; ');
++      await E.Client.update(c.id, { status: back, design_job: r.partial ? 'golive_waiting' : 'golive_failed', golive_status: { ...(c.golive_status || {}), live: false, refused: !!r.refused, partial: !!r.partial, detail: r.detail || '', checks: r.checks || [], at: new Date().toISOString() },
++        design_step: (r.partial ? 'Part done, continues by itself: ' : 'NOT live (nothing half-switched): ') + String(r.detail || bad || 'check failed').slice(0, 300) + (r.partial ? '' : ' Fix it, then press Check now.') });
++      return { ok: false, refused: true, detail: r.detail, checks: r.checks || [] };
++    }
++    const client = await E.Client.update(c.id, { status: 'live', golive: true, golive_domain: c.domain, golive_at: new Date().toISOString(), live_at: c.live_at || new Date().toISOString(), design_job: 'site_live', design_progress: 100,
++      golive_status: { live: true, ok: true, detail: r.detail || '', checks: r.checks || [], content: r.content ? { total: r.content.total, changed: r.content.changed } : null, at: new Date().toISOString() },
++      design_step: `Switched to ${c.domain}: ${r.content?.changed ?? 0} files updated, host rules on, all ${(r.checks || []).length} checks passed.` });
++    return { ok: true, golive: r, client };
++  } catch (e: any) {
++    await E.Client.update(c.id, { status: back, design_job: 'golive_failed', design_step: 'Go-live switch failed: ' + String(e?.message || e).slice(0, 200) + ' (tap Check now to retry).' }).catch(() => null);
++    return { ok: false, error: String(e?.message || e).slice(0, 300), detail: String(e?.message || e).slice(0, 300) };
++  }
++}
++// Hand-built client whose Activate has not finished switching to the domain yet.
++// golive_working counts only when stale (10 min), so a page open never starts a second switch beside a running Activate.
++const goLivePending = (c: any) => c.custom !== false && !!c.domain && !!c.indexnow_key && !c.golive && (['golive_waiting', 'golive_failed'].includes(String(c.design_job || ''))
++  || (c.design_job === 'golive_working' && Date.now() - Date.parse(String(c.updated_date || '').replace(/(\.\d{3})\d*$/, '$1') + (/[zZ]|[+-]\d\d:?\d\d$/.test(String(c.updated_date || '')) ? '' : 'Z')) > 600_000));
++
+ export default async function (req: Request) {
+   const base44 = createClientFromRequest(req);
+   const user = await base44.auth.me().catch(() => null);
+@@ -467,10 +516,18 @@
+ 
+     if (action === 'check_all') {
+       // Hourly: re-run the go-live checklist for every client that is going live, so the Clients page updates by itself.
+-      const rows: any[] = (await E.Client.list('-created_date', 200)).filter((r: any) => r.status === 'activating' && r.domain);
++      const all: any[] = await E.Client.list('-created_date', 200);
++      const rows = all.filter((r: any) => r.status === 'activating' && r.domain);
+       const out: any[] = [];
++      let switched = 0;
++      for (const r of all.filter((x: any) => goLivePending(x) && !x.duplicate_of && x.status !== 'dormant')) {
++        if (switched >= 1) break;
++        switched++;
++        const g = await runGoLive(E, r);
++        out.push({ slug: r.slug, golive: g.ok ? 'switched' : g.waiting ? 'waiting for domain' : 'failed: ' + String(g.detail || g.error || '').slice(0, 160) });
++      }
+       for (const r of rows) {
+-        try { const u = await runCheck(E, r); out.push({ slug: r.slug, status: u.status, notes: u.check_notes }); }
++        try { const u = await runCheck(E, await E.Client.get(r.id)); out.push({ slug: r.slug, status: u.status, notes: u.check_notes }); }
+         catch (e) { out.push({ slug: r.slug, error: String((e as Error)?.message || e).slice(0, 200) }); }
+       }
+       return Response.json({ ok: true, checked: out });
+@@ -493,6 +550,12 @@
+     if (action === 'set_status') {
+       const status = String(body.status || '');
+       if (!STATUSES.includes(status)) return Response.json({ error: 'Unknown status' }, { status: 400 });
++      if (status === 'live' && goLivePending(c)) {
++        // Setting Live by hand on a hand-built site runs the switch; it only shows Live once the switch passed.
++        const g = await runGoLive(E, c);
++        if (!g.ok) return Response.json({ error: 'Not switched to ' + c.domain + ' yet: ' + String(g.detail || g.error || 'check failed').slice(0, 250) }, { status: 409 });
++        return Response.json({ ok: true, client: g.client });
++      }
+       const patch: any = { status };
+       if (status === 'live' && !c.live_at) patch.live_at = new Date().toISOString();
+       return Response.json({ ok: true, client: await E.Client.update(c.id, patch) });
+@@ -527,33 +590,12 @@
+     }
+ 
+     if (action === 'golive_run') {
+-      // Background half of Activate for hand-built sites: rewrite the pages, sitemap, robots and llms.txt for the domain and ping IndexNow.
++      // Background half of Activate for hand-built sites (see runGoLive).
+       if (!c.domain || !c.indexnow_key || c.custom === false) return Response.json({ error: 'Activate first' }, { status: 400 });
+-      // ONE-SWITCH (Edwin 20 Nov): the Bridge does the full switch (pages, asset paths, canonical/og/schema/sitemap/robots, noindex off,
+-      // host-aware .htaccess, post-check with automatic rollback) for both Page One and AutoSEO previews. The legacy FTP rewrite is no longer used.
+-      const back = c.status === 'live' ? 'live' : 'preview';
+-      try {
+-        const key = Deno.env.get('BRIDGE_GOLIVE_KEY');
+-        if (!key) throw new Error('BRIDGE_GOLIVE_KEY is not set in this app.');
+-        const site = String(c.brand || '').toLowerCase() === 'autoseo' ? 'autoseo' : 'pageone';
+-        const resp = await fetch('https://blue-bridge-pilot.base44.app/functions/bridgeGoLive', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Bridge-Key': key },
+-          body: JSON.stringify({ op: 'flip', slug: c.slug, site, domain: c.domain, live: true }), signal: AbortSignal.timeout(170_000) });
+-        const r: any = await resp.json().catch(() => ({}));
+-        if (!resp.ok || r?.ok === false && !r.checks) throw new Error(String(r?.error || 'Bridge answered ' + resp.status).slice(0, 400));
+-        if (r.refused || r.partial || !r.ok) {
+-          const bad = (r.checks || []).filter((x: any) => !x.ok).map((x: any) => x.name).join('; ');
+-          await E.Client.update(c.id, { status: back, design_job: 'golive_failed', golive_status: { ...(c.golive_status || {}), live: false, refused: !!r.refused, partial: !!r.partial, detail: r.detail || '', checks: r.checks || [], at: new Date().toISOString() },
+-            design_step: 'NOT live (nothing half-switched): ' + String(r.detail || bad || 'check failed').slice(0, 300) + ' Fix it, then press Activate again.' });
+-          return Response.json({ ok: false, refused: true, detail: r.detail, checks: r.checks || [] }, { status: 409 });
+-        }
+-        const updated = await E.Client.update(c.id, { status: 'live', golive: true, golive_domain: c.domain, golive_at: new Date().toISOString(), live_at: c.live_at || new Date().toISOString(), design_job: 'site_live', design_progress: 100,
+-          golive_status: { live: true, ok: true, detail: r.detail || '', checks: r.checks || [], content: r.content ? { total: r.content.total, changed: r.content.changed } : null, at: new Date().toISOString() },
+-          design_step: `Switched to ${c.domain}: ${r.content?.changed ?? 0} files updated, host rules on, all ${(r.checks || []).length} checks passed.` });
+-        return Response.json({ ok: true, golive: r, client: { ...updated, checklist: checklist(updated) } });
+-      } catch (e: any) {
+-        await E.Client.update(c.id, { status: back, design_job: 'golive_failed', design_step: 'Go-live switch failed: ' + String(e?.message || e).slice(0, 200) + ' (press Activate again to retry).' });
+-        throw e;
+-      }
++      const r = await runGoLive(E, c);
++      if (r.waiting) return Response.json({ ok: false, waiting: true, detail: r.detail }, { status: 202 });
++      if (!r.ok) return Response.json({ ok: false, refused: true, detail: r.detail, checks: r.checks || [] }, { status: 409 });
++      return Response.json({ ok: true, golive: r.golive, client: { ...r.client, checklist: checklist(r.client) } });
+     }
+ 
+     if (action === 'activate') {
+@@ -632,8 +674,9 @@
+     }
+ 
+     if (['check', 'gsc', 'confirm_gsc'].includes(action)) {
+-      const fresh: any = await E.Client.get(c.id);
++      let fresh: any = await E.Client.get(c.id);
+       if (!fresh.domain) return Response.json({ error: 'Activate first' }, { status: 400 });
++      if (action === 'check' && goLivePending(fresh)) { await runGoLive(E, fresh); fresh = await E.Client.get(c.id); }
+       const updated = await runCheck(E, fresh);
+       return Response.json({ ok: true, client: { ...updated, checklist: checklist(updated) } });
+     }
