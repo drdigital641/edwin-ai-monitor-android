@@ -341,7 +341,7 @@ def workshop_cards():
 def locator_block(place):
     R = S.LOCATOR
     chips = f'<button type="button" class="st on" data-state="">{E(R["all"])}</button>' + ''.join(f'<button type="button" class="st" data-state="{E(s)}">{E(s)}</button>' for s in F['states'])
-    return f'''<div class="loc"><h3 class="loc-h">{E(R['state_h'])}</h3><div class="states" role="group" aria-label="{E(R['state_h'])}">{chips}</div>
+    return f'''<div class="loc"><p class="loc-h">{E(R["state_h"])}</p><div class="states" role="group" aria-label="{E(R['state_h'])}">{chips}</div>
 <ul class="wss" id="wss">{workshop_cards()}</ul>
 <div class="loc-empty" id="ws-none"><h3>{E(R['empty_h'])}</h3><p>{E(R['empty_p'])}</p>
 <div class="btns">{wa(place + '_ask', S.PREFILL['locator'], R['ask_btn'])}</div></div></div>'''
