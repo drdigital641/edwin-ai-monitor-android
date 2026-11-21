@@ -1,0 +1,310 @@
+{
+ "_about": "Article auto-index site map (21 Nov 2026). One row per roster site the API runner publishes to. host = host the live sitemap uses. base = client docroot inside the Bridge site. Add a row on the day a site joins the runner. Fitout (commercialfitout.sg) is skipped; preview-only sites (911 Garage, Carku, Hyper Power, EXN Lube, Moon Wiper) never get a row.",
+ "sites": {
+  "sggarage": {
+   "host": "www.sggarage.com",
+   "bridge_site": "sggarage",
+   "base": "",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://www.sggarage.com/articles/",
+   "card_link": "articles/"
+  },
+  "cleanic": {
+   "host": "www.cleanicdetailing.com",
+   "bridge_site": "cleanic",
+   "base": "",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://www.cleanicdetailing.com/articles/",
+   "card_link": "articles/",
+   "articles_only": true,
+   "note": "frozen: articles only"
+  },
+  "alicia": {
+   "host": "aliciaongproperty.com",
+   "bridge_site": "alicia",
+   "base": "",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://aliciaongproperty.com/articles/",
+   "card_link": "articles/"
+  },
+  "danny": {
+   "host": "dannychuafinancial.com",
+   "bridge_site": "danny",
+   "base": "",
+   "hub_path": "insights/index.html",
+   "hub_url": "https://dannychuafinancial.com/insights/",
+   "card_link": "insights/",
+   "note": "hub /insights/, first card in the grid"
+  },
+  "sofacare": {
+   "host": "sofacaresg.com",
+   "bridge_site": "sofacare",
+   "base": "",
+   "hub_path": "articles.html",
+   "hub_url": "https://sofacaresg.com/articles.html",
+   "card_link": "articles/",
+   "note": "hub articles.html, first card of the Stains and odours grid; pages articles/<slug>.html"
+  },
+  "ktech": {
+   "host": "ktech.my",
+   "bridge_site": "ktech",
+   "base": "",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://ktech.my/articles/",
+   "card_link": "articles/"
+  },
+  "benz-world": {
+   "host": "benzworld.my",
+   "bridge_site": "benzworld",
+   "base": "",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://benzworld.my/articles/",
+   "card_link": "articles/",
+   "note": "EN/ms/zh: pass ms/zh pages with their own hub_path"
+  },
+  "lilian": {
+   "host": "lilianproperties.com",
+   "bridge_site": "lilian",
+   "base": "",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://lilianproperties.com/articles/",
+   "card_link": "articles/",
+   "note": "card in the Latest articles section"
+  },
+  "carzy": {
+   "host": "carzyworld.com.my",
+   "bridge_site": "carzy",
+   "base": "",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://carzyworld.com.my/articles/",
+   "card_link": "articles/"
+  },
+  "hybrid-world": {
+   "host": "hybridworld.com.my",
+   "bridge_site": "hybridworld",
+   "base": "",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://hybridworld.com.my/articles/",
+   "card_link": "articles/"
+  },
+  "autoseo": {
+   "host": "autoseo.my",
+   "bridge_site": "autoseo",
+   "base": "",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://autoseo.my/articles/",
+   "card_link": "articles/"
+  },
+  "emats": {
+   "host": "ecumats.my",
+   "bridge_site": "ecumats",
+   "base": "",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://ecumats.my/articles/",
+   "card_link": "articles/"
+  },
+  "apcar": {
+   "host": "apcar.com.my",
+   "bridge_site": "apcar",
+   "base": "",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://apcar.com.my/articles/",
+   "card_link": "articles/",
+   "note": "EN/ms/zh"
+  },
+  "jayven": {
+   "host": "jayvenang.sg",
+   "bridge_site": "jayven",
+   "base": "",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://jayvenang.sg/articles/",
+   "card_link": "articles/"
+  },
+  "urban-eco": {
+   "host": "urbanecosolutions.com",
+   "bridge_site": "urbaneco",
+   "base": "",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://urbanecosolutions.com/articles/",
+   "card_link": "articles/"
+  },
+  "pageone": {
+   "host": "pageonesingapore.com",
+   "bridge_site": "pageone",
+   "base": "",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://pageonesingapore.com/articles/",
+   "card_link": "articles/",
+   "manual_sitemap": true,
+   "note": "Bridge auto-sitemap skips Page One root: template adds the sitemap entry, bumps /articles/, appends the ItemList"
+  },
+  "aivs": {
+   "host": "aivs.sg",
+   "bridge_site": "pageone",
+   "base": "preview/aivs/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://aivs.sg/articles/",
+   "card_link": "articles/"
+  },
+  "battery-rescue": {
+   "host": "batteryrescue.sg",
+   "bridge_site": "pageone",
+   "base": "preview/battery-rescue/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://batteryrescue.sg/articles/",
+   "card_link": "articles/"
+  },
+  "cska": {
+   "host": "cskatrading.com",
+   "bridge_site": "pageone",
+   "base": "preview/cska-auto/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://cskatrading.com/articles/",
+   "card_link": "articles/"
+  },
+  "jacky": {
+   "host": "jackygearbox.com",
+   "bridge_site": "pageone",
+   "base": "preview/dmts/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://jackygearbox.com/articles/",
+   "card_link": "articles/"
+  },
+  "mykar": {
+   "host": "mykar.my",
+   "bridge_site": "pageone",
+   "base": "preview/dongfeng-jb/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://mykar.my/articles/",
+   "card_link": "articles/"
+  },
+  "ecu-clinic": {
+   "host": "theecuclinicsg.com",
+   "bridge_site": "pageone",
+   "base": "preview/ecu-clinic/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://theecuclinicsg.com/articles/",
+   "card_link": "articles/"
+  },
+  "ev-body-parts": {
+   "host": "evbodyparts.sg",
+   "bridge_site": "pageone",
+   "base": "preview/ev-body-parts/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://evbodyparts.sg/articles/",
+   "card_link": "articles/"
+  },
+  "jb-staycations": {
+   "host": "jbstaycations.com",
+   "bridge_site": "pageone",
+   "base": "preview/jb-staycation/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://jbstaycations.com/articles/",
+   "card_link": "articles/"
+  },
+  "klar": {
+   "host": "klardetails.com.sg",
+   "bridge_site": "pageone",
+   "base": "preview/klar-details/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://klardetails.com.sg/articles/",
+   "card_link": "articles/"
+  },
+  "maison": {
+   "host": "maisoninteriordesign.sg",
+   "bridge_site": "pageone",
+   "base": "preview/maison-interior-design/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://maisoninteriordesign.sg/articles/",
+   "card_link": "articles/"
+  },
+  "new-zen-werkz": {
+   "host": "newzenwerkz.com.sg",
+   "bridge_site": "pageone",
+   "base": "preview/new-zen-werkz/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://newzenwerkz.com.sg/articles/",
+   "card_link": "articles/"
+  },
+  "star-performance": {
+   "host": "starperformancemotor.com",
+   "bridge_site": "pageone",
+   "base": "preview/star-performance/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://starperformancemotor.com/articles/",
+   "card_link": "articles/"
+  },
+  "wrapstar": {
+   "host": "wrapstarautostyle.com",
+   "bridge_site": "pageone",
+   "base": "preview/wrapstar/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://wrapstarautostyle.com/articles/",
+   "card_link": "articles/"
+  },
+  "xado": {
+   "host": "xado-shop.sg",
+   "bridge_site": "pageone",
+   "base": "preview/xado/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://xado-shop.sg/articles/",
+   "card_link": "articles/"
+  },
+  "benjamin-poon": {
+   "host": "planwithben.sg",
+   "bridge_site": "pageone",
+   "base": "preview/benjamin-poon/",
+   "hub_path": "guides/index.html",
+   "hub_url": "https://planwithben.sg/guides/",
+   "card_link": "guides/"
+  },
+  "contiexpert": {
+   "host": "contiexpert.sg",
+   "bridge_site": "pageone",
+   "base": "preview/contiexpert/",
+   "hub_path": "article/index.html",
+   "hub_url": "https://contiexpert.sg/article/",
+   "card_link": "article/",
+   "articles_only": true,
+   "note": "frozen: articles only, never other pages"
+  },
+  "autotex": {
+   "host": "autotexautoparts.com.sg",
+   "bridge_site": "pageone",
+   "base": "preview/autotex/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://autotexautoparts.com.sg/articles/",
+   "card_link": "articles/",
+   "status": "blocked:domain-not-resolving",
+   "note": "21 Nov 2026: autotexautoparts.com.sg NXDOMAIN at SGNIC (not in DNS). Skip until the domain resolves again."
+  },
+  "sgcarworkshop": {
+   "host": "sgcarworkshop.sg",
+   "bridge_site": "pageone",
+   "base": "preview/sgcarworkshop/",
+   "hub_path": "guides/index.html",
+   "hub_url": "https://sgcarworkshop.sg/guides/",
+   "card_link": "guides/",
+   "note": "directory guides only"
+  },
+  "hon-win-motor": {
+   "host": "sgcarworkshop.sg",
+   "bridge_site": "pageone",
+   "base": "preview/sgcarworkshop/",
+   "hub_path": "workshops/hon-win-motor/articles/index.html",
+   "hub_url": "https://sgcarworkshop.sg/workshops/hon-win-motor/articles/",
+   "card_link": "hon-win-motor/articles/",
+   "note": "Featured mini-site, roster row 51; page path workshops/hon-win-motor/articles/<slug>/index.html; same sitemap.xml + IndexNow key as sgcarworkshop.sg"
+  },
+  "hx-auto": {
+   "host": "hxautoservice.com.my",
+   "bridge_site": "autoseo",
+   "base": "preview/hx-auto/",
+   "hub_path": "articles/index.html",
+   "hub_url": "https://hxautoservice.com.my/articles/",
+   "card_link": "articles/",
+   "status": "hold:bridge-publish",
+   "note": "EN/ms/zh. Bridge auto-sitemap + IndexNow for this folder need the Bridge \"article-autoindex\" Publish; until then status stays hold and the runner must not expect sitemap/IndexNow for HX."
+  }
+ }
+}
