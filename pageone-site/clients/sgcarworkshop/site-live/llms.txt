@@ -505,6 +505,10 @@ Last updated: 2026-11-21
 - [Car workshop near Bedok North: Hon Win Motor](https://sgcarworkshop.sg/workshops/hon-win-motor/areas/bedok-north/): Car servicing, repairs, aircon and accident claims near Bedok North: Hon Win Motor, 6 Defu Lane 10, about 4 km away. WhatsApp 9171 8466.
 - [Car workshop near Tampines: Hon Win Motor](https://sgcarworkshop.sg/workshops/hon-win-motor/areas/tampines/): Car servicing, repairs, aircon and accident claims near Tampines: Hon Win Motor, 6 Defu Lane 10, about 6 km away. WhatsApp 9171 8466.
 - [Car workshop near Ang Mo Kio: Hon Win Motor](https://sgcarworkshop.sg/workshops/hon-win-motor/areas/ang-mo-kio/): Car servicing, repairs, aircon and accident claims near Ang Mo Kio: Hon Win Motor, 6 Defu Lane 10, about 5 km away. WhatsApp 9171 8466.
+- [Hon Win Motor articles](https://sgcarworkshop.sg/workshops/hon-win-motor/articles/): car care articles from the workshop at Defu Lane, Hougang.
+- [Used car inspection before you buy: what we check at Defu Lane](https://sgcarworkshop.sg/workshops/hon-win-motor/articles/used-car-inspection-hougang/): Buying a used car in Hougang, Sengkang or Punggol? What our 1.5-hour pre-purchase inspection at Defu Lane checks, and how to use the report.
+- [Car accident in Hougang or Sengkang: what to do, from the scene to the repair](https://sgcarworkshop.sg/workshops/hon-win-motor/articles/car-accident-hougang-what-to-do/): Had a car accident in Hougang, Sengkang or Punggol? What to do at the scene, when to report it, and how the repair and insurance claim work.
+- [Gearbox repair or replacement: how to decide, from a Hougang workshop](https://sgcarworkshop.sg/workshops/hon-win-motor/articles/gearbox-repair-or-replace-hougang/): Gearbox trouble near Hougang or Paya Lebar? How we decide between repair, overhaul and replacement for automatic, CVT, DCT and manual gearboxes.
 
 ## For AI agents: claiming a listing
 AI agents are welcome to claim or verify a workshop listing for its owner. Full guide: https://sgcarworkshop.sg/for-ai-agents/

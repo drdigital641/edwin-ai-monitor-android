@@ -5,6 +5,7 @@ own header/footer instead of the directory's (Edwin 21 Nov 2026: paid client, le
 import json, math, os, shutil
 from urllib.parse import quote
 import hw_content as C
+import hw_articles as A
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 LLMS = []   # llms.txt lines, read by build.py
@@ -26,7 +27,15 @@ def km_txt(a):
 def run(B):
     E, pre, page, img_tag, abs_url, crumbs = B.E, B.pre, B.page, B.img_tag, B.abs_url, B.crumbs
     e = B.BY_SLUG[C.SLUG]
-    trail0 = B.workshop_trail(e)[:-1]
+    trail0 = []   # Edwin 21 Nov 2026: breadcrumbs stay inside the mini-site (no links back to directory region/estate pages)
+
+    def crumbs(depth, trail):
+        parts, ld = [], []
+        for i, (lab, rel) in enumerate(trail):
+            last = i == len(trail) - 1
+            parts.append(E(lab) if last else '<a href="%s%s">%s</a>' % (pre(depth), rel, E(lab)))
+            ld.append({'@type': 'ListItem', 'position': i + 1, 'name': lab, 'item': abs_url(rel)} if not last else {'@type': 'ListItem', 'position': i + 1, 'name': lab})
+        return '<nav class="crumbs hw-crumbs" aria-label="Breadcrumb">%s</nav>' % ' / '.join(parts), {'@type': 'BreadcrumbList', 'itemListElement': ld}
     addr = '%s, Singapore %s' % (C.STREET, C.POSTAL)
     dirs = 'https://www.google.com/maps/dir/?api=1&destination=%s&destination_place_id=%s' % (quote('%s, %s' % (C.NAME, addr)), C.PLACE_ID)
 
@@ -48,12 +57,12 @@ def run(B):
     def tail(depth):
         return '<script src="%sassets/hw/p1-cta.js?v=%s" defer></script>' % (pre(depth), JS_V)
 
-    NAV = [('', 'Profile')] + [(sv['slug'] + '/', sv['nav']) for sv in C.SERVICES] + [('areas/', 'Areas')]
+    NAV = [('', 'Profile')] + [(sv['slug'] + '/', sv['nav']) for sv in C.SERVICES] + [('areas/', 'Areas'), ('articles/', 'Articles')]
 
     def hw_head(path):
         depth = path.count('/'); p = pre(depth); home = p + C.BASE_PATH
         rest = path[len(C.BASE_PATH):]
-        cur = 'areas/' if rest.startswith('areas/') else rest
+        cur = rest.split('/')[0] + '/' if rest.startswith(('areas/', 'articles/')) else rest
         li = ''.join('<li><a href="%s%s"%s>%s</a></li>' % (home, h, ' aria-current="page"' if h == cur else '', E(t)) for h, t in NAV)
         return ('<a class="skip" href="#main">Skip to content</a><header class="hw hw-top"><div class="hw-w hw-top-bar">'
                 '<a class="hw-brand" href="%s"><span>Hon Win Motor</span><small>Car workshop, 6 Defu Lane 10</small></a>%s</div>'
@@ -125,6 +134,21 @@ def run(B):
         p = pre(depth) + C.BASE_PATH + 'areas/'
         return '<ul class="%s">%s</ul>' % (cls, ''.join('<li><a href="%s%s/"><b>%s</b><span>%s</span></a></li>' % (p, a['slug'], E(a['name']), km_txt(a)) for a in sorted(C.AREAS, key=lambda a: km(a['lat'], a['lng']))))
 
+    def art_url(a, depth):
+        return pre(depth) + C.BASE_PATH + 'articles/%s/' % a['slug']
+
+    def nice_date(d):
+        import datetime
+        return datetime.date.fromisoformat(d).strftime('%-d %B %Y')
+
+    def art_cards(depth, items):
+        return '<ul class="hw-cards hw-arts">%s</ul>' % ''.join(
+            '<li><a href="%s"><figure>%s</figure><h3>%s</h3><p>%s</p><time datetime="%s">%s</time></a></li>' % (
+                art_url(a, depth), img_tag(a['img'], a['alt'], depth), E(a['h1']), E(a['card']), a['date'], nice_date(a['date'])) for a in items)
+
+    def arts_for(slug):
+        return [a for a in sorted(A.ARTICLES, key=lambda a: a['date'], reverse=True) if a['maps'] == slug]
+
     def svc_cards(depth):
         p = pre(depth) + C.BASE_PATH
         return '<ul class="hw-cards">%s</ul>' % ''.join(
@@ -152,6 +176,7 @@ def run(B):
 <section class="hw-sec"><div class="hw-w"><h2>Inside the workshop</h2><div class="hw-gal">{gallery}</div></div></section>
 {reviews_block('reviews')}
 <section class="hw-sec"><div class="hw-w"><h2>Areas we serve</h2><p>We are in Defu Industrial Estate, Hougang. These towns are within about 8 km of the workshop.</p>{areas_list(depth)}</div></section>
+<section class="hw-sec"><div class="hw-w"><h2>Latest articles</h2>{art_cards(depth, sorted(A.ARTICLES, key=lambda a: a['date'], reverse=True)[:3])}<p><a href="articles/">All articles</a></p></div></section>
 {visit_block(depth, 'visit')}
 <div class="hw-map w"><iframe src="{E(B.embed_url(e))}" title="Map of Hon Win Motor, 6 Defu Lane 10" width="100%" height="300" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
 <section class="hw-sec"><div class="hw-w"><h2>Questions</h2>{faq_html(e['faqs'])}</div></section>
@@ -180,7 +205,7 @@ def run(B):
 {secs}
 {cta_band(s['wa'], 'band')}
 <section class="hw-sec"><div class="hw-w hw-narrow"><h2>Questions</h2>{faq_html(s['faqs'])}</div></section>
-<section class="hw-sec"><div class="hw-w"><h2>{E(s['short'])} near you</h2><p>We are within about 8 km of these towns.</p>{areas_list(depth)}<h3 class="hw-h3">Other services</h3><ul class="hw-links">{others}</ul></div></section>
+<section class="hw-sec"><div class="hw-w"><h2>{E(s['short'])} near you</h2><p>We are within about 8 km of these towns.</p>{areas_list(depth)}<h3 class="hw-h3">Other services</h3><ul class="hw-links">{others}</ul>{('<h3 class="hw-h3">Read more</h3><ul class="hw-links">%s</ul>' % ''.join('<li><a href="../articles/%s/">%s</a></li>' % (a['slug'], E(a['h1'])) for a in arts_for(s['slug']))) if arts_for(s['slug']) else ''}</div></section>
 {visit_block(depth, 'visit')}
 {paid_note()}
 </div>'''
@@ -239,6 +264,62 @@ def run(B):
         page(path, title, desc, body, [biz_ld(B.BASE + C.BASE_PATH), faq_ld(faqs), dict(crld, **{'@context': 'https://schema.org'})],
              og='hw/og.jpg', bar=bar('servicing or a repair (I am in %s)' % a['name']), h1='Car workshop near %s' % a['name'], head_extra=head_extra(depth), tail=tail(depth), chrome=(hw_head(path), hw_foot(path)))
         LLMS.append('- [Car workshop near %s: Hon Win Motor](%s): %s' % (a['name'], url, desc))
+
+    # ------------------------------------------------ articles (Edwin 21 Nov 2026: one every 2 days; hw_articles.py)
+    AL = sorted(A.ARTICLES, key=lambda a: a['date'], reverse=True)
+    path = C.BASE_PATH + 'articles/'
+    PG[0] = path
+    depth = path.count('/')
+    url = abs_url(path)
+    cr, crld = crumbs(depth, [(C.NAME, C.BASE_PATH), ('Articles', None)])
+    body = f'''<div class="hw">
+<section class="hw-shero"><div class="hw-w"><h1>Car care articles from Defu Lane</h1><p class="hw-line">Plain answers from our workshop for drivers in Hougang, Sengkang, Punggol and nearby. A new article every 2 days.</p></div></section>
+<div class="hw-w">{cr}</div>
+<section class="hw-sec"><div class="hw-w">{art_cards(depth, AL)}</div></section>
+{cta_band('servicing or a repair', 'band')}
+{paid_note()}
+</div>'''
+    page(path, 'Car Care Articles from Defu Lane, Hougang | Hon Win Motor', 'Articles from Hon Win Motor, a car workshop at Defu Lane, Hougang: used car checks, accidents and claims, gearbox repairs and more.',
+         body, [dict(crld, **{'@context': 'https://schema.org'})], og='hw/og.jpg', bar=bar('servicing or a repair'), h1='Car care articles from Defu Lane', head_extra=head_extra(depth), tail=tail(depth), chrome=(hw_head(path), hw_foot(path)))
+    LLMS.append('- [Hon Win Motor articles](%s): car care articles from the workshop at Defu Lane, Hougang.' % url)
+
+    def sec_html(items):
+        o = ''
+        for it in items:
+            o += ('<ul class="hw-list">%s</ul>' % ''.join('<li>%s</li>' % E(x) for x in it)) if isinstance(it, list) else '<p>%s</p>' % E(it)
+        return o
+
+    for a in AL:
+        path = C.BASE_PATH + 'articles/%s/' % a['slug']
+        PG[0] = path
+        depth = path.count('/')
+        url = abs_url(path)
+        svc = next(x for x in C.SERVICES if x['slug'] == a['maps'])
+        cr, crld = crumbs(depth, [(C.NAME, C.BASE_PATH), ('Articles', C.BASE_PATH + 'articles/'), (a['h1'].split(':')[0], None)])
+        secs = ''.join('<h2>%s</h2>%s' % (E(h), sec_html(it)) for h, it in a['sections'])
+        more = [o for o in AL if o is not a][:3]
+        img_abs = B.BASE + 'assets/img/' + a['img']
+        ld = {'@context': 'https://schema.org', '@type': 'BlogPosting', 'headline': a['h1'], 'description': a['desc'], 'image': [img_abs],
+              'datePublished': a['date'], 'dateModified': a['date'], 'mainEntityOfPage': url, 'inLanguage': 'en-SG',
+              'author': {'@type': 'Organization', 'name': C.NAME, 'url': B.BASE + C.BASE_PATH},
+              'publisher': {'@id': B.BASE + C.BASE_PATH + '#business'}, 'about': {'@type': 'Service', 'name': svc['h1'], 'url': B.BASE + C.BASE_PATH + svc['slug'] + '/'}}
+        body = f'''<div class="hw">
+<article class="hw-art">
+<header class="hw-w hw-narrow hw-art-head"><h1>{E(a['h1'])}</h1><p class="hw-fine">By Hon Win Motor, 6 Defu Lane 10 · <time datetime="{a['date']}">{nice_date(a['date'])}</time></p></header>
+<figure class="hw-w hw-narrow hw-art-hero">{img_tag(a['img'], a['alt'], depth, lazy=False)}</figure>
+<div class="hw-w">{cr}</div>
+<div class="hw-sec"><div class="hw-w hw-narrow hw-prose">{''.join('<p>%s</p>' % E(t) for t in a['intro'])}{secs}
+<p class="hw-related">Related service: <a href="../../{svc['slug']}/">{E(svc['h1'])}</a></p></div></div>
+</article>
+{cta_band(a['wa'], 'band')}
+<section class="hw-sec"><div class="hw-w hw-narrow"><h2>Questions</h2>{faq_html(a['faqs'])}</div></section>
+{('<section class="hw-sec"><div class="hw-w"><h2>More articles</h2>%s<p><a href="../">All articles</a></p></div></section>' % art_cards(depth, more)) if more else ''}
+{visit_block(depth, 'visit')}
+{paid_note()}
+</div>'''
+        page(path, a['title'], a['desc'], body, [ld, faq_ld(a['faqs']), dict(crld, **{'@context': 'https://schema.org'})],
+             og=a['img'], bar=bar(a['wa']), h1=a['h1'], head_extra=head_extra(depth), tail=tail(depth), chrome=(hw_head(path), hw_foot(path)))
+        LLMS.append('- [%s](%s): %s' % (a['h1'], url, a['desc']))
 
 
 def _v(name):

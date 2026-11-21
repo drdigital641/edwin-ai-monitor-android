@@ -305,6 +305,7 @@ for dp, _, fs in os.walk(os.path.join(root, 'areas')):
     parts = os.path.relpath(dp, os.path.join(root, 'areas')).split(os.sep)
     if len(parts) == 2 and 'index.html' in fs and 'http-equiv="refresh"' not in open(os.path.join(dp, 'index.html'), encoding='utf-8').read() and (parts[0], parts[1]) not in _pairs: print('L3 page that should not exist', parts); bad += 1
 for e in ENTRIES:
+    if e.get('minisite'): continue   # paid mini-site keeps its breadcrumbs inside its own pages (Edwin 21 Nov 2026)
     t = [x for x in _ld('workshops/%s' % e['slug']) if x.get('@type') == 'BreadcrumbList']
     names = [i['name'] for i in t[0]['itemListElement']] if t else []
     want = ['Home', _ar.REGION_NAMES[e['region']]] + ([_ar.TOWNS[_ar.ESTATES[e['estates'][0]]['town']]['name'], _ar.ESTATES[e['estates'][0]]['name']] if e['estates'] else []) + [e['name']]
