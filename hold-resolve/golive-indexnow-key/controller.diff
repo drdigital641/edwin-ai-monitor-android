@@ -1,0 +1,22 @@
+--- a/base44/functions/goLive/entry.ts
++++ b/base44/functions/goLive/entry.ts
+@@ -54,7 +54,7 @@
+       if (Date.now() - started < RUN_LOCK_MS) return Response.json({ error: 'A go-live run is already in progress. Wait a few minutes.' }, { status: 409 });
+       await save({ golive_status: { ...prev, running_at: new Date().toISOString() } });
+       let r: any;
+-      try { r = await bridge({ op: 'flip', slug: c.slug, site: String(c.brand || '').toLowerCase() === 'autoseo' ? 'autoseo' : 'pageone', domain: d, live }); }
++      try { r = await bridge({ op: 'flip', slug: c.slug, site: String(c.brand || '').toLowerCase() === 'autoseo' ? 'autoseo' : 'pageone', domain: d, live, indexnow_key: c.indexnow_key || undefined }); }   // key: Bridge places <key>.txt if the folder has none
+       catch (e) {
+         const err = e instanceof Error ? e.message : String(e);
+         await save({ golive_status: { ...prev, running_at: null, error: err, at: new Date().toISOString() } });
+--- a/base44/functions/clientSites/entry.ts
++++ b/base44/functions/clientSites/entry.ts
+@@ -376,7 +376,7 @@
+     if (!key) throw new Error('BRIDGE_GOLIVE_KEY is not set in this app.');
+     const site = String(c.brand || '').toLowerCase() === 'autoseo' ? 'autoseo' : 'pageone';
+     const resp = await fetch('https://blue-bridge-pilot.base44.app/functions/bridgeGoLive', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Bridge-Key': key },
+-      body: JSON.stringify({ op: 'flip', slug: c.slug, site, domain: c.domain, live: true }), signal: AbortSignal.timeout(170_000) });
++      body: JSON.stringify({ op: 'flip', slug: c.slug, site, domain: c.domain, live: true, indexnow_key: c.indexnow_key || undefined }), signal: AbortSignal.timeout(170_000) });
+     const r: any = await resp.json().catch(() => ({}));
+     if (!resp.ok || r?.ok === false && !r.checks && !r.refused) throw new Error(String(r?.error || 'Bridge answered ' + resp.status).slice(0, 400));
+     if (r.refused && r.status && !r.status.can_go_live && !(r.checks || []).length) {

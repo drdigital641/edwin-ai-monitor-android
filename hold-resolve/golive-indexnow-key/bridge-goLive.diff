@@ -1,0 +1,108 @@
+--- a/base44/shared/goLive.ts
++++ b/base44/shared/goLive.ts
+@@ -6,6 +6,7 @@
+ import { BridgeError, listLiveFiles, readLiveFile, writeFile, mapLimit, sha256, probeLive } from './bridgeOps.ts';
+ import { htaccessRead, htaccessWrite } from './htaccess.ts';
+ import * as P from './goLivePure.ts';
++import { findIndexNowKey } from './autoSitemapRun.ts';
+
+ type Entry = { site: string; base: string; previewUrl: string; parent: string };
+ const OVERRIDES: Record<string, Entry> = {
+@@ -26,6 +27,16 @@
+ const join = (base: string, p: string) => (base ? base + '/' + p : p);
+ const msg = (e: unknown) => (e instanceof Error ? e.message : String(e));
+ const PREVIEW_HOST_RE = /(^|\.)(autoseo\.my|pageonesingapore\.com)$/;
++// IndexNow key file (21 Nov 2026, Overseas Tyre went live without one and IndexNow answered 422). A live switch-on needs <key>.txt in the site root.
++// The standard key of a parent site is read from this folder at run time (never stored here). The key is never logged, returned or put in an alert.
++const STANDARD_KEY_FOLDER: Record<string, string> = { autoseo: 'preview/hx-auto/' };
++async function planIndexNowKey(e: Entry, given: unknown) {
++  const own = await findIndexNowKey(e.site, e.base ? e.base + '/' : '');
++  if (own) return P.pickIndexNowKey(own, null, null);
++  const std = Object.hasOwn(STANDARD_KEY_FOLDER, e.parent) ? await findIndexNowKey(e.parent, STANDARD_KEY_FOLDER[e.parent]) : null;
++  return P.pickIndexNowKey(null, given, std);
++}
++const hideKey = (s: string, key: string) => s.split(key).join('<key>');
+
+ export async function domainStatus(domainIn: unknown): Promise<P.DomainStatus> {
+   const domain = P.cleanDomain(domainIn);
+@@ -132,7 +143,7 @@
+   } catch (e) { return msg(e).slice(0, 200); }
+ }
+
+-async function goLiveCheck(m: P.Mk, e: Entry, pages: string[]) {
++async function goLiveCheck(m: P.Mk, e: Entry, pages: string[], indexKey: string | null) {
+   const L = m.liveDomain, res: { name: string; ok: boolean; info: string }[] = [];
+   const hit = async (url: string, readBody = false) => {
+     const r = await fetch(url + (url.includes('?') ? '&' : '?') + '_gl=' + Date.now(), { redirect: 'manual', headers: { 'User-Agent': 'BridgeGoLiveCheck' }, signal: AbortSignal.timeout(8_000) });
+@@ -156,6 +167,10 @@
+       return { ok: r.s === 200 && (m.live ? !/noindex/i.test(xrt) && !metaNoindex : /noindex/i.test(xrt)), info: `${r.s} xrt=${xrt || '-'}${metaNoindex ? ' meta noindex' : ''}` };
+     }));
+   }
++  if (m.live && indexKey) jobs.push(job('IndexNow key file at site root (200, key matches)', async () => {
++    const r = await hit(`https://${L}/${indexKey}.txt`, true); const same = new TextDecoder().decode(r.buf).trim() === indexKey;
++    return { ok: r.s === 200 && same, info: r.s === 200 && !same ? '200 but wrong content' : String(r.s) };
++  }));
+   if (m.live) jobs.push(job('robots.txt does not block the site', async () => { const r = await hit(base + 'robots.txt', true); const t = new TextDecoder().decode(r.buf); return { ok: r.s === 200 && !P.blocksAll(t), info: String(r.s) }; }));
+   // 3 inner pages, plus the CSS/JS the home page loads, plus canonical = live.
+@@ -199,6 +214,8 @@
+   let m: P.Mk;
+   try { m = P.mk({ slug: body.slug, previewUrl: e.previewUrl, liveDomain: domain, live: wantLive, ogVersion: body.og_version, languages }); } catch (err) { throw new BridgeError(msg(err), 400); }
+   const plan = await planRules(e, m);                                  // fails before anything is written
++  const ink = wantLive ? await planIndexNowKey(e, body.indexnow_key) : null;
++  if (wantLive && !ink) throw new BridgeError('No IndexNow key for this site: the folder has no key file, the Controller sent none and ' + e.parent + ' has no standard key. Nothing was changed.', 409);
+   const deadline = started + FILES_BUDGET_MS;
+   const testUrls = wantLive ? [`https://${domain}/`, e.previewUrl] : [e.previewUrl];
+   const done: Done[] = []; let rules: any = null, content: any = null, rulesApplied = false;
+@@ -213,6 +230,12 @@
+       content = await retargetFiles(e, m, deadline, done);
+       if (content.errors.length) throw new BridgeError('Page update failed: ' + content.errors.join(' | '));
+       if (content.remaining) return { live: false, partial: true, status, content, detail: `Time ran out with ${content.remaining} files left. Nothing redirects yet. Press the switch again to continue.` };
++      // IndexNow key file in the site root (a new file; like robots.txt a rollback leaves it, which is harmless).
++      if (ink!.write) {
++        try { await writeFile(e.site, join(e.base, ink!.key + '.txt'), new TextEncoder().encode(ink!.key), undefined, { publisher: true }); content.changed++; }
++        catch (err) { throw new BridgeError('IndexNow key file could not be written: ' + hideKey(msg(err), ink!.key).slice(0, 220)); }
++      }
++      content.indexnow_key_file = ink!.write ? 'added (' + ink!.from + ' key)' : 'already there';
+       rules = await applyRules(plan!, ctx, testUrls); rulesApplied = !rules.unchanged;
+     } else {                              // redirects off first, then pages back to the preview URL
+       rules = await applyRules(plan!, ctx, testUrls); rulesApplied = !rules.unchanged;
+@@ -223,7 +246,7 @@
+   } catch (err) {
+     throw new BridgeError('GO LIVE ' + (wantLive ? 'ON' : 'OFF') + ' FAILED: ' + await undoAll(msg(err)), (err as any)?.status || 500);
+   }
+-  const checks = await goLiveCheck(m, e, content.pages || []);
++  const checks = await goLiveCheck(m, e, content.pages || [], ink ? ink.key : null);
+   const ok = checks.every((c) => c.ok);
+   if (wantLive && !ok) {                  // a switch that fails its own checks must not stay on
+     const failedNames = checks.filter((c) => !c.ok).map((c) => c.name).join('; ');
+--- a/base44/shared/goLivePure.ts
++++ b/base44/shared/goLivePure.ts
+@@ -184,3 +184,14 @@
+   }
+   return false;
+ }
++
++// IndexNow key (21 Nov 2026, Overseas Tyre 422): which key a live site serves at <key>.txt in its root. First found wins:
++// a valid key file the site folder already has, the client's own key sent by the Controller, the standard key of the parent site.
++export const INDEXNOW_KEY_RE = /^[0-9a-f]{32}$/;
++export function pickIndexNowKey(own: string | null, given: unknown, standard: string | null): { key: string; write: boolean; from: 'site' | 'client' | 'standard' } | null {
++  if (own && INDEXNOW_KEY_RE.test(own)) return { key: own, write: false, from: 'site' };
++  const g = String(given ?? '').trim().toLowerCase();
++  if (INDEXNOW_KEY_RE.test(g)) return { key: g, write: true, from: 'client' };
++  if (standard && INDEXNOW_KEY_RE.test(standard)) return { key: standard, write: true, from: 'standard' };
++  return null;
++}
+--- a/base44/tests/goLive.test.ts
++++ b/base44/tests/goLive.test.ts
+@@ -32,3 +32,11 @@
+   assert.equal(j, '{"url":"/insurers/aig/","abs":"https://x.com.my/a/","home":"/"}');
+   assert.equal(g.retargetAsset('{"url":"/preview/x/a/"}', cfg(false)), '{"url":"/preview/x/a/"}');
+ });
++t('indexnow key pick: site file, then client key, then standard; never a bad key', () => {
++  const a = 'a'.repeat(32), b = 'b'.repeat(32), c = 'c'.repeat(32);
++  assert.deepEqual(g.pickIndexNowKey(a, b, c), { key: a, write: false, from: 'site' });
++  assert.deepEqual(g.pickIndexNowKey(null, ' ' + b.toUpperCase() + ' ', c), { key: b, write: true, from: 'client' });
++  assert.deepEqual(g.pickIndexNowKey(null, 'nope', c), { key: c, write: true, from: 'standard' });
++  assert.deepEqual(g.pickIndexNowKey(null, '../x.txt', null), null);
++  assert.equal(g.pickIndexNowKey('zz', undefined, 'short'), null);
++});
