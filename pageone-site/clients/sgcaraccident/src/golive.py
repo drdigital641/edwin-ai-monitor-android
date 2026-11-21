@@ -60,10 +60,11 @@ def load(path):
 
 
 # ---------------------------------------------------------------- tags
-def head_tags(c, path, lang):
-    """Share/canonical tags for one page. path = English-relative path ('' = home, 'services/')."""
+def head_tags(c, path, lang, img=None):
+    """Share/canonical tags for one page. path = English-relative path ('' = home, 'services/').
+    img = optional page-own share image path relative to the site (article pages: the image gate needs their own image)."""
     url = c.canon(c.lang_path(lang, path))
-    img = c.og_image()
+    img = (c.share_base + img.lstrip("/")) if img else c.og_image()
     out = ['<link rel="canonical" href="%s">' % url]
     for l in c.languages:
         out.append('<link rel="alternate" hreflang="%s" href="%s">' % (c.hreflang[l], c.canon(c.lang_path(l, path))))
@@ -117,8 +118,13 @@ def retarget_html(html, c):
     img = c.og_image()
     def meta(prop_attr, prop):
         return re.compile(r'(<meta\s+%s="%s"\s+content=")([^"]*)(")' % (prop_attr, re.escape(prop)), re.I)
+    def share(m):
+        v = m.group(2)
+        # a page's own image (article) keeps its file, only its host moves; the generic share image is reset
+        own = _swap_base(v, c) if (c.og_path not in v) else img
+        return m.group(1) + own + m.group(3)
     for attr, prop in (("property", "og:image"), ("property", "og:image:secure_url"), ("name", "twitter:image")):
-        html = meta(attr, prop).sub(lambda m: m.group(1) + img + m.group(3), html)
+        html = meta(attr, prop).sub(share, html)
     html = meta("property", "og:image:type").sub(lambda m: m.group(1) + "image/jpeg" + m.group(3), html)
     html = meta("property", "og:url").sub(lambda m: m.group(1) + _swap_base(m.group(2), c) + m.group(3), html)
     html = re.sub(r'(<link\s+rel="(?:canonical|alternate)"[^>]*?href=")([^"]*)(")',

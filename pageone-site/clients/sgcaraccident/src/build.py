@@ -122,11 +122,11 @@ def fill(lang, s):
     return s.replace("{gia_24h}", ft["gia_24h"]).replace("{spf_how}", ft["spf_how"])
 
 # ---------------- the ONE layout ----------------
-def page(lang, path, title, desc, body, key, ref, schema=(), alt=True, scripts=("site.js",), crumbs=None, extra_head=""):
+def page(lang, path, title, desc, body, key, ref, schema=(), alt=True, scripts=("site.js",), crumbs=None, extra_head="", img=None, img_alt=None):
     """key = WhatsApp prefill for this page's dock; ref = tap label prefix (pathway name)."""
     t = L[lang].T
     other = "zh" if lang == "en" else "en"
-    tags = golive.head_tags(CFG, path, lang) if alt else '<link rel="canonical" href="%s">' % absu(lang, path)
+    tags = golive.head_tags(CFG, path, lang, img) if alt else '<link rel="canonical" href="%s">' % absu(lang, path)
     bc = ""
     if crumbs:
         items = [(t["home"], url(lang))] + crumbs
@@ -155,7 +155,7 @@ def page(lang, path, title, desc, body, key, ref, schema=(), alt=True, scripts=(
 </body></html>
 """ % {
         "hl": t["html_lang"], "lang": lang, "base": BASE, "title": E(title), "desc": E(desc), "tags": tags,
-        "ogl": "en_SG" if lang == "en" else "zh_SG", "ogalt": E(t["og_alt"]), "fav": asset("icon.svg"),
+        "ogl": "en_SG" if lang == "en" else "zh_SG", "ogalt": E(img_alt or t["og_alt"]), "fav": asset("icon.svg"),
         "preload": ('<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' % (BASE + "assets/barlow-semi-condensed-latin-700-normal.woff2")) if lang == "en" else "",
         "css": asset("site.css"), "extra": extra_head, "schema": "".join(jsonld(s) for s in schema if s),
         "skip": E(t["skip"]), "home": url(lang), "logo": LOGO, "brand": E(t["brand"]),
@@ -551,6 +551,11 @@ def guides_index(lang):
         {"@type": "ListItem", "position": k + 1, "name": g["h1"], "url": absu(lang, "guides/%s/" % g["slug"])} for k, g in enumerate(G[lang].GUIDES)]}
     return page(lang, "guides/", F["title"], F["desc"], body, "home", "guides", schema=[il], crumbs=[(F["nav"], None)])
 
+IMG_V = "1"
+def guide_img(lang, slug):
+    """Each guide's own cover / share image (Bridge IMAGE GATE): images/articles/<slug>.jpg, <slug>-zh.jpg for 中文."""
+    return "images/articles/%s%s.jpg" % (slug, "" if lang == "en" else "-zh")
+
 def guide_page(lang, g):
     C = L[lang]; t = C.T
     secs = []
@@ -564,17 +569,20 @@ def guide_page(lang, g):
     rel = "".join('<a class="btn btn-ghost block" href="%s">%s</a>' % (url(lang, u), E(n)) for n, u in g.get("next", []))
     srcs = "".join('<li><a href="%s" rel="noopener">%s</a></li>' % (E(u), E(n)) for n, u in g.get("sources", []))
     faq_h, faq_sd = faq_block(lang, g.get("faq"))
-    body = """<article class="art"><h1 class="page-h1">%s</h1><p class="lead">%s</p><p class="upd">%s</p>
+    img = guide_img(lang, g["slug"])
+    alt = ("Illustrative guide cover: " if lang == "en" else "示意指南封面：") + g["nav"]
+    hero = '<img class="hero-img" src="%s" alt="%s" width="1200" height="630" fetchpriority="high">' % (E(BASE + img + "?v=" + IMG_V), E(alt))
+    body = ("""<article class="art"><h1 class="page-h1">%s</h1><p class="lead">%s</p>""" + hero.replace("%", "%%") + """<p class="upd">%s</p>
 <div class="tldr"><p class="lbl">%s</p>%s</div>%s
 <div class="helpbox"><h3>%s</h3><div class="endcta">%s%s</div></div>%s
-<div class="srcbox"><p class="lbl">%s</p><ul>%s</ul></div></article>""" % (
+<div class="srcbox"><p class="lbl">%s</p><ul>%s</ul></div></article>""") % (
         E(g["h1"]), E(g["lead"]), E(t["updated"].replace("{d}", TODAY)), E(t["in_short"]), ul(g["short"]), "".join(secs),
         E(t["next_step"]), rel, hotline(lang, g.get("wa", "home"), "guide:" + g["slug"], t["wa_assist"]), faq_h, E(t["sources_box"]), srcs)
     art = {"@context": "https://schema.org", "@type": "Article", "headline": g["h1"], "description": g["desc"], "inLanguage": t["html_lang"],
-           "dateModified": TODAY, "mainEntityOfPage": absu(lang, "guides/%s/" % g["slug"]), "image": CFG.og_image(),
+           "dateModified": TODAY, "mainEntityOfPage": absu(lang, "guides/%s/" % g["slug"]), "image": CFG.share_base + img,
            "author": {"@type": "Organization", "name": "SGCarAccident"}, "publisher": {"@type": "Organization", "name": "SGCarAccident"}}
     return page(lang, "guides/%s/" % g["slug"], g["title"], g["desc"], body, g.get("wa", "home"), "guide:" + g["slug"], schema=[art, faq_sd],
-                crumbs=[(C.PAGES["guides"]["nav"], url(lang, "guides/")), (g["nav"], None)])
+                crumbs=[(C.PAGES["guides"]["nav"], url(lang, "guides/")), (g["nav"], None)], img=img, img_alt=alt)
 
 # ---------------- private settlement (form kept from v1, plus guidance) ----------------
 def field(name, label, typ="text", req=True, extra="", ph=""):
@@ -688,6 +696,8 @@ def main():
     for f in os.listdir(os.path.join(SRC, "assets")):
         if os.path.isfile(os.path.join(SRC, "assets", f)):
             shutil.copy(os.path.join(SRC, "assets", f), os.path.join(OUT, "assets", f))
+    if os.path.isdir(os.path.join(SRC, "images")):
+        shutil.copytree(os.path.join(SRC, "images"), os.path.join(OUT, "images"))
     open(os.path.join(OUT, "assets", "icon.svg"), "w").write(LOGO.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" '))
     paths = []
     for lang in ("en", "zh"):
