@@ -174,3 +174,11 @@
 .hw-list{padding-left:1.2em;margin:0 0 1em}
 .hw-list li{margin:.35em 0}
 .hw-related{margin-top:1.6em;padding:14px 16px;background:#fff;border-left:4px solid var(--red);border-radius:6px}
+/* phone hero (Edwin 21 Nov 2026): show the whole signboard; photo on top at its own shape, text below */
+@media (max-width:759px){
+.hw-hero{display:block;min-height:0}
+.hw-hero-img{position:relative;inset:auto;z-index:0}
+.hw-hero-img img{height:auto;aspect-ratio:1080/765;object-fit:contain;display:block}
+.hw-hero-img:after{background:linear-gradient(180deg,rgba(24,34,44,0) 70%,rgba(24,34,44,1) 100%)}
+.hw-hero-txt{padding-top:18px}
+}
