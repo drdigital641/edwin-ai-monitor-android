@@ -571,7 +571,7 @@ def guide_page(lang, g):
     faq_h, faq_sd = faq_block(lang, g.get("faq"))
     img = guide_img(lang, g["slug"])
     alt = ("Illustrative guide cover: " if lang == "en" else "示意指南封面：") + g["nav"]
-    hero = '<img class="hero-img" src="%s" alt="%s" width="1200" height="630" fetchpriority="high">' % (E(BASE + img + "?v=" + IMG_V), E(alt))
+    hero = '<img class="hero-img" src="%s" alt="%s" width="1200" height="630" fetchpriority="high" style="display:block;width:100%%;height:auto;border-radius:14px;margin:4px 0 14px;background:#0B5A8C">' % (E(BASE + img + "?v=" + IMG_V), E(alt))
     body = ("""<article class="art"><h1 class="page-h1">%s</h1><p class="lead">%s</p>""" + hero.replace("%", "%%") + """<p class="upd">%s</p>
 <div class="tldr"><p class="lbl">%s</p>%s</div>%s
 <div class="helpbox"><h3>%s</h3><div class="endcta">%s%s</div></div>%s
