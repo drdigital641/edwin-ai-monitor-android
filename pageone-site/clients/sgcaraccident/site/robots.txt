@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /preview/sgcaraccident/private-settlement/sign/
+Disallow: /preview/sgcaraccident/zh/private-settlement/sign/
+
+Sitemap: https://pageonesingapore.com/preview/sgcaraccident/sitemap.xml

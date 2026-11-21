@@ -1,0 +1,75 @@
+{"answers":[
+{"q":1,"facts":[
+{"point":"Failure to report: insurer can repudiate liability","quote":"the insurer can repudiate liability, resulting in the insured's loss of protection under the policy","url":"https://gia.org.sg/motor-insurance/23-faq-on-motor-insurance-issues/350non-reporting-of-accidents-non-reporting-of-accidents.html","source_org":"GIA"},
+{"point":"Insurers may confiscate NCD if reporting delayed","quote":"confiscate the NCD entitlement of policyholders if there is any delay in reporting accidents","url":"https://gia.org.sg/motor-insurance/23-faq-on-motor-insurance-issues/350non-reporting-of-accidents-non-reporting-of-accidents.html","source_org":"GIA"},
+{"point":"Insurer may end policy / refuse renewal (paraphrase by fetch tool, verify wording on page)","quote":"Insurers may end your policy or refuse to offer renewal (paraphrased; not verbatim)","url":"https://gia.org.sg/motor-insurance/23-faq-on-motor-insurance-issues/350non-reporting-of-accidents-non-reporting-of-accidents.html","source_org":"GIA"},
+{"point":"Report any accident no matter how small; no penalty for late reporting with valid reason (FAQ 8/10, as summarised)","quote":"will not be penalised for late reporting if you have a valid reason","url":"https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/348-motor-claims-framewor","source_org":"GIA"},
+{"point":"AIG: NCD may be reduced by 10% if not reported","quote":"If you do not do so, your No Claim Discount may be reduced by 10%.","url":"https://aig.sg/car-claim","source_org":"AIG"},
+{"point":"Income: fail to report within 24 hours cuts NCD by 10% even with NCD protection","quote":"If you fail to report any accident to us within 24 hours, even with this NCD protection, we will reduce your NCD by 10%.","url":"https://www.income.com.sg/drivo-car-insurance/product-full-coverage","source_org":"Income"}
+]},
+{"q":2,"facts":[
+{"point":"Private settlement does not replace the MCF reporting process","quote":"A memorandum of agreement would be a private matter between the two parties.","url":"https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/348-motor-claims-framewor","source_org":"GIA"},
+{"point":"Same page: such agreement should not supersede/substitute the process (FAQ 9; fetch-tool paraphrase of 'should not supercede or be regarded as a substitute for this process')","quote":"should not supercede or be regarded as a substitute for this process","url":"https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/348-motor-claims-framewor","source_org":"GIA"},
+{"point":"Dos and Don'ts FAQ: report all accidents even if settled privately (paraphrase)","quote":"Report all accidents to your insurer, even if you settle privately (paraphrased by fetch tool; not verified verbatim)","url":"https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/349-dos-and-don-ts-following-an-accident.html","source_org":"GIA"}
+]},
+{"q":3,"facts":[
+{"point":"GIA third-party claims FAQ: own insurer does not file third-party claim for you but suggests claiming under own policy","quote":"lodge a damage claim under your own policy","url":"https://gia.org.sg/motor-insurance/third-party-claims.html","source_org":"GIA"},
+{"point":"GIA: not-at-fault cases depend on own policy terms","quote":"Please refer to your own insurer on the terms and conditions of the policy you purchased from them.","url":"https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/348-motor-claims-framewor","source_org":"GIA"},
+{"point":"GIA third-party claims: if trouble with third-party insurer, approach them directly or FIDReC; GIA does not mediate (paraphrase); claims generally settled in ~6 months (paraphrase)","quote":"approach the insurer concerned directly","url":"https://gia.org.sg/motor-insurance/third-party-claims.html","source_org":"GIA"},
+{"point":"GIA FAQ: take vehicle to insurer's authorised workshop even if claiming against other party (paraphrase from fetch tool of Dos and Don'ts page; not verbatim)","quote":"Take your damaged vehicle to an authorised workshop of your insurer, even if you are claiming against the other party (paraphrased)","url":"https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/349-dos-and-don-ts-following-an-accident.html","source_org":"GIA"},
+{"point":"GIA vehicle repair: policy may restrict repair location","quote":"Your policy may have restrictions on where you could send your vehicle for repair.","url":"https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/360vehicle-repair-vehicle-repair.html","source_org":"GIA"},
+{"point":"Sompo: writes to third party's insurer and lets their insurer survey the vehicle (paraphrase of 'Making a third party insurance claim' section)","quote":"Making a third party insurance claim","url":"https://www.sompo.com.sg/docs/default-source/claim-downloads/products/claim-procedure/motor-car/private_car_claim_procedure.pdf","source_org":"Sompo"},
+{"point":"Tokio Marine: tell approved workshop whether claiming from own or third party's policy","quote":"claiming from your own policy or against third party's policy","url":"https://www.tokiomarine.com/sg/en/non-life/claim/step-by-step-claim-guide/motor-claims-process.html","source_org":"Tokio Marine"},
+{"point":"Income: attempting third-party claim before own-policy claim breaches policy conditions","quote":"will breach our policy conditions","url":"https://www.income.com.sg/drivo-car-insurance","source_org":"Income"},
+{"point":"AIG: definition of third party claim","quote":"claiming from the other party if they are at fault","url":"https://aig.sg/car-claim","source_org":"AIG"},
+{"point":"SPF: non-reportable accidents -> exchange particulars and report to own insurer","quote":"parties involved are required to exchange particulars and report the matter to their respective insurance company","url":"https://www.police.gov.sg/Knowledge-Hub/Traffic/Traffic-Matters/Reporting-Traffic-Accidents-and-Offences","source_org":"SPF"}
+],"not_found":"Official wording that repairs must wait for third-party insurer approval/inspection: only Sompo's process (third-party insurer surveys vehicle) found, plus GIA 'Pre-Repair Survey' link title (content not retrieved). GIA 'even if claiming against other party' wording only via paraphrase."},
+{"q":4,"facts":[
+{"point":"Hit-and-run requires a police traffic accident report","quote":"A traffic accident report must be lodged when the accident involves one or more of the following:","url":"https://www.police.gov.sg/Knowledge-Hub/Traffic/Traffic-Matters/Reporting-Traffic-Accidents-and-Offences","source_org":"SPF"},
+{"point":"Tokio Marine: always make police report for hit-and-run","quote":"Always make a police report if it involved any of the following","url":"https://www.tokiomarine.com/sg/en/non-life/claim/step-by-step-claim-guide/motor-claims-process.html","source_org":"Tokio Marine"}
+],"not_found":"No official wording found on what to do when the other driver merely refuses to give particulars."},
+{"q":5,"facts":[
+{"point":"SPF injury criteria for police report","quote":"Any party involved in the accident was injured and obtained outpatient medical leave for 3 days or more.","url":"https://www.police.gov.sg/Knowledge-Hub/Traffic/Traffic-Matters/Reporting-Traffic-Accidents-and-Offences","source_org":"SPF"},
+{"point":"GIA: if anyone hurt, call medical help and police; do not move injured person (paraphrase / partial quote)","quote":"please do not attempt to move the injured person or vehicle(s).","url":"https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/349-dos-and-don-ts-following-an-accident.html","source_org":"GIA"}
+],"not_found":"Explicit '995' not found on SPF page; personal injury claims via insurer not found."},
+{"q":6,"facts":[
+{"point":"Income Drivo: unlimited windscreen cover, $100 excess (Prestige $1,000); NCD effect not stated","quote":"A windscreen excess of $100 (or any other amount shown on the certificate of insurance) applies for each and every claim","url":"https://www.income.com.sg/drivo-car-insurance/product-full-coverage","source_org":"Income"},
+{"point":"MSIG MotorMax: windscreen cover, $100 excess, waived on repair; claims do not affect NCD","quote":"Such claims do not affect your NCD entitlement","url":"https://www.msig.com.sg/personal/motormax","source_org":"MSIG"},
+{"point":"MSIG MotorMax benefit table","quote":"Windscreen Cover due to breakage, subject to excess of $100 for each claim.","url":"https://www.msig.com.sg/personal/motormax","source_org":"MSIG"},
+{"point":"MSIG excess waived if repaired","quote":"Excess will be waived where repair to the windscreen is done instead of a replacement.","url":"https://www.msig.com.sg/personal/motormax","source_org":"MSIG"},
+{"point":"MSIG claims page: only broken glass claimable","quote":"Chipped or scratched windscreens are not claimable for windscreen claims.","url":"https://www.msig.com.sg/claims/personal/motor-claims","source_org":"MSIG"},
+{"point":"Singlife: report glass damage; NCD intact if not at fault (general, not windscreen-specific)","quote":"Please notify us immediately after you discover damage to any windscreen or glass on your car.","url":"https://singlife.com/en/claims/lifestyle/car","source_org":"Singlife"},
+{"point":"Direct Asia: comprehensive covers windscreen; excess/NCD not stated","quote":"Damage to your windscreen or windows","url":"https://www.directasia.com/blog/what-exactly-does-car-insurance-cover","source_org":"Direct Asia"}
+],"not_found":"Windscreen NCD effect not stated by Income, Direct Asia, AIG page, Singlife (only MSIG explicit)."},
+{"q":7,"facts":[
+{"point":"Direct Asia TPO: covers damage to others only","quote":"This plan only pays when you've damaged another person's car.","url":"https://www.directasia.com/car-insurance/tpo","source_org":"Direct Asia"},
+{"point":"TPO does not cover fire and theft","quote":"you will not be insured against fire and theft.","url":"https://www.directasia.com/car-insurance/tpo","source_org":"Direct Asia"},
+{"point":"TPO: own vehicle repairs are your responsibility","quote":"You will be responsible for any repairs to your own vehicle","url":"https://www.directasia.com/car-insurance/tpo","source_org":"Direct Asia"},
+{"point":"TPO limits","quote":"Third-party property damage: Up to S$5,000,000 (bodily injury: Unlimited)","url":"https://www.directasia.com/car-insurance/tpo","source_org":"Direct Asia"}
+],"not_found":"MoneySense/GIA definition not found (not fetched)."},
+{"q":8,"facts":[
+{"point":"GIA: call insurer hotline for tow truck","quote":"Call Your Insurer's Hotline for a Tow-Truck or further advice on the accident.","url":"https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/349-dos-and-don-ts-following-an-accident.html","source_org":"GIA"},
+{"point":"GIA: exchange particulars, note vehicle numbers","quote":"Exchange Particulars of Parties Involved in the Accident and take note of the vehicle numbers.","url":"https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/349-dos-and-don-ts-following-an-accident.html","source_org":"GIA"},
+{"point":"GIA: photos / do not move vehicle before photographing (paraphrase); MCF advises avoiding unauthorised tow-truck operators (paraphrase)","quote":"Avoid dealings with unauthorised tow-truck operators at the scene (paraphrased by fetch tool, not verbatim)","url":"https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/349-dos-and-don-ts-following-an-accident.html","source_org":"GIA"}
+],"not_found":"Hazard lights not mentioned by GIA page."},
+{"q":9,"facts":[
+{"point":"MSIG","quote":"Do not admit liability","url":"https://www.msig.com.sg/claims/personal/motor-claims","source_org":"MSIG"},
+{"point":"AIG","quote":"You should not admit any liability, negotiate, or make any offer or settlement to a third party.","url":"https://aig.sg/car-claim","source_org":"AIG"},
+{"point":"Singlife","quote":"Do not admit liability, sign any promissory notes agreeing to pay for damages.","url":"https://singlife.com/en/claims/lifestyle/car","source_org":"Singlife"},
+{"point":"Sompo","quote":"Do not admit liability or sign any promissory note agreeing to pay for damages.","url":"https://www.sompo.com.sg/docs/default-source/claim-downloads/products/claim-procedure/motor-car/private_car_claim_procedure.pdf","source_org":"Sompo"}
+],"not_found":"GIA page itself has no such wording."},
+{"q":10,"facts":[
+{"point":"GIA MCF page directs to own insurer's hotline; no consolidated hotline list found on fetched GIA pages","quote":"Call your insurer's hotline for a tow truck","url":"https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/348-motor-claims-framewor","source_org":"GIA"}
+],"not_found":"No GIA list of insurers' hotlines found. Hotlines found for 5 insurers only (see hotlines)."}
+],
+"hotlines":[
+{"insurer":"MSIG","number":"+65 6827 7660","quote":"call our 24-hour helpline at +65 6827 7660","url":"https://www.msig.com.sg/claims/personal/motor-claims"},
+{"insurer":"AIG","number":"6338 6200","quote":"call our 24-hour Auto Assist hotline at 6338 6200","url":"https://aig.sg/car-claim"},
+{"insurer":"Tokio Marine","number":"1800 225 8647","quote":"Call our 24 hr Hotline: 1800 225 8647","url":"https://www.tokiomarine.com/sg/en/non-life/claim/step-by-step-claim-guide/motor-claims-process.html"},
+{"insurer":"Singlife","number":"+65 6333 2222","quote":"Call our 24-hr Emergency Assistance hotline at +65 6333 2222 to start the claims process.","url":"https://singlife.com/en/claims/lifestyle/car"},
+{"insurer":"FWD","number":"+65 6322 2072","quote":"24 hours hotline only for accident and roadside, home or overseas travel assistance.","url":"https://www.fwd.com.sg/contact-us/"},
+{"insurer":"Income (not labelled 24h)","number":"6788 1777 (Income); Orange Force 6789 5000","quote":"fetch summary: Income hotline at 6788 1777 and Orange Force at 6789 5000 (hours not stated)","url":"https://www.income.com.sg/drivo-car-insurance"},
+{"insurer":"Sompo (not labelled 24h)","number":"6461 6555 contact centre; Sompo Assist 6226 3323","quote":"fetch summary only; page mentions 24h MARS without number","url":"https://www.sompo.com.sg/docs/default-source/claim-downloads/products/claim-procedure/motor-car/private_car_claim_procedure.pdf"},
+{"insurer":"Direct Asia (office hours only)","number":"6532 1818","quote":"Claims hotline 6532 1818, Mon-Fri 9am-5pm (fetch summary)","url":"https://www.directasia.com/car-insurance/tpo"}
+],
+"caveat":"WebFetch returns summarised text; items marked paraphrased are not verified verbatim. Re-check key quotes on the live page before publishing."}
