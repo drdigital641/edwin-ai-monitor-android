@@ -8,7 +8,7 @@
 
  type Entry = { site: string; base: string; previewUrl: string; parent: string };
  const OVERRIDES: Record<string, Entry> = {
-@@ -26,6 +27,16 @@
+@@ -26,6 +27,17 @@
  const join = (base: string, p: string) => (base ? base + '/' + p : p);
  const msg = (e: unknown) => (e instanceof Error ? e.message : String(e));
  const PREVIEW_HOST_RE = /(^|\.)(autoseo\.my|pageonesingapore\.com)$/;
@@ -17,9 +17,10 @@
 +const STANDARD_KEY_FOLDER: Record<string, string> = { autoseo: 'preview/hx-auto/' };
 +async function planIndexNowKey(e: Entry, given: unknown) {
 +  const own = await findIndexNowKey(e.site, e.base ? e.base + '/' : '');
-+  if (own) return P.pickIndexNowKey(own, null, null);
++  const first = P.pickIndexNowKey(own, given, null);
++  if (first) return first;
 +  const std = Object.hasOwn(STANDARD_KEY_FOLDER, e.parent) ? await findIndexNowKey(e.parent, STANDARD_KEY_FOLDER[e.parent]) : null;
-+  return P.pickIndexNowKey(null, given, std);
++  return P.pickIndexNowKey(null, null, std);
 +}
 +const hideKey = (s: string, key: string) => s.split(key).join('<key>');
 
@@ -60,7 +61,7 @@
 +      // IndexNow key file in the site root (a new file; like robots.txt a rollback leaves it, which is harmless).
 +      if (ink!.write) {
 +        try { await writeFile(e.site, join(e.base, ink!.key + '.txt'), new TextEncoder().encode(ink!.key), undefined, { publisher: true }); content.changed++; }
-+        catch (err) { throw new BridgeError('IndexNow key file could not be written: ' + hideKey(msg(err), ink!.key).slice(0, 220)); }
++        catch (err) { throw new BridgeError('IndexNow key file could not be written: ' + hideKey(msg(err), ink!.key).slice(0, 220), (err as any)?.status || 500); }
 +      }
 +      content.indexnow_key_file = ink!.write ? 'added (' + ink!.from + ' key)' : 'already there';
        rules = await applyRules(plan!, ctx, testUrls); rulesApplied = !rules.unchanged;
@@ -77,30 +78,33 @@
      const failedNames = checks.filter((c) => !c.ok).map((c) => c.name).join('; ');
 --- a/base44/shared/goLivePure.ts
 +++ b/base44/shared/goLivePure.ts
-@@ -184,3 +184,14 @@
+@@ -184,3 +184,15 @@
    }
    return false;
  }
 +
 +// IndexNow key (21 Nov 2026, Overseas Tyre 422): which key a live site serves at <key>.txt in its root. First found wins:
-+// a valid key file the site folder already has, the client's own key sent by the Controller, the standard key of the parent site.
++// the client's own key sent by the Controller (its own IndexNow submits use that key, so its file must exist even when the folder holds another key),
++// then a valid key file the site folder already has, then the standard key of the parent site.
 +export const INDEXNOW_KEY_RE = /^[0-9a-f]{32}$/;
 +export function pickIndexNowKey(own: string | null, given: unknown, standard: string | null): { key: string; write: boolean; from: 'site' | 'client' | 'standard' } | null {
-+  if (own && INDEXNOW_KEY_RE.test(own)) return { key: own, write: false, from: 'site' };
 +  const g = String(given ?? '').trim().toLowerCase();
-+  if (INDEXNOW_KEY_RE.test(g)) return { key: g, write: true, from: 'client' };
++  if (INDEXNOW_KEY_RE.test(g)) return { key: g, write: own !== g, from: 'client' };
++  if (own && INDEXNOW_KEY_RE.test(own)) return { key: own, write: false, from: 'site' };
 +  if (standard && INDEXNOW_KEY_RE.test(standard)) return { key: standard, write: true, from: 'standard' };
 +  return null;
 +}
 --- a/base44/tests/goLive.test.ts
 +++ b/base44/tests/goLive.test.ts
-@@ -32,3 +32,11 @@
+@@ -32,3 +32,13 @@
    assert.equal(j, '{"url":"/insurers/aig/","abs":"https://x.com.my/a/","home":"/"}');
    assert.equal(g.retargetAsset('{"url":"/preview/x/a/"}', cfg(false)), '{"url":"/preview/x/a/"}');
  });
-+t('indexnow key pick: site file, then client key, then standard; never a bad key', () => {
++t('indexnow key pick: client key, then site file, then standard; never a bad key', () => {
 +  const a = 'a'.repeat(32), b = 'b'.repeat(32), c = 'c'.repeat(32);
-+  assert.deepEqual(g.pickIndexNowKey(a, b, c), { key: a, write: false, from: 'site' });
++  assert.deepEqual(g.pickIndexNowKey(a, b, c), { key: b, write: true, from: 'client' });
++  assert.deepEqual(g.pickIndexNowKey(b, b, c), { key: b, write: false, from: 'client' });
++  assert.deepEqual(g.pickIndexNowKey(a, 'nope', c), { key: a, write: false, from: 'site' });
 +  assert.deepEqual(g.pickIndexNowKey(null, ' ' + b.toUpperCase() + ' ', c), { key: b, write: true, from: 'client' });
 +  assert.deepEqual(g.pickIndexNowKey(null, 'nope', c), { key: c, write: true, from: 'standard' });
 +  assert.deepEqual(g.pickIndexNowKey(null, '../x.txt', null), null);
