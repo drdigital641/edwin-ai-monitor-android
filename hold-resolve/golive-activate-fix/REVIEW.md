@@ -30,3 +30,14 @@ Fixed by hand on live already (repo build switched to live, sync_from_github 28f
 ## Review asks
 Security/privacy: no secret values printed; BRIDGE_GOLIVE_KEY read as before; no new public surface.
 Correctness: regex in stripPreviewPaths; retry loop cannot run twice at once; nothing marks a site live without a passed switch.
+
+## Round 2 (after SPO review 1 = FAIL, 2 blockers)
+- Auto-retry (check_all) only for design_job golive_waiting, status activating/live, and not while golive_lock_at < 5 min. Failed switches retry only on Check now / Activate / set Live.
+- goLiveFlow requires design_job golive_* (went through Activate) and status activating/live, so old failed previews are never switched by themselves.
+- runGoLive takes a lock (golive_lock_at) before the Bridge call and clears it on every outcome; a held lock returns busy.
+- runCheck uses custom !== false consistently; a hand-built site in the Activate flow only goes Live with golive true.
+- set_status live: any hand-built site in the Activate flow runs the switch (not only waiting/failed).
+- golive_run: waiting = 200 with client (row shows the waiting message); failure = 409 with an error field.
+- Bridge refusal is HTTP 200 (confirmed: the 7:33pm refusal reached the refused branch under the old !resp.ok check).
+- Known nit kept: switching Live OFF does not re-add /preview/<slug>/ inside JSON/data-base (rare path; HTML attributes still restored).
+- Schema: Client gets golive_lock_at (date-time string).
