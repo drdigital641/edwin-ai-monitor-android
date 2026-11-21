@@ -336,7 +336,7 @@ def claim_form(e, depth):
             '</form></section>') % (E(e['name']), pre(depth), CLAIM_ENDPOINT, sid, opts)
 
 
-def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra_js='', index=True, why='', head_extra='', tail=''):
+def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra_js='', index=True, why='', head_extra='', tail='', chrome=None):
     assert len(title) <= 60, (path, len(title), title)
     assert len(desc) <= 160, (path, len(desc))
     depth = path.count('/')
@@ -378,11 +378,11 @@ def page(path, title, desc, body, schema=None, og=None, bar=None, h1=None, extra
 <script>document.documentElement.className+=' js'</script>
 {gk}{ld}{head_extra}</head>
 <body{' class="has-bar"' if bar else ''}>
-{header(depth)}
+{chrome[0] if chrome else header(depth)}
 <main id="main">
 {body}
 </main>
-{footer(depth)}
+{chrome[1] if chrome else footer(depth)}
 {bar or ''}
 <script src="{p}assets/dir.js?v={V_DIR}" defer></script>
 {('<script src="%sassets/ask.js?v=%s" defer></script>' % (p, V)) if path == '' else ''}

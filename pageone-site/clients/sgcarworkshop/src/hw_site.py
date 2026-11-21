@@ -1,7 +1,7 @@
 """Hon Win Motor mini-site inside sgcarworkshop.sg (paid Premium client, Edwin 21 Nov 2026).
 Called from build.build() after the paid listing pages: replaces the standard listing page at workshops/hon-win-motor/
 with the client's profile and adds 4 service pages, an areas hub and 10 nearby-area pages. Own look (assets/hw/hw.css),
-directory header/footer kept. Taps are counted by assets/hw/p1-cta.js (Controller Client slug hon-win-motor)."""
+own header/footer instead of the directory's (Edwin 21 Nov 2026: paid client, less confusing), with a small link back to the directory. Taps are counted by assets/hw/p1-cta.js (Controller Client slug hon-win-motor)."""
 import json, math, os, shutil
 from urllib.parse import quote
 import hw_content as C
@@ -48,11 +48,32 @@ def run(B):
     def tail(depth):
         return '<script src="%sassets/hw/p1-cta.js?v=%s" defer></script>' % (pre(depth), JS_V)
 
+    NAV = [('', 'Profile')] + [(sv['slug'] + '/', sv['nav']) for sv in C.SERVICES] + [('areas/', 'Areas')]
+
+    def hw_head(path):
+        depth = path.count('/'); p = pre(depth); home = p + C.BASE_PATH
+        rest = path[len(C.BASE_PATH):]
+        cur = 'areas/' if rest.startswith('areas/') else rest
+        li = ''.join('<li><a href="%s%s"%s>%s</a></li>' % (home, h, ' aria-current="page"' if h == cur else '', E(t)) for h, t in NAV)
+        return ('<a class="skip" href="#main">Skip to content</a><header class="hw hw-top"><div class="hw-w hw-top-bar">'
+                '<a class="hw-brand" href="%s"><span>Hon Win Motor</span><small>Car workshop, 6 Defu Lane 10</small></a>%s</div>'
+                '<nav class="hw-nav" aria-label="Hon Win Motor pages"><ul class="hw-w">%s</ul></nav></header>') % (
+            home, call('header', 'Call', 'hw-top-call'), li)
+
+    def hw_foot(path):
+        depth = path.count('/'); p = pre(depth); home = p + C.BASE_PATH
+        li = ''.join('<li><a href="%s%s">%s</a></li>' % (home, h, E(t)) for h, t in NAV)
+        hrs = '<br>'.join('%s: %s' % (E(d), E(t)) for d, t in C.HOURS)
+        return ('<footer class="hw hw-ft"><div class="hw-w hw-ft-cols"><div><h2>Hon Win Motor</h2><p>%s<br>Singapore %s</p>'
+                '<p><a href="tel:%s" data-ref="footer" data-cta="call_dir_%s" data-tier="premium_leadgen" data-page="/%s">%s</a> · <a href="mailto:%s">%s</a></p></div>'
+                '<div><h2>Opening hours</h2><p>%s</p><p><a href="%s" target="_blank" rel="noopener">Directions on Google Maps</a></p></div>'
+                '<div><h2>Pages</h2><ul>%s</ul></div></div>'
+                '<div class="hw-w hw-ft-dir"><p>Featured (paid) listing on <a href="%s">SG Car Workshop</a>, the Singapore car workshop directory. '
+                '<a href="%slist-your-workshop/#remove">Remove my listing</a> · <a href="%sterms/">Terms</a> · <a href="%sprivacy/">Privacy</a></p></div></footer>') % (
+            E(C.STREET), C.POSTAL, C.TEL, C.SLUG, PG[0], E(C.TEL_SHOW), E(C.EMAIL), E(C.EMAIL), hrs, E(dirs, True), li, p, p, p, p)
+
     def subnav(depth, cur):
-        p = pre(depth) + C.BASE_PATH
-        items = [('', 'Profile')] + [(s['slug'] + '/', s['nav']) for s in C.SERVICES] + [('areas/', 'Areas')]
-        li = ''.join('<li><a href="%s%s"%s>%s</a></li>' % (p, h, ' aria-current="page"' if h == cur else '', E(t)) for h, t in items)
-        return '<nav class="hw-sub" aria-label="Hon Win Motor pages"><div class="hw-w"><b class="hw-sub-name">Hon Win Motor</b><ul>%s</ul></div></nav>' % li
+        return ''
 
     def plate():
         return '<p class="hw-plate"><span class="hw-unit">#01-544</span><span>6 Defu Lane 10<br>Singapore %s</span></p>' % C.POSTAL
@@ -138,7 +159,7 @@ def run(B):
 {paid_note()}
 </div>'''
     page(path, e['title'], e['desc'], body, [biz_ld(url), faq_ld(e['faqs']), dict(crld, **{'@context': 'https://schema.org'})],
-         og='hw/og.jpg', bar=bar('servicing or a repair'), h1='Hon Win Motor, Defu Lane', head_extra=head_extra(depth), tail=tail(depth))
+         og='hw/og.jpg', bar=bar('servicing or a repair'), h1='Hon Win Motor, Defu Lane', head_extra=head_extra(depth), tail=tail(depth), chrome=(hw_head(path), hw_foot(path)))
     LLMS.append('- [Hon Win Motor](%s): car workshop at 6 Defu Lane 10, Hougang (Featured, paid). Servicing, engine, electrical and gearbox repairs, aircon, accident repairs and insurance claims. WhatsApp +65 9171 8466.' % url)
 
     # ------------------------------------------------ service pages
@@ -164,7 +185,7 @@ def run(B):
 {paid_note()}
 </div>'''
         page(path, s['title'], s['desc'], body, [svc_ld(s, url), faq_ld(s['faqs']), dict(crld, **{'@context': 'https://schema.org'})],
-             og='hw/og.jpg', bar=bar(s['wa']), h1=s['h1'], head_extra=head_extra(depth), tail=tail(depth))
+             og='hw/og.jpg', bar=bar(s['wa']), h1=s['h1'], head_extra=head_extra(depth), tail=tail(depth), chrome=(hw_head(path), hw_foot(path)))
         LLMS.append('- [%s](%s): %s' % (s['h1'], url, s['desc']))
 
     # ------------------------------------------------ areas hub
@@ -182,7 +203,7 @@ def run(B):
 {paid_note()}
 </div>'''
     page(path, 'Hon Win Motor Areas: Hougang, Sengkang, Tampines & More', 'Hon Win Motor at Defu Lane serves drivers within about 8 km: Hougang, Kovan, Serangoon, Sengkang, Punggol, Paya Lebar, Ubi, Bedok North, Tampines, Ang Mo Kio.',
-         body, [dict(crld, **{'@context': 'https://schema.org'})], og='hw/og.jpg', bar=bar('servicing or a repair'), h1='Car workshop near you, from Defu Lane', head_extra=head_extra(depth), tail=tail(depth))
+         body, [dict(crld, **{'@context': 'https://schema.org'})], og='hw/og.jpg', bar=bar('servicing or a repair'), h1='Car workshop near you, from Defu Lane', head_extra=head_extra(depth), tail=tail(depth), chrome=(hw_head(path), hw_foot(path)))
 
     # ------------------------------------------------ area pages
     for a in C.AREAS:
@@ -216,7 +237,7 @@ def run(B):
 {paid_note()}
 </div>'''
         page(path, title, desc, body, [biz_ld(B.BASE + C.BASE_PATH), faq_ld(faqs), dict(crld, **{'@context': 'https://schema.org'})],
-             og='hw/og.jpg', bar=bar('servicing or a repair (I am in %s)' % a['name']), h1='Car workshop near %s' % a['name'], head_extra=head_extra(depth), tail=tail(depth))
+             og='hw/og.jpg', bar=bar('servicing or a repair (I am in %s)' % a['name']), h1='Car workshop near %s' % a['name'], head_extra=head_extra(depth), tail=tail(depth), chrome=(hw_head(path), hw_foot(path)))
         LLMS.append('- [Car workshop near %s: Hon Win Motor](%s): %s' % (a['name'], url, desc))
 
 

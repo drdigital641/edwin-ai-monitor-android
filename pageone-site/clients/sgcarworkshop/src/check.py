@@ -498,6 +498,8 @@ def _blocks(h):
 for _f in files:
     _rel = os.path.relpath(_f, root); _h = open(_f, encoding='utf-8').read()
     if 'http-equiv="refresh"' in _h or 'This folder is not a page' in _h or _rel == '404.html': continue
+    if 'class="hw hw-top"' in _h and 'class="hw hw-ft"' in _h and '<main id="main">' in _h and 'list-your-workshop/#remove' in _h and 'terms/' in _h and 'privacy/' in _h:
+        continue   # paid client's own header/footer (Edwin 21 Nov 2026), still links back to the directory, Remove, Terms and Privacy
     if '<header class="top">' not in _h or '<footer class="ft">' not in _h or '<main id="main">' not in _h: print('page lacks the shared header, main or footer', _rel); bad += 1
 for _e in ENTRIES:
     if _e.get('minisite'):
