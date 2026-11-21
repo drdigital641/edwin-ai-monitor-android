@@ -1,0 +1,41 @@
+{
+  "name": "KtechOrder",
+  "type": "object",
+  "properties": {
+    "ref": { "type": "string", "description": "Order reference shown to the customer, e.g. KT-MAX-261122-7Q4K" },
+    "status": { "type": "string", "enum": ["awaiting_payment", "paid", "cancelled"], "default": "awaiting_payment" },
+    "flag": { "type": "string", "description": "empty = real order; test / spam = kept for checking, never a real order" },
+    "lang": { "type": "string", "enum": ["en", "ms", "zh"] },
+    "product": { "type": "string" },
+    "qty": { "type": "number" },
+    "unit_price": { "type": "number" },
+    "total": { "type": "number" },
+    "currency": { "type": "string" },
+    "name": { "type": "string" },
+    "phone": { "type": "string" },
+    "email": { "type": "string" },
+    "address_line1": { "type": "string" },
+    "address_line2": { "type": "string" },
+    "postcode": { "type": "string" },
+    "city": { "type": "string" },
+    "state": { "type": "string" },
+    "pdpa_consent": { "type": "boolean" },
+    "ordered_at": { "type": "string", "format": "date-time" },
+    "page_path": { "type": "string" },
+    "ip_hash": { "type": "string" },
+    "payment_mode": { "type": "string", "enum": ["none", "checkout", "payment_link"], "description": "none = Stripe not connected yet when the order came in" },
+    "stripe_session_id": { "type": "string" },
+    "stripe_payment_intent": { "type": "string" },
+    "amount_paid": { "type": "number" },
+    "paid_at": { "type": "string", "format": "date-time" },
+    "paid_by": { "type": "string", "description": "webhook or success_check" },
+    "notes": { "type": "string" }
+  },
+  "required": ["ref", "status", "lang", "qty", "total", "name", "phone", "email", "ordered_at"],
+  "rls": {
+    "read": { "user_condition": { "role": "admin" } },
+    "create": { "user_condition": { "role": "admin" } },
+    "update": { "user_condition": { "role": "admin" } },
+    "delete": { "user_condition": { "role": "admin" } }
+  }
+}

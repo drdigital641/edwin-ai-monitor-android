@@ -1,5 +1,5 @@
 {
-  "_note": "ONE promo config (Edwin 21 Nov 2026). Edit here, run build.py, upload through the Bridge. Drives homepage hero, landing pages, schema, tools/pro highlights, the .htaccess buy redirect and the ended state.",
+  "_note": "ONE promo config (Edwin 21 Nov 2026, round 3 22 Nov). Edit here, run build.py, upload through the Bridge. Drives homepage promo band, landing + checkout pages, schema, tools/pro highlights, the .htaccess buy redirect and the ended state. No salesman WhatsApp on the promo (Edwin 22 Nov). Payment is NOT set here: it is the Base44 secret KTECH_STRIPE_SECRET_KEY (or KTECH_STRIPE_PAYMENT_URL) in app K Tech Promo Orders, so no key or link ever sits in a public file.",
   "site": "https://ktech.my/",
   "slug": "autel-ms906-max-promo/",
   "product": "Autel MaxiSys MS906 MAX",
@@ -10,16 +10,50 @@
   "end_date": "2026-12-31",
   "ended_from_utc": "20261231160000",
   "server_utc_offset_hours": -7,
-  "payment_url": "PAYMENT_URL_TBC",
-  "wa": "60125462820",
-  "wa_display": "+60 12-546 2820",
-  "wa_name": "Autel Hooi",
   "availability": "https://schema.org/InStock",
   "ref_buy": "promo-ms906max-buy",
-  "ref_wa": "promo-ms906max-wa",
-  "poster": {"stem": "autel-ms906-max-promo-poster", "w": 1078, "h": 992},
-  "og": "og-autel-ms906-max-promo-1200x630.jpg",
+  "poster": {
+    "stem": "ktech-ms906max-promo-poster-1080",
+    "w": 1080,
+    "h": 1080
+  },
+  "og": "og-ktech-ms906max-promo-1200x630.jpg",
   "img_dir": "assets/promo/",
-  "end_display": {"en": "31 Dec 2026", "ms": "31 Dis 2026", "zh": "2026年12月31日"},
-  "end_full": {"en": "31 December 2026, 23:59 Malaysia time", "ms": "31 Disember 2026, 11:59 malam waktu Malaysia", "zh": "2026年12月31日晚上11:59（马来西亚时间）"}
+  "end_display": {
+    "en": "31 Dec 2026",
+    "ms": "31 Dis 2026",
+    "zh": "2026年12月31日"
+  },
+  "end_full": {
+    "en": "31 December 2026, 23:59 Malaysia time",
+    "ms": "31 Disember 2026, 11:59 malam waktu Malaysia",
+    "zh": "2026年12月31日晚上11:59（马来西亚时间）"
+  },
+  "banner": {
+    "stem": "ktech-ms906max-promo-banner-1600x900",
+    "w": 1600,
+    "h": 900
+  },
+  "checkout_slug": "autel-ms906-max-promo/checkout/",
+  "checkout_api": "https://base44.app/api/apps/6b01d098d67ed5a4f0d997a4/functions/ktechOrder",
+  "max_qty": 10,
+  "ref_checkout": "promo-ms906max-checkout",
+  "states": [
+    "Johor",
+    "Kedah",
+    "Kelantan",
+    "Melaka",
+    "Negeri Sembilan",
+    "Pahang",
+    "Perak",
+    "Perlis",
+    "Pulau Pinang",
+    "Sabah",
+    "Sarawak",
+    "Selangor",
+    "Terengganu",
+    "Kuala Lumpur",
+    "Putrajaya",
+    "Labuan"
+  ]
 }
