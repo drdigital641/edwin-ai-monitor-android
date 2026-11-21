@@ -206,6 +206,10 @@ def disc(cls='disc'):
             '<path class="d-cal" d="M150 28a96 96 0 0 1 38 44l-22 12a70 70 0 0 0-28-34z"/></svg>')
 
 
+# Home hero background (Edwin 22 Nov 12:29am) is inlined on the three home pages only, so no other page changes.
+HERO_STYLE = '<style>' + open(os.path.join(HERE, 'hero-inline.css'), encoding='utf8').read().replace('\n', '') + '</style>'
+
+
 def head(path, title, meta, ld):
     css = os.path.join(HERE, 'assets', 'site.css')
     zh = L['code'] == 'zh'
@@ -237,7 +241,7 @@ def head(path, title, meta, ld):
 <link rel="icon" href="{u('media/icon-192.png')}" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="{u('media/apple-touch-icon.png')}">
 {font}{hero}
-<link rel="stylesheet" href="{u('assets/site.css')}?v={ver(css)}">
+<link rel="stylesheet" href="{u('assets/site.css')}?v={ver(css)}">{HERO_STYLE if path == '' else ''}
 {ldj}
 </head>'''
 
