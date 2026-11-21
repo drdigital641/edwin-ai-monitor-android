@@ -48,6 +48,8 @@
   ['name', 'phone', 'email', 'address_line1', 'postcode', 'city', 'state'].forEach(function (n) {
     var el = F.elements[n]; el.addEventListener('blur', function () { if (F.querySelector('[data-f="' + n + '"]').classList.contains('bad')) check(); });
   });
+  $('f-consent').addEventListener('change', function () { if ($('f-consent').checked) mark('consent', ''); });
+  F.elements.state.addEventListener('change', function () { if (val('state')) mark('state', ''); });
   function say(msg) { err.textContent = msg; err.hidden = !msg; }
   function show(h, p, ref) {
     F.hidden = true; $('pmco-dh').textContent = h; $('pmco-dp').textContent = p; $('pmco-ref').textContent = ref || '';

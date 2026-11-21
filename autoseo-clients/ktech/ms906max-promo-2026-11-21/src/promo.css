@@ -100,3 +100,6 @@
 .pm-done h2{margin:0 0 8px;text-transform:uppercase}.pm-done p{margin:0 0 10px;font-size:16px}
 .pm-ref b{font:700 20px var(--hd);letter-spacing:.04em;word-break:break-all}
 .pm-done a{color:var(--cyan);font:700 14px var(--hd);text-transform:uppercase;letter-spacing:.04em}
+.pm-ended .pm-ctas{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}.pm-ended .pm-ctas .btn,.end .pm-ctas .btn{white-space:normal;text-align:center;line-height:1.2}
+.pm-ended .btn-ghost{color:#fff;border-color:#fff}
+.pm-cb,.pm-cb span{text-transform:none!important}

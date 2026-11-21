@@ -1,5 +1,6 @@
-/* ktech.my Autel MS906 MAX year-end promotion (21 Nov 2026). Loaded on the homepage and the promo pages; k.css unchanged.
-   The poster sits whole in an ink tablet frame at its true 1078:992 ratio: object-fit:contain, never cropped. */
+/* ktech.my Autel MS906 MAX year-end promotion (21 Nov 2026; round 3 22 Nov: K Tech's own artwork + checkout form).
+   Loaded on the homepage and the promo/checkout pages; k.css unchanged. Artwork sits whole in an ink frame at its own
+   ratio (width/height attributes: 1080x1080 poster, 1600x900 banner): object-fit:contain, never cropped. */
 [hidden]{display:none!important}
 .pm-hero{padding:10px 0 26px}
 .pm-grid{display:grid;gap:10px;grid-template-areas:"h" "p" "i"}
@@ -9,7 +10,7 @@
 .pm-band{padding:30px 0 34px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .pm-hero .line,.pm-ph .line,.pm-band .line{font-size:15px;color:var(--ink2);margin:0;max-width:40ch}
 .pm-poster{margin:0;background:var(--ink);padding:6px;border:1px solid #000;box-shadow:0 24px 40px -28px rgba(0,0,0,.6);position:relative}
-.pm-poster img{width:100%;height:auto;aspect-ratio:1078/992;object-fit:contain;object-position:center;background:var(--ink);pointer-events:none;-webkit-user-drag:none}
+.pm-poster img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;object-position:center;background:var(--ink);pointer-events:none;-webkit-user-drag:none}
 .pm-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:0}
 .pm-price b{font:700 clamp(32px,8.4vw,52px)/1 var(--hd);color:var(--red);letter-spacing:-.01em}
 .pm-price span{font:600 13px var(--hd);letter-spacing:.04em;text-transform:uppercase;color:var(--ink2)}
@@ -19,7 +20,8 @@
 .pm-excl{margin:6px 0 0;font-size:13px;line-height:1.35;color:var(--mute)}
 .pm-ctas{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
 .pm-ctas .btn{min-height:50px;padding:0 10px;font-size:15px;white-space:nowrap}
-.pm-ctas .btn-ghost svg{width:20px;height:20px;fill:#1b8a4b}
+.pm-ctas.pm-one{grid-template-columns:1fr}
+.pm-ctas .btn-ghost{color:var(--ink)}
 .pm-more{margin:10px 0 0;font:600 14px var(--hd);letter-spacing:.04em;text-transform:uppercase}
 .pm-more a{color:var(--cyan);text-decoration:none}
 .pm-ended{padding:18px;background:var(--ink);color:#fff;border-left:6px solid var(--amber)}
@@ -50,4 +52,54 @@
 .pm-hl .btn{margin-top:12px}
 .pm-x{margin:14px 0;padding:12px 14px;border-left:4px solid var(--red);background:var(--card)}
 .pm-x a{font:700 14px var(--hd);color:var(--red);text-transform:uppercase;letter-spacing:.04em}
-@media(max-width:899px){.pm-page .end{padding-bottom:calc(52px + 76px + env(safe-area-inset-bottom,0px))}}
+/* promo + checkout pages carry no sticky dock (no salesman WhatsApp, Edwin 22 Nov) */
+.pm-page .dock{display:none!important}
+/* landing page on phones: price + Buy now before the poster, so Buy now is in the first screen */
+@media(max-width:899px){.pm-ph .pm-grid{grid-template-areas:"h" "i" "p"}}
+.pm-poster img{aspect-ratio:auto}
+/* checkout payment form */
+.pm-co-top{padding-bottom:18px}.pm-co-sec{padding-top:18px}
+.pm-co{max-width:640px}
+.pm-form fieldset{border:0;border-top:1px solid var(--ink);margin:22px 0 0;padding:14px 0 0;min-width:0}
+.pm-form legend{font:700 15px var(--hd);letter-spacing:.06em;text-transform:uppercase;padding:0 0 4px}
+.pm-f{margin:0 0 14px;min-width:0}
+.pm-f label{display:block;font:600 14px/1.3 var(--hd);letter-spacing:.02em;margin:0 0 4px;color:var(--ink)}
+.pm-f small{display:block;font-size:13px;color:var(--mute);margin:-2px 0 4px}
+.pm-f input,.pm-f select{display:block;width:100%;max-width:100%;box-sizing:border-box;min-height:48px;padding:10px 12px;font:400 16px/1.3 var(--bd,inherit);color:var(--ink);background:#fff;border:1px solid #8b9096;border-radius:0;-webkit-appearance:none;appearance:none}
+.pm-f select{background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2315171a' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 14px center;padding-right:36px}
+.pm-f input:focus,.pm-f select:focus{outline:3px solid var(--cyan);outline-offset:0;border-color:var(--ink)}
+.pm-f.bad input,.pm-f.bad select{border-color:var(--red);border-width:2px}
+.pm-fe{display:block;font-style:normal;font-size:14px;color:var(--red);margin:4px 0 0}
+.pm-row2{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,13fr);gap:0 10px}
+.pm-ship{margin:0;font-size:14px;color:var(--mute)}
+.pm-sum{background:var(--ink);color:#fff;padding:16px;border-left:6px solid var(--red)}
+.pm-sum h2{margin:0 0 8px;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--amber)}
+.pm-sum-p{margin:0 0 12px;display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline}
+.pm-sum-p b{font:700 18px/1.2 var(--hd)}.pm-sum-p span{font-size:14px;color:#c9ced3}
+.pm-qty label{font:600 14px var(--hd);display:block;margin:0 0 4px}
+.pm-step{display:inline-grid;grid-template-columns:48px 72px 48px;border:1px solid #5b6168}
+.pm-step input{min-height:48px;width:72px;box-sizing:border-box;text-align:center;font:700 18px var(--hd);border:0;border-left:1px solid #5b6168;border-right:1px solid #5b6168;background:#fff;color:var(--ink);-moz-appearance:textfield;appearance:textfield;border-radius:0}
+.pm-step input::-webkit-inner-spin-button,.pm-step input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.pm-qb{min-height:48px;border:0;background:#2a2e33;color:#fff;font:700 22px/1 var(--hd);cursor:pointer;touch-action:manipulation}
+.pm-qb:focus-visible{outline:3px solid var(--cyan)}
+.pm-sum .pm-fe{color:#ff8a8f}
+.pm-total{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:14px 0 10px;padding-top:12px;border-top:1px solid #3a3f45}
+.pm-total span{font:600 14px var(--hd);letter-spacing:.06em;text-transform:uppercase}
+.pm-total b{font:700 30px/1 var(--hd);color:#fff}
+.pm-sum-l{margin:0;padding:0 0 0 18px;font-size:14px;line-height:1.5;color:#dfe3e6}
+.pm-hp{position:absolute!important;left:-10000px;width:1px;height:1px;overflow:hidden}
+.pm-consent{margin-top:18px}
+.pm-cb{display:flex!important;gap:10px;align-items:flex-start;font:400 15px/1.45 var(--bd,inherit)!important;letter-spacing:0!important}
+.pm-cb input{flex:0 0 24px;width:24px;height:24px;min-height:0;margin:1px 0 0;padding:0;accent-color:var(--red);-webkit-appearance:auto;appearance:auto}
+.pm-cb a{color:var(--cyan);font-weight:600}
+.pm-err{margin:6px 0 12px;padding:10px 12px;background:#fde8e9;border-left:4px solid var(--red);color:#7a1015;font-size:15px}
+.pm-go{width:100%;min-height:54px;font-size:17px;margin-top:4px}
+.pm-go[disabled]{opacity:.7}
+.pm-note{margin:10px 0 0;font-size:13px;color:var(--mute)}
+.pm-done{background:var(--card);border-left:6px solid var(--amber);padding:18px;outline:0}
+.pm-done h2{margin:0 0 8px;text-transform:uppercase}.pm-done p{margin:0 0 10px;font-size:16px}
+.pm-ref b{font:700 20px var(--hd);letter-spacing:.04em;word-break:break-all}
+.pm-done a{color:var(--cyan);font:700 14px var(--hd);text-transform:uppercase;letter-spacing:.04em}
+.pm-ended .pm-ctas{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}.pm-ended .pm-ctas .btn,.end .pm-ctas .btn{white-space:normal;text-align:center;line-height:1.2}
+.pm-ended .btn-ghost{color:#fff;border-color:#fff}
+.pm-cb,.pm-cb span{text-transform:none!important}
