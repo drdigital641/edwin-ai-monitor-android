@@ -1,0 +1,6 @@
+--- a/base44/shared/imageLocale.ts
++++ b/base44/shared/imageLocale.ts
+@@ -68,3 +68,4 @@
+   'lt-automart': { country: MY, city: 'Taman Century, Johor Bahru', business: 'LT Automart, ...' },
++  'sp-precision-parts': { country: MY, city: 'Skudai, Johor', business: 'S & P Precision Parts, an authorised Monaer brake parts distributor in Skudai (brake pads, drilled and slotted brake discs, DOT 4 brake fluid; parts counter, parts boxes and fitting at Malaysian workshops); right-hand-drive Malaysian cars, local Malaysian people, no invented brands or label text' },
+   'sgcaraccident': { country: SG, business: 'SG Car Accident, ...' },
