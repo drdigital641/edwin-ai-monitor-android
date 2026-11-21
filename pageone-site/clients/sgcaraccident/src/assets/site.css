@@ -189,7 +189,7 @@ p,li{text-wrap:pretty}
 
 @media (min-width:760px){
   body{font-size:19px}
-  .rgrid{grid-template-columns:repeat(3,1fr)}
+  .rgrid{grid-template-columns:repeat(4,1fr)}
   .ins-index{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

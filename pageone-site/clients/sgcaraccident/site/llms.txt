@@ -1,6 +1,6 @@
 # SGCarAccident
 
-> Step-by-step help after a car accident in Singapore: at fault, not sure, or not at fault (third-party claim); insurer reporting centres; accident statement helper; private settlement form; windscreen claims. General guidance, not an insurer or law firm.
+> Step-by-step help after a car accident in Singapore: at fault, not sure, or not at fault (third-party claim); minor accidents; hit and run; insurer reporting centres; accident statement helper; private settlement form; windscreen claims. General guidance, not an insurer or law firm.
 
 Site: https://sgcaraccident.sg/
 Sitemap: https://sgcaraccident.sg/sitemap.xml
@@ -10,6 +10,8 @@ Sitemap: https://sgcaraccident.sg/sitemap.xml
 - https://sgcaraccident.sg/own-damage/
 - https://sgcaraccident.sg/not-sure/
 - https://sgcaraccident.sg/third-party/
+- https://sgcaraccident.sg/minor-car-accident/
+- https://sgcaraccident.sg/hit-and-run/
 - https://sgcaraccident.sg/tow/
 - https://sgcaraccident.sg/windscreen/
 - https://sgcaraccident.sg/report/

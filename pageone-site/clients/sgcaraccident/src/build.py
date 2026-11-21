@@ -93,6 +93,8 @@ ICONS = {
     "settlement": ic('<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M8 17c1.5-1.5 2.5-1.5 3 0s1.5 1.5 3-1"/>'),
     "faq": ic('<path d="M4 5h16v11H9l-5 4V5Z"/><path d="M9 9h6M9 12h4"/>'),
     "tow": ic('<path d="M2 17V9h7l3 4h6a2 2 0 0 1 2 2v2"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M12 13V6l6-2"/>'),
+    "minor": ic('<path d="M3 16v-3l2-5h9l3 5h3a1 1 0 0 1 1 1v2"/><circle cx="7" cy="16.5" r="1.8"/><circle cx="17" cy="16.5" r="1.8"/><path d="M19 5l-2 2M21 9h-2"/>'),
+    "hitrun": ic('<path d="M3 16v-3l2-5h9l3 5h3a1 1 0 0 1 1 1v2"/><circle cx="7" cy="16.5" r="1.8"/><circle cx="17" cy="16.5" r="1.8"/><path d="M2 5h6M4 2.5h5"/>'),
     "guide": ic('<path d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4V4Z"/><path d="M20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6V4Z"/>'),
 }
 LOGO = ('<svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="6" fill="#0B5A8C"/>'
@@ -403,7 +405,7 @@ def home(lang):
     body = """<section class="pick" aria-labelledby="h1"><h1 id="h1">%(h1)s</h1><p class="q">%(q)s</p>
 <div class="paths">%(p1)s%(p2)s%(p3)s</div>
 <p class="sosline"><span>%(hurt)s</span><a href="tel:995">995</a><a href="tel:999">999</a></p></section>
-<section class="more"><h2>%(res_h)s</h2><div class="rgrid">%(c1)s%(c2)s%(c3)s%(c4)s%(c5)s%(c6)s</div></section>
+<section class="more"><h2>%(res_h)s</h2><div class="rgrid">%(c7)s%(c8)s%(c1)s%(c2)s%(c3)s%(c4)s%(c5)s%(c6)s</div></section>
 <section class="glist"><h2>%(g_h)s</h2><p>%(g_p)s</p><ul>%(guides)s</ul><a class="btn btn-ghost block" href="%(gall)s">%(g_all)s</a></section>
 %(faq)s""" % {
         "h1": E(H["h1"]), "q": E(H["q"]),
@@ -411,10 +413,15 @@ def home(lang):
         "hurt": E(H["hurt"]), "res_h": E(H["res_h"]),
         "c1": card("windscreen", "windscreen", "windscreen/"), "c2": card("centre", "centre", "insurers/"), "c3": card("statement", "statement", "report/"),
         "c4": card("settlement", "settlement", "private-settlement/"), "c5": card("faq", "faq", "faq/"), "c6": card("tow", "tow", "tow/"),
+        "c7": card("minor", "minor", "minor-car-accident/"), "c8": card("hitrun", "hitrun", "hit-and-run/"),
         "g_h": E(H["g_h"]), "g_p": E(H["g_p"]), "guides": guides, "gall": url(lang, "guides/"), "g_all": E(H["g_all"]), "faq": faq_h,
     }
-    site = {"@context": "https://schema.org", "@type": "WebSite", "name": "SGCarAccident", "url": absu(lang), "inLanguage": t["html_lang"]}
-    return page(lang, "", H["title"], H["desc"], body, "home", "home", schema=[site, faq_sd])
+    org_id = CFG.canonical_base.rstrip("/") + "/#org"
+    org = {"@context": "https://schema.org", "@type": "Organization", "@id": org_id, "name": "SGCarAccident", "url": CFG.canonical_base,
+           "logo": CFG.canonical_base.rstrip("/") + "/assets/icon.svg", "areaServed": {"@type": "Country", "name": "Singapore"},
+           "description": "General guidance for drivers after a car accident in Singapore. Not an insurer, law firm or reporting centre."}
+    site = {"@context": "https://schema.org", "@type": "WebSite", "name": "SGCarAccident", "url": absu(lang), "inLanguage": t["html_lang"], "publisher": {"@id": org_id}}
+    return page(lang, "", H["title"], H["desc"], body, "home", "home", schema=[org, site, faq_sd])
 
 # ---------------- reporting centres ----------------
 def insurer_index(lang):
@@ -707,7 +714,7 @@ def main():
         for ins in INSURERS:
             write("assets/centres/%s.%s.json" % (ins["slug"], lang), json.dumps(centre_json(lang, ins), ensure_ascii=False, separators=(",", ":")))
         write(pre + "index.html", home(lang)); paths.append("")
-        for slug in ["own-damage", "not-sure", "third-party", "tow"]:
+        for slug in ["own-damage", "not-sure", "third-party", "minor-car-accident", "hit-and-run", "tow"]:
             write(pre + slug + "/index.html", flow_page(lang, slug)); paths.append(slug + "/")
         write(pre + "windscreen/index.html", windscreen_page(lang)); paths.append("windscreen/")
         write(pre + "report/index.html", report_page(lang)); paths.append("report/")
@@ -727,7 +734,7 @@ def main():
     write("sitemap.xml", golive.sitemap_xml(CFG, paths, TODAY))
     write("robots.txt", golive.robots_txt(CFG).replace("Allow: /\n", "Allow: /\nDisallow: %sprivate-settlement/sign/\nDisallow: %szh/private-settlement/sign/\n" % (
         "/" if CFG.live_domain else CFG.preview_path, "/" if CFG.live_domain else CFG.preview_path)))
-    llms = golive.llms_header(CFG, "SGCarAccident", "Step-by-step help after a car accident in Singapore: at fault, not sure, or not at fault (third-party claim); insurer reporting centres; accident statement helper; private settlement form; windscreen claims. General guidance, not an insurer or law firm.")
+    llms = golive.llms_header(CFG, "SGCarAccident", "Step-by-step help after a car accident in Singapore: at fault, not sure, or not at fault (third-party claim); minor accidents; hit and run; insurer reporting centres; accident statement helper; private settlement form; windscreen claims. General guidance, not an insurer or law firm.")
     llms += "\n## Pages\n" + "\n".join("- %s" % absu("en", p) for p in paths) + "\n"
     write("llms.txt", llms)
     n = sum(len(fs) for _, _, fs in os.walk(OUT))
