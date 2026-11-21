@@ -1,0 +1,16 @@
+{
+  // One row per used signed-link nonce (replay guard), kept 10 minutes. Server-only.
+  "name": "LinkNonce",
+  "type": "object",
+  "properties": {
+    "nonce": { "type": "string" },
+    "at": { "type": "string", "description": "ISO time it was used" }
+  },
+  "required": ["nonce", "at"],
+  "rls": {
+    "create": { "user_condition": { "role": "admin" } },
+    "read": { "user_condition": { "role": "admin" } },
+    "update": { "user_condition": { "role": "admin" } },
+    "delete": { "user_condition": { "role": "admin" } }
+  }
+}
