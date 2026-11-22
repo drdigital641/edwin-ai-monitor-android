@@ -18,3 +18,7 @@ The slug-name and reused-photo rules were already applied only to hero/og:image/
 
 ## Security / privacy
 No new I/O, hosts, secrets or permissions. Gate cannot be loosened by this: hero must still be slug-named (or media.base44.com), a real image file on this site, and not used on the hub. Worst case of a false "article header" keep is that logo-like images are considered, which SKIP_IMG already filters.
+
+## SPO review (23 Nov, 7:45am SGT): PASS
+Findings fixed before save: (1) `rel` matched a CSS utility wrapper around the hero -> now `rels` on any element, `rel` only on a card `<a>`, and `\sclass` (not data-class); (4) "Read more…"/"Keep reading…" headings now only match when that is the whole heading. Retested: hero inside div.rel PASS, early "Read more efficiently" heading PASS, all XADO cases as above, 51-page regression unchanged (47 same, 4 XADO corrected). (2)(3) pre-existing, noted, no change.
+Saved to Bridge sandbox base44/shared/imageGate.ts (git 0048cab), exact-string edit, no other file touched.

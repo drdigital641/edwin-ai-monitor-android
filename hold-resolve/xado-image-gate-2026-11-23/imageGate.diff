@@ -13,8 +13,8 @@
  }
  function cutRelated(html: string): string {
 -  const m = html.search(/<[a-z]+\b[^>]*\bclass\s*=\s*["'][^"']*\b(acards?|related[a-z-]*|more-articles|card-grid)\b|<h[2-4]\b[^>]*>\s*(related|more articles|you may also|read next)/i);
-+  // Related-card blocks are never the article's own image (23 Nov: XADO "Keep reading" uses class rels/rel).
-+  const m = html.search(/<[a-z]+\b[^>]*\bclass\s*=\s*["'][^"']*\b(acards?|related[a-z-]*|more-articles|card-grid)\b|<[a-z]+\b[^>]*\bclass\s*=\s*["'](?:[^"']*\s)?rels?(?=["'\s])|<h[2-4]\b[^>]*>\s*(related|more articles|you may also|read next|keep reading|read more|further reading)/i);
++  // Related-card blocks are never the article's own image (23 Nov: XADO "Keep reading" uses class "rels" on the block and "rel" on each card <a>; "rel" alone on a div is a CSS utility, so it is not matched).
++  const m = html.search(/<[a-z]+\b[^>]*\bclass\s*=\s*["'][^"']*\b(acards?|related[a-z-]*|more-articles|card-grid)\b|<[a-z]+\b[^>]*\sclass\s*=\s*["'](?:[^"']*\s)?rels(?=["'\s])|<a\b[^>]*\sclass\s*=\s*["'](?:[^"']*\s)?rel(?=["'\s])|<h[2-4]\b[^>]*>\s*(?:related|more articles|you may also|read next|(?:keep reading|read more|further reading)\s*<\/h[2-4])/i);
    return m >= 0 ? html.slice(0, m) : html;
  }
  function usable(t: string): string {
