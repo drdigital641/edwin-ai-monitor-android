@@ -19,9 +19,9 @@ const isJpeg = (b: Uint8Array) => b.length > 1000 && b[0] === 0xff && b[1] === 0
 // Real capture of the live home page: Google PageSpeed Insights desktop run, Lighthouse "final-screenshot" (JPEG).
 // Optional secret PAGESPEED_API_KEY raises the quota. The page CSS crops any size to 16:10 (object-fit: cover).
 // One attempt, 50 s max (the keyless quota is per day, a retry of a 429 does not help).
-async function captureHome(url: string): Promise<Uint8Array | null> {
+async function captureHome(url: string, strategy: 'desktop' | 'mobile' = 'desktop'): Promise<Uint8Array | null> {
   const key = Deno.env.get('PAGESPEED_API_KEY');
-  const api = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=desktop&category=performance'
+  const api = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=' + strategy + '&category=performance'
     + '&fields=' + encodeURIComponent('lighthouseResult/audits/final-screenshot/details/data') + '&url=' + encodeURIComponent(url) + (key ? '&key=' + encodeURIComponent(key) : '');
   try {
     const r = await fetch(api, { signal: AbortSignal.timeout(50_000) });
@@ -148,15 +148,18 @@ export async function pageoneClientsOp(body: any) {
         if (st2 === 'present') { image = pre.host + '.' + ext; break; }
         if (st2 !== 'absent') throw new Error(`could not tell whether ${Q.IMG_DIR}${pre.host}.${ext} exists (${st2})`);
       }
-      let thumb = 'already there';
+      // 22 Nov 2026 (Edwin, after the J&K 404): the Page One cards are phone frames, so the capture is the PageSpeed MOBILE run.
+      // If it fails the card still goes on with <host>.webp (the page shows the client name on the brand colour until that file
+      // exists, clients-v2.js fallback) and the run is flagged: result card.flag (kept in Controller golive_status.pageone_clients)
+      // and a blocked needs_you alert from bridgeGoLive, so a broken image is never shown and the gap is never silent.
+      let thumb = 'already there'; let flag = '';
       if (!image && !Q.hasCard(String((await readLiveFile('pageone', Q.PAGE)).content), pre.host)) {
-        const bytes = await captureHome(url);
-        if (!bytes) throw new Error('no thumbnail: the PageSpeed capture failed (run again later, or add ' + Q.IMG_DIR + pre.host + '.webp by hand)');
-        await writeFile('pageone', Q.IMG_DIR + pre.host + '.jpg', bytes, undefined);
-        image = pre.host + '.jpg'; thumb = 'live home page capture (PageSpeed desktop)';
+        const bytes = await captureHome(url, 'mobile');
+        if (bytes) { await writeFile('pageone', Q.IMG_DIR + pre.host + '.jpg', bytes, undefined); image = pre.host + '.jpg'; thumb = 'live home page capture (PageSpeed mobile)'; }
+        else { thumb = 'MISSING'; flag = 'thumbnail missing: add ' + Q.IMG_DIR + pre.host + '.webp (480x912, top of the 390px home page)'; }
       }
       card = Q.checkCard({ ...pre, image: image || pre.host + '.webp' });
-      cardRes = { status: 'pending', thumbnail: thumb };
+      cardRes = flag ? { status: 'pending', thumbnail: thumb, flag } : { status: 'pending', thumbnail: thumb };
     } catch (err) { cardRes = { status: 'needs_card', detail: msg(err).slice(0, 300) }; }
   }
   let page: string;
@@ -176,7 +179,7 @@ export async function pageoneClientsOp(body: any) {
       indexnow = { status: r.status, http: r.http, reason: r.reason, retry_later: r.retry_later };
     } catch (err) { indexnow = { status: 'error', error: msg(err).slice(0, 100) }; }
   }
-  return { complete: !['needs_card'].includes(cardRes.status), page, card: cardRes,
+  return { complete: !['needs_card'].includes(cardRes.status) && !cardRes.flag, page, card: cardRes,
     stats: { po_live: st.po_live, po_industries: st.po_industries, po_build: st.po_build, wl_live: st.wl_live, wl_build: st.wl_build, wl_last30: st.wl_last30, updated_iso: st.updated_iso },
     indexnow, urls: [Q.PAGE_URL] };
 }
