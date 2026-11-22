@@ -169,5 +169,10 @@
   "email address",
   "number of cars serviced"
  ],
- "_order": 11
+ "_order": 11,
+ "geo": {
+  "lat": 1.336774,
+  "lon": 103.754362,
+  "source": "Website Manager live pin, 22 Nov 2026"
+ }
 }

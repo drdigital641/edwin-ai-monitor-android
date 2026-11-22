@@ -182,5 +182,10 @@
   "owner name",
   "second phone 6759 3229 (2022 listing)"
  ],
- "_order": 0
+ "_order": 0,
+ "geo": {
+  "lat": 1.441035,
+  "lon": 103.83366,
+  "source": "Website Manager live pin, 22 Nov 2026"
+ }
 }

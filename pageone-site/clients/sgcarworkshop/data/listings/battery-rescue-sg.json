@@ -175,5 +175,6 @@
   "CaseTrust wording",
   "postal codes for 6 outlets"
  ],
- "_order": 6
+ "_order": 6,
+ "area_served": "country"
 }

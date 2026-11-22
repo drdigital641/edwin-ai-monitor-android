@@ -461,6 +461,8 @@ def approx_ll(e):
     that share the first 4 (then 3, then 2) digits of its postal code. None for services with no single base."""
     if e.get('lat') is not None:
         return float(e['lat']), float(e['lon']), True
+    if e.get('address_with_area'):   # mobile/online seller whose address is a base, not a place to drive to (Cleanic, XADO)
+        return None
     pcs = [a.get('postal') for a in e.get('addresses', []) if a.get('postal')]
     if not pcs or len(pcs) > 2:
         return None
@@ -1306,18 +1308,25 @@ def ld_business(e, url):
     if e.get('phone'):
         ld['telephone'] = e.get('landline') or e['phone']   # same main number as the business's own website schema (NAP match)
     adds = [a for a in e.get('addresses', []) if a.get('postal')]
+    _g = e.get('geo') or ({'lat': e['lat'], 'lon': e['lon']} if e.get('lat') is not None and e.get('lon') is not None else None)
+    # emit geo whenever lat/lon exist (Edwin 22 Nov 2026: pins in data/geo-pins-2026-11-22.json, live since that day; placed after address as on live)
+    pin = {'@type': 'GeoCoordinates', 'latitude': _g['lat'], 'longitude': _g['lon']} if _g else None
     if e['slug'] == 'battery-rescue-sg':
         ld['location'] = [{'@type': 'Place', 'name': a['label'], 'address': {'@type': 'PostalAddress', 'streetAddress': a['street'], 'addressLocality': 'Singapore', 'addressCountry': 'SG'}} for a in e['addresses']]
     elif e.get('addresses'):
         a0 = e['addresses'][0]
         ld['address'] = {'@type': 'PostalAddress', 'streetAddress': a0['street'], 'postalCode': a0['postal'], 'addressLocality': 'Singapore', 'addressCountry': 'SG'}
+        if pin:
+            ld['geo'] = pin
         if len(e['addresses']) > 1:
             ld['location'] = [{'@type': 'Place', 'name': a['label'], 'address': {'@type': 'PostalAddress', 'streetAddress': a['street'], 'postalCode': a['postal'], 'addressLocality': 'Singapore', 'addressCountry': 'SG'}} for a in e['addresses'][1:]]
-    if e.get('map_url'):
-        ld['hasMap'] = e['map_url']
+    if pin and 'geo' not in ld:
+        ld['geo'] = pin
+    if e.get('pin_map_url') or e.get('map_url'):
+        ld['hasMap'] = e.get('pin_map_url') or e['map_url']   # pin_map_url: the Google Maps pin when map_url is a finder page (XADO, 22 Nov 2026)
     if e.get('hours_ld'):
         ld['openingHoursSpecification'] = [{'@type': 'OpeningHoursSpecification', 'dayOfWeek': d, 'opens': o, 'closes': c} for d, o, c in e['hours_ld']]
-    if e['region'] == 'mobile':
+    if e['region'] == 'mobile' or e.get('area_served') == 'country':   # no single base: battery-rescue-sg, ev-body-parts (22 Nov 2026)
         ld['areaServed'] = {'@type': 'Country', 'name': 'Singapore'}
     else:
         ld['areaServed'] = [{'@type': 'Place', 'name': ESTATES[k]['name'] + ', Singapore'} for k in e['estates']]
@@ -2112,6 +2121,8 @@ def paid_btns(x):
         sec.append('<a class="btn" href="%s" target="_blank" rel="noopener" data-cta="book_%s">%s</a>' % (E(e['book_url']), e['slug'], E(e['book_label'])))
     if e.get('map_url'):   # online-only sellers with no shop to visit have no map (EV Body Parts)
         sec.append('<a class="btn" href="%s" target="_blank" rel="noopener" data-cta="map_%s" data-map>%s %s</a>' % (E(e['map_url']), e['slug'], ic('pin'), E(e.get('map_label', 'Open in Google Maps'))))
+    if e.get('pin_map_url'):   # second button to the Google Maps pin when map_url is a finder page (XADO, 22 Nov 2026)
+        sec.append('<a class="btn" href="%s" target="_blank" rel="noopener" data-cta="map_pin_%s" data-map>%s Open in Google Maps</a>' % (E(e['pin_map_url']), e['slug'], ic('pin')))
     return wa, call, sec
 
 
@@ -2172,7 +2183,10 @@ def pb_location(x):
     adds = ''.join('<li data-addr>%s<span>%s%s%s</span></li>' % (
         ic('pin'), ('<b>%s</b><br>' % E(a['label'])) if a.get('label') else '', E(a['street']),
         (', Singapore ' + a['postal']) if a.get('postal') else ', Singapore') for a in e.get('addresses', []))
-    if e.get('service_area') and not adds:
+    if e.get('address_with_area') and e.get('addresses') and e.get('service_area'):   # bold address, then the mobile/online note (Cleanic, XADO, 22 Nov 2026)
+        a0 = e['addresses'][0]
+        adds = '<li data-addr>%s<span><b>%s, Singapore %s</b><br>%s</span></li>' % (ic('pin'), E(a0['street']), a0['postal'], E(e['service_area']))
+    elif e.get('service_area') and not adds:
         adds = '<li data-addr>%s<span>%s</span></li>' % (ic('pin'), E(e['service_area']))
     elif e.get('service_area'):
         adds += '<li>%s<span>%s</span></li>' % (ic('pin'), E(e['service_area']))

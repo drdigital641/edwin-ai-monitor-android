@@ -152,5 +152,10 @@
   "email address",
   "any link to other businesses"
  ],
- "_order": 10
+ "_order": 10,
+ "geo": {
+  "lat": 1.3109645,
+  "lon": 103.8421669,
+  "source": "Website Manager live pin, 22 Nov 2026"
+ }
 }

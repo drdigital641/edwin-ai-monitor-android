@@ -100,6 +100,7 @@ def run(B):
         ld['email'] = C.EMAIL
         ld['image'] = [B.BASE + 'assets/img/hw/workshop-front.webp', B.BASE + 'assets/img/hw/og.jpg']
         ld['areaServed'] = [{'@type': 'Place', 'name': 'Defu Industrial Estate, Singapore'}] + [{'@type': 'Place', 'name': a['name'] + ', Singapore'} for a in C.AREAS]
+        ld.pop('geo', None)   # ld_business may already add geo (22 Nov 2026); keep the mini-site's own pin in its old position
         ld['geo'] = {'@type': 'GeoCoordinates', 'latitude': C.LAT, 'longitude': C.LNG}
         ld['paymentAccepted'] = 'Cash, scan to pay, bank transfer, Atome'
         ld['makesOffer'] = [{'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': s['h1'], 'url': B.BASE + C.BASE_PATH + s['slug'] + '/'}} for s in C.SERVICES]

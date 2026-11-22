@@ -1,0 +1,18 @@
+{
+ "_note": "Geo pins published live on 22 Nov 2026 by Website Manager through the Bridge (Edwin). build.py ld_business emits GeoCoordinates from each listing's geo field; this file is the record. Listings without a pin keep areaServed Country Singapore.",
+ "pins": {
+  "edwin-garage": [1.3718726, 103.8627082, "exact Google pin"],
+  "soon-kim-motor-workshop": [1.371579, 103.861618],
+  "jacky-gearbox": [1.448536, 103.797449],
+  "the-ecu-clinic": [1.338567, 103.905877],
+  "new-zen-werkz": [1.334257, 103.901404],
+  "wei-car-spray-painting": [1.441035, 103.833660],
+  "wrapstar-autostyle": [1.438458, 103.843362],
+  "contiexpert-volt-autocare": [1.3109645, 103.8421669],
+  "klar-details": [1.336774, 103.754362, "type AutoWash"],
+  "autotex": [1.341365, 103.912414],
+  "cleanic-detailing": [1.335717, 103.907557, "PostalAddress 32 Kaki Bukit Crescent, Singapore 416262; mobile service"],
+  "xado-singapore": [1.275887, 103.845923, "10 Anson Road, International Plaza, Singapore 079903"]
+ },
+ "no_pin_area_served_country": ["battery-rescue-sg", "ev-body-parts"]
+}

@@ -168,5 +168,10 @@
   "any former company name or old email",
   "rating and review count (not stated)"
  ],
- "_order": 3
+ "_order": 3,
+ "geo": {
+  "lat": 1.448536,
+  "lon": 103.797449,
+  "source": "Website Manager live pin, 22 Nov 2026"
+ }
 }

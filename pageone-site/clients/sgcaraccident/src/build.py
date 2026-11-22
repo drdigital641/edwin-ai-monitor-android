@@ -106,6 +106,11 @@ def hotline(lang, key, ref, label=None, cls="btn btn-go block"):
     return '<a class="%s" href="%s" target="_blank" rel="noopener" data-ref="%s">%s<span>%s</span></a>' % (
         cls, E(wa(lang, key)), E(ref), I_WA, E(label or t["wa_us"]))
 
+def dock_btn(lang, key, ref):
+    t = L[lang].T
+    return '<a class="btn btn-go d-wa calm-wa" href="%s" target="_blank" rel="noopener" data-cta="whatsapp" data-ref="%s"><span class="nudge" aria-hidden="true"></span>%s<span>%s</span></a>' % (
+        E(wa(lang, key)), E(ref), I_WA, E(t["wa_guide"]))
+
 def jsonld(o):
     return '<script type="application/ld+json">%s</script>' % json.dumps(o, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
@@ -151,8 +156,8 @@ def page(lang, path, title, desc, body, key, ref, schema=(), alt=True, scripts=(
 <header class="hd"><a class="logo" href="%(home)s">%(logo)s<span>%(brand)s</span></a><a class="lang" href="%(olink)s" hreflang="%(ohl)s" lang="%(ohl)s">%(switch)s</a></header>
 <main id="main" class="wrap">%(bc)s%(body)s</main>
 <footer class="ft"><div class="wrap"><nav class="links" aria-label="%(more)s"><a href="%(home)s">%(homel)s</a><a href="%(ins)s">%(insl)s</a><a href="%(rep)s">%(repl)s</a><a href="%(ps)s">%(psl)s</a><a href="%(faq)s">%(faql)s</a><a href="%(gd)s">%(gdl)s</a><a href="%(priv)s">%(privl)s</a></nav>
-<p>%(disc)s</p><p class="srcs">%(srcl)s: %(srcs)s</p></div></footer>
-<nav class="dock" aria-label="%(helpl)s">%(dock)s<a class="d-sos" href="tel:995"><b>995</b><small>%(amb)s</small></a><a class="d-sos" href="tel:999"><b>999</b><small>%(pol)s</small></a></nav>
+<p>%(disc)s</p><p class="safe">%(safe)s</p><p class="srcs">%(srcl)s: %(srcs)s</p></div></footer>
+<nav class="dock" aria-label="%(helpl)s">%(dock)s</nav>
 <script type="application/json" id="ui">%(ui)s</script><script src="%(cta)s" defer></script>%(js)s
 </body></html>
 """ % {
@@ -166,8 +171,8 @@ def page(lang, path, title, desc, body, key, ref, schema=(), alt=True, scripts=(
         "rep": url(lang, "report/"), "repl": E(t["report_link"]), "ps": url(lang, "private-settlement/"), "psl": E(t["settlement_link"]),
         "faq": url(lang, "faq/"), "faql": E(t["faq_link"]), "gd": url(lang, "guides/"), "gdl": E(t["guides_link"]),
         "priv": url(lang, "privacy/"), "privl": E(t["privacy"]),
-        "disc": E(t["disclaimer"]), "srcl": E(t["sources"]), "srcs": srcs, "helpl": E(t["help_nav"]),
-        "dock": hotline(lang, key, ref + ":dock", cls="btn btn-go d-wa"), "amb": E(t["ambulance"]), "pol": E(t["police"]),
+        "disc": E(t["disclaimer"]), "safe": E(t["safe"]), "srcl": E(t["sources"]), "srcs": srcs, "helpl": E(t["help_nav"]),
+        "dock": dock_btn(lang, key, ref + ":dock"),
         "cta": asset("p1-cta.js"), "js": js, "ui": json.dumps(t["js"], ensure_ascii=False).replace("</", "<\\/"),
     }
 
@@ -298,9 +303,8 @@ def lead_form(lang, key, pathway, ref, title=None, intro=None):
 # ---------------- flows (one step per screen) ----------------
 def acts(lang, ref, optional=False):
     t = L[lang].T
-    return ('<div class="acts"%s><a class="a-red" href="tel:995">995 %s</a><a class="a-red" href="tel:999">999 %s</a>'
-            '<a class="a-tow" href="%s" target="_blank" rel="noopener" data-ref="%s">%s</a></div>') % (
-        ' data-opt' if optional else "", E(t["ambulance"]), E(t["police"]), E(wa(lang, "tow")), E(ref + ":tow"), E(t["tow"]))
+    return ('<div class="acts"%s><a class="a-tow" href="%s" target="_blank" rel="noopener" data-cta="whatsapp" data-cta-label="tow" data-ref="%s">%s</a></div>') % (
+        ' data-opt' if optional else "", E(wa(lang, "tow")), E("tow:" + ref + "-flow"), E(t["tow"]))
 
 def ul(items):
     return "<ul>%s</ul>" % "".join("<li>%s</li>" % E(x) for x in items)
@@ -373,12 +377,12 @@ def flow_page(lang, slug):
     labels = E(json.dumps([s.get("tab", s["h"]) for s in F["steps"]], ensure_ascii=False))
     faq_h, faq_sd = faq_block(lang, F.get("faq"))
     body = """<div class="flowhead"><span class="pic">%s</span><div><h1 class="page-h1">%s</h1><p class="lead">%s</p></div></div>
-<p class="never">%s</p>
+
 <div class="prog" aria-hidden="true"><i></i></div><p class="prog-l" data-tpl="%s" data-labels="%s" aria-live="polite"></p>
 <div class="flow" data-flow="%s">%s</div>
 <div class="nav"><button type="button" class="btn btn-ghost" data-back>%s</button><button type="button" class="btn btn-sign" data-next>%s</button></div>
 <p class="allsteps"><a href="#" data-all>%s</a></p>
-%s%s""" % (ICONS[F["icon"]], E(F["h1"]), E(F["lead"]), E(t["never_delay"]), E(t["step_of"]), labels, slug, steps, E(t["back"]), E(t["next"]), E(t["read_all"]),
+%s%s""" % (ICONS[F["icon"]], E(F["h1"]), E(F["lead"]), E(t["step_of"]), labels, slug, steps, E(t["back"]), E(t["next"]), E(t["read_all"]),
            faq_h, source_box(lang))
     howto = {"@context": "https://schema.org", "@type": "HowTo", "name": F["h1"], "step": [
         {"@type": "HowToStep", "position": i + 1, "name": s["h"]} for i, s in enumerate(F["steps"]) if not s.get("cta")]}
@@ -404,7 +408,7 @@ def home(lang):
     faq_h, faq_sd = faq_block(lang, H["faq"])
     body = """<section class="pick" aria-labelledby="h1"><h1 id="h1">%(h1)s</h1><p class="q">%(q)s</p>
 <div class="paths">%(p1)s%(p2)s%(p3)s</div>
-<p class="sosline"><span>%(hurt)s</span><a href="tel:995">995</a><a href="tel:999">999</a></p></section>
+</section>
 <section class="more"><h2>%(res_h)s</h2><div class="rgrid">%(c7)s%(c8)s%(c1)s%(c2)s%(c3)s%(c4)s%(c5)s%(c6)s</div></section>
 <section class="glist"><h2>%(g_h)s</h2><p>%(g_p)s</p><ul>%(guides)s</ul><a class="btn btn-ghost block" href="%(gall)s">%(g_all)s</a></section>
 %(faq)s""" % {
@@ -565,6 +569,16 @@ def guide_img(lang, slug):
     """Each guide's own cover / share image (Bridge IMAGE GATE): images/articles/<slug>.jpg, <slug>-zh.jpg for 中文."""
     return "images/articles/%s%s.jpg" % (slug, "" if lang == "en" else "-zh")
 
+GUIDE_PUBLISHED = "2026-11-21"  # live Article JSON-LD datePublished/dateModified on all guides (22 Nov 2026 sync)
+
+def upd_html(lang, t):
+    """Live (22 Nov 2026): EN 'Updated 22 Nov 2026 . Sources: GIA, SPF'; ZH keeps the older 'last checked' line (live ZH wording not captured)."""
+    if lang != "en":
+        return E(t["updated"].replace("{d}", TODAY))
+    d = datetime.date.fromisoformat(TODAY)
+    return 'Updated %d %s %d<span class="qw-s"> · Sources: <a href="%s" rel="noopener">GIA</a>, <a href="%s" rel="noopener">SPF</a></span>' % (
+        d.day, d.strftime("%b"), d.year, E(GIA_MCF), E(SPF["url"] if isinstance(SPF, dict) else SPF))
+
 def guide_page(lang, g):
     C = L[lang]; t = C.T
     secs = []
@@ -585,10 +599,10 @@ def guide_page(lang, g):
 <div class="tldr"><p class="lbl">%s</p>%s</div>%s
 <div class="helpbox"><h3>%s</h3><div class="endcta">%s%s</div></div>%s
 <div class="srcbox"><p class="lbl">%s</p><ul>%s</ul></div></article>""") % (
-        E(g["h1"]), E(g["lead"]), E(t["updated"].replace("{d}", TODAY)), E(t["in_short"]), ul(g["short"]), "".join(secs),
+        E(g["h1"]), E(g["lead"]), upd_html(lang, t), E(t["in_short"]), ul(g["short"]), "".join(secs),
         E(t["next_step"]), rel, hotline(lang, g.get("wa", "home"), "guide:" + g["slug"], t["wa_assist"]), faq_h, E(t["sources_box"]), srcs)
     art = {"@context": "https://schema.org", "@type": "Article", "headline": g["h1"], "description": g["desc"], "inLanguage": t["html_lang"],
-           "dateModified": TODAY, "mainEntityOfPage": absu(lang, "guides/%s/" % g["slug"]), "image": CFG.share_base + img,
+           "datePublished": GUIDE_PUBLISHED, "dateModified": GUIDE_PUBLISHED, "mainEntityOfPage": absu(lang, "guides/%s/" % g["slug"]), "image": CFG.share_base + img,
            "author": {"@type": "Organization", "name": "SGCarAccident"}, "publisher": {"@type": "Organization", "name": "SGCarAccident"}}
     return page(lang, "guides/%s/" % g["slug"], g["title"], g["desc"], body, g.get("wa", "home"), "guide:" + g["slug"], schema=[art, faq_sd],
                 crumbs=[(C.PAGES["guides"]["nav"], url(lang, "guides/")), (g["nav"], None)], img=img, img_alt=alt)

@@ -151,5 +151,10 @@
   "sample part prices",
   "registered-since claim"
  ],
- "_order": 8
+ "_order": 8,
+ "geo": {
+  "lat": 1.341365,
+  "lon": 103.912414,
+  "source": "Website Manager live pin, 22 Nov 2026"
+ }
 }

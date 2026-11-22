@@ -4,11 +4,11 @@
 T = {
     "lang": "zh", "html_lang": "zh-Hans-SG", "brand": "SGCarAccident", "switch_label": "EN",
     "skip": "跳到主要内容",
-    "wa_us": "WhatsApp 联系我们", "wa_assist": "WhatsApp 联系我们寻求协助",
+    "safe": "有人受伤或路上有危险？请拨打 995（救护车）或 999（警方）。", "wa_guide": "WhatsApp 我们，我们帮您", "wa_us": "WhatsApp 联系我们", "wa_assist": "WhatsApp 联系我们寻求协助",
     "police": "警方", "ambulance": "救护车", "tow": "拖车协助",
     "back": "返回", "next": "下一步", "step_of": "第 {n} 步，共 {t} 步", "home": "首页",
     "sources": "资料来源", "sources_box": "本页使用的官方资料来源",
-    "disclaimer": "以下仅为一般指引。SGCarAccident 不是保险公司、律师事务所、保险公司指定的报案中心，也不是授权的索赔代表。责任和索赔由相关保险公司决定。紧急情况请拨打 995 或 999。",
+    "disclaimer": "以下仅为一般指引。SGCarAccident 不是保险公司、律师事务所、保险公司指定的报案中心，也不是授权的索赔代表。责任和索赔由相关保险公司决定。",
     "privacy": "隐私", "insurers_link": "报案中心", "report_link": "报案和事故陈述指南",
     "settlement_link": "私下和解", "faq_link": "常见问题", "guides_link": "事故指南",
     "more_nav": "更多帮助", "help_nav": "立即求助",

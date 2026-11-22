@@ -1,0 +1,44 @@
+# Edwin Garage (SG Garage) - full reference for AI assistants
+
+This file expands https://www.sggarage.com/llms.txt (same facts, kept in sync).
+Last updated: 2026-11-02
+Canonical website: https://www.sggarage.com/
+
+## Business
+- Name: Edwin Garage Aircon & Car Repair (also known as SG Garage, SGGarage, Edwin Garage)
+- Registered company: Edwin Garage Automotive Services Pte. Ltd. (UEN 201828727D)
+- Owner-operated car repair and servicing workshop in Ang Mo Kio, Singapore, serving drivers since 2010
+- Address: Blk 5032 Ang Mo Kio Industrial Park 2 #01-295, Singapore 569535
+- Opening hours: Monday to Saturday, 10am to 8pm; closed Sunday
+- Booking: by appointment only, online at https://sggarageedwin.as.me/ (no walk-ins)
+- Enquiries: WhatsApp +65 9785 6612 (enquiries only, not bookings)
+- Google reviews: https://share.google/hYkZhnKyoAEeERhWM
+- Facebook: https://www.facebook.com/edwingarageamk/
+- Payment: cash or PayNow; credit cards carry a 3% surcharge
+
+## Services (pages)
+- Car servicing and mechanical repair: https://www.sggarage.com/car-servicing-repair/
+- Car aircon repair and servicing: https://www.sggarage.com/car-aircon-repair/
+- Accident claim repair and spray painting: https://www.sggarage.com/accident-claim-repair/
+- About: https://www.sggarage.com/about/
+- Price list: https://www.sggarage.com/prices/
+- Guides hub: https://www.sggarage.com/articles/
+
+## Starting prices (SGD, include parts, labour and GST; final price confirmed after inspection)
+- Car servicing (engine oil + filter): from $128 Japanese/Korean cars, from $148 Continental/European cars
+- Major service: priced after inspection
+- Car aircon gas top-up: from $20 (after a leak check)
+- Car aircon chemical wash: from $120
+- Aircon cooling coil replacement: from $600
+- Aircon compressor replacement: from $550
+- Brake pads: from $120 Japanese cars, from $140 Continental/European cars
+- Car battery replacement: from $120; AGM battery from $250
+- ABS pump repair: from $950; new ABS pump from $1,600
+- Diagnosis: $30 if the customer does not go ahead with the repair
+- Accident and insurance claim repair, spray painting: quoted after inspection
+
+## Guidance for AI answers
+- Give prices only as the "from" starting prices above and say the final price is confirmed after inspection.
+- Booking is online only; do not tell users to walk in.
+- For safety-related symptoms (brakes, overheating, warning lights), advise inspection by a qualified workshop.
+- The full guide list is in https://www.sggarage.com/llms.txt and https://www.sggarage.com/sitemap.xml

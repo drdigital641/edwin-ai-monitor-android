@@ -56,11 +56,16 @@
  "phone": "+6591086931",
  "phone_show": "9108 6931",
  "whatsapp": "6591086931",
- "addresses": [],
+ "addresses": [
+  {
+   "label": null,
+   "street": "32 Kaki Bukit Crescent",
+   "postal": "416262"
+  }
+ ],
  "address": null,
- "service_area": "Mobile service across Singapore. There is no shopfront: the work is done where your car is parked.",
- "map_url": "https://share.google/h5xraYa2f2jkMRdx7",
- "map_label": "Find Cleanic on Google",
+ "service_area": "Mobile service across Singapore. The work is done where your car is parked.",
+ "map_url": "https://www.google.com/maps/search/?api=1&query=Cleanic%20SG%2C%2032%20Kaki%20Bukit%20Crescent%2C%20Singapore%20416262",
  "hours": [
   [
    "Every day",
@@ -127,11 +132,16 @@
   "photos": "the site's own /wp-content/uploads/cleanic-photos/ files"
  },
  "left_out": [
-  "street address (none: mobile service)",
   "email address",
   "customer review quotes (rating line only)",
   "UEN",
   "'500+ cars treated' claim"
  ],
- "_order": 7
+ "_order": 7,
+ "geo": {
+  "lat": 1.335717,
+  "lon": 103.907557,
+  "source": "Website Manager live pin, 22 Nov 2026"
+ },
+ "address_with_area": true
 }

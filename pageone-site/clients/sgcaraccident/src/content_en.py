@@ -7,11 +7,11 @@
 T = {
     "lang": "en", "html_lang": "en-SG", "brand": "SGCarAccident", "switch_label": "中文",
     "skip": "Skip to main content",
-    "wa_us": "WhatsApp us", "wa_assist": "WhatsApp us for assistance",
+    "safe": "Injuries or danger on the road? Call 995 (ambulance) or 999 (police).", "wa_guide": "WhatsApp us, we'll guide you", "wa_us": "WhatsApp us", "wa_assist": "WhatsApp us for assistance",
     "police": "Police", "ambulance": "Ambulance", "tow": "Tow help",
     "back": "Back", "next": "Next", "step_of": "Step {n} of {t}", "home": "Home",
     "sources": "Sources", "sources_box": "Official sources used on this page",
-    "disclaimer": "General guidance only. SGCarAccident is not an insurer, a law firm, an insurer-appointed reporting centre or an authorised claims representative. Liability and claims are decided by the insurers involved. In an emergency call 995 or 999.",
+    "disclaimer": "General guidance only. SGCarAccident is not an insurer, a law firm, an insurer-appointed reporting centre or an authorised claims representative. Liability and claims are decided by the insurers involved.",
     "privacy": "Privacy", "insurers_link": "Reporting centres", "report_link": "Report and statement guide",
     "settlement_link": "Private settlement", "faq_link": "FAQs", "guides_link": "Accident guides",
     "more_nav": "More help", "help_nav": "Get help now",
@@ -71,7 +71,7 @@ WA = {
 }
 
 HOME = {
-    "title": "Car accident in Singapore? What to do next, step by step | SGCarAccident",
+    "title": "Car Accident Singapore: What to Do Now (Step by Step)",
     "desc": "Been in a car accident in Singapore? Pick your situation: at fault, not sure or not at fault. See what to do next, where to report, and get help on WhatsApp.",
     "h1": "Been involved in a car accident?",
     "q": "What best describes your situation?",
@@ -289,7 +289,7 @@ FLOWS = {
     },
     "hit-and-run": {
         "nav": "Hit and run", "icon": "hitrun", "wa": "hit-and-run",
-        "title": "Hit and run in Singapore? What to do if your car was hit | SGCarAccident",
+        "title": "Hit and run in Singapore: what to do if your car was hit",
         "desc": "Someone hit your car, or your parked car, and drove off? How to collect evidence, make the Traffic Police report and report to your insurer in Singapore.",
         "h1": "Hit and run: the other driver left",
         "lead": "Your car was hit and the other driver drove off. Here is what to do.",

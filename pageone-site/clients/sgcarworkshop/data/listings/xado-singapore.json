@@ -53,9 +53,15 @@
  "whatsapp": "6593391185",
  "landline": "+6568761456",
  "landline_show": "6876 1456",
- "addresses": [],
+ "addresses": [
+  {
+   "label": null,
+   "street": "10 Anson Road, International Plaza",
+   "postal": "079903"
+  }
+ ],
  "address": null,
- "service_area": "Island-wide: sold online at shop.xado-shop.sg and fitted at the workshops listed on xado-shop.sg. There is no shopfront to visit.",
+ "service_area": "Sold online at shop.xado-shop.sg and fitted at the workshops listed on xado-shop.sg.",
  "map_url": "https://xado-shop.sg/find-a-xado-workshop.html",
  "map_label": "Find a workshop that fits XADO",
  "hours": [],
@@ -97,5 +103,12 @@
   "lab-test claims",
   "COE figures"
  ],
- "_order": 12
+ "_order": 12,
+ "geo": {
+  "lat": 1.275887,
+  "lon": 103.845923,
+  "source": "Website Manager live pin, 22 Nov 2026"
+ },
+ "address_with_area": true,
+ "pin_map_url": "https://www.google.com/maps/search/?api=1&query=XADO%2C%2010%20Anson%20Road%2C%20International%20Plaza%2C%20Singapore%20079903"
 }

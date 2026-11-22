@@ -168,5 +168,10 @@
   "customer review quote (rating line only)",
   "sister business details"
  ],
- "_order": 5
+ "_order": 5,
+ "geo": {
+  "lat": 1.438458,
+  "lon": 103.843362,
+  "source": "Website Manager live pin, 22 Nov 2026"
+ }
 }

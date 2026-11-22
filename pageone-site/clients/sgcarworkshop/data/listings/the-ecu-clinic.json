@@ -156,5 +156,10 @@
   "Honda radar, BMW CAS and temperature programming and engine ECU services (kept off the directory)",
   "customer quotes"
  ],
- "_order": 4
+ "_order": 4,
+ "geo": {
+  "lat": 1.338567,
+  "lon": 103.905877,
+  "source": "Website Manager live pin, 22 Nov 2026"
+ }
 }

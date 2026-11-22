@@ -173,5 +173,10 @@
   "customer review quotes",
   "former business name"
  ],
- "_order": 9
+ "_order": 9,
+ "geo": {
+  "lat": 1.334257,
+  "lon": 103.901404,
+  "source": "Website Manager live pin, 22 Nov 2026"
+ }
 }

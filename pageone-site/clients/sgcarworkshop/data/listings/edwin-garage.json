@@ -189,5 +189,10 @@
   "customer review quotes (rating line only)",
   "towing partner number (third party)"
  ],
- "_order": 2
+ "_order": 2,
+ "geo": {
+  "lat": 1.3718726,
+  "lon": 103.8627082,
+  "source": "Website Manager live pin, 22 Nov 2026"
+ }
 }

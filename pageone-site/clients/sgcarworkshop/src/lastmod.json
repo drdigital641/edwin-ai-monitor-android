@@ -381,8 +381,8 @@
 },
 "services/car-detailing-coating/": {
 "d": "2026-11-21",
-"h": "bfd5e211afcb",
-"h2": "bfd5e211afcb"
+"h": "dc2bc5139b99",
+"h2": "dc2bc5139b99"
 },
 "services/car-tyres/": {
 "d": "2026-11-21",
@@ -660,9 +660,9 @@
 "h2": "7111f45504ed"
 },
 "workshops/autotex/": {
-"d": "2026-11-09",
-"h": "c99345167213",
-"h2": "c99345167213"
+"d": "2026-11-21",
+"h": "70b21ab3fccc",
+"h2": "70b21ab3fccc"
 },
 "workshops/autowheels-motorworks-bukit-batok-wcega-plaza/": {
 "d": "2026-11-05",
@@ -870,9 +870,9 @@
 "h2": "9dac55d6bab7"
 },
 "workshops/cleanic-detailing/": {
-"d": "2026-11-09",
-"h": "745b6b656e5c",
-"h2": "745b6b656e5c"
+"d": "2026-11-21",
+"h": "19ea887776e4",
+"h2": "19ea887776e4"
 },
 "workshops/co2-motorwerkz/": {
 "d": "2026-11-16",
@@ -905,9 +905,9 @@
 "h2": "67bbbfd071c3"
 },
 "workshops/contiexpert-volt-autocare/": {
-"d": "2026-11-10",
-"h": "e4b731c1c4ca",
-"h2": "e4b731c1c4ca"
+"d": "2026-11-21",
+"h": "8eee570ce420",
+"h2": "8eee570ce420"
 },
 "workshops/contiwhiz-automotive/": {
 "d": "2026-11-06",
@@ -985,9 +985,9 @@
 "h2": "11b9cb5c5abe"
 },
 "workshops/edwin-garage/": {
-"d": "2026-11-10",
-"h": "d5ce6e62d425",
-"h2": "d5ce6e62d425"
+"d": "2026-11-21",
+"h": "73ab9e2956cf",
+"h2": "73ab9e2956cf"
 },
 "workshops/elite-am/": {
 "d": "2026-11-13",
@@ -1430,9 +1430,9 @@
 "h2": "97b44e738f65"
 },
 "workshops/jacky-gearbox/": {
-"d": "2026-11-09",
-"h": "2a78d5c29c18",
-"h2": "2a78d5c29c18"
+"d": "2026-11-21",
+"h": "8005c2c3849d",
+"h2": "8005c2c3849d"
 },
 "workshops/jc-expert-autoworks/": {
 "d": "2026-11-05",
@@ -1545,9 +1545,9 @@
 "h2": "35c5b8220b66"
 },
 "workshops/klar-details/": {
-"d": "2026-11-09",
-"h": "9e90005d51ab",
-"h2": "9e90005d51ab"
+"d": "2026-11-21",
+"h": "25d8e99cb359",
+"h2": "25d8e99cb359"
 },
 "workshops/koi-motor-works/": {
 "d": "2026-11-11",
@@ -1875,9 +1875,9 @@
 "h2": "5006eb55fefb"
 },
 "workshops/new-zen-werkz/": {
-"d": "2026-11-09",
-"h": "71d8aebd9e7c",
-"h2": "71d8aebd9e7c"
+"d": "2026-11-21",
+"h": "eea4ea1829ff",
+"h2": "eea4ea1829ff"
 },
 "workshops/nightzconcepts/": {
 "d": "2026-11-17",
@@ -2185,9 +2185,9 @@
 "h2": "940a78aef3aa"
 },
 "workshops/soon-kim-motor-workshop/": {
-"d": "2026-11-17",
-"h": "8e7080792112",
-"h2": "8e7080792112"
+"d": "2026-11-21",
+"h": "c2f0ddb94676",
+"h2": "c2f0ddb94676"
 },
 "workshops/spectraworks/": {
 "d": "2026-11-18",
@@ -2315,9 +2315,9 @@
 "h2": "078f65735a58"
 },
 "workshops/the-ecu-clinic/": {
-"d": "2026-11-09",
-"h": "2b095f6c1e76",
-"h2": "2b095f6c1e76"
+"d": "2026-11-21",
+"h": "96ec1a61a212",
+"h2": "96ec1a61a212"
 },
 "workshops/the-local-workshop/": {
 "d": "2026-11-05",
@@ -2480,9 +2480,9 @@
 "h2": "d43d80fbd1d7"
 },
 "workshops/wei-car-spray-painting/": {
-"d": "2026-11-09",
-"h": "e3c3e2c91997",
-"h2": "e3c3e2c91997"
+"d": "2026-11-21",
+"h": "f1773feb791d",
+"h2": "f1773feb791d"
 },
 "workshops/wei-s-alignment-specialist/": {
 "d": "2026-11-10",
@@ -2500,9 +2500,9 @@
 "h2": "cc03316edc90"
 },
 "workshops/wrapstar-autostyle/": {
-"d": "2026-11-09",
-"h": "694af872d72f",
-"h2": "694af872d72f"
+"d": "2026-11-21",
+"h": "10b595170ec8",
+"h2": "10b595170ec8"
 },
 "workshops/x-solut-autoworks/": {
 "d": "2026-11-06",
@@ -2510,9 +2510,9 @@
 "h2": "f8e1611d8807"
 },
 "workshops/xado-singapore/": {
-"d": "2026-11-09",
-"h": "de8060c5d68e",
-"h2": "de8060c5d68e"
+"d": "2026-11-21",
+"h": "da68f5fe9138",
+"h2": "da68f5fe9138"
 },
 "workshops/xin-yun-auto/": {
 "d": "2026-11-06",

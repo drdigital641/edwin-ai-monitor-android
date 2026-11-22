@@ -115,5 +115,6 @@
   "prices (none published)",
   "supplier names"
  ],
- "_order": 13
+ "_order": 13,
+ "area_served": "country"
 }

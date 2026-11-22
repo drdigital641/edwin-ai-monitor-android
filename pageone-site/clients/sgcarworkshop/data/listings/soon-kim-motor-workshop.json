@@ -191,5 +191,10 @@
   "reviewer names and quotes",
   "owner names"
  ],
- "_order": 1
+ "_order": 1,
+ "geo": {
+  "lat": 1.371579,
+  "lon": 103.861618,
+  "source": "Website Manager live pin, 22 Nov 2026"
+ }
 }
