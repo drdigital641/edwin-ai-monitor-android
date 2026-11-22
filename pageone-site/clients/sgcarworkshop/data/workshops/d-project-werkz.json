@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "slug": "d-project-werkz",
+ "place_id": "ChIJm19XiBET2jERJZNnH4w9VEI",
+ "place_id_checked_at": "2026-11-22",
+ "name": "D-Project Werkz",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-22",
+ "address": {
+  "block": "",
+  "street": "280 Woodlands Industrial Park E5, #01-28 Harvest @ Woodlands",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "757322",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-22",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6590922291",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-22"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-22"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-22",
+ "last_verified_at": "2026-11-22",
+ "collector_version": "agent-v5",
+ "hold": "hold: complaint review in Google sample (repair dispute)",
+ "hold_code": "complaints",
+ "held_on": "2026-11-23",
+ "estate": "woodlands-industrial-park-e9",
+ "region": "north",
+ "planning_area": "Woodlands"
+}

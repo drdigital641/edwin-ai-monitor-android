@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 34,
+ "websiteUri": "https://carousell.app.link/8arfGYSzhFb",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 11:00 AM – 8:30 PM",
+  "Tuesday: 11:00 AM – 8:30 PM",
+  "Wednesday: 11:00 AM – 8:30 PM",
+  "Thursday: 11:00 AM – 8:30 PM",
+  "Friday: 11:00 AM – 8:30 PM",
+  "Saturday: 11:00 AM – 7:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-22",
+ "place_id": "ChIJBVRahY4T2jERE1wjrDomI4o",
+ "source": "google_places"
+}

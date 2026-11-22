@@ -1,0 +1,33 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "building_materials_store",
+  "home_goods_store",
+  "car_repair",
+  "store",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 18,
+ "websiteUri": "https://www.instagram.com/forzacolorhaus?igsh=enJjcm8yZnoyOWxl",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 7:00 PM",
+  "Tuesday: 9:00 AM – 7:00 PM",
+  "Wednesday: 9:00 AM – 7:00 PM",
+  "Thursday: 9:00 AM – 7:00 PM",
+  "Friday: 9:00 AM – 7:00 PM",
+  "Saturday: 9:00 AM – 7:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention dent and bumper respray work matched to the car's colour code, full colour changes, and cars that came back looking new.",
+ "fetched_at": "2026-11-22",
+ "place_id": "ChIJHzpiEhET2jER4m0RYsQRSBE",
+ "source": "google_places"
+}

@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "slug": "drcar-sg-by-glh-auto",
+ "place_id": "ChIJKYWAL_oW2jER71h5zUbvTBA",
+ "place_id_checked_at": "2026-11-22",
+ "name": "DrCar.SG by GLH Auto",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-22",
+ "address": {
+  "block": "",
+  "street": "Blk 5033 Ang Mo Kio Ind Park 2, #01-255",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "569536",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-22",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6597824549",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-22"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-22"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-22",
+ "last_verified_at": "2026-11-22",
+ "collector_version": "agent-v5",
+ "hold": "hold: same mobile as castrol-auto-service-drcar (held duplicate); Doctor Cars website lists an AMK 5033 branch, likely same group",
+ "hold_code": "duplicate",
+ "held_on": "2026-11-23",
+ "estate": "amk-industrial-park-2",
+ "region": "north-east",
+ "planning_area": "Ang Mo Kio"
+}

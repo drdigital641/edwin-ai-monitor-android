@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.7,
+ "userRatingCount": 12,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 6:00 PM",
+  "Tuesday: 9:30 AM – 6:00 PM",
+  "Wednesday: 9:30 AM – 6:00 PM",
+  "Thursday: 9:30 AM – 6:00 PM",
+  "Friday: 9:30 AM – 6:00 PM",
+  "Saturday: 9:30 AM – 5:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention reasonable prices, regular servicing, aircon compressor and condenser replacement, brake pad and automatic transmission fluid changes, and jobs finished on time.",
+ "fetched_at": "2026-11-22",
+ "place_id": "ChIJ_9DLzL8T2jERyh7_ZQG-t7A",
+ "source": "google_places"
+}

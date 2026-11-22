@@ -1,0 +1,37 @@
+{
+ "lede": "Tian Yi Motor Service is a car repair workshop at 5033 Ang Mo Kio Ind Park 2, #01-271. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair",
+  "Engine carbon cleaning (walnut blasting)",
+  "Fluid changes",
+  "Suspension repair"
+ ],
+ "themes": "Customers on Google Maps mention honest advice that only fixes what the car needs, engine carbon cleaning by walnut blasting on a Honda Vezel, engine oil, coolant and transmission fluid changes, and absorber and lower arm replacement.",
+ "faqs": [
+  [
+   "What does Tian Yi Motor Service do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Engine carbon cleaning (walnut blasting)",
+  "General servicing",
+  "Suspension repair",
+  "Transmission fluid change"
+ ],
+ "card_rules": "2026-11-05",
+ "makes": [
+  "Honda"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list."
+}

@@ -1,0 +1,32 @@
+{
+ "lede": "73 Automechanica is a car repair workshop at 5033 Ang Mo Kio Ind Park 2, #01-259. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "themes": "Customers on Google Maps mention upfront pricing with no upselling, routine servicing, a Toyota Corolla fault that was fixed, and a clean, well-organised workshop.",
+ "faqs": [
+  [
+   "What does 73 Automechanica do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "General servicing",
+  "Car repair"
+ ],
+ "card_rules": "2026-11-05",
+ "makes": [
+  "Toyota"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list."
+}

@@ -37,6 +37,7 @@ https://sgcarworkshop.sg/areas/ubi/
 https://sgcarworkshop.sg/areas/west/
 https://sgcarworkshop.sg/areas/woodlands-avenue-12/
 https://sgcarworkshop.sg/areas/woodlands-close/
+https://sgcarworkshop.sg/areas/woodlands-industrial-park-e9/
 https://sgcarworkshop.sg/areas/woodlands-industrial-xchange/
 https://sgcarworkshop.sg/areas/woodlands/
 https://sgcarworkshop.sg/areas/yishun-industrial-park-a/
@@ -93,6 +94,7 @@ https://sgcarworkshop.sg/workshops/3k-autocare-taman-jurong/
 https://sgcarworkshop.sg/workshops/4forwheel-auto/
 https://sgcarworkshop.sg/workshops/5d-solutions/
 https://sgcarworkshop.sg/workshops/7-garage/
+https://sgcarworkshop.sg/workshops/73-automechanica/
 https://sgcarworkshop.sg/workshops/8337-premium-motorworks/
 https://sgcarworkshop.sg/workshops/833motorsports/
 https://sgcarworkshop.sg/workshops/88-auto-garage-woodlands/
@@ -193,6 +195,7 @@ https://sgcarworkshop.sg/workshops/doctor-cars/
 https://sgcarworkshop.sg/workshops/doctor-gearbox/
 https://sgcarworkshop.sg/workshops/dreamworks-garage/
 https://sgcarworkshop.sg/workshops/e-care-auto-services/
+https://sgcarworkshop.sg/workshops/eco-sport/
 https://sgcarworkshop.sg/workshops/edge-garage/
 https://sgcarworkshop.sg/workshops/edge-tuning/
 https://sgcarworkshop.sg/workshops/edwin-garage/
@@ -221,6 +224,7 @@ https://sgcarworkshop.sg/workshops/focus-auto/
 https://sgcarworkshop.sg/workshops/fong-motors/
 https://sgcarworkshop.sg/workshops/fong-workshop/
 https://sgcarworkshop.sg/workshops/forward-auto/
+https://sgcarworkshop.sg/workshops/forza-colorhaus/
 https://sgcarworkshop.sg/workshops/fr-auto/
 https://sgcarworkshop.sg/workshops/frenchfellas-auto-service-centre/
 https://sgcarworkshop.sg/workshops/fu-san-auto-shine/
@@ -301,6 +305,7 @@ https://sgcarworkshop.sg/workshops/kaizen-motors/
 https://sgcarworkshop.sg/workshops/kakis-garage/
 https://sgcarworkshop.sg/workshops/kc-workshop/
 https://sgcarworkshop.sg/workshops/keeper-labo/
+https://sgcarworkshop.sg/workshops/keongkeong-auto/
 https://sgcarworkshop.sg/workshops/kgc-workshop/
 https://sgcarworkshop.sg/workshops/kh-kinetics-autocare-night-friendly/
 https://sgcarworkshop.sg/workshops/khy-motors/
@@ -314,6 +319,7 @@ https://sgcarworkshop.sg/workshops/kompressor-automotive-workshop/
 https://sgcarworkshop.sg/workshops/kraftwerk-autohaus/
 https://sgcarworkshop.sg/workshops/kt-garage/
 https://sgcarworkshop.sg/workshops/kt-motorwerk-siang-motor/
+https://sgcarworkshop.sg/workshops/kuo-li-auto-workshop/
 https://sgcarworkshop.sg/workshops/ky-auto/
 https://sgcarworkshop.sg/workshops/l-e-autoshop/
 https://sgcarworkshop.sg/workshops/l1-motorsports/
@@ -466,6 +472,7 @@ https://sgcarworkshop.sg/workshops/the-local-workshop/
 https://sgcarworkshop.sg/workshops/the-right-workshop/
 https://sgcarworkshop.sg/workshops/thiam-heng-huat/
 https://sgcarworkshop.sg/workshops/thiam-seng-autotronic/
+https://sgcarworkshop.sg/workshops/tian-yi-motor-service/
 https://sgcarworkshop.sg/workshops/top-fuel-automotive/
 https://sgcarworkshop.sg/workshops/toren-technik/
 https://sgcarworkshop.sg/workshops/tos-auto-motorwerk/

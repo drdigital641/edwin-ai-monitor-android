@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.3,
+ "userRatingCount": 15,
+ "websiteUri": "https://www.facebook.com/yeowmotor/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 7:30 PM – 12:00 AM",
+  "Tuesday: 7:30 PM – 12:00 AM",
+  "Wednesday: 7:30 PM – 12:00 AM",
+  "Thursday: 7:30 PM – 12:00 AM",
+  "Friday: 7:30 PM – 12:00 AM",
+  "Saturday: 7:30 PM – 12:00 AM",
+  "Sunday: 8:00 PM – 12:00 AM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-22",
+ "place_id": "ChIJbxi71QIX2jER-B-ouY-ReAQ",
+ "source": "google_places"
+}

@@ -1,8 +1,8 @@
 {
 "": {
-"d": "2026-11-21",
-"h": "7f05e677763d",
-"h2": "7f05e677763d"
+"d": "2026-11-22",
+"h": "9aa45870c41e",
+"h2": "9aa45870c41e"
 },
 "about/": {
 "d": "2026-11-10",
@@ -10,19 +10,19 @@
 "h2": "ddae2afd3699"
 },
 "areas/": {
-"d": "2026-11-21",
-"h": "c5f7acfd0d68",
-"h2": "c5f7acfd0d68"
+"d": "2026-11-22",
+"h": "7f08aa8c12be",
+"h2": "7f08aa8c12be"
 },
 "areas/amk-industrial-park-2/": {
-"d": "2026-11-21",
-"h": "ce2174eea99a",
-"h2": "ce2174eea99a"
+"d": "2026-11-22",
+"h": "12915c76017a",
+"h2": "12915c76017a"
 },
 "areas/amk-industrial-park-2/spray-painting-bodywork/": {
-"d": "2026-11-21",
-"h": "0067a6db6237",
-"h2": "0067a6db6237"
+"d": "2026-11-22",
+"h": "be7298212a6e",
+"h2": "be7298212a6e"
 },
 "areas/bukit-batok-crescent/": {
 "d": "2026-11-21",
@@ -40,14 +40,14 @@
 "h2": "55ef284ab4dc"
 },
 "areas/carros-centre-jalan-lam-huat/": {
-"d": "2026-11-21",
-"h": "ac3f2a57dc46",
-"h2": "ac3f2a57dc46"
+"d": "2026-11-22",
+"h": "b971c22b4acf",
+"h2": "b971c22b4acf"
 },
 "areas/carros-centre-jalan-lam-huat/car-aircon-repair/": {
-"d": "2026-11-09",
-"h": "95d977d26224",
-"h2": "95d977d26224"
+"d": "2026-11-22",
+"h": "6c2813660fed",
+"h2": "6c2813660fed"
 },
 "areas/central/": {
 "d": "2026-11-21",
@@ -110,14 +110,14 @@
 "h2": "0965aa2089f2"
 },
 "areas/north-east/": {
-"d": "2026-11-19",
-"h": "ffaa3ea2cc3a",
-"h2": "ffaa3ea2cc3a"
+"d": "2026-11-22",
+"h": "f3c83084fc25",
+"h2": "f3c83084fc25"
 },
 "areas/north/": {
-"d": "2026-11-21",
-"h": "2e49b36da3f4",
-"h2": "2e49b36da3f4"
+"d": "2026-11-22",
+"h": "f5a89ed12ed0",
+"h2": "f5a89ed12ed0"
 },
 "areas/paya-ubi-industrial-park/": {
 "d": "2026-11-21",
@@ -130,14 +130,14 @@
 "h2": "3168f64f2b29"
 },
 "areas/sin-ming-industrial-estate/": {
-"d": "2026-11-21",
-"h": "b85db82fe91c",
-"h2": "b85db82fe91c"
+"d": "2026-11-22",
+"h": "167ff3c8c091",
+"h2": "167ff3c8c091"
 },
 "areas/sin-ming-industrial-estate/gearbox-repair/": {
-"d": "2026-11-21",
-"h": "e83e2e7b168c",
-"h2": "e83e2e7b168c"
+"d": "2026-11-22",
+"h": "33cadf1ca422",
+"h2": "33cadf1ca422"
 },
 "areas/sin-ming-industrial-estate/spray-painting-bodywork/": {
 "d": "2026-11-21",
@@ -185,34 +185,39 @@
 "h2": "2e49c7a43417"
 },
 "areas/woodlands-avenue-12/": {
-"d": "2026-11-21",
-"h": "00488a9b6678",
-"h2": "00488a9b6678"
+"d": "2026-11-22",
+"h": "c582e35f8004",
+"h2": "c582e35f8004"
 },
 "areas/woodlands-close/": {
-"d": "2026-11-21",
-"h": "3662b240b879",
-"h2": "3662b240b879"
+"d": "2026-11-22",
+"h": "9310502cb6c9",
+"h2": "9310502cb6c9"
+},
+"areas/woodlands-industrial-park-e9/": {
+"d": "2026-11-22",
+"h": "c62a0ca9ee41",
+"h2": "c62a0ca9ee41"
 },
 "areas/woodlands-industrial-xchange/": {
-"d": "2026-11-21",
-"h": "c90e6759c470",
-"h2": "c90e6759c470"
+"d": "2026-11-22",
+"h": "d492f2604f36",
+"h2": "d492f2604f36"
 },
 "areas/woodlands/": {
-"d": "2026-11-21",
-"h": "02b526bf6d84",
-"h2": "02b526bf6d84"
+"d": "2026-11-22",
+"h": "15ed15ca95a8",
+"h2": "15ed15ca95a8"
 },
 "areas/yishun-industrial-park-a/": {
-"d": "2026-11-21",
-"h": "73555b54c5cc",
-"h2": "73555b54c5cc"
+"d": "2026-11-22",
+"h": "0a34779a7852",
+"h2": "0a34779a7852"
 },
 "areas/yishun-industrial-street-1/": {
-"d": "2026-11-21",
-"h": "511315861fd6",
-"h2": "511315861fd6"
+"d": "2026-11-22",
+"h": "34f90cf4b912",
+"h2": "34f90cf4b912"
 },
 "areas/yishun/": {
 "d": "2026-11-21",
@@ -220,9 +225,9 @@
 "h2": "1820cf7700f4"
 },
 "brands/bmw-mercedes/": {
-"d": "2026-11-21",
-"h": "87e44ed109c7",
-"h2": "87e44ed109c7"
+"d": "2026-11-22",
+"h": "39d1eecd5e14",
+"h2": "39d1eecd5e14"
 },
 "brands/byd/": {
 "d": "2026-11-21",
@@ -230,9 +235,9 @@
 "h2": "3db0475a1100"
 },
 "brands/honda/": {
-"d": "2026-11-21",
-"h": "6c26ba9d18df",
-"h2": "6c26ba9d18df"
+"d": "2026-11-22",
+"h": "8e34434cf8d3",
+"h2": "8e34434cf8d3"
 },
 "brands/tesla/": {
 "d": "2026-11-17",
@@ -240,9 +245,9 @@
 "h2": "85ac8b5c7fc2"
 },
 "brands/toyota/": {
-"d": "2026-11-21",
-"h": "7db1c9990091",
-"h2": "7db1c9990091"
+"d": "2026-11-22",
+"h": "a2fd8b53aa66",
+"h2": "a2fd8b53aa66"
 },
 "contact/": {
 "d": "2026-11-05",
@@ -260,19 +265,19 @@
 "h2": "e4d9d4156eb9"
 },
 "guides/before-a-workshop-visit/": {
-"d": "2026-11-21",
-"h": "d2a4a8714679",
-"h2": "d2a4a8714679"
+"d": "2026-11-22",
+"h": "191ee5e62bfc",
+"h2": "191ee5e62bfc"
 },
 "guides/brake-squeal-noise/": {
-"d": "2026-11-21",
-"h": "a274ac06b3dd",
-"h2": "a274ac06b3dd"
+"d": "2026-11-22",
+"h": "85789994bcd2",
+"h2": "85789994bcd2"
 },
 "guides/car-aircon-not-cold/": {
-"d": "2026-11-21",
-"h": "53cd9e8ebb65",
-"h2": "53cd9e8ebb65"
+"d": "2026-11-22",
+"h": "e1e16ab3b0dd",
+"h2": "e1e16ab3b0dd"
 },
 "guides/car-battery-dead/": {
 "d": "2026-11-21",
@@ -285,24 +290,24 @@
 "h2": "3c1be005c66a"
 },
 "guides/car-knocking-over-humps/": {
-"d": "2026-11-21",
-"h": "6e3e21a205a4",
-"h2": "6e3e21a205a4"
+"d": "2026-11-22",
+"h": "4a0f9f78ef57",
+"h2": "4a0f9f78ef57"
 },
 "guides/car-overheating/": {
-"d": "2026-11-21",
-"h": "f7395b7e4ea8",
-"h2": "f7395b7e4ea8"
+"d": "2026-11-22",
+"h": "75792f0027a6",
+"h2": "75792f0027a6"
 },
 "guides/car-servicing-cost-singapore/": {
-"d": "2026-11-21",
-"h": "143a9011def8",
-"h2": "143a9011def8"
+"d": "2026-11-22",
+"h": "0192e089931a",
+"h2": "0192e089931a"
 },
 "guides/car-spray-painting-singapore/": {
-"d": "2026-11-19",
-"h": "981a4213f60d",
-"h2": "981a4213f60d"
+"d": "2026-11-22",
+"h": "c2ac1d3ede71",
+"h2": "c2ac1d3ede71"
 },
 "guides/car-vibration-steering-shake/": {
 "d": "2026-11-18",
@@ -320,14 +325,14 @@
 "h2": "a0c95e0691c6"
 },
 "guides/dashboard-warning-lights/": {
-"d": "2026-11-21",
-"h": "eb1f6f2206a0",
-"h2": "eb1f6f2206a0"
+"d": "2026-11-22",
+"h": "7d8d7a948a5b",
+"h2": "7d8d7a948a5b"
 },
 "guides/dent-repair-singapore/": {
-"d": "2026-11-18",
-"h": "b793c0bd21c9",
-"h2": "b793c0bd21c9"
+"d": "2026-11-22",
+"h": "37b03a16e595",
+"h2": "37b03a16e595"
 },
 "guides/engine-warning-light/": {
 "d": "2026-11-21",
@@ -335,14 +340,14 @@
 "h2": "3079418f5d83"
 },
 "guides/gearbox-cvt-jerking/": {
-"d": "2026-11-21",
-"h": "910631c11db5",
-"h2": "910631c11db5"
+"d": "2026-11-22",
+"h": "d4b60f00c1a2",
+"h2": "d4b60f00c1a2"
 },
 "guides/how-to-choose-a-car-workshop/": {
-"d": "2026-11-21",
-"h": "f35335d531d3",
-"h2": "f35335d531d3"
+"d": "2026-11-22",
+"h": "7b7d186830f9",
+"h2": "7b7d186830f9"
 },
 "guides/tyre-shop-open-sunday-singapore/": {
 "d": "2026-11-21",
@@ -350,9 +355,9 @@
 "h2": "8dcd2c3e4f40"
 },
 "list-your-workshop/": {
-"d": "2026-11-21",
-"h": "015a3c177ad8",
-"h2": "015a3c177ad8"
+"d": "2026-11-22",
+"h": "73af3663a510",
+"h2": "73af3663a510"
 },
 "privacy/": {
 "d": "2026-11-03",
@@ -370,9 +375,9 @@
 "h2": "82090a76040b"
 },
 "services/car-aircon-repair/": {
-"d": "2026-11-21",
-"h": "c06391645180",
-"h2": "c06391645180"
+"d": "2026-11-22",
+"h": "bbf41e065162",
+"h2": "bbf41e065162"
 },
 "services/car-battery/": {
 "d": "2026-11-21",
@@ -390,9 +395,9 @@
 "h2": "e0b12a9aaacf"
 },
 "services/car-wrap-ppf/": {
-"d": "2026-11-21",
-"h": "7697c009588b",
-"h2": "7697c009588b"
+"d": "2026-11-22",
+"h": "04e7b0e5872b",
+"h2": "04e7b0e5872b"
 },
 "services/ecu-tuning/": {
 "d": "2026-11-09",
@@ -410,14 +415,14 @@
 "h2": "604af6f81324"
 },
 "services/gearbox-repair/": {
-"d": "2026-11-21",
-"h": "f7fef0ba4c93",
-"h2": "f7fef0ba4c93"
+"d": "2026-11-22",
+"h": "76a11f006ae4",
+"h2": "76a11f006ae4"
 },
 "services/general-servicing-repair/": {
-"d": "2026-11-21",
-"h": "537f809dbba6",
-"h2": "537f809dbba6"
+"d": "2026-11-22",
+"h": "7116a5825e97",
+"h2": "7116a5825e97"
 },
 "services/hybrid-ev-servicing/": {
 "d": "2026-11-19",
@@ -435,9 +440,9 @@
 "h2": "c4bbab29752a"
 },
 "services/spray-painting-bodywork/": {
-"d": "2026-11-21",
-"h": "0d2bf0223fbc",
-"h2": "0d2bf0223fbc"
+"d": "2026-11-22",
+"h": "55f9f6532e6f",
+"h2": "55f9f6532e6f"
 },
 "services/wheel-alignment/": {
 "d": "2026-11-10",
@@ -474,6 +479,11 @@
 "h": "dd9697a96519",
 "h2": "dd9697a96519"
 },
+"workshops/73-automechanica/": {
+"d": "2026-11-22",
+"h": "cd21264ec71e",
+"h2": "cd21264ec71e"
+},
 "workshops/8337-premium-motorworks/": {
 "d": "2026-11-10",
 "h": "48ef1b9415fc",
@@ -486,8 +496,8 @@
 },
 "workshops/88-auto-garage-woodlands/": {
 "d": "2026-11-03",
-"h": "704edb10cf57",
-"h2": "704edb10cf57"
+"h": "84c4ae5efc80",
+"h2": "84c4ae5efc80"
 },
 "workshops/88-auto-garage/": {
 "d": "2026-11-03",
@@ -541,8 +551,8 @@
 },
 "workshops/acm-service-center/": {
 "d": "2026-11-03",
-"h": "a1ef49daaee6",
-"h2": "a1ef49daaee6"
+"h": "cc1f79bfcbef",
+"h2": "cc1f79bfcbef"
 },
 "workshops/af-cars/": {
 "d": "2026-11-03",
@@ -556,13 +566,13 @@
 },
 "workshops/aha-auto-image/": {
 "d": "2026-11-17",
-"h": "300455f56852",
-"h2": "300455f56852"
+"h": "36b7b17447d0",
+"h2": "36b7b17447d0"
 },
 "workshops/ak-workshop/": {
 "d": "2026-11-03",
-"h": "f5b24c2cb6f9",
-"h2": "f5b24c2cb6f9"
+"h": "d75e0c7e87ae",
+"h2": "d75e0c7e87ae"
 },
 "workshops/akhi-motor-garage/": {
 "d": "2026-11-03",
@@ -716,8 +726,8 @@
 },
 "workshops/bodyfix/": {
 "d": "2026-11-17",
-"h": "5d53f20ebf47",
-"h2": "5d53f20ebf47"
+"h": "bc2c3656d0cc",
+"h2": "bc2c3656d0cc"
 },
 "workshops/boltt-garage/": {
 "d": "2026-11-13",
@@ -841,13 +851,13 @@
 },
 "workshops/castrol-service/": {
 "d": "2026-11-17",
-"h": "afe9e5284e7c",
-"h2": "afe9e5284e7c"
+"h": "0d0b8434b402",
+"h2": "0d0b8434b402"
 },
 "workshops/ch-motor-repairs-and-services/": {
 "d": "2026-11-17",
-"h": "f177192cad48",
-"h2": "f177192cad48"
+"h": "83f46c6ef625",
+"h2": "83f46c6ef625"
 },
 "workshops/chee-chai-motor-repairer/": {
 "d": "2026-11-03",
@@ -916,8 +926,8 @@
 },
 "workshops/corrotec/": {
 "d": "2026-11-17",
-"h": "ef9d1275c622",
-"h2": "ef9d1275c622"
+"h": "c16cc152bd2c",
+"h2": "c16cc152bd2c"
 },
 "workshops/cs-autoworks/": {
 "d": "2026-11-19",
@@ -946,8 +956,8 @@
 },
 "workshops/dhm-otomotive-werkz/": {
 "d": "2026-11-02",
-"h": "b04ee5bda340",
-"h2": "b04ee5bda340"
+"h": "c197181d63ec",
+"h2": "c197181d63ec"
 },
 "workshops/ding-auto/": {
 "d": "2026-11-11",
@@ -973,6 +983,11 @@
 "d": "2026-11-04",
 "h": "39f4fcc8aae9",
 "h2": "39f4fcc8aae9"
+},
+"workshops/eco-sport/": {
+"d": "2026-11-22",
+"h": "63e82e55e940",
+"h2": "63e82e55e940"
 },
 "workshops/edge-garage/": {
 "d": "2026-11-19",
@@ -1114,6 +1129,11 @@
 "h": "cb18655907da",
 "h2": "cb18655907da"
 },
+"workshops/forza-colorhaus/": {
+"d": "2026-11-22",
+"h": "f35ab4b6e1c3",
+"h2": "f35ab4b6e1c3"
+},
 "workshops/fr-auto/": {
 "d": "2026-11-02",
 "h": "679f8b13c9a2",
@@ -1216,8 +1236,8 @@
 },
 "workshops/heng-huat-motor/": {
 "d": "2026-11-03",
-"h": "afccc2939e07",
-"h2": "afccc2939e07"
+"h": "f50b39f0b732",
+"h2": "f50b39f0b732"
 },
 "workshops/hex-performance/": {
 "d": "2026-11-12",
@@ -1401,8 +1421,8 @@
 },
 "workshops/inspire-21/": {
 "d": "2026-11-03",
-"h": "55a91f0a37d1",
-"h2": "55a91f0a37d1"
+"h": "60538ed58a27",
+"h2": "60538ed58a27"
 },
 "workshops/irent-garage/": {
 "d": "2026-11-08",
@@ -1451,8 +1471,8 @@
 },
 "workshops/jingkia-car-services/": {
 "d": "2026-11-17",
-"h": "68594c8850fe",
-"h2": "68594c8850fe"
+"h": "7ea7a7f5ad28",
+"h2": "7ea7a7f5ad28"
 },
 "workshops/jl-auto-services/": {
 "d": "2026-11-02",
@@ -1513,6 +1533,11 @@
 "d": "2026-11-15",
 "h": "7e9f1c1ec522",
 "h2": "7e9f1c1ec522"
+},
+"workshops/keongkeong-auto/": {
+"d": "2026-11-22",
+"h": "d85a5dcc6827",
+"h2": "d85a5dcc6827"
 },
 "workshops/kgc-workshop/": {
 "d": "2026-11-04",
@@ -1578,6 +1603,11 @@
 "d": "2026-11-03",
 "h": "865e57a50910",
 "h2": "865e57a50910"
+},
+"workshops/kuo-li-auto-workshop/": {
+"d": "2026-11-22",
+"h": "916f8da1c0ff",
+"h2": "916f8da1c0ff"
 },
 "workshops/ky-auto/": {
 "d": "2026-11-02",
@@ -1706,8 +1736,8 @@
 },
 "workshops/mayfair-garage/": {
 "d": "2026-11-17",
-"h": "e4efdaaf6b8b",
-"h2": "e4efdaaf6b8b"
+"h": "19fa04651d31",
+"h2": "19fa04651d31"
 },
 "workshops/mcf-auto/": {
 "d": "2026-11-06",
@@ -1726,8 +1756,8 @@
 },
 "workshops/meisterwerk-garage/": {
 "d": "2026-11-17",
-"h": "c86001fe9aee",
-"h2": "c86001fe9aee"
+"h": "d8fe1adc8390",
+"h2": "d8fe1adc8390"
 },
 "workshops/meng-seng-motor/": {
 "d": "2026-11-18",
@@ -1736,8 +1766,8 @@
 },
 "workshops/merlin-motor-engineering-works/": {
 "d": "2026-11-02",
-"h": "50ff8430e536",
-"h2": "50ff8430e536"
+"h": "ed411ff4bf83",
+"h2": "ed411ff4bf83"
 },
 "workshops/mirage-motorwerkz/": {
 "d": "2026-11-21",
@@ -1801,8 +1831,8 @@
 },
 "workshops/motoserv-car-service-centre-serangoon-garden/": {
 "d": "2026-11-03",
-"h": "860dc9aaec1e",
-"h2": "860dc9aaec1e"
+"h": "8cfd5d17f3e4",
+"h2": "8cfd5d17f3e4"
 },
 "workshops/motoserv-car-service-centre-upper-thomson-mobil-1-carcare/": {
 "d": "2026-11-11",
@@ -1841,8 +1871,8 @@
 },
 "workshops/my-car-consultant-amk-autopoint/": {
 "d": "2026-11-17",
-"h": "e2be4f3f342a",
-"h2": "e2be4f3f342a"
+"h": "55ed96fc30b0",
+"h2": "55ed96fc30b0"
 },
 "workshops/my-car-consultant-carros-centre/": {
 "d": "2026-11-09",
@@ -1881,8 +1911,8 @@
 },
 "workshops/nightzconcepts/": {
 "d": "2026-11-17",
-"h": "a80d62c1ee6d",
-"h2": "a80d62c1ee6d"
+"h": "823a87cc984e",
+"h2": "823a87cc984e"
 },
 "workshops/noir-autoworks/": {
 "d": "2026-11-12",
@@ -2016,8 +2046,8 @@
 },
 "workshops/ready-auto-care/": {
 "d": "2026-11-17",
-"h": "355b4c72bec6",
-"h2": "355b4c72bec6"
+"h": "d6c0483bbfe7",
+"h2": "d6c0483bbfe7"
 },
 "workshops/redline-autoworks/": {
 "d": "2026-11-06",
@@ -2116,13 +2146,13 @@
 },
 "workshops/sau-hock-motor-services/": {
 "d": "2026-11-17",
-"h": "fcf5ac4cf8d5",
-"h2": "fcf5ac4cf8d5"
+"h": "f0522c7fb74f",
+"h2": "f0522c7fb74f"
 },
 "workshops/sc-garage/": {
 "d": "2026-11-03",
-"h": "00c17f15c61c",
-"h2": "00c17f15c61c"
+"h": "e59388af5af2",
+"h2": "e59388af5af2"
 },
 "workshops/sct-auto-services/": {
 "d": "2026-11-03",
@@ -2156,8 +2186,8 @@
 },
 "workshops/sin-heng-long-motor-work/": {
 "d": "2026-11-03",
-"h": "781f654a11b0",
-"h2": "781f654a11b0"
+"h": "99d3aaff9f23",
+"h2": "99d3aaff9f23"
 },
 "workshops/sin-hwee-motor/": {
 "d": "2026-11-15",
@@ -2185,9 +2215,9 @@
 "h2": "940a78aef3aa"
 },
 "workshops/soon-kim-motor-workshop/": {
-"d": "2026-11-21",
-"h": "c2f0ddb94676",
-"h2": "c2f0ddb94676"
+"d": "2026-11-22",
+"h": "d4ce17831308",
+"h2": "d4ce17831308"
 },
 "workshops/spectraworks/": {
 "d": "2026-11-18",
@@ -2261,8 +2291,8 @@
 },
 "workshops/t7-auto-care/": {
 "d": "2026-11-03",
-"h": "08e36901b086",
-"h2": "08e36901b086"
+"h": "6b1ebac41783",
+"h2": "6b1ebac41783"
 },
 "workshops/team-autopro/": {
 "d": "2026-11-03",
@@ -2306,8 +2336,8 @@
 },
 "workshops/teutonic-autohaus/": {
 "d": "2026-11-03",
-"h": "2d73101efae6",
-"h2": "2d73101efae6"
+"h": "b83335513bf9",
+"h2": "b83335513bf9"
 },
 "workshops/tg-auto/": {
 "d": "2026-11-06",
@@ -2336,8 +2366,13 @@
 },
 "workshops/thiam-seng-autotronic/": {
 "d": "2026-11-17",
-"h": "cc0fc9584f2b",
-"h2": "cc0fc9584f2b"
+"h": "e9518d6a0281",
+"h2": "e9518d6a0281"
+},
+"workshops/tian-yi-motor-service/": {
+"d": "2026-11-22",
+"h": "a1e44ff3fbc4",
+"h2": "a1e44ff3fbc4"
 },
 "workshops/top-fuel-automotive/": {
 "d": "2026-11-09",
@@ -2561,8 +2596,8 @@
 },
 "workshops/zenetics-auto/": {
 "d": "2026-11-02",
-"h": "b1808b242881",
-"h2": "b1808b242881"
+"h": "f35b5608f91d",
+"h2": "f35b5608f91d"
 },
 "workshops/zenith-automotive-services/": {
 "d": "2026-11-04",

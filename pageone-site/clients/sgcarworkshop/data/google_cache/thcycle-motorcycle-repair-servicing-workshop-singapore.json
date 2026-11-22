@@ -1,0 +1,36 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "auto_parts_store",
+  "car_repair",
+  "store",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.4,
+ "userRatingCount": 250,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 12:00 AM",
+  "Tuesday: 9:00 AM – 12:00 AM",
+  "Wednesday: 9:00 AM – 12:00 AM",
+  "Thursday: 9:00 AM – 12:00 AM",
+  "Friday: 9:00 AM – 12:00 AM",
+  "Saturday: 9:00 AM – 12:00 AM",
+  "Sunday: 9:00 AM – 6:00 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-22",
+ "place_id": "ChIJ2aQ_g68T2jERBo2TASZYKiQ",
+ "source": "google_places"
+}

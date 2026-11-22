@@ -7,6 +7,7 @@ preview address and on the real domain. LIVE = True switches every absolute URL 
 Pages never carry a noindex tag: hiding the preview is done by a server header outside the pages (MASTER-RULES 4.3).
 """
 import hw_site
+import qw
 import datetime
 import hashlib
 import html
@@ -2754,10 +2755,10 @@ def build():
     for path, h in PAGES.items():
         d = os.path.join(OUT, path)
         os.makedirs(d, exist_ok=True)
-        open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(h)
+        open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(qw.qwify(h))   # WM live header (22 Nov 2026), kept on rebuilds
     open(OUT + '/404.html', 'w', encoding='utf-8').write(not_found())
     write_redirects()
-    for f in ('dir.css', 'dir.js', 'livephone.js', 'ask.js'):
+    for f in ('dir.css', 'dir.js', 'livephone.js', 'ask.js', 'qw.css', 'qw.js'):
         shutil.copy(os.path.join(HERE, f), OUT + '/assets/' + f)
     shutil.copytree(os.path.join(HERE, 'img'), OUT + '/assets/img', dirs_exist_ok=True)
     # Listing id -> name + the mobile on the card, read by the Controller claim function (Edwin 8 Nov 2026). Same public numbers as the cards.

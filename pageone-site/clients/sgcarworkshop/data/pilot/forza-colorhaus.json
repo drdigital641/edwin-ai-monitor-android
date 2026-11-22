@@ -1,0 +1,33 @@
+{
+ "lede": "Forza ColorHaus is a car repair workshop at 280 Woodlands Industrial Park E5, #01-18, Harvest@Woodlands 757322. Its Google Maps listing shows opening hours and customer ratings.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "Spray painting",
+  "Dent and bumper respray",
+  "Full colour change"
+ ],
+ "themes": "Customers on Google Maps mention dent and bumper respray work matched to the car's colour code, full colour changes, and cars that came back looking new.",
+ "faqs": [
+  [
+   "What does Forza ColorHaus do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Spray painting",
+  "Bumper respray",
+  "Full colour change"
+ ],
+ "card_rules": "2026-11-05",
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Ask the workshop about your car.",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list."
+}

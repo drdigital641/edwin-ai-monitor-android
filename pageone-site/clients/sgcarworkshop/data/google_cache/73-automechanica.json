@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.6,
+ "userRatingCount": 40,
+ "websiteUri": "https://www.facebook.com/73automechanica/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:05 AM – 9:05 PM",
+  "Tuesday: 10:05 AM – 9:05 PM",
+  "Wednesday: 10:05 AM – 9:05 PM",
+  "Thursday: 10:05 AM – 9:05 PM",
+  "Friday: 10:05 AM – 9:05 PM",
+  "Saturday: 10:05 AM – 9:05 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention upfront pricing with no upselling, routine servicing, a Toyota Corolla fault that was fixed, and a clean, well-organised workshop.",
+ "fetched_at": "2026-11-22",
+ "place_id": "ChIJd1-w56wX2jERrpomG48ZmQo",
+ "source": "google_places"
+}
