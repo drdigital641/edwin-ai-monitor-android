@@ -16,3 +16,7 @@ build_pageone.py output == live sha cacc3eb6...
 No full re-render was run. The Python builder (pageone-site/builder/, last on branch claude/project-thread-xc39oz,
 14 Nov) is older than live; builder-nav-footer.patch carries the same nav/footer change for it. Never re-render
 from that builder without diffing against live first.
+
+22 Nov 4:23pm SGT, follow-up: /articles/ and all 34 article pages had an older nav (no How it works, had SEO Boost) and footer
+(missing How it works, Lead generation, Affordable SEO services). Nav and footer Services now match the live homepage exactly;
+article content, p1-cta.js and review footer untouched. Backups: article-edit-backups.tsv.
