@@ -1,0 +1,56 @@
+Page One Controller (6ac7f2548a9c3877449e2772): git diff ce5db4d 83131c9 -- base44 src  (key hunks)
+
+--- a/base44/functions/clientSites/entry.ts
++++ b/base44/functions/clientSites/entry.ts
+-async function dnsA(host: string) {
+-  const r = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(host)}&type=A`, ...).then((x) => x.json()).catch(() => null);
+-  return (r?.Answer || []).filter((a: any) => a.type === 1).map((a: any) => a.data);
++const DOH: [string, string][] = [['dns.google', 'https://dns.google/resolve'], ['cloudflare-dns.com', 'https://cloudflare-dns.com/dns-query']];
++async function dohA(endpoint: string, host: string): Promise<string[] | null> {
++  const r: any = await fetch(`${endpoint}?name=${encodeURIComponent(host)}&type=A`, { headers: { accept: 'application/dns-json' }, signal: AbortSignal.timeout(10000) })
++    .then((x) => x.ok ? x.json() : null).catch(() => null);
++  if (r?.Status === 3) return [];
++  if (r?.Status !== 0) return null;
++  return (r.Answer || []).filter((a: any) => a.type === 1).map((a: any) => String(a.data));
++}
++async function localA(host: string): Promise<string[] | null> {
++  try { return await (Deno as any).resolveDns(host, 'A'); } catch (e) { return (e as any)?.name === 'NotFound' ? [] : null; }
++}
++async function dnsCheck(d: string) {   // Google, then Cloudflare; local only if neither answered; pass = one resolver all SERVER_IP
++  ...
++}
+ async function runCheck(E: any, fresh: any) {
+-  const ips = [...await dnsA(d), ...await dnsA('www.' + d)];
+-  const check_dns = ips.length > 0 && ips.every((ip) => ip === SERVER_IP);
+-  if (!ips.length) notes.push('DNS: no A record yet.'); else if (!check_dns) notes.push(`DNS points to ...`);
++  const dns = await dnsCheck(d);
++  const check_dns = dns.ok;
++  if (!check_dns) notes.push(dns.note);   // note ends with [resolvers: dns.google: x | cloudflare-dns.com: y]
+
+ async function runGoLive(E: any, c: any) {
+   if (lockedNow(c)) return { ... busy ... };
++  // Cooldown: domain found not ready < 20 s ago -> no Bridge call, nothing written
++  if (c.golive_status?.waiting && Number.isFinite(lastAt) && Date.now() - lastAt < GOLIVE_COOLDOWN_MS) return { ok: false, waiting: true, cooldown: true, detail: 'Checked Ns ago ... Try again in Ms.' };
+-        golive_status: { ..., detail: r.detail || '', checks: [], at }
++        golive_status: { ..., detail: r.detail || '', resolver: r.status.resolver || '', checks: [], at }
+-      return { ok: false, waiting: true, detail: r.detail, ... };
++      return { ok: false, waiting: true, detail: 'Not live yet, the domain is not ready: ' + r.status.detail, ... };
++const GOLIVE_COOLDOWN_MS = 20_000;
+
+ set_status live:
+-        if (!g.ok) return Response.json({ error: 'Not switched to ...' }, { status: 409 });
++        if (!g.ok) return Response.json({ ok: false, refused: true, error: 'Not switched to ' + c.domain + ' yet, so it stays Going live: ...' });
+ golive_run:
+-      if (!r.ok) return Response.json({ ..., error: r.error || ... }, { status: 409 });
++      if (!r.ok) return Response.json({ ..., error: 'Not live: ' + (r.error || r.detail) });
+ check:
++      return Response.json({ ok: true, golive_note, client: ... });   // why the switch did not run / was refused
+
+--- a/src/pages/Clients.jsx   and   --- a/src/components/client/GoLive.jsx
++function friendly(e) {   // Base44Error: use data.error / data.detail; 429 -> "Too many checks in a row. Wait about a minute, then tap again."
++...
+-  const res = await base44.functions.invoke("clientSites", { action, ...payload });
++  const res = await base44.functions.invoke("clientSites", { action, ...payload }).catch((e) => { throw friendly(e); });
++  const [coolUntil, setCoolUntil] = useState(0);   // Check now 20 s tap cooldown
++      if (action === "check" && Date.now() < coolUntil) { setErr(`Just checked. Try again in Ns.`); return; }
++      if (action === "check") { setCoolUntil(Date.now() + 20000); if (d.golive_note) setErr(d.golive_note); }

@@ -1,0 +1,91 @@
+diff --git a/base44/functions/bridgeGoLive/entry.ts b/base44/functions/bridgeGoLive/entry.ts
+--- a/base44/functions/bridgeGoLive/entry.ts
++++ b/base44/functions/bridgeGoLive/entry.ts
+@@ -3,6 +3,7 @@ import { goLiveOp } from '../../shared/goLive.ts';
+ import { addNeedsYou } from '../../shared/needsYou.ts';
+ import { clientsCardOp, pageoneClientsOp } from '../../shared/goLiveClients.ts';
+
++// 23 Nov 2026: domain gate asks Google DoH, then Cloudflare DoH, then the local lookup (shared/goLive.ts domainStatus, P.resolveGate).
+ // ONE-SWITCH GO-LIVE (Edwin 20 Nov 2026): Controller "Go live" control. Keys: scope golive (Controller) or Claude's signed-in session.
+ export default bridgeTool('golive', async (body, ctx) => {
+diff --git a/base44/shared/goLive.ts b/base44/shared/goLive.ts
+--- a/base44/shared/goLive.ts
++++ b/base44/shared/goLive.ts
+@@ -39,22 +39,34 @@ async function planIndexNowKey(e: Entry, given: unknown) {
+ }
+ const hideKey = (s: string, key: string) => s.split(key).join('<key>');
+
++// DoH resolvers (JSON API). Status 0 = answer, 3 = NXDOMAIN (no records); anything else, a bad HTTP answer or a timeout throws.
++// The resolver follows CNAMEs itself (www CNAME -> apex); only the final A (1) / AAAA (28) records are kept.
++const dohResolver = (name: string, endpoint: string): P.Resolver => ({ name, lookup: async (host, type) => {
++  const r = await fetch(`${endpoint}?name=${encodeURIComponent(host)}&type=${type}`, { headers: { accept: 'application/dns-json' }, signal: AbortSignal.timeout(6_000) });
++  if (!r.ok) { try { await r.body?.cancel(); } catch { /* ignore */ } throw new Error('HTTP ' + r.status); }
++  const j: any = await r.json();
++  if (j?.Status === 3) return [];
++  if (j?.Status !== 0) throw new Error('DNS status ' + j?.Status);
++  return ((j.Answer || []) as any[]).filter((a) => a.type === (type === 'A' ? 1 : 28)).map((a) => String(a.data));
++} });
++// Last fallback only: the runtime's own resolver (the cache that went stale on autoseo.sg). Deno.resolveDns follows CNAMEs.
++const localResolver: P.Resolver = { name: 'local', lookup: async (host, type) => {
++  try { return await (Deno as any).resolveDns(host, type); }
++  catch (e) { if ((e as any)?.name === 'NotFound') return []; throw e; }
++} };
++
+ export async function domainStatus(domainIn: unknown): Promise<P.DomainStatus> {
+   const domain = P.cleanDomain(domainIn);
+   const out: P.DomainStatus = { domain, dns_ok: false, https_ok: false, ips: [], can_go_live: false, detail: '' };
+   if (!domain) { out.detail = 'not a valid domain name'; return out; }
+-  const doh = async (name: string, type: string) => {
+-    const r = await fetch(`https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(name)}&type=${type}`, { headers: { accept: 'application/dns-json' }, signal: AbortSignal.timeout(6_000) });
+-    const j = await r.json();
+-    return ((j.Answer || []) as any[]).filter((a) => a.type === (type === 'A' ? 1 : 28)).map((a) => String(a.data));
+-  };
+-  try {
+-    const [apex, www, aaaa] = await Promise.all([doh(domain, 'A'), doh('www.' + domain, 'A'), doh(domain, 'AAAA')]);
+-    out.ips = apex;
+-    const v = P.dnsVerdict(apex), w = P.dnsVerdict(www);
+-    out.dns_ok = v.ok && w.ok && aaaa.length === 0;
+-    out.detail = [!v.ok && 'apex: ' + v.detail, !w.ok && 'www: ' + w.detail, aaaa.length && 'AAAA record present (' + aaaa.join(',') + '), remove it'].filter(Boolean).join('; ');
+-  } catch (e) { out.detail = 'DNS lookup failed: ' + msg(e); return out; }
++  // 23 Nov 2026 (Edwin, autoseo.sg): one resolver's cache held the old A record (103.11.189.189) after the move, so the gate refused
++  // although the authoritative nameservers, Google and Cloudflare all gave 173.254.31.20. Now each resolver is asked in turn
++  // (Google DoH, then Cloudflare DoH, then the runtime's own lookup only if both DoH answers failed) and the gate passes when ONE
++  // resolver gives a clean answer for the apex AND www (CNAMEs followed) AND no AAAA. The rule itself is unchanged; the resolver used
++  // is saved in status.resolver and in the refusal note.
++  const r = await P.resolveGate(domain, [dohResolver('dns.google', 'https://dns.google/resolve'), dohResolver('cloudflare-dns.com', 'https://cloudflare-dns.com/dns-query'), localResolver]);
++  out.ips = r.ips; out.dns_ok = r.ok; out.detail = r.detail; out.resolver = r.resolver;
++  if (r.failed) return out;
+   try {
+     const hit = async (h: string) => { ... unchanged https check ... };
+diff --git a/base44/shared/goLivePure.ts b/base44/shared/goLivePure.ts
+--- a/base44/shared/goLivePure.ts
++++ b/base44/shared/goLivePure.ts
+@@ -154,7 +154,29 @@
+-export type DomainStatus = { domain: string; dns_ok: boolean; https_ok: boolean; ips: string[]; can_go_live: boolean; detail: string };
++export type DomainStatus = { domain: string; dns_ok: boolean; https_ok: boolean; ips: string[]; can_go_live: boolean; detail: string; resolver?: string };
++// DNS gate over several resolvers (23 Nov 2026, autoseo.sg stale cache). A resolver returns the final A/AAAA addresses for a host
++// (CNAMEs followed by the resolver) and throws when it cannot answer. The LAST resolver in the list (the runtime's own lookup) is
++// asked only when none of the others answered. Pass = one resolver gives apex only SERVER_IP, www only SERVER_IP and no AAAA.
++export type Resolver = { name: string; lookup: (host: string, type: 'A' | 'AAAA') => Promise<string[]> };
++export type GateResult = { ok: boolean; failed: boolean; ips: string[]; resolver: string; detail: string };
++export async function resolveGate(domain: string, resolvers: Resolver[]): Promise<GateResult> {
++  const notes: string[] = []; let first: { ips: string[]; detail: string } | null = null;
++  for (let i = 0; i < resolvers.length; i++) {
++    const res = resolvers[i];
++    if (i === resolvers.length - 1 && i > 0 && first) break;   // last-resort lookup only when no other resolver answered
++    try {
++      const [apex, www, aaaa] = await Promise.all([res.lookup(domain, 'A'), res.lookup('www.' + domain, 'A'), res.lookup(domain, 'AAAA')]);
++      const v = dnsVerdict(apex), w = dnsVerdict(www);
++      const detail = [!v.ok && 'apex: ' + v.detail, !w.ok && 'www: ' + w.detail, aaaa.length && 'AAAA record present (' + aaaa.join(',') + '), remove it'].filter(Boolean).join('; ');
++      if (v.ok && w.ok && !aaaa.length) return { ok: true, failed: false, ips: [...new Set(apex)], resolver: res.name, detail: '' };
++      if (!first) first = { ips: [...new Set(apex)], detail };
++      notes.push(res.name + (detail === first.detail ? ' same' : ': ' + detail));
++    } catch (e) { notes.push(res.name + ': lookup failed (' + String((e as Error)?.message || e).slice(0, 80) + ')'); }
++  }
++  if (!first) return { ok: false, failed: true, ips: [], resolver: '', detail: 'DNS lookup failed on every resolver [' + notes.join(' | ') + ']' };
++  return { ok: false, failed: false, ips: first.ips, resolver: notes.map((n) => n.split(/[ :]/)[0]).join(','), detail: first.detail + ' [resolvers: ' + notes.join(' | ') + ']' };
++}
+diff --git a/base44/tests/goLive.test.ts b/base44/tests/goLive.test.ts
+@@ -42,3 +42,23 @@
++// 6 tests: google clean passes; google stale + cloudflare clean passes; both DoH stale refuses and local is not asked;
++// DoH down -> local used; all down -> failed; AAAA or mixed www still refused.  deno test: 20 passed, 0 failed.
