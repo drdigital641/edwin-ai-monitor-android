@@ -13,6 +13,8 @@ pathway category + reference + consent line (assets/lead.js). Categories are in 
 same keys are the future lead-routing keys (workshops, reporting-centre referrals, partner fees).
 
 Run: python3 build.py -> ../site/. Then commit and Bridge sync_from_github (base_path preview/sgcaraccident)."""
+import sys as _retired_sys
+_retired_sys.exit("RETIRED 23 Nov 2026 (Edwin): sgcaraccident.sg is edited live through the Bridge only. Never rebuild from this source. See RETIRED.md.")
 import json, os, re, html, hashlib, shutil, urllib.parse, datetime, importlib, sys
 
 SRC = os.path.dirname(os.path.abspath(__file__))
