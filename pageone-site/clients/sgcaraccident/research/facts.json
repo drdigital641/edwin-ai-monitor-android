@@ -1,0 +1,3005 @@
+{
+ "gia_24h": {
+  "quote": "Report the accident to your Insurer within 24 Hours or by the next working day",
+  "url": "https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/349-dos-and-don-ts-following-an-accident.html"
+ },
+ "gia_other": [
+  {
+   "point": "Take vehicle, damaged or not, to approved reporting centre or authorised workshop within 24 hours",
+   "quote": "Report and take your vehicle, damaged or not, to the approved reporting centre or authorized workshop within 24 hours.",
+   "url": "https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/348-motor-claims-framewor"
+  },
+  {
+   "point": "Report every accident, however small",
+   "quote": "all motorists now have to report to their insurers any accident, no matter how small.",
+   "url": "https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/348-motor-claims-framewor"
+  },
+  {
+   "point": "Timeframe per FAQ 7",
+   "quote": "The MCF states that the end of the next working day is the timeframe for reporting.",
+   "url": "https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/348-motor-claims-framewor"
+  },
+  {
+   "point": "Information to take at the scene (incl. photo)",
+   "quote": "NRIC, name, telephone number, address, insurer & digital photo of accident.",
+   "url": "https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/348-motor-claims-framewor"
+  },
+  {
+   "point": "Photos before moving vehicle",
+   "quote": "Take photos of the scene of the accident and the damages to all vehicles",
+   "url": "https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/349-dos-and-don-ts-following-an-accident.html"
+  },
+  {
+   "point": "Do not move vehicle before photos",
+   "quote": "Do not move your vehicle before taking photographs of the accident scene.",
+   "url": "https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/349-dos-and-don-ts-following-an-accident.html"
+  },
+  {
+   "point": "Police report is not an insurer report",
+   "quote": "Filing a Traffic Police report is not equivalent to making a report to your insurer.",
+   "url": "https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/349-dos-and-don-ts-following-an-accident.html"
+  },
+  {
+   "point": "Use insurer's authorised workshop for repairs",
+   "quote": "you should go to an authorised workshop of your insurer for repairs (even if you are claiming against the other party).",
+   "url": "https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/349-dos-and-don-ts-following-an-accident.html"
+  },
+  {
+   "point": "Unauthorised tow trucks",
+   "quote": "motorists are strongly advised not to have any dealings with unauthorised tow-truck operators at the scene of accident.",
+   "url": "https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/349-dos-and-don-ts-following-an-accident.html"
+  },
+  {
+   "point": "ARCs assist with the report",
+   "quote": "The ARC will assist you to complete and submit the final Accident Report.",
+   "url": "https://gia.org.sg/motor-insurance/22-premium-renewal-of-policy/349-dos-and-don-ts-following-an-accident.html"
+  },
+  {
+   "point": "Documents to bring: GIA MCF page lists none; insurer pages vary (FWD: driving licence, NRIC, certificate of insurance, police report, photos, witness reports; AIG: NRIC/ID, driver's licence, company stamp)",
+   "quote": "",
+   "url": "https://help.fwd.com.sg/hc/en-us/articles/4402828208921-How-do-I-lodge-a-car-motorcycle-accident-report"
+  },
+  {
+   "point": "GIA does not publish reporting centre list on the pages read; the MCF page says refer to own insurer. GIA 'List of Motor Insurers' PDF URLs found by search returned a 404 page when fetched.",
+   "quote": "",
+   "url": "https://gia.org.sg/images/pdf-files/List-of-Motor-Insurers---as-at-1-Jul-2026.pdf"
+  }
+ ],
+ "spf_police_cases": {
+  "cases": [
+   "Fatality (death)",
+   "Injury where at least one person was taken to hospital from the scene by ambulance, or any party was injured and received outpatient medical leave of 3 days or more",
+   "Damage to government property",
+   "A foreign vehicle is involved",
+   "A pedestrian or cyclist is involved",
+   "Hit-and-run"
+  ],
+  "timeframe_quote": "UNVERIFIED on the SPF page: it states no deadline. GIA page says Traffic Police report 'as soon as possible or within 24 hours of the accident'.",
+  "how": "Online via SPF e-services 'Traffic Accident Report' (SingPass and email address needed), or in person at any police station.",
+  "url": "https://www.police.gov.sg/Knowledge-Hub/Traffic/Traffic-Matters/Reporting-Traffic-Accidents-and-Offences"
+ },
+ "insurers": [
+  {
+   "slug": "income",
+   "name": "Income Insurance",
+   "centres": [
+    {
+     "name": "Abwin Service Pte Ltd (Head Office)",
+     "address": "176 Sin Ming Drive, #01-11, Autocare at Sin Ming, Singapore 575721",
+     "postal": "575721",
+     "hours": "Mon-Fri 9.00am-6.00pm (last reporting before 5.00pm); Sat 9.00am-1.00pm (last reporting before 12.00pm)",
+     "notes": "North Zone"
+    },
+    {
+     "name": "AutoInsure by Century Motors - Main Branch",
+     "address": "6 Marsiling Lane, Singapore 739145",
+     "postal": "739145",
+     "hours": "Mon-Fri 9.00am-6.00pm (last reporting 5pm); Sat 9.00am-1.00pm (last reporting 12pm)",
+     "notes": "North Zone"
+    },
+    {
+     "name": "City Auto Pte Ltd",
+     "address": "Blk 8 Sin Ming Industrial Estate Sector C, #01-58/60/62, Singapore 575643",
+     "postal": "575643",
+     "hours": "Mon-Fri 9.00am-6.00pm; Sat 9.00am-5.00pm",
+     "notes": "North Zone"
+    },
+    {
+     "name": "Cheng Hoe Motor Pte Ltd (Yishun)",
+     "address": "Blk 1019 Yishun Industrial Park A, #01-374/382, Singapore 768761",
+     "postal": "768761",
+     "hours": "Mon-Sat 9.00am-6.00pm",
+     "notes": "North Zone"
+    },
+    {
+     "name": "Cheng Hoe Motor Pte Ltd (Woodlands)",
+     "address": "38 Woodlands Ind Park E1, #05-04, Singapore 757700",
+     "postal": "757700",
+     "hours": "Mon-Fri 9.00am-5.00pm; Sat 9.00am-12.00pm",
+     "notes": "North Zone"
+    },
+    {
+     "name": "Complete VMS Pte Ltd",
+     "address": "Blk 176 Sin Ming Autocare, Sin Ming Drive, #03-07/03-14, Singapore 575721",
+     "postal": "575721",
+     "hours": "Mon-Fri 9am-4pm; Sat 9am-12pm",
+     "notes": "North Zone"
+    },
+    {
+     "name": "Elite AM Pte Ltd",
+     "address": "1 Yishun Industrial Street 1, #01-06 A'Posh Bizhub, Singapore 768160",
+     "postal": "768160",
+     "hours": "Mon-Fri 9:00am-6:00pm; Sat 9:00am-12:00pm",
+     "notes": "North Zone"
+    },
+    {
+     "name": "Falcon-Air Auto Services Pte Ltd",
+     "address": "176 Sin Ming Drive, #01-06, Singapore 575721",
+     "postal": "575721",
+     "hours": "Mon-Fri 8.30am-5.30pm; Sat 8.30am-1.00pm",
+     "notes": "North Zone"
+    },
+    {
+     "name": "K Kim Hin Auto Pte Ltd",
+     "address": "160 Sin Ming Drive, #02-18/19/20/21, Sin Ming AutoCity, Singapore 575722",
+     "postal": "575722",
+     "hours": "Mon-Fri 9.00am-5.30pm (lunch 12.30-1.30pm closed); Sat 9.00am-12.30pm",
+     "notes": "North Zone"
+    },
+    {
+     "name": "SC Auto Industries (S) Pte Ltd",
+     "address": "51/53 Senoko Road, Singapore 758133",
+     "postal": "758133",
+     "hours": "Mon-Fri 8.30am-5.30pm; Sat 8.30am-12.30pm",
+     "notes": "North Zone; buses only"
+    },
+    {
+     "name": "Strides Premier Automotive Services Pte Ltd (Woodlands Branch)",
+     "address": "60 Woodlands Industrial Park E4, Singapore 757705",
+     "postal": "757705",
+     "hours": "Mon-Fri 8.00am-5.00pm; Sat 8.00am-12.00pm",
+     "notes": "North Zone"
+    },
+    {
+     "name": "Strides Premier Automotive Services Pte Ltd (Carros Centre)",
+     "address": "60 Jalan Lam Huat, #07-43 Carros Centre, Singapore 737869",
+     "postal": "737869",
+     "hours": "Mon-Fri 8.00am-5.00pm; Sat 8.00am-12.00pm",
+     "notes": "North Zone"
+    },
+    {
+     "name": "Tan Chong Motor Sales Pte Ltd / TC Autoclinic Pte Ltd",
+     "address": "19 Lor 8 Toa Payoh, Singapore 319255",
+     "postal": "319255",
+     "hours": "Mon-Fri 8.15am-5.00pm; Sat 8.15am-12.30pm",
+     "notes": "North Zone"
+    },
+    {
+     "name": "Yew Tee Automobile Tech Pte Ltd (Woodlands Branch)",
+     "address": "39 Woodlands Close, Mega@Woodlands, #01-12, Singapore 737856",
+     "postal": "737856",
+     "hours": "Mon-Sat 9.00am-6.00pm",
+     "notes": "North Zone"
+    },
+    {
+     "name": "Yew Tee Automobile Tech Pte Ltd (Carros Centre)",
+     "address": "60 Jalan Lam Huat, Carros Centre, #01-31/32, Singapore 737869",
+     "postal": "737869",
+     "hours": "Mon-Sat 9.00am-6.00pm",
+     "notes": "North Zone"
+    },
+    {
+     "name": "Autolution Industrial Pte Ltd",
+     "address": "19 Ubi Road 4, Singapore 408623",
+     "postal": "408623",
+     "hours": "Mon-Sat 8.15am-5.00pm",
+     "notes": "East Zone"
+    },
+    {
+     "name": "AutoInsure by Century Motors - Branch East",
+     "address": "8 Kaki Bukit Ave 4, #03-50, Premier @ Kaki Bukit, Singapore 415875",
+     "postal": "415875",
+     "hours": "Mon-Fri 9:00am-6:00pm (avoid lunch 12.30-1.30pm); Sat by appointment only, 9:00am-1:00pm",
+     "notes": "East Zone"
+    },
+    {
+     "name": "Dickson Auto Care Centre Pte Ltd",
+     "address": "29 Ubi Road 4, Dickson Auto Centre, Singapore 408619",
+     "postal": "408619",
+     "hours": "Mon-Fri 8.30am-5.30pm; Sat 8.30am-12.30pm",
+     "notes": "East Zone"
+    },
+    {
+     "name": "Falcon Air Auto Services Pte Ltd",
+     "address": "Blk 9006 #01-200 Tampines St 93, Singapore 528840",
+     "postal": "528840",
+     "hours": "Mon-Fri 8.30am-5.30pm; Sat 8.30am-1.00pm",
+     "notes": "East Zone"
+    },
+    {
+     "name": "FT Fast Track (Motorcycle)",
+     "address": "25 Kaki Bukit Road 4, #01-77 Synergy@KB, Singapore 417800",
+     "postal": "417800",
+     "hours": "Mon-Sat 10.00am-6.00pm",
+     "notes": "East Zone; motorcycle"
+    },
+    {
+     "name": "Jin Auto Services Pte Ltd",
+     "address": "Blk 14 Defu Lane 10, #01-412, Singapore 539195",
+     "postal": "539195",
+     "hours": "Mon-Fri 9.00am-5.00pm; Sat 9.00am-3.00pm",
+     "notes": "East Zone"
+    },
+    {
+     "name": "Kang Car Repairers Pte Ltd",
+     "address": "1 Kaki Bukit Ave 6, #02-06, AutoBay @ Kaki Bukit, Singapore 417883",
+     "postal": "417883",
+     "hours": "Mon-Sat 9.00am-6.00pm",
+     "notes": "East Zone"
+    },
+    {
+     "name": "Kan Fook Sing Motor Workshop (Defu)",
+     "address": "Blk 8 Defu South Street 1, Defu Industrial City, #04-29, Singapore 533758",
+     "postal": "533758",
+     "hours": "Mon-Fri 9.00am-6.00pm; Sat 9.00am-5.00pm",
+     "notes": "East Zone"
+    },
+    {
+     "name": "Kan Fook Sing Motor Workshop (Kaki Bukit)",
+     "address": "1 Kaki Bukit Ave 6, #01-13, AutoBay @ Kaki Bukit, Singapore 417883",
+     "postal": "417883",
+     "hours": "Mon-Fri 9.00am-6.00pm; Sat 9.00am-5.00pm",
+     "notes": "East Zone"
+    },
+    {
+     "name": "Lee Sheng Auto Pte Ltd",
+     "address": "1 Kaki Bukit Avenue 6, Blk C, #01-60/58/36, Singapore 417883",
+     "postal": "417883",
+     "hours": "Mon-Fri 9.00am-6.00pm; Sat 9.00am-1.00pm",
+     "notes": "East Zone"
+    },
+    {
+     "name": "Modern Automotive Pte Ltd",
+     "address": "Blk 3023A Ubi Road 1, #01-61, Singapore 408717",
+     "postal": "408717",
+     "hours": "Mon-Fri 9.00am-6.00pm (last reporting 5pm; avoid lunch 12.30-1.30pm)",
+     "notes": "East Zone"
+    },
+    {
+     "name": "SME Motor Pte Ltd",
+     "address": "1 Kaki Bukit Ave 6, #02-15 to 18, AutoBay @ Kaki Bukit, Singapore 417883",
+     "postal": "417883",
+     "hours": "Mon-Fri 9.00am-5.30pm; Sat 9.00am-1.00pm",
+     "notes": "East Zone"
+    },
+    {
+     "name": "Strides Premier Automotive Services Pte Ltd",
+     "address": "23 Changi South Avenue 2, #01-02, Singapore 486443",
+     "postal": "486443",
+     "hours": "",
+     "notes": "East Zone; hours not shown"
+    },
+    {
+     "name": "Yew Tee Automobile Tech Pte Ltd",
+     "address": "Synergy @ KB, 25 Kaki Bukit Road 4, #01-61, Singapore 417800",
+     "postal": "417800",
+     "hours": "Mon-Sat 9.00am-6.00pm",
+     "notes": "East Zone"
+    },
+    {
+     "name": "AutoInsure by Century Motors - Branch West",
+     "address": "48 Toh Guan Road East, #01-101, Singapore 608586",
+     "postal": "608586",
+     "hours": "Mon-Fri 9:00am-6:00pm (last reporting 5pm); Sat 9:00am-1:00pm (last reporting 12pm)",
+     "notes": "West Zone"
+    },
+    {
+     "name": "Complete VMS Pte Ltd",
+     "address": "5 Soon Lee Street, Pioneer Point, #01-54, Singapore 627607",
+     "postal": "627607",
+     "hours": "Mon-Fri 9.00am-4.00pm; Sat 9.00am-12.00pm",
+     "notes": "West Zone"
+    },
+    {
+     "name": "Diplomat Parts Pte Ltd",
+     "address": "209 Pandan Gardens, Singapore 609339",
+     "postal": "609339",
+     "hours": "Mon-Fri 8.30am-6.00pm; Sat 8.30am-12.30pm",
+     "notes": "West Zone"
+    },
+    {
+     "name": "Eurokars Auto Pte Ltd (Porsche, Prestige Plan)",
+     "address": "27A Tanjong Penjuru, Singapore 609042",
+     "postal": "609042",
+     "hours": "Mon-Fri 8.30am-5.30pm; Sat 8.30am-12.30pm",
+     "notes": "West Zone"
+    },
+    {
+     "name": "Komoco Motor Pte Ltd (Hyundai, Premium Plan)",
+     "address": "253 Alexandra Road, #01-01, Singapore 159936",
+     "postal": "159936",
+     "hours": "Mon-Fri 8.30am-5.30pm; Sat 8.30am-12.30pm",
+     "notes": "West Zone"
+    },
+    {
+     "name": "LexBuild International Pte Ltd",
+     "address": "11 Tuas Bay Close, #04-01/02, West Star, Singapore 636996",
+     "postal": "636996",
+     "hours": "Mon-Fri 8.30am-5.30pm; Sat & Sun by appointment",
+     "notes": "West Zone; buses only"
+    },
+    {
+     "name": "Mova Automotive Pte Ltd",
+     "address": "Blk 1008 Bukit Merah Lane 3, #01-04, 06, 08, Singapore 159722",
+     "postal": "159722",
+     "hours": "Mon-Fri 9.00am-6.00pm (last reporting 5:45pm); Sat 9.00am-4.00pm (last reporting 3:45pm)",
+     "notes": "West Zone"
+    },
+    {
+     "name": "TC Autoclinic Pte Ltd (Lok Yang Road)",
+     "address": "1 Sixth Lok Yang Road, Singapore 628099",
+     "postal": "628099",
+     "hours": "",
+     "notes": "West Zone; hours not shown"
+    },
+    {
+     "name": "TC Autoclinic Pte Ltd (Leng Kee Road)",
+     "address": "25 Leng Kee Road, Singapore 159097",
+     "postal": "159097",
+     "hours": "",
+     "notes": "West Zone; hours not shown"
+    },
+    {
+     "name": "Vantage Automotive Limited",
+     "address": "305 Alexandra Road, Basement 1, Singapore 159942",
+     "postal": "159942",
+     "hours": "",
+     "notes": "West Zone; hours not shown (page spells road 'Alexendra')"
+    },
+    {
+     "name": "Wah Hong Motors & Credit Pte Ltd",
+     "address": "42 Toh Guan Road East, #01-79, Singapore 608583",
+     "postal": "608583",
+     "hours": "Mon-Fri 9:00am-5.00pm; Sat 9.00am-1.00pm",
+     "notes": "West Zone"
+    }
+   ],
+   "source_url": "https://www.income.com.sg/claims/motor-insurance/reporting-centres",
+   "read": "2026-11-19",
+   "notes": "Hours as published; some 'not shown'. Several entries are brand-specific, buses only or motorcycle."
+  },
+  {
+   "slug": "aig",
+   "name": "AIG Asia Pacific Insurance Pte. Ltd.",
+   "centres": [
+    {
+     "name": "3A Automobile Pte Ltd",
+     "address": "1 Kampong Ampat, #07-01, ONE KA @ Macpherson, Singapore 368314",
+     "postal": "368314",
+     "hours": "",
+     "notes": "Accident reporting only"
+    },
+    {
+     "name": "Autolution Industrial Pte Ltd",
+     "address": "19 Ubi Road 4, Singapore 408623",
+     "postal": "408623",
+     "hours": "",
+     "notes": "Nissan only"
+    },
+    {
+     "name": "Automotive Repair Centre Pte. Ltd.",
+     "address": "48 Toh Guan Road East, #02-146/147, Singapore 608586",
+     "postal": "608586",
+     "hours": "",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Borneo Motors (S) Pte Ltd",
+     "address": "2 Pandan Crescent, Singapore 128462",
+     "postal": "128462",
+     "hours": "",
+     "notes": "Toyota only; reporting and repairs"
+    },
+    {
+     "name": "Borneo Motors (S) Pte Ltd",
+     "address": "17 Ubi Road 4, Singapore 408611",
+     "postal": "408611",
+     "hours": "",
+     "notes": "Toyota only; reporting only"
+    },
+    {
+     "name": "Borneo Motors (S) Pte Ltd",
+     "address": "33 Leng Kee Road, Singapore 159102",
+     "postal": "159102",
+     "hours": "",
+     "notes": "Toyota only; reporting only"
+    },
+    {
+     "name": "Century Motors (Singapore) Pte Ltd",
+     "address": "48 Toh Guan Road East, #01-101, Singapore 608586",
+     "postal": "608586",
+     "hours": "",
+     "notes": "Reporting only"
+    },
+    {
+     "name": "Century Motors (Singapore) Pte Ltd",
+     "address": "6 Marsiling Lane, Singapore 739145",
+     "postal": "739145",
+     "hours": "",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Champion Motors (1975) Pte Ltd",
+     "address": "2 Pandan Crescent, Singapore 128462",
+     "postal": "128462",
+     "hours": "",
+     "notes": "Suzuki only"
+    },
+    {
+     "name": "Cycle & Carriage Automotive Pte Ltd",
+     "address": "209 Pandan Gardens, Singapore 609339",
+     "postal": "609339",
+     "hours": "",
+     "notes": "Mitsubishi, Ora, Maxus only; reporting and repairs"
+    },
+    {
+     "name": "Cycle & Carriage Automotive Pte Ltd",
+     "address": "241 Alexandra Road, Singapore 159931",
+     "postal": "159931",
+     "hours": "",
+     "notes": "Mitsubishi, Ora, Maxus only; reporting and windscreen"
+    },
+    {
+     "name": "Cycle & Carriage Automotive Pte Ltd",
+     "address": "600 Sin Ming Road Avenue, Singapore 575733",
+     "postal": "575733",
+     "hours": "",
+     "notes": "Mitsubishi, Ora, Maxus only; reporting and windscreen"
+    },
+    {
+     "name": "Cycle & Carriage Automotive Pte Ltd",
+     "address": "20 Leng Kee Road, Singapore 159094",
+     "postal": "159094",
+     "hours": "",
+     "notes": "Mitsubishi, Ora, Maxus only; reporting and windscreen"
+    },
+    {
+     "name": "Cycle & Carriage Automotive Pte Ltd",
+     "address": "330 Ubi Road 3, Singapore 408650",
+     "postal": "408650",
+     "hours": "",
+     "notes": "Mitsubishi, Ora, Maxus only; reporting and windscreen"
+    },
+    {
+     "name": "Cycle & Carriage France Pte Ltd",
+     "address": "209 Pandan Gardens, Singapore 609339",
+     "postal": "609339",
+     "hours": "",
+     "notes": "Citroen, DS, Peugeot, Leap Motor only; reporting and repairs"
+    },
+    {
+     "name": "Cycle & Carriage France Pte Ltd",
+     "address": "241 Alexandra Road, Singapore 159931",
+     "postal": "159931",
+     "hours": "",
+     "notes": "Citroen, DS, Peugeot, Leap Motor only; reporting and windscreen"
+    },
+    {
+     "name": "Cycle & Carriage France Pte Ltd",
+     "address": "20 Leng Kee Road, Singapore 159094",
+     "postal": "159094",
+     "hours": "",
+     "notes": "Citroen, DS, Peugeot, Leap Motor only; reporting and windscreen"
+    },
+    {
+     "name": "Cycle & Carriage France Pte Ltd",
+     "address": "600 Sin Ming Road Avenue, Singapore 575733",
+     "postal": "575733",
+     "hours": "",
+     "notes": "Citroen, DS, Peugeot, Leap Motor only; reporting and windscreen; document layout under this entry slightly unclear"
+    },
+    {
+     "name": "Cycle & Carriage France Pte Ltd",
+     "address": "330 Ubi Road 3, Singapore 408650",
+     "postal": "408650",
+     "hours": "",
+     "notes": "Citroen, DS, Peugeot, Leap Motor only; reporting and windscreen; document layout under this entry slightly unclear"
+    },
+    {
+     "name": "Cycle & Carriage KIA Pte Ltd",
+     "address": "209 Pandan Gardens, Singapore 609339",
+     "postal": "609339",
+     "hours": "",
+     "notes": "KIA only; reporting and repairs"
+    },
+    {
+     "name": "Cycle & Carriage KIA Pte Ltd",
+     "address": "241 Alexandra Road, Singapore 159931",
+     "postal": "159931",
+     "hours": "",
+     "notes": "KIA only; reporting and windscreen"
+    },
+    {
+     "name": "Cycle & Carriage KIA Pte Ltd",
+     "address": "20 Leng Kee Road, Singapore 159094",
+     "postal": "159094",
+     "hours": "",
+     "notes": "KIA only; reporting and windscreen"
+    },
+    {
+     "name": "Cycle & Carriage KIA Pte Ltd",
+     "address": "600 Sin Ming Road Avenue, Singapore 575733",
+     "postal": "575733",
+     "hours": "",
+     "notes": "KIA only; reporting and windscreen"
+    },
+    {
+     "name": "Cycle & Carriage KIA Pte Ltd",
+     "address": "330 Ubi Road 3, Singapore 408650",
+     "postal": "408650",
+     "hours": "",
+     "notes": "KIA only; reporting and windscreen"
+    },
+    {
+     "name": "Cycle & Carriage Industries Pte Ltd",
+     "address": "188 Pandan Loop, Singapore 128378",
+     "postal": "128378",
+     "hours": "",
+     "notes": "Mercedes-Benz and smart only; reporting and repairs"
+    },
+    {
+     "name": "Cycle & Carriage Industries Pte Ltd",
+     "address": "330 Ubi Road 3, Singapore 408650",
+     "postal": "408650",
+     "hours": "",
+     "notes": "Mercedes-Benz and smart only"
+    },
+    {
+     "name": "Diplomat Parts Pte Ltd",
+     "address": "209 Pandan Gardens, Singapore 609339",
+     "postal": "609339",
+     "hours": "",
+     "notes": "Reporting and repairs; AIG Authorized Workshop"
+    },
+    {
+     "name": "DPL Premium Automobiles Pte Ltd",
+     "address": "53 Ubi Road 1, Singapore 408698",
+     "postal": "408698",
+     "hours": "",
+     "notes": "Deepal and Avatr only"
+    },
+    {
+     "name": "DPL Premium Automobiles Pte Ltd",
+     "address": "281 Alexandra Road, Singapore 159938",
+     "postal": "159938",
+     "hours": "",
+     "notes": "Deepal and Avatr only; reporting and repairs"
+    },
+    {
+     "name": "Eurokars Habitat Pte Ltd",
+     "address": "27A Tanjong Penjuru, Level 5, Singapore 609042",
+     "postal": "609042",
+     "hours": "",
+     "notes": "Mini only"
+    },
+    {
+     "name": "Ital Auto Pte Ltd",
+     "address": "30 Leng Kee Road, Singapore 159100",
+     "postal": "159100",
+     "hours": "",
+     "notes": "Ferrari only"
+    },
+    {
+     "name": "Kan Fook Sing Motor Workshop",
+     "address": "Blk 8 Defu South St. 1, Defu Industrial City, #04-29, Singapore 533758",
+     "postal": "533758",
+     "hours": "",
+     "notes": "Reporting and repairs; AIG Authorized Workshop"
+    },
+    {
+     "name": "Lai Huat (Meng Kee) Motor Pte Ltd",
+     "address": "160 Sin Ming Drive, #04-01, #04-02, Sin Ming Autocity, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": "Reporting and repairs; AIG Authorized Workshop"
+    },
+    {
+     "name": "Motor Image Enterprises Pte Ltd",
+     "address": "25 Leng Kee Road, Singapore 159097",
+     "postal": "159097",
+     "hours": "",
+     "notes": "Subaru only"
+    },
+    {
+     "name": "Mova Automotive Pte Ltd",
+     "address": "Blk 1008, #01-04/06/08/94, Bukit Merah Lane 3, Singapore 159722",
+     "postal": "159722",
+     "hours": "",
+     "notes": "Reporting and repairs; AIG Authorized Workshop; EV repairer"
+    },
+    {
+     "name": "National Assessment Centre Services",
+     "address": "Blk 1007, #01-11, Bukit Merah Lane 3, Singapore 159721",
+     "postal": "159721",
+     "hours": "",
+     "notes": "Reporting only"
+    },
+    {
+     "name": "National Assessment Centre Services",
+     "address": "51 Ubi Ave 1, #01-25, Paya Ubi Industrial Park, Singapore 408933",
+     "postal": "408933",
+     "hours": "",
+     "notes": "Reporting only"
+    },
+    {
+     "name": "Ole Motorsports",
+     "address": "1 Corporation Drive, #01-09, Singapore 619775",
+     "postal": "619775",
+     "hours": "",
+     "notes": "Reporting and repairs; AIG Authorized High Performance Car Workshop"
+    },
+    {
+     "name": "Performance Motors Limited",
+     "address": "303 Alexandra Road, Singapore 159941",
+     "postal": "159941",
+     "hours": "",
+     "notes": "BMW only"
+    },
+    {
+     "name": "Premium Autocare Centre",
+     "address": "281 Alexandra Road, Singapore 159938",
+     "postal": "159938",
+     "hours": "Accident reporting closed on Saturday (as stated)",
+     "notes": "Reporting and repairs; AIG Authorized Workshop; not for commercial vehicles"
+    },
+    {
+     "name": "Premium Autocare Centre",
+     "address": "24 Benoi Sector, Singapore 629857",
+     "postal": "629857",
+     "hours": "",
+     "notes": "Reporting and repairs; AIG Authorized Workshop; not for commercial vehicles"
+    },
+    {
+     "name": "Premium Automobiles Pte Ltd",
+     "address": "55 Ubi Road 1, Singapore 408699",
+     "postal": "408699",
+     "hours": "",
+     "notes": "Audi only"
+    },
+    {
+     "name": "Premium Automobiles BEV Pte Ltd",
+     "address": "53 Ubi Road 1, Singapore 408698",
+     "postal": "408698",
+     "hours": "",
+     "notes": "Zeekr only"
+    },
+    {
+     "name": "Progressive Car Care Pte Ltd",
+     "address": "Blk 3022A Ubi Road 1, #01-45/46, Singapore 408716",
+     "postal": "408716",
+     "hours": "",
+     "notes": "Reporting and repairs; AIG Authorized Workshop; EV repairer"
+    },
+    {
+     "name": "SME Motor Pte Ltd",
+     "address": "1 Kaki Bukit Ave 6, #02-15, Singapore 417883",
+     "postal": "417883",
+     "hours": "",
+     "notes": "Reporting and repairs; AIG Authorized Workshop"
+    },
+    {
+     "name": "Specialists Motor Pte Ltd",
+     "address": "Blk 3018A Ubi Road 1, #01-24/25/26, Singapore 408711",
+     "postal": "408711",
+     "hours": "",
+     "notes": "Reporting and repairs; AIG Authorized High Performance Car Workshop"
+    },
+    {
+     "name": "Tan Chong Motor Sales Pte Ltd",
+     "address": "19 Lorong 8, Toa Payoh, Singapore 319255",
+     "postal": "319255",
+     "hours": "",
+     "notes": "Nissan only"
+    },
+    {
+     "name": "TC AutoClinic Pte Ltd",
+     "address": "25 Leng Kee Road, Singapore 159097",
+     "postal": "159097",
+     "hours": "",
+     "notes": "Nissan only"
+    },
+    {
+     "name": "TC AutoClinic Pte Ltd",
+     "address": "1 Sixth Lok Yang Road, Singapore 628099",
+     "postal": "628099",
+     "hours": "",
+     "notes": "Nissan only"
+    },
+    {
+     "name": "Tan Chong Industrial Machinery (Pte) Ltd",
+     "address": "23 Jalan Buroh, Singapore 619479",
+     "postal": "619479",
+     "hours": "",
+     "notes": "DongFeng Commercial EV only"
+    },
+    {
+     "name": "Trans Eurokars Pte Ltd",
+     "address": "27A Tanjong Penjuru, Level 5, Singapore 609042",
+     "postal": "609042",
+     "hours": "",
+     "notes": "Mazda only"
+    },
+    {
+     "name": "Trans Eurokars Pte Ltd",
+     "address": "5 Ubi Close, Singapore 408605",
+     "postal": "408605",
+     "hours": "",
+     "notes": "Mazda only"
+    },
+    {
+     "name": "Volkswagen Centre Singapore",
+     "address": "247 Alexandra Road, Singapore 159934",
+     "postal": "159934",
+     "hours": "",
+     "notes": "Volkswagen only"
+    },
+    {
+     "name": "Wearnes Automotive Pte. Ltd.",
+     "address": "28 Leng Kee Road, Singapore 159105",
+     "postal": "159105",
+     "hours": "",
+     "notes": "Nio only"
+    },
+    {
+     "name": "Wearnes Automotive Pte. Ltd.",
+     "address": "45 Leng Kee Road, Singapore 159103",
+     "postal": "159103",
+     "hours": "",
+     "notes": "Renault; Jaguar/Land Rover; Infiniti; Bentley"
+    },
+    {
+     "name": "Wearnes Automotive Pte. Ltd.",
+     "address": "249 Alexandra Road, Singapore 159935",
+     "postal": "159935",
+     "hours": "",
+     "notes": "Volvo and Polestar"
+    },
+    {
+     "name": "Xpremium BEV Pte Ltd",
+     "address": "53 Ubi Road 1, Singapore 408699",
+     "postal": "408699",
+     "hours": "",
+     "notes": "Xpeng only"
+    }
+   ],
+   "source_url": "https://www.aig.sg/content/dam/aig/apac/singapore/documents/forms/list_of_approved_reporting_centres.pdf",
+   "read": "2026-11-19",
+   "notes": "List dated 'Updated as of 7th July 2026'. Only hours note is Premium Autocare 281 Alexandra Road. Page https://aig.sg/car-claim says report within 24 hours or by next working day; bring vehicle damaged or not; bring NRIC or other ID, driver's licence, company stamp for company vehicles."
+  },
+  {
+   "slug": "qbe",
+   "name": "QBE Insurance (Singapore) Pte Ltd",
+   "centres": [
+    {
+     "name": "Century Motors (Singapore) Pte Ltd",
+     "address": "6 Marsiling Lane, Singapore 739145",
+     "postal": "739145",
+     "hours": "",
+     "notes": "North"
+    },
+    {
+     "name": "Cheng Hoe Motor Pte Ltd",
+     "address": "Blk 1019 Yishun Industrial Park A, #01-374/382, Singapore 768761",
+     "postal": "768761",
+     "hours": "",
+     "notes": "North"
+    },
+    {
+     "name": "Cheng Hoe Motor Pte Ltd (Branch)",
+     "address": "38 Woodlands Industrial Park E1, #05-04, Singapore 757700",
+     "postal": "757700",
+     "hours": "",
+     "notes": "North"
+    },
+    {
+     "name": "Automotive Repair Centre Pte Ltd",
+     "address": "38 Woodlands Industrial Park E1, #05-18, Singapore 757700",
+     "postal": "757700",
+     "hours": "",
+     "notes": "North"
+    },
+    {
+     "name": "Century Motors (Singapore) Pte Ltd (Branch)",
+     "address": "8 Kaki Bukit Ave 4, #03-50, Premier @ Kaki Bukit, Singapore 415875",
+     "postal": "415875",
+     "hours": "",
+     "notes": "East; accident reporting only"
+    },
+    {
+     "name": "Progressive Car Care Pte Ltd",
+     "address": "Blk 3022A Ubi Road 1, #01-45/46, Kampung Ubi Ind. Estate, Singapore 408716",
+     "postal": "408716",
+     "hours": "",
+     "notes": "East"
+    },
+    {
+     "name": "SME Motor Pte Ltd",
+     "address": "1 Kaki Bukit Avenue 6, #02-15, Block D Auto Bay @ Kaki Bukit, Singapore 417883",
+     "postal": "417883",
+     "hours": "",
+     "notes": "East"
+    },
+    {
+     "name": "K. Kim Hin Auto Pte Ltd.",
+     "address": "160 Sin Ming Drive, #02-18/19/20/21, Sin Ming Auto City, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": "Central"
+    },
+    {
+     "name": "Mova Automotive Pte Ltd.",
+     "address": "Blk 1008 Bukit Merah Lane 3, #01-04/06/08, Singapore 159722",
+     "postal": "159722",
+     "hours": "",
+     "notes": "Central"
+    },
+    {
+     "name": "Century Motors (Singapore) Pte Ltd (Branch)",
+     "address": "48 Toh Guan Road East, #01-101, Enterprise Hub, Singapore 608586",
+     "postal": "608586",
+     "hours": "",
+     "notes": "West; accident reporting only"
+    },
+    {
+     "name": "Wah Hong Motors Credit Pte Ltd. (light vehicles)",
+     "address": "38 Toh Guan Road East, #01-57, Enterprise Hub, Singapore 608581",
+     "postal": "608581",
+     "hours": "",
+     "notes": "West"
+    },
+    {
+     "name": "Wah Hong Motors Credit Pte Ltd. (heavy vehicles)",
+     "address": "42 Toh Guan Road East, #01-79, Singapore 608583",
+     "postal": "608583",
+     "hours": "",
+     "notes": "West"
+    },
+    {
+     "name": "Automotive Repair Centre Pte Ltd.",
+     "address": "48 Toh Guan Road East, #02-146, Enterprise Hub, Singapore 608586",
+     "postal": "608586",
+     "hours": "",
+     "notes": "West"
+    },
+    {
+     "name": "Mova Automotive Pte Ltd.",
+     "address": "15 Fan Yoong Road, Singapore 629792",
+     "postal": "629792",
+     "hours": "",
+     "notes": "West"
+    }
+   ],
+   "source_url": "https://qbe.com/sg/-/media/singapore/files/claims/qbe approved reporting centres and authorised motor workshops 27 may 2024.pdf",
+   "read": "2026-11-19",
+   "notes": "PDF dated 'As at May 2024' - may be out of date; an older 2021 copy also exists at the same site."
+  },
+  {
+   "slug": "etiqa",
+   "name": "Etiqa Insurance Pte. Ltd.",
+   "centres": [
+    {
+     "name": "Ah Lim Motor Company",
+     "address": "10 Ang Mo Kio Industrial Park 2A #01-09 AMK Autopoint, Singapore 568047",
+     "postal": "568047",
+     "hours": "Mon-Fri 9am-5:30pm; Sat 9am-12:30pm",
+     "notes": "North & Central"
+    },
+    {
+     "name": "Ah Lim Motor Company",
+     "address": "176 Sin Ming Drive #05-12 Sin Ming Autocare, Singapore 575721",
+     "postal": "575721",
+     "hours": "Mon-Fri 9am-5:30pm; Sat 9am-12:30pm",
+     "notes": "North & Central"
+    },
+    {
+     "name": "Asuroo AutoCare Pte Ltd",
+     "address": "39 Woodlands Close, Mega @ Woodlands #01-24, Singapore 737856",
+     "postal": "737856",
+     "hours": "Mon-Fri 10am-7pm; Sat 10am-3pm",
+     "notes": "North & Central"
+    },
+    {
+     "name": "Cheng Hoe Motor Pte Ltd",
+     "address": "Blk 1019 Yishun Industrial Park A #01-374/382, Singapore 768761",
+     "postal": "768761",
+     "hours": "Mon-Fri 9am-5pm; Sat 9am-12pm",
+     "notes": "North & Central"
+    },
+    {
+     "name": "Cheng Hoe Motor Pte Ltd",
+     "address": "38 Woodlands Industrial Park E1 #05-04/05, Singapore 757700",
+     "postal": "757700",
+     "hours": "",
+     "notes": "North & Central; hours not shown"
+    },
+    {
+     "name": "CYS Automobile Services Pte Ltd",
+     "address": "38 Woodlands Industrial Park East 1 #07-10 & #07-17, Singapore 757700",
+     "postal": "757700",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-1pm",
+     "notes": "North & Central"
+    },
+    {
+     "name": "Lai Huat (Meng Kee) Motor Pte Ltd",
+     "address": "160 Sin Ming Drive #04-01/#04-02 and #07-03 Sin Ming AutoCity, Singapore 575722",
+     "postal": "575722",
+     "hours": "Mon-Fri 9am-5pm; Sat 9am-11am",
+     "notes": "North & Central"
+    },
+    {
+     "name": "Mova Automotive Pte Ltd",
+     "address": "Blk 1008 Bukit Merah Lane 3 #01-04/06/08/94, Singapore 159722",
+     "postal": "159722",
+     "hours": "Mon-Sat 9am-6pm",
+     "notes": "North & Central"
+    },
+    {
+     "name": "Mova Automotive Pte Ltd",
+     "address": "15 Fan Yoong Road, Singapore 629792",
+     "postal": "629792",
+     "hours": "Mon-Sat 8am-5pm",
+     "notes": "North & Central"
+    },
+    {
+     "name": "Optima Werkz Pte Ltd",
+     "address": "Blk 10 Ang Mo Kio Industrial Park 2A #01-05/06, Singapore 568047",
+     "postal": "568047",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-1pm",
+     "notes": "North & Central"
+    },
+    {
+     "name": "S & H Motor Pte Ltd",
+     "address": "160 Sin Ming Drive #07-02 Sin Ming AutoCity, Singapore 575722",
+     "postal": "575722",
+     "hours": "Mon-Fri 9am-10pm; Sat 9am-3pm (as published)",
+     "notes": "North & Central"
+    },
+    {
+     "name": "S & H Motor Pte Ltd",
+     "address": "48 Toh Guan Road East #02-127 Enterprise Hub, Singapore 608586",
+     "postal": "608586",
+     "hours": "",
+     "notes": "North & Central; hours not shown"
+    },
+    {
+     "name": "S & H Motor Pte Ltd",
+     "address": "15 Kaki Bukit Road 4 Bartley Biz Centre #01-46, Singapore 417808",
+     "postal": "417808",
+     "hours": "",
+     "notes": "North & Central; hours not shown"
+    },
+    {
+     "name": "Strides Premier Automotive Services Pte Ltd",
+     "address": "60 Woodlands Industrial Park E4, Singapore 757705",
+     "postal": "757705",
+     "hours": "Mon-Fri 9am-5pm; Sat 9am-12pm",
+     "notes": "North & Central"
+    },
+    {
+     "name": "Strides Premier Automotive Services Pte Ltd",
+     "address": "60 Jalan Lam Huat #07-43 Carros Centre, Singapore 737869",
+     "postal": "737869",
+     "hours": "Mon-Fri 9am-5pm; Sat 9am-12pm",
+     "notes": "North & Central"
+    },
+    {
+     "name": "Su Brothers Motor Workshop",
+     "address": "Blk 5034 Ang Mo Kio Industrial Park 2 #01-341/343, Singapore 569537",
+     "postal": "569537",
+     "hours": "Mon-Fri 8:30am-5:30pm; Sat 8:30am-12:30pm",
+     "notes": "North & Central"
+    },
+    {
+     "name": "Vin's Motor Pte Ltd",
+     "address": "160 Sin Ming Drive #03-03 Sin Ming AutoCity, Singapore 575722",
+     "postal": "575722",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-4pm; Sun & PH 10am-4pm",
+     "notes": "North & Central"
+    },
+    {
+     "name": "Vin's Motor Pte Ltd",
+     "address": "60 Jalan Lam Huat #05-01 Carros Centre, Singapore 737869",
+     "postal": "737869",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-4pm; Sun & PH 10am-4pm",
+     "notes": "North & Central"
+    },
+    {
+     "name": "Autobacs Car Care (S) Pte Ltd",
+     "address": "8 Kaki Bukit Ave 4 #08-45 Premier @KB, Singapore 415875",
+     "postal": "415875",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-12:30pm",
+     "notes": "East"
+    },
+    {
+     "name": "Autobacs Car Care (S) Pte Ltd",
+     "address": "10 Ubi View, Singapore 408543",
+     "postal": "408543",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-12:30pm",
+     "notes": "East"
+    },
+    {
+     "name": "Autobacs Car Care (S) Pte Ltd",
+     "address": "30 Bukit Batok Esat Ave 6, Singapore 659761",
+     "postal": "659761",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-12:30pm",
+     "notes": "East (address as printed by page)"
+    },
+    {
+     "name": "Hock Wah Motor Workshop Pte Ltd",
+     "address": "Blk 3011 Bedok Industrial Park E, Bedok North Ave 4 #01-2008/2010/2012/2014, Singapore 489977",
+     "postal": "489977",
+     "hours": "Mon-Fri 8:30am-6pm; Sat 9am-3pm",
+     "notes": "East"
+    },
+    {
+     "name": "Jin Auto Services Pte Ltd",
+     "address": "Blk 14 Defu Lane 10 #01-410/412, Singapore 539195",
+     "postal": "539195",
+     "hours": "Mon-Fri 9am-5pm; Sat 9am-3pm",
+     "notes": "East"
+    },
+    {
+     "name": "Kan Fook Sing Motor Workshop",
+     "address": "Blk 8 Defu South St 1 Defu Industrial City #04-29, Singapore 533758",
+     "postal": "533758",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-5pm",
+     "notes": "East"
+    },
+    {
+     "name": "Kan Fook Sing Motor Workshop",
+     "address": "1 Kaki Bukit Ave 6 #01-13 Autobay@Kaki Bukit, Singapore 417883",
+     "postal": "417883",
+     "hours": "",
+     "notes": "East; hours not shown"
+    },
+    {
+     "name": "NPH Auto Service",
+     "address": "Blk 9005 Tampines Street 93 #01-246, Singapore 528839",
+     "postal": "528839",
+     "hours": "Mon-Fri 9am-5pm; Sat 9am-3pm",
+     "notes": "East"
+    },
+    {
+     "name": "SME Motor Pte Ltd",
+     "address": "1 Kaki Bukit Ave 6 Blk D #02-15 Autobay@Kaki Bukit, Singapore 417883",
+     "postal": "417883",
+     "hours": "Mon-Fri 9am-5pm; Sat 9am-1pm",
+     "notes": "East"
+    },
+    {
+     "name": "Specialists Motor Pte Ltd",
+     "address": "Blk 3018A Ubi Road 1 #01-24/25/26, Singapore 408711",
+     "postal": "408711",
+     "hours": "Mon-Fri 9am-5pm; Sat 9am-1pm",
+     "notes": "East"
+    },
+    {
+     "name": "Strides Premier Automotive Services Pte Ltd",
+     "address": "23 Changi South Avenue 2 #01-02, Singapore 486443",
+     "postal": "486443",
+     "hours": "Mon-Fri 9am-5pm; Sat 9am-12pm",
+     "notes": "East"
+    },
+    {
+     "name": "Yew Hock Motor",
+     "address": "Blk 9006 Tampines Street 93 #01-210, Singapore 528840",
+     "postal": "528840",
+     "hours": "Mon-Fri 9:30am-5pm; Sat closed",
+     "notes": "East"
+    },
+    {
+     "name": "Cheng Auto Bodyworks",
+     "address": "5 Soon Lee Street #01-60 Pioneer Point, Singapore 627607",
+     "postal": "627607",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-1pm",
+     "notes": "West"
+    },
+    {
+     "name": "KGC Workshop Pte Ltd",
+     "address": "1 Corporation Drive #04-05 REVV @ Corporation Drive, Singapore 619775",
+     "postal": "619775",
+     "hours": "Mon-Fri 9:30am-6:30pm; Sat 9:30am-5pm (accident reporting until 2:30pm)",
+     "notes": "West"
+    },
+    {
+     "name": "Wah Hong Motors & Credit Pte Ltd",
+     "address": "42 Toh Guan Road East #01-79 Enterprise Hub, Singapore 608583",
+     "postal": "608583",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-3pm",
+     "notes": "West"
+    },
+    {
+     "name": "Woon Meng Motor Pte Ltd",
+     "address": "50 Bukit Batok Street 23 #01-06 Midview Building, Singapore 659578",
+     "postal": "659578",
+     "hours": "Mon-Fri 9am-5pm; Sat closed",
+     "notes": "West"
+    }
+   ],
+   "source_url": "https://www.etiqa.com.sg/useful-information/authorised-motor-workshops/",
+   "read": "2026-11-19",
+   "notes": "Document 'last updated 30.06.2026'. Private Motor and Commercial (up to 3,500 kg) section only; heavy commercial and windscreen/motorcycle lists omitted. Etiqa walk-in office is not a reporting centre."
+  },
+  {
+   "slug": "tokiomarine",
+   "name": "Tokio Marine Insurance Singapore Ltd",
+   "centres": [
+    {
+     "name": "Ah Lim Motor Company",
+     "address": "No. 10 Ang Mo Kio Industrial Park 2A, #01-09 AMK Autopoint, Singapore 568047",
+     "postal": "568047",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Optima Werkz Pte. Ltd.",
+     "address": "Blk 10 Ang Mo Kio Industrial Park 2A, #01-05/06, Singapore 568047",
+     "postal": "568047",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Kah Motor Co. Sdn Bhd (Honda, excl. parallel import repairs)",
+     "address": "255 Alexandra Road, Singapore 159937",
+     "postal": "159937",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "TC Autoclinic Pte Ltd (Leng Kee Centre)",
+     "address": "25 Leng Kee Road, Singapore 159097",
+     "postal": "159097",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Motorway Car Care Centre Pte Ltd",
+     "address": "1094 Lower Delta Road, Motorway Building, Singapore 169205",
+     "postal": "169205",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Mova Automotive Pte Ltd",
+     "address": "Blk 1008 Bukit Merah Lane 3, #01-04, Singapore 159722",
+     "postal": "159722",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Alan's United Auto",
+     "address": "Blk 7 Sin Ming Road, Sin Ming Industrial Estate, #01-76, Singapore 575642",
+     "postal": "575642",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "City Auto Testing Centre Pte Ltd",
+     "address": "Blk 8 Sin Ming Road, Sin Ming Industrial Estate, #01-60/62, Singapore 575643",
+     "postal": "575643",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Ding Auto Pte Ltd (Sin Ming Autocare)",
+     "address": "176 Sin Ming Drive, #04-06, Singapore 575721",
+     "postal": "575721",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Falcon-Air Auto Services Pte Ltd",
+     "address": "176 Sin Ming Drive, Sin Ming Autocare, #01-06/07/13, Singapore 575721",
+     "postal": "575721",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Fulco Autocare Pte Ltd",
+     "address": "176 Sin Ming Drive, #03-02, Sin Ming Autocare, Singapore 575721",
+     "postal": "575721",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "K Kim Hin Auto Pte Ltd",
+     "address": "160 Sin Ming Drive, #02-20, Sin Ming Autocity, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Lai Huat (Meng Kee) Motor Pte Ltd",
+     "address": "160 Sin Ming Drive, #04-01, #04-02 and #07-03, Sin Ming Autocity, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "MBM Wheelpower Pte Ltd",
+     "address": "160 Sin Ming Drive, #06-02, Sin Ming Autocity, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "S&H Motor Pte Ltd",
+     "address": "160 Sin Ming Drive, #07-02, Sin Ming Autocity, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Vin's Motor Pte Ltd (Sin Ming)",
+     "address": "160 Sin Ming Drive, #03-03, Sin Ming Autocity, Singapore 575722",
+     "postal": "575722",
+     "hours": "Sundays and public holidays, 10am to 4pm (last reporting 3:30pm)",
+     "notes": ""
+    },
+    {
+     "name": "Tuffi Tech Pte Limited",
+     "address": "160 Sin Ming Drive, #04-09, Sin Ming Autocity, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Tan Chong Motor Sales Pte Ltd (Toa Payoh Centre)",
+     "address": "19 Toa Payoh Lorong 8, Singapore 319255",
+     "postal": "319255",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Ding Auto Pte Ltd (Lam Huat)",
+     "address": "60 Jalan Lam Huat, #06-46/47, Singapore 737869",
+     "postal": "737869",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Strides Premier Automotive Services Pte Ltd (Lam Huat)",
+     "address": "60 Jalan Lam Huat, #07-43 Carros Centre, Singapore 737869",
+     "postal": "737869",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "ThinkOne Autocare Pte Ltd",
+     "address": "60 Jalan Lam Huat, #02-32 Carros Centre, Singapore 737869",
+     "postal": "737869",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Toh Ah Swee Spray Painting Co.",
+     "address": "60 Jalan Lam Huat, #07-33/34 Carros Centre, Singapore 737869",
+     "postal": "737869",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Vin's Motor Pte Ltd (Lam Huat)",
+     "address": "60 Jalan Lam Huat, #05-01 Carros Centre, Singapore 737869",
+     "postal": "737869",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Kah Motor Co. Sdn Bhd (Honda, incl. parallel import repairs)",
+     "address": "6A Mandai Estate, Singapore 729903",
+     "postal": "729903",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Lee Kuan Hwa Motor Service",
+     "address": "20 Sungei Kadut Street 4, Singapore 729047",
+     "postal": "729047",
+     "hours": "",
+     "notes": "motor car and heavy vehicle"
+    },
+    {
+     "name": "Automotive Repair Centre Pte Ltd (Woodlands)",
+     "address": "38 Woodlands Industrial Park E1, #05-18, Singapore 757700",
+     "postal": "757700",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Cheng Hoe Motor Service (Woodlands)",
+     "address": "38 Woodlands Industrial Park E1, #05-04/05, Singapore 757700",
+     "postal": "757700",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Strides Premier Automotive Services Pte Ltd (Woodlands)",
+     "address": "60 Woodlands Industrial Park E4, Singapore 757705",
+     "postal": "757705",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Yishun Cheng Hoe Motor Service",
+     "address": "Blk 1019 Yishun Industrial Park A, #01-374, Singapore 768761",
+     "postal": "768761",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Hock Wah Motor Workshop Pte Ltd",
+     "address": "Blk 3011 Bedok Industrial Park E, #01-2008/2010/2012, Singapore 489977",
+     "postal": "489977",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Strides Premier Automotive Services Pte Ltd (Changi South)",
+     "address": "23 Changi South Avenue 2, #01-02, Singapore 486443",
+     "postal": "486443",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Ban Hock Hin Co. Pte Ltd",
+     "address": "Blk 8 Defu South Street 1, #04-28, JTC Defu Industrial City, Singapore 533758",
+     "postal": "533758",
+     "hours": "",
+     "notes": "motorcycles only"
+    },
+    {
+     "name": "Kan Fook Sing Motor Workshop",
+     "address": "Blk 8 JTC Defu Industrial City, #04-29, Defu South Street 1, Singapore 533758",
+     "postal": "533758",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Ding Auto Pte Ltd (Tampines)",
+     "address": "12 Tampines North Drive 4, #07-25/26, Stella at Tampines, Singapore 529435",
+     "postal": "529435",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Falcon-Air Auto Services Pte Ltd (Tampines)",
+     "address": "Blk 9006 Tampines Street 93, #01-200, Singapore 528840",
+     "postal": "528840",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Autolution Industrial Pte Ltd (Ubi Centre)",
+     "address": "19 Ubi Road 4, Singapore 408624",
+     "postal": "408624",
+     "hours": "",
+     "notes": "postal as printed on the PDF"
+    },
+    {
+     "name": "Chin Meng Motors",
+     "address": "1 Kaki Bukit Avenue 6, AutoBay @ Kaki Bukit, #01-40/63, Singapore 417883",
+     "postal": "417883",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Kah Motor Co. Sdn Bhd (Honda, incl. parallel import repairs; Ubi)",
+     "address": "15 Ubi Road 4, Singapore 408610",
+     "postal": "408610",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Progressive Car Care Pte Ltd",
+     "address": "Blk 3022A Ubi Road 1, #01-45/46, Singapore 408716",
+     "postal": "408716",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "SME Motor Pte Ltd",
+     "address": "1 Kaki Bukit Avenue 6, AutoBay @ Kaki Bukit, #02-15/16/17/18, Singapore 417883",
+     "postal": "417883",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Automotive Repair Centre Pte Ltd (Toh Guan)",
+     "address": "48 Toh Guan Road East, #02-146, Singapore 608586",
+     "postal": "608586",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "AVANTAGE VAG",
+     "address": "48 Toh Guan Road East, #05-136 Enterprise Hub, Singapore 608586",
+     "postal": "608586",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Accord Autocare Pte Ltd",
+     "address": "7 Soon Lee Street, #05-02/03/04/05 iSpace, Singapore 627608",
+     "postal": "627608",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Ban Choon Motor Works",
+     "address": "Blk 3 Pioneer Road North, #01-14/15, Singapore 628457",
+     "postal": "628457",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Cheng Auto Bodyworks",
+     "address": "5 Soon Lee Street, Pioneer Point, #01-60, Singapore 627607",
+     "postal": "627607",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Goldbell Engineering Pte Ltd",
+     "address": "8 Tuas Avenue 18, Singapore 638894",
+     "postal": "638894",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Mitsubishi HC Capital Asia Pacific Pte Ltd",
+     "address": "No. 8 Forth Lok Yang Road, Singapore 629705",
+     "postal": "629705",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Motorway Car Care Centre Pte Ltd (Jln Besut)",
+     "address": "No. 4 Jln Besut, Singapore 619557",
+     "postal": "619557",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Prime Auto Claims Service Pte Ltd",
+     "address": "No. 6 Benoi Place, Singapore 629927",
+     "postal": "629927",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Sng Ah Tee Motor & Panel Service Pte Ltd",
+     "address": "Blk 3 Pioneer Road North, #01-18, Singapore 628457",
+     "postal": "628457",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "TC Autoclinic Pte Ltd (Jurong Centre)",
+     "address": "No. 1 Sixth Lokyang Road, Singapore 628099",
+     "postal": "628099",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Cycle & Carriage Body & Paint Centre",
+     "address": "209 Pandan Gardens, Singapore 609339",
+     "postal": "609339",
+     "hours": "",
+     "notes": ""
+    }
+   ],
+   "source_url": "https://www.tokiomarine.com/content/dam/tokiomarine/sg/non-life/claims/claims-motor/Approved%20Workshops%20TMiS%20Updated%20as%20at%2001.06.2026.pdf",
+   "read": "2026-11-19",
+   "notes": "PDF 'Updated as at 01/06/2026'. Tokio Marine page https://www.tokiomarine.com/sg/en/non-life/claim/step-by-step-claim-guide/motor-claims-process.html says report within 24 hours or next working day at an approved workshop. PDF does not state which workshops take reports. Windscreen-only entries omitted."
+  },
+  {
+   "slug": "greateastern",
+   "name": "Great Eastern General Insurance Limited",
+   "centres": [
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "Blk 9006 Tampines St 93 #01-200, Singapore 528840",
+     "postal": "528840",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "Blk 9006 Tampines St 93 #01-210, Singapore 528840",
+     "postal": "528840",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "15 Fan Yoong Road, Singapore 629792",
+     "postal": "629792",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "Blk 8 Defu South Street 1, Defu Industrial City #04-29, Singapore 533758",
+     "postal": "533758",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "AMK Autopoint",
+     "address": "10 Ang Mo Kio Industrial Park 2A #01-09, Singapore 568047",
+     "postal": "568047",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "52 Ubi Avenue 3 Frontier #04-42, Singapore 408867",
+     "postal": "408867",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "AutoBay @ Kaki Bukit",
+     "address": "1 Kaki Bukit Ave 6 #01-13, Singapore 417883",
+     "postal": "417883",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "59 Loyang Drive, Singapore 508969",
+     "postal": "508969",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "45 Pandan Road, Singapore 609286",
+     "postal": "609286",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "320 Ubi Road 3, Singapore 408649",
+     "postal": "408649",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Sin Ming Autocity",
+     "address": "160 Sin Ming Drive #04-01 / #04-02 and #07-03, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Sin Ming Autocity",
+     "address": "160 Sin Ming Drive #07-02, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Sin Ming Autocity",
+     "address": "160 Sin Ming Drive #02-20, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Sin Ming Autocare",
+     "address": "176 Sin Ming Drive #01-06, Singapore 575721",
+     "postal": "575721",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Sin Ming Autocare",
+     "address": "176 Sin Ming Drive #05-12, Singapore 575721",
+     "postal": "575721",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "383 Sin Ming Drive, Singapore 575717",
+     "postal": "575717",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "38 Toh Guan Road East #01-57 Enterprise Hub, Singapore 608581",
+     "postal": "608581",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "48 Toh Guan Road East #03-128 Enterprise Hub, Singapore 608586",
+     "postal": "608586",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "42 Toh Guan Road East #01-79, Singapore 608583",
+     "postal": "608583",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "Blk 1008 Bukit Merah Lane 3 #01-04/06/08, Singapore 159722",
+     "postal": "159722",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "60 Woodlands Industrial Park E4, Singapore 757705",
+     "postal": "757705",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Authorised reporting centre (name not matched on document)",
+     "address": "23 Changi South Avenue 2 #01-02, Singapore 486443",
+     "postal": "486443",
+     "hours": "",
+     "notes": ""
+    },
+    {
+     "name": "Vicom Inspection Centre",
+     "address": "23 Kaki Bukit Ave 4 #04-01, Singapore 415933",
+     "postal": "415933",
+     "hours": "",
+     "notes": ""
+    }
+   ],
+   "source_url": "https://store.greateasterngeneral.com/SG/AgencySales/staticDownload/PMOT/VDP/AUTH-WS/D",
+   "read": "2026-11-19",
+   "notes": "Document 'v1.0 Aug 2026'. Names often not matched to addresses in extraction; also names listed without addresses: Glass-Fix, Lai Huat (Meng Kee), S & H Motor, ComfortDelgro Engineering, Mova, Wah Hong, Ah Lim, Falcon-Air, K. Kim Hin, Kan Fook Sing, Yew Hock, Strides Premier, Chia Auto Services. Hours not published."
+  },
+  {
+   "slug": "directasia",
+   "name": "DirectAsia Insurance (Singapore) Pte Ltd",
+   "centres": [
+    {
+     "name": "Automotive Repair Centre Pte Ltd",
+     "address": "38 Woodlands Industrial Park E1 #05-18, Singapore 757700",
+     "postal": "757700",
+     "hours": "Mon-Fri 9:00am-6:00pm; Sat 9:00am-1:00pm; closed Sun & public holidays",
+     "notes": "North"
+    },
+    {
+     "name": "Century Motors (Singapore) Pte Ltd (Main)",
+     "address": "6 Marsiling Lane, Singapore 739145",
+     "postal": "739145",
+     "hours": "Mon-Fri 9:00am-6:00pm; Sat 9:00am-3:00pm; closed Sun & public holidays",
+     "notes": "North"
+    },
+    {
+     "name": "Convergence Automotive",
+     "address": "39 Woodlands Close #01-24, Mega@Woodlands, Singapore 737856",
+     "postal": "737856",
+     "hours": "Mon-Fri 10:00am-7:00pm (last reporting 6:30pm); Sat 10:00am-3:00pm (last reporting 2:30pm); closed Sun & public holidays",
+     "notes": "North"
+    },
+    {
+     "name": "AVANTAGE VAG (Continental Car Specialist)",
+     "address": "8 Kaki Bukit Ave 4 #02-11, Premier@Kaki Bukit, Singapore 415875",
+     "postal": "415875",
+     "hours": "Mon-Fri 9:00am-5:00pm; Sat 9:00am-12:00pm; closed Sun & public holidays",
+     "notes": "East"
+    },
+    {
+     "name": "Dickson Auto Care Centre Pte Ltd",
+     "address": "29 Ubi Road 4, Dickson Auto Centre, Singapore 408619",
+     "postal": "408619",
+     "hours": "Mon-Fri 8:30am-5:30pm; Sat 8:30am-12:30pm; closed Sun & public holidays",
+     "notes": "East; for Dickson's customers only"
+    },
+    {
+     "name": "Progressive Car Care Pte Ltd",
+     "address": "Blk 3022A Ubi Road 1 #01-45, Singapore 408716",
+     "postal": "408716",
+     "hours": "Mon-Fri 9:00am-6:00pm; Sat 9:00am-5:00pm; closed Sun & public holidays",
+     "notes": "East; EV certified"
+    },
+    {
+     "name": "Automotive Repair Centre",
+     "address": "48 Toh Guan Road E #02-143 to 149, Enterprise Hub, Singapore 608586",
+     "postal": "608586",
+     "hours": "Mon-Fri 9:00am-6:00pm; Sat 9:00am-1:00pm; closed Sun & public holidays",
+     "notes": "West; EV certified"
+    },
+    {
+     "name": "AVANTAGE VAG (Continental Car Specialist)",
+     "address": "48 Toh Guan Road East #05-136, Enterprise Hub, Singapore 608586",
+     "postal": "608586",
+     "hours": "Mon-Fri 9:00am-5:00pm; Sat 9:00am-12:00pm; closed Sun & public holidays",
+     "notes": "West"
+    },
+    {
+     "name": "Sng Ah Tee Motor & Panel Service Pte Ltd",
+     "address": "7 Soon Lee Street #05-18, iSpace, Singapore 627608",
+     "postal": "627608",
+     "hours": "Mon-Fri 9:30am-5:30pm; Sat 9:30am-12:30pm; closed Sun & public holidays",
+     "notes": "West"
+    },
+    {
+     "name": "Vin's Motor Pte Ltd",
+     "address": "60 Jalan Lam Huat #05-01, Carros Centre, Singapore 737869",
+     "postal": "737869",
+     "hours": "Mon-Fri 9:00am-5:00pm; Sat 9:00am-4:00pm; closed Sun & public holidays",
+     "notes": "West; EV certified"
+    },
+    {
+     "name": "Wah Hong Motors & Credit Pte Ltd",
+     "address": "42 Toh Guan Road East #01-79 (Level 2 Office), Singapore 608583",
+     "postal": "608583",
+     "hours": "Mon-Fri 9:00am-5:00pm; Sat 9:00am-1:00pm; closed Sun & public holidays",
+     "notes": "West; EV certified"
+    },
+    {
+     "name": "Ah Lim Motor Company",
+     "address": "10 Ang Mo Kio Ind. Park 2A #01-09, AMK Auto Point, Singapore 568047",
+     "postal": "568047",
+     "hours": "Mon-Fri 9:00am-5:30pm; Sat 9:00am-12:30pm; closed Sun & public holidays",
+     "notes": "Central"
+    },
+    {
+     "name": "Ah Lim Motor Company (Branch)",
+     "address": "176 Sin Ming Drive #05-12, Sin Ming Autocare, Singapore 575721",
+     "postal": "575721",
+     "hours": "Mon-Fri 9:00am-5:30pm; Sat 9:00am-12:30pm; closed Sun & public holidays",
+     "notes": "Central"
+    },
+    {
+     "name": "AVANTAGE VAG (Continental Car Specialist)",
+     "address": "160 Sin Ming Drive #04-17, Sin Ming AutoCity, Singapore 575722",
+     "postal": "575722",
+     "hours": "Mon-Fri 9:00am-5:00pm; Sat 9:00am-12:00pm; closed Sun & public holidays",
+     "notes": "Central"
+    },
+    {
+     "name": "Charn's Customcraft",
+     "address": "Blk 1010 Bukit Merah Lane 3 #01-105, Singapore 159724",
+     "postal": "159724",
+     "hours": "Mon-Fri 9:00am-5:30pm; Sat 9:00am-1:00pm; closed Sun & public holidays",
+     "notes": "Central"
+    },
+    {
+     "name": "Optima Werkz (Singapore) Pte Ltd",
+     "address": "10 Ang Mo Kio Industrial Park 2A #01-05, Singapore 568047",
+     "postal": "568047",
+     "hours": "Mon-Fri 9:00am-6:00pm; Sat 9:00am-3:00pm; closed Sun & public holidays",
+     "notes": "Central; EV certified"
+    },
+    {
+     "name": "Vin's Motor Pte Ltd",
+     "address": "160 Sin Min Drive #03-03, Sin Ming AutoCity, Singapore 575722",
+     "postal": "575722",
+     "hours": "Mon-Fri 9:00am-5:00pm; Sat 9:00am-4:00pm; Sun & public holidays 10:00am-4:00pm",
+     "notes": "Central; EV certified"
+    }
+   ],
+   "source_url": "https://directasia.com/car-insurance/authorised-workshops",
+   "read": "2026-11-19",
+   "notes": "Page lists authorised workshops with hours; reporting capability per entry not separately flagged on page read."
+  },
+  {
+   "slug": "budgetdirect",
+   "name": "Budget Direct Insurance (Singapore)",
+   "centres": [
+    {
+     "name": "Ah Lim Motor Company",
+     "address": "No. 10 Ang Mo Kio Ind. Park 2A, #01-09 AMK Autopoint, Singapore 568047",
+     "postal": "568047",
+     "hours": "",
+     "notes": "Authorised workshop (repairs and reporting), North"
+    },
+    {
+     "name": "Auto Insure",
+     "address": "No. 6 Marsiling Lane, Singapore 739145",
+     "postal": "739145",
+     "hours": "",
+     "notes": "Authorised workshop, North"
+    },
+    {
+     "name": "Automotive Repair Centre Pte Ltd",
+     "address": "38 Woodlands Industrial Park E1, #05-18, Singapore 757700",
+     "postal": "757700",
+     "hours": "",
+     "notes": "Authorised workshop, North"
+    },
+    {
+     "name": "Progressive Car Care Pte Ltd",
+     "address": "Blk 3022A Ubi Road 1, #01-45/46, Kampung Ubi Industrial Estate, Singapore 408716",
+     "postal": "408716",
+     "hours": "",
+     "notes": "Authorised workshop, East"
+    },
+    {
+     "name": "SME Motor Pte Ltd",
+     "address": "No. 1 Kaki Bukit Ave 6 Blk D, #02-15/16/17/18, Autobay @ Kaki Bukit, Singapore 417883",
+     "postal": "417883",
+     "hours": "",
+     "notes": "Authorised workshop, East"
+    },
+    {
+     "name": "Automotive Repair Centre Pte Ltd (Branch)",
+     "address": "48 Toh Guan Road East, Enterprise Hub, #02-143 to 149, Singapore 608586",
+     "postal": "608586",
+     "hours": "",
+     "notes": "Authorised workshop, West"
+    },
+    {
+     "name": "Premium Autocare Centre (Audi and Volkswagen specialist)",
+     "address": "24 Benoi Sector, Singapore 629857",
+     "postal": "629857",
+     "hours": "",
+     "notes": "Authorised workshop, West"
+    },
+    {
+     "name": "Diplomat Parts Pte Ltd",
+     "address": "209 Pandan Gardens, Singapore 609339",
+     "postal": "609339",
+     "hours": "",
+     "notes": "Authorised workshop, West"
+    },
+    {
+     "name": "Sng Ah Tee Motor & Panel Service Pte Ltd",
+     "address": "Blk 3 Pioneer Road North, #01-18, Singapore 628457",
+     "postal": "628457",
+     "hours": "",
+     "notes": "Authorised workshop, West"
+    },
+    {
+     "name": "Ah Lim Motor Company (Branch)",
+     "address": "176 Sin Ming Drive, #05-12 Sin Ming Autocare, Singapore 575721",
+     "postal": "575721",
+     "hours": "",
+     "notes": "Authorised workshop, Central"
+    },
+    {
+     "name": "Charn's Customcraft",
+     "address": "Blk 1010 Bukit Merah Lane 3, #01-105, Singapore 159724",
+     "postal": "159724",
+     "hours": "",
+     "notes": "Authorised workshop, Central"
+    },
+    {
+     "name": "Premium Autocare Centre (Audi and Volkswagen specialist)",
+     "address": "281 Alexandra Road, Singapore 159938",
+     "postal": "159938",
+     "hours": "",
+     "notes": "Authorised workshop, Central"
+    },
+    {
+     "name": "Autolution Industrial Pte Ltd (Nissan only)",
+     "address": "19 Ubi Road 4, Singapore 408623",
+     "postal": "408623",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Borneo Motors (S) Pte Ltd (Toyota and Lexus only)",
+     "address": "2 Pandan Crescent, Inchcape Centre, Singapore 128462",
+     "postal": "128462",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Champion Motors (1975) Pte Ltd (Suzuki only)",
+     "address": "2 Pandan Crescent, Inchcape Centre, Singapore 128462",
+     "postal": "128462",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Cycle & Carriage Industries Pte Ltd (Mercedes-Benz only)",
+     "address": "188 Pandan Loop, Singapore 128378",
+     "postal": "128378",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Cycle & Carriage Kia Pte Ltd (Kia only)",
+     "address": "209 Pandan Gardens, Singapore 609339",
+     "postal": "609339",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Cycle & Carriage Automotive Pte Ltd (Mitsubishi only)",
+     "address": "209 Pandan Gardens, Singapore 609339",
+     "postal": "609339",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Cycle & Carriage France Pte Ltd (Citroen and Peugeot only)",
+     "address": "209 Pandan Gardens, Singapore 609339",
+     "postal": "609339",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Eurokars Services Pte Ltd",
+     "address": "27A Tanjong Penjuru, Singapore 609042",
+     "postal": "609042",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Kah Motor Co. Sdn. Bhd. (Honda only)",
+     "address": "15 Ubi Road 4, Singapore 408610",
+     "postal": "408610",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Kah Motor Co. Sdn. Bhd. (Honda only)",
+     "address": "6A Mandai Estate, Singapore 729903",
+     "postal": "729903",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Motor Image Enterprises Pte Ltd (Subaru only)",
+     "address": "19 Lorong 8 Toa Payoh, Singapore 319255",
+     "postal": "319255",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Motor Image Enterprises Pte Ltd (Subaru only)",
+     "address": "25 Leng Kee Road, Singapore 159097",
+     "postal": "159097",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Performance Motors Limited (BMW only)",
+     "address": "303 Alexandra Road, Sime Darby Performance Centre, Singapore 159941",
+     "postal": "159941",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Premium Automobiles Pte Ltd (Audi only)",
+     "address": "55 Ubi Road 1, Singapore 408699",
+     "postal": "408699",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Regent Motors (Ford only)",
+     "address": "305 Alexandra Road, Singapore 159942",
+     "postal": "159942",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Tan Chong Motor Sales Pte Ltd (Nissan only)",
+     "address": "913 Bukit Timah Road, Singapore 589623",
+     "postal": "589623",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Tan Chong Motor Sales Pte Ltd (Nissan only)",
+     "address": "17 Toa Payoh Lorong 8, Singapore 319254",
+     "postal": "319254",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "TC Autoclinic Pte Ltd (Nissan only)",
+     "address": "1 Sixth Lok Yang Road, Singapore 628099",
+     "postal": "628099",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "TC Autoclinic Pte Ltd (Nissan only)",
+     "address": "25 Leng Kee Road, Singapore 159097",
+     "postal": "159097",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Trans Eurokars Pte Ltd (Mini, Mazda and Saab only)",
+     "address": "27A Tanjong Penjuru, Singapore 609042",
+     "postal": "609042",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Vantage Automotive Limited",
+     "address": "305 Alexandra Road, Singapore 159942",
+     "postal": "159942",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    },
+    {
+     "name": "Volkswagen Group Singapore Pte Ltd (Volkswagen and Skoda only)",
+     "address": "247 Alexandra Road, Singapore 159934",
+     "postal": "159934",
+     "hours": "",
+     "notes": "Accident Reporting Centre"
+    }
+   ],
+   "source_url": "https://budgetdirect.com.sg/car-insurance/authorised-workshop",
+   "read": "2026-11-19",
+   "notes": "No date on page. Separate brand site from DirectAsia. Reporting-capable: authorised workshops and Accident Reporting Centres."
+  },
+  {
+   "slug": "msig",
+   "name": "MSIG Insurance (Singapore) Pte. Ltd.",
+   "centres": [
+    {
+     "name": "Autobacs Car Care (Singapore) Pte. Ltd.",
+     "address": "8 Kaki Bukit Ave 4, #08-45 Premier@Kaki Bukit, Singapore 415875",
+     "postal": "415875",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "Autobacs Car Care (Singapore) Pte. Ltd.",
+     "address": "30 Bukit Batok East Ave 6, Singapore 659761",
+     "postal": "659761",
+     "hours": "",
+     "notes": "Reporting only"
+    },
+    {
+     "name": "Autobacs Car Care (Singapore) Pte. Ltd.",
+     "address": "10 Ubi View, Singapore 408543",
+     "postal": "408543",
+     "hours": "",
+     "notes": "Reporting only"
+    },
+    {
+     "name": "Automotive Repair Centre",
+     "address": "12 Tampines North Dr 4, #05-12/13 Stellar @ Tampines, Singapore 529435",
+     "postal": "529435",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "Automotive Repair Centre Pte. Ltd.",
+     "address": "48 Toh Guan Road East, #02-146/147 Enterprise Hub, Singapore 608586",
+     "postal": "608586",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "Automotive Repair Centre Pte. Ltd.",
+     "address": "38 Woodlands Industrial Park E1, #05-18, Singapore 757700",
+     "postal": "757700",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "Century Motors (Singapore) Pte. Ltd.",
+     "address": "6 Marsiling Lane, Singapore 739145",
+     "postal": "739145",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "Century Motors (Singapore) Pte. Ltd.",
+     "address": "48 Toh Guan Road East, #01-101 Enterprise Hub, Singapore 608586",
+     "postal": "608586",
+     "hours": "",
+     "notes": "Reporting only"
+    },
+    {
+     "name": "Century Motors (Singapore) Pte. Ltd.",
+     "address": "8 Kaki Bukit Ave 4, #03-50 Premier @ Kaki Bukit, Singapore 415875",
+     "postal": "415875",
+     "hours": "",
+     "notes": "Reporting only"
+    },
+    {
+     "name": "City Auto Pte. Ltd.",
+     "address": "Blk 8 Sin Ming Road, #01-58 Sin Ming Industrial Estate, Singapore 575643",
+     "postal": "575643",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "Diplomat Parts Pte. Ltd.",
+     "address": "209 Pandan Gardens, Cycle & Carriage Autohub, Singapore 609339",
+     "postal": "609339",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "Falcon-Air Auto Services Pte. Ltd.",
+     "address": "Blk 176 Sin Ming Drive, #01-06/07/13 Sin Ming Autocare, Singapore 575721",
+     "postal": "575721",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "Falcon-Air Auto Services Pte. Ltd.",
+     "address": "Blk 9006 Tampines St 93, #01-200, Singapore 528840",
+     "postal": "528840",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "K. Kim Hin Auto Pte. Ltd.",
+     "address": "160 Sin Ming Drive, #02-20 Sin Ming Autocity, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "Kan Fook Sing Motor Workshop",
+     "address": "Blk 8 JTC Defu Industrial City, #04-29, Defu South Street 1, Singapore 533758",
+     "postal": "533758",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "Kan Fook Sing Motor Workshop",
+     "address": "1 Kaki Bukit Ave 6, Autobay@Kaki Bukit, #01-13, Singapore",
+     "postal": "",
+     "hours": "",
+     "notes": "Preferred workshop; postal code incomplete on the page (printed 41788), left empty"
+    },
+    {
+     "name": "NPH Auto Service",
+     "address": "Blk 9005 Tampines St 93, #01-246/254, Singapore 528839",
+     "postal": "528839",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "ProgressiveCar Care Pte. Ltd.",
+     "address": "Blk 3022A Ubi Road 1, #01-45/46, Singapore 408716",
+     "postal": "408716",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "Sng Ah Tee Motor & Panel Service Pte. Ltd.",
+     "address": "7 Soon Lee Street, #05-18 iSPACE, Singapore 627608",
+     "postal": "627608",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "Wah Hong Motors Credit Pte. Ltd.",
+     "address": "42 Toh Guan Road East, #01-79 Enterprise Hub, Singapore 608583",
+     "postal": "608583",
+     "hours": "",
+     "notes": "Preferred workshop"
+    },
+    {
+     "name": "ComfortDelGro Engineering Pte. Ltd.",
+     "address": "320 Ubi Road 3, Singapore 408649",
+     "postal": "408649",
+     "hours": "",
+     "notes": "Workshop (12-month warranty)"
+    },
+    {
+     "name": "Lai Huat (Meng Kee) Motor Pte. Ltd.",
+     "address": "160 Sin Ming Drive, #04-01/#04-02/#07-03 Sin Ming Autocity, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": "Workshop (12-month warranty)"
+    },
+    {
+     "name": "Lim Tan Motor Pte. Ltd.",
+     "address": "Blk 176 Sin Ming Drive, #03-09/10 Sin Ming Autocare, Singapore 575721",
+     "postal": "575721",
+     "hours": "",
+     "notes": "Workshop (12-month warranty)"
+    },
+    {
+     "name": "Mitsubishi HC Capital Asia Pacific Pte. Ltd.",
+     "address": "No. 8 Fourth Lok Yang Road, Singapore 629705",
+     "postal": "629705",
+     "hours": "",
+     "notes": "Workshop (12-month warranty)"
+    },
+    {
+     "name": "Shu Fatt Auto Works",
+     "address": "Blk 1009 Bukit Merah Lane 3, #01-90, Singapore 159723",
+     "postal": "159723",
+     "hours": "",
+     "notes": "Workshop (12-month warranty)"
+    },
+    {
+     "name": "Strides Premier Automotive Services Pte Ltd",
+     "address": "23 Changi South Ave 2, #01-02, Singapore 486443",
+     "postal": "486443",
+     "hours": "",
+     "notes": "Workshop (12-month warranty)"
+    },
+    {
+     "name": "Strides Premier Automotive Services Pte. Ltd.",
+     "address": "60 Woodlands Industrial Park E4, Singapore 757705",
+     "postal": "757705",
+     "hours": "",
+     "notes": "Workshop (12-month warranty)"
+    },
+    {
+     "name": "Vantage Automotive Limited",
+     "address": "305 Alexandra Road, #02-01 Alexandra Automotive Centre, Singapore 159942",
+     "postal": "159942",
+     "hours": "",
+     "notes": "Workshop (12-month warranty)"
+    }
+   ],
+   "source_url": "https://www.msig.com.sg/claims/personal/motor-claims?page=5",
+   "read": "2026-11-19",
+   "notes": "37-entry page also lists windscreen and motorcycle workshops (omitted). No hours shown."
+  },
+  {
+   "slug": "liberty",
+   "name": "Liberty Pte. Limited (UEN 201538069C)",
+   "centres": [
+    {
+     "name": "CarTimes Autolution Pte Ltd",
+     "address": "32 Old Toh Tuck Road, #02-10/11 I.Biz Centre, Singapore 597658",
+     "postal": "597658",
+     "hours": "",
+     "notes": "For accident reporting only"
+    },
+    {
+     "name": "CarTimes Autolution Pte Ltd",
+     "address": "160 Sin Ming Drive, #02-04 Sin Ming AutoCity, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "Dickson Auto Care Centre Pte Ltd",
+     "address": "29 Ubi Road 4, Singapore 408619",
+     "postal": "408619",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "Ding Auto Pte Ltd",
+     "address": "12 Tampines North Drive 4, #07-25/26 Stellar @ Tampines, Singapore 529435",
+     "postal": "529435",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "Ding Auto Pte Ltd",
+     "address": "176 Sin Ming Drive, #04-06, Singapore 575721 (Sin Ming Autocare)",
+     "postal": "575721",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "Ding Auto Pte Ltd",
+     "address": "60 Jalan Lam Huat, #06-46/47, Singapore 737869 (Carros Centre)",
+     "postal": "737869",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "Mitsubishi HC Capital Asia Pacific Pte Ltd",
+     "address": "No. 8 Fourth Lok Yang Road, Singapore 629705",
+     "postal": "629705",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "Kan Fook Sing Motor Workshop",
+     "address": "Blk 8 JTC Defu Industrial City, #04-29 Defu South Street 1, Singapore 533758",
+     "postal": "533758",
+     "hours": "",
+     "notes": "Preferred workshop (cars, light commercial and commercial)"
+    },
+    {
+     "name": "Lai Huat (Meng Kee) Motor Pte Ltd",
+     "address": "160 Sin Ming Road, #04-01 Sin Ming AutoCity, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "Sng Ah Tee Motor & Panel Service Pte Ltd",
+     "address": "7 Soon Lee Street, #05-18 iSPACE, Singapore 627608",
+     "postal": "627608",
+     "hours": "",
+     "notes": "Preferred workshop (cars, light commercial and commercial)"
+    },
+    {
+     "name": "Success United Pte Ltd",
+     "address": "2 Kaki Bukit Avenue 2, #01-33 Kaki Bukit AutoHub, Singapore 417921",
+     "postal": "417921",
+     "hours": "",
+     "notes": "Preferred workshop (cars and light commercial)"
+    },
+    {
+     "name": "BYD by JC Pte Ltd",
+     "address": "30 Teban Gardens Crescent, Singapore 608927",
+     "postal": "608927",
+     "hours": "",
+     "notes": "Preferred workshop, BYD only"
+    },
+    {
+     "name": "Eurokars Services Pte. Ltd.",
+     "address": "27A Tanjong Penjuru, Singapore 609042",
+     "postal": "609042",
+     "hours": "",
+     "notes": "Preferred workshop (private and high-end cars)"
+    },
+    {
+     "name": "MBM Wheelpower Pte Ltd",
+     "address": "160 Sin Ming, #06-02 Sin Ming AutoCity, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": "Preferred workshop (private and high-end cars)"
+    },
+    {
+     "name": "Motorway Car Care Centre Pte Ltd",
+     "address": "1094 Lower Delta Road Motorway Building, Singapore 169205",
+     "postal": "169205",
+     "hours": "",
+     "notes": "Preferred workshop (private and high-end cars)"
+    },
+    {
+     "name": "Motorway Car Care Centre Pte Ltd",
+     "address": "4 Jalan Besut, Singapore 619557",
+     "postal": "619557",
+     "hours": "",
+     "notes": "Preferred workshop (private and high-end cars)"
+    },
+    {
+     "name": "Optima Werkz Pte Ltd",
+     "address": "10 Ang Mo Kio Industrial Park 2A, #01-05, Singapore 568047",
+     "postal": "568047",
+     "hours": "",
+     "notes": "Preferred workshop (private and high-end cars)"
+    },
+    {
+     "name": "Premium AutoCare Centre",
+     "address": "24 Benoi Sector, Singapore 629857",
+     "postal": "629857",
+     "hours": "",
+     "notes": "Preferred workshop (private and high-end cars)"
+    },
+    {
+     "name": "SR EV Automotive Pte. Ltd.",
+     "address": "23 Synergy @ KB, #01-12 Kaki Bukit Road 4, Singapore 417801",
+     "postal": "417801",
+     "hours": "",
+     "notes": "Preferred workshop, Tesla Approved Collision Centre"
+    },
+    {
+     "name": "ASM Automotive Services Pte Ltd",
+     "address": "16 Tuas Avenue 6, Singapore 639303",
+     "postal": "639303",
+     "hours": "",
+     "notes": "Preferred workshop (commercial vehicles)"
+    },
+    {
+     "name": "Automotive Glass Works Pte Ltd",
+     "address": "Blk 5032 Ang Mo Kio Industrial Park 2, #01-281, Singapore 569535",
+     "postal": "569535",
+     "hours": "",
+     "notes": "Windscreen claims"
+    },
+    {
+     "name": "Automotive Glass Works Pte Ltd",
+     "address": "1 Kaki Bukit Ave 6, #01-64 Blk C AutoBay, Singapore 417883",
+     "postal": "417883",
+     "hours": "",
+     "notes": "Windscreen claims"
+    },
+    {
+     "name": "Automotive Glass Works Pte Ltd",
+     "address": "Blk 1005 Bukit Merah Lane 2, #01-14, Singapore 159671",
+     "postal": "159671",
+     "hours": "",
+     "notes": "Windscreen claims"
+    },
+    {
+     "name": "Glass-Fix Pte Ltd",
+     "address": "52 Ubi Ave 3 #04-42 Frontier @ Ubi, Singapore 408867",
+     "postal": "408867",
+     "hours": "",
+     "notes": "Windscreen claims"
+    },
+    {
+     "name": "Glass-Fix Pte Ltd",
+     "address": "No 48 Toh Guan Road East, #03-128 Enterprise Hub, Singapore 608586",
+     "postal": "608586",
+     "hours": "",
+     "notes": "Windscreen claims"
+    },
+    {
+     "name": "Glass-Fix Pte Ltd",
+     "address": "39 Woodlands Close, #04-66B MEGA@Woodlands, Singapore 737856",
+     "postal": "737856",
+     "hours": "",
+     "notes": "Windscreen claims"
+    },
+    {
+     "name": "Glazity Auto Pte Ltd",
+     "address": "32 Old Toh Tuck Road, #02-04 I.Biz Centre, Singapore 597653",
+     "postal": "597653",
+     "hours": "",
+     "notes": "Windscreen claims"
+    }
+   ],
+   "source_url": "https://www.libertyinternational.com/sg/claims/claim-vehicle-individual",
+   "read": "2026-11-21",
+   "notes": "Page heading 'Liberty's Preferred Workshops' (32 entries). Step 1: Call 1800-LIBERTY (5423 789). Only CarTimes Old Toh Tuck is marked 'for Accident Reporting only'. Omitted: Sanfu (motorcycle only), SC Auto and The One Holdings (buses only). Workshop phone numbers not shown on site."
+  },
+  {
+   "slug": "sompo",
+   "name": "Sompo Insurance Singapore Pte. Ltd.",
+   "centres": [
+    {
+     "name": "Cheng Hoe Motor Pte Ltd",
+     "address": "Blk 1019 #01-374/382 Yishun Industrial Park A, Singapore 768761",
+     "postal": "768761",
+     "hours": "",
+     "notes": "North"
+    },
+    {
+     "name": "Cheng Hoe Motor Pte Ltd",
+     "address": "38 Woodlands Industrial Park E1 #05-04/05, Singapore 757700",
+     "postal": "757700",
+     "hours": "",
+     "notes": "North"
+    },
+    {
+     "name": "Ah Lim Motor Company",
+     "address": "Ang Mo Kio Industrial Park 2A #01-09 (AMK Autopoint), Singapore 568047",
+     "postal": "568047",
+     "hours": "",
+     "notes": "Central/South; vehicles 10 feet and below"
+    },
+    {
+     "name": "Sin Ming Autocare",
+     "address": "176 Sin Ming Drive #05-12, Singapore 575721",
+     "postal": "575721",
+     "hours": "",
+     "notes": "Central/South"
+    },
+    {
+     "name": "City Auto Pte Ltd",
+     "address": "Blk 8 Sin Ming Industrial Estate C #01-58 to 66 Sin Ming Road, Singapore 575643",
+     "postal": "575643",
+     "hours": "",
+     "notes": "Central/South; vehicles 14 feet and below"
+    },
+    {
+     "name": "ComfortDelGro Engineering Pte Ltd",
+     "address": "45 Pandan Road, Singapore 609286",
+     "postal": "609286",
+     "hours": "Mon-Fri 8am-4pm; Sat 8am-11am",
+     "notes": "Central/South"
+    },
+    {
+     "name": "Lai Huat (Meng Kee) Pte Ltd (Sin Ming Autocity)",
+     "address": "160 Sin Ming Drive #04-01/02 and #07-03, Singapore 575722",
+     "postal": "575722",
+     "hours": "",
+     "notes": "Central/South"
+    },
+    {
+     "name": "Puan Chew Motor Work Pte Ltd",
+     "address": "Blk K Pandan Loop Industrial Estate #01-12, Singapore 128232",
+     "postal": "128232",
+     "hours": "",
+     "notes": "Central/South"
+    },
+    {
+     "name": "TC AutoClinic @ Toa Payoh",
+     "address": "19 Lorong 8 Toa Payoh, Singapore 319255",
+     "postal": "319255",
+     "hours": "",
+     "notes": "Central/South"
+    },
+    {
+     "name": "Autolution Industrial Pte Ltd",
+     "address": "19 Ubi Road 4, Singapore 408623",
+     "postal": "408623",
+     "hours": "",
+     "notes": "East; vehicles 3 tonnes and below"
+    },
+    {
+     "name": "ComfortDelGro Engineering Pte Ltd",
+     "address": "320 Ubi Road 3, Singapore 408649",
+     "postal": "408649",
+     "hours": "Mon-Fri 8am-4pm; Sat 8am-11am",
+     "notes": "East"
+    },
+    {
+     "name": "Kan Fook Sing Motor Workshop",
+     "address": "Blk 8 Defu South Street 1 #04-29, JTC Defu Industrial City, Singapore 533758",
+     "postal": "533758",
+     "hours": "",
+     "notes": "East"
+    },
+    {
+     "name": "Kan Fook Sing Motor Workshop",
+     "address": "Blk 1 Kaki Bukit #01-13, Kaki Bukit Avenue 6, Singapore 417883",
+     "postal": "417883",
+     "hours": "",
+     "notes": "East"
+    },
+    {
+     "name": "SME Motor Pte Ltd",
+     "address": "1 Kaki Bukit Avenue 6 #02-15/16/17/18, Singapore 417883",
+     "postal": "417883",
+     "hours": "",
+     "notes": "East"
+    },
+    {
+     "name": "Mitsubishi HC Capital Asia Pacific Pte Ltd",
+     "address": "8 Fourth Lok Yang Road, Singapore 629705",
+     "postal": "629705",
+     "hours": "",
+     "notes": "West; page mentions after-office-hours but no specific hours"
+    },
+    {
+     "name": "Sng Ah Tee Motor & Panel Service",
+     "address": "7 Soon Lee Street #05-18 (iSPACE), Singapore 627608",
+     "postal": "627608",
+     "hours": "",
+     "notes": "West"
+    },
+    {
+     "name": "TC AutoClinic Pte Ltd",
+     "address": "1 Sixth Lok Yang Road, Singapore 628099",
+     "postal": "628099",
+     "hours": "",
+     "notes": "West"
+    }
+   ],
+   "source_url": "https://www.sompo.com.sg/docs/default-source/default-document-library/list-of-exceldrive-workshops-and-accident-reporting-centers.pdf",
+   "read": "2026-11-19",
+   "notes": "List 'as at July 2026'. Page does not label which are workshops vs reporting centres. Sompo also provides a 'Find it' locator at https://www.sompo.com.sg/claim-service-providers."
+  },
+  {
+   "slug": "allianz",
+   "name": "Allianz Insurance Singapore Pte. Ltd.",
+   "centres": [
+    {
+     "name": "Accord Auto Services Pte Ltd",
+     "address": "10 Ang Mo Kio Ind Park 2A #03-11 Ang Mo Kio Auto Point, Singapore 568047",
+     "postal": "568047",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-4pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Accord Auto Services Pte Ltd",
+     "address": "1009 Bukit Merah Lane 3 #01-80, Singapore 159723",
+     "postal": "159723",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-4pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Asuroo AutoCare Pte. Ltd.",
+     "address": "1 Tampines North Drive 3 #01-05 BHCC Space @ Tampines, Singapore 528499",
+     "postal": "528499",
+     "hours": "Mon-Fri 10am-7pm; Sat 10am-3pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Automotive Repair Centre Pte Ltd",
+     "address": "38 Woodlands Industrial Park E1 #05-18, Singapore 757700",
+     "postal": "757700",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-1pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Automotive Repair Centre Pte Ltd",
+     "address": "12 Tampines North Drive 4 Stella @ Tampines #05-12/13, Singapore 529435",
+     "postal": "529435",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-1pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Automotive Repair Centre Pte Ltd",
+     "address": "48 Toh Guan Road East Enterprise Hub #02-143 to 149, Singapore 608586",
+     "postal": "608586",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-1pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Auto Insure Pte Ltd by Century Motors (Singapore)",
+     "address": "6 Marsiling Lane, Singapore 739145",
+     "postal": "739145",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-1pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Cheng Auto Bodyworks",
+     "address": "5 Soon Lee Street #01-60 Pioneer Point, Singapore 627607",
+     "postal": "627607",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-2pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Cycle & Carriage Automotive Pte Ltd",
+     "address": "209 Pandan Gardens, Singapore 609339",
+     "postal": "609339",
+     "hours": "",
+     "notes": "Mitsubishi, Ora, Maxus only; reporting and repairs"
+    },
+    {
+     "name": "Cycle & Carriage Automotive Pte Ltd",
+     "address": "600 Sin Ming Road Avenue, Singapore 575733",
+     "postal": "575733",
+     "hours": "",
+     "notes": "Mitsubishi, Ora, Maxus only; reporting only"
+    },
+    {
+     "name": "Cycle & Carriage Automotive Pte Ltd",
+     "address": "330 Ubi Road 3, Singapore 408650",
+     "postal": "408650",
+     "hours": "",
+     "notes": "Mitsubishi, Ora, Maxus only; reporting only"
+    },
+    {
+     "name": "Cycle & Carriage Automotive Pte Ltd",
+     "address": "239 Alexandra Road, Singapore 159930",
+     "postal": "159930",
+     "hours": "",
+     "notes": "Mitsubishi, Ora, Maxus only; reporting only"
+    },
+    {
+     "name": "Cycle & Carriage France Pte Ltd",
+     "address": "209 Pandan Gardens, Singapore 609339",
+     "postal": "609339",
+     "hours": "",
+     "notes": "Citroen, Peugeot, Leap Motor only; reporting and repairs"
+    },
+    {
+     "name": "Cycle & Carriage France Pte Ltd",
+     "address": "600 Sin Ming Road Avenue, Singapore 575733",
+     "postal": "575733",
+     "hours": "",
+     "notes": "Citroen, Peugeot, Leap Motor only; reporting only"
+    },
+    {
+     "name": "Cycle & Carriage France Pte Ltd",
+     "address": "330 Ubi Road 3, Singapore 408650",
+     "postal": "408650",
+     "hours": "",
+     "notes": "Citroen, Peugeot, Leap Motor only; reporting only"
+    },
+    {
+     "name": "Cycle & Carriage France Pte Ltd",
+     "address": "239 Alexandra Road, Singapore 159930",
+     "postal": "159930",
+     "hours": "",
+     "notes": "Citroen, Peugeot, Leap Motor only; reporting only"
+    },
+    {
+     "name": "Cycle & Carriage KIA Pte Ltd",
+     "address": "209 Pandan Gardens, Singapore 609339",
+     "postal": "609339",
+     "hours": "",
+     "notes": "KIA only; reporting and repairs"
+    },
+    {
+     "name": "Cycle & Carriage KIA Pte Ltd",
+     "address": "600 Sin Ming Road Avenue, Singapore 575733",
+     "postal": "575733",
+     "hours": "",
+     "notes": "KIA only; reporting only"
+    },
+    {
+     "name": "Cycle & Carriage KIA Pte Ltd",
+     "address": "330 Ubi Road 3, Singapore 408650",
+     "postal": "408650",
+     "hours": "",
+     "notes": "KIA only; reporting only"
+    },
+    {
+     "name": "Cycle & Carriage KIA Pte Ltd",
+     "address": "239 Alexandra Road, Singapore 159930",
+     "postal": "159930",
+     "hours": "",
+     "notes": "KIA only; reporting only"
+    },
+    {
+     "name": "Ding Auto Pte Ltd",
+     "address": "176 Sin Ming Drive #04-06 Sin Ming Autocare, Singapore 575721",
+     "postal": "575721",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-2pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Ding Auto Pte Ltd",
+     "address": "12 Tampines North Drive 4 #07-25/26 Stellar @ Tampines, Singapore 529435",
+     "postal": "529435",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-2pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Ding Auto Pte Ltd",
+     "address": "60 Jalan Lam Huat #06-46/47 Carros Centre, Singapore 737869",
+     "postal": "737869",
+     "hours": "Mon-Sat 9am-6pm and Sat 9am-2pm (conflicting as published)",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Dickson Auto Care Centre Pte Ltd",
+     "address": "29 Ubi Road 4 Dickson Auto Centre, Singapore 408619",
+     "postal": "408619",
+     "hours": "Mon-Fri 8:30am-5:30pm; Sat 8:30am-12:30pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Premium Autocare Centre",
+     "address": "24 Benoi Sector, Singapore 629857",
+     "postal": "629857",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-1pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Success United Pte Ltd",
+     "address": "2 Kaki Bukit Ave 2 #01-33 Kaki Bukit AutoHub, Singapore 417921",
+     "postal": "417921",
+     "hours": "Mon-Fri 9am-5pm; Sat 9am-1pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "SME Motor Pte Ltd",
+     "address": "1 Kaki Bukit Avenue 6 #02-15 to 18, 23 & 01-31 Autobay @ Kaki Bukit, Singapore 417883",
+     "postal": "417883",
+     "hours": "Mon-Fri 9am-5pm; Sat 9am-1pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Sng Ah Tee Motor & Panel Service Pte Ltd",
+     "address": "7 Soon Lee Street #05-18 iSPACE, Singapore 627608",
+     "postal": "627608",
+     "hours": "Mon-Fri 9am-5:30pm; Sat 9am-12:30pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Vin's Motor Pte Ltd",
+     "address": "160 Sin Ming Drive #03-03 Sin Ming AutoCity, Singapore 575722",
+     "postal": "575722",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-4pm; Sun and PH 10am-4pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "Volkswagen Group Singapore Pte Ltd",
+     "address": "247 Alexandra Road, Singapore 159934",
+     "postal": "159934",
+     "hours": "",
+     "notes": "Volkswagen only"
+    },
+    {
+     "name": "Wah Hong Motors & Credit Pte Ltd",
+     "address": "38 Toh Guan Road East #01-57 Enterprise Hub, Singapore 608581",
+     "postal": "608581",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-1pm",
+     "notes": "Reporting and repairs"
+    },
+    {
+     "name": "EUROKARS Services Pte Ltd",
+     "address": "27A Tanjong Penjuru, Level 5, Singapore 609042",
+     "postal": "609042",
+     "hours": "",
+     "notes": "Tesla only"
+    }
+   ],
+   "source_url": "https://www.allianz.sg/content/dam/onemarketing/azsg/www-allianz-sg/assets/documents/allianz-motor-protect/AIS-Motor-Protect-Workshop-List-Retail.pdf",
+   "read": "2026-11-19",
+   "notes": "Document date not shown. Multi-address entries split. Windscreen workshops omitted."
+  },
+  {
+   "slug": "singlife",
+   "name": "Singlife (Singlife Singapore authorised workshops)",
+   "centres": [
+    {
+     "name": "Auto Insure Pte Ltd",
+     "address": "6 Marsiling Lane, Singapore 739145",
+     "postal": "739145",
+     "hours": "Mon-Fri 09:00-18:00; Sat 9:00am-1:00pm; excl. Sundays and public holidays",
+     "notes": "Personal vehicles, North"
+    },
+    {
+     "name": "Automotive Repair Centre Pte Ltd",
+     "address": "38 Woodlands Industrial Park E1, #05-18, Singapore 757700",
+     "postal": "757700",
+     "hours": "Mon-Fri 09:00-18:00; Sat 09:00-13:00; excl. Sundays and public holidays",
+     "notes": "Personal vehicles, North"
+    },
+    {
+     "name": "CYS Automobile Services Pte Ltd",
+     "address": "38 Woodlands Industrial Park E1, #07-17, Singapore 757700",
+     "postal": "757700",
+     "hours": "Mon-Fri 09:00-17:00; Sat 9:00am-1:00pm; excl. Sundays and public holidays",
+     "notes": "Personal vehicles, North"
+    },
+    {
+     "name": "Ding Auto Pte Ltd",
+     "address": "60 Jalan Lam Huat, Carros Centre, #06-46/47, Singapore 737869",
+     "postal": "737869",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-2pm; Sun and PH closed",
+     "notes": "Personal vehicles, North"
+    },
+    {
+     "name": "Ding Auto Pte Ltd",
+     "address": "176 Sin Ming Drive, #04-06, Sin Ming Auto, Singapore 575721",
+     "postal": "575721",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-2pm; Sun and PH closed",
+     "notes": "South and Central"
+    },
+    {
+     "name": "Falcon-Air Auto Services Pte Ltd",
+     "address": "176 Sin Ming Drive, #01-06, Sin Ming Autocare, Singapore 575721",
+     "postal": "575721",
+     "hours": "Mon-Fri 08:30-16:30; Sat 08:30-12:00; excl. Sundays and public holidays",
+     "notes": "South and Central"
+    },
+    {
+     "name": "Kah Motor Co. Sdn. Bhd. (Honda only)",
+     "address": "255 Alexandra Service Centre, Singapore 159937",
+     "postal": "159937",
+     "hours": "Mon-Fri 08:00-17:30; Sat 08:00-17:00; excl. Sundays and public holidays",
+     "notes": "South and Central"
+    },
+    {
+     "name": "Mova Automotive Pte Ltd",
+     "address": "Block 1008 Bukit Merah Lane 3, #01-04/06/08/94, Singapore 159722",
+     "postal": "159722",
+     "hours": "Mon-Fri 09:00-18:00; Sat 09:00-17:00; excl. Sundays and public holidays",
+     "notes": "South and Central"
+    },
+    {
+     "name": "Chia Auto Services Pte Ltd",
+     "address": "23 Kaki Bukit Ave 4, #04-01, Vicom Inspection Centre, Singapore 415933",
+     "postal": "415933",
+     "hours": "Mon-Fri 9:00am-6:00pm; Sat 9:00am-4:00pm; Sun and PH closed",
+     "notes": "East"
+    },
+    {
+     "name": "Falcon-Air Auto Services Pte Ltd",
+     "address": "Tampines St 93, Blk 9006, #01-200, Singapore 528840",
+     "postal": "528840",
+     "hours": "Mon-Fri 08:30-16:30; Sat 08:30-12:00; excl. Sundays and public holidays",
+     "notes": "East"
+    },
+    {
+     "name": "Kah Motor Co. Sdn. Bhd. (Honda only)",
+     "address": "15 Ubi Road 4, Singapore 408610",
+     "postal": "408610",
+     "hours": "Mon-Fri 08:00-17:30; Sat 08:00-17:00; excl. Sundays and public holidays",
+     "notes": "East"
+    },
+    {
+     "name": "SME Motor Pte Ltd",
+     "address": "1 Kaki Bukit Ave 6, #02-15, Autobay @ Kaki Bukit, Singapore 417883",
+     "postal": "417883",
+     "hours": "Mon-Fri 09:00-17:00; Sat 09:00-13:00; excl. Sundays and public holidays",
+     "notes": "East"
+    },
+    {
+     "name": "Success United Pte Ltd",
+     "address": "2 Kaki Bukit Avenue 2, #01-33, Kaki Bukit AutoHub, Singapore 417921",
+     "postal": "417921",
+     "hours": "Mon-Fri 08:30-18:00; Sat 08:30-17:00; excl. Sundays and public holidays",
+     "notes": "East"
+    },
+    {
+     "name": "Ding Auto Pte Ltd (Stellar at Tampines)",
+     "address": "12 Tampines North Drive 4, #07-25/26, Singapore 529435",
+     "postal": "529435",
+     "hours": "Mon-Fri 9am-6pm; Sat 9am-2pm; Sun and PH closed",
+     "notes": "East"
+    },
+    {
+     "name": "Automotive Repair Centre Pte Ltd (Stellar @ Tampines)",
+     "address": "12 Tampines North Drive 4, #05-12/#05-13, Singapore 529435",
+     "postal": "529435",
+     "hours": "Mon-Fri 09:00-18:00; Sat 09:00-13:00; excl. Sundays and public holidays",
+     "notes": "East"
+    },
+    {
+     "name": "Auto Insure by Century Motors",
+     "address": "48 Toh Guan Road East, #01-101, Enterprise Hub, Singapore 608586",
+     "postal": "608586",
+     "hours": "Mon-Fri 09:00-18:00; Sat 9:00am-1:00pm; excl. Sundays and public holidays",
+     "notes": "West"
+    },
+    {
+     "name": "Automotive Repair Centre Pte Ltd",
+     "address": "48 Toh Guan Road East, #02-143/144/145/146/147/149, Enterprise Hub, Singapore 608586",
+     "postal": "608586",
+     "hours": "Mon-Fri 09:00-18:00; Sat 09:00-13:00; excl. Sundays and public holidays",
+     "notes": "West"
+    },
+    {
+     "name": "Kah Motor Co. Sdn. Bhd. (Honda only)",
+     "address": "6A Mandai Estate, Singapore 729903",
+     "postal": "729903",
+     "hours": "Mon-Fri 08:00-17:30; Sat 08:00-12:30; excl. Sundays and public holidays",
+     "notes": "West"
+    },
+    {
+     "name": "Mova Automotive Pte Ltd",
+     "address": "15 Fan Yoong Road, Singapore 629792",
+     "postal": "629792",
+     "hours": "Mon-Fri 09:00-18:00; Sat 09:00-15:30; excl. Sundays and public holidays",
+     "notes": "West"
+    },
+    {
+     "name": "Sng Ah Tee Motor & Panel Service Pte Ltd",
+     "address": "7 Soon Lee Street, #05-18, iSPACE, Singapore 627608",
+     "postal": "627608",
+     "hours": "Mon-Fri 09:00-18:00; Sat 09:00-13:00; excl. Sundays and public holidays",
+     "notes": "West"
+    },
+    {
+     "name": "Wah Hong Motors & Credit Pte Ltd (Main Office)",
+     "address": "38 Toh Guan Road East, #01-57, Enterprise Hub, Singapore 608581",
+     "postal": "608581",
+     "hours": "Mon-Fri 09:00-18:00; Sat 09:00-17:00; excl. Sundays and public holidays",
+     "notes": "West; hours listed once for both Wah Hong addresses"
+    },
+    {
+     "name": "Wah Hong Motors & Credit Pte Ltd (Reporting Centre)",
+     "address": "42 Toh Guan Road East, #01-79, Enterprise Hub, Singapore 608583",
+     "postal": "608583",
+     "hours": "Mon-Fri 09:00-18:00; Sat 09:00-17:00; excl. Sundays and public holidays",
+     "notes": "West; labelled Reporting Centre on page"
+    }
+   ],
+   "source_url": "https://singlife.com/en/claims/dbs-approved-car-repairers",
+   "read": "2026-11-19",
+   "notes": "Page titled authorised workshops; does not label reporting capability except Wah Hong Reporting Centre. Windscreen omitted."
+  }
+ ],
+ "unverified": [
+  {
+   "name": "FWD Singapore (formerly Aviva)",
+   "reason": "https://help.fwd.com.sg/hc/en-us/articles/4402828214041 says report at 'our Approved Reporting Centres' within 24 hours or by next working day but names no centre or address and points to gia.org.sg; no list page found."
+  },
+  {
+   "name": "HSBC Insurance (HSBC Life) motor",
+   "reason": "https://www.insurance.hsbc.com.sg/content/dam/hsbc/insn/documents/claims/motor/own-damage-accident-reporting-faqs.pdf says report at Premium Workshops or authorised reporting centres in person within 24 hours or next working day but gives no addresses."
+  },
+  {
+   "name": "Times Insurance",
+   "reason": "https://www.timesinsurance.com.sg/our-services/claims/motor-incident-claim/failure-to-report-accidents/ gives no centre names or addresses; says to contact insurer."
+  },
+  {
+   "name": "Chubb Singapore",
+   "reason": "No motor reporting centre page found on chubb.com/sg-en (other-resources page has no motor content)."
+  },
+  {
+   "name": "India International Insurance",
+   "reason": "Page https://www.iii.com.sg/claims/motor-claim and PDF https://www.iii.com.sg/sites/default/files/2025-02/arc-13.02.25.pdf found in search but PDF could not be fetched; contents not read."
+  },
+  {
+   "name": "Lonpac / Generali (formerly AXA) / China Taiping / Ergo / other insurers",
+   "reason": "No own-site reporting centre page found or read in this research (not individually searched to completion)."
+  }
+ ]
+}
