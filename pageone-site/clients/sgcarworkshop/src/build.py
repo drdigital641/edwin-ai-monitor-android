@@ -617,7 +617,7 @@ def category(c):
                 'mainEntity': {k: v for k, v in itemlist.items() if k != '@context'}}
     FREECOUNT['services/%s/' % c['slug']] = free_n(es)
     page('services/%s/' % c['slug'], '%s in Singapore | %s' % (c['name'], SITE_NAME), c['blurb'] + ' Browse Singapore listings by area.',
-         body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})] + ([faq_ld(sfaqs)] if sfaqs else []), h1=c['name'], index=free_n(es) >= MIN_FREE, why='fewer than %d free workshops' % MIN_FREE)
+         body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})] + ([faq_ld(sfaqs)] if sfaqs else []), h1=c['name'], index=free_n(es) >= MIN_FREE or ('services/%s/' % c['slug']) in INDEX_EXCEPTIONS, why='fewer than %d free workshops' % MIN_FREE)
 
 
 def cap(t, n):
@@ -754,7 +754,7 @@ def region(slug):
     desc = ('Mobile car services that come to your car anywhere in Singapore, such as onsite batteries and mobile detailing. Message them directly.' if mobile else
             'Car workshops and car services in the %s region of Singapore, with estate pages and direct WhatsApp or call contact.' % name)
     FREECOUNT['areas/%s/' % slug] = free_n(es)
-    page('areas/%s/' % slug, title, cap(desc, 160), body, [itemlist_ld(h1, _rsl), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(rfaqs)], h1=h1, index=free_n(es) >= MIN_FREE, why='fewer than %d free workshops' % MIN_FREE)
+    page('areas/%s/' % slug, title, cap(desc, 160), body, [itemlist_ld(h1, _rsl), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(rfaqs)], h1=h1, index=free_n(es) >= MIN_FREE or ('areas/%s/' % slug) in INDEX_EXCEPTIONS, why='fewer than %d free workshops' % MIN_FREE)
 
 
 def faq_ld(faqs):

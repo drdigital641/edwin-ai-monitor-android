@@ -138,7 +138,22 @@
   ]
  },
  "index_exceptions": {
-  "areas/amk-industrial-park-2/": "Edwin approved 3 Nov 2026: indexable with 3 listings (below the 5-listing minimum, which stays at 5)"
+  "areas/amk-industrial-park-2/": "Edwin approved 3 Nov 2026: indexable with 3 listings (below the 5-listing minimum, which stays at 5)",
+  "services/car-parts/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)",
+  "areas/mobile/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)",
+  "areas/upper-thomson-road/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)",
+  "areas/bedok-industrial-park-e/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)",
+  "areas/tampines-industrial-park-a/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)",
+  "areas/woodlands-industrial-park-e9/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)",
+  "areas/admiralty-street/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)",
+  "areas/toa-payoh-industrial-park/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)",
+  "areas/serangoon-garden-way/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)",
+  "areas/mandai-estate/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)",
+  "areas/tampines-north-drive-1/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)",
+  "areas/yishun-ring-road/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)",
+  "areas/jurong-west-avenue-5/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)",
+  "areas/tuas-industrial-area/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)",
+  "areas/pandan-light-industries-park/": "Edwin approved 23 Nov 2026 7:17am SGT: indexable below the 5-listing minimum (minimum stays at 5)"
  },
  "image_hosts_pending": {
   "note": "Edwin rule 3 Nov 2026: every image must be on sgcarworkshop.sg. These hosts still hotlink because the files could not be fetched from the build sandbox (network blocked). Copy them to src/img and remove the host here. Counted and printed on every check run.",

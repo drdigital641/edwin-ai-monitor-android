@@ -14,6 +14,11 @@
 "h": "7f08aa8c12be",
 "h2": "7f08aa8c12be"
 },
+"areas/admiralty-street/": {
+"d": "2026-11-23",
+"h": "5713380f5fd8",
+"h2": "5713380f5fd8"
+},
 "areas/amk-industrial-park-2/": {
 "d": "2026-11-22",
 "h": "12915c76017a",
@@ -23,6 +28,11 @@
 "d": "2026-11-22",
 "h": "be7298212a6e",
 "h2": "be7298212a6e"
+},
+"areas/bedok-industrial-park-e/": {
+"d": "2026-11-23",
+"h": "bca09ccd9615",
+"h2": "bca09ccd9615"
 },
 "areas/bukit-batok-crescent/": {
 "d": "2026-11-21",
@@ -69,6 +79,11 @@
 "h": "0f4856659c51",
 "h2": "0f4856659c51"
 },
+"areas/jurong-west-avenue-5/": {
+"d": "2026-11-23",
+"h": "180523e9ed24",
+"h2": "180523e9ed24"
+},
 "areas/jurong-west/": {
 "d": "2026-11-21",
 "h": "0b21c0375260",
@@ -109,6 +124,16 @@
 "h": "0965aa2089f2",
 "h2": "0965aa2089f2"
 },
+"areas/mandai-estate/": {
+"d": "2026-11-23",
+"h": "f54fbe655258",
+"h2": "f54fbe655258"
+},
+"areas/mobile/": {
+"d": "2026-11-23",
+"h": "91c668996ffa",
+"h2": "91c668996ffa"
+},
 "areas/north-east/": {
 "d": "2026-11-22",
 "h": "f3c83084fc25",
@@ -119,10 +144,20 @@
 "h": "f5a89ed12ed0",
 "h2": "f5a89ed12ed0"
 },
+"areas/pandan-light-industries-park/": {
+"d": "2026-11-23",
+"h": "3fc38800b10b",
+"h2": "3fc38800b10b"
+},
 "areas/paya-ubi-industrial-park/": {
 "d": "2026-11-21",
 "h": "413f29682561",
 "h2": "413f29682561"
+},
+"areas/serangoon-garden-way/": {
+"d": "2026-11-23",
+"h": "a3443db940cc",
+"h2": "a3443db940cc"
 },
 "areas/sin-ming-bishan/": {
 "d": "2026-11-21",
@@ -154,6 +189,21 @@
 "h": "83676117758a",
 "h2": "83676117758a"
 },
+"areas/tampines-industrial-park-a/": {
+"d": "2026-11-23",
+"h": "be7cbddb2cd8",
+"h2": "be7cbddb2cd8"
+},
+"areas/tampines-north-drive-1/": {
+"d": "2026-11-23",
+"h": "3449d8485983",
+"h2": "3449d8485983"
+},
+"areas/toa-payoh-industrial-park/": {
+"d": "2026-11-23",
+"h": "9dbdd590e2ae",
+"h2": "9dbdd590e2ae"
+},
 "areas/toh-guan-enterprise-hub/": {
 "d": "2026-11-21",
 "h": "246c7960cfee",
@@ -169,6 +219,11 @@
 "h": "3ba276463285",
 "h2": "3ba276463285"
 },
+"areas/tuas-industrial-area/": {
+"d": "2026-11-23",
+"h": "7da1fc12007f",
+"h2": "7da1fc12007f"
+},
 "areas/ubi-road-1/": {
 "d": "2026-11-21",
 "h": "75b487106b52",
@@ -178,6 +233,11 @@
 "d": "2026-11-21",
 "h": "e2ba0955fde5",
 "h2": "e2ba0955fde5"
+},
+"areas/upper-thomson-road/": {
+"d": "2026-11-23",
+"h": "85277731b164",
+"h2": "85277731b164"
 },
 "areas/west/": {
 "d": "2026-11-21",
@@ -195,7 +255,7 @@
 "h2": "9310502cb6c9"
 },
 "areas/woodlands-industrial-park-e9/": {
-"d": "2026-11-22",
+"d": "2026-11-23",
 "h": "c62a0ca9ee41",
 "h2": "c62a0ca9ee41"
 },
@@ -218,6 +278,11 @@
 "d": "2026-11-22",
 "h": "34f90cf4b912",
 "h2": "34f90cf4b912"
+},
+"areas/yishun-ring-road/": {
+"d": "2026-11-23",
+"h": "24c8a52b1d76",
+"h2": "24c8a52b1d76"
 },
 "areas/yishun/": {
 "d": "2026-11-21",
@@ -388,6 +453,11 @@
 "d": "2026-11-21",
 "h": "dc2bc5139b99",
 "h2": "dc2bc5139b99"
+},
+"services/car-parts/": {
+"d": "2026-11-23",
+"h": "90684f263583",
+"h2": "90684f263583"
 },
 "services/car-tyres/": {
 "d": "2026-11-21",
