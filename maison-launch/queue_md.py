@@ -1,7 +1,7 @@
 import json,sys
 q=json.load(open(sys.argv[1])); P=q['projects']
 yn=lambda b:'Y' if b else 'N'
-L=["# Maison new-launch queue (generated from launch-queue.json, do not hand-edit)","",
+L=["# Maison new-launch queue (generated from launch-queue.json, do not hand-edit)","",*( [f"**{q['pause']}**",""] if q.get('pause') else [] ),
 f"Updated {q['updated']}. GSC data: {q['gsc']['date']}, {q['gsc']['window']} ({q['gsc']['source']}).","",q['rule'],"",
 "Daily rule: ONE page a day (17 Nov 2026 was a one-off 3-page day; from 18 Nov back to 1 a day) = top TODO in A until A is empty, then B. Mark DONE only after live check + ?p1test=1 tap, then rerun queue_md.py and sort_hub.py.",
 f"No v4 set on the next project: policy '{q['no_images_policy']}' (make = create the Base44 v4 set + official plan first; skip = take the next one that has a set, list the skipped one as waiting for images).",""]
