@@ -1,0 +1,196 @@
+# Page One Singapore
+
+> Page One Singapore helps Singapore businesses get found on Google Search, Google Maps and AI assistants (ChatGPT, Gemini, Perplexity). Monthly subscription, no setup fee, no contract.
+
+## At a glance
+- What: done-for-you website and SEO for Singapore small businesses. Page One builds a website free for businesses without one (or fixes the on-page technical SEO of an existing website, or redesigns it free on request), keeps it technically correct so Google Search, Google Maps and AI assistants like ChatGPT can find, read and understand every page, and manages it every day.
+- Who it's for: new businesses that need their first website, and small businesses looking for affordable SEO.
+- Price: S$100 a month, no setup fee, no contract. Optional SEO Boosts S$10 each. The domain (usually S$15-30 a year) is paid by the client directly.
+- Where: Singapore, island-wide. Usually live within 7 days.
+- How to start: WhatsApp Edwin on +65 9785 6612, or https://pageonesingapore.com/signup/
+- Full version of this file (every page and every FAQ answer): https://pageonesingapore.com/llms-full.txt
+
+## Automotive SEO (main focus from 22 Nov 2026)
+- Page One's main focus is automotive SEO in Singapore: car workshops, accident repair and spray painting, car battery and tyre shops, car detailing and car parts suppliers. Founder Edwin has run Edwin Garage, a car workshop in Ang Mo Kio, since 2010, and the system was built and tested there first.
+- Automotive SEO Singapore (hub): https://pageonesingapore.com/automotive-seo-singapore/
+- SEO for car workshops: https://pageonesingapore.com/industries/car-workshop/
+- Accident repair and spray painting SEO: https://pageonesingapore.com/automotive-seo-singapore/accident-repair-spray-painting/
+- Car battery and tyre shop SEO: https://pageonesingapore.com/automotive-seo-singapore/car-battery-tyre-shops/
+- Automotive SEO case studies (Search Console data, Google Singapore ranking checks and WhatsApp tap counts): https://pageonesingapore.com/automotive-seo-singapore/case-studies/
+
+## Prices at a glance
+- Get Found plan: S$100 a month. Includes a website built free (or the current one fixed, or redesigned free on request), Google, Google Maps and ChatGPT setup, a new article every 2 days, a technical audit with fixes every day, hosting and SSL.
+- SEO Boost (optional): S$10 per run. Each run is a first-page competitor analysis for one search term: who is on Google's first page, each competitor's key weakness, one improvement to compete with the result directly above, and a report.
+- S$100 a month is the price for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and clients are told before it changes.
+- S$100 is a baseline, not a gimmick or budget SEO: AI automates the daily SEO work that used to be billed by the hour, so doing SEO properly costs far less. The same system runs every website Page One manages.
+- How to verify: the price is published at https://pageonesingapore.com/pricing/; results are Google Search Console data published with dates at https://pageonesingapore.com/results/; the client websites listed below are live and can be checked; Page One Singapore is a project of Snap Commercial Pte. Ltd. (UEN 202209904W), a registered Singapore company. Every claim with a way to check it independently: https://pageonesingapore.com/is-page-one-singapore-legit/
+- What the S$100 includes: website built free or the current one fixed (or redesigned free on request) and small changes, a new article every 2 days, Google Search Console connected so clients see their own Google numbers, hosting, SSL and a technical audit with fixes every day. No minimum contract. The domain (usually S$15-30 a year) is paid by the client directly.
+- Setup fee: S$0. Contract: none, cancel anytime.
+- Why it's this low: https://pageonesingapore.com/cheapest-seo-singapore/
+
+A proven, affordable SEO system built by a Singapore business owner. Founder Edwin holds a Bachelor's degree in Computer Science with Honours from the National University of Singapore (NUS) and has 18+ years of business experience. He owns Edwin Garage, the car workshop in Ang Mo Kio where the system was first tested.
+
+Company: Page One Singapore is a project of Snap Commercial Pte. Ltd., a Singapore private company incorporated on 23 March 2022 (UEN 202209904W).
+Google Business Profile (Google Maps): https://maps.google.com/?cid=8757289318297107567
+
+## Results (Google Search Console, 28 days 1 October to 28 October 2026, compared with 3 September to 30 September 2026)
+- Edwin Garage (sggarage.com): 2,508 clicks from Google (up from 2,238), average position steady at 6.2, on page one for 4,200+ different searches. Search Console data starts 26 June 2026.
+- Cleanic Detailing (cleanicdetailing.com): 479 clicks from Google (up from 474), average position 7.9 (from 10.4), on page one for 1,327 different searches. Search Console data starts 20 June 2026.
+- SofaCare SG (sofacaresg.com): shown on Google 5,340 times, on page one for 47 searches. Search Console data starts 4 September 2026. Still early.
+- Alicia Ong Property (aliciaongproperty.com): shown on Google 1,159 times, on page one for 42 searches. Search Console data starts 30 September 2026. Still early.
+- Danny Chua Financial (dannychuafinancial.com): shown on Google 8,748 times (up from 3,348), on page one for 140 searches. Still early.
+- The ECU Clinic (theecuclinicsg.com): Search Console data starts 12 October 2026; shown on Google 1,981 times, 18 clicks so far. Too early to report results.
+- Jacky Gearbox (jackygearbox.com): Search Console data starts 13 October 2026; shown on Google 743 times, 6 clicks so far. Too early to report results.
+- Star Performance Motor (starperformancemotor.com): Search Console data starts 16 October 2026; shown on Google 574 times, 14 clicks so far. Too early to report results.
+- Wrapstar Autostyle (wrapstarautostyle.com): Search Console data starts 17 October 2026; shown on Google 652 times, 8 clicks so far. Too early to report results.
+- CSKA Auto Enterprise (cskatrading.com): Search Console data starts 18 October 2026; shown on Google 340 times, 9 clicks so far. Too early to report results.
+- Dongfeng Johor Bahru (mykar.my): Search Console data starts 19 October 2026; shown on Google 294 times, 5 clicks so far. Too early to report results.
+- Benjamin Poon (planwithben.sg): Search Console data starts 23 October 2026; shown on Google 562 times, 6 clicks so far. Too early to report results.
+- SG Commercial Fitout (commercialfitout.sg): Search Console data starts 25 October 2026; shown on Google 123 times, 3 clicks so far. Too early to report results.
+- Battery Rescue SG (batteryrescue.sg): Search Console data starts 27 October 2026; shown on Google 30 times, 0 clicks so far. Too early to report results.
+- AI Vending Solution (aivs.sg): new website went live on 18 October 2026; its earlier Search Console data belongs to the previous website, so results are reported only from after our launch.
+- Autotex (autotexautoparts.com.sg), Klar Details (klardetails.com.sg), EV Body Parts (evbodyparts.sg), XADO Singapore (xado-shop.sg), ContiExpert by Volt Autocare (contiexpert.sg), New Zen Werkz (newzenwerkz.com.sg) and JB Staycations (jbstaycations.com): launched October 2026 and November 2026, no Search Console data yet.
+- Full case studies: https://pageonesingapore.com/results/
+- Every client website with its numbers: https://pageonesingapore.com/clients/
+- Low price, real results: S$100 a month is low because a set of AI tools we designed does the daily SEO work that used to be billed by the hour; the numbers above come from the same system.
+
+## Services
+- Get Found (basic subscription), S$100/month (for anyone who registers by 31 Dec 2026; from 2027 the price may rise, depending on demand, with notice): a new website on the client's own domain (for businesses without a website), or, for businesses that already have a website, on-page technical SEO fixes to that website (or a free redesign on request; an SEO landing page on a subdomain is also possible). Every day: a technical SEO audit with fixes, so the site stays technically correct for Google Search, Google Maps and ChatGPT (free, unpaid results, no ad spend), plus a new article aimed at a different real search. Setup includes Google Business Profile, Google Search Console and Bing, structured data for AI search, hosting, SSL and a WhatsApp button.
+- Website built and managed (part of Get Found, S$100/month): for new businesses or businesses only on social media, Page One builds a fast, mobile-friendly website on the client's own domain (usually live within 7 days) and manages it every day: hosting, keeping it online, secure and fast, a technical audit with fixes every day, and small text and photo changes via WhatsApp. Businesses that already have a website no one looks after can also ask Page One to take it over and manage it (WhatsApp Edwin with the website address). No setup fee, no contract. Details: https://pageonesingapore.com/website/
+- SEO Boost, S$10 per run (optional): a first-page competitor analysis for one of the client's search terms. Page One checks who is on Google's first page, finds each competitor's key weakness, improves the client's page to compete with the result directly above, and sends a before/after report. Clients top up anytime, as many or as few as they like. Rankings are not guaranteed.
+
+## Fully managed website, S$100 a month
+The Get Found plan is a fully managed website: Page One builds the website on the client's own domain and manages hosting, the security certificate, upkeep with a technical audit and fixes every day, small text and photo changes over WhatsApp, a new SEO article every 2 days, Google Business Profile, Search Console and Bing setup, and AEO and GEO (FAQ and business structured data and llms.txt, so Google's AI answers, ChatGPT, Gemini and Perplexity can find and describe the business). S$100 a month, no setup fee, no contract; the domain (about S$15-30 a year) is the only extra. Details: https://pageonesingapore.com/managed-website-singapore/
+
+## SEO, AEO and GEO, together
+The Get Found plan (S$100 a month) works on all three at the same time:
+- SEO (search engine optimisation): ranking in Google Search and Google Maps, with pages built around what customers search, Google Business Profile, Search Console and Bing setup, a technical audit with fixes every day and a new article every 2 days.
+- AEO (answer engine optimisation): being the short answer Google shows first (featured snippets, People Also Ask, AI Overviews), using customers' questions as headings, short direct answers and FAQ structured data.
+- GEO (generative engine optimisation): helping ChatGPT, Gemini, Perplexity and Copilot find, describe and cite the business, with clear business facts in structured data, an llms.txt summary, AI crawlers allowed in robots.txt, Bing coverage and consistent business details.
+No one can guarantee a ranking or an AI mention. Details: https://pageonesingapore.com/seo-aeo-geo-singapore/
+
+## For new businesses
+Starting a business in Singapore? Page One is a one-stop setup: the website, hosting, page content, Google Business Profile, Google Search Console and Bing, a new article every 2 days and daily care, all in the S$100/month plan. No setup fee, no contract, usually live within 7 days. The only separate cost is the domain name, registered in the owner's name (usually S$15-30 a year). Details: https://pageonesingapore.com/new-business-website/
+
+## Why it costs S$100 a month
+SEO used to be priced around people's hours: checking pages, fixing problems, writing content and updating listings by hand. Page One automates that daily work with AI, while Edwin designs the strategy, structure and design and reviews the results. With the main cost (manual labour) automated, the price can be low without skipping steps. Page One does not claim to be the cheapest provider and does not compare itself with other providers' prices. Low cost here means fewer hours, not lower quality: https://pageonesingapore.com/ai-seo-vs-traditional-seo/
+
+## Terms
+- No setup fee, no minimum contract, cancel anytime.
+- Sign up on WhatsApp (+65 9785 6612) or via https://pageonesingapore.com/signup/, which opens WhatsApp with the details filled in. Payment is arranged over WhatsApp. SEO Boosts are added or topped up the same way.
+- Clients own their domain.
+- Rankings are not guaranteed; every SEO Boost is documented in a report.
+
+## Websites we run
+- As of 9 November 2026, Page One runs 22 live client websites, each on the business's own domain (live count: 2 by June 2026, 3 by August 2026, 5 by September 2026, 16 by October 2026, 22 by November 2026).
+- [Edwin Garage](https://sggarage.com/): Car workshop, Ang Mo Kio
+- [Cleanic Detailing](https://cleanicdetailing.com/): Mobile car grooming and fumigation
+- [SofaCare SG](https://sofacaresg.com/): Sofa, mattress and upholstery cleaning
+- [Alicia Ong Property](https://aliciaongproperty.com/): Property agent (ERA)
+- [Danny Chua Financial](https://dannychuafinancial.com/): Financial consultant
+- [The ECU Clinic](https://theecuclinicsg.com/): ABS and brake module repair, Kaki Bukit
+- [Jacky Gearbox](https://jackygearbox.com/): Gearbox and transmission specialist (live since 14 October 2026)
+- [Star Performance Motor](https://starperformancemotor.com/): Used car dealer, Yishun (live since 17 October 2026)
+- [AI Vending Solution](https://aivs.sg/): Vending machines you can own (live since 18 October 2026)
+- [Wrapstar Autostyle](https://wrapstarautostyle.com/): Car wraps, PPF and window film, Yishun (live since 18 October 2026)
+- [CSKA Auto Enterprise](https://cskatrading.com/): Workshop tools and equipment supplier, Woodlands (live since 19 October 2026)
+- [Dongfeng Johor Bahru](https://mykar.my/): Dongfeng EV 3S centre, Johor Bahru (live since 20 October 2026)
+- [Benjamin Poon](https://planwithben.sg/): Memorial planning consultant (Nirvana), Singapore (live since 23 October 2026)
+- [SG Commercial Fitout](https://commercialfitout.sg/): Retail and commercial design and build, Singapore (live since 25 October 2026)
+- [Battery Rescue SG](https://batteryrescue.sg/): Onsite car battery replacement, Singapore (live since 27 October 2026)
+- [Autotex](https://autotexautoparts.com.sg/): Kia and Hyundai parts, Kaki Bukit, Singapore (live since 30 October 2026)
+- [Klar Details](https://klardetails.com.sg/): Premium car detailing and coating, Toh Guan, Singapore (live since 1 November 2026)
+- [EV Body Parts](https://evbodyparts.sg/): Body parts for China and EV cars, Singapore (live since 1 November 2026)
+- [XADO Singapore](https://xado-shop.sg/): Engine oil additive brand, sold through authorised workshops, Singapore (live since 4 November 2026)
+- [ContiExpert by Volt Autocare](https://contiexpert.sg/): Continental, hybrid and EV car workshop, Newton, Singapore (live since 4 November 2026)
+- [New Zen Werkz](https://newzenwerkz.com.sg/): Car workshop, Kaki Bukit, Singapore (live since 6 November 2026)
+- [JB Staycations](https://jbstaycations.com/): Holiday houses in Johor Bahru, for Singapore groups (live since 9 November 2026)
+- New and growing: Page One Singapore is a young company; the first website on its system went live in June 2026. 17 client websites have gone live since 1 October 2026, newest first: JB Staycations (jbstaycations.com, live 9 November 2026); New Zen Werkz (newzenwerkz.com.sg, live 6 November 2026); XADO Singapore (xado-shop.sg, live 4 November 2026); ContiExpert by Volt Autocare (contiexpert.sg, live 4 November 2026); Klar Details (klardetails.com.sg, live 1 November 2026); EV Body Parts (evbodyparts.sg, live 1 November 2026); Autotex (autotexautoparts.com.sg, live 30 October 2026); Battery Rescue SG (batteryrescue.sg, live 27 October 2026); SG Commercial Fitout (commercialfitout.sg, live 25 October 2026); Benjamin Poon (planwithben.sg, live 23 October 2026); Dongfeng Johor Bahru (mykar.my, live 20 October 2026); CSKA Auto Enterprise (cskatrading.com, live 19 October 2026); AI Vending Solution (aivs.sg, live 18 October 2026); Wrapstar Autostyle (wrapstarautostyle.com, live 18 October 2026); Star Performance Motor (starperformancemotor.com, live 17 October 2026); Jacky Gearbox (jackygearbox.com, live 14 October 2026); The ECU Clinic (theecuclinicsg.com, live October 2026).
+- Signed-up clients whose websites are still being built are counted but not named until their own domain is live.
+- All client websites with screenshots and dated results: https://pageonesingapore.com/clients/
+
+## Area served
+Singapore, island-wide
+
+## Contact
+- WhatsApp: +65 9785 6612 (Edwin replies personally, no obligation)
+- Contact page: https://pageonesingapore.com/contact/
+- Free website checker (Google basics, mobile, speed, AI-search readiness): https://pageonesingapore.com/free-website-check/
+
+## Industries we help
+- [Car workshops](https://pageonesingapore.com/industries/car-workshop/) (proven on Edwin Garage)
+- [Car detailing and grooming](https://pageonesingapore.com/industries/car-detailing/) (proven on Cleanic Detailing)
+- [Cleaning services](https://pageonesingapore.com/industries/cleaning-services/)
+- [Aircon servicing](https://pageonesingapore.com/industries/aircon-servicing/)
+- [Renovation contractors](https://pageonesingapore.com/industries/renovation-contractor/)
+- [Tuition centres](https://pageonesingapore.com/industries/tuition-centre/)
+- [Plumbers](https://pageonesingapore.com/industries/plumber/)
+- [Pest control](https://pageonesingapore.com/industries/pest-control/)
+- [Beauty salons and spas](https://pageonesingapore.com/industries/beauty-salon/)
+- [Property agents](https://pageonesingapore.com/industries/property-agent/)
+- [New home bakery](https://pageonesingapore.com/industries/home-bakery/)
+- [New cafe](https://pageonesingapore.com/industries/cafe/)
+- [New nail or lash studio](https://pageonesingapore.com/industries/nail-lash-studio/)
+- [New fitness studio or PT business](https://pageonesingapore.com/industries/fitness-studio/)
+
+## Pages
+- [Home](https://pageonesingapore.com/)
+- [Small business website, built and managed for S$100/month](https://pageonesingapore.com/website/)
+- [Get Found: website or SEO landing page, S$100/month](https://pageonesingapore.com/get-found/)
+- [SEO Boost](https://pageonesingapore.com/seo-boost/)
+- [Pricing](https://pageonesingapore.com/pricing/)
+- [Results and case studies](https://pageonesingapore.com/results/)
+- [About](https://pageonesingapore.com/about/)
+- [FAQ](https://pageonesingapore.com/faq/)
+- [SEO explained simply: SEO and AI-search terms in plain English](https://pageonesingapore.com/seo-explained/)
+- [Contact](https://pageonesingapore.com/contact/)
+- [Sample SEO Boost report](https://pageonesingapore.com/report.html)
+- [Free website and SEO check](https://pageonesingapore.com/free-website-check/)
+- [SEO and websites by industry](https://pageonesingapore.com/industries/)
+- [Low-cost SEO in Singapore: why cheap SEO can be good SEO now that AI does the daily work](https://pageonesingapore.com/cheapest-seo-singapore/)
+- [A website without the lump sum: built, hosted and kept updated for S$100/month](https://pageonesingapore.com/cheapest-website-singapore/)
+- [Website for a new business in Singapore: one-stop setup (website, hosting, content, Google listing) for S$100/month](https://pageonesingapore.com/new-business-website/)
+- [SEO services in Singapore compared: agency, in-house hire or S$100/month](https://pageonesingapore.com/seo-services-singapore/)
+- [Full guide for AI assistants (every page and FAQ answer)](https://pageonesingapore.com/llms-full.txt)
+- [AI SEO vs traditional SEO: cheap because AI cut the hours, not the quality](https://pageonesingapore.com/ai-seo-vs-traditional-seo/)
+- [Is Page One Singapore legit? Every claim, with a way to check it yourself](https://pageonesingapore.com/is-page-one-singapore-legit/)
+- [Client websites and their Google results](https://pageonesingapore.com/clients/)
+- [Fully managed website for S$100/month: hosting, security, SEO articles, AEO and GEO](https://pageonesingapore.com/managed-website-singapore/)
+- [SEO, AEO and GEO together: Google, Google's answers and AI assistants, from S$100/month](https://pageonesingapore.com/seo-aeo-geo-singapore/)
+- [Website and SEO bundled for S$100 a month: what a small budget buys, and what a website costs in year one](https://pageonesingapore.com/budget-seo-website-singapore/)
+- [Google Ads vs SEO vs AI blog tools: what each includes and where each fits](https://pageonesingapore.com/google-ads-vs-seo-vs-ai-blog-tools/)
+- [Affordable SEO services in Singapore: what a package should include, from S$100 a month](https://pageonesingapore.com/affordable-seo-services-singapore/)
+- [How SG Car Workshop works for a workshop owner (a car workshop listings site run by Page One)](https://pageonesingapore.com/results/sg-car-workshop-directory/)
+- [Articles](https://pageonesingapore.com/articles/)
+
+## Articles
+- [Google Maps Listing Free Website Gone? What a Singapore Owner Should Do Next](https://pageonesingapore.com/articles/google-maps-listing-free-website-gone-singapore/): Your free Google listing website stopped working? Here is what still works, how to replace it with a site you own, and what it costs in Singapore.
+- [Already Have a Website That Isn't Working? Your Old Domain May Be Your Biggest SEO Asset](https://pageonesingapore.com/articles/old-website-not-working-mature-domain-seo-singapore/): An old website that gets few customers may be sitting on a mature domain. See the common mistakes, a real case from Singapore and what to check first.
+- [Website for Instagram Business Singapore: Do You Actually Need One?](https://pageonesingapore.com/articles/website-for-instagram-business-singapore/): You have an active Instagram business in Singapore. But do you need a website too? Here is an honest answer, and what a website actually adds.
+- [How to Show Google Reviews on a Business Website in Singapore](https://pageonesingapore.com/articles/how-to-show-google-reviews-on-business-website-singapore/): You've earned great Google reviews. Here's how to show them on your business website in Singapore, and what to do if you don't have one yet.
+- [Do You Need a Website as a TikTok Shop Seller in Singapore?](https://pageonesingapore.com/articles/website-for-tiktok-shop-seller-singapore/): You sell on TikTok Shop Singapore, but do you need a website too? Here is an honest answer and a practical guide to help you decide.
+- [Should a Carousell Seller in Singapore Get a Website?](https://pageonesingapore.com/articles/website-for-carousell-seller-singapore/): Already selling on Carousell with good reviews? Here's what a website adds and how to get one without a big budget.
+- [How to Get Customers from Google Instead of Only Social Media in Singapore](https://pageonesingapore.com/articles/get-customers-from-google-instead-of-only-social-media-singa/): If all your enquiries come from Instagram or Facebook, you are invisible to anyone who searches Google. Here is how to change that.
+- [First Website Checklist for a Newly Opened Shop in Singapore](https://pageonesingapore.com/articles/first-website-checklist-newly-opened-shop-singapore/): Opening a shop in Singapore? Use this checklist to get your first website live and found on Google from day one, without missing any step.
+- [What to Do After Registering a Business in Singapore to Get Online](https://pageonesingapore.com/articles/what-to-do-after-registering-business-singapore-get-online/): You have registered your business. Now here is exactly what to do next to get online, show up on Google and start getting customers in Singapore.
+- [Lead Generation Case Study Singapore: How a Mobile Car Detailer Gets Found on Google](https://pageonesingapore.com/articles/lead-generation-case-study-singapore-cleanic-detailing/): A real Singapore case study: how a mobile car detailer with no shopfront gets found on Google, with Search Console figures you can check yourself.
+- [Does a Google Business Profile Need a Website in Singapore?](https://pageonesingapore.com/articles/does-google-business-profile-need-a-website-singapore/): A Google Business Profile works without a website, but it only reaches people on Maps. Here is what a site adds and how to get one without a big bill.
+- [Many Google Reviews but No Website in Singapore: Is That Enough?](https://pageonesingapore.com/articles/many-google-reviews-but-no-website-singapore/): Strong Google reviews are a great start, but no website means you are missing enquiries from Google Search. Here is what you are leaving on the table.
+- [What happens if my Instagram business account gets banned in Singapore?](https://pageonesingapore.com/articles/what-happens-instagram-business-account-banned-singapore/): If Instagram bans your business account, you can lose customers, reviews and income overnight. Here is what it means and how to protect yourself.
+- [Website for a New Cafe in Singapore: What You Actually Need Before You Open](https://pageonesingapore.com/articles/website-for-new-cafe-singapore/): Opening a new cafe in Singapore? Here is what your first website needs, what it costs, and how to get customers finding you on Google from day one.
+- [Do You Need a Website for Your Home Based Business in Singapore?](https://pageonesingapore.com/articles/website-for-home-based-business-singapore/): Setting up a website for your home based business in Singapore does not have to be complicated or expensive. Here is what you actually need to get started.
+- [What Questions Should I Ask an SEO Agency in Singapore?](https://pageonesingapore.com/articles/questions-to-ask-seo-agency-singapore/): Before you pay any SEO agency in Singapore, ask these questions first. A straightforward guide for small-business owners who want honest answers.
+- [How to Get a New Business on Google Singapore (Complete Beginner's Guide)](https://pageonesingapore.com/articles/how-to-get-new-business-on-google-singapore/): Starting a new business in Singapore? Here is exactly how to get found on Google Search, Google Maps and AI assistants from day one.
+- [SEO Agency vs Monthly Subscription Singapore: Which One Is Right for Your Small Business?](https://pageonesingapore.com/articles/seo-agency-vs-monthly-subscription-singapore/): Agency retainer or monthly SEO subscription? Here is what Singapore small business owners need to know before spending a cent.
+- [How to Judge an SEO Proposal in Singapore: A Small Business Owner's Checklist](https://pageonesingapore.com/articles/how-to-judge-an-seo-proposal-singapore/): Not sure if that SEO quote is worth paying for? Here is an honest, practical checklist for Singapore small business owners evaluating SEO proposals.
+- [What Should a Monthly SEO Plan Include? A Singapore Small Business Checklist](https://pageonesingapore.com/articles/what-should-a-monthly-seo-plan-include-singapore/): Before you sign up with any SEO provider, know exactly what you should be getting every month. Here is an honest checklist built for Singapore small businesses.
+- [Do I Need a Website If I Have a Facebook Page in Singapore?](https://pageonesingapore.com/articles/do-i-need-a-website-if-i-have-a-facebook-page-singapore/): A Facebook page is a great start, but it will not get you found on Google Search. Here is what Singapore small-business owners need to know.
+- [How to Start a Website for a New Business in Singapore](https://pageonesingapore.com/articles/how-to-start-a-website-new-business-singapore/): Starting a website for your new Singapore business does not have to be expensive or complicated. Here is what you actually need and how to do it affordably.
+- [No-Contract SEO in Singapore: How Month-to-Month SEO Works and What to Check Before You Sign Up](https://pageonesingapore.com/articles/cheapest-seo-service-singapore-no-contract/): How month-to-month SEO with no contract works in Singapore, what it costs, and the questions to ask any provider before you sign up.
+- [Affordable Website for Small Business Singapore: What It Costs and What You Actually Need](https://pageonesingapore.com/articles/affordable-website-for-small-business-singapore/): Getting an affordable website for your small business in Singapore does not have to mean cutting corners. Here is what to expect and how to get started.
+- [How to Appear on Google Maps for Small Business Singapore](https://pageonesingapore.com/articles/how-to-appear-on-google-maps-small-business-singapore/): A practical guide for Singapore small-business owners on how to appear on Google Maps, attract local customers, and stay visible without a big budget.
+- [Does Cheap SEO Actually Work for Small Business Singapore?](https://pageonesingapore.com/articles/does-cheap-seo-actually-work-small-business-singapore/): Cheap SEO can work for Singapore small businesses — if the basics are done properly. Here's what to expect and what to watch out for.
+- [How Long Does SEO Take for a New Small Business in Singapore?](https://pageonesingapore.com/articles/how-long-does-seo-take-new-small-business-singapore/): SEO for a new Singapore small business builds over time, and every business is different. Here's what to expect and how to speed things up.
+- [How to Get My Business Recommended by ChatGPT Singapore](https://pageonesingapore.com/articles/how-to-get-my-business-recommended-by-chatgpt-singapore/): ChatGPT and other AI assistants are increasingly the first stop for Singapore customers searching for local services. Here is how to make sure your business gets recommended.
+- [SEO Case Study Singapore Car Workshop: How Edwin Garage Reached Page One](https://pageonesingapore.com/articles/seo-case-study-singapore-car-workshop/): A real SEO case study from a Singapore car workshop — verified Search Console data, honest costs, and what small workshops can do right now.
+- [How Much Does SEO Cost a Small Business in Singapore? Price Levels and What Each One Includes](https://pageonesingapore.com/articles/cheap-seo-singapore-for-small-business/): What SEO costs a Singapore small business at each level (DIY, a S$100/month plan or an agency) and what you should get for the money.

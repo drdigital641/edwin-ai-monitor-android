@@ -1,0 +1,57 @@
+/* Page One automotive pages (22 Nov 2026). Shared by every /automotive-seo-singapore/ page; one edit updates all. */
+.auto-page{--amber:#ffb020;--dash:#0a1426}
+.auto-hero{position:relative;overflow:hidden;background:var(--night);color:#fff;padding:28px 0 40px}
+.auto-hero .crumbs,.auto-hero .crumbs a{color:#9aa6bd}
+.auto-hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;align-items:center}
+.auto-hero-grid>div{min-width:0}
+.auto-hero h1{font-family:var(--display);font-size:clamp(1.9rem,7.4vw,3.3rem);line-height:1.06;letter-spacing:-.02em;margin:10px 0 12px;color:#fff}
+.auto-hero .lead{color:#cbd5e1;max-width:40em}
+.auto-hero .eyebrow{color:#ffb4bf}
+.auto-photo{position:relative;margin:0;border-radius:22px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.auto-photo img{width:100%;height:100%;object-fit:cover;object-position:40% 55%;display:block}
+.auto-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 14px 12px;font-size:.82rem;color:#e2e8f0;background:linear-gradient(transparent,rgba(6,11,24,.92))}
+.auto-photo .badge{position:absolute;top:12px;left:12px;background:rgba(6,11,24,.82);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.14);color:#fff;border-radius:999px;padding:7px 12px;font-size:.8rem;font-weight:700}
+.auto-photo .badge b{color:var(--amber)}
+.gauge-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0 6px}
+.gauge{background:var(--dash);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:10px 6px 12px;text-align:center;color:#fff}
+.gauge svg{width:100%;max-width:120px;height:auto;display:block;margin:0 auto}
+.gauge .arc{fill:none;stroke:rgba(255,255,255,.12);stroke-width:9;stroke-linecap:round}
+.gauge .val{fill:none;stroke:url(#autoGrad);stroke-width:9;stroke-linecap:round;stroke-dasharray:0 200;animation:gaugeIn 1.6s ease-out .3s forwards}
+.gauge b{display:block;font-family:var(--display);font-size:1.35rem;margin-top:-30px;line-height:1}
+.gauge small{display:block;font-size:.72rem;color:#9aa6bd;margin-top:8px;line-height:1.3}
+@keyframes gaugeIn{to{stroke-dasharray:var(--v) 200}}
+.dash-strip{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:4px 0 10px;margin:14px 0 0;scrollbar-width:none}
+.dash-strip::-webkit-scrollbar{display:none}
+.dash-strip span{flex:none;background:rgba(255,176,32,.12);border:1px solid rgba(255,176,32,.35);color:#ffd27a;border-radius:999px;padding:7px 12px;font-size:.82rem;white-space:nowrap}
+.auto-ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.auto-ctas .btn{flex:1 1 200px;text-align:center;justify-content:center}
+.btn-wa{background:#25d366!important;color:#06240f!important;border-color:#25d366!important}
+.type-rail{display:grid;gap:14px;margin-top:26px}
+.type-card{display:block;position:relative;border-radius:22px;padding:22px 20px 20px;background:#fff;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);border:1px solid var(--line);transition:transform .2s ease}
+.type-card:hover{transform:translateY(-3px)}
+.type-card h3{margin:6px 0 6px;font-family:var(--display);font-size:1.2rem}
+.type-card p{margin:0;color:var(--muted);font-size:.95rem}
+.type-card .ico{font-size:1.6rem}
+.type-card .go{display:inline-block;margin-top:10px;font-weight:700;color:var(--red-dark)}
+.rank-table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:0}
+.rank-table th,.rank-table td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.rank-table td.pos{font-family:var(--display);font-weight:700;white-space:nowrap}
+.rank-table td.pos.top{color:var(--green)}
+.auto-note{font-size:.85rem;color:var(--muted)}
+.quote-card{border-radius:22px;background:var(--dash);color:#e2e8f0;padding:22px;margin-top:22px}
+.quote-card b{color:#fff}
+.author-box{display:flex;gap:14px;align-items:flex-start;border-radius:20px;border:1px solid var(--line);background:#fff;padding:18px;margin-top:24px}
+.author-box .av{flex:none;width:54px;height:54px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;font-family:var(--display);font-weight:700;font-size:1.3rem}
+.author-box p{margin:4px 0 0;font-size:.92rem;color:var(--muted)}
+.split-photo{display:grid;gap:18px;align-items:center}
+.split-photo figure{margin:0;border-radius:22px;overflow:hidden;aspect-ratio:3/4;max-height:520px}
+.split-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 60%;display:block}
+.updated{font-size:.8rem;color:#9aa6bd;margin-top:14px}
+@media (min-width:860px){
+  .auto-hero{padding:44px 0 64px}
+  .auto-hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px}
+  .type-rail{grid-template-columns:repeat(2,1fr)}
+  .split-photo{grid-template-columns:.8fr 1.2fr;gap:36px}
+}
+@media (min-width:1100px){.type-rail.four{grid-template-columns:repeat(4,1fr)}}
+@media (prefers-reduced-motion:reduce){.gauge .val{animation:none;stroke-dasharray:var(--v) 200}.type-card{transition:none}}

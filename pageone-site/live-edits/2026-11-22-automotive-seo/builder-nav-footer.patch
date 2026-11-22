@@ -1,0 +1,22 @@
+--- a/pageone-site/builder/build.py
++++ b/pageone-site/builder/build.py
+@@ -34,6 +34,7 @@
+ PROMO = '<div class="promo-bar"><div class="wrap"><b>Our price:</b> %%PLAN%%/month for anyone who registers by 31 Dec 2026. From 2027 the price may rise, depending on demand, and we\'ll tell you before it changes. <a href="/signup/">Sign up &rarr;</a></div></div>'
+ 
+ NAV = [
++    ("/automotive-seo-singapore/", "Automotive SEO"),
+     ("/how-it-works/", "How it works"),
+     ("/website/", "Website"),
+     ("/get-found/", "Get Found"),
+@@ -212,6 +213,11 @@
+       </div>
+       <div>
+         <h2>Services</h2>
++        <a href="/automotive-seo-singapore/">Automotive SEO Singapore</a>
++        <a href="/industries/car-workshop/">SEO for car workshops</a>
++        <a href="/automotive-seo-singapore/accident-repair-spray-painting/">Accident repair &amp; spray painting SEO</a>
++        <a href="/automotive-seo-singapore/car-battery-tyre-shops/">Car battery &amp; tyre shop SEO</a>
++        <a href="/automotive-seo-singapore/case-studies/">Automotive SEO case studies</a>
+         <a href="/website/">Website, built and managed</a>
+ {managed_link}        <a href="/seo-aeo-geo-singapore/">SEO, AEO and GEO</a>
+         <a href="/new-business-website/">New business website</a>
