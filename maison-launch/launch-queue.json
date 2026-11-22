@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21",
+ "updated": "2026-11-22",
  "rule": "Queue = section A (GSC PRIORITY: TODO pages with Google clicks in the last 28 days, most clicks then most impressions; Grok Bot re-pulls GSC before each daily run and may reorder A) then section B (all other TODO, launch date earliest first, planned/undated last). Daily build takes the top TODO in A until A is empty, then B. Hub order is separate: DONE first, then TODO by launch date (hub_order). ONE PAGE A DAY (Edwin 17 Nov 8:24am): 17 Nov was a one-off 3-page day (Merpati Meadow, Plantation Edge I & II, Coastal Cabana, all from ready v4 drops). From 18 Nov 2026 back to exactly 1 page per day in GSC (A) then launch-date (B) order.",
  "projects": [
   {
@@ -230,7 +230,7 @@
    "launch": "24 Jun 2023 preview",
    "launch_basis": "firm",
    "launch_source": "CDL release",
-   "status": "TODO",
+   "status": "DONE",
    "v4_set": "the-myst-v4",
    "floor_plan": true,
    "gsc_28d": {
@@ -238,7 +238,8 @@
     "impressions": 29,
     "position": 6.31
    },
-   "section": "A"
+   "section": "DONE",
+   "built": "2026-11-22"
   },
   {
    "slug": "lumina-grand",

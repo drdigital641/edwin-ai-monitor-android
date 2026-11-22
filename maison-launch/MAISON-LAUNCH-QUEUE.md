@@ -1,6 +1,6 @@
 # Maison new-launch queue (generated from launch-queue.json, do not hand-edit)
 
-Updated 2026-11-21. GSC data: 2026-11-21, last 28 days (Grok Bot section A refresh, 21 Nov 2026 10:11am SGT).
+Updated 2026-11-22. GSC data: 2026-11-21, last 28 days (Grok Bot section A refresh, 21 Nov 2026 10:11am SGT).
 
 Queue = section A (GSC PRIORITY: TODO pages with Google clicks in the last 28 days, most clicks then most impressions; Grok Bot re-pulls GSC before each daily run and may reorder A) then section B (all other TODO, launch date earliest first, planned/undated last). Daily build takes the top TODO in A until A is empty, then B. Hub order is separate: DONE first, then TODO by launch date (hub_order). ONE PAGE A DAY (Edwin 17 Nov 8:24am): 17 Nov was a one-off 3-page day (Merpati Meadow, Plantation Edge I & II, Coastal Cabana, all from ready v4 drops). From 18 Nov 2026 back to exactly 1 page per day in GSC (A) then launch-date (B) order.
 
@@ -44,12 +44,11 @@ No v4 set on the next project: policy 'make' (make = create the Base44 v4 set + 
 | 31 | Woodlands South Plains | HDB | 1 | 58 | 7.98 | not on file | N | N |
 | 32 | MacPherson Weave | HDB | 1 | 54 | 11.57 | not on file | N | N |
 | 33 | 39 Robinson Road | Commercial | 1 | 32 | 7.72 | not on file | N | N |
-| 34 | The Myst | Condo | 1 | 29 | 6.31 | 24 Jun 2023 preview | Y | Y |
-| 35 | Novo Place | EC | 1 | 26 | 6.08 | not on file | N | N |
-| 36 | Altura | EC | 1 | 25 | 6.96 | not on file | N | N |
-| 37 | The Orie | Condo | 1 | 20 | 15.0 | Jan 2025 | N | N |
-| 38 | CanningHill Piers | Condo | 1 | 18 | 8.83 | 5 Nov 2021 preview | Y | Y |
-| 39 | Thomson Reserve | Condo | 1 | 2 | 3.0 | Oct 2026 | N | N |
+| 34 | Novo Place | EC | 1 | 26 | 6.08 | not on file | N | N |
+| 35 | Altura | EC | 1 | 25 | 6.96 | not on file | N | N |
+| 36 | The Orie | Condo | 1 | 20 | 15.0 | Jan 2025 | N | N |
+| 37 | CanningHill Piers | Condo | 1 | 18 | 8.83 | 5 Nov 2021 preview | Y | Y |
+| 38 | Thomson Reserve | Condo | 1 | 2 | 3.0 | Oct 2026 | N | N |
 
 ## B) Everything else (launch date, earliest first; planned/unconfirmed, then no date on file, last)
 
@@ -115,6 +114,7 @@ No v4 set on the next project: policy 'make' (make = create the Base44 v4 set + 
 | Sembawang Anchor | Nov 2026 BTO |
 | Toa Payoh Hillside | Nov 2026 BTO |
 | Towner Residences | Aug 2021 BTO |
+| The Myst | 24 Jun 2023 preview |
 | Sembawang Brook | 17 Jun 2026 BTO |
 | Sembawang Portico | 16 Jun 2026 BTO |
 | Plantation Verge | May 2023 BTO |
