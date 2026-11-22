@@ -1,0 +1,30 @@
+--- a/base44/shared/imageGate.ts	(Bridge sandbox 8c9e71d)
++++ b/base44/shared/imageGate.ts
+@@ -42,11 +42,15 @@
+ //   3. the old rule, but only inside the main content: header, nav, footer, aside and everything from the first
+ //      related/cards block or "Related" heading onwards are ignored.
+ const SKIP_IMG = /logo|icon|avatar|portrait|badge|favicon|author/i;
++// 23 Nov 2026 fix (XADO block): XADO keeps its hero <img fetchpriority="high"> inside <header class="art-hero"> with
++// the H1, so stripping every <header> removed the real hero and the gate read a "Keep reading" card (sg-traffic.jpg).
++// A <header> that holds the page's H1 is the article header, not site chrome, and is kept.
+ function stripChrome(html: string): string {
+-  return html.replace(/<(header|nav|footer|aside)\b[\s\S]*?<\/\1>/gi, ' ');
++  return html.replace(/<(header|nav|footer|aside)\b[\s\S]*?<\/\1>/gi, (blk, tag) => (tag.toLowerCase() === 'header' && /<h1\b/i.test(blk) ? blk : ' '));
+ }
+ function cutRelated(html: string): string {
+-  const m = html.search(/<[a-z]+\b[^>]*\bclass\s*=\s*["'][^"']*\b(acards?|related[a-z-]*|more-articles|card-grid)\b|<h[2-4]\b[^>]*>\s*(related|more articles|you may also|read next)/i);
++  // Related-card blocks are never the article's own image (23 Nov: XADO "Keep reading" uses class rels/rel).
++  const m = html.search(/<[a-z]+\b[^>]*\bclass\s*=\s*["'][^"']*\b(acards?|related[a-z-]*|more-articles|card-grid)\b|<[a-z]+\b[^>]*\bclass\s*=\s*["'](?:[^"']*\s)?rels?(?=["'\s])|<h[2-4]\b[^>]*>\s*(related|more articles|you may also|read next|keep reading|read more|further reading)/i);
+   return m >= 0 ? html.slice(0, m) : html;
+ }
+ function usable(t: string): string {
+@@ -54,7 +58,8 @@
+   return src && !SKIP_IMG.test(src + ' ' + attr(t, 'class')) ? src : '';
+ }
+ export function heroImg(html: string): string {
+-  const body = stripChrome(html.replace(/<head\b[\s\S]*?<\/head>/i, ' '));
++  // Related cards are cut before every step, so a card photo can never be read as the hero (23 Nov 2026).
++  const body = cutRelated(stripChrome(html.replace(/<head\b[\s\S]*?<\/head>/i, ' ')));
+   const imgs = body.match(/<img\b[^>]*>/gi) || [];
+   for (const t of imgs) if (/\sfetchpriority\s*=\s*["']?high/i.test(t) && usable(t)) return usable(t);
+   const re = /<img\b[^>]*>/gi; let m: RegExpExecArray | null;
