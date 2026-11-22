@@ -1,3 +1,9 @@
+/* Missing thumbnail -> client name on the brand colour (22 Nov 2026). Runs before the glide clones the cards. */
+(function(){function nm(i){return (i.getAttribute('alt')||'').replace(/ website homepage$/,'')}
+function bad(i){var p=i.parentNode;if(!p||!p.classList||!p.classList.contains('phone'))return;p.setAttribute('data-name',nm(i));p.classList.add('nothumb')}
+document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG')bad(t)},true);
+function scan(){[].forEach.call(document.querySelectorAll('.phone img'),function(i){if(i.complete&&i.naturalWidth===0&&i.getAttribute('src'))bad(i)})}
+document.readyState!=='loading'?scan():document.addEventListener('DOMContentLoaded',scan);addEventListener('load',scan)})();
 /* Clients v2 preview: strip arrows + continuous glide (vertical scroll never pauses it) */
 (function(){var d=document;
 function ready(f){d.readyState!=='loading'?f():d.addEventListener('DOMContentLoaded',f)}

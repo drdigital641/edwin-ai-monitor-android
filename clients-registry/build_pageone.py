@@ -68,7 +68,20 @@ def agencies_html():
             '    </section>')
 
 
+FALLBACK_JS = r"""/* Missing thumbnail -> client name on the brand colour (22 Nov 2026). Runs before the glide clones the cards. */
+(function(){function nm(i){return (i.getAttribute('alt')||'').replace(/ website homepage$/,'')}
+function bad(i){var p=i.parentNode;if(!p||!p.classList||!p.classList.contains('phone'))return;p.setAttribute('data-name',nm(i));p.classList.add('nothumb')}
+document.addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG')bad(t)},true);
+function scan(){[].forEach.call(document.querySelectorAll('.phone img'),function(i){if(i.complete&&i.naturalWidth===0&&i.getAttribute('src'))bad(i)})}
+document.readyState!=='loading'?scan():document.addEventListener('DOMContentLoaded',scan);addEventListener('load',scan)})();
+"""
 NEW_CSS = """
+/* missing-thumbnail fallback (22 Nov 2026): client name on the brand colour, never a broken image */
+.phone{position:relative}
+.phone.nothumb img{visibility:hidden}
+.phone.nothumb::after{content:attr(data-name);position:absolute;inset:6px;border-radius:15px;background:linear-gradient(160deg,#ff3d57,#8b5cf6);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:#fff;font:700 1.15rem/1.25 var(--display);overflow-wrap:anywhere}
+.gcard .phone.nothumb::after{inset:4px;border-radius:10px;font-size:.8rem;padding:8px}
+
 /* white-label stats + agencies (22 Nov 2026) */
 .cv-wl{padding:56px 0;background:var(--bg-alt)}
 .cv-wl .section-lead{margin-bottom:24px}
@@ -217,9 +230,11 @@ def build(today=None, write=True):
         css = open(os.path.join(REF, 'clients-v2.css'), encoding='utf-8').read()
         import hashlib  # cache-bust rule: ?v=<sha256[:8]> of the CSS actually shipped
         out = re.sub(r'clients-v2\.css(\?v=[0-9a-f]+)?"', 'clients-v2.css?v=%s"' % hashlib.sha256((css + NEW_CSS).encode()).hexdigest()[:8], out)
+        js = FALLBACK_JS + open(os.path.join(REF, 'clients-v2.js'), encoding='utf-8').read()
+        out = re.sub(r'clients-v2\.js(\?v=[0-9a-f]+)?"', 'clients-v2.js?v=%s"' % hashlib.sha256(js.encode()).hexdigest()[:8], out)
         open(os.path.join(OUT, 'index.html'), 'w', encoding='utf-8').write(out)
         open(os.path.join(OUT, 'clients-v2.css'), 'w', encoding='utf-8').write(css + NEW_CSS)
-        shutil.copy(os.path.join(REF, 'clients-v2.js'), os.path.join(OUT, 'clients-v2.js'))
+        open(os.path.join(OUT, 'clients-v2.js'), 'w', encoding='utf-8').write(FALLBACK_JS + open(os.path.join(REF, 'clients-v2.js'), encoding='utf-8').read())
         os.makedirs(os.path.join(HERE, 'fixtures'), exist_ok=True)
         open(os.path.join(HERE, 'fixtures', 'wl-stats.html'), 'w', encoding='utf-8').write(wl_stats_html(st))
     return out, st, counts, removed

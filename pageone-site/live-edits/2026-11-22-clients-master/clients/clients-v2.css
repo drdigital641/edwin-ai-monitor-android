@@ -85,6 +85,12 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--cyan);outline-offse
   .strip{margin:0;padding:6px 4px 16px}
 }
 
+/* missing-thumbnail fallback (22 Nov 2026): client name on the brand colour, never a broken image */
+.phone{position:relative}
+.phone.nothumb img{visibility:hidden}
+.phone.nothumb::after{content:attr(data-name);position:absolute;inset:6px;border-radius:15px;background:linear-gradient(160deg,#ff3d57,#8b5cf6);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:#fff;font:700 1.15rem/1.25 var(--display);overflow-wrap:anywhere}
+.gcard .phone.nothumb::after{inset:4px;border-radius:10px;font-size:.8rem;padding:8px}
+
 /* white-label stats + agencies (22 Nov 2026) */
 .cv-wl{padding:56px 0;background:var(--bg-alt)}
 .cv-wl .section-lead{margin-bottom:24px}
