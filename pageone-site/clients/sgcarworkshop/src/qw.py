@@ -20,3 +20,28 @@ def qwify(h):
     h = re.sub(r'(<script src="%sassets/dir\.js\?v=[0-9a-f]+" defer></script>\n)' % re.escape(p),
                lambda x: x.group(1) + '<script src="%sassets/qw.js?v=%s" defer></script>\n' % (p, QW_V), h, count=1)
     return h
+
+
+def qw_intro(h):
+    """Website Manager 22 Nov 2026 on listing pages (areas, services): the "In short" answer and lede leave the hero and go into a
+    <section class="qw-intro"> placed right after the first workshop grid section, which moves up to sit right under the hero."""
+    if 'class="qw-intro"' in h:
+        return h
+    m = re.search(r'(<section class="hero"[^>]*><div class="w">(?:(?!</section>).)*?</h1>)((?:(?!</section>).)*?)(</div></section>\n)', h, re.S)
+    if not m or not re.search(r'<p class="(answer|lede)"', m.group(2)):
+        return h
+    intro = m.group(2)
+    g = None
+    for s in re.finditer(r'<section[^>]*>.*?</section>', h[m.end():], re.S):
+        if 'class="grid"' in s.group(0):
+            g = s; break
+    if not g:
+        return h
+    gs, ge = m.end() + g.start(), m.end() + g.end()
+    G = h[gs:ge]
+    before, after = h[m.end():gs], h[ge:]
+    rest = (before[:-1] if before.endswith('\n') else before) + after
+    fm = re.match(r'(<section class="alt featblock"><div class="w"><h2>.*?</h2>)(<p class="fine">Paid placements[^<]*</p>)(.*)(</div></section>)$', G, re.S)
+    if fm:   # Featured block: the "Paid placements" note moves under the cards
+        G = fm.group(1) + fm.group(3) + fm.group(2) + fm.group(4)
+    return h[:m.start()] + m.group(1) + m.group(3) + G + '\n<section class="qw-intro"><div class="w">' + intro + '</div></section>\n' + rest

@@ -2755,7 +2755,7 @@ def build():
     for path, h in PAGES.items():
         d = os.path.join(OUT, path)
         os.makedirs(d, exist_ok=True)
-        open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(qw.qwify(h))   # WM live header (22 Nov 2026), kept on rebuilds
+        open(os.path.join(d, 'index.html'), 'w', encoding='utf-8').write(qw.qw_intro(qw.qwify(h)))   # WM live header + listing intro move (22 Nov 2026), kept on rebuilds
     open(OUT + '/404.html', 'w', encoding='utf-8').write(not_found())
     write_redirects()
     for f in ('dir.css', 'dir.js', 'livephone.js', 'ask.js', 'qw.css', 'qw.js'):
