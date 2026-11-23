@@ -103,9 +103,9 @@ function c_login(Tenant $T): void {
     $h = errors_html($errs) . '<form method="post" class="card form" novalidate>' . csrf_field()
         . field('mobile', t('mobile'), ['type' => 'tel', 'inputmode' => 'tel', 'autocomplete' => 'tel', 'value' => $mobile, 'required' => 1, 'hint' => t('mobile_hint')])
         . field('pin', t('pin'), ['type' => 'password', 'inputmode' => 'numeric', 'autocomplete' => 'current-password', 'maxlength' => 6, 'pattern' => '[0-9]{6}', 'required' => 1])
-        . '<button class="btn big">' . e(t('log_in')) . '</button></form>'
-        . '<p class="alt"><a href="' . e(slug_url($T, 'forgot')) . '">' . e(t('forgot_pin')) . '</a></p>'
-        . '<p class="alt">' . e(t('no_account')) . ' <a href="' . e(slug_url($T, 'register')) . '">' . e(t('register')) . '</a></p>';
+        . '<button class="btn big">' . e(t('log_in')) . '</button>'
+        . '<div class="reg-cta"><p class="muted">' . e(t('no_account')) . '</p><a class="btn ghost big" href="' . e(slug_url($T, 'register')) . '">' . e(t('create_account')) . '</a></div></form>'
+        . '<p class="alt"><a href="' . e(slug_url($T, 'forgot')) . '">' . e(t('forgot_pin')) . '</a></p>';
     cpage($T, t('log_in'), $h);
 }
 
@@ -227,10 +227,15 @@ function c_book(Tenant $T): void {
             . '<input type="hidden" name="t" value="' . $sel . '"><input type="hidden" name="act" value="confirm">'
             . field('note', t('note'), ['type' => 'textarea', 'maxlength' => 500, 'hint' => t('note_hint'), 'value' => in_str('note', 500)]);
         if ($canRepeat) {
+            // defaults come from the service's own settings (admin > Services); a posted value wins when the form is shown again
+            $maxr = (int) $c['max_repeats'];
+            $dfreq = in_array($pf = in_str('freq', 10), ['one', 'weekly', 'monthly'], true) ? $pf : svc_freq($svc);
+            $dcount = max(2, min($maxr, in_int('count') ?: (svc_reps($svc) ?? 4)));
             $h .= '<fieldset class="seg"><legend>' . e(t('repeat')) . '</legend>';
             foreach (['one' => t('one_off'), 'weekly' => t('weekly'), 'monthly' => t('monthly')] as $k => $lbl)
-                $h .= '<label><input type="radio" name="freq" value="' . $k . '"' . ($k === 'one' ? ' checked' : '') . '><span>' . e($lbl) . '</span></label>';
-            $h .= '</fieldset><div class="rep-count">' . field('count', t('repeats_n'), ['type' => 'number', 'inputmode' => 'numeric', 'min' => 2, 'max' => (int) $c['max_repeats'], 'value' => '4']) . '</div>';
+                $h .= '<label><input type="radio" name="freq" value="' . $k . '"' . ($k === $dfreq ? ' checked' : '') . '><span>' . e($lbl) . '</span></label>';
+            $h .= '</fieldset><div class="rep-count">' . field('count', t('repeats_n'), ['type' => 'number', 'inputmode' => 'numeric', 'min' => 2, 'max' => $maxr, 'value' => (string) $dcount])
+                . '<p class="rep-note">' . e(t('repeat_self_move')) . '</p></div>';
         }
         $h .= '<div class="sticky"><button class="btn big">' . e($canRepeat ? t('continue') : t('confirm')) . '</button></div></form>';
         cpage($T, $svc['name'], $h);

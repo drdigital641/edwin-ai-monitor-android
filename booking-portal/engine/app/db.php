@@ -36,6 +36,7 @@ const P1B_SCHEMA = [
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, client_id INT UNSIGNED NOT NULL, slug VARCHAR(80) NOT NULL, group_slug VARCHAR(80) NOT NULL DEFAULT '',
   name VARCHAR(160) NOT NULL, description TEXT NOT NULL, duration_min SMALLINT UNSIGNED NULL, full_day TINYINT(1) NOT NULL DEFAULT 0, price DECIMAL(10,2) NULL, price_note VARCHAR(200) NOT NULL DEFAULT '',
   recurring_allowed TINYINT(1) NOT NULL DEFAULT 0, active TINYINT(1) NOT NULL DEFAULT 0, sort_order SMALLINT NOT NULL DEFAULT 0, admin_note VARCHAR(200) NOT NULL DEFAULT '',
+  default_freq ENUM('one','weekly','monthly') NOT NULL DEFAULT 'one', default_repeats TINYINT UNSIGNED NULL,
   UNIQUE KEY uq_svc (client_id, slug), KEY k_client (client_id, active, sort_order),
   CONSTRAINT fk_svc_client FOREIGN KEY (client_id) REFERENCES clients(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4",
@@ -84,7 +85,16 @@ const P1B_SCHEMA = [
 "CREATE TABLE IF NOT EXISTS meta (k VARCHAR(40) PRIMARY KEY, v VARCHAR(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4",
 ];
 
-function migrate(): void { foreach (P1B_SCHEMA as $sql) db()->exec($sql); }
+function migrate(): void {
+    foreach (P1B_SCHEMA as $sql) db()->exec($sql);
+    // v2.1: per-service repeat defaults (idempotent, MySQL + MariaDB); same change as deploy/migrate-v2.1.sql
+    $have = q("SELECT COLUMN_NAME FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME='services' AND COLUMN_NAME IN ('default_freq','default_repeats')")->fetchAll(PDO::FETCH_COLUMN);
+    if (!in_array('default_freq', $have, true)) db()->exec("ALTER TABLE services ADD COLUMN default_freq ENUM('one','weekly','monthly') NOT NULL DEFAULT 'one'");
+    if (!in_array('default_repeats', $have, true)) db()->exec('ALTER TABLE services ADD COLUMN default_repeats TINYINT UNSIGNED NULL');
+}
+/** per-service repeat defaults: preselected Repeat choice and Number of bookings when the customer picks the service */
+function svc_freq(array $s): string { $f = (string) ($s['default_freq'] ?? 'one'); return in_array($f, ['one', 'weekly', 'monthly'], true) ? $f : 'one'; }
+function svc_reps(array $s): ?int { $n = (int) ($s['default_repeats'] ?? 0); return $n >= 2 ? min($n, 52) : null; }
 function meta_get(string $k): ?string { $r = q('SELECT v FROM meta WHERE k=?', [$k])->fetchColumn(); return $r === false ? null : (string) $r; }
 function meta_set(string $k, string $v): void { q('INSERT INTO meta (k,v) VALUES (?,?) ON DUPLICATE KEY UPDATE v=VALUES(v)', [$k, $v]); }
 
@@ -162,15 +172,15 @@ final class Tenant {
     public function service(int $id): ?array { $r = q('SELECT * FROM services WHERE client_id=? AND id=?', [$this->cid, $id])->fetch(); return $r ?: null; }
     public function saveService(array $s): int {
         if (!empty($s['id'])) {
-            q('UPDATE services SET name=?, description=?, duration_min=?, full_day=?, price=?, price_note=?, recurring_allowed=?, active=?, sort_order=?, group_slug=? WHERE client_id=? AND id=?',
-              [$s['name'], $s['description'], $s['duration_min'], $s['full_day'] ?? 0, $s['price'], $s['price_note'], $s['recurring_allowed'], $s['active'], $s['sort_order'], $s['group_slug'], $this->cid, (int) $s['id']]);
+            q('UPDATE services SET name=?, description=?, duration_min=?, full_day=?, price=?, price_note=?, recurring_allowed=?, active=?, sort_order=?, group_slug=?, default_freq=?, default_repeats=? WHERE client_id=? AND id=?',
+              [$s['name'], $s['description'], $s['duration_min'], $s['full_day'] ?? 0, $s['price'], $s['price_note'], $s['recurring_allowed'], $s['active'], $s['sort_order'], $s['group_slug'], svc_freq($s), svc_reps($s), $this->cid, (int) $s['id']]);
             return (int) $s['id'];
         }
         $slug = $s['slug'] ?: (trim(preg_replace('/[^a-z0-9]+/', '-', strtolower($s['name'])), '-') ?: 'service');
         $base = $slug; $n = 2;
         while (q('SELECT 1 FROM services WHERE client_id=? AND slug=?', [$this->cid, $slug])->fetchColumn()) $slug = $base . '-' . $n++;
-        q('INSERT INTO services (client_id, slug, group_slug, name, description, duration_min, full_day, price, price_note, recurring_allowed, active, sort_order, admin_note) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)',
-          [$this->cid, $slug, $s['group_slug'] ?? '', $s['name'], $s['description'], $s['duration_min'], $s['full_day'] ?? 0, $s['price'], $s['price_note'], $s['recurring_allowed'], $s['active'], $s['sort_order'], $s['admin_note'] ?? '']);
+        q('INSERT INTO services (client_id, slug, group_slug, name, description, duration_min, full_day, price, price_note, recurring_allowed, active, sort_order, admin_note, default_freq, default_repeats) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+          [$this->cid, $slug, $s['group_slug'] ?? '', $s['name'], $s['description'], $s['duration_min'], $s['full_day'] ?? 0, $s['price'], $s['price_note'], $s['recurring_allowed'], $s['active'], $s['sort_order'], $s['admin_note'] ?? '', svc_freq($s), svc_reps($s)]);
         return (int) db()->lastInsertId();
     }
 

@@ -65,7 +65,7 @@ function import_seed(): int {
         'timezone' => 'Asia/Singapore', 'recurring_enabled' => 0, 'allowed_embed_domains' => '', 'is_test' => cfg('test_client') ? 1 : 0]);
     $T = new Tenant(SuperRepo::client($id));
     foreach ($j['services'] as $i => $s) {
-        $T->saveService($s + ['slug' => '', 'group_slug' => '', 'price' => null, 'price_note' => '', 'recurring_allowed' => 0, 'active' => 0, 'sort_order' => $i, 'full_day' => 0, 'admin_note' => '', 'duration_min' => null]);
+        $T->saveService($s + ['slug' => '', 'group_slug' => '', 'price' => null, 'price_note' => '', 'recurring_allowed' => 0, 'active' => 0, 'sort_order' => $i, 'full_day' => 0, 'admin_note' => '', 'duration_min' => null, 'default_freq' => 'one', 'default_repeats' => null]);
     }
     audit($id, 'system', 'client_import', '', $seed);
     return $id;
@@ -456,18 +456,24 @@ function a_service(Tenant $T, string $actor): void {
         $priceRaw = in_str('price', 12);
         $row = ['id' => $id, 'slug' => '', 'group_slug' => $s['group_slug'] ?? '', 'name' => in_str('name', 160), 'description' => in_str('description', 1000),
             'duration_min' => $dur > 0 ? min($dur, 1440) : null, 'full_day' => $full ? 1 : 0, 'price' => $priceRaw === '' ? null : (string) round((float) $priceRaw, 2),
-            'price_note' => in_str('price_note', 200), 'recurring_allowed' => empty($_POST['recurring_allowed']) ? 0 : 1, 'active' => empty($_POST['active']) ? 0 : 1, 'sort_order' => in_int('sort_order')];
+            'price_note' => in_str('price_note', 200), 'recurring_allowed' => empty($_POST['recurring_allowed']) ? 0 : 1, 'active' => empty($_POST['active']) ? 0 : 1, 'sort_order' => in_int('sort_order'),
+            'default_freq' => in_str('default_freq', 10), 'default_repeats' => in_int('default_repeats')];
         if ($row['name'] === '' || $row['description'] === '' || (!$full && !$row['duration_min'])) $errs[] = t('a_err_required');
         if (!$errs) { $T->saveService($row); audit($T->id(), $actor, $id ? 'service_edit' : 'service_add'); flash(t('a_saved')); redirect(aurl($T, 'a_set')); }
         $s = $row;
     }
-    $s = $s ?? ['name' => '', 'description' => '', 'duration_min' => '', 'full_day' => 0, 'price' => '', 'price_note' => '', 'recurring_allowed' => 0, 'active' => 0, 'sort_order' => 0];
+    $s = $s ?? ['name' => '', 'description' => '', 'duration_min' => '', 'full_day' => 0, 'price' => '', 'price_note' => '', 'recurring_allowed' => 0, 'active' => 0, 'sort_order' => 0, 'default_freq' => 'one', 'default_repeats' => null];
+    $fo = '';
+    foreach (['one' => t('one_off'), 'weekly' => t('weekly'), 'monthly' => t('monthly')] as $k => $lbl) $fo .= '<option value="' . $k . '"' . (svc_freq($s) === $k ? ' selected' : '') . '>' . e($lbl) . '</option>';
     $h = errors_html($errs) . '<form method="post" class="card form">' . csrf_field()
         . field('name', t('a_svc_name') . ' *', ['value' => $s['name'], 'required' => 1]) . field('description', t('a_svc_desc') . ' *', ['type' => 'textarea', 'value' => $s['description'], 'required' => 1])
         . field('duration_min', t('a_svc_dur') . ' *', ['type' => 'number', 'inputmode' => 'numeric', 'min' => 5, 'max' => 1440, 'value' => (string) $s['duration_min']])
         . check('full_day', t('a_svc_full'), (bool) $s['full_day'])
         . field('price', t('a_svc_price'), ['type' => 'number', 'step' => '0.01', 'min' => 0, 'value' => (string) $s['price']]) . field('price_note', t('a_svc_price_note'), ['value' => $s['price_note'], 'maxlength' => 200])
-        . check('recurring_allowed', t('a_svc_rec'), (bool) $s['recurring_allowed']) . check('active', t('a_svc_active'), (bool) $s['active'])
+        . check('recurring_allowed', t('a_svc_rec'), (bool) $s['recurring_allowed'])
+        . '<label for="f_default_freq">' . e(t('a_svc_dfreq')) . '</label><select id="f_default_freq" name="default_freq">' . $fo . '</select>'
+        . field('default_repeats', t('a_svc_dreps'), ['type' => 'number', 'inputmode' => 'numeric', 'min' => 2, 'max' => 52, 'value' => (string) (svc_reps($s) ?? ''), 'hint' => t('a_svc_dreps_hint')])
+        . check('active', t('a_svc_active'), (bool) $s['active'])
         . field('sort_order', t('a_svc_sort'), ['type' => 'number', 'value' => (string) $s['sort_order']])
         . '<button class="btn big">' . e(t('a_save')) . '</button></form>';
     apage($T, $id ? $s['name'] : t('a_add_service'), $h);

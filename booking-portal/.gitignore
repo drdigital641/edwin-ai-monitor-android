@@ -3,3 +3,4 @@ private/config.php
 private/my.cnf
 *.sql
 *.sql.gz
+!deploy/*.sql
