@@ -426,3 +426,74 @@ body.lang-zh .hx h1{font-size:clamp(2rem,9vw,4.4rem);max-width:12em}
 .rdot circle.hit{fill:transparent;stroke:none}
 @media (min-width:900px){.hx-home h1{font-size:clamp(2.6rem,4.4vw,4.2rem);max-width:16ch}.hx-inner h1{font-size:clamp(2.2rem,3.6vw,3.4rem)}}
 .svc h2 a{display:inline-flex;align-items:center;min-height:44px}
+
+/* v3 LIGHT LAB (client 23 Nov 9:22pm: "too dark, lighter but more professional").
+   Light steel pages, navy ink, KH red actions. Dark kept only for the hero, curtain reveal, proof plate, macro cards, closing band and footer. */
+:root{--bg:#f3f5f9;--bg-2:#e9edf4;--bg-3:#dde3ed;--ink:#0f1a33;--ink-2:#47536c;--ink-3:#66718a;--hi:#0b1530;--glass:#fff;--glass-2:#fff;--hair:rgba(15,26,51,.11);--shd:0 1px 2px rgba(15,26,51,.06),0 18px 40px -26px rgba(15,26,51,.35)}
+.hx,.curtain,.ctab,.ft,.idplate,.mcard,.radius{--bg:#070b16;--bg-2:#0b1222;--bg-3:#0d1630;--ink:#e9eef9;--ink-2:#a8b3cc;--ink-3:#8590ab;--hi:#fff;--glass:rgba(16,26,52,.55);--glass-2:rgba(20,32,64,.72);--hair:rgba(255,255,255,.09);color:var(--ink)}
+html{background:var(--bg);color-scheme:light}
+body{background:linear-gradient(rgba(15,26,51,.035) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(15,26,51,.035) 1px,transparent 1px) 0 0/44px 44px,radial-gradient(900px 600px at 100% 0,rgba(123,92,255,.06),transparent 60%),var(--bg);color:var(--ink)}
+body::before{opacity:.025;mix-blend-mode:multiply}
+h1,h2,h3{color:var(--hi)}
+.kick{color:var(--red)}.hx .kick,.curtain .kick,.ctab .kick{color:var(--red-2)}
+a{color:var(--ink)}
+/* header: white glass */
+.hd{background:rgba(255,255,255,.9);box-shadow:0 1px 0 var(--hair)}
+.wm,.nav a:hover,.nav a[aria-current]{color:var(--hi)}
+.hd>.wrap>.lang{background:#fff;box-shadow:inset 0 0 0 1px rgba(15,26,51,.16)}
+.hd>.wrap>.lang a~a{border-left-color:rgba(15,26,51,.12)}
+.sheet summary{background:#fff;box-shadow:inset 0 0 0 1px rgba(15,26,51,.18)}
+.bars,.bars::before,.bars::after{background:var(--hi)}
+.sheet[open] .bars{background:transparent}
+.sheet-in{background:rgba(255,255,255,.98);box-shadow:0 0 0 1px var(--hair),0 30px 60px -20px rgba(15,26,51,.45)}
+.sheet-h{color:var(--red)}
+/* buttons on light */
+.btn.call,.btn.line{background:#fff;color:var(--hi);box-shadow:inset 0 0 0 1.5px rgba(15,26,51,.28)}
+.btn.call:hover,.btn.line:hover{box-shadow:inset 0 0 0 1.5px var(--hi)}
+.hx .btn.call,.ctab .btn.call,.ctab .btn.line,.curtain .btn.call{background:rgba(255,255,255,.06);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.lnk{color:var(--hi)}.lnk::after{color:var(--red)}
+.mbar{background:rgba(255,255,255,.94);box-shadow:0 -1px 0 var(--hair),0 -10px 30px -18px rgba(15,26,51,.4)}
+/* panels */
+.split-g>div:first-child,.band.faq .narrow,.band:not(.intro):not(.proof):not(.tl):not(.ctab) .narrow:has(> h2){background:#fff;box-shadow:inset 0 0 0 1px var(--hair),var(--shd)}
+.band.alt,.band.svc{background:linear-gradient(180deg,transparent,rgba(221,227,237,.6) 14%,rgba(221,227,237,.6) 86%,transparent)}
+.lead{color:var(--ink)}.ticks li{color:var(--ink)}
+.sendbox{background:#f7f9fc;box-shadow:inset 0 0 0 1px var(--hair)}
+.fig,.gcard{box-shadow:var(--shd)}
+/* diagram */
+.nd-t{background:#fff;box-shadow:inset 0 0 0 1px var(--hair),var(--shd)}
+.nd-t b,.diag-all b,.srow-t b,.tline b,.acard b{color:var(--hi)}
+.nd-ic{background:radial-gradient(circle at 35% 30%,#22386f,#0b1530);box-shadow:0 0 0 4px var(--bg),0 8px 20px -8px rgba(15,26,51,.6)}
+.node:hover .nd-ic,.node:focus-visible .nd-ic,.node.lit .nd-ic{box-shadow:inset 0 0 0 1px rgba(255,120,130,.9),0 0 0 4px var(--bg),0 0 24px 0 rgba(227,25,45,.6)}
+.flow-line i{background:linear-gradient(180deg,transparent,var(--vio),var(--red),transparent);box-shadow:0 0 14px 2px rgba(227,25,45,.45)}
+.go{box-shadow:inset 0 0 0 1px rgba(15,26,51,.3)}.go::after{border-color:var(--hi)}
+.diag-all{background:linear-gradient(135deg,rgba(227,25,45,.08),rgba(123,92,255,.08)),#fff;box-shadow:inset 0 0 0 1px rgba(227,25,45,.35),var(--shd)}
+/* brands */
+.brands{background:#fff}
+.mq-in span:not(.mq-dot){-webkit-text-stroke:1px rgba(15,26,51,.45)}
+.mq-in span:nth-child(4n+1){color:var(--hi)}
+.mq-dot{box-shadow:none}
+/* carousels, rows, timeline, areas */
+.rn{background:#fff;color:var(--hi);box-shadow:inset 0 0 0 1px rgba(15,26,51,.22)}
+.rn::before{border-color:var(--hi)}
+.srow,.acard{background:#fff;box-shadow:inset 0 0 0 1px var(--hair),var(--shd)}
+.srow:hover,.acard:hover{box-shadow:inset 0 0 0 1px rgba(227,25,45,.55),var(--shd)}
+.acard .km,.svc h2 a{color:var(--red)}
+.tline::before{background:rgba(15,26,51,.12)}
+.tn{background:#fff;box-shadow:inset 0 0 0 1px rgba(15,26,51,.2),0 0 0 5px var(--bg)}
+.tline li.on .tn{box-shadow:0 0 0 1px rgba(255,120,130,.8),0 0 0 5px var(--bg),0 8px 22px -4px rgba(227,25,45,.6)}
+.radius{border-radius:var(--r-lg)}.radius svg{filter:drop-shadow(0 20px 30px rgba(15,26,51,.3))}.radius figcaption{color:#66718a}
+.chips li{background:#fff;box-shadow:inset 0 0 0 1px var(--hair)}
+.idplate{background:linear-gradient(160deg,#1a2c5c,#0b1530)}
+/* faq, visit, prose */
+.faq details{background:#fff;box-shadow:inset 0 0 0 1px var(--hair)}
+.find{background:linear-gradient(180deg,transparent,rgba(221,227,237,.55) 25%,rgba(221,227,237,.55) 75%,transparent)}
+.find address,.hrs td,.rev b{color:var(--hi)}.hrs .off td{color:var(--red)}
+.rev{background:#fff}
+.map-card{background:#fff;box-shadow:inset 0 0 0 1px var(--hair),var(--shd)}
+.map{background:var(--bg-3)}.map iframe{filter:none}
+.visit-wa p{color:var(--ink)}
+.chip{box-shadow:inset 0 0 0 1px rgba(15,26,51,.18)}
+.prose{background:#fff;box-shadow:inset 0 0 0 1px var(--hair),var(--shd)}.prose a{color:var(--hi)}
+.pv-contact{background:#f7f9fc}
+/* footer: deep navy, not black */
+.ft{background:linear-gradient(180deg,#0d1836,#081024)}

@@ -212,7 +212,7 @@ def head(pg, ld):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{E(p['title'])}">
 <meta name="twitter:description" content="{E(p['desc'])}">
-<meta name="theme-color" content="#070b16">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="{pg.u('images/brand/favicon-32.png')}" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="{pg.u('images/brand/apple-touch-icon.png')}">
 <link rel="preload" href="{pg.u('assets/fonts/oxanium-700.woff2')}" as="font" type="font/woff2" crossorigin>
