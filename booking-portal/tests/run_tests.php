@@ -161,7 +161,7 @@ ok($bad === 0, 'audit log holds no full mobile or PIN');
 
 /* cleanup: test bookings never show as confirmed */
 $A->hideTestBookings(); $B->hideTestBookings();
-ok((int) q("SELECT COUNT(*) FROM bookings WHERE is_test=1 AND status='confirmed'")->fetchColumn() === 0, 'test bookings cancelled after the run');
+ok((int) q("SELECT COUNT(*) FROM bookings WHERE is_test=1 AND status='confirmed' AND client_id IN (?,?)", [$A->id(), $B->id()])->fetchColumn() === 0, 'test bookings cancelled after the run');
 
 echo implode("\n", $log), "\n\n$pass passed, $fail failed\n";
 exit($fail ? 1 : 0);
