@@ -1,0 +1,899 @@
+{
+ "_source": "Built 23 Nov 2026 from facts.md in Bridge drop 6b0426381930693463751201 (researched 23 Nov 2026). Prices = Carousell listing 1084329773 [CL-A]. Edit this file to change prices, flags or booking_url.",
+ "slug": "sg-autobots",
+ "name": "SgAutobots",
+ "google_name": "SgAutobots Car detailing (mobile)",
+ "legal_name": "SGAUTOBOTS",
+ "legal_form": "sole proprietorship",
+ "phone_display": "+65 8366 7010",
+ "tel": "+6583667010",
+ "wa_number": "6583667010",
+ "booking_url": "",
+ "booking_prefill": "Hi SgAutobots, I'd like to book a slot. Package: {package} Car model/size: … Area/car park: … Preferred date and time: ",
+ "place_id": "ChIJexQzzJ0V2jER9hBvFSSK1Yw",
+ "maps_url": "https://www.google.com/maps/search/?api=1&query=SgAutobots&query_place_id=ChIJexQzzJ0V2jER9hBvFSSK1Yw",
+ "reviews_url": "https://search.google.com/local/reviews?placeid=ChIJexQzzJ0V2jER9hBvFSSK1Yw",
+ "write_review_url": "https://search.google.com/local/writereview?placeid=ChIJexQzzJ0V2jER9hBvFSSK1Yw",
+ "base_lat": 1.4186,
+ "base_lng": 103.8454,
+ "base_town": "Yishun",
+ "service_line": "Mobile car detailing across Singapore, we come to your car park, based in Yishun.",
+ "hours_text": "By appointment, WhatsApp to book.",
+ "socials": {
+  "facebook": "https://www.facebook.com/zacdu2019/",
+  "instagram": "https://www.instagram.com/sgautobots_sonax/",
+  "tiktok": "https://www.tiktok.com/@sgautobots",
+  "carousell": "https://www.carousell.sg/u/SgAutobots/"
+ },
+ "flags": {
+  "show_owner_name": false,
+  "claims_verified": false,
+  "carousell_count_ok": false,
+  "hours_confirmed": false,
+  "videos_live": false
+ },
+ "claims_text_unverified": "IDA-certified detailer · Sonax and Gtechniq products",
+ "claims_note_unverified": "As stated by SgAutobots: their own credentials (International Detailing Association certification; Sonax, Germany and Gtechniq, UK products).",
+ "sizes": [
+  "S",
+  "M",
+  "L",
+  "XL"
+ ],
+ "services": [
+  {
+   "slug": "car-spa",
+   "name": "Car Spa",
+   "kw": "car spa Singapore",
+   "h1": "Car Spa in Singapore, at Your Car Park",
+   "photos": [
+    "g13",
+    "g14",
+    "g01"
+   ],
+   "video": "loop-foam-wash",
+   "packages": [
+    {
+     "id": "maint-once",
+     "name": "Maintenance Car Spa (try once)",
+     "prices": [
+      65,
+      75,
+      85,
+      95
+     ],
+     "downtime": "50 min-1.5 h",
+     "dt": [
+      50,
+      90
+     ],
+     "note": "Ceramic coating maintenance",
+     "incl": [
+      "Pre foam wash and foam wash",
+      "Rim brush in and out",
+      "Tyre shine",
+      "Sonax maintenance coating",
+      "Vacuum",
+      "Centre console and steering wheel wipe",
+      "Blow dry, touch up and glass clean"
+     ]
+    },
+    {
+     "id": "maint-10",
+     "name": "Maintenance Car Spa (10 sessions)",
+     "prices": [
+      550,
+      650,
+      750,
+      850
+     ],
+     "downtime": "50 min-1.5 h per session",
+     "dt": [
+      50,
+      90
+     ],
+     "note": "10-session package",
+     "incl": [
+      "Same steps as the try-once Maintenance Car Spa, 10 sessions"
+     ]
+    },
+    {
+     "id": "carspa",
+     "name": "Carspa",
+     "prices": [
+      168,
+      208,
+      228,
+      268
+     ],
+     "downtime": "2-4 h",
+     "dt": [
+      120,
+      240
+     ],
+     "incl": [
+      "Foam wash, rim brush and tyre shine",
+      "Basic ceramic coating",
+      "Interior vacuum and wipe, door panels",
+      "Leather seats brush and leather conditioning",
+      "Glass, boot and carpets",
+      "Sonax Air"
+     ],
+     "addon": "More details brush from 60"
+    },
+    {
+     "id": "sonax-carspa",
+     "name": "Sonax Carspa",
+     "prices": [
+      268,
+      348,
+      428,
+      468
+     ],
+     "downtime": "4-8 h",
+     "dt": [
+      240,
+      480
+     ],
+     "incl": [
+      "Exterior detail",
+      "Full interior detail"
+     ]
+    },
+    {
+     "id": "sonax-standard",
+     "name": "Sonax Standard Car Wash & Sealant & Ceramic Spray Coating",
+     "prices": [
+      148,
+      208,
+      248,
+      288
+     ],
+     "downtime": "2-5 h",
+     "dt": [
+      120,
+      300
+     ],
+     "incl": [
+      "2-bucket method",
+      "Iron removal and chemical decon",
+      "Inner fender",
+      "Detail brushing of edges, door jambs and hinges",
+      "Sealants and Sonax ceramic spray",
+      "Vacuum"
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "interior-detailing",
+   "name": "Interior Detailing",
+   "kw": "car interior detailing Singapore",
+   "h1": "Car Interior Detailing in Singapore, at Your Car Park",
+   "photos": [
+    "g06",
+    "g05",
+    "g11",
+    "g09"
+   ],
+   "video": "loop-seat-extraction",
+   "packages": [
+    {
+     "id": "premium-interior",
+     "name": "Sonax Premium Interior Detailing",
+     "prices": [
+      148,
+      188,
+      238,
+      288
+     ],
+     "downtime": "3-6 h",
+     "dt": [
+      180,
+      360
+     ],
+     "incl": [
+      "Sonax interior detailing"
+     ]
+    },
+    {
+     "id": "deep-interior",
+     "name": "Deep Interior Detailing & Coating",
+     "prices": [
+      388,
+      488,
+      588,
+      688
+     ],
+     "downtime": "4-8 h",
+     "dt": [
+      240,
+      480
+     ],
+     "incl": [
+      "Pest fumigation and steaming",
+      "Plastic shampoo and plastic coating",
+      "Leather scrub, conditioning and coating",
+      "Fabric and carpet extraction",
+      "Roof top and boot",
+      "Sonax Air"
+     ]
+    },
+    {
+     "id": "seat-extraction",
+     "name": "Fabric & Alcantara Seats Brush Extraction",
+     "fixed": [
+      [
+       "5-seater",
+       188
+      ],
+      [
+       "7-seater",
+       288
+      ]
+     ],
+     "downtime": "2-4 h",
+     "dt": [
+      120,
+      240
+     ],
+     "incl": [
+      "Vacuum",
+      "Leather and fabric seat brush",
+      "Machine extraction",
+      "Interior wipe"
+     ]
+    }
+   ],
+   "addons": [
+    [
+     "Steaming",
+     "68+"
+    ],
+    [
+     "Interior plastic brush",
+     "50+"
+    ],
+    [
+     "Floor brush extraction",
+     "100+"
+    ],
+    [
+     "Carpets brush extraction",
+     "80+"
+    ],
+    [
+     "Roof cleaning",
+     "80+"
+    ],
+    [
+     "Accident (coffee or food spill)",
+     "from 120"
+    ]
+   ]
+  },
+  {
+   "slug": "car-fumigation-odour-removal",
+   "name": "Car Fumigation & Odour Removal",
+   "kw": "car fumigation Singapore",
+   "h1": "Car Fumigation in Singapore, at Your Car Park",
+   "photos": [
+    "g12",
+    "g11",
+    "g05"
+   ],
+   "video": "full-odour-removal",
+   "packages": [
+    {
+     "id": "fumigation",
+     "name": "Pest Fumigation & Interior Cleaning",
+     "range": [
+      108,
+      268
+     ],
+     "downtime": "2-3 h",
+     "dt": [
+      120,
+      180
+     ],
+     "incl": [
+      "Pest fumigation",
+      "Vacuum and steaming",
+      "Console, steering and door panel wipe-down",
+      "Leather seats cleaning",
+      "Sonax Air"
+     ]
+    },
+    {
+     "id": "deep-interior",
+     "name": "Deep Interior Detailing & Coating",
+     "prices": [
+      388,
+      488,
+      588,
+      688
+     ],
+     "downtime": "4-8 h",
+     "dt": [
+      240,
+      480
+     ],
+     "note": "Includes pest fumigation and steaming",
+     "incl": [
+      "Pest fumigation and steaming",
+      "Plastic shampoo and coating",
+      "Leather scrub, conditioning and coating",
+      "Fabric and carpet extraction",
+      "Roof top and boot",
+      "Sonax Air"
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "car-polishing-paint-correction",
+   "name": "Car Polishing & Paint Correction",
+   "kw": "car polishing Singapore",
+   "h1": "Car Polishing in Singapore, at Your Car Park",
+   "photos": [
+    "g07",
+    "g10",
+    "g02"
+   ],
+   "video": "loop-machine-polish",
+   "packages": [
+    {
+     "id": "wash-polish-seal",
+     "name": "Car Wash & Polish Seal",
+     "prices": [
+      168,
+      228,
+      288,
+      348
+     ],
+     "downtime": "2-4 h",
+     "dt": [
+      120,
+      240
+     ],
+     "incl": [
+      "Foam wash, rim brush and tyre shine",
+      "Rim, glass and exterior ceramic sealant",
+      "Machine polish and seal",
+      "Blow dry",
+      "Vacuum, centre console and steering wipe"
+     ]
+    },
+    {
+     "id": "detail-polish-spray",
+     "name": "Detail Car Wash & Polishing & Seal & Sonax Spray Ceramic Coating",
+     "prices": [
+      248,
+      348,
+      448,
+      508
+     ],
+     "downtime": "3-7 h",
+     "dt": [
+      180,
+      420
+     ],
+     "lasts": "4 months",
+     "incl": [
+      "Detail car wash",
+      "Machine polishing",
+      "Seal",
+      "Sonax spray ceramic coating"
+     ]
+    },
+    {
+     "id": "paint-correction",
+     "name": "Paint correction (single to multi stage)",
+     "range": [
+      200,
+      2000
+     ],
+     "downtime": "4-15 h",
+     "dt": [
+      240,
+      900
+     ],
+     "note": "Free with Sonax CCEVO and Gtechniq coating",
+     "incl": [
+      "Removes swirl marks and light scratches",
+      "Oxidation and water spots",
+      "Bird-dropping and sap etching",
+      "Holograms"
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "ceramic-coating",
+   "name": "Ceramic Coating",
+   "kw": "ceramic coating Singapore",
+   "h1": "Ceramic Coating in Singapore, at Your Car Park",
+   "photos": [
+    "g04",
+    "g10",
+    "g02",
+    "g07"
+   ],
+   "video": "loop-rim-coating",
+   "shared_incl": [
+    "Foam pre-wash and contact wash",
+    "Rim detail brush and tyre shine",
+    "Exterior plastic brush",
+    "Clay bar",
+    "Rim and glass sealant",
+    "Interior anti-bacterial wipe and vacuum",
+    "Machine polish and IPA prep",
+    "The coating"
+   ],
+   "packages": [
+    {
+     "id": "ceramic-lite",
+     "name": "Sonax Ceramic Lite Coating",
+     "prices": [
+      368,
+      448,
+      528,
+      608
+     ],
+     "downtime": "4-8 h",
+     "dt": [
+      240,
+      480
+     ],
+     "lasts": "9 months"
+    },
+    {
+     "id": "ccone",
+     "name": "Sonax CCOne Ceramic Coating",
+     "prices": [
+      428,
+      558,
+      708,
+      788
+     ],
+     "downtime": "5-9 h",
+     "dt": [
+      300,
+      540
+     ],
+     "lasts": "15 months"
+    },
+    {
+     "id": "vinyl-ppf",
+     "name": "Sonax Vinyl & PPF Ceramic Coating",
+     "prices": [
+      428,
+      558,
+      708,
+      788
+     ],
+     "downtime": "4-8 h",
+     "dt": [
+      240,
+      480
+     ],
+     "lasts": "1-2 years"
+    },
+    {
+     "id": "ccpro",
+     "name": "Sonax CCPro Ceramic Coating (new)",
+     "prices": [
+      528,
+      758,
+      908,
+      1088
+     ],
+     "downtime": "6-11 h",
+     "dt": [
+      360,
+      660
+     ],
+     "lasts": "2-4 years",
+     "note": "Includes paint correction and perfect polish"
+    },
+    {
+     "id": "ccevo",
+     "name": "Sonax CCEVO Ceramic Coating (new)",
+     "prices": [
+      788,
+      988,
+      1188,
+      1388
+     ],
+     "downtime": "8-15 h",
+     "dt": [
+      480,
+      900
+     ],
+     "lasts": "3-5 years",
+     "note": "Sonax snow foam 2-bucket, fallout spray, clay, Beast wheel cleaner, full paint correction, Profiline CCEVO in 3 layers"
+    },
+    {
+     "id": "gtechniq-5",
+     "name": "Gtechniq Ceramic Coating (5 years)",
+     "prices": [
+      888,
+      1188,
+      1388,
+      1588
+     ],
+     "downtime": "8-15 h",
+     "dt": [
+      480,
+      900
+     ],
+     "lasts": "5 years",
+     "note": "Paint correction free with Gtechniq coating"
+    },
+    {
+     "id": "gtechniq-9",
+     "name": "Gtechniq Ceramic Coating (5-9 years)",
+     "prices": [
+      1488,
+      1888,
+      2288,
+      2588
+     ],
+     "downtime": "9-16 h",
+     "dt": [
+      540,
+      960
+     ],
+     "lasts": "5-9 years",
+     "note": "Adds engine bay restoration and glass polish and coating"
+    }
+   ]
+  },
+  {
+   "slug": "glass-rim-coating",
+   "name": "Glass & Rim Coating",
+   "kw": "car glass coating Singapore",
+   "h1": "Car Glass Coating in Singapore, at Your Car Park",
+   "photos": [
+    "g08",
+    "g04",
+    "g10"
+   ],
+   "video": "loop-rim-coating",
+   "packages": [
+    {
+     "id": "glass-watermark",
+     "name": "Glass Water Mark Removal & Coating",
+     "prices": [
+      188,
+      288,
+      388,
+      428
+     ],
+     "downtime": "2-5 h",
+     "dt": [
+      120,
+      300
+     ],
+     "lasts": "6-12 months"
+    },
+    {
+     "id": "full-glass",
+     "name": "Full glass water-mark polish + glass coating",
+     "prices": [
+      188,
+      288,
+      388,
+      null
+     ],
+     "note": "Listed for S, M and L"
+    },
+    {
+     "id": "windscreen",
+     "name": "Windscreen polish & sealant",
+     "from_text": "S$80+"
+    },
+    {
+     "id": "rim-gtechniq",
+     "name": "Gtechniq (UK) Rim Ceramic Coating",
+     "from": 200,
+     "downtime": "1.5-3 h",
+     "dt": [
+      90,
+      180
+     ],
+     "lasts": "1 year"
+    }
+   ]
+  },
+  {
+   "slug": "engine-bay-cleaning",
+   "name": "Engine Bay Cleaning",
+   "kw": "engine bay cleaning Singapore",
+   "h1": "Engine Bay Cleaning in Singapore, at Your Car Park",
+   "photos": [
+    "g07",
+    "g14"
+   ],
+   "video": "loop-machine-polish",
+   "packages": [
+    {
+     "id": "engine-bay",
+     "name": "Engine Bay Restoration",
+     "range": [
+      88,
+      128
+     ],
+     "downtime": "45 min-2 h",
+     "dt": [
+      45,
+      120
+     ],
+     "addon": "Add steaming 50+"
+    }
+   ]
+  }
+ ],
+ "gallery": [
+  {
+   "id": "g01",
+   "file": "g01-mustang-sonax-finish",
+   "w": 720,
+   "h": 900,
+   "pos": "50% 55%",
+   "caption": "Yellow Ford Mustang after a Sonax detail",
+   "alt": "Yellow Ford Mustang after mobile car detailing by SgAutobots in a Singapore car park",
+   "big": true
+  },
+  {
+   "id": "g02",
+   "file": "g02-bentley-continental",
+   "w": 720,
+   "h": 900,
+   "pos": "50% 40%",
+   "caption": "Bentley Continental GT detailed on site",
+   "alt": "Blue Bentley Continental GT after mobile detailing by SgAutobots, Singapore",
+   "big": true
+  },
+  {
+   "id": "g03",
+   "file": "g03-kia-carnival",
+   "w": 720,
+   "h": 900,
+   "pos": "50% 60%",
+   "caption": "Kia Carnival after a mobile detail",
+   "alt": "Kia Carnival MPV after SgAutobots mobile car detailing in a condo car park",
+   "big": true
+  },
+  {
+   "id": "g04",
+   "file": "g04-porsche-cayenne",
+   "w": 720,
+   "h": 900,
+   "pos": "50% 55%",
+   "caption": "Porsche Cayenne detailed in the car park",
+   "alt": "Black Porsche Cayenne after Sonax mobile detailing by SgAutobots, Singapore",
+   "big": true
+  },
+  {
+   "id": "g05",
+   "file": "g05-seat-before-after",
+   "w": 720,
+   "h": 900,
+   "pos": "50% 50%",
+   "caption": "Fabric seat: before and after cleaning",
+   "alt": "Before and after photo of a car fabric seat cleaned by SgAutobots mobile interior detailing",
+   "big": true
+  },
+  {
+   "id": "g06",
+   "file": "g06-leather-seat",
+   "w": 720,
+   "h": 900,
+   "pos": "50% 40%",
+   "caption": "Leather seat interior detail",
+   "alt": "Light leather car seat during SgAutobots Sonax interior detailing",
+   "big": true
+  },
+  {
+   "id": "g07",
+   "file": "g07-machine-polish",
+   "w": 424,
+   "h": 530,
+   "pos": "50% 55%",
+   "caption": "Machine polishing before coating",
+   "alt": "SgAutobots detailer machine polishing car paint before ceramic coating, Singapore"
+  },
+  {
+   "id": "g08",
+   "file": "g08-rim-ceramic-coating",
+   "w": 548,
+   "h": 685,
+   "pos": "50% 55%",
+   "caption": "Rim coating on a BMW",
+   "alt": "BMW wheel after ceramic rim coating by SgAutobots mobile detailing, Singapore"
+  },
+  {
+   "id": "g09",
+   "file": "g09-leather-coating",
+   "w": 548,
+   "h": 685,
+   "pos": "50% 50%",
+   "caption": "Leather seat coating",
+   "alt": "Leather car seat being coated during SgAutobots interior detailing"
+  },
+  {
+   "id": "g10",
+   "file": "g10-volvo-finish",
+   "w": 456,
+   "h": 570,
+   "pos": "50% 50%",
+   "caption": "Volvo after ceramic coating",
+   "alt": "Volvo after Sonax ceramic coating by SgAutobots in a Singapore car park"
+  },
+  {
+   "id": "g11",
+   "file": "g11-door-trim",
+   "w": 520,
+   "h": 650,
+   "pos": "50% 50%",
+   "caption": "Door trim interior cleaning",
+   "alt": "Car door panel interior cleaning by SgAutobots mobile detailing"
+  },
+  {
+   "id": "g12",
+   "file": "g12-seat-extraction",
+   "w": 412,
+   "h": 515,
+   "pos": "50% 50%",
+   "caption": "Fabric extraction cleaning",
+   "alt": "Machine extraction of car carpet and fabric by SgAutobots, Singapore"
+  },
+  {
+   "id": "g13",
+   "file": "g13-foam-wash",
+   "w": 412,
+   "h": 515,
+   "pos": "50% 50%",
+   "caption": "Snow foam pre-wash",
+   "alt": "Snow foam pre-wash on a grey hatchback during SgAutobots maintenance car spa"
+  },
+  {
+   "id": "g14",
+   "file": "g14-grille-wash-mitt",
+   "w": 412,
+   "h": 515,
+   "pos": "50% 50%",
+   "caption": "Contact wash with mitt",
+   "alt": "Hand contact wash with wash mitt on car grille by SgAutobots"
+  }
+ ],
+ "videos": [
+  {
+   "id": "loop-foam-wash",
+   "w": 540,
+   "h": 720,
+   "loop": true,
+   "caption": "Snow foam pre-wash and rim brushing (Maintenance Car Spa)",
+   "alt": "Snow foam wash and rim brushing by SgAutobots in a Singapore car park",
+   "tiktok": "https://www.tiktok.com/@sgautobots/video/7708548640427592978"
+  },
+  {
+   "id": "loop-machine-polish",
+   "w": 540,
+   "h": 960,
+   "loop": true,
+   "caption": "Machine polishing before ceramic coating",
+   "alt": "SgAutobots machine polishing a white car before ceramic coating",
+   "tiktok": "https://www.tiktok.com/@sgautobots/video/7709659344010349831"
+  },
+  {
+   "id": "loop-seat-extraction",
+   "w": 540,
+   "h": 720,
+   "loop": true,
+   "caption": "Fabric seat machine extraction",
+   "alt": "Machine extraction cleaning of a fabric car seat by SgAutobots",
+   "tiktok": "https://www.tiktok.com/@sgautobots/video/7708911696756215047"
+  },
+  {
+   "id": "loop-rim-coating",
+   "w": 540,
+   "h": 960,
+   "loop": true,
+   "caption": "Ceramic, leather, glass and rim coating job",
+   "alt": "Black BMW after SgAutobots ceramic, glass and rim coating",
+   "tiktok": "https://www.tiktok.com/@sgautobots/video/7711157715879349522"
+  },
+  {
+   "id": "full-odour-removal",
+   "w": 540,
+   "h": 720,
+   "loop": false,
+   "caption": "Odour removal: interior steam and extraction (full clip, with sound)",
+   "alt": "Full video of SgAutobots car odour removal and interior cleaning",
+   "tiktok": "https://www.tiktok.com/@sgautobots/video/7706352182471167239"
+  },
+  {
+   "id": "full-interior-cleaning",
+   "w": 540,
+   "h": 960,
+   "loop": false,
+   "caption": "Interior cleaning (full clip, with sound)",
+   "alt": "Full video of SgAutobots interior cleaning of a car",
+   "tiktok": "https://www.tiktok.com/@sgautobots/video/7710543617126927624"
+  }
+ ],
+ "reviews": [
+  {
+   "user": "kendrick272",
+   "date": "Oct 2026",
+   "svc": [
+    "interior-detailing"
+   ],
+   "text": "Zac is prompt on reply and on time for appointment… he brought the whole workshop tools. He is super detailed… the whole interior is super clean!"
+  },
+  {
+   "user": "b4fern",
+   "date": "Sep 2026",
+   "svc": [
+    "ceramic-coating",
+    "car-polishing-paint-correction"
+   ],
+   "text": "…let me watch him 8am to 3pm to do deep washing, polishing, detailing..iPa and coating! … I had alot of stains… Zac solved everything!"
+  },
+  {
+   "user": "oogaboga",
+   "date": "Aug 2026",
+   "svc": [
+    "car-spa"
+   ],
+   "text": "did the sonax carspa with sgautobots. very detailed and professional, trustworthy and cares about his work"
+  },
+  {
+   "user": "marinecorps.ecompany67813",
+   "date": "Jul 2026",
+   "svc": [
+    "glass-rim-coating",
+    "engine-bay-cleaning"
+   ],
+   "text": "Very detailed in his work. Friendly and approachable. Will not hardsell on packages."
+  },
+  {
+   "user": "jack_jingaro",
+   "date": "Jul 2026",
+   "svc": [
+    "car-spa",
+    "car-fumigation-odour-removal"
+   ],
+   "text": "Contacted Zac for a car spa… Explained everything clearly. Car looks and smells new again."
+  },
+  {
+   "user": "takukuku",
+   "date": "Apr 2026",
+   "svc": [
+    "interior-detailing"
+   ],
+   "text": "Fast response, i enquired and immediately got a booking for next day afternoon. Punctual and meticulously revived my full leather sand beige interior."
+  },
+  {
+   "user": "vivid.yume",
+   "date": "Feb 2026",
+   "svc": [
+    "car-fumigation-odour-removal"
+   ],
+   "text": "He did a thorough pest fumigation, detailed car wash, and wet vacuum of upholstery…"
+  },
+  {
+   "user": "zoomzoomaway",
+   "date": "Jan 2026",
+   "svc": [
+    "car-polishing-paint-correction",
+    "ceramic-coating",
+    "glass-rim-coating",
+    "engine-bay-cleaning"
+   ],
+   "text": "He is super detailed on all the small details that other detailers will miss out."
+  }
+ ]
+}
