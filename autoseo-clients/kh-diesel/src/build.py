@@ -50,12 +50,12 @@ CAP = {m['id']: m['caption'] for m in ALL_MEDIA}
 # Captions/alts are English in the manifest; MS/ZH captions come from content ui.ill_caps when present.
 
 # v2 heroes: cinematic 16:9 scenes from the kh-diesel-wow-media drop (+ the regraded originals)
-HERO_OF = {'home': 'w03', 'diesel-fuel-pump-repair-bintulu': 'w03', 'common-rail-pump-repair-bintulu': 'w01',
+HERO_OF = {'home': 'w01', 'diesel-fuel-pump-repair-bintulu': 'h01', 'common-rail-pump-repair-bintulu': 'w01',
            'injector-repair-bintulu': 'w01', 'fuel-system-diagnosis-bintulu': 'h01', 'turbo-repair-bintulu': 'w02',
-           'vehicles-and-machines': 'w06', 'about': 'w06', 'contact': 'w06', 'articles': 'h01', 'privacy': 'w03',
+           'vehicles-and-machines': 'w06', 'about': 'w06', 'contact': 'w06', 'articles': 'h01', 'privacy': 'h01',
            'kidurong-bintulu-port': 'w06', 'kemena-sibiyu-nyabau': 'h02', 'bintulu-town-jepak': 'w06'}
 HERO_ID = {'h01': 'h01-cleanroom-pump-bench-16x9', 'h02': 'h02-workshop-exterior-yard-16x9', 'w01': 'wow01-injector-spray-macro',
-           'w02': 'wow02-turbo-impeller-macro', 'w03': 'wow03-cleanroom-bench-night', 'w06': 'wow06-workshop-exterior-dusk'}
+           'w02': 'wow02-turbo-impeller-macro', 'w06': 'wow06-workshop-exterior-dusk'}
 SVC_IMGS = {'diesel-fuel-pump-repair-bintulu': ['g01-cleanroom-pump-bench', 'g10-hands-calibrating-pump', 'g03-pump-parts-on-bench'],
             'common-rail-pump-repair-bintulu': ['g02-common-rail-test-room', 'g03-pump-parts-on-bench'],
             'injector-repair-bintulu': ['g02-common-rail-test-room', 'g10-hands-calibrating-pump'],

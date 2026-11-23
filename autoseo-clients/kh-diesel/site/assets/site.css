@@ -398,7 +398,7 @@ body.lang-zh .hx h1{font-size:clamp(2rem,9vw,4.4rem);max-width:12em}
 }
 
 /* v2 additions: macro duo, closing band backdrop, art-directed hero focus */
-.hx-home .hx-media img{object-position:74% 50%}
+.hx-home .hx-media img{object-position:54% 50%}
 .macro{padding-top:10px}
 .mgrid{display:grid;gap:14px}
 .mcard{display:block;text-decoration:none;color:#fff;border-radius:var(--r-lg);overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 30px 60px -34px #000;transition:box-shadow .3s}
