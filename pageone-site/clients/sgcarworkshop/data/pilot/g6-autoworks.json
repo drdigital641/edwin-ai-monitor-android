@@ -1,0 +1,46 @@
+{
+ "lede": "G6 Autoworks at 2 Kaki Bukit Ave 2, #01-30 is a car workshop for servicing and repairs of Japanese and continental cars.",
+ "chips": [
+  "Servicing",
+  "Repairs",
+  "Fleet maintenance"
+ ],
+ "services": [
+  "Engine diagnostic and troubleshooting",
+  "Installation of bolt-on aftermarket parts",
+  "Car servicing and repairing",
+  "Clutch and undercarriage",
+  "Timing belt",
+  "Air-conditioning",
+  "General servicing (engine oil, coolant, brake fluid, aircon gas, gear oil, transmission fluid)",
+  "Fleet maintenance"
+ ],
+ "themes": "Customers on Google Maps mention the old parts shown to the customer, only needed repairs done, and customers returning over many years.",
+ "faqs": [
+  [
+   "What does G6 Autoworks do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "Car repairs",
+  "Parts replacement",
+  "Car servicing"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "Services listed on its website. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Its website says it serves Japanese and continental vehicles. Ask the workshop about your car.",
+ "good_to_know": [
+  "Says it fits genuine manufacturer parts and that all work is warranted, according to its website",
+  "Does fleet maintenance, including packages for small rental companies, according to its website"
+ ],
+ "good_to_know_note": "From its website."
+}

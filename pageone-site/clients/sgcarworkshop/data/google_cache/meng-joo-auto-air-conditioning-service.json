@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 75,
+ "websiteUri": "https://www.facebook.com/p/Meng-Joo-auto-air-conditioning-service-100057096624576/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:30 AM – 5:00 PM",
+  "Tuesday: 8:30 AM – 5:00 PM",
+  "Wednesday: 8:30 AM – 5:00 PM",
+  "Thursday: 8:30 AM – 5:00 PM",
+  "Friday: 8:30 AM – 5:00 PM",
+  "Saturday: 8:30 AM – 5:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention proper aircon diagnosis instead of only topping up gas, a leaking hose fixed within hours, and a faulty compressor changed on the spot.",
+ "fetched_at": "2026-11-23",
+ "place_id": "ChIJBeF48_kW2jERQFxysOqAWDw",
+ "source": "google_places"
+}

@@ -1,0 +1,38 @@
+{
+ "lede": "Wheelers at 2 Kaki Bukit Ave 2, #01-14 Autohub@Kaki Bukit is a car workshop for maintenance and repairs.",
+ "chips": [
+  "Maintenance",
+  "Repairs"
+ ],
+ "services": [
+  "Car maintenance",
+  "Car repairs",
+  "Side mirror mechanism repair",
+  "Fault diagnosis"
+ ],
+ "themes": "Customers on Google Maps mention regular car maintenance, a side mirror mechanism repair, and a test drive before and after to understand a fault.",
+ "faqs": [
+  [
+   "What does Wheelers do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car maintenance",
+  "Side mirror repair",
+  "Fault diagnosis"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Ask the workshop about your car.",
+ "good_to_know": [],
+ "good_to_know_note": ""
+}

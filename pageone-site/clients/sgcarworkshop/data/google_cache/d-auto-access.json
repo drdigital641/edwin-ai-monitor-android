@@ -1,0 +1,38 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "car_dealer",
+  "auto_parts_store",
+  "point_of_interest",
+  "service",
+  "store",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 62,
+ "websiteUri": "https://www.dautoaccess.com/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 3:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention clear costs explained up front, photos and videos sent on WhatsApp, an oil leak found and fixed with a valve cover and water pump replacement, and turbo pipe advice on a BMW.",
+ "fetched_at": "2026-11-23",
+ "place_id": "ChIJXUCvgG8X2jERjUcf4Hc-62Y",
+ "source": "google_places"
+}

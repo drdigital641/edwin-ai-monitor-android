@@ -1,0 +1,37 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 194,
+ "websiteUri": "https://arcmotorworks.com.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": {
+  "freeParkingLot": true,
+  "freeGarageParking": true
+ },
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 4:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention an oil leak shown on the car and explained before parts were replaced, diagnosis of faults on a used Mercedes-Benz GLA, a rear absorber issue, and a transmission oil change.",
+ "fetched_at": "2026-11-23",
+ "place_id": "ChIJ9yWuM7UX2jERML9885-LKQw",
+ "source": "google_places"
+}

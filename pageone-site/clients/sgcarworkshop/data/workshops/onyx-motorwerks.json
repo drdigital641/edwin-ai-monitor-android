@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "slug": "onyx-motorwerks",
+ "place_id": "ChIJFbXaOY4X2jERXuWOw210WPI",
+ "place_id_checked_at": "2026-11-23",
+ "name": "Onyx Motorwerks",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-23",
+ "address": {
+  "block": "",
+  "street": "Ang Mo Kio Ind Park 2, #01-355 Block 5035",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "569538",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-23",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6582996103",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-23"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-23"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-23",
+ "last_verified_at": "2026-11-23",
+ "collector_version": "agent-v5",
+ "hold": "hold: same address as JSspraywerks (5035 AMK Ind Park 2 #01-355)",
+ "hold_code": "duplicate",
+ "held_on": "2026-11-24",
+ "estate": "amk-industrial-park-2",
+ "region": "north-east",
+ "planning_area": "Ang Mo Kio"
+}

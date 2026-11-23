@@ -1,0 +1,32 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 425,
+ "websiteUri": "https://www.facebook.com/Jsspraywerks/",
+ "paymentOptions": {
+  "acceptsCreditCards": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 3:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention a front bumper sanded and repainted, a full colour change on a Volkswagen Golf with door jambs and sills painted, faded plastic trim refreshed, and progress updates during the job.",
+ "fetched_at": "2026-11-23",
+ "place_id": "ChIJJ1NqmrMX2jEReYAc_riKK6o",
+ "source": "google_places"
+}

@@ -1,0 +1,48 @@
+{
+ "lede": "ACM Performance at 2 Kaki Bukit Ave 2, #02-09, Autohub 417921 is a car workshop for carbon cleaning, spray painting and modifications.",
+ "chips": [
+  "Carbon cleaning",
+  "Spray painting",
+  "Mods"
+ ],
+ "services": [
+  "Engine carbon cleaning (walnut blasting)",
+  "Throttle body cleaning",
+  "Fuel injector cleaning",
+  "Spray painting",
+  "Body kit fitting",
+  "Car modifications",
+  "Repairs"
+ ],
+ "themes": "Customers on Google Maps mention full engine carbon cleaning with walnut blasting, throttle body and fuel injector cleaning, a body kit fitted and sprayed on a Mercedes-Benz CLA45, a respray, and modifications and repairs.",
+ "faqs": [
+  [
+   "What does ACM Performance do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Engine carbon cleaning",
+  "Spray painting",
+  "Body kit fitting",
+  "Car modifications"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [
+  "Engine carbon cleaning",
+  "Spray painting"
+ ],
+ "makes": [
+  "Mercedes-Benz"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "good_to_know": [],
+ "good_to_know_note": ""
+}

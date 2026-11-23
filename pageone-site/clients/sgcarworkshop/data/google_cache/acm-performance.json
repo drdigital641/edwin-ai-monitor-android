@@ -1,0 +1,33 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_wash",
+  "auto_parts_store",
+  "car_repair",
+  "store",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.7,
+ "userRatingCount": 12,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 7:00 PM",
+  "Tuesday: 10:00 AM – 7:00 PM",
+  "Wednesday: 10:00 AM – 7:00 PM",
+  "Thursday: 10:00 AM – 7:00 PM",
+  "Friday: 10:00 AM – 7:00 PM",
+  "Saturday: 10:00 AM – 4:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention full engine carbon cleaning with walnut blasting, throttle body and fuel injector cleaning, a body kit fitted and sprayed on a Mercedes-Benz CLA45, a respray, and modifications and repairs.",
+ "fetched_at": "2026-11-23",
+ "place_id": "ChIJIc_Hbq0X2jERa-5cjVQY9_E",
+ "source": "google_places"
+}
