@@ -155,18 +155,16 @@ body.lang-zh .hx h1{font-size:clamp(2rem,9vw,4.4rem);max-width:12em}
 .fig.wide{margin-top:20px;max-width:440px}
 .split-g .fig{max-width:440px;width:100%;justify-self:center}
 
-/* curtain reveal (signature moment) */
-.curtain{position:relative;height:190svh;margin-top:-1px}
-.cur-stage{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:flex-end}
-.cur-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(calc(1.18 - var(--p,0)*.14));filter:brightness(calc(.45 + var(--p,0)*.5))}
-.cur-stage .ill{top:auto;bottom:14px}
-.cur-strips{position:absolute;inset:0;display:flex}
-.cur-strips i{flex:1;background:linear-gradient(90deg,rgba(220,232,255,.10),rgba(200,220,255,.26) 45%,rgba(220,232,255,.08));box-shadow:inset 1px 0 0 rgba(255,255,255,.22),inset -1px 0 0 rgba(0,0,0,.25);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);transform:translateX(calc(var(--d,0) * var(--p,0) * 60vw)) skewX(calc(var(--d,0) * var(--p,0) * -6deg));opacity:calc(1 - var(--p,0)*.95)}
-.cur-strips i:nth-child(-n+7){--d:-1}.cur-strips i:nth-child(n+8){--d:1}
-.cur-strips i:nth-child(7),.cur-strips i:nth-child(8){--d2:1}
-.cur-stage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg),rgba(7,11,22,0) 22%,rgba(7,11,22,0) 50%,rgba(7,11,22,.94) 90%);pointer-events:none}
-.cur-copy{position:relative;z-index:2;width:min(1180px,100% - 32px);margin:0 auto 9svh;opacity:calc(.2 + var(--p,0)*1.2);transform:translateY(calc((1 - var(--p,0))*30px))}
-.cur-copy h2{font-size:clamp(1.9rem,8.4vw,4rem);max-width:20ch}
+/* clean-room band: plain photo + dark gradient (no shutter/strip effect) */
+.cleanroom{position:relative;background:var(--bg)}
+.cr-stage{position:relative;min-height:78svh;overflow:hidden;display:flex;align-items:flex-end}
+.cr-stage picture{position:absolute;inset:0}
+.cr-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cr-stage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,11,22,0) 35%,rgba(7,11,22,.55) 62%,rgba(7,11,22,.9) 100%);pointer-events:none}
+.cr-stage .ill{top:12px;bottom:auto}
+.cr-copy{position:relative;z-index:2;width:min(1180px,100% - 32px);margin:0 auto 7svh}
+.cr-copy h2{font-size:clamp(1.9rem,8.4vw,4rem);max-width:20ch;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.5)}
+@media (min-width:900px){.cr-stage{min-height:min(80vh,760px)}}
 
 /* fuel-system diagram */
 .diag{overflow:hidden}
@@ -396,8 +394,6 @@ body.lang-zh .hx h1{font-size:clamp(2rem,9vw,4.4rem);max-width:12em}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .scan{display:none}
-  .curtain{height:auto}.cur-stage{position:relative;height:auto;min-height:80svh}
-  .cur-strips{display:none}.cur-img{transform:none;filter:brightness(.8)}.cur-copy{opacity:1;transform:none}
   .js .rv{opacity:1;transform:none}
 }
 
@@ -417,7 +413,6 @@ body.lang-zh .hx h1{font-size:clamp(2rem,9vw,4.4rem);max-width:12em}
 .ctab-bg img{width:100%;height:100%;object-fit:cover;opacity:.42}
 .ctab-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg) 0%,rgba(7,11,22,.55) 40%,rgba(7,11,22,.85) 100%),radial-gradient(120% 120% at 0% 100%,rgba(227,25,45,.25),transparent 55%)}
 .ctab-bg .ill{top:auto;bottom:12px;z-index:1}
-.cur-stage picture{position:absolute;inset:0}
 @media (min-width:900px){.mgrid{grid-template-columns:1fr 1fr;gap:20px}.hx-home .hx-media img{object-position:50% 50%}}
 /* v2 QA: tap sizes + desktop hero scale */
 .wm{min-height:44px}
@@ -428,14 +423,14 @@ body.lang-zh .hx h1{font-size:clamp(2rem,9vw,4.4rem);max-width:12em}
 .svc h2 a{display:inline-flex;align-items:center;min-height:44px}
 
 /* v3 LIGHT LAB (client 23 Nov 9:22pm: "too dark, lighter but more professional").
-   Light steel pages, navy ink, KH red actions. Dark kept only for the hero, curtain reveal, proof plate, macro cards, closing band and footer. */
+   Light steel pages, navy ink, KH red actions. Dark kept only for the hero, clean-room band, proof plate, macro cards, closing band and footer. */
 :root{--bg:#f3f5f9;--bg-2:#e9edf4;--bg-3:#dde3ed;--ink:#0f1a33;--ink-2:#47536c;--ink-3:#66718a;--hi:#0b1530;--glass:#fff;--glass-2:#fff;--hair:rgba(15,26,51,.11);--shd:0 1px 2px rgba(15,26,51,.06),0 18px 40px -26px rgba(15,26,51,.35)}
-.hx,.curtain,.ctab,.ft,.idplate,.mcard,.radius{--bg:#070b16;--bg-2:#0b1222;--bg-3:#0d1630;--ink:#e9eef9;--ink-2:#a8b3cc;--ink-3:#8590ab;--hi:#fff;--glass:rgba(16,26,52,.55);--glass-2:rgba(20,32,64,.72);--hair:rgba(255,255,255,.09);color:var(--ink)}
+.hx,.cleanroom,.ctab,.ft,.idplate,.mcard,.radius{--bg:#070b16;--bg-2:#0b1222;--bg-3:#0d1630;--ink:#e9eef9;--ink-2:#a8b3cc;--ink-3:#8590ab;--hi:#fff;--glass:rgba(16,26,52,.55);--glass-2:rgba(20,32,64,.72);--hair:rgba(255,255,255,.09);color:var(--ink)}
 html{background:var(--bg);color-scheme:light}
 body{background:linear-gradient(rgba(15,26,51,.035) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(15,26,51,.035) 1px,transparent 1px) 0 0/44px 44px,radial-gradient(900px 600px at 100% 0,rgba(123,92,255,.06),transparent 60%),var(--bg);color:var(--ink)}
 body::before{opacity:.025;mix-blend-mode:multiply}
 h1,h2,h3{color:var(--hi)}
-.kick{color:var(--red)}.hx .kick,.curtain .kick,.ctab .kick{color:var(--red-2)}
+.kick{color:var(--red)}.hx .kick,.cleanroom .kick,.ctab .kick{color:var(--red-2)}
 a{color:var(--ink)}
 /* header: white glass */
 .hd{background:rgba(255,255,255,.9);box-shadow:0 1px 0 var(--hair)}
@@ -450,7 +445,7 @@ a{color:var(--ink)}
 /* buttons on light */
 .btn.call,.btn.line{background:#fff;color:var(--hi);box-shadow:inset 0 0 0 1.5px rgba(15,26,51,.28)}
 .btn.call:hover,.btn.line:hover{box-shadow:inset 0 0 0 1.5px var(--hi)}
-.hx .btn.call,.ctab .btn.call,.ctab .btn.line,.curtain .btn.call{background:rgba(255,255,255,.06);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.hx .btn.call,.ctab .btn.call,.ctab .btn.line{background:rgba(255,255,255,.06);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
 .lnk{color:var(--hi)}.lnk::after{color:var(--red)}
 .mbar{background:rgba(255,255,255,.94);box-shadow:0 -1px 0 var(--hair),0 -10px 30px -18px rgba(15,26,51,.4)}
 /* panels */

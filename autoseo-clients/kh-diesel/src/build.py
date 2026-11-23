@@ -452,12 +452,11 @@ def brands(pg):
 
 
 def curtain(pg):
-    strips = '<i></i>' * 14
-    return (f'<section class="curtain" data-curtain><div class="cur-stage">'
+    # clean-room band: plain photo, simple dark gradient behind the text (shutter/strip effect removed, Edwin 23 Nov 9:37pm)
+    return (f'<section class="cleanroom"><div class="cr-stage">'
             f'<picture><source media="(min-width: 900px)" srcset="{pg.u("images/lab/h01-cleanroom-pump-bench-16x9-1600.webp")} 1600w, {pg.u("images/lab/h01-cleanroom-pump-bench-16x9-800.webp")} 800w" sizes="100vw">'
-            f'{img(pg, "wow04-common-rail-test-room", "100vw", 800, 1000, cls="cur-img")}</picture><span class="ill">{E(pg.ui["ill_credit"])}</span>'
-            f'<div class="cur-strips" aria-hidden="true">{strips}</div>'
-            f'<div class="cur-copy"><p class="kick"><span class="pulse" aria-hidden="true"></span>{E(pg.ui["curtain_k"])}</p><h2>{E(pg.ui["curtain_line"])}</h2></div></div></section>')
+            f'{img(pg, "wow04-common-rail-test-room", "100vw", 800, 1000, cls="cr-img")}</picture><span class="ill">{E(pg.ui["ill_credit"])}</span>'
+            f'<div class="cr-copy"><p class="kick"><span class="pulse" aria-hidden="true"></span>{E(pg.ui["curtain_k"])}</p><h2>{E(pg.ui["curtain_line"])}</h2></div></div></section>')
 
 
 def macro(pg):

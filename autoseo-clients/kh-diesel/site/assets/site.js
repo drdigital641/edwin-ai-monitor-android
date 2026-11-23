@@ -1,4 +1,4 @@
-/* KH Diesel site.js v2 (precision lab): menu sheet, sticky bar, carousel arrows, HUD counter, curtain reveal, timeline glow. Carousel glide copied from the Wrapstar reference. */
+/* KH Diesel site.js v2 (precision lab): menu sheet, sticky bar, carousel arrows, HUD counter, timeline glow. Carousel glide copied from the Wrapstar reference. */
 (function(){var d=document;
 function ready(f){d.readyState!=='loading'?f():d.addEventListener('DOMContentLoaded',f)}
 ready(function(){
@@ -50,7 +50,7 @@ function tick(t){var dt=last?Math.min(64,t-last):16;last=t;
     r.scrollLeft=o.pos});
   requestAnimationFrame(tick)}
 requestAnimationFrame(tick)})})();
-/* lab motion: HUD pressure count-up, strip-curtain reveal, fuel-flow line length, timeline glow. Light: one rAF per scroll, only while a section is on screen. */
+/* lab motion: HUD pressure count-up, fuel-flow line length, timeline glow. Light: one rAF per scroll, only while a section is on screen. */
 (function(){var d=document,w=window,rm=w.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 d.documentElement.classList.add('js');
 function ready(f){d.readyState!=='loading'?f():d.addEventListener('DOMContentLoaded',f)}
@@ -67,22 +67,20 @@ ready(function(){
   /* light each diagram node as the pulse passes on phones (cheap: on scroll position) */
   var nodes=[].slice.call(d.querySelectorAll('.node'));
   /* scroll-driven sections */
-  var cur=d.querySelector('[data-curtain]'),tl=d.querySelector('.tline'),items=tl?[].slice.call(tl.children):[],live={},q=false;
+  var tl=d.querySelector('.tline'),items=tl?[].slice.call(tl.children):[],live={},q=false;
   function upd(){q=false;var vh=w.innerHeight;
-    if(cur&&live.cur&&!rm){var r=cur.getBoundingClientRect(),span=r.height-vh,p=Math.min(1,Math.max(0,(-r.top+vh*.15)/(span*.8)));cur.style.setProperty('--p',p.toFixed(3))}
     if(tl&&live.tl){var r2=tl.getBoundingClientRect(),p2=Math.min(1,Math.max(0,(vh*.62-r2.top)/r2.height));tl.style.setProperty('--tp',p2.toFixed(3));
       items.forEach(function(li){li.classList.toggle('on',li.getBoundingClientRect().top+20<vh*.62)})}
     if(nodes.length&&live.diag){nodes.forEach(function(n){var b=n.getBoundingClientRect();n.classList.toggle('lit',b.top<vh*.6&&b.bottom>vh*.25)})}}
   function onScroll(){if(!q){q=true;requestAnimationFrame(upd)}}
   if('IntersectionObserver' in w){var io=new IntersectionObserver(function(es){es.forEach(function(e){live[e.target.getAttribute('data-k')]=e.isIntersecting});onScroll()},{rootMargin:'10% 0px'});
-    if(cur){cur.setAttribute('data-k','cur');io.observe(cur)}if(tl){tl.setAttribute('data-k','tl');io.observe(tl)}
+    if(tl){tl.setAttribute('data-k','tl');io.observe(tl)}
     var dg=d.querySelector('.diag');if(dg){dg.setAttribute('data-k','diag');io.observe(dg)}}
-  else{live={cur:1,tl:1,diag:1}}
-  if(rm&&cur)cur.style.setProperty('--p','1');
+  else{live={tl:1,diag:1}}
   if(rm)items.forEach(function(li){li.classList.add('on')}),tl&&tl.style.setProperty('--tp','1');
   w.addEventListener('scroll',onScroll,{passive:true});w.addEventListener('resize',onScroll);upd();
   /* gentle reveal for panels below the fold */
   if(!rm&&'IntersectionObserver' in w){var rv=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});
-    [].forEach.call(d.querySelectorAll('main .band .wrap>*:not(.flow-wrap),.idplate,.map-card'),function(el){if(el.getBoundingClientRect().top>w.innerHeight){el.classList.add('rv');rv.observe(el)}})}
+    [].forEach.call(d.querySelectorAll('main .band .wrap>*:not(.flow-wrap),.idplate,.map-card,.cr-copy'),function(el){if(el.getBoundingClientRect().top>w.innerHeight){el.classList.add('rv');rv.observe(el)}})}
 });
 })();
