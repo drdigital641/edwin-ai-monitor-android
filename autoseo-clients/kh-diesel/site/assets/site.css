@@ -277,3 +277,20 @@ body.lang-zh .srow-t b{font-weight:700;font-size:1.2rem}
   .proof .narrow,.proc .narrow{width:min(760px,100% - 32px)}
 }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* language switch: 3-segment bar at the top of every page (Edwin 23 Nov 2026 8:35pm SGT) */
+.hd-in{flex-wrap:wrap}
+.hd>.wrap>.lang{display:grid;grid-template-columns:repeat(3,1fr);order:10;flex:1 0 100%;gap:0;margin:0 0 8px;background:var(--paper);border-radius:var(--r-sm);box-shadow:inset 0 0 0 2px var(--navy);overflow:hidden;font-size:1rem}
+.hd>.wrap>.lang .sl{display:none}
+.hd>.wrap>.lang a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 8px;color:var(--navy-d);font-weight:800;letter-spacing:.02em}
+.hd>.wrap>.lang a~a{border-left:2px solid var(--navy)}
+.hd>.wrap>.lang a[aria-current]{background:var(--navy);color:#fff}
+.lang-sheet{display:none}
+html{scroll-padding-top:136px}
+.sheet-in{top:124px;max-height:calc(100vh - 210px)}
+@media (min-width:900px){
+  .hd-in{flex-wrap:nowrap}
+  .hd>.wrap>.lang{order:0;flex:0 0 auto;grid-template-columns:repeat(3,minmax(50px,auto));margin:0;font-size:.9rem}
+  html{scroll-padding-top:84px}
+}
+@media (min-width:900px) and (max-width:1060px){.nav{gap:14px}.hd-in{gap:10px}.hd>.wrap>.lang{grid-template-columns:repeat(3,minmax(44px,auto))}}
