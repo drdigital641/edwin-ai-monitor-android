@@ -14,8 +14,10 @@ function cfg(string $k, $default = null) {
         if (getenv('P1B_CONFIG')) $paths[] = getenv('P1B_CONFIG');
         $home = getenv('HOME') ?: (function_exists('posix_getpwuid') ? (posix_getpwuid(posix_geteuid())['dir'] ?? '') : '');
         if ($home) $paths[] = $home . '/booking-private/config.php';
-        $paths[] = dirname(__DIR__, 3) . '/booking-private/config.php'; // public_html/<docroot>/booking -> ~/booking-private
-        $paths[] = dirname(__DIR__, 4) . '/booking-private/config.php';
+        // walk up from booking/app to the first folder OUTSIDE public_html (the account home), never inside the web root
+        for ($d = dirname(__DIR__); $d !== dirname($d); $d = dirname($d)) {
+            if (strpos($d . '/', '/public_html/') === false) { $paths[] = $d . '/booking-private/config.php'; break; }
+        }
         foreach ($paths as $p) { if (is_file($p)) { $c = require $p; break; } }
         if (!is_array($c)) { $c = []; }
     }
