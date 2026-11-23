@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pageonesingapore.com/preview/sg-autobots/sitemap.xml

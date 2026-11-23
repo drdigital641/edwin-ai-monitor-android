@@ -1,0 +1,1 @@
+Video slot: put loop-foam-wash.mp4, loop-machine-polish.mp4, loop-seat-extraction.mp4, loop-rim-coating.mp4, full-odour-removal.mp4, full-interior-cleaning.mp4 here, then set videos_live true in ../site-config.json.

@@ -1,0 +1,241 @@
+[
+  {
+    "slug": "yishun",
+    "name": "Yishun",
+    "includes": [
+      "Khatib"
+    ],
+    "km": 2,
+    "neighbours": [
+      "sembawang",
+      "woodlands",
+      "ang-mo-kio"
+    ],
+    "parking": "Yishun is mostly HDB estates with multi-storey car parks and open-air lots, plus condo basement car parks around the town centre.",
+    "roads": [
+      "Yishun Avenue 2",
+      "Khatib MRT",
+      "Northpoint City"
+    ],
+    "line": "The detailer sets up in your Yishun car park, with Khatib and Yishun MRT close by and the base only a short hop away."
+  },
+  {
+    "slug": "seletar",
+    "name": "Seletar",
+    "includes": [],
+    "km": 3,
+    "neighbours": [
+      "yishun",
+      "ang-mo-kio",
+      "sengkang"
+    ],
+    "parking": "Seletar is mostly the Seletar Hills landed estate, where cars sit in private driveways, plus the Seletar Aerospace area. The Fernvale side belongs to Sengkang.",
+    "roads": [
+      "Seletar Aerospace Park",
+      "Yio Chu Kang Road",
+      "Seletar Airport"
+    ],
+    "line": "For Seletar Hills driveways and Aerospace Park car parks, the detailer comes from the nearby Yishun base with the full mobile kit."
+  },
+  {
+    "slug": "sembawang",
+    "name": "Sembawang",
+    "includes": [
+      "Canberra"
+    ],
+    "km": 4.5,
+    "neighbours": [
+      "yishun",
+      "woodlands"
+    ],
+    "parking": "Sembawang has HDB blocks with open-air lots and multi-storey car parks, newer estates around Canberra, and a few landed streets near the old Sembawang Road area.",
+    "roads": [
+      "Sembawang MRT",
+      "Canberra MRT",
+      "Sembawang Road"
+    ],
+    "line": "Whether you park near Sembawang MRT or in the Canberra estates, the detailer brings the kit to your car park."
+  },
+  {
+    "slug": "ang-mo-kio",
+    "name": "Ang Mo Kio",
+    "includes": [
+      "Yio Chu Kang"
+    ],
+    "km": 5.5,
+    "neighbours": [
+      "yishun",
+      "bishan",
+      "seletar"
+    ],
+    "parking": "Ang Mo Kio is dense HDB, with many multi-storey car parks and open-air lots beside the blocks. Yio Chu Kang has quieter streets and some landed homes.",
+    "roads": [
+      "Ang Mo Kio MRT",
+      "Yio Chu Kang MRT",
+      "CTE"
+    ],
+    "line": "Right off the CTE, the detailer reaches Ang Mo Kio and Yio Chu Kang car parks and works on the spot."
+  },
+  {
+    "slug": "woodlands",
+    "name": "Woodlands",
+    "includes": [
+      "Admiralty",
+      "Marsiling"
+    ],
+    "km": 6.6,
+    "neighbours": [
+      "sembawang",
+      "yishun"
+    ],
+    "parking": "Woodlands is large and mostly HDB, with multi-storey car parks at the older blocks and open-air lots in newer ones. Admiralty and Marsiling add more HDB and condo basement car parks.",
+    "roads": [
+      "Woodlands MRT",
+      "Admiralty MRT",
+      "Woodlands Checkpoint"
+    ],
+    "line": "At the northern edge of the island, the detailer drives to Woodlands, Admiralty and Marsiling car parks for a full mobile detail."
+  },
+  {
+    "slug": "sengkang",
+    "name": "Sengkang",
+    "includes": [],
+    "km": 6.2,
+    "neighbours": [
+      "punggol",
+      "seletar",
+      "hougang"
+    ],
+    "parking": "Sengkang is mainly newer HDB estates with multi-storey car parks, plus condo basement car parks near the MRT and along the waterway.",
+    "roads": [
+      "Sengkang MRT",
+      "Compassvale Road",
+      "Tampines Expressway"
+    ],
+    "line": "Sengkang car parks near the TPE and the MRT are within the detailer's mobile range from Yishun."
+  },
+  {
+    "slug": "punggol",
+    "name": "Punggol",
+    "includes": [],
+    "km": 6.5,
+    "neighbours": [
+      "sengkang",
+      "seletar"
+    ],
+    "parking": "Punggol has recent HDB towns with multi-storey car parks, and many condo developments with basement parking near the waterway.",
+    "roads": [
+      "Punggol MRT",
+      "Punggol Waterway Park",
+      "Tampines Expressway"
+    ],
+    "line": "The detailer comes to Punggol HDB and condo basement car parks, a short run from the Yishun base."
+  },
+  {
+    "slug": "upper-thomson",
+    "name": "Upper Thomson",
+    "includes": [],
+    "km": 7.3,
+    "neighbours": [
+      "bishan",
+      "ang-mo-kio",
+      "toa-payoh"
+    ],
+    "parking": "Upper Thomson is a mix of condo basement car parks along the main road and landed streets in the Sembawang Hills and Springleaf areas, with cars often in driveways.",
+    "roads": [
+      "Upper Thomson Road",
+      "Springleaf MRT",
+      "Marymount MRT"
+    ],
+    "line": "Along Upper Thomson Road and the nearby landed streets, the detailer works at your driveway or car park."
+  },
+  {
+    "slug": "bishan",
+    "name": "Bishan",
+    "includes": [],
+    "km": 7.4,
+    "neighbours": [
+      "ang-mo-kio",
+      "toa-payoh",
+      "upper-thomson"
+    ],
+    "parking": "Bishan has HDB estates with multi-storey car parks and open-air lots, plus condo basement car parks near the town centre.",
+    "roads": [
+      "Bishan MRT",
+      "Junction 8",
+      "CTE"
+    ],
+    "line": "With the CTE running through Bishan, the detailer reaches your HDB or condo car park without a long detour."
+  },
+  {
+    "slug": "serangoon",
+    "name": "Serangoon",
+    "includes": [],
+    "km": 7.5,
+    "neighbours": [
+      "hougang",
+      "bishan",
+      "ang-mo-kio"
+    ],
+    "parking": "Serangoon has HDB car parks and condo basements near the town centre, and the Serangoon Gardens estate has landed homes with private driveways.",
+    "roads": [
+      "Serangoon MRT",
+      "NEX",
+      "Upper Serangoon Road"
+    ],
+    "line": "Near NEX and Serangoon Gardens, the detailer sets up at your car park or driveway with the full kit."
+  },
+  {
+    "slug": "hougang",
+    "name": "Hougang",
+    "includes": [],
+    "km": 7.8,
+    "neighbours": [
+      "serangoon",
+      "sengkang",
+      "ang-mo-kio"
+    ],
+    "parking": "Hougang is mostly HDB, with open-air lots and multi-storey car parks beside the blocks, and some condo basement car parks.",
+    "roads": [
+      "Hougang MRT",
+      "Kovan MRT",
+      "KPE"
+    ],
+    "line": "Close to the KPE, the detailer comes to Hougang car parks around the MRT and Kovan."
+  },
+  {
+    "slug": "toa-payoh",
+    "name": "Toa Payoh",
+    "includes": [],
+    "km": 9.4,
+    "neighbours": [
+      "bishan",
+      "serangoon",
+      "upper-thomson"
+    ],
+    "parking": "Toa Payoh is an older HDB town with many multi-storey car parks and open-air lots, plus some condo basement car parks.",
+    "roads": [
+      "Toa Payoh MRT",
+      "Braddell MRT",
+      "PIE"
+    ],
+    "line": "The detailer drives to Toa Payoh car parks near the PIE and the town centre and works on site."
+  },
+  {
+    "slug": "bukit-panjang",
+    "name": "Bukit Panjang",
+    "includes": [],
+    "km": 9.4,
+    "neighbours": [
+      "woodlands",
+      "upper-thomson"
+    ],
+    "parking": "Bukit Panjang is mostly HDB with multi-storey car parks and open-air lots, plus condo basement car parks near the MRT and LRT.",
+    "roads": [
+      "Bukit Panjang MRT",
+      "Hillion Mall",
+      "BKE"
+    ],
+    "line": "Along the BKE in Bukit Panjang, the detailer brings the full mobile kit to your HDB or condo car park."
+  }
+]

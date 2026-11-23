@@ -1,0 +1,5 @@
+{
+ "booking_url": "",
+ "videos_live": false,
+ "_note": "booking_url: the shared booking portal URL. Empty = Book opens WhatsApp. videos_live: true once the mp4s are in video/."
+}
