@@ -121,7 +121,7 @@ def cta_row(pg, place, cls=''):
 
 
 def img(pg, mid, sizes, w, h, cls='', eager=False, kind='gallery'):
-    base = f'images/{"wow" if mid.startswith("wow") else "lab"}/{mid}'
+    base = f'images/{"wow" if mid.startswith("wow") else "hero" if mid.startswith("h0") else "gallery"}/{mid}'  # natural-colour originals (dark "lab" grade dropped, Edwin 9:55pm)
     ws = (480, 800, 1600) if kind == 'hero' else (480, 800)
     srcset = ', '.join(f'{pg.u(base + "-" + str(x) + ".webp")} {x}w' for x in ws)
     src = pg.u(f'{base}-800.webp')
@@ -191,7 +191,7 @@ def head(pg, ld):
     p = pg.p
     css = pg.u('assets/site.css') + '?v=' + ASSET_V['site.css']
     hid = HERO_ID[HERO_OF.get(pg.pid, 'h01')]
-    fold = 'wow' if hid.startswith('wow') else 'lab'
+    fold = 'wow' if hid.startswith('wow') else 'hero'
     h01 = pg.u(f'images/{fold}/' + hid + '-800.webp')
     hset = ', '.join(f"{pg.u(f'images/{fold}/' + hid + '-' + str(x) + '.webp')} {x}w" for x in (480, 800, 1600))
     zh_font = '' if pg.L != 'zh' else ''
@@ -454,7 +454,7 @@ def brands(pg):
 def curtain(pg):
     # clean-room band: plain photo, simple dark gradient behind the text (shutter/strip effect removed, Edwin 23 Nov 9:37pm)
     return (f'<section class="cleanroom"><div class="cr-stage">'
-            f'<picture><source media="(min-width: 900px)" srcset="{pg.u("images/lab/h01-cleanroom-pump-bench-16x9-1600.webp")} 1600w, {pg.u("images/lab/h01-cleanroom-pump-bench-16x9-800.webp")} 800w" sizes="100vw">'
+            f'<picture><source media="(min-width: 900px)" srcset="{pg.u("images/hero/h01-cleanroom-pump-bench-16x9-1600.webp")} 1600w, {pg.u("images/hero/h01-cleanroom-pump-bench-16x9-800.webp")} 800w" sizes="100vw">'
             f'{img(pg, "wow04-common-rail-test-room", "100vw", 800, 1000, cls="cr-img")}</picture><span class="ill">{E(pg.ui["ill_credit"])}</span>'
             f'<div class="cr-copy"><p class="kick"><span class="pulse" aria-hidden="true"></span>{E(pg.ui["curtain_k"])}</p><h2>{E(pg.ui["curtain_line"])}</h2></div></div></section>')
 
@@ -634,7 +634,7 @@ def main():
         os.makedirs(os.path.dirname(os.path.join(OUT, rel)) or OUT, exist_ok=True)
         shutil.copyfile(os.path.join(HERE, rel), os.path.join(OUT, rel))
         ASSET_V[os.path.basename(rel)] = vhash(os.path.join(OUT, rel))
-    for d in ['assets/fonts', 'images/brand', 'images/lab', 'images/wow']:
+    for d in ['assets/fonts', 'images/brand', 'images/hero', 'images/gallery', 'images/wow']:
         shutil.copytree(os.path.join(HERE, d), os.path.join(OUT, d), dirs_exist_ok=True)
     built, html_by = [], {}
     for L in ('en', 'ms', 'zh'):

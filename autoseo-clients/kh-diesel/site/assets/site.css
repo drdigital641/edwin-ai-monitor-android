@@ -492,3 +492,25 @@ a{color:var(--ink)}
 .pv-contact{background:#f7f9fc}
 /* footer: deep navy, not black */
 .ft{background:linear-gradient(180deg,#0d1836,#081024)}
+
+/* v4 NATURAL PHOTOS (Edwin 23 Nov 9:55pm: "remove that tint, make it like a normal photo").
+   Images are the natural-colour originals; no overlay, filter, blend or low opacity on photos.
+   Only a soft fade sits behind text that is printed on a photo. */
+body::before{display:none}
+.hx-shade{background:linear-gradient(180deg,rgba(7,11,22,0) 0%,rgba(7,11,22,0) 46%,rgba(7,11,22,.5) 66%,rgba(7,11,22,.86) 100%)}
+.hx h1,.hx .sub,.hx .kick{text-shadow:0 2px 18px rgba(0,0,0,.65),0 1px 3px rgba(0,0,0,.5)}
+@media (min-width:900px){
+  .hx-home .hx-shade{background:linear-gradient(90deg,rgba(7,11,22,.78) 0%,rgba(7,11,22,.5) 34%,rgba(7,11,22,0) 58%)}
+  .hx-inner .hx-shade{background:linear-gradient(180deg,rgba(7,11,22,0) 0%,rgba(7,11,22,0) 52%,rgba(7,11,22,.5) 72%,rgba(7,11,22,.85) 100%)}
+}
+.cr-stage::after{background:linear-gradient(180deg,rgba(7,11,22,0) 0%,rgba(7,11,22,0) 55%,rgba(7,11,22,.55) 75%,rgba(7,11,22,.88) 100%)}
+/* closing band: photo shown as a normal picture above the text, not behind it */
+.ctab{padding-top:0}
+.ctab-bg{position:relative;inset:auto;z-index:0;aspect-ratio:16/9;max-height:460px;overflow:hidden;margin-bottom:36px}
+.ctab-bg img{opacity:1}
+.ctab-bg::after{display:none}
+.hx .kick{background:rgba(7,11,22,.62);color:#ff6b78;padding:7px 12px;border-radius:99px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+@media (min-width:900px){
+  .hx-inner .hx-shade{background:linear-gradient(90deg,rgba(7,11,22,.8) 0%,rgba(7,11,22,.5) 34%,rgba(7,11,22,0) 58%)}
+  .rd.rd-mini{top:auto;bottom:52px}
+}
