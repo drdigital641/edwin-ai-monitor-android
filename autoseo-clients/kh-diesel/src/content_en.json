@@ -1,0 +1,512 @@
+{
+ "ui": {
+  "skip": "Skip to content",
+  "nav_home": "Home",
+  "nav_services": "Services",
+  "nav_vehicles": "Vehicles",
+  "nav_areas": "Areas",
+  "nav_about": "About",
+  "nav_contact": "Contact",
+  "nav_articles": "Articles",
+  "menu": "Menu",
+  "close": "Close",
+  "wa": "WhatsApp",
+  "wa_long": "WhatsApp 019-854 5433",
+  "call": "Call",
+  "call_long": "Call 019-854 5433",
+  "landline": "Landline (Tel/Fax) 086-340356",
+  "ill_credit": "Illustrated workshop scene",
+  "ill_note": "All pictures on this site are AI-generated illustrations of a diesel workshop. They are not photographs of real jobs, customer vehicles or our building.",
+  "hours_h": "Opening hours",
+  "hours_week": "Monday to Saturday",
+  "hours_time": "8:00am to 5:30pm",
+  "hours_sun": "Sunday",
+  "hours_closed": "Closed",
+  "hours_tz": "Malaysia time (Bintulu)",
+  "find_h": "Find the workshop",
+  "open_maps": "Open in Google Maps",
+  "directions": "Get directions",
+  "review_h": "Had work done here?",
+  "review_p": "A short Google review helps other diesel owners in Bintulu find the workshop.",
+  "review_btn": "Write a Google review",
+  "address_h": "Address",
+  "services_h": "Services",
+  "areas_h": "Areas near Batu 10",
+  "talk_h": "Talk to us",
+  "privacy": "Privacy",
+  "credit": "Website by AutoSEO.my",
+  "updated": "Updated: 23 Nov 2026",
+  "faq_h": "Questions people ask",
+  "next_service": "Next service",
+  "all_services": "All services",
+  "breadcrumb_home": "Home",
+  "lang_label": "Language",
+  "map_title": "Map of KH Diesel Fuel Pump, Batu 10, Bintulu",
+  "carousel_label": "Workshop illustrations",
+  "prev": "Previous",
+  "next": "Next",
+  "cta_band_h": "Send a photo of the part first",
+  "cta_band_p": "WhatsApp us a clear photo of the pump, injector or turbo, plus the vehicle or machine it came from.",
+  "km_from": "from Batu 10",
+  "see_area": "See this area",
+  "plate_h": "Workshop plate",
+  "plate_loc": "Location",
+  "plate_loc_v": "Batu 10, Jalan Bintulu–Miri, Bintulu",
+  "plate_rooms": "Rooms",
+  "plate_rooms_v": "Clean room with pump test benches, common-rail test room, heavy-engine bay",
+  "plate_hours": "Hours",
+  "plate_hours_v": "Mon–Sat 8:00am–5:30pm",
+  "plate_phones": "Phones",
+  "plate_phones_v": "019-854 5433 (WhatsApp) · 086-340356 (landline)",
+  "owner_label": "Owner",
+  "home_crumb": "Home",
+  "areas_crumb": "Areas",
+  "services_crumb": "Services",
+  "radius_caption": "All three areas sit inside 20 km of the Batu 10 workshop.",
+  "workshop_label": "Workshop, Batu 10",
+  "process_h": "How a job runs",
+  "process": [
+   [
+    "WhatsApp a photo",
+    "Send a photo of the part and tell us the vehicle or machine."
+   ],
+   [
+    "Test",
+    "The pump, injector or turbo is checked at the workshop."
+   ],
+   [
+    "Quote",
+    "You get the findings and a quote before any repair starts."
+   ],
+   [
+    "Repair",
+    "The part is repaired once you say go ahead."
+   ],
+   [
+    "Test result",
+    "It is tested again and you see the result before it goes back on."
+   ]
+  ],
+  "articles_none": "Articles are being added. Until then, the service pages below answer the common questions."
+ },
+ "wa_msgs": {
+  "home": "Hi KH Diesel, I'd like to ask about diesel fuel pump, injector or turbo repair.",
+  "diesel-fuel-pump-repair-bintulu": "Hi KH Diesel, I'd like to ask about diesel fuel pump repair.",
+  "common-rail-pump-repair-bintulu": "Hi KH Diesel, I'd like to ask about common rail pump repair.",
+  "injector-repair-bintulu": "Hi KH Diesel, I'd like to ask about injector repair and testing.",
+  "turbo-repair-bintulu": "Hi KH Diesel, I'd like to ask about turbo repair.",
+  "fuel-system-diagnosis-bintulu": "Hi KH Diesel, I'd like to ask about a diesel fuel system check.",
+  "vehicles-and-machines": "Hi KH Diesel, I'd like to ask about repair for my lorry, pickup or machine.",
+  "kidurong-bintulu-port": "Hi KH Diesel, I am in Kidurong, can you take a look at my pump?",
+  "kemena-sibiyu-nyabau": "Hi KH Diesel, I am near Kemena / Nyabau, can you take a look at my pump?",
+  "bintulu-town-jepak": "Hi KH Diesel, I am in Bintulu town, can you take a look at my pump?",
+  "about": "Hi KH Diesel, I'd like to ask about your workshop at Batu 10.",
+  "contact": "Hi KH Diesel, I'd like to ask about a repair.",
+  "articles": "Hi KH Diesel, I have a question about my diesel engine.",
+  "privacy": "Hi KH Diesel, I have a question."
+ },
+ "services": [
+  {
+   "id": "diesel-fuel-pump-repair-bintulu",
+   "short": "Diesel fuel pump repair",
+   "line": "Inline and rotary pumps tested and set on the bench.",
+   "img": "g01-cleanroom-pump-bench"
+  },
+  {
+   "id": "common-rail-pump-repair-bintulu",
+   "short": "Common rail pump repair",
+   "line": "High-pressure pumps for modern diesels.",
+   "img": "g03-pump-parts-on-bench"
+  },
+  {
+   "id": "injector-repair-bintulu",
+   "short": "Injector repair and testing",
+   "line": "Common-rail and diesel injectors tested, cleaned and set.",
+   "img": "g02-common-rail-test-room"
+  },
+  {
+   "id": "turbo-repair-bintulu",
+   "short": "Turbo repair",
+   "line": "Turbochargers stripped, rebuilt and checked.",
+   "img": "g04-turbo-rebuild-bench"
+  },
+  {
+   "id": "fuel-system-diagnosis-bintulu",
+   "short": "Fuel system diagnosis",
+   "line": "Find out whether it is the pump, the injectors or the turbo.",
+   "img": "g10-hands-calibrating-pump"
+  }
+ ],
+ "areas": [
+  {
+   "id": "kemena-sibiyu-nyabau",
+   "name": "Kemena, Sibiyu and Nyabau",
+   "km": "0–6.5 km",
+   "line": "The closest area. Walk in from Batu 10, Jalan Nyabau or the highway."
+  },
+  {
+   "id": "kidurong-bintulu-port",
+   "name": "Kidurong and Bintulu Port",
+   "km": "7–9 km",
+   "line": "Haulage, port equipment and industrial contractors."
+  },
+  {
+   "id": "bintulu-town-jepak",
+   "name": "Bintulu town and Jepak",
+   "km": "8–10 km",
+   "line": "Town, 2½ Mile Light Industrial, Assyakirin, Tanjung Batu and Jepak."
+  }
+ ],
+ "pages": {
+  "home": {
+   "title": "Diesel Fuel Pump, Injector & Turbo Repair Bintulu | KH",
+   "desc": "KH Diesel Fuel Pump at Batu 10, Bintulu repairs and tests diesel fuel pumps, common-rail pumps, injectors and turbos; WhatsApp 019-854 5433.",
+   "h1": "Diesel Fuel Pump, Injector and Turbo Repair in Bintulu",
+   "sub": "Clean-room test benches at Batu 10, Jalan Bintulu–Miri.",
+   "bench_h": "Inside the workshop",
+   "bench_p": "A clean room with pump test benches, a separate common-rail test room, turbo and parts racks, and a bay for heavy engines.",
+   "svc_h": "What we repair",
+   "veh_h": "Vehicles and machines we see",
+   "veh_p": "Pickups, light trucks, lorries, coaches and heavy plant come through the yard.",
+   "veh_link": "Vehicles and machines",
+   "areas_h": "Around Batu 10",
+   "areas_p": "We are on the Bintulu–Miri road at Batu 10. These three areas are all within 20 km.",
+   "plate_intro": "The facts you can check before you drive over.",
+   "visit_h": "Visit the workshop"
+  },
+  "diesel-fuel-pump-repair-bintulu": {
+   "title": "Diesel Fuel Pump Repair Bintulu | Test Bench at Batu 10",
+   "desc": "Diesel fuel pump repair in Bintulu: inline and rotary pumps tested and calibrated on the bench at KH Diesel, Batu 10. WhatsApp a photo for a quote.",
+   "h1": "Diesel Fuel Pump Repair in Bintulu",
+   "intro": "KH Diesel Fuel Pump repairs and calibrates diesel fuel pumps on a test bench in a clean room. The workshop is at Batu 10 on Jalan Bintulu–Miri, Bintulu.",
+   "s1_h": "Signs the pump needs checking",
+   "s1_list": [
+    "The engine is hard to start or cranks for a long time",
+    "Black smoke under load or a loss of power on hills",
+    "The engine hunts, surges or idles unevenly",
+    "Diesel leaking around the pump body or lines",
+    "Higher fuel use than usual for the same work"
+   ],
+   "s1_note": "These signs can also come from injectors, filters or the turbo, which is why the pump is tested before anything is replaced.",
+   "s2_h": "Tested on the bench, not guessed",
+   "s2_p": "The pump comes off the engine and goes onto a test bench in the clean room. The green-floor room with strip curtains keeps dust away from the pump while it is open. The bench lets the pump run outside the engine, so delivery and timing can be checked and set before it goes back on.",
+   "s3_h": "Inline and rotary pumps",
+   "s3_p": "Older lorries, pickups and machines often use inline or rotary (distributor) pumps. Tell us the vehicle or machine and the engine on WhatsApp, and send a photo of the pump label if it has one, so we can tell you what the job involves.",
+   "send_h": "What to send on WhatsApp",
+   "send_list": [
+    "A clear photo of the pump and any label on it",
+    "The vehicle or machine, model and engine",
+    "What the engine is doing (smoke, power, starting)"
+   ],
+   "faqs": [
+    [
+     "Where do I bring the pump or vehicle?",
+     "To the KH Diesel Fuel Pump workshop at Batu 10, Jalan Bintulu–Miri, Bintulu: Sublot 14 of Parent Lot 1337 & Lot 341, Block 33, Kemena Land District, 97000 Bintulu, Sarawak."
+    ],
+    [
+     "What are your opening hours?",
+     "Monday to Saturday, 8:00am to 5:30pm. Closed on Sunday."
+    ],
+    [
+     "How do I get a quote?",
+     "WhatsApp 019-854 5433 with a photo of the pump and the vehicle or machine it came from. The pump is tested before a repair quote is given."
+    ],
+    [
+     "Do you show prices on the website?",
+     "No. Every pump is different, so ask on WhatsApp and the quote comes after testing."
+    ]
+   ]
+  },
+  "common-rail-pump-repair-bintulu": {
+   "title": "Common Rail Pump Repair Bintulu, Sarawak | KH Diesel",
+   "desc": "Common rail high-pressure pump repair in Bintulu, Sarawak, at KH Diesel Fuel Pump, Batu 10, with a separate common-rail test room. WhatsApp 019-854 5433.",
+   "h1": "Common Rail Pump Repair in Bintulu, Sarawak",
+   "intro": "KH Diesel Fuel Pump repairs common-rail high-pressure pumps for modern diesel pickups, lorries and machines. The workshop is at Batu 10 on Jalan Bintulu–Miri, Bintulu, with a separate common-rail test room.",
+   "s1_h": "When a common rail pump is the suspect",
+   "s1_list": [
+    "The engine cranks but will not start, or starts and dies",
+    "Loss of power or the engine drops into limp mode",
+    "Rail pressure warnings or fault codes",
+    "Metal particles or dirty fuel found in the filter",
+    "Noise from the pump area"
+   ],
+   "s1_note": "Low rail pressure can also come from injectors leaking back, a blocked filter or air in the lines, so the whole system is checked before the pump is blamed.",
+   "s2_h": "Why clean work matters on common rail",
+   "s2_p": "Common-rail systems run at very high pressure with fine clearances, so a little dirt can do damage. The pump is opened in the clean room and checked in the common-rail test room, away from the dust of the main workshop floor.",
+   "s3_h": "Pump and injectors together",
+   "s3_p": "If the fuel was contaminated, the injectors often need testing too. We can test the injectors in the same visit; see injector repair for what that involves.",
+   "send_h": "What to send on WhatsApp",
+   "send_list": [
+    "A photo of the pump and its label",
+    "The vehicle or machine and engine",
+    "Any fault codes or warning lights you have seen"
+   ],
+   "faqs": [
+    [
+     "Where is the workshop?",
+     "At Batu 10, Jalan Bintulu–Miri, Bintulu, near Kampung Penan Muslim Batu 10 and Jalan Nyabau."
+    ],
+    [
+     "Do you have a separate room for common-rail work?",
+     "Yes. The workshop has a separate common-rail test room as well as the clean room for pump work."
+    ],
+    [
+     "How do I start?",
+     "WhatsApp 019-854 5433 with a photo of the pump and the vehicle or machine details."
+    ],
+    [
+     "Can I also call?",
+     "Yes, call 019-854 5433, or the landline 086-340356 during opening hours (Monday to Saturday, 8:00am to 5:30pm)."
+    ]
+   ]
+  },
+  "injector-repair-bintulu": {
+   "title": "Injector Repair Bintulu: Common Rail Injector Test | KH",
+   "desc": "Injector repair in Bintulu: common rail and diesel injectors tested, cleaned and calibrated in the test room at KH Diesel, Batu 10. WhatsApp 019-854 5433.",
+   "h1": "Injector Repair and Diesel Injector Testing in Bintulu",
+   "intro": "KH Diesel Fuel Pump tests, cleans and calibrates common-rail injectors and older diesel injectors. The workshop is at Batu 10 on Jalan Bintulu–Miri, Bintulu, with a common-rail test room for injector work.",
+   "s1_h": "Signs an injector needs a test",
+   "s1_list": [
+    "A knocking or rattling sound that was not there before",
+    "White or black smoke, especially at start-up",
+    "Rough idle or one cylinder misfiring",
+    "Higher fuel use",
+    "Fuel smell or diesel in the engine oil"
+   ],
+   "s1_note": "A diesel injector test shows how each injector sprays and how much fuel it returns, so you know which ones need work instead of replacing a full set by guesswork.",
+   "s2_h": "Common rail injectors",
+   "s2_p": "Common-rail injectors on modern pickups and lorries are tested in the separate common-rail test room. Each injector is checked on its own, then cleaned and set where it can be repaired.",
+   "s3_h": "Older diesel injectors and nozzles",
+   "s3_p": "Mechanical diesel injectors on older lorries and machines are checked for spray pattern and opening pressure. Tell us the engine on WhatsApp so we know what you have.",
+   "send_h": "What to send on WhatsApp",
+   "send_list": [
+    "How many injectors and from which engine",
+    "A photo of an injector and its part number if you can see it",
+    "The symptoms you noticed"
+   ],
+   "faqs": [
+    [
+     "Where do I bring the injectors?",
+     "To the workshop at Batu 10, Jalan Bintulu–Miri, Bintulu. The full address is on the contact page."
+    ],
+    [
+     "Are you open on Sunday?",
+     "No. The workshop is open Monday to Saturday, 8:00am to 5:30pm, and closed on Sunday."
+    ],
+    [
+     "How do I ask about my injectors?",
+     "WhatsApp 019-854 5433 with the engine, the number of injectors and a photo."
+    ]
+   ]
+  },
+  "turbo-repair-bintulu": {
+   "title": "Turbo Repair Bintulu: Turbocharger Rebuild at Batu 10",
+   "desc": "Turbo repair in Bintulu: turbochargers stripped, rebuilt and checked at KH Diesel Fuel Pump, Batu 10, Jalan Bintulu–Miri. WhatsApp a photo of the turbo.",
+   "h1": "Turbo Repair and Turbocharger Rebuild in Bintulu",
+   "intro": "KH Diesel Fuel Pump repairs and rebuilds turbochargers for diesel pickups, lorries, coaches and machines. The workshop is at Batu 10 on Jalan Bintulu–Miri, Bintulu, with turbo and parts racks on site.",
+   "s1_h": "Signs of a turbo problem",
+   "s1_list": [
+    "Blue or grey smoke from the exhaust",
+    "A whistle or siren noise that gets louder with revs",
+    "Loss of power when the turbo should be boosting",
+    "Oil inside the intake pipes or intercooler",
+    "Shaft play you can feel by hand with the intake off"
+   ],
+   "s1_note": "Smoke and power loss can also be fuel-side problems. If you are not sure, start with a fuel system diagnosis.",
+   "s2_h": "Strip, rebuild, check",
+   "s2_p": "The turbo is taken apart on the bench, the parts are cleaned and inspected, worn parts are replaced and it is put back together and checked before it goes back on the engine.",
+   "s3_h": "Why turbos fail",
+   "s3_p": "Many turbo failures start with oil supply, dirty oil or something entering the intake. Fixing the cause with the turbo is what keeps the next one alive, so we will tell you what we find.",
+   "send_h": "What to send on WhatsApp",
+   "send_list": [
+    "A photo of the turbo and its label plate",
+    "The vehicle or machine and engine",
+    "What you noticed: smoke, noise or power loss"
+   ],
+   "faqs": [
+    [
+     "Where is the workshop?",
+     "At Batu 10, Jalan Bintulu–Miri, Bintulu, Sarawak. Use the map on the contact page for directions."
+    ],
+    [
+     "What are your hours?",
+     "Monday to Saturday, 8:00am to 5:30pm. Closed on Sunday."
+    ],
+    [
+     "How do I get the turbo looked at?",
+     "WhatsApp 019-854 5433 with a photo of the turbo and the vehicle or machine it came from."
+    ]
+   ]
+  },
+  "fuel-system-diagnosis-bintulu": {
+   "title": "Diesel Fuel System Diagnosis Bintulu | KH Diesel Batu 10",
+   "desc": "Diesel fuel system diagnosis in Bintulu: find out if the pump, injectors or turbo cause the smoke, power loss or hard starting, at KH Diesel, Batu 10.",
+   "h1": "Diesel Fuel System Diagnosis in Bintulu",
+   "intro": "KH Diesel Fuel Pump checks diesel fuel systems to find out whether the problem is the pump, the injectors or the turbo. The workshop is at Batu 10 on Jalan Bintulu–Miri, Bintulu.",
+   "s1_h": "When to ask for a diagnosis",
+   "s1_list": [
+    "Smoke, power loss or hard starting and you do not know why",
+    "A part was already replaced and the problem is still there",
+    "The engine runs but uses more fuel than before",
+    "You want to know what needs fixing before you spend"
+   ],
+   "s1_note": "Pump, injector and turbo faults often look alike from the driver's seat. Testing each part tells them apart.",
+   "s2_h": "One workshop for pump, injector and turbo",
+   "s2_p": "Because the pump test benches, the common-rail test room and turbo work are under one roof at Batu 10, each part can be checked in the same place and you get one answer.",
+   "s3_h": "What you get",
+   "s3_p": "You are told what was found and which part needs work, with a quote, before any repair starts.",
+   "send_h": "What to send on WhatsApp",
+   "send_list": [
+    "The vehicle or machine and engine",
+    "What it is doing and since when",
+    "Anything already replaced"
+   ],
+   "faqs": [
+    [
+     "Where is the workshop?",
+     "At Batu 10, Jalan Bintulu–Miri, Bintulu, near Kampung Penan Muslim Batu 10 and Jalan Nyabau."
+    ],
+    [
+     "Can I just send a photo first?",
+     "Yes. WhatsApp 019-854 5433 with a photo and a short description of the problem."
+    ],
+    [
+     "When can I come in?",
+     "Monday to Saturday, 8:00am to 5:30pm. The workshop is closed on Sunday."
+    ]
+   ]
+  },
+  "vehicles-and-machines": {
+   "title": "Vehicles and Machines We Fix | KH Diesel, Bintulu",
+   "desc": "Diesel pump, injector and turbo repair for 4x4 pickups, lorries, coaches and heavy plant at KH Diesel Fuel Pump, Batu 10, Bintulu, Sarawak.",
+   "h1": "Diesel Vehicles and Machines We Work On",
+   "intro": "KH Diesel Fuel Pump works on the fuel pumps, injectors and turbos of diesel vehicles and machines around Bintulu. The workshop is at Batu 10 on Jalan Bintulu–Miri.",
+   "groups": [
+    [
+     "4x4 pickups",
+     "Diesel pickups of the Hilux, Navara and Triton type, used for work and family alike.",
+     "g05-workshop-front-canopy"
+    ],
+    [
+     "Light trucks and lorries",
+     "Light trucks and heavy lorries that carry goods along the Bintulu–Miri road and around the industrial estates.",
+     "g08-lorries-in-yard"
+    ],
+    [
+     "Coaches and buses",
+     "Diesel coaches with large engines and turbos.",
+     "g09-coach-bus-in-bay"
+    ],
+    [
+     "Heavy plant",
+     "Machines such as road compactors, with their diesel pumps and turbos handled in the heavy-engine bay.",
+     "g06-heavy-engine-workshop"
+    ]
+   ],
+   "note": "Model names describe the kind of vehicle only. KH Diesel is an independent workshop, not a dealer.",
+   "s_h": "Not sure if we handle yours?",
+   "s_p": "Send the make, model and engine on WhatsApp with a photo of the pump, injector or turbo."
+  },
+  "kidurong-bintulu-port": {
+   "title": "Diesel Pump Repair Kidurong & Bintulu Port | KH Diesel",
+   "desc": "Diesel fuel pump, injector and turbo repair for Kidurong, Bintulu Port and Tanjung Kidurong, about 7 to 9 km from KH Diesel at Batu 10, Bintulu.",
+   "h1": "Diesel Pump Repair for Kidurong and Bintulu Port",
+   "intro": "KH Diesel Fuel Pump repairs diesel fuel pumps, common-rail pumps, injectors and turbos for operators in Kidurong Light Industrial, Bintulu Port and Tanjung Kidurong. The workshop is at Batu 10, Bintulu, about 7 to 9 km away.",
+   "local_h": "Built for haulage and port work",
+   "local_p": "Kidurong is Bintulu's industrial and port side. Prime movers, tippers, port equipment and contractors' machines work long hours here, and a weak pump or a tired turbo shows up quickly as smoke or lost power under load.",
+   "local_p2": "Bring the vehicle in, or take the pump, injectors or turbo off and bring the part to Batu 10. WhatsApp a photo first and we will tell you which is easier for the job.",
+   "where_h": "Distance from Batu 10",
+   "where_p": "About 7 to 9 km from the workshop at Batu 10, Jalan Bintulu–Miri, depending on where you start in Kidurong Light Industrial, Bintulu Port or Tanjung Kidurong.",
+   "landmarks": [
+    "Kidurong Light Industrial",
+    "Bintulu Port",
+    "Tanjung Kidurong"
+   ],
+   "who_h": "Who we see from here",
+   "who_list": [
+    "Haulage lorries and prime movers",
+    "Port and yard equipment",
+    "Industrial contractors' pickups and machines"
+   ]
+  },
+  "kemena-sibiyu-nyabau": {
+   "title": "Diesel Pump Repair Kemena, Sibiyu, Nyabau | KH Diesel",
+   "desc": "Diesel fuel pump, injector and turbo repair for Kemena Industrial Estate, Sibiyu, Jalan Nyabau and Batu 10, 0 to 6.5 km from KH Diesel, Bintulu.",
+   "h1": "Diesel Pump Repair for Kemena, Sibiyu and Nyabau",
+   "intro": "KH Diesel Fuel Pump repairs diesel fuel pumps, common-rail pumps, injectors and turbos for Kemena Industrial Estate, Sibiyu, Jalan Nyabau and Batu 10. This is the area closest to the workshop, from 0 to about 6.5 km away.",
+   "local_h": "The closest area to the workshop",
+   "local_p": "The workshop sits at Batu 10 on Jalan Bintulu–Miri, near Kampung Penan Muslim Batu 10 and Jalan Nyabau. If you are in Kemena Industrial Estate or Sibiyu, you can drive in during opening hours without a long trip.",
+   "local_p2": "Lorries running the highway past Batu 10 can stop at the yard. WhatsApp a photo first so we know what is coming in.",
+   "where_h": "Distance from Batu 10",
+   "where_p": "From 0 km at Batu 10 itself to about 6.5 km across Kemena Industrial Estate, Sibiyu and Jalan Nyabau.",
+   "landmarks": [
+    "Kemena Industrial Estate",
+    "Sibiyu",
+    "Jalan Nyabau",
+    "Kampung Penan Muslim Batu 10"
+   ],
+   "who_h": "Who we see from here",
+   "who_list": [
+    "Walk-in customers from Batu 10 and Jalan Nyabau",
+    "Highway lorries on the Bintulu–Miri road",
+    "Workshops and businesses in Kemena Industrial Estate"
+   ]
+  },
+  "bintulu-town-jepak": {
+   "title": "Diesel Pump Repair Bintulu Town & Jepak | KH Diesel",
+   "desc": "Diesel fuel pump, injector and turbo repair for Bintulu town, 2½ Mile, Assyakirin, Tanjung Batu and Jepak, about 8 to 10 km from KH Diesel, Batu 10.",
+   "h1": "Diesel Pump Repair for Bintulu Town and Jepak",
+   "intro": "KH Diesel Fuel Pump repairs diesel fuel pumps, common-rail pumps, injectors and turbos for Bintulu town, 2½ Mile Light Industrial, Assyakirin, Tanjung Batu and Jepak. The workshop is at Batu 10, about 8 to 10 km away.",
+   "local_h": "From town to Batu 10",
+   "local_p": "Drivers from town mostly come with diesel pickups and light trucks, while 2½ Mile Light Industrial has businesses running diesel vans and lorries. Jepak, across the Kemena river, adds its own pickups and lorries.",
+   "local_p2": "If your regular workshop suspects the pump, injectors or turbo, that part can be tested on the bench at Batu 10 before anything is replaced.",
+   "where_h": "Distance from Batu 10",
+   "where_p": "About 8 to 10 km from the workshop at Batu 10, Jalan Bintulu–Miri, depending on where you start in town, Assyakirin, Tanjung Batu or Jepak.",
+   "landmarks": [
+    "Bintulu town",
+    "2½ Mile Light Industrial",
+    "Assyakirin",
+    "Tanjung Batu",
+    "Jepak"
+   ],
+   "who_h": "Who we see from here",
+   "who_list": [
+    "Diesel pickups and light trucks from town",
+    "Workshops in 2½ Mile Light Industrial",
+    "Drivers from Jepak and Tanjung Batu"
+   ]
+  },
+  "about": {
+   "title": "About KH Diesel Fuel Pump, Batu 10 Workshop, Bintulu",
+   "desc": "About KH DIESEL FUEL PUMP SDN BHD: a diesel fuel pump, injector and turbo workshop at Batu 10, Jalan Bintulu–Miri, Bintulu, Sarawak.",
+   "h1": "About KH Diesel Fuel Pump",
+   "intro": "KH DIESEL FUEL PUMP SDN BHD is a diesel workshop at Batu 10 on Jalan Bintulu–Miri, Bintulu. The work is diesel fuel pumps, common-rail pumps, injectors and turbos.",
+   "s1_h": "The Batu 10 workshop",
+   "s1_p": "The workshop is a cream two-storey building with a yard and a front canopy, near Kampung Penan Muslim Batu 10 and Jalan Nyabau. Inside there is a clean room with pump test benches on a green floor behind strip curtains, a separate common-rail test room, racks for turbos and spare parts, and a bay at the back for heavy engines.",
+   "s2_h": "The kind of work",
+   "s2_p": "Pumps, injectors and turbos are tested before they are repaired, and tested again after. Customers bring diesel pickups, light trucks, lorries, coaches and heavy plant.",
+   "owner_h": "Who runs it",
+   "owner_p": "The business is run by Hii Wei Soon. You can reach the workshop on WhatsApp at 019-854 5433 or on the landline 086-340356."
+  },
+  "contact": {
+   "title": "Contact KH Diesel Fuel Pump, Batu 10, Bintulu",
+   "desc": "Contact KH Diesel Fuel Pump at Batu 10, Bintulu: WhatsApp or call 019-854 5433, landline 086-340356, open Monday to Saturday 8:00am to 5:30pm.",
+   "h1": "Contact KH Diesel Fuel Pump",
+   "intro": "WhatsApp is the quickest way to reach the workshop. Send a photo of the part and tell us the vehicle or machine.",
+   "ways_h": "Ways to reach us",
+   "where_h": "Where we are",
+   "where_p": "Batu 10, Jalan Bintulu–Miri, near Kampung Penan Muslim Batu 10 and Jalan Nyabau.",
+   "one_loc": "This is our only published workshop address."
+  },
+  "privacy": {
+   "title": "Privacy Notice | KH DIESEL FUEL PUMP SDN BHD",
+   "desc": "How KH DIESEL FUEL PUMP SDN BHD handles the information you share through this website, WhatsApp and phone, under Malaysia's PDPA 2010."
+  },
+  "articles": {
+   "title": "Diesel Pump, Injector & Turbo Articles | KH Diesel",
+   "desc": "Articles from KH Diesel Fuel Pump in Bintulu on diesel fuel pumps, common-rail injectors and turbos.",
+   "h1": "Diesel Pump, Injector and Turbo Articles",
+   "intro": "Short guides on diesel fuel pumps, injectors and turbos, from the KH Diesel workshop at Batu 10, Bintulu."
+  }
+ }
+}

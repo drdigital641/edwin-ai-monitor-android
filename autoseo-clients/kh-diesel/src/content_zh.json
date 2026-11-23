@@ -1,0 +1,526 @@
+{
+ "ui": {
+  "skip": "跳至内容",
+  "nav_home": "首页",
+  "nav_services": "服务项目",
+  "nav_vehicles": "车辆",
+  "nav_areas": "服务范围",
+  "nav_about": "关于我们",
+  "nav_contact": "联系我们",
+  "nav_articles": "文章",
+  "menu": "菜单",
+  "close": "关闭",
+  "wa": "WhatsApp",
+  "wa_long": "WhatsApp 019-854 5433",
+  "call": "致电",
+  "call_long": "致电 019-854 5433",
+  "landline": "座机（电话/传真）086-340356",
+  "ill_credit": "车厂插图",
+  "ill_note": "本网站所有图片均为柴油维修车厂的 AI 生成插图，并非真实工作、客户车辆或我们厂房的照片。",
+  "hours_h": "营业时间",
+  "hours_week": "星期一至星期六",
+  "hours_time": "上午8:00至下午5:30",
+  "hours_sun": "星期日",
+  "hours_closed": "休息",
+  "hours_tz": "马来西亚时间（民都鲁）",
+  "find_h": "找到车厂",
+  "open_maps": "在 Google 地图中打开",
+  "directions": "获取路线",
+  "review_h": "曾在这里做过维修？",
+  "review_p": "一则简短的 Google 评论，能帮助民都鲁的其他柴油车主找到这家车厂。",
+  "review_btn": "写 Google 评论",
+  "address_h": "地址",
+  "services_h": "服务项目",
+  "areas_h": "Batu 10（十哩）附近区域",
+  "talk_h": "联系我们",
+  "privacy": "隐私",
+  "credit": "Website by AutoSEO.my",
+  "updated": "更新日期：23 Nov 2026",
+  "faq_h": "大家常问的问题",
+  "next_service": "下一项服务",
+  "all_services": "所有服务",
+  "breadcrumb_home": "首页",
+  "lang_label": "语言",
+  "map_title": "KH Diesel Fuel Pump 地图，Batu 10（十哩），民都鲁",
+  "carousel_label": "车厂插图",
+  "prev": "上一张",
+  "next": "下一张",
+  "cta_band_h": "先发送零件照片",
+  "cta_band_p": "请通过 WhatsApp 发送清晰的泵、喷油嘴或涡轮照片，并附上该零件来自的车辆或机器。",
+  "km_from": "距 Batu 10（十哩）",
+  "see_area": "查看此区域",
+  "plate_h": "车厂招牌信息",
+  "plate_loc": "位置",
+  "plate_loc_v": "Batu 10（十哩），Jalan Bintulu–Miri，民都鲁",
+  "plate_rooms": "工作区",
+  "plate_rooms_v": "配有泵试验台的洁净室、共轨试验室、重型发动机工位",
+  "plate_hours": "营业时间",
+  "plate_hours_v": "周一至周六 上午8:00–下午5:30",
+  "plate_phones": "电话",
+  "plate_phones_v": "019-854 5433（WhatsApp）· 086-340356（座机）",
+  "owner_label": "负责人",
+  "home_crumb": "首页",
+  "areas_crumb": "服务范围",
+  "services_crumb": "服务项目",
+  "radius_caption": "三个区域都在 Batu 10（十哩）车厂 20 公里范围内。",
+  "workshop_label": "车厂，Batu 10（十哩）",
+  "process_h": "维修流程",
+  "process": [
+   [
+    "通过 WhatsApp 发照片",
+    "发送零件照片，并告诉我们车辆或机器的信息。"
+   ],
+   [
+    "检测",
+    "在车厂检查泵、喷油嘴或涡轮。"
+   ],
+   [
+    "报价",
+    "开始任何维修前，您会先收到检测结果和报价。"
+   ],
+   [
+    "维修",
+    "您同意后才会开始维修零件。"
+   ],
+   [
+    "测试结果",
+    "维修后会再次测试，您在装回前可以看到结果。"
+   ]
+  ],
+  "articles_none": "文章正在陆续添加。在此之前，以下服务页面可以解答常见问题。",
+  "caps": {
+   "h01-cleanroom-pump-bench-16x9": "插图：绿色地板无尘室里的柴油泵试验台",
+   "h02-workshop-exterior-yard-16x9": "插图：民都鲁–美里路旁的米色车厂与空地",
+   "g01-cleanroom-pump-bench": "无尘室里的油泵试验台",
+   "g02-common-rail-test-room": "共轨喷油嘴测试室",
+   "g03-pump-parts-on-bench": "摆在工作台上的油泵零件",
+   "g04-turbo-rebuild-bench": "工作台上翻修中的涡轮",
+   "g05-workshop-front-canopy": "前方遮棚下的皮卡",
+   "g06-heavy-engine-workshop": "重型引擎维修区",
+   "g07-pickups-laterite-hill": "红土山坡前空地上的皮卡",
+   "g08-lorries-in-yard": "车厂空地上的罗厘",
+   "g09-coach-bus-in-bay": "维修区里的巴士",
+   "g10-hands-calibrating-pump": "双手校准柴油泵"
+  }
+ },
+ "wa_msgs": {
+  "home": "你好 KH Diesel，我想咨询柴油泵、喷油嘴或涡轮维修。",
+  "diesel-fuel-pump-repair-bintulu": "你好 KH Diesel，我想咨询柴油泵维修。",
+  "common-rail-pump-repair-bintulu": "你好 KH Diesel，我想咨询共轨泵维修。",
+  "injector-repair-bintulu": "你好 KH Diesel，我想咨询喷油嘴维修和测试。",
+  "turbo-repair-bintulu": "你好 KH Diesel，我想咨询涡轮维修。",
+  "fuel-system-diagnosis-bintulu": "你好 KH Diesel，我想咨询柴油燃油系统检查。",
+  "vehicles-and-machines": "你好 KH Diesel，我想咨询货车、皮卡或机器的维修。",
+  "kidurong-bintulu-port": "你好 KH Diesel，我在吉都隆，可以帮我看看泵吗？",
+  "kemena-sibiyu-nyabau": "你好 KH Diesel，我在 Kemena / Nyabau 附近，可以帮我看看泵吗？",
+  "bintulu-town-jepak": "你好 KH Diesel，我在民都鲁市区，可以帮我看看泵吗？",
+  "about": "你好 KH Diesel，我想咨询你们在 Batu 10（十哩）的车厂。",
+  "contact": "你好 KH Diesel，我想咨询一项维修。",
+  "articles": "你好 KH Diesel，我有一个关于柴油发动机的问题。",
+  "privacy": "你好 KH Diesel，我有一个问题。"
+ },
+ "services": [
+  {
+   "id": "diesel-fuel-pump-repair-bintulu",
+   "short": "柴油泵维修",
+   "line": "直列泵和旋转泵在试验台上检测并校准。",
+   "img": "g01-cleanroom-pump-bench"
+  },
+  {
+   "id": "common-rail-pump-repair-bintulu",
+   "short": "共轨泵维修",
+   "line": "适用于现代柴油车的高压泵。",
+   "img": "g03-pump-parts-on-bench"
+  },
+  {
+   "id": "injector-repair-bintulu",
+   "short": "喷油嘴维修与测试",
+   "line": "共轨和柴油喷油嘴经过测试、清洁并校准。",
+   "img": "g02-common-rail-test-room"
+  },
+  {
+   "id": "turbo-repair-bintulu",
+   "short": "涡轮维修",
+   "line": "涡轮拆解、重新组装并检查。",
+   "img": "g04-turbo-rebuild-bench"
+  },
+  {
+   "id": "fuel-system-diagnosis-bintulu",
+   "short": "燃油系统诊断",
+   "line": "查明问题是出在泵、喷油嘴还是涡轮。",
+   "img": "g10-hands-calibrating-pump"
+  }
+ ],
+ "areas": [
+  {
+   "id": "kemena-sibiyu-nyabau",
+   "name": "Kemena、Sibiyu 和 Nyabau",
+   "km": "0–6.5 km",
+   "line": "最近的服务区域。可从 Batu 10（十哩）、Jalan Nyabau 或大路直接前来。"
+  },
+  {
+   "id": "kidurong-bintulu-port",
+   "name": "吉都隆和民都鲁港口",
+   "km": "7–9 km",
+   "line": "运输车队、港口设备和工业承包商。"
+  },
+  {
+   "id": "bintulu-town-jepak",
+   "name": "民都鲁市区和 Jepak",
+   "km": "8–10 km",
+   "line": "市区、2½ Mile Light Industrial、Assyakirin、Tanjung Batu 和 Jepak。"
+  }
+ ],
+ "pages": {
+  "home": {
+   "title": "民都鲁柴油泵、喷油嘴与涡轮维修 | KH",
+   "desc": "KH Diesel Fuel Pump 位于民都鲁 Batu 10（十哩），维修和测试柴油泵、共轨泵、喷油嘴和涡轮；WhatsApp 019-854 5433。",
+   "h1": "民都鲁柴油泵、喷油嘴与涡轮维修",
+   "sub": "Batu 10（十哩）洁净室试验台，位于 Jalan Bintulu–Miri。",
+   "bench_h": "车厂内部",
+   "bench_p": "洁净室配有泵试验台，另有独立的共轨试验室、涡轮和零件架，以及重型发动机工位。",
+   "svc_h": "我们维修的项目",
+   "veh_h": "我们接收的车辆和机器",
+   "veh_p": "皮卡、轻型货车、货车、大巴和重型机械都会送到这里的场地。",
+   "veh_link": "车辆和机器",
+   "areas_h": "Batu 10（十哩）周边",
+   "areas_p": "我们位于民都鲁至米里公路的 Batu 10（十哩）。这三个区域都在 20 公里范围内。",
+   "plate_intro": "开车前可以先核实的信息。",
+   "visit_h": "到车厂参观"
+  },
+  "diesel-fuel-pump-repair-bintulu": {
+   "title": "民都鲁柴油泵维修 | Batu 10（十哩）试验台",
+   "desc": "民都鲁柴油泵维修：直列泵和旋转泵在 KH Diesel 位于 Batu 10（十哩）的试验台上测试和校准。WhatsApp 发照片即可获取报价。",
+   "h1": "民都鲁柴油泵维修：直列泵与旋转泵",
+   "intro": "KH Diesel Fuel Pump 在洁净室的试验台上维修和校准柴油泵。车厂位于民都鲁 Jalan Bintulu–Miri 的 Batu 10（十哩）。",
+   "s1_h": "需要检查泵的迹象",
+   "s1_list": [
+    "发动机难以启动，或需要很长时间才能起动",
+    "负载时冒黑烟，或爬坡时动力下降",
+    "发动机抖动、喘振或怠速不稳",
+    "泵体或油管周围漏柴油",
+    "相同工作量下油耗比平时高"
+   ],
+   "s1_note": "这些迹象也可能由喷油嘴、滤清器或涡轮引起，因此在更换任何部件之前，会先测试泵。",
+   "s2_h": "在试验台上测试，而非凭猜测",
+   "s2_p": "泵从发动机上拆下，放到洁净室的试验台上。绿色地面的房间配有条状门帘，在泵打开时阻挡灰尘。试验台可以让泵在发动机外运转，因此在装回前可以检查和设定供油量及正时。",
+   "s3_h": "直列泵和旋转泵",
+   "s3_p": "较旧的货车、皮卡和机器通常使用直列泵或旋转（分配式）泵。请通过 WhatsApp 告诉我们车辆或机器及发动机型号；如泵上有铭牌，请发送铭牌照片，以便我们说明这项工作的内容。",
+   "send_h": "通过 WhatsApp 发送的内容",
+   "send_list": [
+    "泵及其上任何标签的清晰照片",
+    "车辆或机器、型号和发动机",
+    "发动机的状况（冒烟、动力、启动情况）"
+   ],
+   "faqs": [
+    [
+     "车辆或泵应送到哪里？",
+     "送到 KH Diesel Fuel Pump 车厂，位于 Batu 10（十哩），Jalan Bintulu–Miri，Bintulu：Sublot 14 of Parent Lot 1337 & Lot 341, Block 33, Kemena Land District, 97000 Bintulu, Sarawak。"
+    ],
+    [
+     "营业时间是什么？",
+     "星期一至星期六，上午8:00至下午5:30。星期日休息。"
+    ],
+    [
+     "如何获取报价？",
+     "请通过 WhatsApp 019-854 5433 发送泵和所属车辆或机器的照片。测试完成后才会给出维修报价。"
+    ],
+    [
+     "网站上有显示价格吗？",
+     "没有。每台泵都不同，请通过 WhatsApp 咨询，报价在测试后提供。"
+    ]
+   ]
+  },
+  "common-rail-pump-repair-bintulu": {
+   "title": "砂拉越民都鲁共轨泵维修 | KH Diesel",
+   "desc": "位于砂拉越民都鲁的高压共轨泵维修，由 KH Diesel Fuel Pump 在 Batu 10（十哩）提供，设有独立的共轨试验室。WhatsApp 019-854 5433。",
+   "h1": "砂拉越民都鲁共轨泵维修",
+   "intro": "KH Diesel Fuel Pump 为现代柴油皮卡、货车和机器维修共轨高压泵。车厂位于民都鲁 Jalan Bintulu–Miri 的 Batu 10（十哩），设有独立的共轨试验室。",
+   "s1_h": "何时怀疑共轨泵有问题",
+   "s1_list": [
+    "发动机能转动但无法启动，或启动后熄火",
+    "动力下降，或发动机进入 limp mode（跛行模式）",
+    "轨压警告或故障代码",
+    "滤清器中发现金属颗粒或脏油",
+    "泵区域有异响"
+   ],
+   "s1_note": "轨压偏低也可能由喷油嘴回油、滤清器堵塞或油路中有空气引起，因此在怀疑泵之前会先检查整个系统。",
+   "s2_h": "为什么共轨维修必须保持清洁",
+   "s2_p": "共轨系统在极高压力下运行，配合间隙很小，少量脏污就可能造成损坏。泵在洁净室中打开，并在共轨试验室中检查，远离主车间地面的灰尘。",
+   "s3_h": "泵与喷油嘴一起检查",
+   "s3_p": "如果燃油受到污染，喷油嘴通常也需要测试。我们可以在同一次来访中测试喷油嘴；具体内容请参阅喷油嘴维修。",
+   "send_h": "通过 WhatsApp 发送的内容",
+   "send_list": [
+    "泵及其标签的照片",
+    "车辆或机器及发动机信息",
+    "您看到的任何故障代码或警示灯"
+   ],
+   "faqs": [
+    [
+     "车厂在哪里？",
+     "位于民都鲁 Batu 10（十哩），Jalan Bintulu–Miri，靠近 Kampung Penan Muslim Batu 10 和 Jalan Nyabau。"
+    ],
+    [
+     "共轨维修有单独的房间吗？",
+     "有。车厂除了泵维修用的洁净室，还设有独立的共轨试验室。"
+    ],
+    [
+     "如何开始？",
+     "请通过 WhatsApp 019-854 5433 发送泵的照片和车辆或机器的信息。"
+    ],
+    [
+     "可以打电话吗？",
+     "可以，请致电 019-854 5433，或在营业时间（星期一至星期六，上午8:00至下午5:30）致电座机 086-340356。"
+    ]
+   ]
+  },
+  "injector-repair-bintulu": {
+   "title": "民都鲁喷油嘴维修与测试 | KH",
+   "desc": "民都鲁喷油嘴维修：共轨和柴油喷油嘴在 KH Diesel 位于 Batu 10（十哩）的试验室中测试、清洁并校准。WhatsApp 019-854 5433。",
+   "h1": "民都鲁喷油嘴维修与柴油喷油嘴测试",
+   "intro": "KH Diesel Fuel Pump 测试、清洁并校准共轨喷油嘴和较旧的柴油喷油嘴。车厂位于民都鲁 Jalan Bintulu–Miri 的 Batu 10（十哩），设有用于喷油嘴工作的共轨试验室。",
+   "s1_h": "喷油嘴需要测试的迹象",
+   "s1_list": [
+    "出现以前没有的敲击或嗒嗒声",
+    "冒白烟或黑烟，尤其是启动时",
+    "怠速粗糙或某个气缸失火",
+    "油耗增加",
+    "有柴油味，或机油中有柴油"
+   ],
+   "s1_note": "柴油喷油嘴测试可显示每个喷油嘴的喷射情况以及回油量，让您知道哪些需要维修，而不是凭猜测更换整套喷油嘴。",
+   "s2_h": "共轨喷油嘴",
+   "s2_p": "现代皮卡和货车上的共轨喷油嘴在独立的共轨试验室中测试。每个喷油嘴单独检查，如可维修则进行清洁并校准。",
+   "s3_h": "较旧的柴油喷油嘴和喷嘴",
+   "s3_p": "较旧货车和机器上的机械式柴油喷油嘴会检查喷雾形态和开启压力。请通过 WhatsApp 告诉我们发动机型号，以便我们了解您的车辆。",
+   "send_h": "通过 WhatsApp 发送的内容",
+   "send_list": [
+    "喷油嘴数量及所属发动机",
+    "喷油嘴照片，如能看到其零件编号也请附上",
+    "您注意到的症状"
+   ],
+   "faqs": [
+    [
+     "喷油嘴应送到哪里？",
+     "送到民都鲁 Batu 10（十哩），Jalan Bintulu–Miri 的车厂。完整地址见联系页面。"
+    ],
+    [
+     "星期日营业吗？",
+     "不营业。车厂营业时间为星期一至星期六，上午8:00至下午5:30，星期日休息。"
+    ],
+    [
+     "如何咨询我的喷油嘴？",
+     "请通过 WhatsApp 019-854 5433 发送发动机型号、喷油嘴数量和照片。"
+    ]
+   ]
+  },
+  "turbo-repair-bintulu": {
+   "title": "民都鲁涡轮修理：Batu 10（十哩）翻修 | KH",
+   "desc": "民都鲁涡轮修理：涡轮增压器在 KH Diesel Fuel Pump 位于 Batu 10（十哩）、Jalan Bintulu–Miri 的车厂拆解、翻新并检查。WhatsApp 发送涡轮照片。",
+   "h1": "民都鲁涡轮修理与涡轮增压器翻修",
+   "intro": "KH Diesel Fuel Pump 为柴油皮卡、货车、大巴和机器维修并翻修涡轮增压器。车厂位于民都鲁 Jalan Bintulu–Miri 的 Batu 10（十哩），现场备有涡轮和零件架。",
+   "s1_h": "涡轮问题的迹象",
+   "s1_list": [
+    "排气管冒蓝烟或灰烟",
+    "随转速升高而变大的哨声或警笛声",
+    "涡轮应该增压时动力下降",
+    "进气管或中冷器内有机油",
+    "拆下进气后，用手可感觉到轴有间隙"
+   ],
+   "s1_note": "冒烟和动力下降也可能是燃油端的问题。如果不确定，请先进行燃油系统诊断。",
+   "s2_h": "拆解、翻修、检查",
+   "s2_p": "涡轮在工作台上拆解，零件经过清洁和检查，磨损的零件更换，然后重新组装并检查，再装回发动机。",
+   "s3_h": "涡轮为何损坏",
+   "s3_p": "许多涡轮故障始于供油不足、机油变脏，或异物进入进气道。针对原因进行维修，才能让涡轮保持正常运行，因此我们会告诉您检查的结果。",
+   "send_h": "通过 WhatsApp 发送的内容",
+   "send_list": [
+    "涡轮及其铭牌的照片",
+    "车辆或机器及发动机信息",
+    "您注意到的情况：冒烟、噪音或动力下降"
+   ],
+   "faqs": [
+    [
+     "车厂在哪里？",
+     "位于砂拉越民都鲁 Batu 10（十哩），Jalan Bintulu–Miri。路线请参考联系页面的地图。"
+    ],
+    [
+     "营业时间是什么？",
+     "星期一至星期六，上午8:00至下午5:30。星期日休息。"
+    ],
+    [
+     "如何送涡轮检查？",
+     "请通过 WhatsApp 019-854 5433 发送涡轮照片以及所属车辆或机器的信息。"
+    ]
+   ]
+  },
+  "fuel-system-diagnosis-bintulu": {
+   "title": "民都鲁柴油燃油系统诊断 | KH Diesel Batu 10",
+   "desc": "民都鲁柴油燃油系统诊断：查明冒烟、动力下降或难以启动是由泵、喷油嘴还是涡轮引起，位于 KH Diesel 的 Batu 10（十哩）车厂。",
+   "h1": "民都鲁柴油燃油系统诊断",
+   "intro": "KH Diesel Fuel Pump 检查柴油燃油系统，以确定问题出在泵、喷油嘴还是涡轮。车厂位于民都鲁 Jalan Bintulu–Miri 的 Batu 10（十哩）。",
+   "s1_h": "何时需要申请诊断",
+   "s1_list": [
+    "冒烟、动力下降或难以启动，而您不知道原因",
+    "某个部件已经更换，但问题依然存在",
+    "发动机能运转，但油耗比以前高",
+    "您希望在花钱之前先了解需要修什么"
+   ],
+   "s1_note": "泵、喷油嘴和涡轮的故障从驾驶座上看往往很相似。逐一测试各个部件才能区分。",
+   "s2_h": "泵、喷油嘴和涡轮同在一个车厂",
+   "s2_p": "由于泵试验台、共轨试验室和涡轮工作都在 Batu 10（十哩）同一屋檐下，每个部件都可以在同一地点检查，您也只需得到一个结论。",
+   "s3_h": "您将得到什么",
+   "s3_p": "开始任何维修前，您会得知检查结果以及需要维修的部件，并获得报价。",
+   "send_h": "通过 WhatsApp 发送的内容",
+   "send_list": [
+    "车辆或机器及发动机信息",
+    "出现了什么情况，从何时开始",
+    "已经更换过的任何部件"
+   ],
+   "faqs": [
+    [
+     "车厂在哪里？",
+     "位于民都鲁 Batu 10（十哩），Jalan Bintulu–Miri，靠近 Kampung Penan Muslim Batu 10 和 Jalan Nyabau。"
+    ],
+    [
+     "可以先只发照片吗？",
+     "可以。请通过 WhatsApp 019-854 5433 发送照片，并简单描述问题。"
+    ],
+    [
+     "什么时候可以过来？",
+     "星期一至星期六，上午8:00至下午5:30。星期日车厂休息。"
+    ]
+   ]
+  },
+  "vehicles-and-machines": {
+   "title": "我们维修的车辆和机器 | KH Diesel，民都鲁",
+   "desc": "在砂拉越民都鲁 Batu 10（十哩）的 KH Diesel Fuel Pump，为 4x4 皮卡、货车、大巴和重型机械提供柴油泵、喷油嘴和涡轮维修。",
+   "h1": "我们维修的柴油车辆和机器",
+   "intro": "KH Diesel Fuel Pump 为民都鲁周边柴油车辆和机器的燃油泵、喷油嘴和涡轮提供维修。车厂位于 Batu 10（十哩），Jalan Bintulu–Miri。",
+   "groups": [
+    [
+     "4x4 皮卡",
+     "Hilux、Navara 和 Triton 等类型的柴油皮卡，既用于工作也用于家用。",
+     "g05-workshop-front-canopy"
+    ],
+    [
+     "轻型货车和货车",
+     "沿民都鲁至米里公路以及工业区运送货物的轻型货车和重型货车。",
+     "g08-lorries-in-yard"
+    ],
+    [
+     "大巴和客车",
+     "配有大型发动机和涡轮的柴油大巴。",
+     "g09-coach-bus-in-bay"
+    ],
+    [
+     "重型机械",
+     "如路面压路机等机器，其柴油泵和涡轮在重型发动机工位处理。",
+     "g06-heavy-engine-workshop"
+    ]
+   ],
+   "note": "车型名称仅用于说明车辆类型。KH Diesel 是独立车厂，并非经销商。",
+   "s_h": "不确定我们能否处理您的车辆？",
+   "s_p": "请通过 WhatsApp 发送品牌、型号和发动机信息，并附上泵、喷油嘴或涡轮的照片。"
+  },
+  "kidurong-bintulu-port": {
+   "title": "吉都隆及民都鲁港口柴油泵维修 | KH Diesel",
+   "desc": "吉都隆、民都鲁港口和 Tanjung Kidurong 的柴油燃油泵、喷油嘴和涡轮维修，距离 Batu 10（十哩）的 KH Diesel 约 7 至 9 公里。",
+   "h1": "吉都隆及民都鲁港口柴油泵维修",
+   "intro": "KH Diesel Fuel Pump 为 Kidurong Light Industrial、Bintulu Port 和 Tanjung Kidurong 的运营商维修柴油燃油泵、共轨泵、喷油嘴和涡轮。车厂位于民都鲁 Batu 10（十哩），距离约 7 至 9 公里。",
+   "local_h": "专为运输和港口工作而设",
+   "local_p": "吉都隆是民都鲁的工业及港口区。牵引车、翻斗车、港口设备和承包商的机器在这里长时间作业，泵性能下降或涡轮老化会很快在负载时表现为冒烟或动力下降。",
+   "local_p2": "可以把车辆开来，或拆下泵、喷油嘴或涡轮并带到 Batu 10（十哩）。请先通过 WhatsApp 发送照片，我们会告诉您哪种方式更方便。",
+   "where_h": "距 Batu 10（十哩）的距离",
+   "where_p": "距 Jalan Bintulu–Miri 的 Batu 10（十哩）车厂约 7 至 9 公里，视您在 Kidurong Light Industrial、Bintulu Port 或 Tanjung Kidurong 的出发位置而定。",
+   "landmarks": [
+    "Kidurong Light Industrial",
+    "Bintulu Port",
+    "Tanjung Kidurong"
+   ],
+   "who_h": "我们在这里服务的对象",
+   "who_list": [
+    "运输货车和牵引车",
+    "港口和场地设备",
+    "工业承包商的皮卡和机器"
+   ]
+  },
+  "kemena-sibiyu-nyabau": {
+   "title": "Kemena、Sibiyu、Nyabau 柴油泵维修 | KH Diesel",
+   "desc": "Kemena 工业区、Sibiyu、Jalan Nyabau 和 Batu 10（十哩）的柴油燃油泵、喷油嘴和涡轮维修，距离民都鲁的 KH Diesel 0 至 6.5 公里。",
+   "h1": "Kemena、Sibiyu 和 Nyabau 柴油泵维修",
+   "intro": "KH Diesel Fuel Pump 为 Kemena Industrial Estate、Sibiyu、Jalan Nyabau 和 Batu 10（十哩）提供柴油燃油泵、共轨泵、喷油嘴和涡轮维修。这是离车厂最近的区域，距离约 0 至 6.5 公里。",
+   "local_h": "离车厂最近的区域",
+   "local_p": "车厂位于 Jalan Bintulu–Miri 的 Batu 10（十哩），靠近 Kampung Penan Muslim Batu 10 和 Jalan Nyabau。如果您在 Kemena Industrial Estate 或 Sibiyu，营业时间内可以开车过来，路程不长。",
+   "local_p2": "途经 Batu 10（十哩）的公路货车可以停到场地。请先通过 WhatsApp 发送照片，以便我们了解即将送来的车辆。",
+   "where_h": "距 Batu 10（十哩）的距离",
+   "where_p": "从 Batu 10（十哩）本地的 0 公里，到横跨 Kemena Industrial Estate、Sibiyu 和 Jalan Nyabau 的约 6.5 公里。",
+   "landmarks": [
+    "Kemena Industrial Estate",
+    "Sibiyu",
+    "Jalan Nyabau",
+    "Kampung Penan Muslim Batu 10"
+   ],
+   "who_h": "我们在这里服务的对象",
+   "who_list": [
+    "从 Batu 10（十哩）和 Jalan Nyabau 直接前来的客户",
+    "Bintulu–Miri 公路上的公路货车",
+    "Kemena Industrial Estate 的车厂和企业"
+   ]
+  },
+  "bintulu-town-jepak": {
+   "title": "民都鲁市区及 Jepak 柴油泵维修 | KH Diesel",
+   "desc": "民都鲁市区、2½ Mile、Assyakirin、Tanjung Batu 和 Jepak 的柴油燃油泵、喷油嘴和涡轮维修，距离 Batu 10（十哩）的 KH Diesel 约 8 至 10 公里。",
+   "h1": "民都鲁市区及 Jepak 柴油泵维修",
+   "intro": "KH Diesel Fuel Pump 为民都鲁市区、2½ Mile Light Industrial、Assyakirin、Tanjung Batu 和 Jepak 提供柴油燃油泵、共轨泵、喷油嘴和涡轮维修。车厂位于 Batu 10（十哩），距离约 8 至 10 公里。",
+   "local_h": "从市区到 Batu 10（十哩）",
+   "local_p": "市区来的司机多数驾驶柴油皮卡和轻型货车，2½ Mile Light Industrial 则有企业使用柴油货车和货车。Jepak 位于 Kemena 河对岸，还有自己的皮卡和货车。",
+   "local_p2": "如果您常去的车厂怀疑是泵、喷油嘴或涡轮的问题，可以先在 Batu 10（十哩）的试验台上测试该部件，然后再更换任何零件。",
+   "where_h": "距 Batu 10（十哩）的距离",
+   "where_p": "距 Jalan Bintulu–Miri 的 Batu 10（十哩）车厂约 8 至 10 公里，视您在市区、Assyakirin、Tanjung Batu 或 Jepak 的出发位置而定。",
+   "landmarks": [
+    "民都鲁市区",
+    "2½ Mile Light Industrial",
+    "Assyakirin",
+    "Tanjung Batu",
+    "Jepak"
+   ],
+   "who_h": "我们在这里服务的对象",
+   "who_list": [
+    "来自市区的柴油皮卡和轻型货车",
+    "2½ Mile Light Industrial 的车厂",
+    "来自 Jepak 和 Tanjung Batu 的司机"
+   ]
+  },
+  "about": {
+   "title": "关于 KH Diesel Fuel Pump | Batu 10（十哩）车厂",
+   "desc": "关于 KH DIESEL FUEL PUMP SDN BHD：位于砂拉越民都鲁 Jalan Bintulu–Miri 的 Batu 10（十哩）车厂，从事柴油泵、喷油嘴和涡轮维修。",
+   "h1": "关于 KH Diesel Fuel Pump",
+   "intro": "KH DIESEL FUEL PUMP SDN BHD 是位于民都鲁 Jalan Bintulu–Miri 的 Batu 10（十哩）柴油车厂。主要业务是柴油燃油泵、共轨泵、喷油嘴和涡轮。",
+   "s1_h": "Batu 10（十哩）车厂",
+   "s1_p": "车厂是一栋米色两层楼建筑，设有场地和前方雨棚，靠近 Kampung Penan Muslim Batu 10 和 Jalan Nyabau。室内有洁净室，绿色地面上挂着条状门帘，并配有泵试验台；另有独立的共轨试验室、涡轮和备件架，以及后方的重型发动机工位。",
+   "s2_h": "工作性质",
+   "s2_p": "泵、喷油嘴和涡轮在维修前会先测试，修后再次测试。客户送来的有柴油皮卡、轻型货车、货车、大巴和重型机械。",
+   "owner_h": "负责人",
+   "owner_p": "业务由 Hii Wei Soon 经营。您可以通过 WhatsApp 019-854 5433 或座机 086-340356 联系车厂。"
+  },
+  "contact": {
+   "title": "联系 KH Diesel Fuel Pump | 民都鲁 Batu 10（十哩）",
+   "desc": "联系位于民都鲁 Batu 10（十哩）的 KH Diesel Fuel Pump：WhatsApp 或致电 019-854 5433，座机 086-340356，星期一至星期六上午8:00至下午5:30营业。",
+   "h1": "联系 KH Diesel Fuel Pump",
+   "intro": "WhatsApp 是联系车厂最快的方式。请发送零件照片，并告诉我们车辆或机器的信息。",
+   "ways_h": "联系我们的方式",
+   "where_h": "我们的位置",
+   "where_p": "Batu 10（十哩），Jalan Bintulu–Miri，靠近 Kampung Penan Muslim Batu 10 和 Jalan Nyabau。",
+   "one_loc": "这是我们唯一公开的车厂地址。"
+  },
+  "privacy": {
+   "title": "隐私声明 | KH DIESEL FUEL PUMP SDN BHD",
+   "desc": "KH DIESEL FUEL PUMP SDN BHD 如何处理您通过本网站、WhatsApp 和电话分享的信息，依据马来西亚 2010 年个人数据保护法（PDPA）。"
+  },
+  "articles": {
+   "title": "柴油泵、喷油嘴与涡轮文章 | KH Diesel",
+   "desc": "KH Diesel Fuel Pump 在民都鲁发布的关于柴油燃油泵、共轨喷油嘴和涡轮的文章。",
+   "h1": "柴油泵、喷油嘴与涡轮文章",
+   "intro": "关于柴油燃油泵、喷油嘴和涡轮的简明指南，来自位于民都鲁 Batu 10（十哩）的 KH Diesel 车厂。"
+  }
+ }
+}

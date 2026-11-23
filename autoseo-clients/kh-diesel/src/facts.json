@@ -1,0 +1,53 @@
+{
+  "slug": "kh-diesel",
+  "site_key": "kh-diesel",
+  "source": "facts.md from Bridge drop 6b042ae300cdb3c2c3f53b0d (research 23 Nov 2026) + Edwin brief 23 Nov 2026",
+  "name": "KH DIESEL FUEL PUMP SDN BHD",
+  "short_name": "KH Diesel",
+  "wordmark": "KH DIESEL FUEL PUMP",
+  "address": {
+    "display": "Sublot 14 of Parent Lot 1337 & Lot 341, Block 33, Kemena Land District, 97000 Bintulu, Sarawak",
+    "street": "Sublot 14 of Parent Lot 1337 & Lot 341, Block 33, Kemena Land District",
+    "locality": "Bintulu",
+    "region": "Sarawak",
+    "postcode": "97000",
+    "country": "MY",
+    "landmark": "Batu 10, Jalan Bintulu–Miri, near Kampung Penan Muslim Batu 10 / Jalan Nyabau"
+  },
+  "geo": {"lat": 3.2033182, "lng": 113.123947},
+  "place_id": "ChIJmRPyU0XBHTIRUv6hrzyvKcs",
+  "maps_url": "https://www.google.com/maps/search/?api=1&query=KH%20DIESEL%20FUEL%20PUMP%20SDN%20BHD&query_place_id=ChIJmRPyU0XBHTIRUv6hrzyvKcs",
+  "directions_url": "https://www.google.com/maps/dir/?api=1&destination=KH%20DIESEL%20FUEL%20PUMP%20SDN%20BHD&destination_place_id=ChIJmRPyU0XBHTIRUv6hrzyvKcs",
+  "embed_url": "https://www.google.com/maps?q=place_id:ChIJmRPyU0XBHTIRUv6hrzyvKcs&output=embed",
+  "review_url": "https://search.google.com/local/writereview?placeid=ChIJmRPyU0XBHTIRUv6hrzyvKcs",
+  "mobile": {"display": "019-854 5433", "e164": "+60198545433"},
+  "whatsapp": {"display": "019-854 5433", "wa": "60198545433", "note": "Edwin's agreed WhatsApp number for this build (facts.md: WhatsApp not independently verified)"},
+  "landline": {"display": "086-340356", "e164": "+6086340356", "label": "Tel/Fax"},
+  "hours": {"days": ["Mo","Tu","We","Th","Fr","Sa"], "opens": "08:00", "closes": "17:30", "sunday": "closed", "tz": "Asia/Kuching", "public_holidays": null},
+  "owner": "Hii Wei Soon",
+  "languages": ["en", "ms", "zh"],
+  "services": ["diesel-fuel-pump-repair", "common-rail-pump-repair", "injector-repair", "turbo-repair", "fuel-system-diagnosis"],
+  "workshop_seen": ["clean room with green floor and strip curtains", "fuel-pump test bench", "separate common-rail test room", "turbo and spare-parts racks", "rear heavy-engine workshop", "front canopy parking"],
+  "vehicles_seen": ["4x4 pickups", "light trucks", "heavy lorries", "coaches", "road compactor (heavy plant)"],
+  "flags": {
+    "show_owner_name": true,
+    "google_rating": false,
+    "reviews_count": 0,
+    "second_location": false,
+    "founding_year_known": false,
+    "socials": false,
+    "email": false,
+    "send_in_service": false,
+    "prices": false,
+    "brand_authorisation": false,
+    "whatsapp_verified_by_research": false,
+    "images_ai_generated": true,
+    "video_allowed": false,
+    "gbp_category_on_site": "never print Warehouse; schema AutoRepair"
+  },
+  "areas": [
+    {"slug": "kemena-sibiyu-nyabau", "name": "Kemena, Sibiyu and Nyabau", "km": "0 to 6.5 km"},
+    {"slug": "kidurong-bintulu-port", "name": "Kidurong and Bintulu Port", "km": "about 7 to 9 km"},
+    {"slug": "bintulu-town-jepak", "name": "Bintulu town and Jepak", "km": "about 8 to 10 km"}
+  ]
+}
