@@ -19,10 +19,16 @@ STRINGS = {'en': strings_en, 'ms': strings_ms, 'zh': strings_zh}
 S, L = strings_en, I18N.LANGS[0]
 
 F = json.load(open(os.path.join(HERE, 'facts.json'), encoding='utf8'))
+# ONE SETTING (23 Nov 2026): go_live_domain in src/site.json decides the base. Empty = preview
+# (/preview/mcs-auto-spray-painting on autoseo.my), set = live (P = '', BASE = 'https://<domain>'). No hardcoded paths.
+# RULE 0: live (Bluehost) is newer than this source since the 22 Nov runner edits (area pages, articles). Never publish a
+# rebuild of this folder over live; edit live files with read_live -> edit -> expected_sha256 instead.
+sys.path.insert(0, os.path.join(HERE, '..', '..', '..', 'autoseo-template', 'golive'))
+import golive
+_P, _BASE = golive.build_base(os.path.join(HERE, 'site.json'))
 if '--live' in sys.argv:
-    ORIGIN, BASE = 'https://' + sys.argv[sys.argv.index('--live') + 1], '/'
-else:
-    ORIGIN, BASE = F['preview']['origin'], F['preview']['base_path']
+    _P, _BASE = '', 'https://' + sys.argv[sys.argv.index('--live') + 1].strip('/')
+ORIGIN, BASE = urllib.parse.urlsplit(_BASE).scheme + '://' + urllib.parse.urlsplit(_BASE).netloc, _P + '/'
 SITE = ORIGIN + BASE
 OUT = os.path.join(HERE, '..', 'dist')
 E = html.escape
