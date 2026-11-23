@@ -3,7 +3,7 @@
    Usage: php tests/concurrency.php [runs]   (worker mode: php tests/concurrency.php worker <client_id> <cust_id> <svc_id> <start> <go_at>) */
 declare(strict_types=1);
 define('P1B', true);
-$root = dirname(__DIR__) . '/public';
+$root = dirname(__DIR__) . '/engine';
 foreach (['bootstrap', 'db', 'slots', 'booking'] as $f) require "$root/app/$f.php";
 if (!cfg('test_mode')) exit(2);
 if (($argv[1] ?? '') === 'worker') {

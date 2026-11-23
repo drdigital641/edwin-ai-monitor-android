@@ -1,10 +1,10 @@
-# COPY to /home/<account>/booking-private/my.cnf, chmod 600. Used by backup.sh and restores.
+# /home/<account>/booking-clients/<client-slug>/my.cnf  (chmod 600). Used by backup.sh and restores.
 [client]
-user = <cpanelprefix>_bookapp
-password = <BOOKING_DB_PASSWORD>
+user = <cpanelprefix>_bksga
+password = <BOOKING_DB_PASSWORD_SGAUTOBOTS>
 host = localhost
-database = <cpanelprefix>_booking
+database = <cpanelprefix>_bk_sgautobots
 [mysqldump]
-user = <cpanelprefix>_bookapp
-password = <BOOKING_DB_PASSWORD>
+user = <cpanelprefix>_bksga
+password = <BOOKING_DB_PASSWORD_SGAUTOBOTS>
 host = localhost

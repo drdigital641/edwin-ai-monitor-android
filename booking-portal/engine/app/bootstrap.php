@@ -10,21 +10,18 @@ const P1B_VERSION = '1.0.0';
 function cfg(string $k, $default = null) {
     static $c = null;
     if ($c === null) {
-        $paths = [];
-        if (getenv('P1B_CONFIG')) $paths[] = getenv('P1B_CONFIG');
-        $home = getenv('HOME') ?: (function_exists('posix_getpwuid') ? (posix_getpwuid(posix_geteuid())['dir'] ?? '') : '');
-        if ($home) $paths[] = $home . '/booking-private/config.php';
-        // walk up from booking/app to the first folder OUTSIDE public_html (the account home), never inside the web root
-        for ($d = dirname(__DIR__); $d !== dirname($d); $d = dirname($d)) {
-            if (strpos($d . '/', '/public_html/') === false) { $paths[] = $d . '/booking-private/config.php'; break; }
+        // The client's entry file defines P1B_CONFIG_FILE: that client's own config (own DB) OUTSIDE public_html.
+        $p = defined('P1B_CONFIG_FILE') ? P1B_CONFIG_FILE : (string) getenv('P1B_CONFIG');
+        if ($p === '' || strpos(str_replace('\\', '/', $p), '/public_html/') !== false || !is_file($p)) {
+            throw new RuntimeException('config missing or inside public_html');
         }
-        foreach ($paths as $p) { if (is_file($p)) { $c = require $p; break; } }
-        if (!is_array($c)) { $c = []; }
+        $c = require $p;
+        if (!is_array($c)) throw new RuntimeException('config invalid');
     }
     return $c[$k] ?? $default;
 }
 
-function base_url(): string { return rtrim((string) cfg('base_url', ''), '/'); }  // e.g. https://pageonesingapore.com/booking
+function base_url(): string { return rtrim((string) cfg('base_url', ''), '/'); }  // e.g. https://pageonesingapore.com/preview/sg-autobots/booking
 function base_path(): string { $p = parse_url(base_url(), PHP_URL_PATH); return rtrim($p ?: '/booking', '/'); }
 function portal_origin(): string { $u = parse_url(base_url()); return ($u['scheme'] ?? 'https') . '://' . ($u['host'] ?? '') . (isset($u['port']) ? ':' . $u['port'] : ''); }
 
@@ -67,7 +64,8 @@ function nonce(): string { static $n = null; return $n ??= rtrim(strtr(base64_en
 function frame_ancestors(?array $client): string {
     $list = ["'self'"];
     if ($client) {
-        foreach (preg_split('/[\s,]+/', (string) ($client['allowed_embed_domains'] ?? ''), -1, PREG_SPLIT_NO_EMPTY) as $d) {
+        $doms = (string) ($client['allowed_embed_domains'] ?? '') . ' ' . implode(' ', (array) cfg('embed_domains', []));
+        foreach (preg_split('/[\s,]+/', $doms, -1, PREG_SPLIT_NO_EMPTY) as $d) {
             $d = strtolower(trim($d));
             $d = preg_replace('#^https?://#', '', $d); $d = rtrim($d, '/');
             if (preg_match('/^(\*\.)?[a-z0-9-]+(\.[a-z0-9-]+)+(:\d+)?$/', $d)) {
@@ -187,8 +185,22 @@ function wa_link(string $e164, string $text = ''): string {
     return 'https://wa.me/' . ltrim($e164, '+') . ($text !== '' ? '?text=' . rawurlencode($text) : '');
 }
 
-function asset(string $path): string {
-    $f = dirname(__DIR__) . '/' . $path;
-    $v = is_file($f) ? substr(hash_file('sha256', $f), 0, 10) : P1B_VERSION;
-    return base_path() . '/' . $path . '?v=' . $v;
+/* static files live in the engine (outside the web root) and are served through the client entry: ?asset=css|js|embed */
+const P1B_ASSETS = ['css' => ['assets/portal.css', 'text/css'], 'js' => ['assets/portal.js', 'text/javascript'], 'embed' => ['embed.js', 'text/javascript']];
+function asset(string $key): string {
+    $f = dirname(__DIR__) . '/' . P1B_ASSETS[$key][0];
+    return base_path() . '/?asset=' . $key . '&v=' . substr(hash_file('sha256', $f), 0, 10);
+}
+function serve_asset(string $key): void {
+    if (!isset(P1B_ASSETS[$key])) { http_response_code(404); exit; }
+    [$file, $type] = P1B_ASSETS[$key];
+    header('Content-Type: ' . $type . '; charset=utf-8');
+    header('X-Content-Type-Options: nosniff');
+    header('X-Robots-Tag: noindex, nofollow');
+    header('Access-Control-Allow-Origin: *');            // embed.js is loaded by the client's own site
+    header('Cross-Origin-Resource-Policy: cross-origin');
+    // versioned (?v=hash) = 1 year immutable (rule 30); embed.js without v = 1 hour
+    header('Cache-Control: ' . (isset($_GET['v']) ? 'public, max-age=31536000, immutable' : 'public, max-age=3600'));
+    readfile(dirname(__DIR__) . '/' . $file);
+    exit;
 }

@@ -2,7 +2,7 @@
 /* CLI test runner: php tests/run_tests.php   (needs P1B_CONFIG pointing at a TEST config + test database) */
 declare(strict_types=1);
 define('P1B', true);
-$root = dirname(__DIR__) . '/public';
+$root = dirname(__DIR__) . '/engine';
 require $root . '/app/bootstrap.php';
 require $root . '/app/db.php';
 require $root . '/app/slots.php';

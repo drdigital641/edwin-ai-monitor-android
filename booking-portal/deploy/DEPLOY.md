@@ -1,116 +1,120 @@
-# DEPLOY: booking portal (job booking-portal-deploy)
+# Booking engine v2: deploy manifest (job booking-portal-deploy-v2)
 
-Edwin approved 23 Nov 2026 8:45pm SGT: MySQL DB + user, private config, upload of booking/ (PHP), booking/.htaccess, backup first.
-Do NOT change booking_url on the SgAutobots preview (Edwin: not yet).
-No real secrets are in this package. Every value in <angle brackets> is a placeholder to fill on the server only.
+Edwin, 23 Nov 2026, 8:54pm SGT: nothing at pageonesingapore.com/booking/, no links from Page One, each client has its own booking data.
+Trial client: SgAutobots on its preview. **Hold the v1 package (deploy/ of job booking-portal-deploy): it is superseded and must not be installed.**
 
-## 0. Requirements
-- PHP 8.1 or newer (tested on 8.3) with pdo_mysql and mbstring. In cPanel > MultiPHP Manager, check the version on pageonesingapore.com.
-- MySQL 5.7+/MariaDB 10.3+ (tested on MariaDB 10.11), InnoDB, utf8mb4.
-- Apache with mod_headers (already used by the root .htaccess).
+Placeholders only in this package. `<account>` is the cPanel home user, `<prefix>` the cPanel DB prefix, `<docroot>` the folder that serves https://pageonesingapore.com/ (the one holding `preview/sg-autobots/index.html`, likely `public_html/website_b1ec45f5/`). Real passwords, pepper and setup token are made on the server and never written into a drop, the repo, notes, a log or a reply.
 
-## 1. Backup first
+## 1. Layout
+
 ```
-mkdir -p ~/backups-private && tar czf ~/backups-private/pageone-booking-predeploy-$(date -u +%Y%m%d-%H%M%SZ).tgz -C ~/public_html/<pageonesingapore docroot> .htaccess
-```
-(booking/ does not exist yet; the root .htaccess is backed up as proof it is not touched). Report the tgz path to Edwin.
+/home/<account>/booking-engine/            SHARED CODE, outside public_html (chmod 755 dirs, 644 files)
+  engine.php                               front controller
+  embed.js                                 Book button popup + inline iframe height (served through each entry, ?asset=embed)
+  assets/portal.css  assets/portal.js      served through each entry (?asset=css|js)
+  app/bootstrap.php db.php slots.php booking.php views.php customer.php admin.php
+  app/lang/en.php
+  app/seed/sg-autobots.json                SgAutobots client row + 8 services (Edwin 8:16pm list), hours empty
 
-## 2. Database (cPanel > MySQL Databases)
-- Database: `<cpanelprefix>_booking` (cPanel adds the prefix)
-- User: `<cpanelprefix>_bookapp`, strong random password (40+ chars, cPanel generator)
-- Privileges for that user on that DB only: SELECT, INSERT, UPDATE, DELETE, CREATE, ALTER, INDEX
-- Host: localhost
+/home/<account>/booking-clients/sg-autobots/   THIS CLIENT'S PRIVATE FOLDER, outside public_html (chmod 700)
+  config.php                               from config.sample.php (chmod 600): own DB, own pepper, own setup token, base_url
+  my.cnf                                   from my.cnf.sample (chmod 600): for backups/restores
+  sessions/                                (chmod 700)
 
-## 3. Private folder OUTSIDE the web root
+<docroot>/preview/sg-autobots/booking/index.php         PUBLIC ENTRY, customer (3 lines, no secrets)
+<docroot>/preview/sg-autobots/booking/admin/index.php   PUBLIC ENTRY, admin (4 lines, no secrets)
+
+/home/<account>/backups-private/booking/<client-slug>/  nightly dumps (chmod 700)
 ```
-/home/<account>/booking-private/            chmod 700
-/home/<account>/booking-private/config.php  chmod 600   (from private__config.sample.php.txt)
-/home/<account>/booking-private/my.cnf      chmod 600   (from private__my.cnf.sample.txt)
-/home/<account>/booking-private/backup.sh   chmod 700   (from private__backup.sh.txt)
-/home/<account>/booking-private/sessions/   chmod 700   (empty folder)
-/home/<account>/backups-private/booking/    chmod 700   (empty folder)
-```
-config.php keys (fill on the server; never paste values into chat, a drop, a log or the repo):
-| key | value |
+
+Package file -> server path (rename `.php.txt` to `.php`; `.txt` names exist only because drops allow one dot):
+
+| Package file | Server path |
 |---|---|
-| base_url | `https://pageonesingapore.com/booking` |
-| db_host | `localhost` |
-| db_name | `<cpanelprefix>_booking` |
-| db_user | `<cpanelprefix>_bookapp` |
-| db_pass | `<BOOKING_DB_PASSWORD>` |
-| pepper | `<BOOKING_PEPPER>`: 64 random hex chars |
-| setup_token | `<BOOKING_SETUP_TOKEN>`: 40+ random chars; give it to Edwin privately; blank it after step 6 |
-| session_path | `/home/<account>/booking-private/sessions` |
-| test_mode | `true` for the smoke test only (allows +65000000xx numbers, flagged is_test), then `false` |
-| cookie_secure, hsts | `true` |
-| lang | `en` |
-The app reads `$HOME/booking-private/config.php`; if PHP has no HOME it walks up from booking/app to the first folder outside public_html (the account home) and reads `booking-private/config.php` there. It never looks inside public_html.
+| engine/engine.php.txt | /home/<account>/booking-engine/engine.php |
+| engine/embed.js | /home/<account>/booking-engine/embed.js |
+| engine/assets/portal.css, portal.js | /home/<account>/booking-engine/assets/ |
+| engine/app/*.php.txt (7 files) | /home/<account>/booking-engine/app/*.php |
+| engine/app/lang/en.php.txt | /home/<account>/booking-engine/app/lang/en.php |
+| engine/app/seed/sg-autobots.json | /home/<account>/booking-engine/app/seed/sg-autobots.json |
+| entry/booking/index.php.txt | <docroot>/preview/sg-autobots/booking/index.php |
+| entry/booking/admin/index.php.txt | <docroot>/preview/sg-autobots/booking/admin/index.php |
+| private/config.php.txt (= private/config.sample.php in the repo) | /home/<account>/booking-clients/sg-autobots/config.php (fill in) |
+| private/my.cnf.txt (= private/my.cnf.sample) | /home/<account>/booking-clients/sg-autobots/my.cnf (fill in) |
+| private/backup.sh | /home/<account>/booking-clients/backup.sh (chmod 700) |
+| schema.sql.txt | import into the client database (optional: the engine creates the tables itself) |
 
-## 4. Schema
+In both entry files replace `<account>` and `<client-slug>` (`sg-autobots`). Nothing else goes in a public folder: no config, no .sql, no .bak, no engine code.
+
+## 2. Why one database per client (recommended, built this way)
+- **No query can cross clients.** Each entry loads one config, which opens one database. The data layer is also tenant-scoped (every query carries the client id), so there are two walls, not one.
+- **Moving a client is zero migration.** The database stays where it is; only the entry folder and `base_url` change (section 6).
+- **Separate backup, restore and export.** One client's restore never rolls back another client. A client who leaves gets their own dump.
+- **Smaller blast radius.** A leaked DB password exposes one client only, because each client has its own DB user.
+- Cost: one DB + one DB user per client in cPanel, and one config folder. backup.sh loops over all of them, so there is still one cron line.
+
+## 3. Install steps (Domain Go-Live, cPanel)
+0. **Backup first** (timestamped .tgz in `~/backups-private/` of `<docroot>/preview/sg-autobots/`), and tell Edwin the path.
+1. Check PHP is 8.1 or newer for `<docroot>` (built for 8.1+, tested on 8.3).
+2. MySQL Databases: create DB `<prefix>_bk_sgautobots` (utf8mb4) and user `<prefix>_bksga` with a strong random password. Privileges on that DB only, host localhost: SELECT, INSERT, UPDATE, DELETE, CREATE, ALTER, INDEX.
+3. Upload the engine to `/home/<account>/booking-engine/` (table above).
+4. Create `/home/<account>/booking-clients/sg-autobots/` (700), `sessions/` (700), `config.php` and `my.cnf` (600). Fill: db_pass, pepper (64 random hex), setup_token (40+ random chars). Keep `base_url = https://pageonesingapore.com/preview/sg-autobots/booking`, `embed_domains = ['pageonesingapore.com']`, `test_mode = false`, `test_client = false`.
+5. Optional: import `schema.sql` into the DB (`mysql --defaults-extra-file=.../my.cnf <prefix>_bk_sgautobots < schema.sql`).
+6. Upload the two entry files to `<docroot>/preview/sg-autobots/booking/` and `.../booking/admin/`.
+7. Open `https://pageonesingapore.com/preview/sg-autobots/booking/admin/`. It shows **First-time setup**. Enter the setup token, an admin username and a password (12+). This imports SgAutobots and its 8 services and creates the client admin. Then blank `setup_token` in config.php.
+8. Cron: add `sh $HOME/booking-clients/backup.sh` to the existing nightly job (rule 21), or one line `17 3 * * *` if none exists. Note: backup.sh removes its own dumps older than 14 days in `~/backups-private/booking/` only; drop the `find` line if Edwin wants every dump kept.
+9. Do **not** change `booking_url` in the preview's site-config.json. It stays "" until Edwin says go.
+
+## 4. .htaccess (listed separately): NONE needed now
+- The trial embeds on pageonesingapore.com itself (same origin), so the root `.htaccess` headers (X-Frame-Options SAMEORIGIN, CSP frame-ancestors 'self') already allow it.
+- PHP sends its own noindex (`X-Robots-Tag: noindex, nofollow` + meta), CSP, `Cache-Control: no-store` on every response.
+- Only needed later, and only inside a client's entry folder, if that client's host adds framing headers that block its own domain. Edwin's OK first. Content would be:
 ```
-mysql --defaults-extra-file=$HOME/booking-private/my.cnf <cpanelprefix>_booking < schema.sql
+<IfModule mod_headers.c>
+  Header always unset X-Frame-Options
+  Header always unset Content-Security-Policy
+</IfModule>
+<IfModule mod_expires.c>
+  ExpiresActive Off
+</IfModule>
 ```
-(or cPanel > phpMyAdmin > Import schema.sql). Optional: the app also creates the same tables itself on the first super-admin visit. 11 tables.
 
-## 5. Upload the app (20 files total in the package; 15 go in booking/)
-Folder: `public_html/<pageonesingapore docroot>/booking/` (the root .htaccess comment names the docroot `public_html/website_b1ec45f5/`; confirm in cPanel > Domains) (create `booking/`, `booking/app/`, `booking/app/lang/`, `booking/app/seed/`, `booking/assets/`, `booking/sg-autobots/`). Files 644, folders 755.
-The PHP user must be able to create new client folders inside booking/ (the super-admin "Add client" makes `booking/<slug>/index.php`). With suPHP/PHP-FPM as the account user (Bluehost default) 755 is enough.
+## 5. Smoke tests (fake numbers +65000000xx only; never a real customer)
+SgAutobots stays clean: its hours are empty, so it cannot take bookings. Booking flows are tested on a separate **smoke client** with its own database, then closed.
 
-| Package file | Install as (drop the .txt, `__` = folder) | sha256 (first 16) |
-|---|---|---|
-| app__admin.php.txt | public_html/<pageonesingapore docroot>/booking/app/admin.php | `fe12a536073100e2` |
-| app__booking.php.txt | public_html/<pageonesingapore docroot>/booking/app/booking.php | `5877cae5c3dd15ad` |
-| app__bootstrap.php.txt | public_html/<pageonesingapore docroot>/booking/app/bootstrap.php | `6059933efeb1f6e2` |
-| app__customer.php.txt | public_html/<pageonesingapore docroot>/booking/app/customer.php | `d4161b76318193b5` |
-| app__db.php.txt | public_html/<pageonesingapore docroot>/booking/app/db.php | `7918c63773307eb0` |
-| app__lang__en.php.txt | public_html/<pageonesingapore docroot>/booking/app/lang/en.php | `4efd0f6c4e6849a6` |
-| app__seed__sg-autobots.json.txt | public_html/<pageonesingapore docroot>/booking/app/seed/sg-autobots.json | `5592903cc2987bad` |
-| app__slots.php.txt | public_html/<pageonesingapore docroot>/booking/app/slots.php | `b299162c2a9ac9c9` |
-| app__super.php.txt | public_html/<pageonesingapore docroot>/booking/app/super.php | `debf651a1377c04c` |
-| app__views.php.txt | public_html/<pageonesingapore docroot>/booking/app/views.php | `6f6bed16771e847b` |
-| assets__portal.css.txt | public_html/<pageonesingapore docroot>/booking/assets/portal.css | `64d674281e4de82f` |
-| assets__portal.js.txt | public_html/<pageonesingapore docroot>/booking/assets/portal.js | `c1af3e6c153aad19` |
-| embed.js.txt | public_html/<pageonesingapore docroot>/booking/embed.js | `43ac99bbb09d6119` |
-| index.php.txt | public_html/<pageonesingapore docroot>/booking/index.php | `e9279ea0ec0b1d31` |
-| sg-autobots__index.php.txt | public_html/<pageonesingapore docroot>/booking/sg-autobots/index.php | `27121868e96078ce` |
-| booking.htaccess.txt | public_html/<pageonesingapore docroot>/booking/.htaccess | `4bcc79a159b9ecc4` |
-| private__config.sample.php.txt | /home/<account>/booking-private/config.php (fill values on the server) | sample |
-| private__my.cnf.sample.txt | /home/<account>/booking-private/my.cnf (fill values on the server) | sample |
-| private__backup.sh.txt | /home/<account>/booking-private/backup.sh | `8d7647f8fa19f990` |
-| schema.sql.txt | not installed: import once into the DB (step 4) | `a3471baaa060924d` |
+**A. SgAutobots (real client, no test data)**
+1. `curl -sI https://pageonesingapore.com/preview/sg-autobots/booking/` -> 200, `X-Robots-Tag: noindex, nofollow`, `Content-Security-Policy ... frame-ancestors 'self' https://pageonesingapore.com https://www.pageonesingapore.com`, `Cache-Control: no-store`.
+2. The page shows "Online booking is not open yet ... WhatsApp us to book" (WhatsApp +65 8366 7010).
+3. `.../booking/?asset=css&v=1` -> 200 text/css; `.../booking/?asset=embed` -> 200 JavaScript.
+4. Admin: log in at `.../booking/admin/`. Settings > Services lists the 8 services with Edwin's prices; Opening hours is empty; Embed codes shows URLs under `/preview/sg-autobots/booking/`.
+5. `https://pageonesingapore.com/booking/` -> 404 (nothing there). The engine and config are not reachable by any URL.
 
-Leave no .txt, .sql, .bak or .md copies in public folders (the .htaccess also denies them).
+**B. Smoke client (test only)**
+1. DB `<prefix>_bk_smoke`, user `<prefix>_bksmk` (same privileges), folder `/home/<account>/booking-clients/smoke-test/` with config: `client_slug 'smoke-test'`, `seed 'none'`, `base_url https://pageonesingapore.com/preview/booking-smoke`, `test_mode true`, `test_client true`, own pepper + setup token.
+2. Entries at `<docroot>/preview/booking-smoke/index.php` and `admin/index.php` (same 3/4 lines, slug smoke-test). Not linked anywhere, noindex.
+3. Admin setup with the token -> Settings: hours Mon-Sat 09:00-18:00; add service "Smoke test wash", 60 min, active.
+4. Customer: register **+6500000001**, name "Smoke Test", PIN 480317 -> book tomorrow's first slot -> confirmation shows a ref -> My bookings -> Reschedule to another slot -> Cancel.
+5. Admin day view for that date (`.../admin/?r=a&d=YYYY-MM-DD`) shows the booking, tagged test, status Cancelled.
+6. Isolation: the same +6500000001 / 480317 on `.../preview/sg-autobots/booking/?r=login` -> "The mobile or PIN is wrong" (separate database).
+7. Five wrong PINs on +6500000001 -> locked for 15 minutes.
+8. Finish: in the smoke admin, Settings > Opening hours: tick every day **closed** (customers then see "WhatsApp us to book"); blank its setup_token. The folders stay (no deletions); Edwin decides later.
 
-## 6. First setup (Edwin)
-1. Open `https://pageonesingapore.com/booking/?r=s`, enter the setup token, choose a username and a password of 12+ characters. Then blank `setup_token` in config.php.
-2. Super-admin page: under "Import starter client" press **sg-autobots**. This creates the client (status setup, 8 services from the owner's list, hours EMPTY) and the folder stub if it is missing.
-3. On the SgAutobots client page: "Create or reset client admin" with a username and a 12+ character password. Edwin hands it to the client. Nobody else receives it.
-4. The client sets Mon-Sun hours and off days in Admin > Settings. Until then customers see "WhatsApp us to book". Saving hours switches the client to live.
+## 6. Moving SgAutobots to his own domain (zero data migration)
+Same server (Bluehost addon domain):
+1. Copy the two entry files to `<his docroot>/booking/` and `<his docroot>/booking/admin/` (still pointing at the same engine and the same `/home/<account>/booking-clients/sg-autobots/config.php`).
+2. In that config: `base_url => 'https://<his-domain>/booking'`, `embed_domains => ['<his-domain>']`.
+3. Update the Book buttons / booking_url on his site to the new URL, and in admin Settings > Branding point the logo at his domain. The database, customers, PINs and bookings are untouched.
+4. Old preview entry: leave it, or (Edwin's OK) replace it with a redirect page to the new URL.
 
-## 7. Smoke test (test_mode true; fake numbers only; never contact anyone)
-For the booking steps, make a TEST client so SgAutobots stays untouched: super-admin > Add client, slug `smoke-test`, any colours, status live; give it a client admin; in its admin set hours Mon-Sat 09:00-18:00 and switch one service on (Admin > Settings > Services > Add a service, 60 min, active).
-1. `curl -sI https://pageonesingapore.com/booking/sg-autobots/` -> 200, has `X-Robots-Tag: noindex, nofollow`, `Content-Security-Policy ... frame-ancestors 'self' https://pageonesingapore.com https://www.pageonesingapore.com`, and NO `X-Frame-Options`.
-2. Open `/booking/sg-autobots/` -> shows "WhatsApp us to book" (hours empty). Correct.
-3. `/booking/smoke-test/` -> Register with mobile `+6500000001`, name "Smoke test", PIN `480317` twice, tick the privacy box.
-4. Book a service -> pick a date -> pick a time -> Confirm. The confirmation shows a ref like `SMO-XXXXXX`.
-5. My bookings -> Reschedule -> pick another time -> "Moved ...". The ref stays the same.
-6. My bookings -> Cancel booking -> "Cancelled: ...".
-7. Admin: `/booking/smoke-test/?r=a` -> log in -> Day view -> date picker to the booking date -> the booking shows (time, name, mobile, service, status). Week view works.
-8. Log out, then 5 wrong PINs for +6500000001 -> the account locks for 15 minutes.
-9. `curl -sI https://pageonesingapore.com/booking/app/db.php` -> 404 (direct include access refused). `curl -sI .../booking/app/seed/sg-autobots.json` -> 403.
-10. After the test: super-admin > smoke-test > status `paused`; set `test_mode` to false in config.php. Test customers are is_test and never mix with SgAutobots.
-Report each step's result (pass/fail) to Edwin.
+Different server later: dump `<prefix>_bk_sgautobots` with `my.cnf`, import it there, copy the engine + his config folder, change the db_* values. Still one client's data only; nothing to separate.
 
-## 8. Backups (rule 21: no duplicate crons)
-Add `sh $HOME/booking-private/backup.sh` to the existing nightly cron job. If there is none, one line: `17 3 * * * sh $HOME/booking-private/backup.sh`.
-Dumps go to `~/backups-private/booking/booking-YYYYmmdd-HHMMSS.sql.gz` and 14 days are kept.
-Restore: dump first, then `gunzip -c <file> | mysql --defaults-extra-file=$HOME/booking-private/my.cnf <cpanelprefix>_booking`.
+## 7. Backups and restore
+- Nightly: `~/backups-private/booking/<slug>/<slug>-YYYYmmdd-HHMMSS.sql.gz`, one folder per client, 14 days.
+- Restore one client: take a fresh dump first, then `gunzip -c <file> | mysql --defaults-extra-file=$HOME/booking-clients/<slug>/my.cnf <that client's db>`. No other client is touched.
+- Back up before every upload.
 
-## 9. URLs after deploy
-```
-Customer (SgAutobots): https://pageonesingapore.com/booking/sg-autobots/
-Client admin:          https://pageonesingapore.com/booking/sg-autobots/?r=a
-Super-admin:           https://pageonesingapore.com/booking/?r=s
-embed.js:              https://pageonesingapore.com/booking/embed.js
-```
-Source: repo drdigital641/edwin-ai-monitor-android, branch claude/project-thread-yndfoh, folder booking-portal/ (README has full notes).
+## 8. Adding the next client
+New DB + user, new `booking-clients/<slug>/` folder with its own config (own pepper and token), a seed file `app/seed/<slug>.json` (or none: the admin fills Settings), two entry files in that client's site folder. The engine is not copied.
+
+## 9. Tests run off-server (23 Nov 2026)
+Unit 59/59 (slot engine, isolation, lockout). Concurrency: 25 races, 0 double bookings. Browser (Chromium) on the v2 layout with two client databases: SgAutobots setup imported 8 services and shows WhatsApp; demo client register, book, reschedule, cancel at 390 and 360 with no horizontal scroll and all taps 44px+; demo login refused on SgAutobots; popup + inline iframe from another site with the session held; Esc closes. Not tested: real iOS Safari, and the live server.

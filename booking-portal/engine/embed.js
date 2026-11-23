@@ -1,16 +1,16 @@
 /* Booking embed (one shared file for every client).
-   <script src="https://<portal>/booking/embed.js" data-client="<slug>" defer></script>
+   <script src="https://<client booking folder>/?asset=embed" defer></script>   (each client's own booking entry serves this file)
    - [data-p1-book] (optional data-service="<slug>") opens the booking page in a modal (desktop) or full-screen sheet (phone).
    - iframe[data-p1-booking] auto-resizes from {type:'p1-booking-height', h} messages sent by the portal origin only.
    Clicks are handled in the bubble phase on document and never stopped, so the site's tap counter (capture phase) records them first. */
 (function () {
   if (window.__p1book) return; window.__p1book = 1;
-  var d = document, me = d.currentScript || d.querySelector('script[src*="/embed.js"][data-client]');
+  var d = document, me = d.currentScript || d.querySelector('script[src*="asset=embed"]');
   if (!me) return;
-  var src = new URL(me.src, location.href), ORIGIN = src.origin, BASE = src.href.replace(/\/embed\.js.*$/, ''), CLIENT = me.getAttribute('data-client') || '';
-  var KEY = 'p1book_tab_' + CLIENT, dlg = null, frame = null, lastFocus = null, pushed = false;
+  var src = new URL(me.src, location.href), ORIGIN = src.origin, PORTAL = src.origin + src.pathname.replace(/[^\/]*$/, '');
+  var CLIENT = PORTAL, KEY = 'p1book_tab_' + PORTAL, dlg = null, frame = null, lastFocus = null, pushed = false;
   function url(service, embed) {
-    var u = new URL(BASE + '/' + encodeURIComponent(CLIENT) + '/');
+    var u = new URL(PORTAL);
     if (service) u.searchParams.set('service', service);
     if (embed) u.searchParams.set('embed', '1');
     return u.toString();
@@ -82,7 +82,7 @@
     } else if (t === 'p1-booking-close') {
       if (frame && frame.contentWindow === e.source) close();
     } else if (t === 'p1-booking-confirmed') {
-      try { d.dispatchEvent(new CustomEvent('p1-booking-confirmed', { detail: { client: CLIENT } })); } catch (x) {}
+      try { d.dispatchEvent(new CustomEvent('p1-booking-confirmed', { detail: { client: e.data.client } })); } catch (x) {}
     }
   });
 })();

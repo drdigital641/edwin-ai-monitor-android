@@ -19,7 +19,60 @@ function admin_user(Tenant $T): ?array {
     return $r ?: null;
 }
 
+function client_has_admin(Tenant $T): bool { return (bool) q("SELECT 1 FROM admins WHERE client_id=? AND role='client_admin' LIMIT 1", [$T->id()])->fetchColumn(); }
+
+/** first run for this client's own database: setup token (private config) -> client row from the seed + the client admin login */
+function a_setup(?Tenant $T): void {
+    $errs = [];
+    $token = (string) cfg('setup_token', '');
+    $title = t('s_setup');
+    $out = function (string $body) use ($T, $title) { page(['client' => $T ? $T->client : null, 'title' => $title, 'h1' => $title, 'body' => $body, 'area' => 'a']); };
+    if (strlen($token) < 24) { $out('<p class="flash err">' . e(t('s_no_token')) . '</p>'); return; }
+    if (is_post()) {
+        require_post_ok();
+        $u = in_str('username', 60); $p = (string) ($_POST['password'] ?? '');
+        if (!rate_hit('a_setup', 10, 900)) $errs[] = t('err_rate');
+        elseif (!hash_equals($token, (string) ($_POST['token'] ?? ''))) $errs[] = t('a_login_err');
+        else {
+            if (!preg_match('/^[a-z0-9._-]{3,60}$/i', $u)) $errs[] = t('username');
+            if (strlen($p) < 12) $errs[] = t('a_err_pw');
+            if (!$errs) {
+                if (!$T) $T = new Tenant(SuperRepo::client(import_seed()));
+                if (client_has_admin($T)) { redirect(curl_('', 'a_login')); }
+                SuperRepo::upsertClientAdmin($T->id(), $u, $p);
+                audit($T->id(), 'system', 'client_admin_created', '', $u);
+                flash(t('s_setup_done'));
+                redirect(curl_('', 'a_login'));
+            }
+        }
+    }
+    $out(errors_html($errs) . '<form method="post" class="card form" action="' . e(curl_('', 'a_setup')) . '">' . csrf_field()
+        . field('token', t('s_token'), ['type' => 'password', 'autocomplete' => 'off', 'required' => 1])
+        . field('username', t('username'), ['autocomplete' => 'username', 'required' => 1])
+        . field('password', t('password'), ['type' => 'password', 'autocomplete' => 'new-password', 'minlength' => 12, 'required' => 1, 'hint' => t('a_err_pw')])
+        . '<button class="btn big">' . e(t('s_setup')) . '</button></form>');
+}
+
+/** create this database's client row + services from engine/app/seed/<seed>.json (hours stay empty) */
+function import_seed(): int {
+    $seed = preg_replace('/[^a-z0-9-]/', '', (string) cfg('seed', cfg('client_slug')));
+    $f = __DIR__ . '/seed/' . $seed . '.json';
+    if (!is_file($f)) {   // no seed file: a bare client the admin fills in Settings
+        $j = ['client' => ['slug' => cfg('client_slug'), 'name' => (string) cfg('client_name', cfg('client_slug')), 'status' => 'setup'], 'services' => []];
+    } else $j = json_decode((string) file_get_contents($f), true, 32, JSON_THROW_ON_ERROR);
+    if ($j['client']['slug'] !== cfg('client_slug')) throw new RuntimeException('seed slug differs from client_slug');
+    $id = SuperRepo::saveClient($j['client'] + ['logo_url' => '', 'colour_primary' => '#1f4fa0', 'colour_accent' => '#f2c94c', 'colour_bg' => '#ffffff', 'whatsapp_e164' => '',
+        'timezone' => 'Asia/Singapore', 'recurring_enabled' => 0, 'allowed_embed_domains' => '', 'is_test' => cfg('test_client') ? 1 : 0]);
+    $T = new Tenant(SuperRepo::client($id));
+    foreach ($j['services'] as $i => $s) {
+        $T->saveService($s + ['slug' => '', 'group_slug' => '', 'price' => null, 'price_note' => '', 'recurring_allowed' => 0, 'active' => 0, 'sort_order' => $i, 'full_day' => 0, 'admin_note' => '', 'duration_min' => null]);
+    }
+    audit($id, 'system', 'client_import', '', $seed);
+    return $id;
+}
+
 function admin_route(Tenant $T, string $r): void {
+    if ($r === 'a_setup' || !client_has_admin($T)) { a_setup($T); return; }
     if ($r === 'a_login') { a_login($T); return; }
     $ad = admin_user($T);
     if (!$ad) redirect(aurl($T, 'a_login'));
@@ -337,7 +390,7 @@ function a_settings(Tenant $T, string $actor): void {
         $T->reload(); $c = $T->client;
     }
     $tabs = '<nav class="tabs">';
-    foreach (['services' => t('a_services'), 'hours' => t('a_hours'), 'off' => t('a_off'), 'rules' => t('a_rules'), 'brand' => t('a_brand')] as $k => $l)
+    foreach (['services' => t('a_services'), 'hours' => t('a_hours'), 'off' => t('a_off'), 'rules' => t('a_rules'), 'brand' => t('a_brand'), 'embed' => t('s_embeds')] as $k => $l)
         $tabs .= '<a href="' . e(aurl($T, 'a_set', ['tab' => $k])) . '"' . ($k === $tab ? ' aria-current="page"' : '') . '>' . e($l) . '</a>';
     $h = $tabs . '</nav>' . errors_html($errs);
     $form = fn($inner) => '<form method="post" class="card form" action="' . e(aurl($T, 'a_set', ['tab' => $tab])) . '">' . csrf_field() . $inner . '<button class="btn big">' . e(t('a_save')) . '</button></form>';
@@ -370,6 +423,19 @@ function a_settings(Tenant $T, string $actor): void {
         $num = fn($k, $l, $min, $max) => field($k, $l, ['type' => 'number', 'inputmode' => 'numeric', 'min' => $min, 'max' => $max, 'value' => (string) $c[$k], 'required' => 1]);
         $h .= $form($num('slot_step_min', t('a_r_step'), 5, 240) . $num('max_days_ahead', t('a_r_ahead'), 1, 365) . $num('min_notice_min', t('a_r_notice'), 0, 20160)
             . $num('cancel_cutoff_min', t('a_r_cutoff'), 0, 20160) . $num('capacity', t('a_r_cap'), 1, 20) . $num('max_repeats', t('a_r_rep'), 2, 52));
+    } elseif ($tab === 'embed') {
+        $b = base_url();
+        $codes = [
+            'Direct link (booking_url)' => $b . '/',
+            'Direct link, one service' => $b . '/?service=<service-slug>',
+            'Book button (script once per page; data-p1-book on any link)' => '<script src="' . $b . '/?asset=embed" defer></script>' . "\n" . '<a href="' . $b . '/" data-p1-book data-cta="booking" data-ref="booking_home_hero">Book now</a>',
+            'Inline booking section (auto height; same script on the page)' => '<iframe src="' . $b . '/?embed=1" data-p1-booking title="Book an appointment" loading="lazy" style="width:100%;border:0;min-height:640px"></iframe>' . "\n" . '<script src="' . $b . '/?asset=embed" defer></script>',
+            'Admin iframe (login still required)' => '<iframe src="' . $b . '/admin/?embed=1" data-p1-booking title="Bookings admin" style="width:100%;border:0;min-height:800px"></iframe>' . "\n" . '<script src="' . $b . '/?asset=embed" defer></script>',
+            'Admin link' => $b . '/admin/',
+        ];
+        $h .= '<div class="card form">';
+        foreach ($codes as $label => $code) $h .= '<label>' . e($label) . '</label><textarea class="code" readonly rows="' . (substr_count($code, "\n") + 2) . '">' . e($code) . '</textarea>';
+        $h .= '</div>';
     } elseif ($tab === 'brand') {
         $h .= $form(field('name', t('a_b_name'), ['value' => $c['name'], 'required' => 1]) . field('logo_url', t('a_b_logo'), ['type' => 'url', 'value' => $c['logo_url']])
             . field('colour_primary', t('a_b_primary'), ['type' => 'color', 'value' => $c['colour_primary']]) . field('colour_accent', t('a_b_accent'), ['type' => 'color', 'value' => $c['colour_accent']])

@@ -1,5 +1,9 @@
 <?php
-/* Front controller. /booking/<slug>/ (stub folder) or /booking/?c=<slug> for clients; /booking/?r=s for the super-admin. */
+/* Booking engine front controller. Lives OUTSIDE the web root (e.g. /home/<account>/booking-engine/engine.php).
+   Each client has a 3-line public entry that defines P1B_CONFIG_FILE (that client's own config + own database) and requires this file:
+     <client folder>/booking/index.php        customer screens
+     <client folder>/booking/admin/index.php  admin screens (defines P1B_ADMIN)
+   Static files are served through the entry (?asset=css|js|embed), so nothing of the engine is web-reachable. */
 declare(strict_types=1);
 define('P1B', true);
 require __DIR__ . '/app/bootstrap.php';
@@ -8,23 +12,24 @@ require __DIR__ . '/app/slots.php';
 require __DIR__ . '/app/booking.php';
 require __DIR__ . '/app/views.php';
 
-$r = preg_replace('/[^a-z_]/', '', (string) ($_GET['r'] ?? ''));
-$slug = defined('P1B_SLUG') ? P1B_SLUG : preg_replace('/[^a-z0-9-]/', '', (string) ($_GET['c'] ?? ''));
+if (isset($_GET['asset'])) serve_asset((string) $_GET['asset']);
 
-/* super-admin area */
-if ($slug === '' ) {
-    if ($r === '' ) { send_headers(null); http_response_code(404); echo '<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><title>' . e(t('not_found')) . '</title>'; exit; }
-    if (strpos($r, 's') !== 0) { http_response_code(404); exit; }
-    session_open('s');
-    require __DIR__ . '/app/super.php';
-    super_route($r);
+$r = preg_replace('/[^a-z_]/', '', (string) ($_GET['r'] ?? ''));
+if ($r === '' && defined('P1B_ADMIN')) $r = 'a';
+$slug = (string) cfg('client_slug', '');
+
+migrate();   // CREATE TABLE IF NOT EXISTS: a no-op once the schema is in
+$client = client_by_slug($slug);
+$area = strpos($r, 'a') === 0 ? 'a' : 'c';
+
+if (!$client) {
+    // first run of a new client database: only the admin setup (token from the private config) can create the client row
+    session_open('a');
+    require __DIR__ . '/app/admin.php';
+    a_setup(null);
     exit;
 }
-
-$client = client_by_slug($slug);
-if (!$client) { send_headers(null); http_response_code(404); echo '<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><title>' . e(t('not_found')) . '</title><p>' . e(t('not_found')) . '</p>'; exit; }
 $T = new Tenant($client);
-$area = strpos($r, 'a') === 0 ? 'a' : 'c';
 
 /* iframe: check that the (partitioned) cookie comes back; if not, offer a first-party tab instead */
 if (!empty($_GET['embed'])) {
@@ -35,7 +40,6 @@ if (!empty($_GET['embed'])) {
             $qs = $_GET; $qs['ck'] = 1;
             redirect(strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query($qs));
         }
-        send_headers($client);
         $qs = $_GET; unset($qs['embed'], $qs['ck']);
         $url = curl_($slug, (string) ($qs['r'] ?? ''), array_diff_key($qs, ['r' => 1]));
         page(['client' => $client, 'title' => t('book_title'), 'area' => $area,

@@ -157,3 +157,4 @@ legend{font-weight:600;margin-bottom:8px;padding:0}
 }
 @media (min-width:1000px){.week{grid-template-columns:repeat(4,1fr)}}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.wday h3 a{display:flex;align-items:center;min-height:44px}

@@ -3,11 +3,11 @@
 declare(strict_types=1);
 if (!defined('P1B')) { http_response_code(404); exit; }
 
-function curl_(string $slug, string $r = '', array $p = []): string {   // client URL
+/* every URL is relative to THIS client's entry folder (base_url in its private config); $slug is kept for call sites only */
+function curl_(string $slug, string $r = '', array $p = []): string {
     $qs = array_filter(['r' => $r] + $p, fn($v) => $v !== '' && $v !== null);
-    return base_path() . '/' . rawurlencode($slug) . '/' . ($qs ? '?' . http_build_query($qs) : '');
+    return base_path() . '/' . ($qs ? '?' . http_build_query($qs) : '');
 }
-function surl(string $r = 's', array $p = []): string { return base_path() . '/?' . http_build_query(['r' => $r] + $p); }
 
 function hex_ok(string $h, string $fallback): string { return preg_match('/^#[0-9a-fA-F]{6}$/', $h) ? strtolower($h) : $fallback; }
 function luminance(string $hex): float {
@@ -58,13 +58,13 @@ function page(array $o): void {
 <meta name="robots" content="noindex,nofollow"><meta name="referrer" content="strict-origin-when-cross-origin">
 <title><?= e($title) ?></title>
 <?php if ($c && $c['logo_url']): ?><link rel="icon" href="<?= e($c['logo_url']) ?>"><?php endif; ?>
-<link rel="stylesheet" href="<?= e(asset('assets/portal.css')) ?>">
+<link rel="stylesheet" href="<?= e(asset('css')) ?>">
 <style nonce="<?= e($n) ?>"><?= theme_css($c) ?></style>
-<script src="<?= e(asset('assets/portal.js')) ?>" defer></script>
+<script src="<?= e(asset('js')) ?>" defer></script>
 </head><body class="area-<?= e($area) ?><?= in_embed() ? ' is-embed' : '' ?><?= !empty($o['wide']) ? ' wide' : '' ?>">
 <header class="top"><div class="wrap top-in">
 <?php if ($c): ?><a class="brand" href="<?= e($area === 'a' ? curl_($c['slug'], 'a') : curl_($c['slug'])) ?>"><?php if ($c['logo_url']): ?><img class="badge" src="<?= e($c['logo_url']) ?>" alt="" width="44" height="44"><?php endif; ?><span><?= e($c['name']) ?></span></a>
-<?php else: ?><span class="brand"><span><?= e(t('s_title')) ?></span></span><?php endif; ?>
+<?php endif; ?>
 <nav class="topnav"><?= $o['nav'] ?? '' ?></nav></div></header>
 <main class="wrap" id="main">
 <?php if ($flash): ?><p class="flash <?= e($flash[0]) ?>" role="status"><?= e($flash[1]) ?></p><?php endif; ?>

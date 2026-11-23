@@ -1,16 +1,20 @@
 <?php
-/* COPY to /home/<account>/booking-private/config.php (outside public_html), chmod 600.
-   Fill the values on the server only. Never commit the real file. Secret NAMES only here. */
+/* ONE file per client: /home/<account>/booking-clients/<client-slug>/config.php  (chmod 600, outside public_html).
+   Placeholders only. Fill the values on the server; never commit, drop, log or paste them. */
 return [
-    'base_url'      => 'https://pageonesingapore.com/booking',   // one value: move to a white-label subdomain later by editing this
+    'client_slug'   => 'sg-autobots',                                      // must match the seed file / clients row
+    'seed'          => 'sg-autobots',                                      // engine/app/seed/<seed>.json, used once at setup
+    'base_url'      => 'https://pageonesingapore.com/preview/sg-autobots/booking',  // the entry folder; the ONLY URL to change on a domain move
+    'embed_domains' => ['pageonesingapore.com'],                           // sites allowed to frame the portal (+www added automatically)
     'db_host'       => 'localhost',
-    'db_name'       => '<cpanelprefix>_booking',
-    'db_user'       => '<cpanelprefix>_bookapp',
-    'db_pass'       => '<BOOKING_DB_PASSWORD>',                  // set in cPanel by Domain Go-Live
-    'pepper'        => '<BOOKING_PEPPER: 64 random hex chars>',  // keys IP hashes for rate limits
-    'setup_token'   => '<BOOKING_SETUP_TOKEN: 40+ random chars>',// one-time super-admin setup; blank it after setup
-    'session_path'  => '/home/<account>/booking-private/sessions',// private session files (create, chmod 700)
-    'test_mode'     => false,   // true only while testing: allows +65000000xx numbers (always flagged is_test)
+    'db_name'       => '<cpanelprefix>_bk_sgautobots',                     // this client's OWN database
+    'db_user'       => '<cpanelprefix>_bksga',
+    'db_pass'       => '<BOOKING_DB_PASSWORD_SGAUTOBOTS>',
+    'pepper'        => '<BOOKING_PEPPER_SGAUTOBOTS: 64 random hex chars>',
+    'setup_token'   => '<BOOKING_SETUP_TOKEN_SGAUTOBOTS: 40+ random chars>', // first admin login; blank it after setup
+    'session_path'  => '/home/<account>/booking-clients/sg-autobots/sessions', // chmod 700
+    'test_client'   => false,                                              // true ONLY for the separate smoke-test client (marks its row is_test)
+    'test_mode'     => false,                                              // true only during the smoke test (+65000000xx)
     'cookie_secure' => true,
     'hsts'          => true,
     'lang'          => 'en',
