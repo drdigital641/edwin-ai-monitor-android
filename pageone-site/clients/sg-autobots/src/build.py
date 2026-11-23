@@ -122,12 +122,15 @@ def price_board(svc, pk=None, three=False, table=True):
 
 # ---------- media blocks ----------
 def reel(vid, ref):
-    v = VID[vid]; ar = v['w'] / v['h']
-    return ('<figure class="reel-fig" style="margin:0"><a class="reel" href="%s" target="_blank" rel="noopener" data-cta="tiktok" data-ref="%s" data-src="video/%s.mp4"%s data-loop="%d" style="--w:%d;--h:%d;--ar:%.4f">'
-            '<div class="frame"><img src="%s" width="%d" height="%d" alt="%s" loading="lazy" decoding="async"><span class="play">%s</span></div>'
-            '<figcaption>%s</figcaption></a></figure>'
-            % (e(v['tiktok']), ref, vid, '' if v['loop'] else ' data-full="video/%s.mp4"' % vid, 1 if v['loop'] else 0, v['w'], v['h'], ar,
-               u('images/posters/%s.jpg' % vid), v['w'], v['h'], e(v['alt']), I_PLAY, e(v['caption'])))
+    """Self-hosted inline player (24 Nov 2026 brief): true ratio, poster + play icon, preload none, no autoplay, no TikTok href."""
+    v = VID[vid]
+    return ('<figure class="vp" data-ref="%s" style="--ar:%d/%d"><div class="vbox">'
+            '<video controls playsinline preload="none" width="%d" height="%d" poster="%s" data-jpg="%s" aria-label="%s">'
+            '<source src="%s" type="video/mp4"></video>'
+            '<button type="button" class="vplay" hidden aria-label="Play video: %s"><span>%s</span></button></div>'
+            '<figcaption>%s</figcaption></figure>'
+            % (ref, v['w'], v['h'], v['w'], v['h'], u('images/posters/%s.webp' % vid), u('images/posters/%s.jpg' % vid), e(v['alt']),
+               u('video/%s.mp4' % vid), e(v['caption']), I_PLAY, e(v['caption'])))
 def photos(ids):
     return '<div class="photos">%s</div>' % ''.join('<figure>%s<figcaption>%s</figcaption></figure>' % (img(i, '(max-width:700px) 45vw, 260px'), e(GAL[i]['caption'])) for i in ids)
 def quote(r):
@@ -314,7 +317,7 @@ def home():
              ("Downtime, as listed", "Every package shows how long your car is out of use, from under an hour up to 16 h for the longest coating."),
              ("Done, at home", "You get the car back where you parked it.")]
     tl = ''.join('<li><span class="n">%d</span><h3>%s</h3><p>%s</p></li>' % (i + 1, e(a), e(b)) for i, (a, b) in enumerate(steps))
-    reels = ''.join(reel(v, 'tiktok_reel_%d' % (i + 1)) for i, v in enumerate(['loop-machine-polish', 'loop-rim-coating', 'loop-seat-extraction', 'loop-foam-wash']))
+    reels = ''.join(reel(v, 'video_home_%d' % (i + 1)) for i, v in enumerate(['full-machine-polish', 'full-rim-coating', 'full-seat-extraction', 'full-foam-wash']))
     order = ['g04', 'g02', 'g10', 'g07', 'g08', 'g01', 'g06', 'g09', 'g05', 'g12', 'g11', 'g03', 'g13', 'g14']
     glide = ''.join('<figure><div class="fr">%s<figcaption>%s</figcaption></div></figure>' % (img(i), e(GAL[i]['caption'])) for i in order)
     rv = [F['reviews'][i] for i in (7, 1, 0, 3, 5, 2, 4, 6)]
@@ -334,22 +337,26 @@ def home():
         % (e(F['claims_text_unverified']), e(F['claims_note_unverified']), e(F['reviews_url']), e(F['socials']['carousell'])) +
         '<section class="sec"><div class="wrap"><div class="level"><i>P1</i><span>Premium work</span></div><h2>Coating, correction, interior, glass</h2>'
         '<p class="lead">Most of what we do is long-life protection and restoration, done calmly at your home. Each service has its own page with every package, price and downtime.</p><div class="bays">%s</div></div></section>\n' % bays +
-        '<section class="sec alt" id="bukit-timah-holland"><div class="wrap"><div class="level"><i>P2</i><span>Bukit Timah and Holland</span></div><h2>Where we focus</h2>'
+        '<section class="sec alt" id="proof"><div class="wrap"><div class="level"><i>P2</i><span>Proof of the work</span></div><h2>One full ceramic, glass and interior job</h2>'
+        '<p class="lead">A two-part video of one job on a black Porsche: machine polishing, ceramic coating, glass polish and interior detailing. Tap play for the full clip with sound.</p>'
+        '<div class="vstrip two">%s%s</div>%s</div></section>\n'
+        % (reel('full-ceramic-glass-interior-part1', 'video_proof_1'), reel('full-ceramic-glass-interior-part2', 'video_proof_2'),
+           cta_pair('whatsapp_home_proof', 'booking_home_proof', "Hi SgAutobots, I saw the ceramic coating video and I'd like a quote. Car model: ", SVB['ceramic-coating'])) +
+        '<section class="sec" id="bukit-timah-holland"><div class="wrap"><div class="level"><i>P3</i><span>Bukit Timah and Holland</span></div><h2>Where we focus</h2>'
         '<p class="lead">Landed homes with driveways and condos with sheltered basement car parks suit long coating and polishing jobs. Pick your area for local details, or WhatsApp us your address area.</p>%s'
         '<p><a class="more" href="%s">Ceramic coating in Bukit Timah</a> &nbsp; <a class="more" href="%s">Paint correction in Holland Village</a> &nbsp; <a href="%s#other">Other areas we cover</a></p>%s</div></section>\n'
         % (prio_cards(), u('ceramic-coating/bukit-timah/'), u('car-polishing-paint-correction/holland-village/'), u('areas/'),
            a_wa('whatsapp_home_areas', "Hi SgAutobots, can you come to my home? Area: … Car model: ", 'WhatsApp your area')) +
-        '<section class="sec" id="packages"><div class="wrap"><div class="level"><i>P3</i><span>Packages and prices (2026)</span></div><h2>Pick your car size. Every price updates.</h2>%s<div class="board three">%s</div>%s</div></section>\n'
+        '<section class="sec alt" id="packages"><div class="wrap"><div class="level"><i>P4</i><span>Packages and prices (2026)</span></div><h2>Pick your car size. Every price updates.</h2>%s<div class="board three">%s</div>%s</div></section>\n'
         % (SWITCH, cards, cta_pair('whatsapp_home_packages', 'booking_home_packages', "Hi SgAutobots, I'd like a quote. Package: … Car model: ")) +
-        '<section class="sec alt"><div class="wrap"><div class="level"><i>P4</i><span>Real jobs, filmed by us</span></div><h2>Watch the polish and coating work</h2><div class="reels">%s</div>'
-        '<p class="lead">Tap a clip to watch the full video on our TikTok.</p></div></section>\n' % reels +
-        '<section class="sec"><div class="wrap"><div class="level"><i>P5</i><span>How it works</span></div><h2>From WhatsApp to a finished car, at home</h2><ol class="steps">%s</ol></div></section>\n' % tl +
-        '<section class="sec alt"><div class="wrap"><div class="level"><i>P6</i><span>Detailed on site</span></div><h2>Photographed where we worked</h2></div>'
+        '<section class="sec"><div class="wrap"><div class="level"><i>P5</i><span>Real jobs, filmed by us</span></div><h2>Watch the polish and coating work</h2><p class="lead">Full clips with sound. Tap play, and swipe for the next clip.</p><div class="vstrip">%s</div></div></section>\n' % reels +
+        '<section class="sec alt"><div class="wrap"><div class="level"><i>P6</i><span>How it works</span></div><h2>From WhatsApp to a finished car, at home</h2><ol class="steps">%s</ol></div></section>\n' % tl +
+        '<section class="sec"><div class="wrap"><div class="level"><i>P7</i><span>Detailed on site</span></div><h2>Photographed where we worked</h2></div>'
         '<div class="wrap"><div class="glide" data-speed="0.035">%s</div><p class="glide-hint">%s Drag to look closer. It carries on gliding after you let go.</p></div></section>\n' % (glide, I_SWIPE) +
-        '<section class="sec"><div class="wrap"><div class="level"><i>P7</i><span>What Carousell buyers wrote</span></div><h2>"He is super detailed on all the small details…"</h2><div class="quotes">%s</div>'
+        '<section class="sec alt"><div class="wrap"><div class="level"><i>P8</i><span>What Carousell buyers wrote</span></div><h2>"He is super detailed on all the small details…"</h2><div class="quotes">%s</div>'
         '<p><a href="%s" target="_blank" rel="noopener" data-cta="carousell" data-ref="carousell_reviews">More reviews on Carousell</a> &nbsp; <a href="%s" target="_blank" rel="noopener" data-cta="reviews" data-ref="reviews_home_quotes">See our 5-star reviews on Google</a></p></div></section>\n'
         % (qs, e(F['socials']['carousell']), e(F['reviews_url'])) +
-        '<hr class="lane">\n<section class="sec"><div class="wrap"><div class="level"><i>P8</i><span>Maintenance for coated cars</span></div><h2>Keeping the finish right between coatings</h2>'
+        '<hr class="lane">\n<section class="sec"><div class="wrap"><div class="level"><i>P9</i><span>Maintenance for coated cars</span></div><h2>Keeping the finish right between coatings</h2>'
         '<p class="lead">Regular maintenance washes, interior cleaning with fumigation, and engine bay cleaning. The Maintenance Car Spa uses Sonax maintenance coating and comes as a 10-session package.</p><div class="bays">%s</div></div></section>\n' % mbays +
         footer() + bar())
     write(path, s)
@@ -369,7 +376,7 @@ def hub(i, s):
         '<section class="sec" style="padding-top:28px"><div class="wrap"><div class="level"><i>P1</i><span>Packages and prices (2026)</span></div><h2>%s prices by car size</h2>%s</div></section>\n'
         % (e(s['name']), price_board(s, three=len(s['packages']) > 2)) +
         '<section class="sec alt"><div class="wrap split"><div><div class="level"><i>P2</i><span>On site, real jobs</span></div><h2>What it looks like at your car park</h2>%s</div>'
-        '<div class="vid-one">%s</div></div></section>\n' % (photos(s['photos'][:4]), reel(s['video'], 'tiktok_%s' % sv)) +
+        '<div class="vid-one">%s</div></div></section>\n' % (photos(s['photos'][:4]), reel(s['video'], 'video_%s' % sv)) +
         '<section class="sec"><div class="wrap">%s<div class="qgrid" style="margin-top:22px">%s</div></div></section>\n'
         % (cta_pair('whatsapp_%s_mid' % sv, 'booking_%s_mid' % sv, wa_text(svc=s), s), qs) +
         '<section class="sec alt"><div class="wrap"><div class="level"><i>P3</i><span>Questions</span></div><h2>%s: common questions</h2>%s</div></section>\n' % (e(s['name']), faq_html(faqs)) +
@@ -466,14 +473,14 @@ def extras():
     L += ['', '## Other areas (within about 10 km of the Yishun base)'] + ['- %s: about %s km; e.g. %s/car-spa/%s/' % (a['name'], a['km'], BASE, a['slug']) for a in AREAS]
     L += ['', '## Contact', '- WhatsApp: https://wa.me/6583667010', '- Phone: +65 8366 7010', '- Google reviews: ' + F['reviews_url'], '- [Contact](%s/contact/)' % BASE, '- [Privacy](%s/privacy/)' % BASE, '']
     open(os.path.join(OUT, 'llms.txt'), 'w').write('\n'.join(L))
-    json.dump({"booking_url": F['booking_url'], "videos_live": FL['videos_live'], "_note": "booking_url: the shared booking portal URL. Empty = Book opens WhatsApp. videos_live: true once the mp4s are in video/."},
+    json.dump({"booking_url": F['booking_url'], "videos_live": True, "_note": "booking_url: the shared booking portal URL. Empty = Book opens WhatsApp. videos_live: reference only; since 23 Nov 2026 the inline players point straight at video/<file>.mp4 (preload none, no autoplay)."},
               open(os.path.join(OUT, 'site-config.json'), 'w'), indent=1)
     import shutil
     for f in ['site.css', 'site.js', 'p1-cta.js']: shutil.copy(os.path.join(HERE, f), os.path.join(OUT, f))
     os.makedirs(os.path.join(OUT, 'fonts'), exist_ok=True)
     for f in ['bsd-800.woff2', 'ah-400.woff2', 'ah-700.woff2']: shutil.copy(os.path.join(HERE, f), os.path.join(OUT, 'fonts', f))
     os.makedirs(os.path.join(OUT, 'video'), exist_ok=True)
-    open(os.path.join(OUT, 'video', 'README.txt'), 'w').write('Video slot: put loop-foam-wash.mp4, loop-machine-polish.mp4, loop-seat-extraction.mp4, loop-rim-coating.mp4, full-odour-removal.mp4, full-interior-cleaning.mp4 here, then set videos_live true in ../site-config.json.\n')
+    open(os.path.join(OUT, 'video', 'README.txt'), 'w').write('Video slot (inline players, preload none): ' + ', '.join(v['id'] + '.mp4' for v in F['videos'] if not v['id'].startswith('loop-')) + '. Posters: ../images/posters/<same name>.webp with a .jpg fallback.\n')
 
 
 # ---------- v2 (23 Nov 2026): Bukit Timah and Holland focus ----------

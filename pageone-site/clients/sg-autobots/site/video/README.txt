@@ -1,1 +1,1 @@
-Video slot: put loop-foam-wash.mp4, loop-machine-polish.mp4, loop-seat-extraction.mp4, loop-rim-coating.mp4, full-odour-removal.mp4, full-interior-cleaning.mp4 here, then set videos_live true in ../site-config.json.
+Video slot (inline players, preload none): full-odour-removal.mp4, full-interior-cleaning.mp4, full-ceramic-glass-interior-part1.mp4, full-ceramic-glass-interior-part2.mp4, full-machine-polish.mp4, full-rim-coating.mp4, full-seat-extraction.mp4, full-foam-wash.mp4. Posters: ../images/posters/<same name>.webp with a .jpg fallback.

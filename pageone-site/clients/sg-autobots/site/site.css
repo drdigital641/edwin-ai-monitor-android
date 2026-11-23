@@ -248,3 +248,19 @@ dialog.vd button{position:absolute;top:8px;right:8px;width:44px;height:44px;bord
 .other b{color:var(--ink)}.other a{color:var(--soft)}
 .nav a{white-space:nowrap;padding:10px 8px}
 @media(min-width:1000px) and (max-width:1199px){.nav{display:none}.menu{display:block}}
+/* inline self-hosted players (23 Nov 2026 v3): true ratio, whole frame, poster + play, never taller than 58vh, about 2/3 phone width */
+.vstrip{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 16px 14px;margin:0 -16px;scrollbar-width:none;overscroll-behavior-x:contain;align-items:flex-start}
+.vstrip::-webkit-scrollbar{display:none}
+.vp{--vh:min(58vh,117vw,520px);margin:0;flex:0 0 auto;width:calc(var(--vh) * var(--ar));max-width:100%;scroll-snap-align:center}
+.vbox{position:relative;width:100%;aspect-ratio:var(--ar);border-radius:var(--r2);overflow:hidden;background:#000;box-shadow:inset 0 0 0 1px var(--line)}
+.vbox video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;display:block}
+.vplay{position:absolute;inset:0;border:0;padding:0;margin:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:#fff}
+.vplay[hidden]{display:none}
+.vplay span{width:68px;height:68px;border-radius:50%;background:rgba(7,9,13,.62);display:grid;place-items:center;box-shadow:0 0 0 2px rgba(255,255,255,.85);transition:transform .15s}
+.vplay:hover span,.vplay:focus-visible span{transform:scale(1.06)}
+.vplay svg{width:28px;height:28px;margin-left:4px}
+.vp figcaption{font-size:.92rem;color:var(--soft);padding:8px 2px 0}
+.vstrip.two{justify-content:flex-start}
+@media(min-width:760px){.vstrip.two{justify-content:center;gap:24px}}
+.vid-one .vp{--vh:min(58vh,117vw,480px)}
+#proof .cta-pair{margin-top:8px}

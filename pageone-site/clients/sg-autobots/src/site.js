@@ -1,4 +1,4 @@
-/* SgAutobots preview site.js (23 Nov 2026). Content works with JS off; this only adds the size switcher, glide, video swap and the Book switch. */
+/* SgAutobots preview site.js (23 Nov 2026). Content works with JS off; this only adds the size switcher, glide, inline video players and the Book switch. */
 (function(){var d=document,rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 function ready(f){d.readyState!=='loading'?f():d.addEventListener('DOMContentLoaded',f)}
 var ROOT=(d.documentElement.getAttribute('data-root')||'/');
@@ -16,16 +16,17 @@ ready(function(){
  /* Book button: one config value (site-config.json booking_url). Empty = WhatsApp booking prefill already in the HTML */
  try{fetch(ROOT+'site-config.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null}).then(function(c){if(!c)return;
   if(c.booking_url){[].forEach.call(d.querySelectorAll('a[data-cta="booking"]'),function(a){var u;try{u=new URL(c.booking_url)}catch(e){return}
-   u.searchParams.set('client','sg-autobots');var sv=a.getAttribute('data-service');if(sv)u.searchParams.set('service',sv);a.href=u.toString()})}
-  if(c.videos_live)liveVideos()}).catch(function(){})}catch(e){}
- function liveVideos(){[].forEach.call(d.querySelectorAll('.reel[data-src]'),function(a){var f=a.querySelector('.frame'),im=f.querySelector('img');
-   var v=d.createElement('video');v.muted=true;v.setAttribute('muted','');v.setAttribute('playsinline','');v.loop=a.getAttribute('data-loop')==='1';v.preload='none';v.poster=im.currentSrc||im.src;v.setAttribute('aria-label',im.alt);
-   v.src=ROOT+a.getAttribute('data-src');f.insertBefore(v,f.firstChild);im.style.visibility='hidden';
-   if(!rm&&'IntersectionObserver' in window&&v.loop){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){v.play().then(function(){a.classList.add('playing')}).catch(function(){})}else v.pause()})},{threshold:.5}).observe(a)}
-   a.addEventListener('click',function(ev){var full=a.getAttribute('data-full');if(!full)return;ev.preventDefault();openFull(ROOT+full,v.poster)})})}
- function openFull(src,poster){var dl=d.createElement('dialog');dl.className='vd';dl.innerHTML='<video controls playsinline autoplay></video><button type="button" aria-label="Close">&times;</button>';
-   var v=dl.querySelector('video');v.src=src;v.poster=poster;d.body.appendChild(dl);dl.showModal();
-   dl.addEventListener('close',function(){v.pause();dl.remove()});dl.querySelector('button').onclick=function(){dl.close()};dl.addEventListener('click',function(e){if(e.target===dl)dl.close()})}
+   u.searchParams.set('client','sg-autobots');var sv=a.getAttribute('data-service');if(sv)u.searchParams.set('service',sv);a.href=u.toString()})}}).catch(function(){})}catch(e){}
+ /* Inline self-hosted players: poster + play icon, nothing loads until play (preload none), sound on, no autoplay, one plays at a time, pauses when scrolled away */
+ var vids=[].slice.call(d.querySelectorAll('.vp video'));
+ vids.forEach(function(v){var b=v.parentNode.querySelector('.vplay'),fig=v.closest('.vp');
+  v.controls=false;v.removeAttribute('controls');if(b)b.hidden=false;
+  var jpg=v.getAttribute('data-jpg'),p0=v.getAttribute('poster');if(jpg&&p0){var t=new Image();t.onerror=function(){v.poster=jpg};t.src=p0}
+  function start(){if(b)b.hidden=true;v.controls=true;var p=v.play();if(p&&p.catch)p.catch(function(){})}
+  if(b)b.addEventListener('click',start);
+  v.addEventListener('play',function(){if(b)b.hidden=true;v.controls=true;fig.classList.add('playing');vids.forEach(function(o){if(o!==v&&!o.paused)o.pause()})});
+  v.addEventListener('ended',function(){fig.classList.remove('playing');v.controls=false;if(b)b.hidden=false});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting&&!v.paused)v.pause()})},{threshold:.2}).observe(v)});
 });
 /* continuous glide (copied from the Wrapstar reference): loops, pauses only when held or swiped sideways; page scrolling never pauses it; resumes 1.5 s after release */
 if(rm)return;

@@ -1,5 +1,5 @@
 {
  "booking_url": "",
- "videos_live": false,
- "_note": "booking_url: the shared booking portal URL. Empty = Book opens WhatsApp. videos_live: true once the mp4s are in video/."
+ "videos_live": true,
+ "_note": "booking_url: the shared booking portal URL. Empty = Book opens WhatsApp. videos_live: reference only; since 23 Nov 2026 the inline players point straight at video/<file>.mp4 (preload none, no autoplay)."
 }

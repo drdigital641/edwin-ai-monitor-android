@@ -51,7 +51,7 @@
     "g14",
     "g01"
    ],
-   "video": "loop-foam-wash",
+   "video": "full-foam-wash",
    "packages": [
     {
      "id": "maint-once",
@@ -176,7 +176,7 @@
     "g11",
     "g09"
    ],
-   "video": "loop-seat-extraction",
+   "video": "full-seat-extraction",
    "packages": [
     {
      "id": "premium-interior",
@@ -340,7 +340,7 @@
     "g10",
     "g02"
    ],
-   "video": "loop-machine-polish",
+   "video": "full-machine-polish",
    "packages": [
     {
      "id": "wash-polish-seal",
@@ -419,7 +419,7 @@
     "g02",
     "g07"
    ],
-   "video": "loop-rim-coating",
+   "video": "full-rim-coating",
    "shared_incl": [
     "Foam pre-wash and contact wash",
     "Rim detail brush and tyre shine",
@@ -559,7 +559,7 @@
     "g04",
     "g10"
    ],
-   "video": "loop-rim-coating",
+   "video": "full-rim-coating",
    "packages": [
     {
      "id": "glass-watermark",
@@ -615,7 +615,7 @@
     "g07",
     "g14"
    ],
-   "video": "loop-machine-polish",
+   "video": "full-machine-polish",
    "packages": [
     {
      "id": "engine-bay",
@@ -810,7 +810,7 @@
    "w": 540,
    "h": 720,
    "loop": false,
-   "caption": "Odour removal: interior steam and extraction (full clip, with sound)",
+   "caption": "Odour removal: interior steam and extraction",
    "alt": "Full video of SgAutobots car odour removal and interior cleaning",
    "tiktok": "https://www.tiktok.com/@sgautobots/video/7706352182471167239"
   },
@@ -819,9 +819,57 @@
    "w": 540,
    "h": 960,
    "loop": false,
-   "caption": "Interior cleaning (full clip, with sound)",
+   "caption": "Interior cleaning",
    "alt": "Full video of SgAutobots interior cleaning of a car",
    "tiktok": "https://www.tiktok.com/@sgautobots/video/7710543617126927624"
+  },
+  {
+   "id": "full-ceramic-glass-interior-part1",
+   "w": 576,
+   "h": 1024,
+   "caption": "Ceramic coating, glass polish and interior detailing, Part 1",
+   "alt": "SgAutobots machine-polishing a black Porsche during a ceramic coating, glass and interior detailing job",
+   "loop": false
+  },
+  {
+   "id": "full-ceramic-glass-interior-part2",
+   "w": 576,
+   "h": 1024,
+   "caption": "Ceramic coating, glass polish and interior detailing, Part 2",
+   "alt": "Finished black Porsche after SgAutobots ceramic coating, glass polish and interior detailing",
+   "loop": false
+  },
+  {
+   "id": "full-machine-polish",
+   "w": 576,
+   "h": 1024,
+   "caption": "Machine polishing before ceramic coating",
+   "alt": "SgAutobots machine polishing a white car before ceramic coating",
+   "loop": false
+  },
+  {
+   "id": "full-rim-coating",
+   "w": 576,
+   "h": 1024,
+   "caption": "Ceramic, leather, glass and rim coating job",
+   "alt": "Black BMW after SgAutobots ceramic, glass and rim coating",
+   "loop": false
+  },
+  {
+   "id": "full-seat-extraction",
+   "w": 576,
+   "h": 768,
+   "caption": "Fabric seat machine extraction",
+   "alt": "Machine extraction cleaning of a fabric car seat by SgAutobots",
+   "loop": false
+  },
+  {
+   "id": "full-foam-wash",
+   "w": 576,
+   "h": 768,
+   "caption": "Snow foam pre-wash and rim brushing (Maintenance Car Spa)",
+   "alt": "Snow foam wash and rim brushing by SgAutobots in a Singapore car park",
+   "loop": false
   }
  ],
  "reviews": [
