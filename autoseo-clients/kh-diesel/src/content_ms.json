@@ -67,24 +67,24 @@
   "process_h": "Cara kerja dijalankan",
   "process": [
    [
-    "Hantar gambar melalui WhatsApp",
-    "Hantar gambar bahagian dan beritahu kami kenderaan atau mesin."
+    "Diterima",
+    "WhatsApp gambar dahulu, kemudian bawa alat ganti, kenderaan atau jentera ke Batu 10."
    ],
    [
-    "Ujian",
-    "Pam, injector atau turbo diperiksa di bengkel."
+    "Dibuka dan diperiksa",
+    "Pam, injector atau turbo dibuka dan diperiksa. Anda terima dapatan dan sebut harga sebelum pembaikan bermula."
    ],
    [
-    "Sebut harga",
-    "Anda menerima dapatan dan sebut harga sebelum sebarang pembaikan bermula."
+    "Dibaiki di bilik bersih",
+    "Setelah anda setuju, pam dan injector dibaiki di dalam bilik bersih yang dikawal habuk."
    ],
    [
-    "Pembaikan",
-    "Bahagian dibaiki selepas anda beri kebenaran."
+    "Ditentukur dan diuji di bangku",
+    "Ia dilaras dan diuji di bangku ujian, dan anda lihat hasilnya."
    ],
    [
-    "Keputusan ujian",
-    "Ia diuji semula dan anda melihat keputusannya sebelum dipasang semula."
+    "Dipasang dan diuji di jalan",
+    "Alat ganti dipasang semula dan kenderaan diuji di jalan."
    ]
   ],
   "articles_none": "Artikel sedang ditambah. Sementara itu, halaman perkhidmatan di bawah menjawab soalan lazim.",
@@ -100,8 +100,69 @@
    "g07-pickups-laterite-hill": "Pikap di halaman bukit laterit",
    "g08-lorries-in-yard": "Lori di halaman bengkel",
    "g09-coach-bus-in-bay": "Bas di ruang bengkel",
-   "g10-hands-calibrating-pump": "Tangan menentukur pam diesel"
-  }
+   "g10-hands-calibrating-pump": "Tangan menentukur pam diesel",
+   "wow01-injector-spray-macro": "Ilustrasi semburan injector dari dekat",
+   "wow02-turbo-impeller-macro": "Ilustrasi roda turbo dari dekat",
+   "wow03-cleanroom-bench-night": "Ilustrasi bangku ujian bilik bersih pada waktu malam",
+   "wow04-common-rail-test-room": "Ilustrasi bilik ujian common rail",
+   "wow05-hands-calibrating": "Ilustrasi tangan menentukur pam diesel",
+   "wow06-workshop-exterior-dusk": "Ilustrasi bengkel pada waktu senja"
+  },
+  "hero_kicker": "Makmal kejituan diesel Bintulu",
+  "curtain_k": "Bilik bersih",
+  "curtain_line": "Pam dan injector hanya dibuka di dalam bilik bersih yang dikawal habuk.",
+  "diag_p": "Ikuti aliran bahan api dari tangki ke turbo. Tekan satu bahagian untuk lihat kerja kami.",
+  "nodes": [
+   [
+    "Tangki bahan api",
+    "Air atau kotoran dalam diesel? Diagnosis bermula di sini."
+   ],
+   [
+    "Penapis bahan api",
+    "Penapis tersumbat menyekat bekalan ke pam. Kami periksa dahulu."
+   ],
+   [
+    "Pam suntikan",
+    null
+   ],
+   [
+    "Common rail",
+    null
+   ],
+   [
+    "Injector",
+    null
+   ],
+   [
+    "Turbo",
+    null
+   ]
+  ],
+  "brands_k": "Kami servis sistem daripada",
+  "veh_strip": [
+   [
+    "Pikap: Hilux, Navara, Triton",
+    "g07-pickups-laterite-hill"
+   ],
+   [
+    "Trak ringan dan lori",
+    "g08-lorries-in-yard"
+   ],
+   [
+    "Bas dan koc",
+    "g09-coach-bus-in-bay"
+   ],
+   [
+    "Jentera jalan dan enjin berat",
+    "g06-heavy-engine-workshop"
+   ],
+   [
+    "4x4 di bawah kanopi depan",
+    "g05-workshop-front-canopy"
+   ]
+  ],
+  "visit_photo": "Hantar gambar pam atau injector anda melalui WhatsApp untuk semakan pantas.",
+  "scroll": "Tatal"
  },
  "wa_msgs": {
   "home": "Hai KH Diesel, saya nak tanya tentang pembaikan pam bahan api diesel, injector atau turbo.",

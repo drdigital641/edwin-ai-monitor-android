@@ -1,15 +1,109 @@
-{"hero":[
-{"id":"h01-cleanroom-pump-bench-16x9","caption":"Illustrated diesel fuel-pump test benches in a green-floor clean room","alt":"AI-generated illustration of blue diesel fuel-pump test benches in a green-floor clean room, in the style of the KH Diesel Fuel Pump workshop in Bintulu. Not a photograph of a real job."},
-{"id":"h02-workshop-exterior-yard-16x9","caption":"Illustrated cream workshop building and yard on the Bintulu–Miri road","alt":"AI-generated illustration of a two-storey cream diesel workshop with a metal canopy, purple fence and laterite hill, in the style of KH Diesel Fuel Pump at Batu 10, Bintulu. Not a photograph of the real building."}],
-"gallery":[
-{"id":"g01-cleanroom-pump-bench","caption":"Clean-room pump test benches","alt":"AI-generated illustration of diesel fuel-pump test benches on a green epoxy floor, in the style of the KH Diesel Fuel Pump clean room in Bintulu. Not a photograph of a real job."},
-{"id":"g02-common-rail-test-room","caption":"Common-rail injector test room","alt":"AI-generated illustration of a common-rail injector test machine in a workshop room, in the style of KH Diesel Fuel Pump in Bintulu. Not a photograph of a real job."},
-{"id":"g03-pump-parts-on-bench","caption":"Pump parts laid out on a bench","alt":"AI-generated illustration of diesel pump parts and tools on a workbench, with a technician's hands only. Not a photograph of a real customer job."},
-{"id":"g04-turbo-rebuild-bench","caption":"Turbocharger rebuild on the bench","alt":"AI-generated illustration of a turbocharger being rebuilt on a workshop bench. Not a photograph of a real customer job."},
-{"id":"g05-workshop-front-canopy","caption":"Pickups under the front canopy","alt":"AI-generated illustration of pickup trucks parked under a workshop canopy, in the style of the KH Diesel Fuel Pump yard in Bintulu. Not a photograph of the real building or of customers' vehicles."},
-{"id":"g06-heavy-engine-workshop","caption":"Heavy-engine bay","alt":"AI-generated illustration of a heavy diesel engine in an open workshop bay, technician seen from behind. Not a photograph of a real customer job."},
-{"id":"g07-pickups-laterite-hill","caption":"Pickups in the laterite-hill yard","alt":"AI-generated illustration of pickup trucks parked on laterite in front of a tropical hill, in the style of a Bintulu workshop yard. Not a photograph of customers' vehicles."},
-{"id":"g08-lorries-in-yard","caption":"Lorries in the workshop yard","alt":"AI-generated illustration of green lorries in a diesel workshop yard. Not a photograph of customers' vehicles."},
-{"id":"g09-coach-bus-in-bay","caption":"Coach in a workshop bay","alt":"AI-generated illustration of a coach in an open workshop bay. Not a photograph of a customer's vehicle; no operator lettering."},
-{"id":"g10-hands-calibrating-pump","caption":"Hands calibrating a diesel pump","alt":"AI-generated illustration of a technician's hands calibrating a diesel fuel pump on a test bench. No face shown. Not a photograph of a real job."}],
-"og":{"file":"og/og-kh-diesel-1200x630.jpg","alt":"KH DIESEL FUEL PUMP SDN BHD, Bintulu, Sarawak"}}
+{
+ "hero": [
+  {
+   "id": "h01-cleanroom-pump-bench-16x9",
+   "caption": "Illustrated diesel fuel-pump test benches in a green-floor clean room",
+   "alt": "AI-generated illustration of blue diesel fuel-pump test benches in a green-floor clean room, in the style of the KH Diesel Fuel Pump workshop in Bintulu. Not a photograph of a real job."
+  },
+  {
+   "id": "h02-workshop-exterior-yard-16x9",
+   "caption": "Illustrated cream workshop building and yard on the Bintulu–Miri road",
+   "alt": "AI-generated illustration of a two-storey cream diesel workshop with a metal canopy, purple fence and laterite hill, in the style of KH Diesel Fuel Pump at Batu 10, Bintulu. Not a photograph of the real building."
+  }
+ ],
+ "gallery": [
+  {
+   "id": "g01-cleanroom-pump-bench",
+   "caption": "Clean-room pump test benches",
+   "alt": "AI-generated illustration of diesel fuel-pump test benches on a green epoxy floor, in the style of the KH Diesel Fuel Pump clean room in Bintulu. Not a photograph of a real job."
+  },
+  {
+   "id": "g02-common-rail-test-room",
+   "caption": "Common-rail injector test room",
+   "alt": "AI-generated illustration of a common-rail injector test machine in a workshop room, in the style of KH Diesel Fuel Pump in Bintulu. Not a photograph of a real job."
+  },
+  {
+   "id": "g03-pump-parts-on-bench",
+   "caption": "Pump parts laid out on a bench",
+   "alt": "AI-generated illustration of diesel pump parts and tools on a workbench, with a technician's hands only. Not a photograph of a real customer job."
+  },
+  {
+   "id": "g04-turbo-rebuild-bench",
+   "caption": "Turbocharger rebuild on the bench",
+   "alt": "AI-generated illustration of a turbocharger being rebuilt on a workshop bench. Not a photograph of a real customer job."
+  },
+  {
+   "id": "g05-workshop-front-canopy",
+   "caption": "Pickups under the front canopy",
+   "alt": "AI-generated illustration of pickup trucks parked under a workshop canopy, in the style of the KH Diesel Fuel Pump yard in Bintulu. Not a photograph of the real building or of customers' vehicles."
+  },
+  {
+   "id": "g06-heavy-engine-workshop",
+   "caption": "Heavy-engine bay",
+   "alt": "AI-generated illustration of a heavy diesel engine in an open workshop bay, technician seen from behind. Not a photograph of a real customer job."
+  },
+  {
+   "id": "g07-pickups-laterite-hill",
+   "caption": "Pickups in the laterite-hill yard",
+   "alt": "AI-generated illustration of pickup trucks parked on laterite in front of a tropical hill, in the style of a Bintulu workshop yard. Not a photograph of customers' vehicles."
+  },
+  {
+   "id": "g08-lorries-in-yard",
+   "caption": "Lorries in the workshop yard",
+   "alt": "AI-generated illustration of green lorries in a diesel workshop yard. Not a photograph of customers' vehicles."
+  },
+  {
+   "id": "g09-coach-bus-in-bay",
+   "caption": "Coach in a workshop bay",
+   "alt": "AI-generated illustration of a coach in an open workshop bay. Not a photograph of a customer's vehicle; no operator lettering."
+  },
+  {
+   "id": "g10-hands-calibrating-pump",
+   "caption": "Hands calibrating a diesel pump",
+   "alt": "AI-generated illustration of a technician's hands calibrating a diesel fuel pump on a test bench. No face shown. Not a photograph of a real job."
+  }
+ ],
+ "og": {
+  "file": "og/og-kh-diesel-1200x630.jpg",
+  "alt": "KH DIESEL FUEL PUMP SDN BHD, Bintulu, Sarawak"
+ },
+ "wow": [
+  {
+   "id": "wow01-injector-spray-macro",
+   "crop": "16:9",
+   "caption": "Illustrated injector spray macro",
+   "alt": "Illustrated close-up of a diesel common-rail injector nozzle firing a fine atomised spray, backlit in red. An illustrated scene, not a photograph of a real job."
+  },
+  {
+   "id": "wow02-turbo-impeller-macro",
+   "crop": "16:9",
+   "caption": "Illustrated turbocharger impeller macro",
+   "alt": "Illustrated close-up of a turbocharger compressor wheel with cool rim light and a faint red glow. An illustrated scene, not a photograph of a real part from a customer job."
+  },
+  {
+   "id": "wow03-cleanroom-bench-night",
+   "crop": "16:9",
+   "caption": "Illustrated clean-room test bench at night",
+   "alt": "Illustrated night view into a diesel fuel-pump clean room through translucent PVC strip curtains, with a blue test bench and a green epoxy floor. The darker left side is kept clear for a headline. An illustrated scene, not a photograph of the real workshop."
+  },
+  {
+   "id": "wow04-common-rail-test-room",
+   "crop": "4:5",
+   "caption": "Illustrated common-rail test room",
+   "alt": "Illustrated common-rail injector test room with an unbranded test stand, a softly glowing monitor and organised tools on a green rack. An illustrated scene, not a photograph of the real workshop."
+  },
+  {
+   "id": "wow05-hands-calibrating",
+   "crop": "4:5",
+   "caption": "Illustrated hands calibrating a diesel pump",
+   "alt": "Illustrated close-up of a technician's gloved hands calibrating an inline diesel injection pump on a bench with a hand tool. An illustrated scene, not a photograph of a real person or job."
+  },
+  {
+   "id": "wow06-workshop-exterior-dusk",
+   "crop": "16:9",
+   "caption": "Illustrated workshop exterior at dusk",
+   "alt": "Illustrated dusk view of a modern single-storey industrial workshop in tropical Borneo, with a red light strip along the canopy, laterite ground, palms, two pickup trucks and a lorry, and no signage. An illustrated scene, not a photograph of the real building."
+  }
+ ],
+ "wow_source": "Bridge drop 6b04396769a334d244268034 (job kh-diesel-wow-media, 23 Nov 2026), published to preview/kh-diesel/images/wow/"
+}

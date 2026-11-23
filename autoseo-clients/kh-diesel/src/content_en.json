@@ -67,27 +67,82 @@
   "process_h": "How a job runs",
   "process": [
    [
-    "WhatsApp a photo",
-    "Send a photo of the part and tell us the vehicle or machine."
+    "Received",
+    "WhatsApp a photo first, then bring the part, vehicle or machine to Batu 10."
    ],
    [
-    "Test",
-    "The pump, injector or turbo is checked at the workshop."
+    "Stripped and inspected",
+    "The pump, injector or turbo is opened and checked. You get the findings and a quote before any repair starts."
    ],
    [
-    "Quote",
-    "You get the findings and a quote before any repair starts."
+    "Clean-room rebuild",
+    "Once you say go ahead, pumps and injectors are rebuilt in the dust-controlled clean room."
    ],
    [
-    "Repair",
-    "The part is repaired once you say go ahead."
+    "Bench calibrated and tested",
+    "It is set and tested on the bench, and you see the result."
    ],
    [
-    "Test result",
-    "It is tested again and you see the result before it goes back on."
+    "Fitted and road-tested",
+    "The part goes back on and the vehicle is road-tested."
    ]
   ],
-  "articles_none": "Articles are being added. Until then, the service pages below answer the common questions."
+  "articles_none": "Articles are being added. Until then, the service pages below answer the common questions.",
+  "hero_kicker": "Bintulu's diesel precision lab",
+  "curtain_k": "Clean room",
+  "curtain_line": "Pumps and injectors are opened only in a dust-controlled clean room.",
+  "diag_p": "Follow the fuel from tank to turbo. Tap a part to see what we do.",
+  "nodes": [
+   [
+    "Fuel tank",
+    "Water or dirt in the diesel? Diagnosis starts here."
+   ],
+   [
+    "Fuel filter",
+    "A blocked filter starves the pump. We check it first."
+   ],
+   [
+    "Injection pump",
+    null
+   ],
+   [
+    "Common rail",
+    null
+   ],
+   [
+    "Injectors",
+    null
+   ],
+   [
+    "Turbo",
+    null
+   ]
+  ],
+  "brands_k": "We service systems from",
+  "veh_strip": [
+   [
+    "Pickups: Hilux, Navara, Triton",
+    "g07-pickups-laterite-hill"
+   ],
+   [
+    "Light trucks and lorries",
+    "g08-lorries-in-yard"
+   ],
+   [
+    "Buses and coaches",
+    "g09-coach-bus-in-bay"
+   ],
+   [
+    "Road machinery and heavy engines",
+    "g06-heavy-engine-workshop"
+   ],
+   [
+    "4x4s under the front canopy",
+    "g05-workshop-front-canopy"
+   ]
+  ],
+  "visit_photo": "Send us a photo of your pump or injector on WhatsApp for a quick check.",
+  "scroll": "Scroll"
  },
  "wa_msgs": {
   "home": "Hi KH Diesel, I'd like to ask about diesel fuel pump, injector or turbo repair.",

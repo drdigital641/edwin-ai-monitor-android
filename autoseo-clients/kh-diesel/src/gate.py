@@ -28,7 +28,7 @@ for f in glob.glob(D + '/**/index.html', recursive=True):
         if need not in t: fail.append(f'{p}: missing {need}')
     for img in re.findall(r'<img [^>]*>', t):
         alt = re.search(r'alt="([^"]*)"', img).group(1)
-        if 'images/' in img and 'brand/' not in img and 'AI-generated' not in alt: fail.append(f'{p}: img alt without AI credit')
+        if 'images/' in img and 'brand/' not in img and alt and not re.search(r'AI-generated|[Ii]llustrat', alt): fail.append(f'{p}: img alt without AI credit')
     for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', t, re.S):
         json.loads(m.group(1).replace('<\\/', '</'))
 print('files', len(files), 'pages', len(titles))

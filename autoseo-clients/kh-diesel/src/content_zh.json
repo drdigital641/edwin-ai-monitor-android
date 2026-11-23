@@ -67,24 +67,24 @@
   "process_h": "维修流程",
   "process": [
    [
-    "通过 WhatsApp 发照片",
-    "发送零件照片，并告诉我们车辆或机器的信息。"
+    "接收",
+    "先用WhatsApp发照片，再把零件、车辆或机械送到Batu 10（十哩）。"
    ],
    [
-    "检测",
-    "在车厂检查泵、喷油嘴或涡轮。"
+    "拆检",
+    "打开油泵、喷油嘴或涡轮进行检查。维修开始前，您会先收到检查结果和报价。"
    ],
    [
-    "报价",
-    "开始任何维修前，您会先收到检测结果和报价。"
+    "洁净室重建",
+    "您同意后，油泵和喷油嘴在防尘洁净室内重建。"
    ],
    [
-    "维修",
-    "您同意后才会开始维修零件。"
+    "试验台校准与测试",
+    "在试验台上调校和测试，并让您看到结果。"
    ],
    [
-    "测试结果",
-    "维修后会再次测试，您在装回前可以看到结果。"
+    "装车与路试",
+    "零件装回车上，并进行路试。"
    ]
   ],
   "articles_none": "文章正在陆续添加。在此之前，以下服务页面可以解答常见问题。",
@@ -100,8 +100,69 @@
    "g07-pickups-laterite-hill": "红土山坡前空地上的皮卡",
    "g08-lorries-in-yard": "车厂空地上的罗厘",
    "g09-coach-bus-in-bay": "维修区里的巴士",
-   "g10-hands-calibrating-pump": "双手校准柴油泵"
-  }
+   "g10-hands-calibrating-pump": "双手校准柴油泵",
+   "wow01-injector-spray-macro": "喷油嘴雾化特写（插图）",
+   "wow02-turbo-impeller-macro": "涡轮叶轮特写（插图）",
+   "wow03-cleanroom-bench-night": "夜间洁净室试验台（插图）",
+   "wow04-common-rail-test-room": "共轨测试室（插图）",
+   "wow05-hands-calibrating": "技师校准柴油泵（插图）",
+   "wow06-workshop-exterior-dusk": "黄昏时的车厂外观（插图）"
+  },
+  "hero_kicker": "民都鲁柴油精密实验室",
+  "curtain_k": "洁净室",
+  "curtain_line": "油泵和喷油嘴只在防尘的洁净室内拆开。",
+  "diag_p": "沿着燃油从油箱到涡轮的路线看一看。点选部件，了解我们的服务。",
+  "nodes": [
+   [
+    "油箱",
+    "柴油里有水或杂质？诊断从这里开始。"
+   ],
+   [
+    "燃油滤清器",
+    "滤清器堵塞会让油泵供油不足，我们会先检查它。"
+   ],
+   [
+    "喷油泵",
+    null
+   ],
+   [
+    "共轨",
+    null
+   ],
+   [
+    "喷油嘴",
+    null
+   ],
+   [
+    "涡轮",
+    null
+   ]
+  ],
+  "brands_k": "我们维修以下品牌的系统",
+  "veh_strip": [
+   [
+    "皮卡：Hilux、Navara、Triton",
+    "g07-pickups-laterite-hill"
+   ],
+   [
+    "轻型卡车和罗里",
+    "g08-lorries-in-yard"
+   ],
+   [
+    "巴士和长途客车",
+    "g09-coach-bus-in-bay"
+   ],
+   [
+    "筑路机械和重型引擎",
+    "g06-heavy-engine-workshop"
+   ],
+   [
+    "前檐下的四驱车",
+    "g05-workshop-front-canopy"
+   ]
+  ],
+  "visit_photo": "通过WhatsApp发送油泵或喷油嘴的照片，让我们快速查看。",
+  "scroll": "向下"
  },
  "wa_msgs": {
   "home": "你好 KH Diesel，我想咨询柴油泵、喷油嘴或涡轮维修。",

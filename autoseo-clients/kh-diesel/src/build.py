@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""KH Diesel Fuel Pump preview build (AutoSEO.my, 23 Nov 2026).
+"""KH Diesel Fuel Pump preview build (AutoSEO.my, 23 Nov 2026). v2 "Diesel Precision Lab" dark redesign, Edwin 23 Nov 8:53pm.
 
 One-time NEW-SITE build into an empty folder. After the first upload, Rule 0 applies: change live files with
 read_live -> edit -> write (expected_sha256); never rerun this over the live folder without Edwin's OK.
@@ -44,15 +44,18 @@ GAL = ['g01-cleanroom-pump-bench', 'g02-common-rail-test-room', 'g03-pump-parts-
        'g05-workshop-front-canopy', 'g06-heavy-engine-workshop', 'g07-pickups-laterite-hill', 'g08-lorries-in-yard',
        'g09-coach-bus-in-bay', 'g10-hands-calibrating-pump']
 MANIFEST = json.load(open(os.path.join(HERE, 'media-manifest.json')))
-ALT = {m['id']: m['alt'] for m in MANIFEST['hero'] + MANIFEST['gallery']}
-CAP = {m['id']: m['caption'] for m in MANIFEST['hero'] + MANIFEST['gallery']}
+ALL_MEDIA = MANIFEST['hero'] + MANIFEST['gallery'] + MANIFEST['wow']
+ALT = {m['id']: m['alt'] for m in ALL_MEDIA}
+CAP = {m['id']: m['caption'] for m in ALL_MEDIA}
 # Captions/alts are English in the manifest; MS/ZH captions come from content ui.ill_caps when present.
 
-HERO_OF = {'home': 'h01', 'diesel-fuel-pump-repair-bintulu': 'h01', 'common-rail-pump-repair-bintulu': 'h01',
-           'injector-repair-bintulu': 'h01', 'fuel-system-diagnosis-bintulu': 'h01', 'turbo-repair-bintulu': 'h02',
-           'vehicles-and-machines': 'h02', 'about': 'h02', 'contact': 'h02', 'articles': 'h01',
-           'kidurong-bintulu-port': 'h02', 'kemena-sibiyu-nyabau': 'h02', 'bintulu-town-jepak': 'h02'}
-HERO_ID = {'h01': 'h01-cleanroom-pump-bench-16x9', 'h02': 'h02-workshop-exterior-yard-16x9'}
+# v2 heroes: cinematic 16:9 scenes from the kh-diesel-wow-media drop (+ the regraded originals)
+HERO_OF = {'home': 'w03', 'diesel-fuel-pump-repair-bintulu': 'w03', 'common-rail-pump-repair-bintulu': 'w01',
+           'injector-repair-bintulu': 'w01', 'fuel-system-diagnosis-bintulu': 'h01', 'turbo-repair-bintulu': 'w02',
+           'vehicles-and-machines': 'w06', 'about': 'w06', 'contact': 'w06', 'articles': 'h01', 'privacy': 'w03',
+           'kidurong-bintulu-port': 'w06', 'kemena-sibiyu-nyabau': 'h02', 'bintulu-town-jepak': 'w06'}
+HERO_ID = {'h01': 'h01-cleanroom-pump-bench-16x9', 'h02': 'h02-workshop-exterior-yard-16x9', 'w01': 'wow01-injector-spray-macro',
+           'w02': 'wow02-turbo-impeller-macro', 'w03': 'wow03-cleanroom-bench-night', 'w06': 'wow06-workshop-exterior-dusk'}
 SVC_IMGS = {'diesel-fuel-pump-repair-bintulu': ['g01-cleanroom-pump-bench', 'g10-hands-calibrating-pump', 'g03-pump-parts-on-bench'],
             'common-rail-pump-repair-bintulu': ['g02-common-rail-test-room', 'g03-pump-parts-on-bench'],
             'injector-repair-bintulu': ['g02-common-rail-test-room', 'g10-hands-calibrating-pump'],
@@ -118,13 +121,13 @@ def cta_row(pg, place, cls=''):
 
 
 def img(pg, mid, sizes, w, h, cls='', eager=False, kind='gallery'):
-    base = f'images/{kind}/{mid}'
+    base = f'images/{"wow" if mid.startswith("wow") else "lab"}/{mid}'
     ws = (480, 800, 1600) if kind == 'hero' else (480, 800)
     srcset = ', '.join(f'{pg.u(base + "-" + str(x) + ".webp")} {x}w' for x in ws)
     src = pg.u(f'{base}-800.webp')
     load = 'fetchpriority="high"' if eager else 'loading="lazy" decoding="async"'
     alt = pg.ui.get('alts', {}).get(mid) or ALT[mid]
-    return f'<img class="{cls}" src="{src}" srcset="{srcset}" sizes="{sizes}" width="{w}" height="{h}" alt="{E(alt)}" {load}>'
+    return f'<img{f' class="{cls}"' if cls else ""} src="{src}" srcset="{srcset}" sizes="{sizes}" width="{w}" height="{h}" alt="{E(alt)}" {load}>'
 
 
 def cap(pg, mid):
@@ -132,8 +135,8 @@ def cap(pg, mid):
 
 
 def figure(pg, mid, cls='fig'):
-    return (f'<figure class="{cls}">{img(pg, mid, "(min-width: 900px) 360px, 80vw", 800, 1000)}'
-            f'<figcaption><span>{E(cap(pg, mid))}</span><small>{E(pg.ui["ill_credit"])}</small></figcaption></figure>')
+    return (f'<figure class="{cls}">{img(pg, mid, "(min-width: 900px) 360px, 80vw", 800, 1000)}<span class="ill">{E(pg.ui["ill_credit"])}</span>'
+            f'<figcaption><span>{E(cap(pg, mid))}</span></figcaption></figure>')
 
 
 # ---------------------------------------------------------------- schema
@@ -187,7 +190,10 @@ def service_schema(pg):
 def head(pg, ld):
     p = pg.p
     css = pg.u('assets/site.css') + '?v=' + ASSET_V['site.css']
-    h01 = pg.u('images/hero/' + HERO_ID[HERO_OF.get(pg.pid, 'h01')] + '-800.webp')
+    hid = HERO_ID[HERO_OF.get(pg.pid, 'h01')]
+    fold = 'wow' if hid.startswith('wow') else 'lab'
+    h01 = pg.u(f'images/{fold}/' + hid + '-800.webp')
+    hset = ', '.join(f"{pg.u(f'images/{fold}/' + hid + '-' + str(x) + '.webp')} {x}w" for x in (480, 800, 1600))
     zh_font = '' if pg.L != 'zh' else ''
     return f'''<!doctype html>
 <html lang="{I18N.lang(pg.L)['hreflang']}">
@@ -206,11 +212,11 @@ def head(pg, ld):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{E(p['title'])}">
 <meta name="twitter:description" content="{E(p['desc'])}">
-<meta name="theme-color" content="#1E3A6E">
+<meta name="theme-color" content="#070b16">
 <link rel="icon" href="{pg.u('images/brand/favicon-32.png')}" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="{pg.u('images/brand/apple-touch-icon.png')}">
-<link rel="preload" href="{pg.u('assets/fonts/saira-condensed-800.woff2')}" as="font" type="font/woff2" crossorigin>
-{'<link rel="preload" as="image" href="' + h01 + '" fetchpriority="high">' if pg.pid != 'privacy' else ''}
+<link rel="preload" href="{pg.u('assets/fonts/oxanium-700.woff2')}" as="font" type="font/woff2" crossorigin>
+{'<link rel="preload" as="image" href="' + h01 + '" imagesrcset="' + hset + '" imagesizes="100vw" fetchpriority="high">' if pg.pid != 'privacy' else ''}
 <link rel="stylesheet" href="{css}">
 {ld}
 </head>
@@ -246,7 +252,7 @@ def header(pg):
 {I18N.switcher(pg.u, pg.en_path, I18N.lang(pg.L), pg.ui['lang_label'], cls='lang lang-sheet')}
 <div class="ctas"><a class="btn wa" {wa(pg, ref='whatsapp_menu')}>{ICON['wa']}<span>{E(pg.ui['wa'])}</span></a><a class="btn call" {tel('call_header')}>{ICON['call']}<span>{E(pg.ui['call'])}</span></a></div>
 </div></details>
-</div><div class="gate" aria-hidden="true"></div></header>'''
+</div><div class="hairline" aria-hidden="true"></div></header>'''
 
 
 def hours_table(pg, cls='hrs'):
@@ -258,7 +264,8 @@ def hours_table(pg, cls='hrs'):
 def footer(pg):
     svc = ''.join(f'<li><a href="{pg.lp(s["id"])}">{E(s["short"])}</a></li>' for s in pg.c['services'])
     areas = ''.join(f'<li><a href="{pg.lp(a["id"])}">{E(a["name"])}</a></li>' for a in pg.c['areas'])
-    return f'''<footer class="ft"><div class="gate" aria-hidden="true"></div><div class="wrap">
+    sw = I18N.switcher(pg.u, pg.en_path, I18N.lang(pg.L), pg.ui['lang_label'], cls='lang lang-ft')
+    return f'''<footer class="ft"><div class="hairline" aria-hidden="true"></div><div class="wrap">
 <div class="ft-g">
 <div class="ft-id">{wordmark(pg)}
 <p class="ft-name">{E(F['name'])}</p>
@@ -273,6 +280,7 @@ def footer(pg):
 </ul></div>
 <div><h2>{E(pg.ui['services_h'])}</h2><ul class="ft-s">{svc}</ul><h2>{E(pg.ui['areas_h'])}</h2><ul class="ft-s">{areas}</ul></div>
 </div>
+{sw}
 <div class="ft-b"><span>&copy; 2026 {E(F['name'])}</span><a href="{pg.lp('about')}">{E(pg.ui['nav_about'])}</a><a href="{pg.lp('articles')}">{E(pg.ui['nav_articles'])}</a>{I18N.privacy_link(pg.u, I18N.lang(pg.L))}<a href="https://autoseo.my/">{E(pg.ui['credit'])}</a></div>
 </div></footer>
 <div class="mbar"><a class="btn wa" {wa(pg, ref='whatsapp_mobile_bar')}>{ICON['wa']}<span>{E(pg.ui['wa'])}</span></a><a class="btn call" {tel('call_mobile_bar')}>{ICON['call']}<span>{E(pg.ui['call'])}</span></a></div>
@@ -283,18 +291,40 @@ def footer(pg):
 '''
 
 
+SPRAY = ('<svg class="spray" viewBox="0 0 120 160" aria-hidden="true" focusable="false">'
+         '<rect class="inj-b" x="48" y="6" width="24" height="64" rx="6"/><rect class="inj-b" x="54" y="70" width="12" height="22" rx="3"/>'
+         '<path class="inj-t" d="M56 92h8l-2 10h-4z"/>'
+         '<g class="mist"><path d="M60 104 28 156M60 104 44 158M60 104 60 159M60 104 76 158M60 104 92 156"/></g>'
+         '<g class="drops"><circle cx="40" cy="138" r="1.6"/><circle cx="52" cy="146" r="1.3"/><circle cx="66" cy="142" r="1.5"/><circle cx="80" cy="134" r="1.2"/><circle cx="72" cy="152" r="1.4"/><circle cx="48" cy="128" r="1.1"/></g></svg>')
+
+
+def hud(pg, home):
+    """Decorative calibration readout (aria-hidden; numbers are a visual effect, not a claim)."""
+    ticks = ''.join(f'<i style="--i:{k}"></i>' for k in range(16))
+    read = ('<div class="rd"><span class="rd-l">RAIL PRESSURE</span><span class="rd-v"><b class="cnt" data-to="1800">1,800</b><small>bar</small></span>'
+            '<span class="rd-bar"><i></i></span><span class="rd-l rd-s">BENCH 01 · CAL ✓</span></div>') if home else (
+            '<div class="rd rd-mini"><span class="rd-l">BATU 10 · BINTULU</span><span class="rd-l rd-s">3.2033° N · 113.1239° E</span></div>')
+    return (f'<div class="hud" aria-hidden="true"><span class="br tl"></span><span class="br tr"></span><span class="br bl"></span><span class="br brr"></span>'
+            f'<span class="scan"></span><div class="scale">{ticks}</div>{read}{SPRAY if home else ""}</div>')
+
+
 def hero(pg, h1, sub=None, place='hero'):
     hid = HERO_ID[HERO_OF.get(pg.pid, 'h01')]
-    ref = 'home_hero' if pg.pid == 'home' else f'{SLUG_REF.get(pg.pid, pg.pid.split("-")[0])}_intro'
+    home = pg.pid == 'home'
+    ref = 'home_hero' if home else f'{SLUG_REF.get(pg.pid, pg.pid.split("-")[0])}_intro'
     if pg.pid in AREAS:
         ref = f'area_{SLUG_REF[pg.pid]}'
-    return f'''<section class="hero">
-<figure class="hero-img">{img(pg, hid, "100vw", 1600, 900, eager=True, kind='hero')}<figcaption>{E(pg.ui['ill_credit'])}</figcaption></figure>
-<div class="wrap"><div class="plate-hero">
+    kick = pg.ui['hero_kicker']
+    return f'''<section class="hx {'hx-home' if home else 'hx-inner'}">
+<figure class="hx-media">{img(pg, hid, "100vw", 1600, 900, cls='kb', eager=True, kind='hero')}<span class="ill">{E(pg.ui['ill_credit'])}</span></figure>
+<div class="hx-shade" aria-hidden="true"></div>
+{hud(pg, home)}
+<div class="wrap hx-copy">
+<p class="kick"><span class="pulse" aria-hidden="true"></span>{E(kick)}</p>
 <h1>{E(h1)}</h1>
 {f'<p class="sub">{E(sub)}</p>' if sub else ''}
-{cta_row(pg, ref)}
-</div></div>
+{cta_row(pg, ref, 'hx-ctas')}
+</div>
 </section>'''
 
 
@@ -306,10 +336,11 @@ def crumbs(pg, mid=None):
     return '<nav class="crumbs wrap" aria-label="Breadcrumb">' + '<span class="sep" aria-hidden="true">/</span>'.join(parts) + '</nav>'
 
 
-def gallery(pg, ids=GAL):
-    cards = ''.join(f'<figure class="gcard">{img(pg, m, "(min-width: 900px) 300px, 68vw", 800, 1000)}'
-                    f'<figcaption><span>{E(cap(pg, m))}</span><small>{E(pg.ui["ill_credit"])}</small></figcaption></figure>' for m in ids)
-    return (f'<div class="rail-wrap"><div class="glide" role="group" aria-label="{E(pg.ui["carousel_label"])}" data-speed="0.035">{cards}</div>'
+def gallery(pg, ids=None, label=None):
+    ids = ids or ['wow05-hands-calibrating', 'wow04-common-rail-test-room'] + GAL
+    cards = ''.join(f'<figure class="gcard">{img(pg, m, "(min-width: 900px) 300px, 68vw", 800, 1000)}<span class="ill">{E(pg.ui["ill_credit"])}</span>'
+                    f'<figcaption><span>{E(lab or cap(pg, m))}</span></figcaption></figure>' for lab, m in ([(None, x) for x in ids] if ids and isinstance(ids[0], str) else ids))
+    return (f'<div class="rail-wrap"><div class="glide" role="group" aria-label="{E(label or pg.ui["carousel_label"])}" data-speed="0.035">{cards}</div>'
             f'<div class="rail-nav"><button type="button" class="rn prev" aria-label="{E(pg.ui["prev"])}"></button><button type="button" class="rn next" aria-label="{E(pg.ui["next"])}"></button></div></div>')
 
 
@@ -328,7 +359,8 @@ def find_us(pg):
 <a class="lnk" href="{E(F['directions_url'])}" target="_blank" rel="noopener" data-cta="directions_findus" data-ref="directions_findus">{ICON['pin']}<span>{E(pg.ui['directions'])}</span></a></div>
 <div class="rev"><p><b>{E(pg.ui['review_h'])}</b> {E(pg.ui['review_p'])}</p><a class="lnk" href="{E(F['review_url'])}" target="_blank" rel="noopener" data-cta="reviews_findus" data-ref="reviews_findus">{ICON['star']}<span>{E(pg.ui['review_btn'])}</span></a></div>
 </div>
-<div class="map"><iframe title="{E(pg.ui['map_title'])}" src="{E(F['embed_url'])}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+<div class="map-card"><div class="map"><iframe title="{E(pg.ui['map_title'])}" src="{E(F['embed_url'])}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+<div class="visit-wa"><p>{E(pg.ui['visit_photo'])}</p><a class="btn wa big" {wa(pg, ref='whatsapp_findus')}>{ICON['wa']}<span>{E(pg.ui['wa_long'])}</span></a><span class="chip">{E(pg.ui['plate_hours_v'])}</span></div></div>
 </div></section>'''
 
 
@@ -339,8 +371,8 @@ def plate(pg):
 
 
 def ticket(pg):
-    steps = ''.join(f'<li><b>{E(a)}</b><span>{E(b)}</span></li>' for a, b in pg.ui['process'])
-    return f'<section class="band proc"><div class="wrap narrow"><div class="ticket"><h2>{E(pg.ui["process_h"])}</h2><ol>{steps}</ol></div></div></section>'
+    steps = ''.join(f'<li><span class="tn" aria-hidden="true">{k:02d}</span><b>{E(a)}</b><span>{E(b)}</span></li>' for k, (a, b) in enumerate(pg.ui['process'], 1))
+    return f'<section class="band tl"><div class="wrap narrow"><p class="kick">{E(pg.ui["hero_kicker"])}</p><h2>{E(pg.ui["process_h"])}</h2><ol class="tline">{steps}</ol></div></section>'
 
 
 def radius_map(pg, hi=None):
@@ -350,7 +382,7 @@ def radius_map(pg, hi=None):
     for a in pg.c['areas']:
         x, y = pos[a['id']]
         on = ' on' if a['id'] == hi else ''
-        dots += f'<a href="{pg.lp(a["id"])}" class="rdot{on}"><circle cx="{x}" cy="{y}" r="9"/><text x="{x}" y="{y + 25}" text-anchor="middle">{E(a["km"])}</text></a>'
+        dots += f'<a href="{pg.lp(a["id"])}" class="rdot{on}"><circle class="hit" cx="{x}" cy="{y + 8}" r="28"/><circle cx="{x}" cy="{y}" r="9"/><text x="{x}" y="{y + 25}" text-anchor="middle">{E(a["km"])}</text></a>'
     rings = ''.join(f'<circle class="ring" cx="150" cy="150" r="{r * 7}"/><text class="rl" x="150" y="{150 - r * 7 - 4}" text-anchor="middle">{r} km</text>' for r in (5, 10))
     return (f'<figure class="radius"><svg viewBox="0 0 300 300" role="img" aria-label="{E(pg.ui["radius_caption"])}">'
             f'<rect class="rbg" x="0" y="0" width="300" height="300" rx="22"/>{rings}'
@@ -380,21 +412,76 @@ def svc_rows(pg, exclude=None):
 
 
 def cta_band(pg, ref):
-    return (f'<section class="band ctab"><div class="wrap narrow"><h2>{E(pg.ui["cta_band_h"])}</h2><p>{E(pg.ui["cta_band_p"])}</p>'
+    return (f'<section class="band ctab"><div class="ctab-bg" aria-hidden="true">{img(pg, "wow06-workshop-exterior-dusk", "100vw", 1600, 900, kind="hero").replace(f' alt="{E(ALT["wow06-workshop-exterior-dusk"])}"', ' alt=""')}<span class="ill">{E(pg.ui["ill_credit"])}</span></div><div class="wrap narrow"><h2>{E(pg.ui["cta_band_h"])}</h2><p>{E(pg.ui["cta_band_p"])}</p>'
             f'{cta_row(pg, ref)}<p class="ll"><a {tel("call_landline_" + ref, True)}>{E(pg.ui["landline"])}</a></p></div></section>')
 
 
 # ---------------------------------------------------------------- page bodies
+NODE_IC = {
+    'tank': '<path d="M7 9h18v16a3 3 0 0 1-3 3H10a3 3 0 0 1-3-3z"/><path d="M11 9V5h6v4M7 16h18"/>',
+    'filter': '<path d="M9 5h14v5l-4 6v11h-6V16L9 10z"/><path d="M12 10h8"/>',
+    'pump': '<rect x="5" y="9" width="16" height="14" rx="2"/><path d="M21 13h4v6h-4M9 9V5M13 9V5M17 9V5M9 23v4h8v-4"/>',
+    'rail': '<rect x="3" y="12" width="26" height="7" rx="3.5"/><path d="M8 19v6M14 19v6M20 19v6M26 19v6M3 15.5H1"/>',
+    'inj': '<path d="M13 3h6v12l-1 4h-4l-1-4z"/><path d="M16 19v3M16 24l-5 6M16 24v6M16 24l5 6"/>',
+    'turbo': '<circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="3"/><path d="M16 5c2 4 2 7 0 8M27 16c-4 2-7 2-8 0M16 27c-2-4-2-7 0-8M5 16c4-2 7-2 8 0"/>',
+}
+
+
+def diagram(pg, heading):
+    svc = {s['id']: s for s in pg.c['services']}
+    keys = ['tank', 'filter', 'pump', 'rail', 'inj', 'turbo']
+    target = ['fuel-system-diagnosis-bintulu', 'fuel-system-diagnosis-bintulu', 'diesel-fuel-pump-repair-bintulu',
+              'common-rail-pump-repair-bintulu', 'injector-repair-bintulu', 'turbo-repair-bintulu']
+    lis = ''
+    for k, (key, (name, line)), tgt in zip(range(6), zip(keys, pg.ui['nodes']), target):
+        line = line or svc[tgt]['line']
+        lis += (f'<li style="--k:{k}"><a class="node" href="{pg.lp(tgt)}"><span class="nd-ic" aria-hidden="true"><svg viewBox="0 0 32 32" focusable="false">{NODE_IC[key]}</svg></span>'
+                f'<span class="nd-t"><b>{E(name)}</b><span>{E(line)}</span></span><span class="go" aria-hidden="true"></span></a></li>')
+    d = svc['fuel-system-diagnosis-bintulu']
+    return (f'<section class="band diag"><div class="wrap"><p class="kick">{E(pg.ui["services_h"])}</p><h2>{E(heading)}</h2><p class="lede">{E(pg.ui["diag_p"])}</p>'
+            f'<div class="flow-wrap"><span class="flow-line" aria-hidden="true"><i></i></span><ol class="flow">{lis}</ol></div>'
+            f'<a class="diag-all" href="{pg.lp(d["id"])}"><b>{E(d["short"])}</b><span>{E(d["line"])}</span></a></div></section>')
+
+
+def brands(pg):
+    names = pg.ui.get('brands') or F['brands_on_signboard']
+    run = '<span class="mq-dot" aria-hidden="true"></span>'.join(f'<span>{E(n)}</span>' for n in names)
+    return (f'<section class="brands"><p class="sr">{E(pg.ui["brands_k"])}: {E(", ".join(names))}</p>'
+            f'<div class="brands-in" aria-hidden="true"><span class="br-k">{E(pg.ui["brands_k"])}</span>'
+            f'<div class="mq"><div class="mq-in">{run}<span class="mq-dot"></span>{run}<span class="mq-dot"></span>{run}<span class="mq-dot"></span>{run}<span class="mq-dot"></span></div></div></div></section>')
+
+
+def curtain(pg):
+    strips = '<i></i>' * 14
+    return (f'<section class="curtain" data-curtain><div class="cur-stage">'
+            f'<picture><source media="(min-width: 900px)" srcset="{pg.u("images/lab/h01-cleanroom-pump-bench-16x9-1600.webp")} 1600w, {pg.u("images/lab/h01-cleanroom-pump-bench-16x9-800.webp")} 800w" sizes="100vw">'
+            f'{img(pg, "wow04-common-rail-test-room", "100vw", 800, 1000, cls="cur-img")}</picture><span class="ill">{E(pg.ui["ill_credit"])}</span>'
+            f'<div class="cur-strips" aria-hidden="true">{strips}</div>'
+            f'<div class="cur-copy"><p class="kick"><span class="pulse" aria-hidden="true"></span>{E(pg.ui["curtain_k"])}</p><h2>{E(pg.ui["curtain_line"])}</h2></div></div></section>')
+
+
+def macro(pg):
+    cards = ''
+    for mid, tgt in (('wow01-injector-spray-macro', 'injector-repair-bintulu'), ('wow02-turbo-impeller-macro', 'turbo-repair-bintulu')):
+        s = next(x for x in pg.c['services'] if x['id'] == tgt)
+        cards += (f'<a class="mcard" href="{pg.lp(tgt)}"><figure>{img(pg, mid, "(min-width: 900px) 580px, 100vw", 1600, 900, kind="hero")}<span class="ill">{E(pg.ui["ill_credit"])}</span>'
+                  f'<figcaption><b>{E(s["short"])}</b><span>{E(s["line"])}</span></figcaption></figure></a>')
+    return f'<section class="band macro"><div class="wrap mgrid">{cards}</div></section>'
+
+
 def page_home(pg):
     p = pg.p
     body = hero(pg, p['h1'], p['sub'])
     body += f'''<main id="main">
-<section class="band bench"><div class="wrap"><div class="sec-h"><h2>{E(p['bench_h'])}</h2><p>{E(p['bench_p'])}</p></div></div>{gallery(pg)}</section>
-<section class="band svc"><div class="wrap"><h2>{E(p['svc_h'])}</h2>{svc_rows(pg)}</div></section>
-<section class="band veh"><div class="wrap veh-g"><div><h2>{E(p['veh_h'])}</h2><p>{E(p['veh_p'])}</p><a class="lnk" href="{pg.lp('vehicles-and-machines')}"><span>{E(p['veh_link'])}</span></a></div>
-<div class="veh-pics">{figure(pg, 'g05-workshop-front-canopy')}{figure(pg, 'g08-lorries-in-yard')}{figure(pg, 'g09-coach-bus-in-bay')}</div></div></section>
-<section class="band areas"><div class="wrap areas-g"><div><h2>{E(p['areas_h'])}</h2><p>{E(p['areas_p'])}</p>{area_strip(pg)}</div>{radius_map(pg)}</div></section>
+{curtain(pg)}
+{diagram(pg, p['svc_h'])}
+{macro(pg)}
+{brands(pg)}
+<section class="band bench"><div class="wrap"><div class="sec-h"><p class="kick">KH · LAB</p><h2>{E(p['bench_h'])}</h2><p>{E(p['bench_p'])}</p></div></div>{gallery(pg)}</section>
+<section class="band veh"><div class="wrap"><div class="sec-h"><h2>{E(p['veh_h'])}</h2><p>{E(p['veh_p'])}</p><a class="lnk" href="{pg.lp('vehicles-and-machines')}"><span>{E(p['veh_link'])}</span></a></div></div>
+{gallery(pg, pg.ui['veh_strip'], p['veh_h'])}</section>
 {ticket(pg)}
+<section class="band areas"><div class="wrap areas-g"><div><h2>{E(p['areas_h'])}</h2><p>{E(p['areas_p'])}</p>{area_strip(pg)}</div>{radius_map(pg)}</div></section>
 <section class="band proof"><div class="wrap narrow"><p class="lead">{E(p['plate_intro'])}</p>{plate(pg)}</div></section>
 {find_us(pg)}
 {cta_band(pg, 'home_end')}
@@ -548,7 +635,7 @@ def main():
         os.makedirs(os.path.dirname(os.path.join(OUT, rel)) or OUT, exist_ok=True)
         shutil.copyfile(os.path.join(HERE, rel), os.path.join(OUT, rel))
         ASSET_V[os.path.basename(rel)] = vhash(os.path.join(OUT, rel))
-    for d in ['assets/fonts', 'images/brand']:
+    for d in ['assets/fonts', 'images/brand', 'images/lab', 'images/wow']:
         shutil.copytree(os.path.join(HERE, d), os.path.join(OUT, d), dirs_exist_ok=True)
     built, html_by = [], {}
     for L in ('en', 'ms', 'zh'):
