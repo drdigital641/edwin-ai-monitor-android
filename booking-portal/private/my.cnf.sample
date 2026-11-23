@@ -1,0 +1,10 @@
+# COPY to /home/<account>/booking-private/my.cnf, chmod 600. Used by backup.sh and restores.
+[client]
+user = <cpanelprefix>_bookapp
+password = <BOOKING_DB_PASSWORD>
+host = localhost
+database = <cpanelprefix>_booking
+[mysqldump]
+user = <cpanelprefix>_bookapp
+password = <BOOKING_DB_PASSWORD>
+host = localhost

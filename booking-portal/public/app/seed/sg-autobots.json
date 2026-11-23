@@ -1,0 +1,20 @@
+{
+  "_source": "Edwin 23 Nov 2026 8:16pm SGT, owner's handwritten list. Hours and off days are left empty on purpose: the client sets them in admin.",
+  "client": {
+    "slug": "sg-autobots", "name": "SgAutobots",
+    "logo_url": "https://pageonesingapore.com/preview/sg-autobots/images/brand/logo-sgautobots-503.jpg",
+    "colour_primary": "#13529f", "colour_accent": "#f4e940", "colour_bg": "#07090d",
+    "whatsapp_e164": "+6583667010", "timezone": "Asia/Singapore", "recurring_enabled": 1,
+    "allowed_embed_domains": "pageonesingapore.com", "status": "setup"
+  },
+  "services": [
+    {"slug": "ceramic-coating", "group_slug": "ceramic-coating", "name": "Ceramic Coating", "description": "Detail wash, paint correction, polish and ceramic coating.", "full_day": 1, "duration_min": null, "price_note": "S$388 - S$2,388", "active": 1, "admin_note": "Full working day: blocks the whole open day"},
+    {"slug": "car-wash-package", "group_slug": "car-spa", "name": "Car Wash package (10 washes)", "description": "A package of 10 washes. Book each wash as its own slot, or set up a weekly or monthly repeat.", "duration_min": 60, "price_note": "S$550 - S$850 for 10 washes", "recurring_allowed": 1, "active": 1},
+    {"slug": "interior-cleaning-standard", "group_slug": "interior-detailing", "name": "Interior Cleaning - Standard", "description": "Standard interior cleaning.", "duration_min": 180, "price_note": "S$148 - S$248", "active": 1},
+    {"slug": "interior-cleaning-deep", "group_slug": "interior-detailing", "name": "Interior Cleaning - Deep", "description": "Deep interior cleaning.", "duration_min": 480, "price_note": "S$388 - S$688", "active": 1},
+    {"slug": "polishing", "group_slug": "car-polishing-paint-correction", "name": "Polishing", "description": "Machine polishing of the paintwork.", "duration_min": 300, "price_note": "S$188 - S$328", "active": 1},
+    {"slug": "glass-polish-coating", "group_slug": "glass-rim-coating", "name": "Glass Polish / Coating", "description": "Glass polishing and glass coating. Takes 1 to 3 hours.", "duration_min": 180, "price_note": "S$80 - S$388", "active": 1, "admin_note": "1 to 3 hours; blocks 3 hours"},
+    {"slug": "interior-coating", "group_slug": "interior-detailing", "name": "Interior Coating", "description": "Protective coating for the interior.", "duration_min": 120, "price_note": "S$188 - S$388", "active": 1},
+    {"slug": "engine-bay-cleaning", "group_slug": "engine-bay-cleaning", "name": "Engine Bay Cleaning", "description": "Engine bay cleaning.", "duration_min": 60, "price_note": "S$68 - S$128", "active": 1}
+  ]
+}

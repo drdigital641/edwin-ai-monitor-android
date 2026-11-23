@@ -1,0 +1,5 @@
+public/test-*/
+private/config.php
+private/my.cnf
+*.sql
+*.sql.gz
