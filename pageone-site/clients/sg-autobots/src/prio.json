@@ -1,0 +1,180 @@
+[
+ {
+  "slug": "bukit-timah",
+  "name": "Bukit Timah",
+  "tier": 1,
+  "estates": [
+   "Sixth Avenue",
+   "King Albert Park",
+   "Coronation Road",
+   "Watten Estate",
+   "Dunearn"
+  ],
+  "roads": [
+   "Bukit Timah Road",
+   "Dunearn Road",
+   "Sixth Avenue",
+   "Clementi Road"
+  ],
+  "mrt": "Downtown Line stops along Bukit Timah Road: Botanic Gardens, Tan Kah Kee, Sixth Avenue, King Albert Park and Beauty World",
+  "intro": "Bukit Timah is mostly landed streets and low-rise condos strung along Bukit Timah Road and Dunearn Road. We bring the full mobile kit to your driveway, porch or condo basement, so a coated or freshly corrected car never has to leave home.",
+  "parking": "Landed homes here usually have a driveway or car porch, which is the easiest place for a long coating job. Condos along Bukit Timah Road and Dunearn Road mostly park in sheltered basement car parks, which keep sun and rain off the paint while the coating sets.",
+  "cars": "German and Japanese premium models are a common sight on these roads. On a car like that, paint correction and a long-life coating are usually what owners ask about first.",
+  "condo": "Some condos ask contractors to register at the guardhouse or book a bay. Tell us your condo name when you book and we will follow its rules.",
+  "line": "From Botanic Gardens up to Beauty World"
+ },
+ {
+  "slug": "holland-village",
+  "name": "Holland Village",
+  "label": "Holland Village and Holland Road",
+  "tier": 2,
+  "estates": [
+   "Chip Bee Gardens",
+   "Holland Grove",
+   "Holland Road",
+   "Farrer Road"
+  ],
+  "roads": [
+   "Holland Road",
+   "Holland Avenue",
+   "Lorong Liput",
+   "Holland Grove Road"
+  ],
+  "mrt": "Holland Village on the Circle Line, with Farrer Road one stop away",
+  "intro": "Around Holland Village and along Holland Road, homes are a mix of landed estates such as Chip Bee Gardens and Holland Grove and condos set back from the main road. We come to your driveway or condo car park with the full mobile kit.",
+  "parking": "Landed streets off Holland Road and Holland Avenue mostly have car porches or driveways. Condos along Holland Road usually have basement or sheltered car parks, which suit long coating and polishing work.",
+  "cars": "Premium cars are common on Holland Road. A car parked in an open porch picks up rain and water marks on glass and paint; glass water-mark removal and coating is the package for that.",
+  "condo": "If your condo asks contractors to register, send us the condo name when you book.",
+  "line": "Holland Village, Holland Road and the landed estates around them"
+ },
+ {
+  "slug": "sixth-avenue",
+  "name": "Sixth Avenue",
+  "tier": 3,
+  "roads": [
+   "Sixth Avenue",
+   "Bukit Timah Road",
+   "Sime Road side streets"
+  ],
+  "mrt": "Sixth Avenue station on the Downtown Line",
+  "intro": "The streets around Sixth Avenue are mostly landed homes with driveways, plus a few low-rise condos off Bukit Timah Road.",
+  "parking": "Most homes here have a porch or driveway, which gives room to work all around the car."
+ },
+ {
+  "slug": "king-albert-park",
+  "name": "King Albert Park",
+  "tier": 3,
+  "roads": [
+   "Bukit Timah Road",
+   "Clementi Road",
+   "King Albert Park"
+  ],
+  "mrt": "King Albert Park station on the Downtown Line",
+  "intro": "King Albert Park sits where Bukit Timah Road meets Clementi Road, with landed estates and condos on both sides of the main road.",
+  "parking": "Landed homes have porches and driveways; condos nearby mostly use basement car parks."
+ },
+ {
+  "slug": "coronation-road",
+  "name": "Coronation Road",
+  "tier": 3,
+  "roads": [
+   "Coronation Road",
+   "Bukit Timah Road",
+   "Farrer Road"
+  ],
+  "mrt": "Farrer Road (Circle Line) and Sixth Avenue (Downtown Line) are the nearest stations",
+  "intro": "Coronation Road runs off Bukit Timah Road near the Farrer Road end, with landed streets and low-rise condos around it.",
+  "parking": "Expect porches and driveways on the landed streets and sheltered car parks at the condos."
+ },
+ {
+  "slug": "holland-grove",
+  "name": "Holland Grove",
+  "tier": 3,
+  "roads": [
+   "Holland Grove Road",
+   "Holland Road",
+   "Ulu Pandan Road"
+  ],
+  "mrt": "Holland Village station on the Circle Line is the nearest",
+  "intro": "Holland Grove is a quiet landed estate off Holland Road, close to Holland Village.",
+  "parking": "Homes here mostly have car porches, so we can work on the car where it is parked."
+ },
+ {
+  "slug": "farrer-road",
+  "name": "Farrer Road",
+  "tier": 3,
+  "roads": [
+   "Farrer Road",
+   "Holland Road",
+   "Bukit Timah Road"
+  ],
+  "mrt": "Farrer Road station on the Circle Line",
+  "intro": "Farrer Road links Holland Road and Bukit Timah Road, lined with condos and landed streets.",
+  "parking": "Condos along Farrer Road mostly have basement or covered car parks; landed homes nearby have driveways."
+ },
+ {
+  "slug": "dunearn",
+  "name": "Dunearn",
+  "tier": 3,
+  "roads": [
+   "Dunearn Road",
+   "Bukit Timah Road",
+   "Adam Road"
+  ],
+  "mrt": "Botanic Gardens, Tan Kah Kee and Sixth Avenue on the Downtown Line",
+  "intro": "Dunearn Road runs alongside Bukit Timah Road, with condos fronting the road and landed streets behind them.",
+  "parking": "Condos here mostly park in basements; landed homes on the side streets have porches."
+ },
+ {
+  "slug": "tanglin",
+  "name": "Tanglin",
+  "tier": 3,
+  "roads": [
+   "Tanglin Road",
+   "Napier Road",
+   "Nassim Road"
+  ],
+  "mrt": "Orchard Boulevard on the Thomson-East Coast Line is the nearest",
+  "intro": "Tanglin, between Orchard and the Botanic Gardens, is mostly condos with a few landed streets.",
+  "parking": "Most condos here have basement car parks, which keep the car shaded while a coating cures."
+ },
+ {
+  "slug": "newton",
+  "name": "Newton",
+  "tier": 3,
+  "roads": [
+   "Newton Road",
+   "Scotts Road",
+   "Bukit Timah Road"
+  ],
+  "mrt": "Newton station on the North-South and Downtown Lines",
+  "intro": "Around Newton the homes are mostly condos, close to where Bukit Timah Road starts.",
+  "parking": "Condo basements are the usual place we work here."
+ },
+ {
+  "slug": "novena",
+  "name": "Novena",
+  "tier": 3,
+  "roads": [
+   "Thomson Road",
+   "Novena Terrace",
+   "Moulmein Road"
+  ],
+  "mrt": "Novena station on the North-South Line",
+  "intro": "Novena mixes condos along Thomson Road with landed streets on the side roads.",
+  "parking": "Condos have sheltered or basement car parks; landed homes have porches."
+ },
+ {
+  "slug": "watten-estate",
+  "name": "Watten Estate",
+  "tier": 3,
+  "roads": [
+   "Watten Rise",
+   "Shelford Road",
+   "Dunearn Road"
+  ],
+  "mrt": "Tan Kah Kee and Botanic Gardens on the Downtown Line",
+  "intro": "Watten Estate is a landed estate off Dunearn Road, between Bukit Timah Road and Shelford Road.",
+  "parking": "Homes here have driveways and porches, so the car can stay at home for the whole job."
+ }
+]

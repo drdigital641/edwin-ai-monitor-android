@@ -19,7 +19,8 @@ for p in pages:
     for need in ['name="robots" content="noindex, nofollow"','p1-cta.js?v=','rel="canonical"','og:image:width','data-cta="booking"']:
         if need not in s: bad.append((rel,'missing '+need))
     t=re.search(r'<title>(.*?)</title>',s).group(1); d=re.search(r'name="description" content="(.*?)"',s).group(1)
-    if len(t)>60: bad.append((rel,'title>60'))
+    import html as H
+    if len(H.unescape(t))>60: bad.append((rel,'title>60'))
     titles.setdefault(t,[]).append(rel); descs.setdefault(d,[]).append(rel)
     if 'openingHours' in s or 'streetAddress' in s or 'postalCode' in s: bad.append((rel,'schema field'))
     for a in re.findall(r'<a [^>]*>',s):
