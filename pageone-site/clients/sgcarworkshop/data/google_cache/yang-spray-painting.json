@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 48,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 10:00 PM",
+  "Tuesday: 9:00 AM – 10:00 PM",
+  "Wednesday: 9:00 AM – 10:00 PM",
+  "Thursday: 9:00 AM – 10:00 PM",
+  "Friday: 9:00 AM – 10:00 PM",
+  "Saturday: 9:30 AM – 10:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention scratch touch-ups done the same day, motorcycle spray painting, help choosing colours, clear pricing explained upfront, and the car being washed after the work.",
+ "fetched_at": "2026-11-24",
+ "place_id": "ChIJZfI1J3IX2jERid30-8nkWyI",
+ "source": "google_places"
+}

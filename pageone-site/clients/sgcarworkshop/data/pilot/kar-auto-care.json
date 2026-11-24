@@ -1,0 +1,35 @@
+{
+ "lede": "Kar Auto Care at 3012 Bedok North Avenue 4 is a car and commercial vehicle repair workshop.",
+ "chips": [
+  "Car repair",
+  "Commercial vehicles"
+ ],
+ "services": [
+  "Car repair",
+  "Commercial vehicle repair"
+ ],
+ "themes": "Customers on Google Maps mention a friendly owner, reasonable pricing, and a mechanic who answers questions on cars and commercial vehicles.",
+ "faqs": [
+  [
+   "What does Kar Auto Care do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "General car repair",
+  "Commercial vehicle repair"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Ask the workshop about your car.",
+ "good_to_know": [],
+ "good_to_know_note": ""
+}

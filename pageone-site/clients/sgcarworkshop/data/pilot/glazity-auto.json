@@ -1,0 +1,47 @@
+{
+ "lede": "Glazity Auto at 32 Old Toh Tuck Rd is an automotive glass workshop.",
+ "chips": [
+  "Windscreen replacement",
+  "Windscreen repair",
+  "ADAS calibration"
+ ],
+ "services": [
+  "Windscreen repair",
+  "Windscreen replacement",
+  "Windscreen coating",
+  "ADAS calibration",
+  "Solar film",
+  "Insurance claim handling"
+ ],
+ "themes": "Customers on Google Maps mention windscreen replacement under insurance claims, quick follow-up and updates, solar film fitted before the windscreen went in, and a doorstep replacement option for a small fee.",
+ "faqs": [
+  [
+   "What does Glazity Auto do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "Windscreen replacement",
+  "Insurance claim windscreen",
+  "Solar film"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "Services listed on its website. Ask the workshop for its full list.",
+ "specialties": [
+  "Windscreen repair and replacement",
+  "ADAS calibration"
+ ],
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Ask the workshop about your car.",
+ "good_to_know": [
+  "Its website says its technicians trained with Glasweld University / NWRD",
+  "Says repairs take about 30 to 45 minutes, depending on the crack"
+ ],
+ "good_to_know_note": "From its website."
+}

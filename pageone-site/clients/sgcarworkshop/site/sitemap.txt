@@ -125,6 +125,7 @@ https://sgcarworkshop.sg/workshops/accord-autocare/
 https://sgcarworkshop.sg/workshops/ace-chrome-restorations/
 https://sgcarworkshop.sg/workshops/acm-performance/
 https://sgcarworkshop.sg/workshops/acm-service-center/
+https://sgcarworkshop.sg/workshops/advance-tuned-performance/
 https://sgcarworkshop.sg/workshops/af-cars/
 https://sgcarworkshop.sg/workshops/ah-song-motor/
 https://sgcarworkshop.sg/workshops/aha-auto-image/
@@ -156,6 +157,7 @@ https://sgcarworkshop.sg/workshops/axwerkz-garage/
 https://sgcarworkshop.sg/workshops/b-motor-works/
 https://sgcarworkshop.sg/workshops/battery-rescue-sg/
 https://sgcarworkshop.sg/workshops/bavworks/
+https://sgcarworkshop.sg/workshops/beng-hai-motor-service/
 https://sgcarworkshop.sg/workshops/benz-service-autoserv/
 https://sgcarworkshop.sg/workshops/bl-garage/
 https://sgcarworkshop.sg/workshops/blacknano-paint-protection-center/
@@ -257,6 +259,7 @@ https://sgcarworkshop.sg/workshops/gary-s-engineering/
 https://sgcarworkshop.sg/workshops/genus-lee-spraypainting-and-bodyworkz/
 https://sgcarworkshop.sg/workshops/genus-performance/
 https://sgcarworkshop.sg/workshops/gforce-autotechnik/
+https://sgcarworkshop.sg/workshops/glazity-auto/
 https://sgcarworkshop.sg/workshops/global-auto-specialist/
 https://sgcarworkshop.sg/workshops/gma-automotive-services/
 https://sgcarworkshop.sg/workshops/godspeed-autotechnik-godspeed-auto/
@@ -294,6 +297,7 @@ https://sgcarworkshop.sg/workshops/hong-auto-workshop/
 https://sgcarworkshop.sg/workshops/horizon-auto-tuners/
 https://sgcarworkshop.sg/workshops/ht-automation/
 https://sgcarworkshop.sg/workshops/huat-lee-auto-tyre-service-north-hq/
+https://sgcarworkshop.sg/workshops/hup-ley-huat-motor-spray-painting-services/
 https://sgcarworkshop.sg/workshops/hw-auto-service-centre/
 https://sgcarworkshop.sg/workshops/hybrid-automotive/
 https://sgcarworkshop.sg/workshops/hyper-garage/
@@ -326,6 +330,7 @@ https://sgcarworkshop.sg/workshops/jw-motoring/
 https://sgcarworkshop.sg/workshops/jw-workshop/
 https://sgcarworkshop.sg/workshops/kaizen-motors/
 https://sgcarworkshop.sg/workshops/kakis-garage/
+https://sgcarworkshop.sg/workshops/kar-auto-care/
 https://sgcarworkshop.sg/workshops/kc-workshop/
 https://sgcarworkshop.sg/workshops/keeper-labo/
 https://sgcarworkshop.sg/workshops/keongkeong-auto/
@@ -467,12 +472,14 @@ https://sgcarworkshop.sg/workshops/sin-heng-long-motor-work/
 https://sgcarworkshop.sg/workshops/sin-hwee-motor/
 https://sgcarworkshop.sg/workshops/sk-garage-motorsports/
 https://sgcarworkshop.sg/workshops/sk-garage/
+https://sgcarworkshop.sg/workshops/skyrex-exhaust-specialist/
 https://sgcarworkshop.sg/workshops/smart-garage/
 https://sgcarworkshop.sg/workshops/soon-huat-autoserv/
 https://sgcarworkshop.sg/workshops/soon-kim-motor-workshop/
 https://sgcarworkshop.sg/workshops/spectraworks/
 https://sgcarworkshop.sg/workshops/spectrum-tyres-batteries/
 https://sgcarworkshop.sg/workshops/spectrum-werks/
+https://sgcarworkshop.sg/workshops/speedwerkz/
 https://sgcarworkshop.sg/workshops/spray-paint-shop-singapore/
 https://sgcarworkshop.sg/workshops/squad-workshop/
 https://sgcarworkshop.sg/workshops/star-9-workshop/
@@ -523,6 +530,7 @@ https://sgcarworkshop.sg/workshops/v8-motor-werkz/
 https://sgcarworkshop.sg/workshops/vader-garage-vader-group/
 https://sgcarworkshop.sg/workshops/vae-motor-works-electrical-battery/
 https://sgcarworkshop.sg/workshops/velo-spray/
+https://sgcarworkshop.sg/workshops/version-2-engineering/
 https://sgcarworkshop.sg/workshops/vhoh-werkz/
 https://sgcarworkshop.sg/workshops/vim-auto-servicing-aircon/
 https://sgcarworkshop.sg/workshops/vt-power/
@@ -541,6 +549,7 @@ https://sgcarworkshop.sg/workshops/xin-yun-auto/
 https://sgcarworkshop.sg/workshops/xing-wang-auto-services/
 https://sgcarworkshop.sg/workshops/xq-autoworks/
 https://sgcarworkshop.sg/workshops/y-c-auto-service/
+https://sgcarworkshop.sg/workshops/yang-spray-painting/
 https://sgcarworkshop.sg/workshops/yigo-garage/
 https://sgcarworkshop.sg/workshops/yong-heng-motor-work/
 https://sgcarworkshop.sg/workshops/yong-sing-motor-works/

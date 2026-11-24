@@ -1,0 +1,40 @@
+{
+ "lede": "SPEEDWERKZ at 1 Kaki Bukit Ave 6 is a car repair workshop that handles accident repairs and insurance claims.",
+ "chips": [
+  "Accident repair",
+  "Insurance claims",
+  "Servicing"
+ ],
+ "services": [
+  "Accident repair",
+  "Insurance claim handling",
+  "Car servicing"
+ ],
+ "themes": "Customers on Google Maps mention accident repairs with insurance claims handled for them, towing to the workshop, a loan car, clear explanations of the repairs needed, and cars returned in about a week.",
+ "faqs": [
+  [
+   "What does SPEEDWERKZ do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repair",
+  "Insurance claim handling",
+  "General servicing"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [
+  "Accident repair"
+ ],
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Ask the workshop about your car.",
+ "good_to_know": [],
+ "good_to_know_note": ""
+}

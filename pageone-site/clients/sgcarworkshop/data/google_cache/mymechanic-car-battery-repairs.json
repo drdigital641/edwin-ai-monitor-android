@@ -1,0 +1,32 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "auto_parts_store",
+  "point_of_interest",
+  "service",
+  "store",
+  "establishment"
+ ],
+ "rating": 1,
+ "userRatingCount": 2,
+ "websiteUri": "https://wa.me/60102277549",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: Open 24 hours",
+  "Tuesday: Open 24 hours",
+  "Wednesday: Open 24 hours",
+  "Thursday: Open 24 hours",
+  "Friday: Open 24 hours",
+  "Saturday: Open 24 hours",
+  "Sunday: Open 24 hours"
+ ],
+ "review_count_seen": 2,
+ "review_themes": null,
+ "fetched_at": "2026-11-24",
+ "place_id": "ChIJM7Cb1U4R2jER5biT6GujXUY",
+ "source": "google_places"
+}

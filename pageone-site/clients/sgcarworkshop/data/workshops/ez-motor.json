@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "slug": "ez-motor",
+ "place_id": "ChIJFdDki-cT2jERo0p97Db3eqA",
+ "place_id_checked_at": "2026-11-24",
+ "name": "EZ Motor",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-24",
+ "address": {
+  "block": "",
+  "street": "10 Kaki Bukit Rd 2, #01-13 First East Centre",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "417868",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-24",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6589019292",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-24"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-24"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-24",
+ "last_verified_at": "2026-11-24",
+ "collector_version": "agent-v5",
+ "hold": "hold: motorcycle workshop per its website",
+ "hold_code": "not_car_workshop",
+ "held_on": "2026-11-25",
+ "estate": "kaki-bukit-industrial-estate",
+ "region": "east",
+ "planning_area": "Bedok"
+}

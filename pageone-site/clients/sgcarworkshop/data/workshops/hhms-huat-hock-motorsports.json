@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "slug": "hhms-huat-hock-motorsports",
+ "place_id": "ChIJq59dGvQ92jERXst0bJbT_nQ",
+ "place_id_checked_at": "2026-11-24",
+ "name": "HHMS (Huat Hock Motorsports)",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-24",
+ "address": {
+  "block": "",
+  "street": "3012 Bedok Industrial Park E, #01-2056",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "489978",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-24",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6582236988",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-24"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-24"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-24",
+ "last_verified_at": "2026-11-24",
+ "collector_version": "agent-v5",
+ "hold": "hold: complaint text in Google sample (conduct)",
+ "hold_code": "complaints",
+ "held_on": "2026-11-25",
+ "estate": "bedok-industrial-park-e",
+ "region": "east",
+ "planning_area": "Bedok"
+}

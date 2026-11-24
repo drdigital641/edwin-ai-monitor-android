@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 24,
+ "websiteUri": "http://facebook.com/advancetunedperformance/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 9:00 PM",
+  "Tuesday: 9:00 AM – 9:00 PM",
+  "Wednesday: 9:00 AM – 9:00 PM",
+  "Thursday: 9:00 AM – 9:00 PM",
+  "Friday: 9:00 AM – 9:00 PM",
+  "Saturday: 9:00 AM – 2:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention Stage 1 tuning, a Camry tuned for better throttle response and acceleration while keeping fuel economy, tuning done on continental and JDM cars, and the tuning process being explained.",
+ "fetched_at": "2026-11-24",
+ "place_id": "ChIJZwBFwGoX2jER8VW5kxLFmuI",
+ "source": "google_places"
+}

@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 16,
+ "websiteUri": "https://sitelift.site/version2engineering/",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 3:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention general servicing, engine oil change on a Honda Jazz, turbo diagnosis on a BMW F30, photo updates during repairs, and a clean, air-conditioned waiting room.",
+ "fetched_at": "2026-11-24",
+ "place_id": "ChIJHWAOJjwX2jER54mtI-z6rKw",
+ "source": "google_places"
+}

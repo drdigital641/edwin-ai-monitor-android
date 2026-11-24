@@ -1,0 +1,45 @@
+{
+ "lede": "Version 2 Engineering at 10 Kaki Bukit Rd 2 is a car servicing and repair workshop.",
+ "chips": [
+  "General servicing",
+  "Engine oil",
+  "Diagnosis"
+ ],
+ "services": [
+  "General servicing",
+  "Engine oil change",
+  "Drivetrain and turbo diagnosis",
+  "Car repair"
+ ],
+ "themes": "Customers on Google Maps mention general servicing, engine oil change on a Honda Jazz, turbo diagnosis on a BMW F30, photo updates during repairs, and a clean, air-conditioned waiting room.",
+ "faqs": [
+  [
+   "What does Version 2 Engineering do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "General servicing",
+  "Engine oil change",
+  "Turbo diagnosis"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [
+  "Subaru servicing"
+ ],
+ "makes": [
+  "Subaru",
+  "Honda",
+  "BMW"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "good_to_know": [],
+ "good_to_know_note": ""
+}
