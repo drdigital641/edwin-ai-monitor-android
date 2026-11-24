@@ -1,0 +1,138 @@
+"""Google Review Helper (Edwin's universal spec) for Sheng Heng Auto Service Centre: one self-contained review.html.
+No libraries, no backend, no cookies, no tracker (p1-cta.js is NOT loaded here), nothing sent anywhere."""
+import json
+from partials import u, F
+
+CONFIG = {
+    "sheng-heng-auto": {
+        "name": "Sheng Heng Auto Service Centre",
+        "googleReviewUrl": "https://search.google.com/local/writereview?placeid=ChIJz1pUX3xz2jERWYKAaq-svIc",
+        "attributes": {
+            "en": ["Good service", "Fair pricing", "Convenient location", "Fast service", "Friendly staff", "Good workmanship", "Explained clearly", "ADAS calibration", "ECU & coding", "Gearbox repair", "Continental car know-how"],
+            "ms": ["Servis yang baik", "Harga berpatutan", "Lokasi mudah", "Servis cepat", "Pekerja mesra", "Kerja yang kemas", "Penerangan jelas", "Kalibrasi ADAS", "ECU & coding", "Baiki gearbox", "Pakar kereta continental"],
+            "zh": ["服务好", "价格合理", "地点方便", "服务快", "员工友善", "手工好", "解释清楚", "ADAS 校准", "ECU 与编码", "变速箱维修", "熟悉欧洲车"],
+        },
+    }
+}
+
+STR = {
+    "en": {"lang": "en", "title": "Leave a Google Review", "back": "Back to site", "rate": "Your rating", "chips": "What did you like? Pick up to 3",
+           "max": "You can pick up to 3.", "opt": "Add one sentence (optional)", "ph": "e.g. They fixed my warning light quickly.",
+           "gen": "Generate my review", "liked": "What I liked: ", "empty": "Great service, highly recommended!", "five": "Highly recommended!",
+           "copied": "✓ Copied! Just paste it on Google.", "copy": "Copy again", "open": "Open Google Review →",
+           "note": "Nothing is posted for you. You paste the text on Google yourself.", "stars": "stars", "home": "index.html"},
+    "ms": {"lang": "ms", "title": "Tinggalkan Ulasan Google", "back": "Kembali ke laman", "rate": "Penilaian anda", "chips": "Apa yang anda suka? Pilih sehingga 3",
+           "max": "Anda boleh pilih sehingga 3.", "opt": "Tambah satu ayat (pilihan)", "ph": "cth. Mereka baiki lampu amaran kereta saya dengan cepat.",
+           "gen": "Jana ulasan saya", "liked": "Apa yang saya suka: ", "empty": "Servis yang hebat, sangat disyorkan!", "five": "Sangat disyorkan!",
+           "copied": "✓ Disalin! Tampal sahaja di Google.", "copy": "Salin semula", "open": "Buka Ulasan Google →",
+           "note": "Tiada apa yang dihantar untuk anda. Anda tampal teks itu sendiri di Google.", "stars": "bintang", "home": "ms/index.html"},
+    "zh": {"lang": "zh-Hans", "title": "留下 Google 评价", "back": "返回网站", "rate": "您的评分", "chips": "您喜欢什么？最多选 3 项",
+           "max": "最多只能选 3 项。", "opt": "加一句话（可选）", "ph": "例如：很快就帮我解决了故障灯。",
+           "gen": "生成我的评价", "liked": "我喜欢的：", "empty": "服务很好，强烈推荐！", "five": "强烈推荐！",
+           "copied": "✓ 已复制！到 Google 粘贴即可。", "copy": "再复制一次", "open": "打开 Google 评价 →",
+           "note": "我们不会替您发布任何内容，评价由您自己在 Google 粘贴。", "stars": "星", "home": "zh/index.html"},
+}
+
+
+def render(noindex=True):
+    robots = '<meta name="robots" content="noindex, nofollow">\n' if noindex else ''
+    logo = u('images/brand/logo-sheng-heng-auto-480.webp')
+    base = u('')
+    cfg = json.dumps(CONFIG, ensure_ascii=False)
+    st = json.dumps(STR, ensure_ascii=False)
+    return f'''<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leave a Google Review | Sheng Heng Auto Service Centre</title>
+<meta name="description" content="Write a short Google review for Sheng Heng Auto Service Centre in Skudai in a few taps.">
+{robots}<link rel="icon" type="image/png" sizes="32x32" href="{u('images/brand/icon-sh-32.png')}">
+<style>
+:root{{--royal:#1F4FA8;--deep:#14306B;--red:#E0262B;--ink:#0E1B38;--slate:#4E5C78;--ice:#F3F6FB;--line:#D6DEEA;--go:#1A8D46}}
+*{{box-sizing:border-box}}html{{overflow-x:clip}}
+body{{margin:0;background:var(--ice);color:var(--ink);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;overflow-x:clip}}
+.top{{background:#fff;border-bottom:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}}
+.top img{{height:44px;width:auto;display:block}}
+.top a.back{{color:var(--royal);font-weight:600;text-decoration:none;padding:10px 4px}}
+main{{max-width:560px;margin:0 auto;padding:18px 16px 40px}}
+.card{{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 18px;box-shadow:0 10px 30px -18px rgba(20,48,107,.35)}}
+h1{{font-size:1.4rem;line-height:1.25;margin:0 0 16px}}
+h2{{font-size:1rem;margin:20px 0 10px}}
+.stars{{display:flex;gap:6px}}
+.stars button{{width:52px;height:52px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;display:grid;place-items:center;padding:0}}
+.stars svg{{width:30px;height:30px;fill:#fff;stroke:var(--line);stroke-width:1.5}}
+.stars button.on svg{{fill:var(--royal);stroke:var(--royal)}}
+.chips{{display:flex;flex-wrap:wrap;gap:8px}}
+.chips button{{min-height:44px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font:inherit;font-size:.95rem;color:var(--ink);cursor:pointer}}
+.chips button[aria-pressed="true"]{{background:var(--royal);border-color:var(--royal);color:#fff}}
+.max{{color:var(--red);font-size:.9rem;min-height:1.3em;margin:6px 0 0}}
+label{{display:block;font-weight:700;margin:20px 0 8px}}
+input[type=text]{{width:100%;min-height:48px;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit}}
+.count{{font-size:.85rem;color:var(--slate);text-align:right;margin-top:4px}}
+.gen{{width:100%;min-height:54px;margin-top:18px;border:0;border-radius:999px;background:var(--royal);color:#fff;font-family:inherit;font-weight:700;font-size:1.05rem;cursor:pointer}}
+.out{{display:none;margin-top:18px}}
+.out.show{{display:block}}
+.ok{{color:var(--go);font-weight:700;margin:0 0 8px}}
+.txt{{background:var(--ice);border:1px solid var(--line);border-radius:12px;padding:12px;white-space:pre-wrap;overflow-wrap:anywhere}}
+.row{{display:grid;gap:10px;margin-top:12px}}
+.again{{min-height:48px;border:2px solid var(--royal);background:#fff;color:var(--royal);border-radius:999px;font-family:inherit;font-weight:700;font-size:1rem;cursor:pointer}}
+.open{{display:flex;align-items:center;justify-content:center;min-height:58px;border-radius:999px;background:var(--go);color:#fff;font-weight:800;font-size:1.1rem;text-decoration:none}}
+.note{{font-size:.86rem;color:var(--slate);margin-top:14px}}
+button:focus-visible,a:focus-visible,input:focus-visible{{outline:3px solid var(--red);outline-offset:2px}}
+</style>
+</head>
+<body>
+<header class="top"><a href="{base}" id="home"><img src="{logo}" width="480" height="372" alt="Sheng Heng Auto Service logo"></a><a class="back" id="back" href="{base}">Back to site</a></header>
+<main><div class="card">
+<h1 id="h1">Leave a Google Review</h1>
+<h2 id="rate">Your rating</h2>
+<div class="stars" id="stars" role="radiogroup"></div>
+<h2 id="chipsH">What did you like? Pick up to 3</h2>
+<div class="chips" id="chips"></div>
+<p class="max" id="max" aria-live="polite"></p>
+<label for="one" id="optL">Add one sentence (optional)</label>
+<input type="text" id="one" maxlength="120" autocomplete="off">
+<div class="count"><span id="cnt">0</span>/120</div>
+<button class="gen" id="gen" type="button">Generate my review</button>
+<div class="out" id="out" aria-live="polite">
+<p class="ok" id="ok"></p>
+<div class="txt" id="txt"></div>
+<div class="row"><button class="again" id="again" type="button">Copy again</button>
+<a class="open" id="open" href="#" target="_blank" rel="noopener">Open Google Review →</a></div>
+<p class="note" id="note"></p>
+</div>
+</div></main>
+<script>
+var BUSINESSES={cfg};
+var STR={st};
+(function(){{
+var q=new URLSearchParams(location.search),key=q.get('business');if(!BUSINESSES[key])key='sheng-heng-auto';
+var B=BUSINESSES[key],lc=q.get('lang');if(!STR[lc])lc='en';var S=STR[lc];
+document.documentElement.lang=S.lang;
+var $=function(i){{return document.getElementById(i)}};
+document.title=S.title+' | '+B.name;
+$('h1').textContent=S.title+' — '+B.name;$('rate').textContent=S.rate;$('chipsH').textContent=S.chips;$('optL').textContent=S.opt;
+$('one').placeholder=S.ph;$('gen').textContent=S.gen;$('again').textContent=S.copy;$('open').textContent=S.open;$('note').textContent=S.note;
+$('back').textContent=S.back;var home='{base}'+S.home.replace('index.html','');$('back').href=home;$('home').href=home;
+$('open').href=B.googleReviewUrl;
+var star='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg>',rating=5;
+for(var i=1;i<=5;i++){{(function(n){{var b=document.createElement('button');b.type='button';b.setAttribute('role','radio');b.setAttribute('aria-label',n+' '+S.stars);b.innerHTML=star;b.onclick=function(){{rating=n;paint()}};$('stars').appendChild(b)}})(i)}}
+function paint(){{[].forEach.call($('stars').children,function(b,i){{b.classList.toggle('on',i<rating);b.setAttribute('aria-checked',i+1===rating?'true':'false')}})}}paint();
+var picked=[];(B.attributes[lc]||B.attributes.en).forEach(function(a){{var b=document.createElement('button');b.type='button';b.textContent=a;b.setAttribute('aria-pressed','false');
+b.onclick=function(){{var k=picked.indexOf(a);if(k>-1){{picked.splice(k,1);b.setAttribute('aria-pressed','false');$('max').textContent=''}}
+else if(picked.length<3){{picked.push(a);b.setAttribute('aria-pressed','true');$('max').textContent=''}}else{{$('max').textContent=S.max}}}};$('chips').appendChild(b)}});
+$('one').addEventListener('input',function(){{$('cnt').textContent=this.value.length}});
+function build(){{var one=$('one').value.trim(),t='';
+if(!picked.length&&!one){{t=S.empty}}else{{if(picked.length)t=S.liked+picked.join(lc==='zh'?'、':', ')+(lc==='zh'?'。':'.');if(one)t+=(t?' ':'')+one}}
+if(rating===5&&t!==S.empty)t+=' '+S.five;return t}}
+function copy(t){{var done=function(){{$('ok').textContent=S.copied}};
+if(navigator.clipboard&&window.isSecureContext){{navigator.clipboard.writeText(t).then(done,function(){{fb(t);done()}})}}else{{fb(t);done()}}}}
+function fb(t){{var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{{document.execCommand('copy')}}catch(e){{}}document.body.removeChild(a)}}
+$('gen').onclick=function(){{var t=build();$('txt').textContent=t;$('out').classList.add('show');copy(t);$('out').scrollIntoView({{block:'nearest'}})}};
+$('again').onclick=function(){{copy($('txt').textContent)}};
+}})();
+</script>
+</body>
+</html>
+'''

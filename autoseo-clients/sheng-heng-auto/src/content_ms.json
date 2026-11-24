@@ -1,0 +1,1099 @@
+{
+ "ui": {
+  "skip": "Langkau ke kandungan",
+  "menu": "Menu",
+  "close": "Tutup menu",
+  "lang_label": "Bahasa",
+  "nav_home": "Utama",
+  "nav_services": "Perkhidmatan",
+  "nav_areas": "Kawasan yang kami layani",
+  "nav_about": "Tentang kami",
+  "nav_contact": "Hubungi",
+  "nav_articles": "Artikel",
+  "wa": "WhatsApp",
+  "wa_long": "WhatsApp Mr. Yaw",
+  "call": "Telefon",
+  "call_long": "Telefon 016-335 2124",
+  "second_line": "Talian kedua",
+  "email": "E-mel",
+  "facebook": "Halaman Facebook",
+  "open_maps": "Buka di Google Maps",
+  "directions": "Dapatkan arah",
+  "map_title": "Peta Sheng Heng Auto Service Centre, Jalan Hang Lekir 12, Taman Industri Jaya, Skudai",
+  "map_fallback": "Peta tidak dimuatkan? Buka di Google Maps",
+  "hours_h": "Waktu operasi",
+  "hours_week": "Isnin hingga Sabtu",
+  "hours_time": "9:00 pagi hingga 6:00 petang",
+  "hours_sun": "Ahad",
+  "hours_closed": "Tutup",
+  "hours_tz": "Waktu Malaysia",
+  "address_h": "Alamat",
+  "visit_h": "Lawati",
+  "talk_h": "Hubungi kami",
+  "services_h": "Perkhidmatan",
+  "areas_h": "Kawasan",
+  "privacy": "Privasi",
+  "credit": "Website by AutoSEO.my",
+  "legal": "Sheng Heng Auto Service (M) Sdn Bhd · 202401053168 (1599010-M)",
+  "est": "Bengkel kami sejak 2010",
+  "tagline": "Make The Quality",
+  "review_footer": "Beri Ulasan Google",
+  "review_btn": "Beri ulasan Google",
+  "see_reviews": "Lihat ulasan Google 5 bintang kami",
+  "reviews_h": "Tiket kerja daripada ulasan Google",
+  "reviews_sub": "Lima ulasan Google 5 bintang yang sebenar, perkataan demi perkataan.",
+  "read_more": "Baca ulasan penuh",
+  "ahapay": "Bayar secara ansuran dengan AhaPay",
+  "updated": "Dikemas kini: 24 Nov 2026",
+  "faq_h": "Soalan yang pemandu tanya",
+  "breadcrumb_home": "Utama",
+  "breadcrumb_areas": "Kawasan",
+  "next_service": "Perkhidmatan seterusnya",
+  "all_services": "Kesemua lapan perkhidmatan",
+  "areas_nearby": "Kawasan berdekatan",
+  "km_from": "dari bengkel",
+  "about_km": "kira-kira {km} km",
+  "services_here": "Apa yang kami baiki untuk pemandu di sini",
+  "cta_mid_h": "Hantar gambar dahulu",
+  "cta_mid_p": "WhatsApp gambar lampu amaran atau bahagian kereta, serta model kereta anda. Kami akan balas dengan langkah seterusnya.",
+  "cta_end_h": "Bersedia apabila kereta anda siap",
+  "cta_end_p": "17, Jalan Hang Lekir 12, Taman Industri Jaya, Skudai. Buka Isnin hingga Sabtu, 9:00 pagi hingga 6:00 petang.",
+  "before": "Sebelum",
+  "after": "Selepas",
+  "slider_label": "Seret untuk bandingkan sebelum dan selepas",
+  "play": "Main video kalibrasi ADAS BMW",
+  "video_caption": "Kalibrasi ADAS BMW sedang dijalankan di Sheng Heng (daripada reel Facebook kami)",
+  "video_open_fb": "Tonton di Facebook",
+  "carousel_label": "Gambar dari bengkel",
+  "photo_note": "Gambar sebenar dari bengkel dan kerja kami.",
+  "local_h": "Kawasan sekitar",
+  "why_h": "Sebab pemandu di sini hubungi kami",
+  "places_h": "Tempat di kawasan ini",
+  "straight_line": "Jarak adalah garis lurus dari 17, Jalan Hang Lekir 12, Taman Industri Jaya.",
+  "articles_empty": "Artikel pertama akan tiba tidak lama lagi.",
+  "articles_back": "Lihat perkhidmatan kami",
+  "privacy_title": "Dasar privasi | Sheng Heng Auto Service Centre",
+  "privacy_meta": "Cara Sheng Heng Auto Service Centre di Skudai mengendalikan maklumat yang anda kongsi apabila anda WhatsApp, telefon atau e-mel kami, di bawah PDPA 2010 Malaysia.",
+  "notfound_h": "Halaman tidak ditemui",
+  "contact_second_note": "Talian kedua untuk panggilan sahaja",
+  "email_note": "Untuk sebut harga dan dokumen",
+  "contact_person": "Tanya Mr. Yaw",
+  "share_alt": "Sheng Heng Auto Service Centre, Taman Industri Jaya, Skudai, Johor"
+ },
+ "home": {
+  "chips": [
+   "Kalibrasi ADAS",
+   "ECU & coding",
+   "Overhaul gearbox",
+   "Diagnostik"
+  ],
+  "proof_h": "Dibaiki di sini, sebelum dan selepas",
+  "proof_sub": "Kerja meter dan retrofit sebenar dari bay kami. Seret pemegang.",
+  "p01_cap": "Skrin tengah meter Mercedes, rosak dan sudah dibaiki",
+  "p02_cap": "BMW 3 Series: meter biasa kepada meter LCD penuh",
+  "w03_cap": "Stereng BMW: asal dan retrofit stereng M",
+  "board_h": "Papan sistem",
+  "board_sub": "Lapan perkhidmatan di bawah satu bumbung, daripada tukar minyak hingga ADAS.",
+  "adas_h": "Kalibrasi ADAS, dibuat di bay kami sendiri",
+  "adas_lines": [
+   "Amaran pre-collision atau kamera selepas kerja cermin depan?",
+   "Kami kalibrasi kamera dan radar di bay bengkel.",
+   "Kerja BMW, Toyota, Honda, Nissan dan Porsche sudah dibuat."
+  ],
+  "adas_btn": "Tanya tentang kalibrasi ADAS",
+  "adas_link": "Lihat halaman ADAS",
+  "process_h": "Lampu amaran padam, dalam empat langkah",
+  "process": [
+   [
+    "WhatsApp gambar kepada kami",
+    "Hantar gambar lampu amaran dan model kereta anda."
+   ],
+   [
+    "Imbasan komputer dan pemeriksaan",
+    "Kami imbas kereta dan jejak punca kerosakan di bengkel."
+   ],
+   [
+    "Sebut harga yang jelas sebelum kerja",
+    "Anda tahu apa yang akan kami buat sebelum kami mula."
+   ],
+   [
+    "Baiki dan uji jalan",
+    "Kami baiki, kemudian uji jalan supaya lampu kekal padam."
+   ]
+  ],
+  "rail_h": "Di dalam bengkel",
+  "makes_h": "Jenama yang kami kendalikan",
+  "makes_note": "Nama sahaja. Kami bengkel bebas.",
+  "areas_h": "Tujuh kawasan dalam lingkungan 20 km",
+  "areas_sub": "Jarak garis lurus dari Jalan Hang Lekir 12.",
+  "visit_h": "Lawati bengkel",
+  "visit_sub": "Satu bengkel, di 17, Jalan Hang Lekir 12, Taman Industri Jaya, Skudai."
+ },
+ "img": {
+  "h01": {
+   "caption": "Sheng Heng Auto Service Centre, 17 Jalan Hang Lekir 12, Taman Industri Jaya, Skudai",
+   "alt": "Bangunan bengkel Sheng Heng Auto Service Centre dengan papan tanda SH biru dan merah di Jalan Hang Lekir 12, Taman Industri Jaya, Skudai, Johor"
+  },
+  "g01": {
+   "caption": "Kalibrasi ADAS di bay bengkel",
+   "alt": "Toyota Alphard diletakkan untuk kalibrasi kamera ADAS dengan pelantar kalibrasi di bay bengkel Sheng Heng, Skudai"
+  },
+  "g02": {
+   "caption": "BMW di atas lif dua tiang untuk kerja enjin",
+   "alt": "BMW 5 Series diangkat di atas lif dua tiang merah dengan bonet terbuka untuk kerja enjin di Sheng Heng Auto Service, Skudai"
+  },
+  "g03": {
+   "caption": "Kerja seal injap enjin BMW B48",
+   "alt": "Mekanik menggunakan alat spring injap pada kepala silinder enjin BMW B48 semasa menukar seal batang injap di Sheng Heng, Skudai"
+  },
+  "g04": {
+   "caption": "Retrofit stereng BMW M",
+   "alt": "BMW dipasang retrofit stereng sukan M, dengan meter di belakang, di Sheng Heng Auto Service"
+  },
+  "g05": {
+   "caption": "Stereng BMW asal sebelum naik taraf",
+   "alt": "Stereng BMW asal sebelum retrofit stereng M di Sheng Heng Auto Service"
+  },
+  "g06": {
+   "caption": "Plat geseran gearbox: OEM berbanding asal",
+   "alt": "Dua timbunan plat geseran gearbox automatik berlabel OEM dan Ori dibandingkan semasa overhaul gearbox di Sheng Heng"
+  },
+  "g07": {
+   "caption": "Bearing Koyo untuk gear akhir K114",
+   "alt": "Bearing tirus Koyo baharu disusun untuk membina semula gear akhir CVT K114 di Sheng Heng Auto Service"
+  },
+  "w01": {
+   "caption": "Amaran Pre-Collision System Malfunction sebelum kalibrasi ADAS",
+   "alt": "Meter Toyota menunjukkan amaran Pre-Collision System Malfunction sebelum kalibrasi ADAS di Sheng Heng, Skudai"
+  },
+  "w02": {
+   "caption": "Servis penuh Toyota Alphard dengan cecair tulen",
+   "alt": "Toyota Alphard di atas lif dengan minyak enjin Toyota tulen, cecair CVT dan penapis sedia untuk servis penuh di Sheng Heng Auto Service"
+  },
+  "w03": {
+   "caption": "Stereng BMW: asal (kiri) dan retrofit stereng M (kanan)",
+   "alt": "Perbandingan sebelah-menyebelah stereng BMW asal dan retrofit stereng sukan M yang dibuat di Sheng Heng"
+  },
+  "w04": {
+   "caption": "Dua turbocharger BMW dikeluarkan untuk dibaiki",
+   "alt": "Sepasang turbocharger BMW dengan manifold ekzos yang dikeluarkan di lantai bengkel Sheng Heng Auto Service"
+  },
+  "w05": {
+   "caption": "Plat klac gearbox diperiksa untuk kehausan",
+   "alt": "Plat geseran klac gearbox automatik diperiksa dengan kehausan ditanda merah di Sheng Heng Auto Service"
+  },
+  "p01b": {
+   "caption": "Meter Mercedes sebelum: skrin tengah rosak",
+   "alt": "Meter Mercedes-Benz dengan paparan tengah yang rosak dan mengelupas sebelum dibaiki"
+  },
+  "p01a": {
+   "caption": "Meter Mercedes selepas: skrin tengah baharu",
+   "alt": "Meter Mercedes-Benz selepas pembaikan skrin tengah di Sheng Heng Auto Service"
+  },
+  "p02b": {
+   "caption": "Meter BMW 3 Series sebelum: meter biasa",
+   "alt": "Meter biasa BMW 3 Series sebelum penukaran meter LCD penuh"
+  },
+  "p02a": {
+   "caption": "Meter BMW 3 Series selepas: skrin LCD penuh",
+   "alt": "BMW 3 Series selepas penukaran meter digital LCD penuh dan coding di Sheng Heng Auto Service"
+  },
+  "v01": {
+   "caption": "Kalibrasi ADAS BMW sedang dijalankan di Sheng Heng (daripada reel Facebook kami)",
+   "alt": "BMW M5 di bengkel Sheng Heng dengan rangka kalibrasi ADAS di hadapannya"
+  },
+  "logo": {
+   "alt": "Logo Sheng Heng Auto Service"
+  }
+ },
+ "wa_generic": "Hai Sheng Heng, saya ingin bertanya tentang kereta saya.",
+ "wa_home": "Hai Sheng Heng, kereta saya ada lampu amaran, boleh imbas?",
+ "wa_adas": "Hai Sheng Heng, saya ingin bertanya tentang kalibrasi ADAS untuk kereta saya.",
+ "wa_contact": "Hai Sheng Heng, saya ingin bawa kereta saya ke bengkel. Model kereta saya:",
+ "review_tags": {
+  "1": "Honda Shuttle 2015 · ABS pump"
+ },
+ "services": {
+  "continental-car-specialist-skudai": {
+   "title": "Pakar kereta continental Skudai | Sejak 2010",
+   "meta": "Pakar kereta continental di Skudai untuk servis dan baiki BMW, Mercedes-Benz, Porsche, VW, MINI dan Peugeot. WhatsApp kami untuk tempah kereta anda.",
+   "h1": "Pakar Kereta Continental Skudai",
+   "nav": "Kereta Continental",
+   "tile": "BMW, Mercedes-Benz, Porsche, VW, MINI, Peugeot",
+   "kicker": "Servis dan baiki kereta Eropah, bengkel kami sejak 2010",
+   "intro": [
+    "Kami servis dan baiki kereta continental: BMW, Mercedes-Benz, Porsche, Volkswagen, MINI dan Peugeot. Bengkel kami di 17, Jalan Hang Lekir 12, Taman Industri Jaya, Skudai.",
+    "Daripada servis penuh hingga kerja enjin dan pengaturcaraan elektronik, semuanya kami kendalikan dalam satu bengkel."
+   ],
+   "sections": [
+    {
+     "h2": "Jenama yang kami kendalikan",
+     "paras": [
+      "Kami mengendalikan kereta Eropah setiap minggu. Jenama Asia pun dialu-alukan."
+     ],
+     "bullets": [
+      "BMW",
+      "Mercedes-Benz",
+      "Porsche",
+      "Volkswagen",
+      "MINI",
+      "Peugeot"
+     ],
+     "media": "g02"
+    },
+    {
+     "h2": "Servis",
+     "paras": [
+      "Kerja servis penuh yang pernah kami buat termasuk Porsche Macan S dan Mercedes C250. Kami periksa kereta di atas lif dan terangkan apa yang kami temui."
+     ],
+     "bullets": [
+      "Minyak enjin dan minyak gear",
+      "Servis penuh",
+      "Brek dan bateri",
+      "Semakan tayar"
+     ],
+     "media": null
+    },
+    {
+     "h2": "Baiki enjin",
+     "paras": [
+      "Penukaran seal batang injap BMW B48 ialah salah satu kerja yang pernah kami buat. Kami juga pernah mengeluarkan turbocharger BMW untuk dibaiki."
+     ],
+     "bullets": [
+      "Seal batang injap BMW B48",
+      "Pengeluaran turbocharger BMW untuk dibaiki"
+     ],
+     "media": "g03"
+    },
+    {
+     "h2": "Pengaturcaraan dan coding",
+     "paras": [
+      "Banyak kereta continental memerlukan kerja perisian selepas pembaikan. Kami pernah membuat pengaturcaraan suhu kipas radiator pada Mini Cooper S dan pengaturcaraan DCC pada VW Passat."
+     ],
+     "bullets": [
+      "Pengaturcaraan suhu kipas radiator Mini Cooper S",
+      "Pengaturcaraan DCC VW Passat"
+     ],
+     "media": "w04"
+    }
+   ],
+   "faqs": [
+    {
+     "q": "Kereta continental apa yang anda kendalikan?",
+     "a": "Kami mengendalikan BMW, Mercedes-Benz, Porsche, Volkswagen, MINI dan Peugeot."
+    },
+    {
+     "q": "Adakah anda buat servis penuh untuk Porsche atau Mercedes?",
+     "a": "Ya. Kami pernah buat servis penuh pada Porsche Macan S dan Mercedes C250."
+    },
+    {
+     "q": "Boleh baiki enjin BMW?",
+     "a": "Ya. Kami pernah menukar seal batang injap BMW B48 dan mengeluarkan turbocharger BMW untuk dibaiki."
+    },
+    {
+     "q": "Di mana bengkel anda?",
+     "a": "17, Jalan Hang Lekir 12, Taman Industri Jaya, 81300 Skudai, Johor. Kami buka Isnin hingga Sabtu, 9:00 pagi hingga 6:00 petang."
+    }
+   ],
+   "wa": "Hai Sheng Heng, saya ingin bertanya tentang servis untuk kereta continental saya.",
+   "schema_name": "Servis dan baiki kereta continental",
+   "schema_desc": "Servis dan baiki untuk BMW, Mercedes-Benz, Porsche, Volkswagen, MINI dan Peugeot di bengkel Skudai."
+  },
+  "adas-calibration-skudai": {
+   "title": "Kalibrasi ADAS Johor (Skudai) | Sejak 2010",
+   "meta": "Kalibrasi ADAS Johor (Skudai) untuk amaran kamera dan radar serta selepas kerja cermin depan. WhatsApp kami gambar amaran untuk bermula.",
+   "h1": "Kalibrasi ADAS Johor (Skudai)",
+   "nav": "Kalibrasi ADAS",
+   "tile": "Kalibrasi kamera dan radar selepas amaran",
+   "kicker": "Kalibrasi kamera dan radar, dibuat di Skudai",
+   "intro": [
+    "Kami kalibrasi kamera dan radar ADAS apabila amaran menyala atau selepas kerja cermin depan. Bengkel kami di 17, Jalan Hang Lekir 12, Taman Industri Jaya, Skudai.",
+    "Kami mengendalikan BMW, Toyota, Honda, Nissan dan Porsche."
+   ],
+   "sections": [
+    {
+     "h2": "Bila anda memerlukannya",
+     "paras": [
+      "Kalibrasi mungkin diperlukan apabila amaran keselamatan menyala. Ia mungkin juga diperlukan selepas cermin depan ditukar."
+     ],
+     "bullets": [
+      "Amaran sistem pre-collision",
+      "Amaran kamera selepas kerja cermin depan",
+      "Amaran radar atau sensor"
+     ],
+     "media": "w01"
+    },
+    {
+     "h2": "Kes yang pernah kami buat",
+     "paras": [
+      "Kerja terkini kami meliputi banyak jenama."
+     ],
+     "bullets": [
+      "Amaran pre-collision system malfunction Toyota",
+      "Toyota Alphard",
+      "Honda CR-V, kod P2583",
+      "Kamera cermin depan Nissan Navara",
+      "Porsche Cayenne dan Panamera",
+      "BMW"
+     ],
+     "media": "g01"
+    },
+    {
+     "h2": "Lihat kerja BMW",
+     "paras": [
+      "Kami memuat naik video pendek kalibrasi ADAS pada BMW. Ia menunjukkan kerja di bay kami."
+     ],
+     "bullets": [],
+     "media": "video"
+    },
+    {
+     "h2": "Sebelum anda datang",
+     "paras": [
+      "WhatsApp gambar amaran pada papan pemuka anda. Beritahu kami jenama dan model, dan kami akan beritahu langkah seterusnya."
+     ],
+     "bullets": [],
+     "media": null
+    }
+   ],
+   "faqs": [
+    {
+     "q": "Apakah kalibrasi ADAS?",
+     "a": "Ia menetapkan kamera atau radar kereta supaya sistem bantuan pemandu membaca jalan dengan betul."
+    },
+    {
+     "q": "Perlukah selepas tukar cermin depan?",
+     "a": "Selalunya ya, jika kereta ada kamera cermin depan. Kami pernah mengendalikan kamera cermin depan Nissan Navara."
+    },
+    {
+     "q": "Kereta apa yang pernah anda kalibrasi?",
+     "a": "BMW, Toyota (termasuk Alphard), Honda CR-V, Nissan Navara, serta Porsche Cayenne dan Panamera."
+    },
+    {
+     "q": "Boleh saya hantar gambar amaran dahulu?",
+     "a": "Boleh. WhatsApp kami gambar amaran pada papan pemuka dan model kereta anda."
+    }
+   ],
+   "wa": "Hai Sheng Heng, saya ingin bertanya tentang kalibrasi ADAS untuk kereta saya.",
+   "schema_name": "Kalibrasi ADAS",
+   "schema_desc": "Kalibrasi ADAS kamera dan radar untuk BMW, Toyota, Honda, Nissan dan Porsche di bengkel Skudai."
+  },
+  "ecu-repair-programming-skudai": {
+   "title": "Baiki ECU Skudai | Taman Industri Jaya",
+   "meta": "Baiki ECU, pengaturcaraan dan coding ECU, coding SCN dalam talian Mercedes dan reset immobilizer di Skudai. WhatsApp kami model kereta dan masalah anda.",
+   "h1": "Baiki ECU Skudai dan Pengaturcaraan",
+   "nav": "Baiki ECU",
+   "tile": "Baiki ECU, pengaturcaraan, coding, reset immobilizer",
+   "kicker": "Baiki ECU dan coding, bengkel kami sejak 2010",
+   "intro": [
+    "Kami baiki dan aturcara ECU kereta, dan kami buat coding serta reset immobilizer. Bengkel kami di 17, Jalan Hang Lekir 12, Taman Industri Jaya, Skudai.",
+    "Hantar model kereta dan kerosakan anda, dan kami akan beritahu apa yang boleh kami buat."
+   ],
+   "sections": [
+    {
+     "h2": "Apa yang kami buat",
+     "paras": [
+      "ECU mengawal banyak fungsi dalam kereta. Apabila ia rosak atau memerlukan perisian baharu, kami boleh membantu."
+     ],
+     "bullets": [
+      "Baiki ECU",
+      "Pengaturcaraan dan coding ECU",
+      "Coding SCN dalam talian (Mercedes)",
+      "Reset immobilizer"
+     ],
+     "media": "w01"
+    },
+    {
+     "h2": "Coding SCN dalam talian Mercedes",
+     "paras": [
+      "Sesetengah bahagian Mercedes-Benz memerlukan coding SCN dalam talian selepas ditukar. Kami buat ini di bengkel."
+     ],
+     "bullets": [],
+     "media": null
+    },
+    {
+     "h2": "Reset immobilizer",
+     "paras": [
+      "Jika immobilizer menghalang kereta daripada dihidupkan, kami boleh reset. Kerja kunci ada di halaman kunci kereta kami."
+     ],
+     "bullets": [],
+     "media": null
+    },
+    {
+     "h2": "Cara untuk bermula",
+     "paras": [
+      "WhatsApp kami jenama, model kereta dan kerosakan atau lampu amaran. Gambar sangat membantu."
+     ],
+     "bullets": [],
+     "media": null
+    }
+   ],
+   "faqs": [
+    {
+     "q": "Adakah anda baiki ECU?",
+     "a": "Ya. Kami buat baiki ECU, pengaturcaraan dan coding ECU."
+    },
+    {
+     "q": "Boleh buat coding SCN dalam talian untuk Mercedes?",
+     "a": "Ya. Coding SCN dalam talian untuk Mercedes ialah salah satu perkhidmatan kami."
+    },
+    {
+     "q": "Boleh reset immobilizer?",
+     "a": "Ya. Kami buat reset immobilizer."
+    }
+   ],
+   "wa": "Hai Sheng Heng, saya ingin bertanya tentang baiki ECU atau pengaturcaraan untuk kereta saya.",
+   "schema_name": "Baiki ECU dan pengaturcaraan",
+   "schema_desc": "Baiki ECU, pengaturcaraan dan coding, coding SCN dalam talian Mercedes dan reset immobilizer di Skudai."
+  },
+  "car-key-immobilizer-skudai": {
+   "title": "Buat kunci kereta Skudai | Sejak 2010",
+   "meta": "Buat kunci kereta di Skudai: salinan dan pengaturcaraan kunci pintar, serta reset immobilizer. WhatsApp kami model kereta anda dan kami akan beri nasihat dahulu.",
+   "h1": "Buat Kunci Kereta Skudai",
+   "nav": "Kunci Kereta",
+   "tile": "Salinan kunci pintar, pengaturcaraan, reset immobilizer",
+   "kicker": "Salinan kunci pintar dan reset immobilizer",
+   "intro": [
+    "Kami salin dan aturcara kunci pintar serta reset immobilizer. Bengkel kami di 17, Jalan Hang Lekir 12, Taman Industri Jaya, Skudai.",
+    "Kerja terkini ialah kunci pintar untuk Toyota Vios NCP150."
+   ],
+   "sections": [
+    {
+     "h2": "Salinan dan pengaturcaraan kunci pintar",
+     "paras": [
+      "Kami salin dan aturcara kunci pintar untuk kereta anda. WhatsApp kami jenama dan model anda dahulu."
+     ],
+     "bullets": [
+      "Salinan kunci pintar",
+      "Pengaturcaraan kunci pintar",
+      "Contoh: Toyota Vios NCP150"
+     ],
+     "media": "g05"
+    },
+    {
+     "h2": "Reset immobilizer",
+     "paras": [
+      "Jika immobilizer menghalang kereta daripada dihidupkan, kami boleh reset."
+     ],
+     "bullets": [],
+     "media": null
+    },
+    {
+     "h2": "Catatan pelanggan",
+     "paras": [
+      "Seorang pengulas Google menulis tentang Honda Shuttle mereka: \"Also fixed for another day for key tumble wear-and-tear.\""
+     ],
+     "bullets": [],
+     "media": null
+    }
+   ],
+   "faqs": [
+    {
+     "q": "Boleh salin kunci pintar?",
+     "a": "Ya. Kami buat salinan dan pengaturcaraan kunci pintar, contohnya pada Toyota Vios NCP150."
+    },
+    {
+     "q": "Boleh reset immobilizer?",
+     "a": "Ya. Reset immobilizer ialah salah satu perkhidmatan kami."
+    },
+    {
+     "q": "Apa yang perlu saya hantar sebelum datang?",
+     "a": "WhatsApp kami jenama, model dan tahun kereta anda, dan beritahu apa masalah kunci tersebut."
+    }
+   ],
+   "wa": "Hai Sheng Heng, saya ingin bertanya tentang buat kunci kereta untuk kereta saya.",
+   "schema_name": "Pengaturcaraan kunci kereta",
+   "schema_desc": "Salinan kunci pintar, pengaturcaraan kunci dan reset immobilizer di bengkel Skudai."
+  },
+  "car-coding-instrument-cluster-skudai": {
+   "title": "Coding kereta Skudai (baiki meter) | Sejak 2010",
+   "meta": "Coding kereta dan baiki meter di Skudai, Johor Bahru: tukar meter, baiki skrin meter, retrofit dan pengaturcaraan. WhatsApp kami model kereta anda.",
+   "h1": "Coding Kereta Skudai (Baiki Meter)",
+   "nav": "Coding & Meter",
+   "tile": "Coding kereta, baiki meter dan retrofit",
+   "kicker": "Coding, meter dan retrofit untuk kereta Eropah",
+   "intro": [
+    "Kami buat coding kereta, kerja meter dan retrofit. Bengkel kami di 17, Jalan Hang Lekir 12, Taman Industri Jaya, Skudai.",
+    "Kebanyakan kerja ini pada BMW, Mercedes-Benz dan Volkswagen."
+   ],
+   "sections": [
+    {
+     "h2": "Meter dan panel instrumen",
+     "paras": [
+      "Kami pernah menukar meter LCD penuh pada BMW 3 Series. Kami juga pernah membaiki skrin meter Mercedes."
+     ],
+     "bullets": [
+      "Tukar meter LCD penuh BMW 3 Series",
+      "Baiki skrin meter Mercedes"
+     ],
+     "media": "pair:p02"
+    },
+    {
+     "h2": "Skrin meter Mercedes",
+     "paras": [
+      "Lihat sebelum dan selepas pembaikan skrin meter Mercedes."
+     ],
+     "bullets": [],
+     "media": "pair:p01"
+    },
+    {
+     "h2": "Retrofit",
+     "paras": [
+      "Kami memasang stereng BMW M sebagai retrofit."
+     ],
+     "bullets": [
+      "Retrofit stereng BMW M"
+     ],
+     "media": "w03"
+    },
+    {
+     "h2": "Coding dan pengaturcaraan",
+     "paras": [
+      "Sesetengah ciri ditetapkan oleh perisian. Kami pernah buat kerja ini."
+     ],
+     "bullets": [
+      "Nyahaktif AIRMATIC dan coding Mercedes C200 W205",
+      "Pengaturcaraan DCC VW Passat"
+     ],
+     "media": "g04"
+    }
+   ],
+   "faqs": [
+    {
+     "q": "Boleh tukar meter?",
+     "a": "Ya. Kami pernah menukar meter LCD penuh pada BMW 3 Series, dan kami baiki skrin meter Mercedes."
+    },
+    {
+     "q": "Adakah anda pasang stereng BMW M?",
+     "a": "Ya. Kami pernah buat retrofit stereng BMW M."
+    },
+    {
+     "q": "Kerja coding apa yang anda buat?",
+     "a": "Contohnya nyahaktif AIRMATIC dan coding pada Mercedes C200 W205, serta pengaturcaraan DCC pada VW Passat."
+    }
+   ],
+   "wa": "Hai Sheng Heng, saya ingin bertanya tentang coding kereta atau baiki meter untuk kereta saya.",
+   "schema_name": "Coding kereta dan baiki meter",
+   "schema_desc": "Coding kereta, tukar meter, baiki meter dan retrofit di bengkel Skudai."
+  },
+  "gearbox-overhaul-skudai": {
+   "title": "Overhaul gearbox Skudai | Taman Industri Jaya",
+   "meta": "Overhaul gearbox di Skudai untuk Lexus, Hyundai, BMW dan kereta CVT: bina semula transfer case, bearing dan plat klac. WhatsApp kami model kereta anda.",
+   "h1": "Overhaul Gearbox Skudai",
+   "nav": "Overhaul Gearbox",
+   "tile": "Overhaul gearbox, CVT dan transfer case",
+   "kicker": "Kerja gearbox dan transfer case sejak 2010",
+   "intro": [
+    "Kami overhaul gearbox, unit CVT dan transfer case. Bengkel kami di 17, Jalan Hang Lekir 12, Taman Industri Jaya, Skudai.",
+    "Kami buka unit, periksa bahagiannya dan tunjukkan apa yang kami temui."
+   ],
+   "sections": [
+    {
+     "h2": "Kerja yang pernah kami buat",
+     "paras": [
+      "Kerja gearbox kami meliputi banyak kereta."
+     ],
+     "bullets": [
+      "Lexus GS300 (GRS190)",
+      "Hyundai Sonata",
+      "Bina semula transfer case BMW X5 dan X6"
+     ],
+     "media": null
+    },
+    {
+     "h2": "Bearing CVT",
+     "paras": [
+      "Pada CVT K114 kami mengerjakan bearing gear akhir. Bearing Koyo ditunjukkan dalam gambar."
+     ],
+     "bullets": [],
+     "media": "g07"
+    },
+    {
+     "h2": "Plat geseran",
+     "paras": [
+      "Kami bandingkan plat geseran OEM dan asal supaya anda boleh lihat perbezaannya."
+     ],
+     "bullets": [],
+     "media": "g06"
+    },
+    {
+     "h2": "Kehausan plat klac",
+     "paras": [
+      "Kami periksa plat klac untuk kehausan."
+     ],
+     "bullets": [],
+     "media": "w05"
+    }
+   ],
+   "faqs": [
+    {
+     "q": "Adakah anda bina semula transfer case BMW?",
+     "a": "Ya. Kami pernah bina semula transfer case pada BMW X5 dan X6."
+    },
+    {
+     "q": "Boleh kerjakan gearbox CVT?",
+     "a": "Ya. Kami pernah mengerjakan bearing gear akhir CVT K114."
+    },
+    {
+     "q": "Kereta apa yang pernah anda kerjakan gearboxnya?",
+     "a": "Contohnya Lexus GS300 (GRS190), Hyundai Sonata serta BMW X5 dan X6."
+    }
+   ],
+   "wa": "Hai Sheng Heng, saya ingin bertanya tentang overhaul gearbox untuk kereta saya.",
+   "schema_name": "Overhaul gearbox",
+   "schema_desc": "Overhaul gearbox, CVT dan transfer case di bengkel Skudai."
+  },
+  "car-diagnostic-skudai": {
+   "title": "Diagnostik kereta Skudai | Lampu amaran",
+   "meta": "Diagnostik kereta di Skudai: imbasan komputer, lampu amaran, baiki pam ABS dan penyelesaian masalah elektronik. WhatsApp kami gambar papan pemuka anda.",
+   "h1": "Diagnostik Kereta Skudai",
+   "nav": "Diagnostik Kereta",
+   "tile": "Diagnostik komputer dan baiki lampu amaran",
+   "kicker": "Diagnostik komputer dan penyelesaian masalah elektronik",
+   "intro": [
+    "Kami buat diagnostik komputer dan penyelesaian masalah elektronik untuk lampu amaran dan kerosakan. Bengkel kami di 17, Jalan Hang Lekir 12, Taman Industri Jaya, Skudai.",
+    "Kami cari punca dahulu, kemudian baiki."
+   ],
+   "sections": [
+    {
+     "h2": "Lampu amaran",
+     "paras": [
+      "Amaran yang menyala pada papan pemuka perlu diperiksa dengan betul. Kami imbas kereta dan jejak puncanya."
+     ],
+     "bullets": [],
+     "media": "w01"
+    },
+    {
+     "h2": "Pam dan modul ABS",
+     "paras": [
+      "Kami baiki pam dan modul ABS. Seorang pengulas menulis tentang Honda Shuttle mereka: \"Great service and turnaround in 1 for replacing ABS pump failure that had been causing dashboard indicators kept on lit up.\""
+     ],
+     "bullets": [
+      "Baiki pam ABS pada VW Golf",
+      "Tukar pam ABS pada Honda Shuttle"
+     ],
+     "media": null
+    },
+    {
+     "h2": "Lebih banyak kerja",
+     "paras": [
+      "Kerosakan lain yang pernah kami jejak dan baiki."
+     ],
+     "bullets": [
+      "Ujian kebocoran asap pada Honda Civic",
+      "Peugeot 308 kod P0016",
+      "Kunci stereng Ford Focus",
+      "Tukar skrin CD VW Beetle"
+     ],
+     "media": null
+    }
+   ],
+   "faqs": [
+    {
+     "q": "Boleh baca lampu amaran saya?",
+     "a": "Ya. Kami buat diagnostik komputer dan penyelesaian masalah elektronik untuk lampu amaran."
+    },
+    {
+     "q": "Adakah anda baiki pam ABS?",
+     "a": "Ya. Kami baiki pam dan modul ABS, termasuk pada VW Golf."
+    },
+    {
+     "q": "Adakah anda buat ujian kebocoran asap?",
+     "a": "Ya. Kami pernah buat pengesanan kebocoran asap pada Honda Civic."
+    },
+    {
+     "q": "Boleh saya hantar gambar lampu amaran dahulu?",
+     "a": "Boleh. WhatsApp kami gambar papan pemuka dan model kereta anda."
+    }
+   ],
+   "wa": "Hai Sheng Heng, kereta saya ada lampu amaran dan saya mahu buat diagnostik.",
+   "schema_name": "Diagnostik kereta",
+   "schema_desc": "Diagnostik komputer dan penyelesaian masalah elektronik untuk lampu amaran dan kerosakan di bengkel Skudai."
+  },
+  "car-service-skudai": {
+   "title": "Servis kereta Skudai | Taman Industri Jaya",
+   "meta": "Servis kereta di Skudai: minyak enjin, minyak gear, brek, bateri, semakan tayar, shock absorber dan penjagaan hibrid. Bayar secara ansuran dengan AhaPay. WhatsApp kami untuk tempah.",
+   "h1": "Servis Kereta Skudai",
+   "nav": "Servis Kereta",
+   "tile": "Minyak, brek, bateri, shock absorber dan servis penuh",
+   "kicker": "Servis berkala untuk kereta Asia dan Eropah",
+   "intro": [
+    "Kami buat servis dan penyelenggaraan kereta, daripada tukar minyak hingga servis penuh. Bengkel kami di 17, Jalan Hang Lekir 12, Taman Industri Jaya, Skudai.",
+    "Bayar secara ansuran dengan AhaPay."
+   ],
+   "sections": [
+    {
+     "h2": "Tukar minyak",
+     "paras": [
+      "Selang yang kami syorkan untuk minyak enjin ialah 5,000 hingga 10,000 km. Untuk minyak gear, selang yang kami syorkan ialah setiap 20,000 hingga 40,000 km."
+     ],
+     "bullets": [
+      "Minyak enjin",
+      "Minyak gear"
+     ],
+     "media": null
+    },
+    {
+     "h2": "Servis penuh",
+     "paras": [
+      "Kami pernah buat servis penuh pada Toyota Alphard, Toyota Camry ACV30 dan Ford Raptor."
+     ],
+     "bullets": [
+      "Servis brek",
+      "Servis bateri",
+      "Semakan tayar"
+     ],
+     "media": "w02"
+    },
+    {
+     "h2": "Suspensi",
+     "paras": [
+      "Kami tukar shock absorber, contohnya pada Toyota Altis, dan lower arm."
+     ],
+     "bullets": [
+      "Shock absorber",
+      "Lower arm"
+     ],
+     "media": null
+    },
+    {
+     "h2": "Hibrid dan aircond",
+     "paras": [
+      "Kami buat penyelenggaraan kereta hibrid dan servis bateri hibrid. Aircond juga ada dalam senarai perkhidmatan kami."
+     ],
+     "bullets": [
+      "Penyelenggaraan kereta hibrid",
+      "Servis bateri hibrid",
+      "Aircond"
+     ],
+     "media": null
+    }
+   ],
+   "faqs": [
+    {
+     "q": "Berapa kerap saya perlu tukar minyak enjin?",
+     "a": "Selang yang kami syorkan ialah 5,000 hingga 10,000 km."
+    },
+    {
+     "q": "Berapa kerap saya perlu tukar minyak gear?",
+     "a": "Selang yang kami syorkan ialah setiap 20,000 hingga 40,000 km."
+    },
+    {
+     "q": "Adakah anda servis kereta hibrid?",
+     "a": "Ya. Kami buat penyelenggaraan kereta hibrid dan servis bateri hibrid."
+    },
+    {
+     "q": "Boleh saya bayar secara ansuran?",
+     "a": "Ya. Kami terima ansuran AhaPay."
+    }
+   ],
+   "wa": "Hai Sheng Heng, saya ingin tempah servis untuk kereta saya.",
+   "schema_name": "Servis dan penyelenggaraan kereta",
+   "schema_desc": "Servis dan penyelenggaraan kereta termasuk tukar minyak, brek, bateri, shock absorber dan penjagaan hibrid di bengkel Skudai."
+  }
+ },
+ "areas": {
+  "taman-industri-jaya-nusa-bestari-selesa-jaya": {
+   "title": "Bengkel kereta berhampiran Taman Industri Jaya | Sheng Heng",
+   "meta": "Bengkel kereta di Taman Industri Jaya, Nusa Bestari dan Selesa Jaya, Skudai. Jiran boleh singgah terus, buka Isn hingga Sab. WhatsApp kami sebelum anda singgah.",
+   "h1": "Bengkel Kereta berhampiran Taman Industri Jaya dan Nusa Bestari",
+   "nav": "Taman Industri Jaya & Nusa Bestari",
+   "intro": [
+    "Kami berada di Taman Industri Jaya, kira-kira 0.7 km jika anda berjiran. Taman Nusa Bestari kira-kira 1.4 km dan Taman Selesa Jaya, Skudai Baru kira-kira 1.5 km dari 17 Jalan Hang Lekir 12 (garis lurus).",
+    "Pemandu di sini singgah terus untuk servis, diagnostik dan semakan pantas."
+   ],
+   "setting": [
+    "Kami jiran anda. Bengkel terletak di Jalan Hang Lekir, berdekatan Jalan Bistari dan Jalan Skudai.",
+    "Ramai pelanggan berdekatan kami terus memandu ke sini. WhatsApp kami dahulu supaya kami boleh beritahu bila anda patut datang."
+   ],
+   "why": [
+    "Bagi jiran, servis berkala dan semakan lampu amaran paling penting. Minyak, brek, bateri dan imbasan komputer mudah ditempah."
+   ],
+   "faqs": [
+    {
+     "q": "Berapa jauh bengkel dari Taman Nusa Bestari?",
+     "a": "Taman Nusa Bestari kira-kira 1.4 km garis lurus dari bengkel kami di Jalan Hang Lekir 12, Taman Industri Jaya."
+    },
+    {
+     "q": "Boleh saya WhatsApp gambar lampu amaran dahulu?",
+     "a": "Boleh. WhatsApp kami gambar lampu amaran dan model kereta anda, dan kami akan beritahu langkah seterusnya."
+    }
+   ],
+   "wa": "Hai Sheng Heng, saya di Taman Industri Jaya, boleh saya bawa kereta masuk?"
+  },
+  "taman-universiti-mutiara-rini-lima-kedai": {
+   "title": "Bengkel kereta berhampiran Taman Universiti | Sheng Heng",
+   "meta": "Bengkel kereta untuk keluarga Taman Universiti, Mutiara Rini, Lima Kedai dan UTM Skudai. Servis dan diagnostik. WhatsApp kami untuk tempah lawatan.",
+   "h1": "Bengkel Kereta berhampiran Taman Universiti dan UTM",
+   "nav": "Taman Universiti & Mutiara Rini",
+   "intro": [
+    "Mutiara Rini dan Lima Kedai kira-kira 2.7 km dari 17 Jalan Hang Lekir 12 (garis lurus). Taman Universiti kira-kira 4.4 km, dan UTM Skudai kira-kira 6.6 km.",
+    "Pemandu di sini membawa kereta keluarga untuk penjagaan berkala."
+   ],
+   "setting": [
+    "Ini bahagian Skudai yang ramai pelajar dan keluarga. Jalan Pendidikan dan Jalan Utama menampung trafik harian sekolah dan kampus, dengan kampus UTM berdekatan.",
+    "Kereta keluarga membuat banyak perjalanan pendek. Brek, tayar dan bateri haus dengan penggunaan seperti ini."
+   ],
+   "why": [
+    "Untuk kereta keluarga, servis berkala, semakan brek dan bateri serta semakan tayar memastikan kereta sentiasa bersedia. Jika lampu amaran menyala, kami imbas."
+   ],
+   "faqs": [
+    {
+     "q": "Berapa jauh bengkel dari Taman Universiti?",
+     "a": "Taman Universiti kira-kira 4.4 km garis lurus dari Jalan Hang Lekir 12, Taman Industri Jaya."
+    },
+    {
+     "q": "Boleh saya WhatsApp gambar lampu amaran dahulu?",
+     "a": "Boleh. WhatsApp kami gambar lampu amaran dan model kereta anda, dan kami akan beritahu langkah seterusnya."
+    }
+   ],
+   "wa": "Hai Sheng Heng, saya di Taman Universiti, boleh saya bawa kereta masuk?"
+  },
+  "tun-aminah-sutera-utama-impian-emas": {
+   "title": "Bengkel kereta berhampiran Tun Aminah | Sheng Heng",
+   "meta": "Bengkel kereta untuk Taman Ungku Tun Aminah, Sutera Utama dan Impian Emas, Skudai. Servis dan diagnostik, buka Isn hingga Sab. WhatsApp kami untuk tempah.",
+   "h1": "Bengkel Kereta berhampiran Tun Aminah dan Sutera Utama",
+   "nav": "Tun Aminah & Sutera Utama",
+   "intro": [
+    "Taman Ungku Tun Aminah kira-kira 3.2 km dari 17 Jalan Hang Lekir 12 (garis lurus). Taman Sutera Utama kira-kira 3.6 km dan Taman Impian Emas kira-kira 6.7 km.",
+    "Pemandu di sini menggunakan kereta mereka setiap hari."
+   ],
+   "setting": [
+    "Ini kawasan perumahan di Jalan Bentara dan Jalan Sutera, dengan Lebuhraya Skudai berdekatan untuk perjalanan harian.",
+    "Pemanduan di lebuh raya menambah kehausan secara berterusan. Minyak enjin, minyak gear dan brek penting."
+   ],
+   "why": [
+    "Untuk mereka yang berulang-alik, kami cadangkan servis berkala mengikut selang yang kami syorkan, serta semakan brek dan bateri. Imbasan komputer membantu apabila lampu menyala."
+   ],
+   "faqs": [
+    {
+     "q": "Berapa jauh bengkel dari Taman Sutera Utama?",
+     "a": "Taman Sutera Utama kira-kira 3.6 km garis lurus dari Jalan Hang Lekir 12, Taman Industri Jaya."
+    },
+    {
+     "q": "Boleh saya WhatsApp gambar lampu amaran dahulu?",
+     "a": "Boleh. WhatsApp kami gambar lampu amaran dan model kereta anda, dan kami akan beritahu langkah seterusnya."
+    }
+   ],
+   "wa": "Hai Sheng Heng, saya di Taman Sutera Utama, boleh saya bawa kereta masuk?"
+  },
+  "bukit-indah-perling": {
+   "title": "Bengkel kereta berhampiran Bukit Indah | Sheng Heng",
+   "meta": "Bengkel kereta berhampiran Bukit Indah dan Taman Perling, tidak jauh dari Skudai. Servis, diagnostik dan coding. WhatsApp kami untuk tempah lawatan anda.",
+   "h1": "Bengkel Kereta berhampiran Bukit Indah dan Perling",
+   "nav": "Bukit Indah & Perling",
+   "intro": [
+    "Bukit Indah kira-kira 3.0 km dari 17 Jalan Hang Lekir 12 (garis lurus). Taman Perling kira-kira 4.6 km.",
+    "Pemandu di sini membawa kereta yang lebih baharu dan kereta continental serta kereta harian."
+   ],
+   "setting": [
+    "Bukit Indah ialah kawasan membeli-belah yang sibuk di sekitar Jalan Indah dan AEON Bukit Indah. Taman Perling terletak di sepanjang Jalan Persisiran Perling.",
+    "Perjalanan membeli-belah dan menghantar anak ke sekolah membuatkan kereta sentiasa digunakan."
+   ],
+   "why": [
+    "Kereta yang lebih baharu sering ada sistem bantuan pemandu. Jika amaran menyala selepas kerja cermin depan, kami buat kalibrasi ADAS. Kami juga servis kereta continental."
+   ],
+   "faqs": [
+    {
+     "q": "Berapa jauh bengkel dari Bukit Indah?",
+     "a": "Bukit Indah kira-kira 3.0 km garis lurus dari Jalan Hang Lekir 12, Taman Industri Jaya."
+    },
+    {
+     "q": "Boleh saya WhatsApp gambar lampu amaran dahulu?",
+     "a": "Boleh. WhatsApp kami gambar lampu amaran dan model kereta anda, dan kami akan beritahu langkah seterusnya."
+    }
+   ],
+   "wa": "Hai Sheng Heng, saya di Bukit Indah, boleh saya bawa kereta masuk?"
+  },
+  "iskandar-puteri-medini-gelang-patah": {
+   "title": "Bengkel kereta berhampiran Iskandar Puteri | Sheng Heng",
+   "meta": "Bengkel kereta untuk pemandu Iskandar Puteri, Gelang Patah dan Medini. ADAS, coding, diagnostik dan servis. WhatsApp kami sebelum anda bertolak hari ini.",
+   "h1": "Bengkel Kereta berhampiran Iskandar Puteri dan Medini",
+   "nav": "Iskandar Puteri & Medini",
+   "intro": [
+    "Iskandar Puteri kira-kira 6.1 km dari 17 Jalan Hang Lekir 12 (garis lurus). Gelang Patah kira-kira 8.2 km dan Medini kira-kira 9.9 km.",
+    "Pemandu di sini membawa kereta yang lebih baharu dengan lebih banyak elektronik."
+   ],
+   "setting": [
+    "Ini bahagian perbandaran baharu Johor. Ramai pemandu menggunakan koridor Lebuhraya Iskandar dan lebuh raya Second Link. Medini dan pekan Gelang Patah sebahagian daripada kawasan yang sama.",
+    "Kereta yang lebih baharu di sini sering mempunyai kamera, radar dan ciri yang di-coding."
+   ],
+   "why": [
+    "Kereta yang lebih baharu sesuai dengan kerja kalibrasi ADAS, coding kereta dan diagnostik komputer kami. Kami juga servis kereta continental."
+   ],
+   "faqs": [
+    {
+     "q": "Berapa jauh bengkel dari Iskandar Puteri?",
+     "a": "Iskandar Puteri kira-kira 6.1 km garis lurus dari Jalan Hang Lekir 12, Taman Industri Jaya."
+    },
+    {
+     "q": "Boleh saya WhatsApp gambar lampu amaran dahulu?",
+     "a": "Boleh. WhatsApp kami gambar lampu amaran dan model kereta anda, dan kami akan beritahu langkah seterusnya."
+    }
+   ],
+   "wa": "Hai Sheng Heng, saya di Iskandar Puteri, boleh saya bawa kereta masuk?"
+  },
+  "tampoi-kempas-larkin": {
+   "title": "Bengkel kereta berhampiran Tampoi | Sheng Heng",
+   "meta": "Bengkel kereta untuk pemandu Tampoi, Kempas, Taman Damansara Aliff dan Larkin. Servis, gearbox dan diagnostik. WhatsApp kami sebelum anda datang.",
+   "h1": "Bengkel Kereta berhampiran Tampoi, Kempas dan Larkin",
+   "nav": "Tampoi, Kempas & Larkin",
+   "intro": [
+    "Tampoi kira-kira 6.8 km dari 17 Jalan Hang Lekir 12 (garis lurus). Kempas kira-kira 7.8 km, Taman Damansara Aliff kira-kira 9.1 km dan Larkin kira-kira 11.1 km.",
+    "Pemandu di sini datang dari bahagian bandar Skudai."
+   ],
+   "setting": [
+    "Bahagian bandar Skudai sibuk dengan mereka yang berulang-alik di Jalan Tampoi, Jalan Kempas Lama dan sekitar Larkin. Kereta di sini kerap berhenti dan bergerak.",
+    "Penggunaan berhenti dan bergerak menghausi gearbox, brek dan klac."
+   ],
+   "why": [
+    "Overhaul gearbox, semakan plat klac, servis brek dan imbasan komputer sesuai untuk mereka yang berulang-alik di bandar."
+   ],
+   "faqs": [
+    {
+     "q": "Berapa jauh bengkel dari Tampoi?",
+     "a": "Tampoi kira-kira 6.8 km garis lurus dari Jalan Hang Lekir 12, Taman Industri Jaya."
+    },
+    {
+     "q": "Boleh saya WhatsApp gambar lampu amaran dahulu?",
+     "a": "Boleh. WhatsApp kami gambar lampu amaran dan model kereta anda, dan kami akan beritahu langkah seterusnya."
+    }
+   ],
+   "wa": "Hai Sheng Heng, saya di Tampoi, boleh saya bawa kereta masuk?"
+  },
+  "senai-kangkar-pulai-sri-pulai": {
+   "title": "Bengkel kereta berhampiran Senai | Sheng Heng",
+   "meta": "Bengkel kereta untuk pemandu Taman Sri Pulai, Kangkar Pulai dan Senai. Servis, diagnostik dan kerja gearbox. WhatsApp kami sebelum anda memandu ke sini.",
+   "h1": "Bengkel Kereta berhampiran Senai, Kangkar Pulai dan Sri Pulai",
+   "nav": "Senai, Kangkar Pulai & Sri Pulai",
+   "intro": [
+    "Taman Sri Pulai kira-kira 7.4 km dari 17 Jalan Hang Lekir 12 (garis lurus). Kangkar Pulai kira-kira 8.5 km dan Senai kira-kira 11.2 km.",
+    "Pemandu di sini sering menempuh jarak yang lebih jauh setiap hari."
+   ],
+   "setting": [
+    "Laluan Jalan Skudai-Kulai menghubungkan Kangkar Pulai dan Taman Sri Pulai dengan pekan Senai, yang ada lapangan terbang dan kawasan perindustrian.",
+    "Jarak harian yang lebih jauh bermakna lebih kerap tukar minyak dan lebih banyak kehausan."
+   ],
+   "why": [
+    "Untuk perjalanan yang lebih jauh, tukar minyak enjin dan minyak gear secara berkala, semakan brek dan tayar, serta shock absorber adalah penting. Kami juga buat diagnostik komputer."
+   ],
+   "faqs": [
+    {
+     "q": "Berapa jauh bengkel dari Senai?",
+     "a": "Senai kira-kira 11.2 km garis lurus dari Jalan Hang Lekir 12, Taman Industri Jaya."
+    },
+    {
+     "q": "Boleh saya WhatsApp gambar lampu amaran dahulu?",
+     "a": "Boleh. WhatsApp kami gambar lampu amaran dan model kereta anda, dan kami akan beritahu langkah seterusnya."
+    }
+   ],
+   "wa": "Hai Sheng Heng, saya di Senai, boleh saya bawa kereta masuk?"
+  }
+ },
+ "pages": {
+  "about": {
+   "title": "Tentang Sheng Heng Auto Service | Skudai, sejak 2010",
+   "meta": "Sheng Heng Auto Service Centre, Jalan Hang Lekir 12, Taman Industri Jaya, Skudai. Bengkel kami sejak 2010. WhatsApp Mr. Yaw untuk bertanya tentang kereta anda.",
+   "h1": "Tentang Sheng Heng Auto Service Centre",
+   "kicker": "Bengkel kami sejak 2010. Make The Quality.",
+   "intro": [
+    "Sheng Heng Auto Service Centre ialah bengkel kereta di Skudai, Johor. Bengkel kami beroperasi sejak 2010.",
+    "Anda boleh jumpa kami di 17, Jalan Hang Lekir 12, Taman Industri Jaya, 81300 Skudai."
+   ],
+   "sections": [
+    {
+     "h2": "Bengkel kami",
+     "paras": [
+      "Kami beroperasi dari satu lokasi di Taman Industri Jaya. Slogan kami ialah Make The Quality."
+     ],
+     "bullets": [],
+     "media": "h01"
+    },
+    {
+     "h2": "Mr. Yaw",
+     "paras": [
+      "Mr. Yaw ialah orang yang boleh dihubungi. WhatsApp beliau dengan model kereta dan masalah anda, serta gambar jika ada."
+     ],
+     "bullets": [],
+     "media": null
+    },
+    {
+     "h2": "Jenis kerja yang kami buat",
+     "paras": [
+      "Kami buat servis, diagnostik dan kerja elektronik, serta kerja gearbox dan enjin."
+     ],
+     "bullets": [
+      "Servis dan penyelenggaraan kereta",
+      "Diagnostik komputer",
+      "Baiki ECU, pengaturcaraan dan coding",
+      "Pengaturcaraan kunci pintar",
+      "Kalibrasi ADAS",
+      "Meter dan coding",
+      "Overhaul gearbox dan transfer case",
+      "Penyelenggaraan kereta hibrid"
+     ],
+     "media": null
+    },
+    {
+     "h2": "Jenama",
+     "paras": [
+      "Jenama Eropah: BMW, Mercedes-Benz, Porsche, Volkswagen, MINI dan Peugeot. Jenama Asia: Toyota, Lexus, Honda, Nissan, Hyundai dan Ford."
+     ],
+     "bullets": [],
+     "media": null
+    },
+    {
+     "h2": "Waktu operasi dan syarikat",
+     "paras": [
+      "Kami buka Isnin hingga Sabtu, 9:00 pagi hingga 6:00 petang. Kami tutup pada hari Ahad.",
+      "Syarikat: Sheng Heng Auto Service (M) Sdn Bhd, SSM 202401053168 (1599010-M)."
+     ],
+     "bullets": [],
+     "media": null
+    }
+   ]
+  },
+  "contact": {
+   "title": "Hubungi Sheng Heng Auto Service | Skudai",
+   "meta": "Hubungi Sheng Heng Auto Service Centre di Jalan Hang Lekir 12, Taman Industri Jaya, Skudai. WhatsApp Mr. Yaw atau lawati kami Isnin hingga Sabtu.",
+   "h1": "Hubungi Sheng Heng Auto Service",
+   "kicker": "WhatsApp dahulu, kemudian singgah",
+   "intro": [
+    "WhatsApp Mr. Yaw dengan model kereta dan masalah anda. Gambar lampu amaran atau bahagian kereta sangat membantu.",
+    "Bengkel kami di 17, Jalan Hang Lekir 12, Taman Industri Jaya, Skudai. Kami buka Isnin hingga Sabtu."
+   ]
+  },
+  "articles": {
+   "title": "Artikel Bengkel Kereta | Sheng Heng, Skudai",
+   "meta": "Artikel daripada Sheng Heng Auto Service Centre di Skudai, ditulis berdasarkan kerja sebenar di bengkel kami. Akan datang. WhatsApp kami jika anda ada soalan tentang kereta.",
+   "h1": "Artikel Bengkel",
+   "intro": [
+    "Artikel akan datang tidak lama lagi.",
+    "Kami akan menulisnya berdasarkan kerja sebenar di bengkel kami di Skudai. Sementara itu, WhatsApp kami soalan kereta anda."
+   ]
+  },
+  "home": {
+   "title": "Bengkel kereta Skudai | Sheng Heng, sejak 2010",
+   "meta": "Bengkel kereta continental dan Asia di Skudai. ADAS, ECU, coding, gearbox dan servis sejak 2010. WhatsApp kami dan bayar secara ansuran dengan AhaPay.",
+   "h1": "Bengkel Kereta Skudai untuk Kereta Continental & Asia",
+   "kicker": "ADAS, ECU, coding dan gearbox sejak 2010",
+   "faqs": [
+    {
+     "q": "Di mana Sheng Heng Auto Service Centre?",
+     "a": "17, Jalan Hang Lekir 12, Taman Industri Jaya, 81300 Skudai, Johor."
+    },
+    {
+     "q": "Apakah waktu operasi anda?",
+     "a": "Isnin hingga Sabtu, 9:00 pagi hingga 6:00 petang. Kami tutup pada hari Ahad."
+    },
+    {
+     "q": "Apakah kerja yang anda buat?",
+     "a": "Servis kereta, diagnostik komputer, baiki ECU dan pengaturcaraan, kunci pintar, kalibrasi ADAS, coding, overhaul gearbox dan penyelenggaraan hibrid."
+    },
+    {
+     "q": "Boleh saya bayar secara ansuran?",
+     "a": "Ya. Bayar secara ansuran dengan AhaPay."
+    }
+   ]
+  }
+ }
+}

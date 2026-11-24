@@ -1,0 +1,1099 @@
+{
+ "ui": {
+  "skip": "跳到主要内容",
+  "menu": "菜单",
+  "close": "关闭菜单",
+  "lang_label": "语言",
+  "nav_home": "首页",
+  "nav_services": "服务项目",
+  "nav_areas": "服务地区",
+  "nav_about": "关于我们",
+  "nav_contact": "联络我们",
+  "nav_articles": "文章",
+  "wa": "WhatsApp",
+  "wa_long": "WhatsApp Mr. Yaw",
+  "call": "致电",
+  "call_long": "致电 016-335 2124",
+  "second_line": "第二条线路",
+  "email": "电邮",
+  "facebook": "Facebook 专页",
+  "open_maps": "在 Google Maps 打开",
+  "directions": "获取路线",
+  "map_title": "Sheng Heng Auto Service Centre 地图，Jalan Hang Lekir 12, Taman Industri Jaya, 士古来",
+  "map_fallback": "地图无法显示？请在 Google Maps 打开",
+  "hours_h": "营业时间",
+  "hours_week": "星期一至星期六",
+  "hours_time": "上午9:00至下午6:00",
+  "hours_sun": "星期日",
+  "hours_closed": "休息",
+  "hours_tz": "马来西亚时间",
+  "address_h": "地址",
+  "visit_h": "到访",
+  "talk_h": "联络我们",
+  "services_h": "服务项目",
+  "areas_h": "服务地区",
+  "privacy": "隐私",
+  "credit": "Website by AutoSEO.my",
+  "legal": "Sheng Heng Auto Service (M) Sdn Bhd · 202401053168 (1599010-M)",
+  "est": "自2010年营业的修车厂",
+  "tagline": "Make The Quality",
+  "review_footer": "留下 Google 评价",
+  "review_btn": "留下 Google 评价",
+  "see_reviews": "查看我们的 Google 五星评价",
+  "reviews_h": "来自 Google 评价的工作单",
+  "reviews_sub": "五则真实的 Google 五星评价，一字不改。",
+  "read_more": "阅读完整评价",
+  "ahapay": "可用 AhaPay 分期付款",
+  "updated": "更新日期：2026年11月24日",
+  "faq_h": "车主常问的问题",
+  "breadcrumb_home": "首页",
+  "breadcrumb_areas": "地区",
+  "next_service": "下一项服务",
+  "all_services": "全部八项服务",
+  "areas_nearby": "附近地区",
+  "km_from": "距离修车厂",
+  "about_km": "约 {km} km",
+  "services_here": "我们为这一带车主处理的项目",
+  "cta_mid_h": "先传张照片给我们",
+  "cta_mid_p": "用 WhatsApp 传来故障灯或零件的照片，并告诉我们车型。我们会回复您下一步该怎么做。",
+  "cta_end_h": "您的车准备好了，我们也准备好了",
+  "cta_end_p": "17, Jalan Hang Lekir 12, Taman Industri Jaya, 士古来。星期一至星期六营业，上午9:00至下午6:00。",
+  "before": "维修前",
+  "after": "维修后",
+  "slider_label": "拖动以对比维修前后",
+  "play": "播放 BMW ADAS 校准视频",
+  "video_caption": "Sheng Heng 正在进行 BMW ADAS 校准（来自我们的 Facebook 短片）",
+  "video_open_fb": "在 Facebook 观看",
+  "carousel_label": "修车厂照片",
+  "photo_note": "修车厂与工作的真实照片。",
+  "local_h": "附近环境",
+  "why_h": "这一带车主为什么找我们",
+  "places_h": "这个地区的地点",
+  "straight_line": "距离为从 17, Jalan Hang Lekir 12, Taman Industri Jaya 起算的直线距离。",
+  "articles_empty": "第一批文章即将推出。",
+  "articles_back": "查看我们的服务项目",
+  "privacy_title": "隐私政策 | Sheng Heng Auto Service Centre",
+  "privacy_meta": "Sheng Heng Auto Service Centre（士古来）如何依据马来西亚 PDPA 2010，处理您通过 WhatsApp、电话或电邮提供的资料。",
+  "notfound_h": "找不到页面",
+  "contact_second_note": "第二条线路仅供来电",
+  "email_note": "用于报价与文件",
+  "contact_person": "请找 Mr. Yaw",
+  "share_alt": "Sheng Heng Auto Service Centre, Taman Industri Jaya, 士古来, 柔佛"
+ },
+ "home": {
+  "chips": [
+   "ADAS 校准",
+   "ECU 与编码",
+   "变速箱大修",
+   "电脑诊断"
+  ],
+  "proof_h": "在这里修好，维修前后对比",
+  "proof_sub": "来自我们工作间的真实仪表与加装案例。请拖动滑块。",
+  "p01_cap": "Mercedes 仪表中央屏幕，损坏与修复后",
+  "p02_cap": "BMW 3 Series：原厂仪表换成全 LCD 仪表",
+  "w03_cap": "BMW 方向盘：原装与加装 M 方向盘",
+  "board_h": "系统总览",
+  "board_sub": "八项服务一站完成，从换机油到 ADAS。",
+  "adas_h": "ADAS 校准，在我们自己的工作间完成",
+  "adas_lines": [
+   "换挡风玻璃后出现预碰撞或摄像头警告？",
+   "我们在修车厂工作间校准摄像头与雷达。",
+   "已做过 BMW、Toyota、Honda、Nissan 和 Porsche。"
+  ],
+  "adas_btn": "询问 ADAS 校准",
+  "adas_link": "查看 ADAS 页面",
+  "process_h": "四个步骤，让故障灯熄灭",
+  "process": [
+   [
+    "WhatsApp 传照片给我们",
+    "传来故障灯的照片和您的车型。"
+   ],
+   [
+    "电脑扫描与检查",
+    "我们为车子扫描，并在修车厂追查故障。"
+   ],
+   [
+    "开工前清楚报价",
+    "动工之前，您就知道我们会做什么。"
+   ],
+   [
+    "修理与路试",
+    "我们修好后进行路试，确认故障灯不再亮起。"
+   ]
+  ],
+  "rail_h": "修车厂内部",
+  "makes_h": "我们处理的车厂品牌",
+  "makes_note": "仅列出品牌名称。我们是独立修车厂。",
+  "areas_h": "20 km 内的七个地区",
+  "areas_sub": "距 Jalan Hang Lekir 12 的直线距离。",
+  "visit_h": "到访修车厂",
+  "visit_sub": "只有一间修车厂，位于 17, Jalan Hang Lekir 12, Taman Industri Jaya, 士古来。"
+ },
+ "img": {
+  "h01": {
+   "caption": "Sheng Heng Auto Service Centre, 17 Jalan Hang Lekir 12, Taman Industri Jaya, 士古来",
+   "alt": "Sheng Heng Auto Service Centre 修车厂大楼，蓝红色 SH 招牌，位于柔佛士古来 Taman Industri Jaya 的 Jalan Hang Lekir 12"
+  },
+  "g01": {
+   "caption": "在修车厂工作间进行 ADAS 校准",
+   "alt": "Toyota Alphard 停在 Sheng Heng 工作间，旁边架着校准架，准备进行 ADAS 摄像头校准，士古来"
+  },
+  "g02": {
+   "caption": "BMW 升上双柱举升机，进行引擎工作",
+   "alt": "BMW 5 Series 升在红色双柱举升机上，引擎盖打开，在士古来 Sheng Heng Auto Service 进行引擎工作"
+  },
+  "g03": {
+   "caption": "BMW B48 引擎气门油封工作",
+   "alt": "技师在士古来 Sheng Heng 更换气门油封时，使用气门弹簧工具处理 BMW B48 引擎汽缸盖"
+  },
+  "g04": {
+   "caption": "BMW M 方向盘加装",
+   "alt": "Sheng Heng Auto Service 的 BMW 已加装 M 运动方向盘，后方是仪表板"
+  },
+  "g05": {
+   "caption": "升级前的 BMW 原装方向盘",
+   "alt": "Sheng Heng Auto Service 加装 M 方向盘之前的 BMW 原装方向盘"
+  },
+  "g06": {
+   "caption": "变速箱摩擦片：OEM 与原装对比",
+   "alt": "在 Sheng Heng 大修变速箱时，对比标示为 OEM 与 Ori 的两叠自动变速箱摩擦片"
+  },
+  "g07": {
+   "caption": "用于 K114 终传齿轮的 Koyo 轴承",
+   "alt": "在 Sheng Heng Auto Service 重建 K114 CVT 终传齿轮时摆开的全新 Koyo 锥形轴承"
+  },
+  "w01": {
+   "caption": "ADAS 校准前出现的预碰撞系统故障警告",
+   "alt": "士古来 Sheng Heng 的 Toyota 仪表板，在 ADAS 校准前显示预碰撞系统故障警告"
+  },
+  "w02": {
+   "caption": "Toyota Alphard 使用原厂油液的全面保养",
+   "alt": "Sheng Heng Auto Service 的 Toyota Alphard 停在举升机上，备好原厂 Toyota 机油、CVT 油和滤芯，准备全面保养"
+  },
+  "w03": {
+   "caption": "BMW 方向盘：原装（左）与加装 M 方向盘（右）",
+   "alt": "Sheng Heng 完成的 BMW 原装方向盘与 M 运动方向盘加装并排对比"
+  },
+  "w04": {
+   "caption": "拆下维修的 BMW 双涡轮增压器",
+   "alt": "Sheng Heng Auto Service 工作间地上，一对拆下的 BMW 涡轮增压器与排气歧管"
+  },
+  "w05": {
+   "caption": "检查磨损的变速箱离合器片",
+   "alt": "Sheng Heng Auto Service 检查自动变速箱离合器摩擦片，磨损处以红色标出"
+  },
+  "p01b": {
+   "caption": "维修前的 Mercedes 仪表：中央屏幕损坏",
+   "alt": "维修前的 Mercedes-Benz 仪表，中央显示屏损坏并剥落"
+  },
+  "p01a": {
+   "caption": "维修后的 Mercedes 仪表：新的中央屏幕",
+   "alt": "Sheng Heng Auto Service 更换中央屏幕后的 Mercedes-Benz 仪表"
+  },
+  "p02b": {
+   "caption": "维修前的 BMW 3 Series 仪表：标准仪表",
+   "alt": "更换全 LCD 仪表之前的 BMW 3 Series 标准仪表"
+  },
+  "p02a": {
+   "caption": "维修后的 BMW 3 Series 仪表：全 LCD 屏幕",
+   "alt": "Sheng Heng Auto Service 更换全 LCD 数码仪表并完成编码后的 BMW 3 Series"
+  },
+  "v01": {
+   "caption": "Sheng Heng 正在进行 BMW ADAS 校准（来自我们的 Facebook 短片）",
+   "alt": "Sheng Heng 工作间里的 BMW M5，车前摆着 ADAS 校准架"
+  },
+  "logo": {
+   "alt": "Sheng Heng Auto Service 标志"
+  }
+ },
+ "wa_generic": "你好 Sheng Heng，我想询问我的车子。",
+ "wa_home": "你好 Sheng Heng，我的车有故障灯亮起，可以帮我扫描吗？",
+ "wa_adas": "你好 Sheng Heng，我想询问我的车做 ADAS 校准的事。",
+ "wa_contact": "你好 Sheng Heng，我想把车开过去。我的车型是：",
+ "review_tags": {
+  "1": "Honda Shuttle 2015 · ABS pump"
+ },
+ "services": {
+  "continental-car-specialist-skudai": {
+   "title": "士古来 欧洲车维修 | 2010年起",
+   "meta": "士古来 欧洲车维修，提供 BMW、Mercedes-Benz、Porsche、VW、MINI 和 Peugeot 的保养与维修，欢迎 WhatsApp 我们预约进厂。",
+   "h1": "士古来 欧洲车维修",
+   "nav": "欧洲车",
+   "tile": "BMW、Mercedes-Benz、Porsche、VW、MINI、Peugeot",
+   "kicker": "欧洲车保养与维修，自2010年营业的修车厂",
+   "intro": [
+    "我们保养与维修欧洲车：BMW、Mercedes-Benz、Porsche、Volkswagen、MINI 和 Peugeot。我们的修车厂位于 17, Jalan Hang Lekir 12, Taman Industri Jaya, 士古来。",
+    "从全面保养到引擎工作和电子编程，都在同一间修车厂完成。"
+   ],
+   "sections": [
+    {
+     "h2": "我们处理的车厂品牌",
+     "paras": [
+      "我们每星期都处理欧洲车。亚洲品牌也欢迎。"
+     ],
+     "bullets": [
+      "BMW",
+      "Mercedes-Benz",
+      "Porsche",
+      "Volkswagen",
+      "MINI",
+      "Peugeot"
+     ],
+     "media": "g02"
+    },
+    {
+     "h2": "保养",
+     "paras": [
+      "我们做过的全面保养包括 Porsche Macan S 和 Mercedes C250。我们会把车升上举升机检查，并解释所发现的问题。"
+     ],
+     "bullets": [
+      "机油与变速箱油",
+      "全面保养",
+      "刹车与电池",
+      "轮胎检查"
+     ],
+     "media": null
+    },
+    {
+     "h2": "引擎维修",
+     "paras": [
+      "更换 BMW B48 气门油封是我们做过的工作之一。我们也曾拆下 BMW 涡轮增压器进行维修。"
+     ],
+     "bullets": [
+      "BMW B48 气门油封",
+      "拆下 BMW 涡轮增压器进行维修"
+     ],
+     "media": "g03"
+    },
+    {
+     "h2": "编程与编码",
+     "paras": [
+      "许多欧洲车在维修后需要做软件工作。我们做过 Mini Cooper S 的散热风扇温度编程，以及 VW Passat 的 DCC 编程。"
+     ],
+     "bullets": [
+      "Mini Cooper S 散热风扇温度编程",
+      "VW Passat DCC 编程"
+     ],
+     "media": "w04"
+    }
+   ],
+   "faqs": [
+    {
+     "q": "你们处理哪些欧洲车？",
+     "a": "我们处理 BMW、Mercedes-Benz、Porsche、Volkswagen、MINI 和 Peugeot。"
+    },
+    {
+     "q": "Porsche 或 Mercedes 可以做全面保养吗？",
+     "a": "可以。我们做过 Porsche Macan S 和 Mercedes C250 的全面保养。"
+    },
+    {
+     "q": "BMW 可以做引擎维修吗？",
+     "a": "可以。我们更换过 BMW B48 气门油封，也拆下过 BMW 涡轮增压器进行维修。"
+    },
+    {
+     "q": "修车厂在哪里？",
+     "a": "17, Jalan Hang Lekir 12, Taman Industri Jaya, 81300 士古来, 柔佛。我们星期一至星期六营业，上午9:00至下午6:00。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我想询问我的欧洲车保养。",
+   "schema_name": "欧洲车保养与维修",
+   "schema_desc": "士古来修车厂提供 BMW、Mercedes-Benz、Porsche、Volkswagen、MINI 和 Peugeot 的保养与维修。"
+  },
+  "adas-calibration-skudai": {
+   "title": "新山 ADAS 校准 | 士古来, 2010年起",
+   "meta": "新山 ADAS 校准，士古来修车厂处理摄像头与雷达警告，以及换挡风玻璃之后的校准，欢迎 WhatsApp 传警告照片给我们开始。",
+   "h1": "新山 ADAS 校准（士古来）",
+   "nav": "ADAS 校准",
+   "tile": "出现警告后的摄像头与雷达校准",
+   "kicker": "在士古来进行摄像头与雷达校准",
+   "intro": [
+    "当警告亮起或换挡风玻璃之后，我们为 ADAS 摄像头与雷达做校准。我们的修车厂位于 17, Jalan Hang Lekir 12, Taman Industri Jaya, 士古来。",
+    "我们处理 BMW、Toyota、Honda、Nissan 和 Porsche。"
+   ],
+   "sections": [
+    {
+     "h2": "什么时候需要",
+     "paras": [
+      "安全警告亮起时，可能需要校准。更换挡风玻璃之后也可能需要。"
+     ],
+     "bullets": [
+      "预碰撞系统警告",
+      "换挡风玻璃后的摄像头警告",
+      "雷达或传感器警告"
+     ],
+     "media": "w01"
+    },
+    {
+     "h2": "我们做过的案例",
+     "paras": [
+      "我们近期的工作涵盖许多品牌。"
+     ],
+     "bullets": [
+      "Toyota 预碰撞系统故障警告",
+      "Toyota Alphard",
+      "Honda CR-V, 故障码 P2583",
+      "Nissan Navara 挡风玻璃摄像头",
+      "Porsche Cayenne 和 Panamera",
+      "BMW"
+     ],
+     "media": "g01"
+    },
+    {
+     "h2": "看看 BMW 的工作",
+     "paras": [
+      "我们发布了一段 BMW 做 ADAS 校准的短片，呈现我们在工作间里的作业。"
+     ],
+     "bullets": [],
+     "media": "video"
+    },
+    {
+     "h2": "到访之前",
+     "paras": [
+      "用 WhatsApp 传来仪表板上警告的照片。告诉我们品牌和车型，我们会告诉您下一步该怎么做。"
+     ],
+     "bullets": [],
+     "media": null
+    }
+   ],
+   "faqs": [
+    {
+     "q": "什么是 ADAS 校准？",
+     "a": "它调校车子的摄像头或雷达，让驾驶辅助系统正确读取路面。"
+    },
+    {
+     "q": "更换挡风玻璃后需要做吗？",
+     "a": "通常需要，如果车子有挡风玻璃摄像头的话。我们处理过 Nissan Navara 的挡风玻璃摄像头。"
+    },
+    {
+     "q": "你们校准过哪些车？",
+     "a": "BMW、Toyota（包括 Alphard）、Honda CR-V、Nissan Navara，以及 Porsche Cayenne 和 Panamera。"
+    },
+    {
+     "q": "可以先传警告的照片吗？",
+     "a": "可以。用 WhatsApp 传来仪表板警告的照片和您的车型。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我想询问我的车做 ADAS 校准的事。",
+   "schema_name": "ADAS 校准",
+   "schema_desc": "士古来修车厂为 BMW、Toyota、Honda、Nissan 和 Porsche 提供摄像头与雷达 ADAS 校准。"
+  },
+  "ecu-repair-programming-skudai": {
+   "title": "士古来 ECU 维修 编程 | Taman Industri Jaya",
+   "meta": "士古来 ECU 维修 编程，包括 ECU 编码、Mercedes 在线 SCN 编码与防盗系统重置，欢迎 WhatsApp 告诉我们车型和问题。",
+   "h1": "士古来 ECU 维修 编程",
+   "nav": "ECU 维修",
+   "tile": "ECU 维修、编程、编码、防盗系统重置",
+   "kicker": "ECU 维修与编码，自2010年营业的修车厂",
+   "intro": [
+    "我们维修与编程汽车 ECU，也做编码和防盗系统重置。我们的修车厂位于 17, Jalan Hang Lekir 12, Taman Industri Jaya, 士古来。",
+    "告诉我们您的车型和故障，我们会告诉您我们能做什么。"
+   ],
+   "sections": [
+    {
+     "h2": "我们做什么",
+     "paras": [
+      "ECU 控制车上许多功能。当它故障或需要新软件时，我们可以帮忙。"
+     ],
+     "bullets": [
+      "ECU 维修",
+      "ECU 编程与编码",
+      "在线 SCN 编码（Mercedes）",
+      "防盗系统重置"
+     ],
+     "media": "w01"
+    },
+    {
+     "h2": "Mercedes 在线 SCN 编码",
+     "paras": [
+      "部分 Mercedes-Benz 零件更换后需要在线 SCN 编码。我们在修车厂内完成。"
+     ],
+     "bullets": [],
+     "media": null
+    },
+    {
+     "h2": "防盗系统重置",
+     "paras": [
+      "如果防盗系统让车子无法启动，我们可以重置。钥匙工作请见我们的汽车钥匙页面。"
+     ],
+     "bullets": [],
+     "media": null
+    },
+    {
+     "h2": "如何开始",
+     "paras": [
+      "用 WhatsApp 告诉我们车子的品牌、车型，以及故障或警告灯。附上照片会更有帮助。"
+     ],
+     "bullets": [],
+     "media": null
+    }
+   ],
+   "faqs": [
+    {
+     "q": "你们维修 ECU 吗？",
+     "a": "是的。我们做 ECU 维修、ECU 编程与编码。"
+    },
+    {
+     "q": "Mercedes 可以做在线 SCN 编码吗？",
+     "a": "可以。Mercedes 在线 SCN 编码是我们的服务之一。"
+    },
+    {
+     "q": "可以重置防盗系统吗？",
+     "a": "可以。我们做防盗系统重置。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我想询问我的车做 ECU 维修或编程的事。",
+   "schema_name": "ECU 维修与编程",
+   "schema_desc": "士古来的 ECU 维修、编程与编码、Mercedes 在线 SCN 编码和防盗系统重置。"
+  },
+  "car-key-immobilizer-skudai": {
+   "title": "士古来 汽车钥匙 配置 | 2010年起",
+   "meta": "士古来 汽车钥匙 配置，提供智能钥匙复制与编程，以及防盗系统重置，欢迎 WhatsApp 告诉我们车型，我们先为您说明。",
+   "h1": "士古来 汽车钥匙 配置",
+   "nav": "汽车钥匙",
+   "tile": "智能钥匙复制、编程、防盗系统重置",
+   "kicker": "智能钥匙复制与防盗系统重置",
+   "intro": [
+    "我们复制与编程智能钥匙，也重置防盗系统。我们的修车厂位于 17, Jalan Hang Lekir 12, Taman Industri Jaya, 士古来。",
+    "最近的一项工作是 Toyota Vios NCP150 的智能钥匙。"
+   ],
+   "sections": [
+    {
+     "h2": "智能钥匙复制与编程",
+     "paras": [
+      "我们为您的车复制与编程智能钥匙。请先用 WhatsApp 告诉我们品牌和车型。"
+     ],
+     "bullets": [
+      "智能钥匙复制",
+      "智能钥匙编程",
+      "例子：Toyota Vios NCP150"
+     ],
+     "media": "g05"
+    },
+    {
+     "h2": "防盗系统重置",
+     "paras": [
+      "如果防盗系统让车子无法启动，我们可以重置。"
+     ],
+     "bullets": [],
+     "media": null
+    },
+    {
+     "h2": "一则客户评语",
+     "paras": [
+      "一位 Google 评论者写到他的 Honda Shuttle：\"Also fixed for another day for key tumble wear-and-tear.\""
+     ],
+     "bullets": [],
+     "media": null
+    }
+   ],
+   "faqs": [
+    {
+     "q": "可以复制智能钥匙吗？",
+     "a": "可以。我们做智能钥匙复制与编程，例如 Toyota Vios NCP150。"
+    },
+    {
+     "q": "可以重置防盗系统吗？",
+     "a": "可以。防盗系统重置是我们的服务之一。"
+    },
+    {
+     "q": "来之前应该先传什么给你们？",
+     "a": "用 WhatsApp 告诉我们车子的品牌、车型和年份，并说明钥匙的问题。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我想询问我的车配置汽车钥匙的事。",
+   "schema_name": "汽车钥匙编程",
+   "schema_desc": "士古来修车厂提供智能钥匙复制、钥匙编程与防盗系统重置。"
+  },
+  "car-coding-instrument-cluster-skudai": {
+   "title": "新山 汽车仪表 维修 编码 | 2010年起",
+   "meta": "新山 汽车仪表 维修 编码，士古来修车厂提供仪表更换、仪表屏幕维修、加装与编程，欢迎 WhatsApp 告诉我们车型。",
+   "h1": "新山 汽车仪表 维修 编码（士古来）",
+   "nav": "编码与仪表",
+   "tile": "汽车编码、仪表维修与加装",
+   "kicker": "欧洲车的编码、仪表与加装",
+   "intro": [
+    "我们做汽车编码、仪表板工作与加装。我们的修车厂位于 17, Jalan Hang Lekir 12, Taman Industri Jaya, 士古来。",
+    "这类工作大多是 BMW、Mercedes-Benz 和 Volkswagen。"
+   ],
+   "sections": [
+    {
+     "h2": "仪表板与仪表",
+     "paras": [
+      "我们为一辆 BMW 3 Series 更换过全 LCD 仪表。我们也维修过 Mercedes 的仪表屏幕。"
+     ],
+     "bullets": [
+      "BMW 3 Series 更换全 LCD 仪表",
+      "Mercedes 仪表屏幕维修"
+     ],
+     "media": "pair:p02"
+    },
+    {
+     "h2": "Mercedes 仪表屏幕",
+     "paras": [
+      "请看 Mercedes 仪表屏幕维修前后的对比。"
+     ],
+     "bullets": [],
+     "media": "pair:p01"
+    },
+    {
+     "h2": "加装",
+     "paras": [
+      "我们加装过 BMW M 方向盘。"
+     ],
+     "bullets": [
+      "BMW M 方向盘加装"
+     ],
+     "media": "w03"
+    },
+    {
+     "h2": "编码与编程",
+     "paras": [
+      "有些功能是由软件设定的。以下是我们做过的工作。"
+     ],
+     "bullets": [
+      "Mercedes C200 W205 AIRMATIC 停用与编码",
+      "VW Passat DCC 编程"
+     ],
+     "media": "g04"
+    }
+   ],
+   "faqs": [
+    {
+     "q": "可以更换仪表板吗？",
+     "a": "可以。我们为一辆 BMW 3 Series 更换过全 LCD 仪表，也维修 Mercedes 的仪表屏幕。"
+    },
+    {
+     "q": "可以加装 BMW M 方向盘吗？",
+     "a": "可以。我们做过 BMW M 方向盘加装。"
+    },
+    {
+     "q": "你们做哪些编码工作？",
+     "a": "例子有 Mercedes C200 W205 的 AIRMATIC 停用与编码，以及 VW Passat 的 DCC 编程。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我想询问我的车做编码或仪表维修的事。",
+   "schema_name": "汽车编码与仪表板维修",
+   "schema_desc": "士古来修车厂提供汽车编码、仪表板更换、仪表维修与加装。"
+  },
+  "gearbox-overhaul-skudai": {
+   "title": "士古来 变速箱 大修 | Taman Industri Jaya",
+   "meta": "士古来 变速箱 大修，涵盖 Lexus、Hyundai、BMW 和 CVT 车型：分动箱重建、轴承与离合器片，欢迎 WhatsApp 告诉我们车型。",
+   "h1": "士古来 变速箱 大修",
+   "nav": "变速箱大修",
+   "tile": "变速箱、CVT 与分动箱大修",
+   "kicker": "自2010年处理变速箱与分动箱",
+   "intro": [
+    "我们大修变速箱、CVT 总成和分动箱。我们的修车厂位于 17, Jalan Hang Lekir 12, Taman Industri Jaya, 士古来。",
+    "我们拆开总成、检查零件，并让您看到我们发现的问题。"
+   ],
+   "sections": [
+    {
+     "h2": "我们做过的工作",
+     "paras": [
+      "我们的变速箱工作涵盖许多车型。"
+     ],
+     "bullets": [
+      "Lexus GS300 (GRS190)",
+      "Hyundai Sonata",
+      "BMW X5 和 X6 分动箱重建"
+     ],
+     "media": null
+    },
+    {
+     "h2": "CVT 轴承",
+     "paras": [
+      "在一台 CVT K114 上，我们处理了终传齿轮轴承。照片里是 Koyo 轴承。"
+     ],
+     "bullets": [],
+     "media": "g07"
+    },
+    {
+     "h2": "摩擦片",
+     "paras": [
+      "我们对比 OEM 与原装摩擦片，让您看到差别。"
+     ],
+     "bullets": [],
+     "media": "g06"
+    },
+    {
+     "h2": "离合器片磨损",
+     "paras": [
+      "我们检查离合器片的磨损情况。"
+     ],
+     "bullets": [],
+     "media": "w05"
+    }
+   ],
+   "faqs": [
+    {
+     "q": "你们重建 BMW 分动箱吗？",
+     "a": "是的。我们做过 BMW X5 和 X6 的分动箱重建。"
+    },
+    {
+     "q": "可以处理 CVT 变速箱吗？",
+     "a": "可以。我们处理过 CVT K114 的终传齿轮轴承。"
+    },
+    {
+     "q": "你们做过哪些车的变速箱工作？",
+     "a": "例子有 Lexus GS300 (GRS190)、Hyundai Sonata，以及 BMW X5 和 X6。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我想询问我的车做变速箱大修的事。",
+   "schema_name": "变速箱大修",
+   "schema_desc": "士古来修车厂提供变速箱、CVT 与分动箱大修。"
+  },
+  "car-diagnostic-skudai": {
+   "title": "士古来 电脑诊断 故障灯 | 2010年起",
+   "meta": "士古来 电脑诊断 故障灯，包括电脑扫描、ABS 泵维修与电子故障排除，欢迎 WhatsApp 传仪表板照片给我们。",
+   "h1": "士古来 电脑诊断 故障灯",
+   "nav": "电脑诊断",
+   "tile": "电脑诊断与故障灯维修",
+   "kicker": "电脑诊断与电子故障排除",
+   "intro": [
+    "我们为故障灯与各种故障做电脑诊断和电子故障排除。我们的修车厂位于 17, Jalan Hang Lekir 12, Taman Industri Jaya, 士古来。",
+    "我们先找出原因，再进行修理。"
+   ],
+   "sections": [
+    {
+     "h2": "故障灯",
+     "paras": [
+      "仪表板上亮起的警告灯需要好好检查。我们为车子扫描并追查故障。"
+     ],
+     "bullets": [],
+     "media": "w01"
+    },
+    {
+     "h2": "ABS 泵与模块",
+     "paras": [
+      "我们维修 ABS 泵与模块。一位评论者写到他的 Honda Shuttle：\"Great service and turnaround in 1 for replacing ABS pump failure that had been causing dashboard indicators kept on lit up.\""
+     ],
+     "bullets": [
+      "VW Golf ABS 泵维修",
+      "Honda Shuttle ABS 泵更换"
+     ],
+     "media": null
+    },
+    {
+     "h2": "其他工作",
+     "paras": [
+      "我们追查并修好的其他故障。"
+     ],
+     "bullets": [
+      "Honda Civic 烟雾漏气测试",
+      "Peugeot 308 故障码 P0016",
+      "Ford Focus 方向盘锁",
+      "VW Beetle CD 屏幕更换"
+     ],
+     "media": null
+    }
+   ],
+   "faqs": [
+    {
+     "q": "可以读取我的故障灯吗？",
+     "a": "可以。我们为故障灯做电脑诊断和电子故障排除。"
+    },
+    {
+     "q": "你们维修 ABS 泵吗？",
+     "a": "是的。我们维修 ABS 泵与模块，包括 VW Golf。"
+    },
+    {
+     "q": "你们做烟雾漏气测试吗？",
+     "a": "做的。我们为一辆 Honda Civic 做过烟雾漏气检测。"
+    },
+    {
+     "q": "可以先传故障灯的照片吗？",
+     "a": "可以。用 WhatsApp 传来仪表板的照片和您的车型。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我的车有故障灯亮起，想做电脑诊断。",
+   "schema_name": "汽车电脑诊断",
+   "schema_desc": "士古来修车厂为故障灯与各种故障提供电脑诊断和电子故障排除。"
+  },
+  "car-service-skudai": {
+   "title": "士古来 汽车保养 | Taman Industri Jaya",
+   "meta": "士古来 汽车保养，包括机油、变速箱油、刹车、电池、轮胎检查、避震器与油电车保养，可用 AhaPay 分期付款，欢迎 WhatsApp 预约。",
+   "h1": "士古来 汽车保养",
+   "nav": "汽车保养",
+   "tile": "机油、刹车、电池、避震器与全面保养",
+   "kicker": "亚洲车与欧洲车的定期保养",
+   "intro": [
+    "我们做汽车保养与维护，从换机油到全面保养。我们的修车厂位于 17, Jalan Hang Lekir 12, Taman Industri Jaya, 士古来。",
+    "可用 AhaPay 分期付款。"
+   ],
+   "sections": [
+    {
+     "h2": "更换机油",
+     "paras": [
+      "我们建议的机油更换周期为 5,000 至 10,000 km。变速箱油的建议周期为每 20,000 至 40,000 km。"
+     ],
+     "bullets": [
+      "机油",
+      "变速箱油"
+     ],
+     "media": null
+    },
+    {
+     "h2": "全面保养",
+     "paras": [
+      "我们做过 Toyota Alphard、Toyota Camry ACV30 和 Ford Raptor 的全面保养。"
+     ],
+     "bullets": [
+      "刹车保养",
+      "电池保养",
+      "轮胎检查"
+     ],
+     "media": "w02"
+    },
+    {
+     "h2": "悬吊系统",
+     "paras": [
+      "我们更换避震器，例如 Toyota Altis 的避震器，也更换下摆臂。"
+     ],
+     "bullets": [
+      "避震器",
+      "下摆臂"
+     ],
+     "media": null
+    },
+    {
+     "h2": "油电车与冷气",
+     "paras": [
+      "我们做油电车维护与油电车电池保养。冷气也在我们的服务清单上。"
+     ],
+     "bullets": [
+      "油电车维护",
+      "油电车电池保养",
+      "冷气"
+     ],
+     "media": null
+    }
+   ],
+   "faqs": [
+    {
+     "q": "机油多久换一次？",
+     "a": "我们建议的周期是 5,000 至 10,000 km。"
+    },
+    {
+     "q": "变速箱油多久换一次？",
+     "a": "我们建议的周期是每 20,000 至 40,000 km。"
+    },
+    {
+     "q": "你们保养油电车吗？",
+     "a": "是的。我们做油电车维护与油电车电池保养。"
+    },
+    {
+     "q": "可以分期付款吗？",
+     "a": "可以。我们接受 AhaPay 分期付款。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我想为我的车预约保养。",
+   "schema_name": "汽车保养与维护",
+   "schema_desc": "士古来修车厂提供汽车保养与维护，包括换机油、刹车、电池、避震器与油电车保养。"
+  }
+ },
+ "areas": {
+  "taman-industri-jaya-nusa-bestari-selesa-jaya": {
+   "title": "Taman Industri Jaya 附近修车厂 | Sheng Heng",
+   "meta": "Taman Industri Jaya、Nusa Bestari 和 Selesa Jaya（士古来）附近修车厂，邻近车主可直接到访，星期一至星期六营业，来之前欢迎先 WhatsApp 我们。",
+   "h1": "Taman Industri Jaya 与 Nusa Bestari 附近修车厂",
+   "nav": "Taman Industri Jaya 与 Nusa Bestari",
+   "intro": [
+    "我们就在 Taman Industri Jaya，如果您住在隔壁，距离约 0.7 km。从 17 Jalan Hang Lekir 12 起算（直线距离），Taman Nusa Bestari 约 1.4 km，Taman Selesa Jaya, Skudai Baru 约 1.5 km。",
+    "这一带的车主会直接前来做保养、诊断和快速检查。"
+   ],
+   "setting": [
+    "我们是您的邻居。修车厂位于 Jalan Hang Lekir，靠近 Jalan Bistari 和 Jalan Skudai。",
+    "许多附近的客户直接开车过来。请先 WhatsApp 我们，我们会告诉您什么时候来。"
+   ],
+   "why": [
+    "对邻近的车主来说，定期保养与故障灯检查最重要。机油、刹车、电池和电脑扫描都能很快预约。"
+   ],
+   "faqs": [
+    {
+     "q": "修车厂离 Taman Nusa Bestari 有多远？",
+     "a": "Taman Nusa Bestari 距离我们位于 Jalan Hang Lekir 12, Taman Industri Jaya 的修车厂，直线距离约 1.4 km。"
+    },
+    {
+     "q": "可以先用 WhatsApp 传故障灯的照片吗？",
+     "a": "可以。用 WhatsApp 传来故障灯的照片和您的车型，我们会告诉您下一步该怎么做。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我在 Taman Industri Jaya，可以把车开过去吗？"
+  },
+  "taman-universiti-mutiara-rini-lima-kedai": {
+   "title": "Taman Universiti 附近修车厂 | Sheng Heng",
+   "meta": "Taman Universiti、Mutiara Rini、Lima Kedai 和 UTM 士古来家庭的修车厂，提供保养与诊断，欢迎 WhatsApp 我们预约到访。",
+   "h1": "Taman Universiti 与 UTM 附近修车厂",
+   "nav": "Taman Universiti 与 Mutiara Rini",
+   "intro": [
+    "从 17 Jalan Hang Lekir 12 起算（直线距离），Mutiara Rini 和 Lima Kedai 约 2.7 km。Taman Universiti 约 4.4 km，UTM 士古来约 6.6 km。",
+    "这一带的车主会把家用车开来做定期保养。"
+   ],
+   "setting": [
+    "这是士古来的学生与家庭社区。Jalan Pendidikan 和 Jalan Utama 每天有上学与校园的车流，UTM 校园就在附近。",
+    "家用车常跑短途。刹车、轮胎和电池在这种使用情况下会磨损。"
+   ],
+   "why": [
+    "对家用车来说，定期保养、刹车与电池检查和轮胎检查能让车子保持待命。如果故障灯亮起，我们会为车子扫描。"
+   ],
+   "faqs": [
+    {
+     "q": "修车厂离 Taman Universiti 有多远？",
+     "a": "Taman Universiti 距离 Jalan Hang Lekir 12, Taman Industri Jaya，直线距离约 4.4 km。"
+    },
+    {
+     "q": "可以先用 WhatsApp 传故障灯的照片吗？",
+     "a": "可以。用 WhatsApp 传来故障灯的照片和您的车型，我们会告诉您下一步该怎么做。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我在 Taman Universiti，可以把车开过去吗？"
+  },
+  "tun-aminah-sutera-utama-impian-emas": {
+   "title": "Tun Aminah, Sutera Utama 附近修车厂 | Sheng Heng",
+   "meta": "Taman Ungku Tun Aminah、Sutera Utama 和 Impian Emas（士古来）的修车厂，提供保养与诊断，星期一至星期六营业，欢迎 WhatsApp 预约。",
+   "h1": "Tun Aminah 与 Sutera Utama 附近修车厂",
+   "nav": "Tun Aminah 与 Sutera Utama",
+   "intro": [
+    "从 17 Jalan Hang Lekir 12 起算（直线距离），Taman Ungku Tun Aminah 约 3.2 km。Taman Sutera Utama 约 3.6 km，Taman Impian Emas 约 6.7 km。",
+    "这一带的车主每天都用车。"
+   ],
+   "setting": [
+    "这些是 Jalan Bentara 和 Jalan Sutera 一带的住宅区，Lebuhraya Skudai 就在附近，方便每天通勤。",
+    "高速公路行驶会持续造成磨损。机油、变速箱油和刹车都很重要。"
+   ],
+   "why": [
+    "对通勤的车主，我们建议按我们建议的周期定期保养，并检查刹车与电池。故障灯亮起时，电脑扫描会有帮助。"
+   ],
+   "faqs": [
+    {
+     "q": "修车厂离 Taman Sutera Utama 有多远？",
+     "a": "Taman Sutera Utama 距离 Jalan Hang Lekir 12, Taman Industri Jaya，直线距离约 3.6 km。"
+    },
+    {
+     "q": "可以先用 WhatsApp 传故障灯的照片吗？",
+     "a": "可以。用 WhatsApp 传来故障灯的照片和您的车型，我们会告诉您下一步该怎么做。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我在 Taman Sutera Utama，可以把车开过去吗？"
+  },
+  "bukit-indah-perling": {
+   "title": "Bukit Indah 与 Perling 附近修车厂 | Sheng Heng",
+   "meta": "Bukit Indah 与 Taman Perling 附近修车厂，离士古来不远，提供保养、诊断与编码，欢迎 WhatsApp 我们预约到访。",
+   "h1": "Bukit Indah 与 Perling 附近修车厂",
+   "nav": "Bukit Indah 与 Perling",
+   "intro": [
+    "从 17 Jalan Hang Lekir 12 起算（直线距离），Bukit Indah 约 3.0 km。Taman Perling 约 4.6 km。",
+    "这一带的车主除了日常用车，也会开来较新的车和欧洲车。"
+   ],
+   "setting": [
+    "Bukit Indah 是繁忙的购物区，围绕着 Jalan Indah 和 AEON Bukit Indah。Taman Perling 沿着 Jalan Persisiran Perling。",
+    "购物与接送孩子上学让车子经常使用。"
+   ],
+   "why": [
+    "较新的车通常配有驾驶辅助系统。如果换挡风玻璃后出现警告，我们做 ADAS 校准。我们也保养欧洲车。"
+   ],
+   "faqs": [
+    {
+     "q": "修车厂离 Bukit Indah 有多远？",
+     "a": "Bukit Indah 距离 Jalan Hang Lekir 12, Taman Industri Jaya，直线距离约 3.0 km。"
+    },
+    {
+     "q": "可以先用 WhatsApp 传故障灯的照片吗？",
+     "a": "可以。用 WhatsApp 传来故障灯的照片和您的车型，我们会告诉您下一步该怎么做。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我在 Bukit Indah，可以把车开过去吗？"
+  },
+  "iskandar-puteri-medini-gelang-patah": {
+   "title": "依斯干达公主城 Medini 附近修车厂 | Sheng Heng",
+   "meta": "依斯干达公主城 (Iskandar Puteri)、Gelang Patah 和 Medini 车主的修车厂，提供 ADAS、编码、诊断与保养，出发前欢迎先 WhatsApp 我们。",
+   "h1": "依斯干达公主城 (Iskandar Puteri) 与 Medini 修车厂",
+   "nav": "Iskandar Puteri 与 Medini",
+   "intro": [
+    "从 17 Jalan Hang Lekir 12 起算（直线距离），Iskandar Puteri 约 6.1 km。Gelang Patah 约 8.2 km，Medini 约 9.9 km。",
+    "这一带的车主会开来电子配备较多的新车。"
+   ],
+   "setting": [
+    "这是柔佛的新市镇区域。许多车主走 Lebuhraya Iskandar 和第二通道走廊。Medini 与 Gelang Patah 市镇属于同一区域。",
+    "这里的新车通常配有摄像头、雷达和编码功能。"
+   ],
+   "why": [
+    "新车很适合我们的 ADAS 校准、汽车编码和电脑诊断工作。我们也做欧洲车保养。"
+   ],
+   "faqs": [
+    {
+     "q": "修车厂离 Iskandar Puteri 有多远？",
+     "a": "Iskandar Puteri 距离 Jalan Hang Lekir 12, Taman Industri Jaya，直线距离约 6.1 km。"
+    },
+    {
+     "q": "可以先用 WhatsApp 传故障灯的照片吗？",
+     "a": "可以。用 WhatsApp 传来故障灯的照片和您的车型，我们会告诉您下一步该怎么做。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我在 Iskandar Puteri，可以把车开过去吗？"
+  },
+  "tampoi-kempas-larkin": {
+   "title": "Tampoi, Kempas, Larkin 附近修车厂 | Sheng Heng",
+   "meta": "淡杯 (Tampoi)、Kempas、Taman Damansara Aliff 和拉金 (Larkin) 车主的修车厂，提供保养、变速箱与诊断，来之前欢迎 WhatsApp 我们。",
+   "h1": "淡杯 (Tampoi)、Kempas 与拉金 (Larkin) 附近修车厂",
+   "nav": "Tampoi, Kempas 与 Larkin",
+   "intro": [
+    "从 17 Jalan Hang Lekir 12 起算（直线距离），Tampoi 约 6.8 km。Kempas 约 7.8 km，Taman Damansara Aliff 约 9.1 km，Larkin 约 11.1 km。",
+    "这一带的车主来自士古来靠市区的一侧。"
+   ],
+   "setting": [
+    "士古来靠市区的一侧，Jalan Tampoi、Jalan Kempas Lama 和 Larkin 一带满是通勤的人。这里的车子经常走走停停。",
+    "走走停停的用车方式会磨损变速箱、刹车和离合器。"
+   ],
+   "why": [
+    "变速箱大修、离合器片检查、刹车保养和电脑扫描，适合市区一侧的通勤车主。"
+   ],
+   "faqs": [
+    {
+     "q": "修车厂离 Tampoi 有多远？",
+     "a": "Tampoi 距离 Jalan Hang Lekir 12, Taman Industri Jaya，直线距离约 6.8 km。"
+    },
+    {
+     "q": "可以先用 WhatsApp 传故障灯的照片吗？",
+     "a": "可以。用 WhatsApp 传来故障灯的照片和您的车型，我们会告诉您下一步该怎么做。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我在 Tampoi，可以把车开过去吗？"
+  },
+  "senai-kangkar-pulai-sri-pulai": {
+   "title": "Senai, Kangkar Pulai 附近修车厂 | Sheng Heng",
+   "meta": "Taman Sri Pulai、Kangkar Pulai 和先达 (Senai) 车主的修车厂，提供保养、诊断与变速箱工作，开车过来之前欢迎先 WhatsApp 我们。",
+   "h1": "先达 (Senai)、Kangkar Pulai 与 Sri Pulai 附近修车厂",
+   "nav": "Senai, Kangkar Pulai 与 Sri Pulai",
+   "intro": [
+    "从 17 Jalan Hang Lekir 12 起算（直线距离），Taman Sri Pulai 约 7.4 km。Kangkar Pulai 约 8.5 km，Senai 约 11.2 km。",
+    "这一带的车主每天往往要跑更远的路。"
+   ],
+   "setting": [
+    "Jalan Skudai-Kulai 路线连接 Kangkar Pulai、Taman Sri Pulai 与先达市镇，那里有机场和工业区。",
+    "每天跑更远的路，意味着更多次换机油，也有更多磨损。"
+   ],
+   "why": [
+    "对长途用车来说，定期更换机油与变速箱油、检查刹车与轮胎，以及避震器都很重要。我们也做电脑诊断。"
+   ],
+   "faqs": [
+    {
+     "q": "修车厂离 Senai 有多远？",
+     "a": "Senai 距离 Jalan Hang Lekir 12, Taman Industri Jaya，直线距离约 11.2 km。"
+    },
+    {
+     "q": "可以先用 WhatsApp 传故障灯的照片吗？",
+     "a": "可以。用 WhatsApp 传来故障灯的照片和您的车型，我们会告诉您下一步该怎么做。"
+    }
+   ],
+   "wa": "你好 Sheng Heng，我在 Senai，可以把车开过去吗？"
+  }
+ },
+ "pages": {
+  "about": {
+   "title": "关于 Sheng Heng Auto Service | 士古来, 2010年起",
+   "meta": "Sheng Heng Auto Service Centre 位于士古来 Taman Industri Jaya 的 Jalan Hang Lekir 12，自2010年营业，欢迎 WhatsApp Mr. Yaw 询问您的车子。",
+   "h1": "关于 Sheng Heng Auto Service Centre",
+   "kicker": "自2010年营业的修车厂。Make The Quality.",
+   "intro": [
+    "Sheng Heng Auto Service Centre 是柔佛士古来的一间修车厂。我们的修车厂自2010年起营业。",
+    "您可以在 17, Jalan Hang Lekir 12, Taman Industri Jaya, 81300 士古来 找到我们。"
+   ],
+   "sections": [
+    {
+     "h2": "我们的修车厂",
+     "paras": [
+      "我们在 Taman Industri Jaya 的同一个地点营业。我们的口号是 Make The Quality。"
+     ],
+     "bullets": [],
+     "media": "h01"
+    },
+    {
+     "h2": "Mr. Yaw",
+     "paras": [
+      "Mr. Yaw 是我们的联络人。请用 WhatsApp 告诉他您的车型和问题，有照片的话也一并附上。"
+     ],
+     "bullets": [],
+     "media": null
+    },
+    {
+     "h2": "我们做的工作",
+     "paras": [
+      "我们做保养、诊断和电子工作，也做变速箱与引擎的工作。"
+     ],
+     "bullets": [
+      "汽车保养与维护",
+      "电脑诊断",
+      "ECU 维修、编程与编码",
+      "智能钥匙编程",
+      "ADAS 校准",
+      "仪表板与编码",
+      "变速箱与分动箱大修",
+      "油电车维护"
+     ],
+     "media": null
+    },
+    {
+     "h2": "车厂品牌",
+     "paras": [
+      "欧洲品牌：BMW、Mercedes-Benz、Porsche、Volkswagen、MINI 和 Peugeot。亚洲品牌：Toyota、Lexus、Honda、Nissan、Hyundai 和 Ford。"
+     ],
+     "bullets": [],
+     "media": null
+    },
+    {
+     "h2": "营业时间与公司",
+     "paras": [
+      "我们星期一至星期六营业，上午9:00至下午6:00。星期日休息。",
+      "公司：Sheng Heng Auto Service (M) Sdn Bhd, SSM 202401053168 (1599010-M)。"
+     ],
+     "bullets": [],
+     "media": null
+    }
+   ]
+  },
+  "contact": {
+   "title": "联络 Sheng Heng Auto Service | 士古来",
+   "meta": "联络位于士古来 Taman Industri Jaya 的 Jalan Hang Lekir 12 的 Sheng Heng Auto Service Centre，欢迎 WhatsApp Mr. Yaw，或在星期一至星期六到访。",
+   "h1": "联络 Sheng Heng Auto Service",
+   "kicker": "先 WhatsApp，再到访",
+   "intro": [
+    "请用 WhatsApp 告诉 Mr. Yaw 您的车型和问题。附上故障灯或零件的照片会更有帮助。",
+    "我们的修车厂位于 17, Jalan Hang Lekir 12, Taman Industri Jaya, 士古来。星期一至星期六营业。"
+   ]
+  },
+  "articles": {
+   "title": "修车厂文章 | Sheng Heng, 士古来",
+   "meta": "Sheng Heng Auto Service Centre（士古来）的文章，取材自修车厂的真实工作，即将推出，如有车子的问题欢迎 WhatsApp 我们。",
+   "h1": "修车厂文章",
+   "intro": [
+    "文章即将推出。",
+    "我们会根据士古来修车厂的真实工作来撰写。在此期间，欢迎 WhatsApp 我们您的车子问题。"
+   ]
+  },
+  "home": {
+   "title": "士古来修车厂 | Sheng Heng, 2010年起",
+   "meta": "士古来修车厂，处理欧洲车与亚洲车，自2010年提供 ADAS、ECU、编码、变速箱与保养，欢迎 WhatsApp 我们，并可用 AhaPay 分期付款。",
+   "h1": "士古来修车厂，欧洲车与亚洲车皆可",
+   "kicker": "自2010年提供 ADAS、ECU、编码与变速箱服务",
+   "faqs": [
+    {
+     "q": "Sheng Heng Auto Service Centre 在哪里？",
+     "a": "17, Jalan Hang Lekir 12, Taman Industri Jaya, 81300 士古来, 柔佛。"
+    },
+    {
+     "q": "你们的营业时间是什么时候？",
+     "a": "星期一至星期六，上午9:00至下午6:00。星期日休息。"
+    },
+    {
+     "q": "你们做哪些工作？",
+     "a": "汽车保养、电脑诊断、ECU 维修与编程、智能钥匙、ADAS 校准、编码、变速箱大修与油电车维护。"
+    },
+    {
+     "q": "可以分期付款吗？",
+     "a": "可以。可用 AhaPay 分期付款。"
+    }
+   ]
+  }
+ }
+}
