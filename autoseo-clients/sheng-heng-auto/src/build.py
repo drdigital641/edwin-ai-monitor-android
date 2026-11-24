@@ -342,7 +342,7 @@ def main():
                                           'icons': [{'src': u('images/brand/icon-sh-192.png'), 'sizes': '192x192', 'type': 'image/png'}]}, indent=1))
     # review helper
     import review_helper
-    write('review.html', review_helper.render(NOINDEX))
+    write('review.html', review_helper.render(True))  # review helper always noindex (standing rule)
     n = sum(1 for r, _, fs in os.walk(DIST) for f in fs if f.endswith('.html'))
     print('built', n, 'html files into', os.path.abspath(DIST))
 

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://autoseo.my/preview/sheng-heng-auto/sitemap.xml
+Sitemap: https://shenghengauto.my/sitemap.xml

@@ -258,7 +258,7 @@ def ld(L, *nodes):
 # ---------------------------------------------------------------- head
 def head(L, path, title, meta, ldjson, preload_hero=False):
     c = C[L['code']]
-    robots = '<meta name="robots" content="noindex, nofollow">\n' if NOINDEX else ''
+    robots = '<meta name="robots" content="noindex, nofollow">\n' if NOINDEX else '<meta name="robots" content="index, follow">\n'
     alt_loc = ''.join(f'\n<meta property="og:locale:alternate" content="{o["og"]}">' for o in LANGS if o is not L)
     pre = ''
     if preload_hero:
@@ -314,7 +314,7 @@ def logo_img(L, h=46):
 
 def header(L, path):
     c = C[L['code']]
-    desk = ''.join(f'<a href="{lp(L, p)}"{" aria-current=\"page\"" if p == path else ""}>{E(n)}</a>' for n, p in nav_items(L) if p not in ('', 'articles/'))
+    desk = ''.join(f'<a href="{lp(L, p)}"{" aria-current=\"page\"" if p == path else ""}>{E(n)}</a>' for n, p in nav_items(L) if p != '')
     return f'''<a class="skip" href="#main">{E(ui(L, "skip"))}</a>
 <header class="hd"><div class="wrap">
 <a class="logo" href="{lp(L, "")}">{logo_img(L)}</a>

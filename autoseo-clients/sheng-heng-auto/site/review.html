@@ -6,7 +6,7 @@
 <title>Leave a Google Review | Sheng Heng Auto Service Centre</title>
 <meta name="description" content="Write a short Google review for Sheng Heng Auto Service Centre in Skudai in a few taps.">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" type="image/png" sizes="32x32" href="/preview/sheng-heng-auto/images/brand/icon-sh-32.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/brand/icon-sh-32.png">
 <style>
 :root{--royal:#1F4FA8;--deep:#14306B;--red:#E0262B;--ink:#0E1B38;--slate:#4E5C78;--ice:#F3F6FB;--line:#D6DEEA;--go:#1A8D46}
 *{box-sizing:border-box}html{overflow-x:clip}
@@ -42,7 +42,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(-
 </style>
 </head>
 <body>
-<header class="top"><a href="/preview/sheng-heng-auto/" id="home"><img src="/preview/sheng-heng-auto/images/brand/logo-sheng-heng-auto-480.webp" width="480" height="372" alt="Sheng Heng Auto Service logo"></a><a class="back" id="back" href="/preview/sheng-heng-auto/">Back to site</a></header>
+<header class="top"><a href="/" id="home"><img src="/images/brand/logo-sheng-heng-auto-480.webp" width="480" height="372" alt="Sheng Heng Auto Service logo"></a><a class="back" id="back" href="/">Back to site</a></header>
 <main><div class="card">
 <h1 id="h1">Leave a Google Review</h1>
 <h2 id="rate">Your rating</h2>
@@ -73,7 +73,7 @@ var $=function(i){return document.getElementById(i)};
 document.title=S.title+' | '+B.name;
 $('h1').textContent=S.title+' — '+B.name;$('rate').textContent=S.rate;$('chipsH').textContent=S.chips;$('optL').textContent=S.opt;
 $('one').placeholder=S.ph;$('gen').textContent=S.gen;$('again').textContent=S.copy;$('open').textContent=S.open;$('note').textContent=S.note;
-$('back').textContent=S.back;var home='/preview/sheng-heng-auto/'+S.home.replace('index.html','');$('back').href=home;$('home').href=home;
+$('back').textContent=S.back;var home='/'+S.home.replace('index.html','');$('back').href=home;$('home').href=home;
 $('open').href=B.googleReviewUrl;
 var star='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.8 2.8 5.8 6.4.9-4.6 4.5 1.1 6.3L12 17.3l-5.7 3 1.1-6.3-4.6-4.5 6.4-.9z"/></svg>',rating=5;
 for(var i=1;i<=5;i++){(function(n){var b=document.createElement('button');b.type='button';b.setAttribute('role','radio');b.setAttribute('aria-label',n+' '+S.stars);b.innerHTML=star;b.onclick=function(){rating=n;paint()};$('stars').appendChild(b)})(i)}

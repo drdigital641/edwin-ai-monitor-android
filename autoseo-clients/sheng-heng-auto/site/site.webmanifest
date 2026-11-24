@@ -1,13 +1,13 @@
 {
  "name": "Sheng Heng Auto Service Centre",
  "short_name": "Sheng Heng",
- "start_url": "/preview/sheng-heng-auto/",
+ "start_url": "/",
  "display": "standalone",
  "background_color": "#ffffff",
  "theme_color": "#1F4FA8",
  "icons": [
   {
-   "src": "/preview/sheng-heng-auto/images/brand/icon-sh-192.png",
+   "src": "/images/brand/icon-sh-192.png",
    "sizes": "192x192",
    "type": "image/png"
   }
