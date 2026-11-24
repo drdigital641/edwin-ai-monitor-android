@@ -333,3 +333,4 @@ a.chip:hover{border-color:var(--royal);color:var(--royal)}
 }
 .adas .ctas{grid-template-columns:1fr}
 @media(min-width:1024px){.spec h1{font-size:clamp(2.4rem,3.4vw,3.1rem)}}
+.nb{white-space:nowrap}

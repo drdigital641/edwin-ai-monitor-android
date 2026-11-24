@@ -38,6 +38,13 @@ def ticks(items):
 
 
 # ---------------------------------------------------------------- home
+def nb(h):
+    """Keep CJK words together in the home H1 (never break inside 欧洲车 / 亚洲车)."""
+    for w in ('欧洲车', '亚洲车', '修车厂'):
+        h = h.replace(w, f'<span class="nb">{w}</span>')
+    return h
+
+
 def page_home(L):
     c, h = C[L['code']], C[L['code']]['home']
     pg = c['pages']['home']
@@ -57,7 +64,7 @@ def page_home(L):
 <div class="frame stripe">{img(L, 'h01', '(min-width:1024px) 640px, 100vw', eager=True)}</div>
 <div>
 <p class="est"><b>Est. 2010</b> {E(ui(L, 'tagline'))}</p>
-<h1>{E(pg['h1'])}</h1>
+<h1>{nb(E(pg['h1']))}</h1>
 <p class="kick">{E(pg['kicker'])}</p>
 <div class="ctas">{wa_a(L, c['wa_home'], 'whatsapp_home_hero', label=ui(L, 'wa'))}{call_a(L, 'call_home_hero')}</div>
 <ul class="readout" aria-label="{E(ui(L, 'nav_services'))}">{readout}</ul>

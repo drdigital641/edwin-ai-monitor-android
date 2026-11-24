@@ -99,7 +99,7 @@ M = {
     'g03': ('gallery/g03-b48-valve-seal', [(480, 600), (739, 924)], 'r45', '50% 50%'),
     'g04': ('gallery/g04-m-steering-wheel', [(480, 600), (800, 1000)], 'r45', '50% 50%'),
     'g05': ('gallery/g05-bmw-steering-wheel-before', [(480, 600), (800, 1000)], 'r45', '50% 50%'),
-    'g06': ('gallery/g06-gearbox-oem-vs-ori-plates', [(480, 600), (800, 1000)], 'r45', '50% 50%'),
+    'g06': ('gallery/g06-gearbox-oem-vs-ori-plates', [(480, 600), (800, 1000)], 'r45', '50% 0%'),
     'g07': ('gallery/g07-gearbox-final-gear-bearings', [(480, 600), (800, 1000)], 'r45', '50% 50%'),
     'w01': ('wide/w01-pre-collision-warning', [(800, 450), (1280, 720)], 'r169', '50% 50%'),
     'w02': ('wide/w02-alphard-full-service', [(800, 450), (1280, 720)], 'r169', '50% 50%'),
@@ -114,7 +114,7 @@ M = {
 ORDER = ['continental-car-specialist-skudai', 'adas-calibration-skudai', 'ecu-repair-programming-skudai', 'car-key-immobilizer-skudai',
          'car-coding-instrument-cluster-skudai', 'gearbox-overhaul-skudai', 'car-diagnostic-skudai', 'car-service-skudai']
 THUMB = {'continental-car-specialist-skudai': 'g02', 'adas-calibration-skudai': 'g01', 'ecu-repair-programming-skudai': 'p02a',
-         'car-key-immobilizer-skudai': 'g05', 'car-coding-instrument-cluster-skudai': 'g04', 'gearbox-overhaul-skudai': 'g06',
+         'car-key-immobilizer-skudai': 'p01a', 'car-coding-instrument-cluster-skudai': 'g04', 'gearbox-overhaul-skudai': 'g06',
          'car-diagnostic-skudai': 'w01', 'car-service-skudai': 'w02'}
 SHORT = {'continental-car-specialist-skudai': 'continental', 'adas-calibration-skudai': 'adas', 'ecu-repair-programming-skudai': 'ecu',
          'car-key-immobilizer-skudai': 'key', 'car-coding-instrument-cluster-skudai': 'coding', 'gearbox-overhaul-skudai': 'gearbox',
