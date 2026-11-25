@@ -1,0 +1,54 @@
+{
+  "job": "biy-home-store-preview-v1",
+  "site": "autoseo.my",
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 1253
+    },
+    {
+      "file": "blueprint.md",
+      "bytes": 18880
+    },
+    {
+      "file": "brands.json",
+      "bytes": 7064
+    },
+    {
+      "file": "categories.json",
+      "bytes": 1872
+    },
+    {
+      "file": "facts.json",
+      "bytes": 9925
+    },
+    {
+      "file": "favicon-512.png",
+      "bytes": 35302,
+      "px": "512x512"
+    },
+    {
+      "file": "keyword-patterns.md",
+      "bytes": 1425
+    },
+    {
+      "file": "logo-mark.png",
+      "bytes": 17204,
+      "px": "593x608"
+    },
+    {
+      "file": "logo-mark.webp",
+      "bytes": 15858,
+      "px": "593x608"
+    },
+    {
+      "file": "og.jpg",
+      "bytes": 49551,
+      "px": "1200x630"
+    },
+    {
+      "file": "products.json",
+      "bytes": 2193
+    }
+  ]
+}

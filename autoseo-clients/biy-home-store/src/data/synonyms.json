@@ -1,0 +1,15 @@
+{
+ "_note": "Search synonyms (EN / MS / ZH). Search only, never shown as page copy.",
+ "category": {
+  "paint-waterproofing": ["paint","cat","cat rumah","cat dinding","kedai cat","waterproofing","kalis air","sealant","coating","油漆","涂料","防水","漆"],
+  "power-tools": ["power tools","drill","gerudi","mesin gerudi","grinder","pengisar","alat kuasa","cordless","电动工具","电钻","磨机"],
+  "hardware": ["hardware","kedai hardware","hand tools","alat tangan","fasteners","bolt","nut","skru","screw","adhesive","gam","五金","五金店","工具","螺丝"],
+  "building-materials": ["building materials","bahan binaan","cement","simen","bricks","bata","brc","kayu","wood","建材","水泥","砖","木材"]
+ },
+ "brand": {
+  "jotun": ["jotun","cat jotun","佐敦"],
+  "nippon-paint": ["nippon","nippon paint","cat nippon","立邦"],
+  "dong-cheng": ["dongcheng","dong cheng","东成"],
+  "bosch": ["bosch","博世"]
+ }
+}

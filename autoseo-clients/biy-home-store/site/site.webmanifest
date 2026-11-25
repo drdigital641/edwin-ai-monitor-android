@@ -1,0 +1,20 @@
+{
+ "name": "BIY Home Store",
+ "short_name": "BIY",
+ "start_url": "/preview/biy-home-store/",
+ "display": "standalone",
+ "background_color": "#FAF6F1",
+ "theme_color": "#2B2B2B",
+ "icons": [
+  {
+   "src": "/preview/biy-home-store/images/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/preview/biy-home-store/images/favicon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}

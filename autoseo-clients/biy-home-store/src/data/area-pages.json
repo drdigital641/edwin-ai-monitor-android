@@ -1,0 +1,11 @@
+{
+ "_note": "Rule A4 area pages (hardware shop <area>, 20 km in Malaysia) from the shared area template autoseo-template/area/area_page.py. Zero pages built on 25 Nov 2026: each area needs at least 2 verified local facts from public map data plus a real reason it is served, and this build environment could not reach OpenStreetMap/Nominatim to verify them. No thin or stub pages.",
+ "areas": [],
+ "held": [
+  {"area": "Bandar Penawar / Desaru side", "branch": "kota-tinggi", "reason": "no verified road/landmark/distance data"},
+  {"area": "Taman Kota Jaya / Kota Tinggi town outskirts", "branch": "kota-tinggi", "reason": "no verified road/landmark/distance data"},
+  {"area": "Pasir Gudang town", "branch": "kota-masai", "reason": "no verified road/landmark/distance data"},
+  {"area": "Masai / Taman Scientex / Permas Jaya", "branch": "kota-masai", "reason": "no verified road/landmark/distance data"},
+  {"area": "Pontian Kechil surroundings / Benut", "branch": "pontian", "reason": "no verified data and no branch coordinates or postcode"}
+ ]
+}

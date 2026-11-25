@@ -1,0 +1,185 @@
+{
+  "_meta": {
+    "client": "BIY Home Store (Kota Tinggi) Sdn Bhd",
+    "slug": "biy-home-store",
+    "brand": "AutoSEO",
+    "country": "MY",
+    "built_on": "2026-11-25",
+    "status": "defaults set by Edwin 25 Nov 10:31pm SGT; client identity and WhatsApp number still to be confirmed by Edwin",
+    "rule": "Use only facts in this file. Anything under unverified_do_not_publish must NOT appear on the site."
+  },
+  "name": "BIY Home Store (Kota Tinggi) Sdn Bhd",
+  "short_name": "BIY Home Store",
+  "meaning_of_BIY": "Build It Yourself (their own mission line, https://www.biyhomestore.com/about-us)",
+  "founded": 2012,
+  "own_site_history_ok_to_use": "Established in 2012. Range widened in 2014 to machinery, commercial hardware components/tools and building materials. Online store since 2020. Kota Masai and Pontian branches opened in 2024. (https://www.biyhomestore.com/about-us)",
+  "tagline_from_own_site": "One-Stop Hardware Solution",
+  "mission_from_own_site": "Create a positive Build It Yourself experience, deliver with quality service and value, and satisfy hardware solution needs of all customers.",
+  "own_site_category_groups": [
+    {
+      "name": "Building Materials",
+      "text": "cement, bricks, BRC metal, wood"
+    },
+    {
+      "name": "Paint & Waterproofing",
+      "text": "paint, waterproofing, sealants, coatings"
+    },
+    {
+      "name": "Hardware",
+      "text": "hand tools, fasteners, bolts, adhesive"
+    }
+  ],
+  "whatsapp": {
+    "display": "012-568 8961",
+    "e164": "+60125688961",
+    "wa_me": "https://wa.me/60125688961",
+    "note": "Edwin default 25 Nov 2026. Seen on the old web store as 'Call/WhatsApp' (6012-5688961) and on the DongCheng dealer page. biyhomestore.com contact bar shows 0125688959 instead. Edwin to confirm which is the enquiry WhatsApp.",
+    "prefill_templates": {
+      "general_en": "Hi BIY Home Store, I'd like to ask about your products. May I check availability?",
+      "product_en": "Hi BIY Home Store, I am interested in {brand} {name}{variant}, SKU {sku}. {url} May I check the latest price and stock availability at {branch}?",
+      "product_no_sku_en": "Hi BIY Home Store, I am interested in {brand} {name}. {url} May I check the latest price and stock availability at {branch}?",
+      "brand_en": "Hi BIY Home Store, I'd like to ask about {brand} products. What do you have in stock at {branch}?",
+      "contractor_en": "Hi BIY Home Store, I am a contractor. I'd like a quotation for: ",
+      "branch_en": "Hi BIY Home Store {branch}, may I check the items I need are available before I come?"
+    },
+    "note_ms_zh": "Localise the same templates into Malay and Simplified Chinese; keep {placeholders}."
+  },
+  "price_mode": "whatsapp_only",
+  "price_mode_note": "Edwin default: no prices anywhere. Show 'WhatsApp for price'. No price in schema (no Offer). Never copy prices from biyhomestore.com or other retailers.",
+  "email": null,
+  "email_note": "biyhomestorekt@gmail.com appears only in a Maps-data mirror, not on biyhomestore.com. Do not publish until Edwin confirms.",
+  "main_phone_for_call_cta": {
+    "display": "012-568 8961",
+    "tel": "+60125688961",
+    "note": "same number as WhatsApp (default)"
+  },
+  "hq_landline": {
+    "display": "07-882 7586",
+    "tel": "+6078827586",
+    "source": "https://www.biyhomestore.multistore3.site-giant.org/ (old store header) and https://www.dongchengmalaysia.com/authorized-dealers/biy-home-storekota-tinggisdn-bhd/ (012-568 8961 only). Landline also in Maps mirror https://exa.ai/library/place/1lqgb3d1gm6. Show on Kota Tinggi HQ page only."
+  },
+  "facebook": "https://www.facebook.com/biyhomestorekt",
+  "branches": [
+    {
+      "id": "kota-tinggi-hq",
+      "slug": "kota-tinggi",
+      "name": "BIY Home Store (Kota Tinggi) HQ",
+      "short": "Kota Tinggi (HQ)",
+      "is_hq": true,
+      "street": "No. 11 & 11A, Jalan Seri Warisan",
+      "postcode": "81900",
+      "city": "Kota Tinggi",
+      "state": "Johor",
+      "country": "Malaysia",
+      "address_line": "No. 11 & 11A, Jalan Seri Warisan, 81900 Kota Tinggi, Johor, Malaysia",
+      "lat": 1.733817,
+      "lng": 103.905026,
+      "coords_source": "https://exa.ai/library/place/1lqgb3d1gm6 (Maps data mirror)",
+      "google_listing_name": "BIY Home Store (Kota Tinggi) Sdn Bhd (JOTUN STUDIO)",
+      "source": "https://www.biyhomestore.com/pages/locate-us",
+      "phone_branch": "07-882 7586"
+    },
+    {
+      "id": "kota-tinggi-jth",
+      "slug": "kota-tinggi-jth",
+      "name": "BIY Home Store (Kota Tinggi) JTH",
+      "short": "Kota Tinggi (JTH)",
+      "is_hq": false,
+      "street": "No. 4-2 & 4-3 (Ground Floor), Jalan Tun Habab",
+      "postcode": "81900",
+      "city": "Kota Tinggi",
+      "state": "Johor",
+      "country": "Malaysia",
+      "address_line": "No. 4-2 & 4-3 (Ground Floor), Jalan Tun Habab, 81900 Kota Tinggi, Johor, Malaysia",
+      "lat": 1.73036,
+      "lng": 103.89932,
+      "coords_source": "https://exa.ai/library/places?ids=1lqgb3d1gm6%2Cql07rq6qfq6",
+      "source": "https://www.biyhomestore.com/pages/locate-us"
+    },
+    {
+      "id": "kota-masai",
+      "slug": "kota-masai",
+      "name": "BIY Home Store (Kota Masai)",
+      "short": "Kota Masai (Pasir Gudang)",
+      "is_hq": false,
+      "street": "No. 22 & 24, Jalan Ekoperniagaan 1, Taman Kota Masai",
+      "postcode": "81700",
+      "city": "Pasir Gudang",
+      "state": "Johor",
+      "country": "Malaysia",
+      "address_line": "No. 22 & 24, Jalan Ekoperniagaan 1, Taman Kota Masai, 81700 Pasir Gudang, Johor, Malaysia",
+      "lat": 1.483562,
+      "lng": 103.937194,
+      "coords_source": "https://exa.ai/library/place/t6wjrskkmdc (Maps data mirror)",
+      "source": "https://www.biyhomestore.com/pages/locate-us",
+      "facebook_page_note": "https://www.facebook.com/p/BIY-Home-Store-Kota-Masai-61557140841368/ shows 'page isn't available right now' - do not link"
+    },
+    {
+      "id": "pontian",
+      "slug": "pontian",
+      "name": "BIY Home Store (Pontian)",
+      "short": "Pontian",
+      "is_hq": false,
+      "street": "No. 72 & 73, Jalan Emas 3, Pusat Perniagaan Kota Emas",
+      "postcode": null,
+      "city": "Pontian",
+      "state": "Johor",
+      "country": "Malaysia",
+      "address_line": "No. 72 & 73, Jalan Emas 3, Pusat Perniagaan Kota Emas, Pontian, Johor, Malaysia",
+      "lat": null,
+      "lng": null,
+      "source": "https://www.biyhomestore.com/pages/locate-us",
+      "note": "biyhomestore.com prints the postcode as '8200' (typo). Publish NO postcode until Edwin confirms (likely 82000). No coordinates captured: use a Google Maps search link by address, do not invent coordinates."
+    }
+  ],
+  "maps_links_rule": "Use https://www.google.com/maps/search/?api=1&query=<url-encoded address_line> for every branch. Do not invent a place ID.",
+  "brands_published": [
+    "jotun",
+    "nippon-paint",
+    "dong-cheng",
+    "bosch"
+  ],
+  "brands_held": {
+    "ici": "ICI (Dulux) is in Edwin's brief but no public source shows BIY stocks it. No ICI page, nav item, schema or text until Edwin confirms. Keep the data row with published:false."
+  },
+  "brands_never_show": [
+    "Makita",
+    "Hiltem",
+    "Stanley",
+    "Anchor",
+    "Riland",
+    "Atlas Copco",
+    "Daihuu"
+  ],
+  "brands_never_show_note": "These appear on the old web store but are NOT in Edwin's brief. Do not mention or build anything for them.",
+  "reviews_rule": "Never publish an overall Google rating or review count (fixed rule 10). Link 'See our 5-star reviews' only if Edwin supplies a Google reviews link; otherwise show no review section.",
+  "unverified_do_not_publish": {
+    "opening_hours": "Maps-mirror only, not first-party: HQ Mon-Sun 9am-7pm; JTH and Kota Masai Mon-Sun 8:30am-6:30pm; Pontian unknown. Do not publish hours or add openingHours schema. Show 'WhatsApp us to confirm today's hours'.",
+    "google_ratings": "4.9 (790) HQ, 4.9 (1,098) Kota Masai, 5.0 (116) JTH per mirror. NEVER publish.",
+    "member_count": "'more than 20,000 members' is the client's own claim but unconfirmed; omit.",
+    "product_count": "'over 24,000 products' is the client's own claim but unconfirmed; omit. Search placeholder must not state a number.",
+    "membership_benefits": "Do not describe member pricing.",
+    "branch_phones": "JTH +60 12-553 8961 and Kota Masai +60 12-863 8852 are Maps-mirror only. Do not publish; use the main WhatsApp for all branches.",
+    "delivery_or_warranty_claims": "None verified. Do not claim delivery, installation, warranties or wholesale pricing."
+  },
+  "evidence_for_brand_claims": {
+    "nippon-paint": "Listed on Nippon Paint Malaysia 'Premium Products Dealer' list (Jan 2026): https://www.nipponpaint.com.my/wp-content/uploads/2026/01/nippon-paint-create-your-most-beautiful-home-participating-dealers-ultra-premium.pdf",
+    "dong-cheng": "Listed as authorised dealer: https://www.dongchengmalaysia.com/authorized-dealers/biy-home-storekota-tinggisdn-bhd/",
+    "jotun": "Kota Tinggi HQ Google listing is named 'BIY Home Store (Kota Tinggi) Sdn Bhd (JOTUN STUDIO)': https://exa.ai/library/place/1lqgb3d1gm6 . Ask Edwin to confirm the Jotun Studio status in writing.",
+    "bosch": "biyhomestore.com 'All Products' listing carried 'BOSCH ANGLE GRINDER (GWS 7-100ET)' and 'BOSCH ELECTRIC DRILL 6MM (GBM 320)' (seen 25 Nov 2026): https://www.biyhomestore.com/special?sg_type_pg=all_products"
+  },
+  "colours": {
+    "brand_orange": "#ED5623",
+    "charcoal": "#2B2B2B",
+    "note": "Orange sampled from the official logo. Palette must be built from shades of this orange + charcoal + a warm neutral; AA contrast."
+  },
+  "logo": {
+    "file": "logo-mark.png / logo-mark.webp",
+    "note": "Official tilted orange rounded square with white 'BIY / HOME STORE' (593x608, transparent corners). Use as-is, do not redraw, recolour or stretch. Roughly square, not a wide wordmark."
+  },
+  "languages": [
+    "en",
+    "ms",
+    "zh-Hans"
+  ]
+}

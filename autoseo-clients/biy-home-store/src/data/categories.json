@@ -1,0 +1,64 @@
+[
+  {
+    "id": "paint-waterproofing",
+    "slug": "paint-waterproofing",
+    "name": "Paint & Waterproofing",
+    "source": "own site group 'Paint & Waterproofing': paint, waterproofing, sealants, coatings (https://www.biyhomestore.com/)",
+    "brands": [
+      "jotun",
+      "nippon-paint"
+    ],
+    "seo_targets": [
+      "kedai cat near me",
+      "kedai cat kota tinggi",
+      "paint shop pasir gudang"
+    ],
+    "icon": "paint-roller",
+    "indexable": true
+  },
+  {
+    "id": "power-tools",
+    "slug": "power-tools",
+    "name": "Power Tools",
+    "source": "Bosch products on biyhomestore.com; DongCheng authorised dealer",
+    "brands": [
+      "bosch",
+      "dong-cheng"
+    ],
+    "seo_targets": [
+      "power tools shop kota tinggi",
+      "hardware shop near me power tools"
+    ],
+    "icon": "drill",
+    "indexable": true
+  },
+  {
+    "id": "hardware",
+    "slug": "hardware",
+    "name": "Hardware & Hand Tools",
+    "source": "own site group 'Hardware': hand tools, fasteners, bolts, adhesive (https://www.biyhomestore.com/)",
+    "brands": [],
+    "seo_targets": [
+      "kedai hardware kota tinggi",
+      "kedai hardware pasir gudang",
+      "kedai hardware pontian"
+    ],
+    "icon": "wrench",
+    "indexable": false,
+    "note": "No branded products verified; page shows the verified text and a WhatsApp enquiry. noindex until real catalogue data arrives."
+  },
+  {
+    "id": "building-materials",
+    "slug": "building-materials",
+    "name": "Building Materials",
+    "source": "own site group 'Building Materials': cement, bricks, BRC metal, wood (https://www.biyhomestore.com/)",
+    "brands": [],
+    "seo_targets": [
+      "building materials supplier kota tinggi",
+      "harga simen (do not show prices)"
+    ],
+    "icon": "bricks",
+    "indexable": false,
+    "note": "As Hardware: noindex until real catalogue data arrives."
+  }
+]

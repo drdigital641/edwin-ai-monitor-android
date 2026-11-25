@@ -1,0 +1,207 @@
+[
+  {
+    "id": "jotun",
+    "slug": "jotun",
+    "name": "Jotun",
+    "published": true,
+    "category": "paint-waterproofing",
+    "intro_facts": [
+      "Jotun is a paint brand carried at BIY Home Store.",
+      "The Kota Tinggi HQ Google listing is named 'JOTUN STUDIO'."
+    ],
+    "evidence_url": "https://exa.ai/library/place/1lqgb3d1gm6",
+    "ranges_source": "https://www.jotun.com/my-en/decorative",
+    "seo_targets": [
+      "kedai cat jotun near me",
+      "kedai cat jotun kota tinggi",
+      "jotun kota tinggi",
+      "harga cat jotun (WhatsApp for price, no price shown)",
+      "jotun majestic"
+    ],
+    "ranges": [
+      {
+        "id": "jotun-majestic-pure-color",
+        "name": "Majestic Pure Color",
+        "type": "Interior paint",
+        "brand_site_note": "Super matt finish (Jotun Malaysia)"
+      },
+      {
+        "id": "jotun-majestic-sense",
+        "name": "Majestic Sense",
+        "type": "Interior paint",
+        "brand_site_note": "Clean Air Technology, odour-less (Jotun Malaysia)"
+      },
+      {
+        "id": "jotun-majestic-true-beauty-matt",
+        "name": "Majestic True Beauty Matt",
+        "type": "Interior paint",
+        "brand_site_note": "Rich matt finish, easy to clean (Jotun Malaysia)"
+      },
+      {
+        "id": "jotun-majestic-true-beauty-sheen",
+        "name": "Majestic True Beauty Sheen",
+        "type": "Interior paint",
+        "brand_site_note": "Sheen finish (Jotun Malaysia)"
+      }
+    ],
+    "ranges_stock_status": "unconfirmed: the range list comes from the Jotun Malaysia site, not from BIY stock. Page must say 'WhatsApp us to check which are in stock at your branch'."
+  },
+  {
+    "id": "nippon-paint",
+    "slug": "nippon-paint",
+    "name": "Nippon Paint",
+    "published": true,
+    "category": "paint-waterproofing",
+    "intro_facts": [
+      "BIY Home Store (Kota Tinggi) is listed on the Nippon Paint Malaysia Premium Products dealer list (January 2026)."
+    ],
+    "evidence_url": "https://www.nipponpaint.com.my/wp-content/uploads/2026/01/nippon-paint-create-your-most-beautiful-home-participating-dealers-ultra-premium.pdf",
+    "ranges_source": "https://www.nipponpaint.com.my/products/ and https://shoponline.nipponpaint.com.my/",
+    "seo_targets": [
+      "kedai cat nippon near me",
+      "nippon paint shop",
+      "harga cat nippon paint (WhatsApp for price)",
+      "nippon weatherbond"
+    ],
+    "ranges": [
+      {
+        "id": "nippon-odourlite-aircare-matt",
+        "name": "Odour-less AirCare Matt",
+        "type": "Interior paint",
+        "brand_site_note": "Nippon Paint Malaysia product list"
+      },
+      {
+        "id": "nippon-odourlite-aircare-sheen",
+        "name": "Odour-less AirCare Sheen",
+        "type": "Interior paint",
+        "brand_site_note": "Nippon Paint Malaysia product list"
+      },
+      {
+        "id": "nippon-weatherbond-ultimate-anti-dirt",
+        "name": "Weatherbond Ultimate Anti-Dirt",
+        "type": "Exterior paint",
+        "brand_site_note": "Nippon Paint Malaysia product list"
+      },
+      {
+        "id": "nippon-spot-less-plus",
+        "name": "Spot-less Plus",
+        "type": "Interior paint",
+        "brand_site_note": "Nippon Paint online store"
+      },
+      {
+        "id": "nippon-vinilex-fresh-plus",
+        "name": "Vinilex Fresh Plus",
+        "type": "Interior paint",
+        "brand_site_note": "Nippon Paint online store"
+      }
+    ],
+    "ranges_stock_status": "unconfirmed: range list is from Nippon Paint Malaysia, not BIY stock."
+  },
+  {
+    "id": "dong-cheng",
+    "slug": "dong-cheng",
+    "name": "Dong Cheng",
+    "display_alt": "DongCheng",
+    "published": true,
+    "category": "power-tools",
+    "intro_facts": [
+      "BIY Home Store (Kota Tinggi) is listed as a DongCheng authorised dealer on DongCheng Malaysia's dealer page."
+    ],
+    "evidence_url": "https://www.dongchengmalaysia.com/authorized-dealers/biy-home-storekota-tinggisdn-bhd/",
+    "ranges_source": "https://www.dongchengmalaysia.com/",
+    "seo_targets": [
+      "dong cheng near me",
+      "dong cheng drill",
+      "dong cheng cordless drill",
+      "dong cheng grinder",
+      "dongcheng dealer kota tinggi"
+    ],
+    "ranges": [
+      {
+        "id": "dongcheng-power-drills",
+        "name": "Power drills",
+        "type": "Power tools",
+        "brand_site_note": "DongCheng Malaysia homepage"
+      },
+      {
+        "id": "dongcheng-cordless-tools",
+        "name": "Cordless tools",
+        "type": "Power tools",
+        "brand_site_note": "Interchangeable battery system (DongCheng Malaysia)"
+      },
+      {
+        "id": "dongcheng-saws",
+        "name": "Saws",
+        "type": "Power tools",
+        "brand_site_note": "DongCheng Malaysia homepage"
+      },
+      {
+        "id": "dongcheng-work-lights",
+        "name": "Work lights",
+        "type": "Power tools",
+        "brand_site_note": "DongCheng Malaysia homepage"
+      },
+      {
+        "id": "dongcheng-cordless-fans",
+        "name": "Cordless fans",
+        "type": "Power tools",
+        "brand_site_note": "DongCheng Malaysia homepage"
+      },
+      {
+        "id": "dongcheng-accessories",
+        "name": "Accessories",
+        "type": "Power tools",
+        "brand_site_note": "DongCheng Malaysia homepage"
+      }
+    ],
+    "ranges_stock_status": "unconfirmed: groups come from the DongCheng Malaysia site, not BIY stock."
+  },
+  {
+    "id": "bosch",
+    "slug": "bosch",
+    "name": "Bosch",
+    "published": true,
+    "category": "power-tools",
+    "intro_facts": [
+      "BIY Home Store's own web store listed Bosch power tools (angle grinder GWS 7-100ET and electric drill GBM 320, seen 25 Nov 2026)."
+    ],
+    "evidence_url": "https://www.biyhomestore.com/special?sg_type_pg=all_products",
+    "ranges_source": "https://www.biyhomestore.com/ (BIY own listing)",
+    "seo_targets": [
+      "bosch power tools malaysia dealer",
+      "bosch drill kota tinggi",
+      "harga bosch drill (WhatsApp for price)",
+      "bosch gws 7-100"
+    ],
+    "ranges": [
+      {
+        "id": "bosch-angle-grinders",
+        "name": "Angle grinders",
+        "type": "Power tools",
+        "brand_site_note": "BIY listing: GWS 7-100ET"
+      },
+      {
+        "id": "bosch-rotary-drills",
+        "name": "Rotary drills",
+        "type": "Power tools",
+        "brand_site_note": "BIY listing: GBM 320"
+      }
+    ],
+    "ranges_stock_status": "seen on BIY listing 25 Nov 2026; availability still via WhatsApp."
+  },
+  {
+    "id": "ici",
+    "slug": "ici",
+    "name": "ICI (Dulux)",
+    "published": false,
+    "category": "paint-waterproofing",
+    "hold_reason": "No public source shows BIY stocks ICI/Dulux. Held until Edwin confirms. Do not render page, nav, footer link, sitemap entry, schema or text.",
+    "context_note": "ICI Paints Malaysia now trades as Dulux under AkzoNobel (https://www.dulux.com.my/en/about-us). When released, page should say 'ICI (Dulux)'.",
+    "seo_targets": [
+      "ici paint shop near me",
+      "ici paint malaysia",
+      "ici dulux malaysia"
+    ],
+    "ranges": []
+  }
+]
