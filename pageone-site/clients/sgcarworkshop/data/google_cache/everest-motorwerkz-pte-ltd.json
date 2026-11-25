@@ -1,0 +1,22 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.2,
+ "userRatingCount": 5,
+ "websiteUri": "https://www.facebook.com/profile.php?id=61561264832172",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": null,
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-25",
+ "place_id": "ChIJAxRgN1oX2jERSjs7Y8d5OXU",
+ "source": "google_places"
+}

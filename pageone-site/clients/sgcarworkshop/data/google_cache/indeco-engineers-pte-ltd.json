@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.3,
+ "userRatingCount": 265,
+ "websiteUri": "http://www.indeco.cwtlimited.com/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:30 AM – 6:00 PM",
+  "Tuesday: 8:30 AM – 6:00 PM",
+  "Wednesday: 8:30 AM – 6:00 PM",
+  "Thursday: 8:30 AM – 6:00 PM",
+  "Friday: 8:30 AM – 6:00 PM",
+  "Saturday: 8:30 AM – 6:00 PM",
+  "Sunday: 8:30 AM – 6:00 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-25",
+ "place_id": "ChIJTVatLskX2jERf3rHEzF5YF8",
+ "source": "google_places"
+}

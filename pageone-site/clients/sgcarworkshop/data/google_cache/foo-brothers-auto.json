@@ -1,0 +1,35 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 58,
+ "websiteUri": "https://www.facebook.com/FooBros/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:00 AM – 5:00 PM",
+  "Tuesday: 8:00 AM – 5:00 PM",
+  "Wednesday: 8:00 AM – 5:00 PM",
+  "Thursday: 8:00 AM – 5:00 PM",
+  "Friday: 8:00 AM – 5:00 PM",
+  "Saturday: 8:00 AM – 4:30 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention bumper repair on a Lexus with advice on insurance claims, engine warning light diagnosis on a Toyota Estima, front light and rear bulb work, quotes sent by WhatsApp before repairs, and sourcing parts for an older car.",
+ "fetched_at": "2026-11-25",
+ "place_id": "ChIJ356t7T492jERuC5t9gdSSyg",
+ "source": "google_places"
+}

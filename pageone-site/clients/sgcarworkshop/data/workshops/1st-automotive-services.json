@@ -1,0 +1,48 @@
+{
+ "schema_version": 1,
+ "slug": "1st-automotive-services",
+ "place_id": "ChIJJySrYI8Z2jERwSP-HvWAIDU",
+ "place_id_checked_at": "2026-11-25",
+ "name": "1st Automotive Services",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-25",
+ "address": {
+  "block": "",
+  "street": "12 Tampines North Dr4, #02-28A Stellar @",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "529435",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-25",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6588186767",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-25"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-25"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-25",
+ "last_verified_at": "2026-11-25",
+ "collector_version": "agent-v5",
+ "geo_retry": "2026-11-25",
+ "estate": "tampines-north-drive-1",
+ "region": "east",
+ "planning_area": "Tampines"
+}

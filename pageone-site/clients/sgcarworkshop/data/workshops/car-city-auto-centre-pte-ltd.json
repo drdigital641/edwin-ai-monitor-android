@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "slug": "car-city-auto-centre-pte-ltd",
+ "place_id": "ChIJCWQdrz492jEROf8upGcZCC0",
+ "place_id_checked_at": "2026-11-25",
+ "name": "Car City Auto Centre Pte Ltd",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-25",
+ "address": {
+  "block": "",
+  "street": "9006 Tampines Street 93, #01-198",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "528840",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-25",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6582822011",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-25"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-25"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-25",
+ "last_verified_at": "2026-11-25",
+ "collector_version": "agent-v5",
+ "hold": "hold: complaint text in Google sample (OBU fault not fixed)",
+ "hold_code": "complaints",
+ "held_on": "2026-11-26",
+ "estate": "tampines-industrial-park-a",
+ "region": "east",
+ "planning_area": "Tampines"
+}

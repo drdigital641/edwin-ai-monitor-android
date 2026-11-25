@@ -2,7 +2,7 @@
 
 > A directory of car workshops and car services in Singapore, run by Page One Singapore. Entries use details from the business or its public listing. Estate pages rank workshops only where there are at least 8 with 20 or more Google ratings, by rating and number of ratings together; paid Featured workshops are never ranked. No rating or review markup.
 
-Last updated: 2026-11-24
+Last updated: 2026-11-25
 
 ## Services
 - [Spray painting and bodywork](https://sgcarworkshop.sg/services/spray-painting-bodywork/): Respray, colour change and body kit work in a spray booth.
@@ -44,7 +44,7 @@ Last updated: 2026-11-24
 - [Paya Ubi Industrial Park](https://sgcarworkshop.sg/areas/paya-ubi-industrial-park/): Paya Ubi Industrial Park is around Ubi Avenue 1, near Paya Lebar in the Geylang planning area (Central region), with motor workshops mixed in among light industry. 15 listings.
 - [Ubi Road 1](https://sgcarworkshop.sg/areas/ubi-road-1/): Ubi Road 1 is an industrial road in the Ubi area, near Paya Lebar in the Geylang planning area (Central region). 14 listings.
 - [Bedok Industrial Park E](https://sgcarworkshop.sg/areas/bedok-industrial-park-e/): Bedok Industrial Park E is a block of trade units along Bedok North Avenue 4 in the East region, near Bedok Reservoir and Tampines. 4 listings.
-- [Tampines Industrial Park A](https://sgcarworkshop.sg/areas/tampines-industrial-park-a/): Tampines Industrial Park A is a light industrial estate along Tampines Street 92 and 93 in the East region. 1 listing.
+- [Tampines Industrial Park A](https://sgcarworkshop.sg/areas/tampines-industrial-park-a/): Tampines Industrial Park A is a light industrial estate along Tampines Street 92 and 93 in the East region. 2 listings.
 - [Woodlands Industrial Park E9](https://sgcarworkshop.sg/areas/woodlands-industrial-park-e9/): Woodlands Industrial Park E9 is the main industrial park in the north-west, close to the Causeway. 7 listings.
 - [Jalan Lam Huat and Carros Centre](https://sgcarworkshop.sg/areas/carros-centre-jalan-lam-huat/): Jalan Lam Huat, where Carros Centre stands, is an industrial road in the north-west of Singapore. 38 listings.
 - [Woodlands Avenue 12 (Polaris@Woodlands)](https://sgcarworkshop.sg/areas/woodlands-avenue-12/): Woodlands Avenue 12 and the Polaris@Woodlands industrial building are in the Woodlands area in the north. 6 listings.
@@ -245,6 +245,7 @@ Last updated: 2026-11-24
 - [Focus Auto](https://sgcarworkshop.sg/workshops/focus-auto/): General servicing and repair, Basic listing, Kaki Bukit
 - [Fong Motors](https://sgcarworkshop.sg/workshops/fong-motors/): General servicing and repair, Basic listing, Kaki Bukit
 - [Fong Workshop](https://sgcarworkshop.sg/workshops/fong-workshop/): General servicing and repair, Basic listing, Sin Ming and Bishan
+- [Foo Brothers Auto](https://sgcarworkshop.sg/workshops/foo-brothers-auto/): General servicing and repair, Basic listing, Tampines
 - [Forward Auto](https://sgcarworkshop.sg/workshops/forward-auto/): General servicing and repair, Basic listing, Kaki Bukit
 - [Forza ColorHaus](https://sgcarworkshop.sg/workshops/forza-colorhaus/): Spray painting and bodywork, Basic listing, Woodlands
 - [FR Auto](https://sgcarworkshop.sg/workshops/fr-auto/): General servicing and repair, Basic listing, Kaki Bukit

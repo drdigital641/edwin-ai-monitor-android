@@ -1,0 +1,42 @@
+{
+ "lede": "Foo Brothers Auto at 9002 Tampines Street 93, #01-42 Tampines Industrial Park A is a car workshop for repairs, lighting and diagnostics.",
+ "chips": [
+  "Repairs",
+  "Diagnostics",
+  "Lights"
+ ],
+ "services": [
+  "General servicing and repair",
+  "Bumper repair",
+  "Engine warning light diagnosis",
+  "Headlight and bulb replacement"
+ ],
+ "themes": "Customers on Google Maps mention bumper repair on a Lexus with advice on insurance claims, engine warning light diagnosis on a Toyota Estima, front light and rear bulb work, quotes sent by WhatsApp before repairs, and sourcing parts for an older car.",
+ "faqs": [
+  [
+   "What does Foo Brothers Auto do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Bumper repair",
+  "Engine fault diagnosis",
+  "Light replacement"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Lexus",
+  "Toyota"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "good_to_know": [],
+ "good_to_know_note": ""
+}
