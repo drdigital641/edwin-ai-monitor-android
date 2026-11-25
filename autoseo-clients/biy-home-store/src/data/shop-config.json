@@ -1,0 +1,13 @@
+{
+ "_note": "BIY Home Store shop switches (26 Nov 2026). price_mode: whatsapp_only (default, no price anywhere) | show (retail price on cards/cart + RM in the WhatsApp text). live_feed.url null = NOT CONFIGURED, the site shows products.sample.json with the sample label. Grok fills url + the key file through the approved route; never put the key itself in this file or the repo.",
+ "price_mode": "whatsapp_only",
+ "price_tier": "retail",
+ "currency_label": "RM",
+ "live_feed": {
+  "url": null,
+  "key_file": "~/autoseo-private/biy-home-store/live-feed.key",
+  "timeout_s": 10,
+  "min_active": 1
+ },
+ "cart": {"storage_prefix": "biy", "max_lines": 40, "max_qty": 99}
+}

@@ -44,7 +44,10 @@
         "brand_site_note": "Sheen finish (Jotun Malaysia)"
       }
     ],
-    "ranges_stock_status": "unconfirmed: the range list comes from the Jotun Malaysia site, not from BIY stock. Page must say 'WhatsApp us to check which are in stock at your branch'."
+    "ranges_stock_status": "unconfirmed: the range list comes from the Jotun Malaysia site, not from BIY stock. Page must say 'WhatsApp us to check which are in stock at your branch'.",
+    "aliases": [
+      "JOTUN"
+    ]
   },
   {
     "id": "nippon-paint",
@@ -95,7 +98,11 @@
         "brand_site_note": "Nippon Paint online store"
       }
     ],
-    "ranges_stock_status": "unconfirmed: range list is from Nippon Paint Malaysia, not BIY stock."
+    "ranges_stock_status": "unconfirmed: range list is from Nippon Paint Malaysia, not BIY stock.",
+    "aliases": [
+      "Nippon",
+      "NIPPON PAINT"
+    ]
   },
   {
     "id": "dong-cheng",
@@ -154,7 +161,12 @@
         "brand_site_note": "DongCheng Malaysia homepage"
       }
     ],
-    "ranges_stock_status": "unconfirmed: groups come from the DongCheng Malaysia site, not BIY stock."
+    "ranges_stock_status": "unconfirmed: groups come from the DongCheng Malaysia site, not BIY stock.",
+    "aliases": [
+      "DongCheng",
+      "DONGCHENG",
+      "DCA Dong Cheng"
+    ]
   },
   {
     "id": "bosch",
@@ -187,7 +199,11 @@
         "brand_site_note": "BIY listing: GBM 320"
       }
     ],
-    "ranges_stock_status": "seen on BIY listing 25 Nov 2026; availability still via WhatsApp."
+    "ranges_stock_status": "seen on BIY listing 25 Nov 2026; availability still via WhatsApp.",
+    "aliases": [
+      "BOSCH",
+      "Bosch Professional"
+    ]
   },
   {
     "id": "ici",

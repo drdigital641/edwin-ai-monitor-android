@@ -1,0 +1,1466 @@
+{
+ "_comment": "SAMPLE DATA for client preview only. SKUs prefixed SAMPLE-. No prices, no stock, no photos. Replaced automatically when the live AutoCount feed has products. Two items (is_sample=false) were seen on biyhomestore.com.",
+ "feed_version": "sample-1",
+ "generated_at": "2026-11-26T06:00:00Z",
+ "products": [
+  {
+   "sku": "SAMPLE-JOT-MAJ-PURE-1L",
+   "slug": "jotun-majestic-pure-color-1l",
+   "title": "Jotun Majestic Pure Color 1L",
+   "description": "Interior wall paint from the Jotun Majestic range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Jotun Majestic range.",
+   "brand": "Jotun",
+   "category": "paint",
+   "model": "Majestic Pure Color",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-JOT-MAJ-PURE",
+    "name": "Jotun Majestic Pure Color",
+    "variant_label": "1L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "1",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-JOT-MAJ-PURE-5L",
+   "slug": "jotun-majestic-pure-color-5l",
+   "title": "Jotun Majestic Pure Color 5L",
+   "description": "Interior wall paint from the Jotun Majestic range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Jotun Majestic range.",
+   "brand": "Jotun",
+   "category": "paint",
+   "model": "Majestic Pure Color",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-JOT-MAJ-PURE",
+    "name": "Jotun Majestic Pure Color",
+    "variant_label": "5L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "5",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-JOT-MAJ-PURE-18L",
+   "slug": "jotun-majestic-pure-color-18l",
+   "title": "Jotun Majestic Pure Color 18L",
+   "description": "Interior wall paint from the Jotun Majestic range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Jotun Majestic range.",
+   "brand": "Jotun",
+   "category": "paint",
+   "model": "Majestic Pure Color",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-JOT-MAJ-PURE",
+    "name": "Jotun Majestic Pure Color",
+    "variant_label": "18L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "18",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-JOT-MAJ-SENSE-1L",
+   "slug": "jotun-majestic-sense-1l",
+   "title": "Jotun Majestic Sense 1L",
+   "description": "Interior wall paint from the Jotun Majestic range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Jotun Majestic range.",
+   "brand": "Jotun",
+   "category": "paint",
+   "model": "Majestic Sense",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-JOT-MAJ-SENSE",
+    "name": "Jotun Majestic Sense",
+    "variant_label": "1L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "1",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-JOT-MAJ-SENSE-5L",
+   "slug": "jotun-majestic-sense-5l",
+   "title": "Jotun Majestic Sense 5L",
+   "description": "Interior wall paint from the Jotun Majestic range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Jotun Majestic range.",
+   "brand": "Jotun",
+   "category": "paint",
+   "model": "Majestic Sense",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-JOT-MAJ-SENSE",
+    "name": "Jotun Majestic Sense",
+    "variant_label": "5L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "5",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-JOT-MAJ-SENSE-18L",
+   "slug": "jotun-majestic-sense-18l",
+   "title": "Jotun Majestic Sense 18L",
+   "description": "Interior wall paint from the Jotun Majestic range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Jotun Majestic range.",
+   "brand": "Jotun",
+   "category": "paint",
+   "model": "Majestic Sense",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-JOT-MAJ-SENSE",
+    "name": "Jotun Majestic Sense",
+    "variant_label": "18L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "18",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-JOT-MAJ-TBM-1L",
+   "slug": "jotun-majestic-true-beauty-matt-1l",
+   "title": "Jotun Majestic True Beauty Matt 1L",
+   "description": "Interior wall paint from the Jotun Majestic range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Jotun Majestic range.",
+   "brand": "Jotun",
+   "category": "paint",
+   "model": "Majestic True Beauty Matt",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-JOT-MAJ-TBM",
+    "name": "Jotun Majestic True Beauty Matt",
+    "variant_label": "1L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "1",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-JOT-MAJ-TBM-5L",
+   "slug": "jotun-majestic-true-beauty-matt-5l",
+   "title": "Jotun Majestic True Beauty Matt 5L",
+   "description": "Interior wall paint from the Jotun Majestic range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Jotun Majestic range.",
+   "brand": "Jotun",
+   "category": "paint",
+   "model": "Majestic True Beauty Matt",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-JOT-MAJ-TBM",
+    "name": "Jotun Majestic True Beauty Matt",
+    "variant_label": "5L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "5",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-JOT-MAJ-TBM-18L",
+   "slug": "jotun-majestic-true-beauty-matt-18l",
+   "title": "Jotun Majestic True Beauty Matt 18L",
+   "description": "Interior wall paint from the Jotun Majestic range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Jotun Majestic range.",
+   "brand": "Jotun",
+   "category": "paint",
+   "model": "Majestic True Beauty Matt",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-JOT-MAJ-TBM",
+    "name": "Jotun Majestic True Beauty Matt",
+    "variant_label": "18L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "18",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-JOT-MAJ-TBS-1L",
+   "slug": "jotun-majestic-true-beauty-sheen-1l",
+   "title": "Jotun Majestic True Beauty Sheen 1L",
+   "description": "Interior wall paint from the Jotun Majestic range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Jotun Majestic range.",
+   "brand": "Jotun",
+   "category": "paint",
+   "model": "Majestic True Beauty Sheen",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-JOT-MAJ-TBS",
+    "name": "Jotun Majestic True Beauty Sheen",
+    "variant_label": "1L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "1",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-JOT-MAJ-TBS-5L",
+   "slug": "jotun-majestic-true-beauty-sheen-5l",
+   "title": "Jotun Majestic True Beauty Sheen 5L",
+   "description": "Interior wall paint from the Jotun Majestic range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Jotun Majestic range.",
+   "brand": "Jotun",
+   "category": "paint",
+   "model": "Majestic True Beauty Sheen",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-JOT-MAJ-TBS",
+    "name": "Jotun Majestic True Beauty Sheen",
+    "variant_label": "5L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "5",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-JOT-MAJ-TBS-18L",
+   "slug": "jotun-majestic-true-beauty-sheen-18l",
+   "title": "Jotun Majestic True Beauty Sheen 18L",
+   "description": "Interior wall paint from the Jotun Majestic range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Jotun Majestic range.",
+   "brand": "Jotun",
+   "category": "paint",
+   "model": "Majestic True Beauty Sheen",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-JOT-MAJ-TBS",
+    "name": "Jotun Majestic True Beauty Sheen",
+    "variant_label": "18L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "18",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-AIRCARE-MATT-1L",
+   "slug": "nippon-paint-odour-less-aircare-matt-1l",
+   "title": "Nippon Paint Odour-less AirCare Matt 1L",
+   "description": "Interior wall paint from the Nippon Paint Odour-less range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Nippon Paint Odour-less range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Odour-less AirCare Matt",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-AIRCARE-MATT",
+    "name": "Nippon Paint Odour-less AirCare Matt",
+    "variant_label": "1L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "1",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-AIRCARE-MATT-5L",
+   "slug": "nippon-paint-odour-less-aircare-matt-5l",
+   "title": "Nippon Paint Odour-less AirCare Matt 5L",
+   "description": "Interior wall paint from the Nippon Paint Odour-less range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Nippon Paint Odour-less range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Odour-less AirCare Matt",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-AIRCARE-MATT",
+    "name": "Nippon Paint Odour-less AirCare Matt",
+    "variant_label": "5L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "5",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-AIRCARE-MATT-18L",
+   "slug": "nippon-paint-odour-less-aircare-matt-18l",
+   "title": "Nippon Paint Odour-less AirCare Matt 18L",
+   "description": "Interior wall paint from the Nippon Paint Odour-less range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Nippon Paint Odour-less range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Odour-less AirCare Matt",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-AIRCARE-MATT",
+    "name": "Nippon Paint Odour-less AirCare Matt",
+    "variant_label": "18L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "18",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-AIRCARE-SHEEN-1L",
+   "slug": "nippon-paint-odour-less-aircare-sheen-1l",
+   "title": "Nippon Paint Odour-less AirCare Sheen 1L",
+   "description": "Interior wall paint from the Nippon Paint Odour-less range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Nippon Paint Odour-less range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Odour-less AirCare Sheen",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-AIRCARE-SHEEN",
+    "name": "Nippon Paint Odour-less AirCare Sheen",
+    "variant_label": "1L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "1",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-AIRCARE-SHEEN-5L",
+   "slug": "nippon-paint-odour-less-aircare-sheen-5l",
+   "title": "Nippon Paint Odour-less AirCare Sheen 5L",
+   "description": "Interior wall paint from the Nippon Paint Odour-less range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Nippon Paint Odour-less range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Odour-less AirCare Sheen",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-AIRCARE-SHEEN",
+    "name": "Nippon Paint Odour-less AirCare Sheen",
+    "variant_label": "5L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "5",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-AIRCARE-SHEEN-18L",
+   "slug": "nippon-paint-odour-less-aircare-sheen-18l",
+   "title": "Nippon Paint Odour-less AirCare Sheen 18L",
+   "description": "Interior wall paint from the Nippon Paint Odour-less range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Nippon Paint Odour-less range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Odour-less AirCare Sheen",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-AIRCARE-SHEEN",
+    "name": "Nippon Paint Odour-less AirCare Sheen",
+    "variant_label": "18L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "18",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-WB-ULT-1L",
+   "slug": "nippon-paint-weatherbond-ultimate-anti-dirt-1l",
+   "title": "Nippon Paint Weatherbond Ultimate Anti-Dirt 1L",
+   "description": "Exterior wall paint from the Nippon Paint Weatherbond range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Exterior wall paint from the Nippon Paint Weatherbond range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Weatherbond Ultimate Anti-Dirt",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-WB-ULT",
+    "name": "Nippon Paint Weatherbond Ultimate Anti-Dirt",
+    "variant_label": "1L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "1",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-WB-ULT-5L",
+   "slug": "nippon-paint-weatherbond-ultimate-anti-dirt-5l",
+   "title": "Nippon Paint Weatherbond Ultimate Anti-Dirt 5L",
+   "description": "Exterior wall paint from the Nippon Paint Weatherbond range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Exterior wall paint from the Nippon Paint Weatherbond range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Weatherbond Ultimate Anti-Dirt",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-WB-ULT",
+    "name": "Nippon Paint Weatherbond Ultimate Anti-Dirt",
+    "variant_label": "5L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "5",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-WB-ULT-18L",
+   "slug": "nippon-paint-weatherbond-ultimate-anti-dirt-18l",
+   "title": "Nippon Paint Weatherbond Ultimate Anti-Dirt 18L",
+   "description": "Exterior wall paint from the Nippon Paint Weatherbond range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Exterior wall paint from the Nippon Paint Weatherbond range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Weatherbond Ultimate Anti-Dirt",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-WB-ULT",
+    "name": "Nippon Paint Weatherbond Ultimate Anti-Dirt",
+    "variant_label": "18L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "18",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-SPOTLESS-1L",
+   "slug": "nippon-paint-spot-less-plus-1l",
+   "title": "Nippon Paint Spot-less Plus 1L",
+   "description": "Interior wall paint from the Nippon Paint range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Nippon Paint range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Spot-less Plus",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-SPOTLESS",
+    "name": "Nippon Paint Spot-less Plus",
+    "variant_label": "1L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "1",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-SPOTLESS-5L",
+   "slug": "nippon-paint-spot-less-plus-5l",
+   "title": "Nippon Paint Spot-less Plus 5L",
+   "description": "Interior wall paint from the Nippon Paint range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Nippon Paint range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Spot-less Plus",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-SPOTLESS",
+    "name": "Nippon Paint Spot-less Plus",
+    "variant_label": "5L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "5",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-SPOTLESS-18L",
+   "slug": "nippon-paint-spot-less-plus-18l",
+   "title": "Nippon Paint Spot-less Plus 18L",
+   "description": "Interior wall paint from the Nippon Paint range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Nippon Paint range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Spot-less Plus",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-SPOTLESS",
+    "name": "Nippon Paint Spot-less Plus",
+    "variant_label": "18L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "18",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-VINILEX-1L",
+   "slug": "nippon-paint-vinilex-fresh-plus-1l",
+   "title": "Nippon Paint Vinilex Fresh Plus 1L",
+   "description": "Interior wall paint from the Nippon Paint Vinilex range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Nippon Paint Vinilex range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Vinilex Fresh Plus",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-VINILEX",
+    "name": "Nippon Paint Vinilex Fresh Plus",
+    "variant_label": "1L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "1",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-VINILEX-5L",
+   "slug": "nippon-paint-vinilex-fresh-plus-5l",
+   "title": "Nippon Paint Vinilex Fresh Plus 5L",
+   "description": "Interior wall paint from the Nippon Paint Vinilex range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Nippon Paint Vinilex range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Vinilex Fresh Plus",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-VINILEX",
+    "name": "Nippon Paint Vinilex Fresh Plus",
+    "variant_label": "5L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "5",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-VINILEX-18L",
+   "slug": "nippon-paint-vinilex-fresh-plus-18l",
+   "title": "Nippon Paint Vinilex Fresh Plus 18L",
+   "description": "Interior wall paint from the Nippon Paint Vinilex range. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Interior wall paint from the Nippon Paint Vinilex range.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Vinilex Fresh Plus",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-VINILEX",
+    "name": "Nippon Paint Vinilex Fresh Plus",
+    "variant_label": "18L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "18",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-RED-OXIDE-1L",
+   "slug": "nippon-paint-red-oxide-primer-1l",
+   "title": "Nippon Paint Red Oxide Primer 1L",
+   "description": "Metal primer coat from Nippon Paint. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Metal primer coat from Nippon Paint.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Red Oxide Primer",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-RED-OXIDE",
+    "name": "Nippon Paint Red Oxide Primer",
+    "variant_label": "1L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "1",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-RED-OXIDE-5L",
+   "slug": "nippon-paint-red-oxide-primer-5l",
+   "title": "Nippon Paint Red Oxide Primer 5L",
+   "description": "Metal primer coat from Nippon Paint. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Metal primer coat from Nippon Paint.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Red Oxide Primer",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-RED-OXIDE",
+    "name": "Nippon Paint Red Oxide Primer",
+    "variant_label": "5L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "5",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-5170-5L",
+   "slug": "nippon-paint-acrylic-5170-wall-sealer-5l",
+   "title": "Nippon Paint Acrylic 5170 Wall Sealer 5L",
+   "description": "Wall sealer coat from Nippon Paint. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Wall sealer coat from Nippon Paint.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Acrylic 5170 Wall Sealer",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-5170",
+    "name": "Nippon Paint Acrylic 5170 Wall Sealer",
+    "variant_label": "5L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "5",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-5170-18L",
+   "slug": "nippon-paint-acrylic-5170-wall-sealer-18l",
+   "title": "Nippon Paint Acrylic 5170 Wall Sealer 18L",
+   "description": "Wall sealer coat from Nippon Paint. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Wall sealer coat from Nippon Paint.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Acrylic 5170 Wall Sealer",
+   "barcode": null,
+   "unit": "L",
+   "group": {
+    "code": "SAMPLE-NIP-5170",
+    "name": "Nippon Paint Acrylic 5170 Wall Sealer",
+    "variant_label": "18L"
+   },
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Pack size",
+     "value": "18",
+     "unit": "L"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-NIP-BRUSH-3IN",
+   "slug": "nippon-paint-synthetic-paint-brush-3",
+   "title": "Nippon Paint Synthetic Paint Brush 3\"",
+   "description": "Paint brush sold under the Nippon Paint name. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Paint brush sold under the Nippon Paint name.",
+   "brand": "Nippon Paint",
+   "category": "paint",
+   "model": "Paint brush 3 inch",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Width",
+     "value": "3",
+     "unit": "inch"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-DC-DJZ02-13",
+   "slug": "dong-cheng-electric-drill-13mm-500w-djz02-13",
+   "title": "Dong Cheng Electric Drill 13mm 500W DJZ02-13",
+   "description": "Electric drill from Dong Cheng. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Electric drill from Dong Cheng.",
+   "brand": "Dong Cheng",
+   "category": "power-tools",
+   "model": "DJZ02-13",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Chuck",
+     "value": "13",
+     "unit": "mm"
+    },
+    {
+     "key": "Power",
+     "value": "500",
+     "unit": "W"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-DC-DZJ04-13",
+   "slug": "dong-cheng-electric-impact-drill-13mm-500w-dzj04-13",
+   "title": "Dong Cheng Electric Impact Drill 13mm 500W DZJ04-13",
+   "description": "Impact drill from Dong Cheng. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Impact drill from Dong Cheng.",
+   "brand": "Dong Cheng",
+   "category": "power-tools",
+   "model": "DZJ04-13",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Chuck",
+     "value": "13",
+     "unit": "mm"
+    },
+    {
+     "key": "Power",
+     "value": "500",
+     "unit": "W"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-DC-DZC05-26B",
+   "slug": "dong-cheng-rotary-hammer-drill-720w-dzc05-26b",
+   "title": "Dong Cheng Rotary Hammer Drill 720W DZC05-26B",
+   "description": "Hammer drill from Dong Cheng. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Hammer drill from Dong Cheng.",
+   "brand": "Dong Cheng",
+   "category": "power-tools",
+   "model": "DZC05-26B",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Power",
+     "value": "720",
+     "unit": "W"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-DC-DSM03-100A",
+   "slug": "dong-cheng-angle-grinder-4-710w-dsm03-100a",
+   "title": "Dong Cheng Angle Grinder 4\" 710W DSM03-100A",
+   "description": "Angle grinder from Dong Cheng. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Angle grinder from Dong Cheng.",
+   "brand": "Dong Cheng",
+   "category": "power-tools",
+   "model": "DSM03-100A",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Disc",
+     "value": "4",
+     "unit": "inch"
+    },
+    {
+     "key": "Power",
+     "value": "710",
+     "unit": "W"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-DC-DSM02-125B",
+   "slug": "dong-cheng-angle-grinder-5-1200w-dsm02-125b",
+   "title": "Dong Cheng Angle Grinder 5\" 1200W DSM02-125B",
+   "description": "Angle grinder from Dong Cheng. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Angle grinder from Dong Cheng.",
+   "brand": "Dong Cheng",
+   "category": "power-tools",
+   "model": "DSM02-125B",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Disc",
+     "value": "5",
+     "unit": "inch"
+    },
+    {
+     "key": "Power",
+     "value": "1200",
+     "unit": "W"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-DC-DSJ02-25",
+   "slug": "dong-cheng-die-grinder-400w-dsj02-25",
+   "title": "Dong Cheng Die Grinder 400W DSJ02-25",
+   "description": "Die grinder from Dong Cheng. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Die grinder from Dong Cheng.",
+   "brand": "Dong Cheng",
+   "category": "power-tools",
+   "model": "DSJ02-25",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Power",
+     "value": "400",
+     "unit": "W"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-DC-DMY02-185",
+   "slug": "dong-cheng-circular-saw-1100w-dmy02-185",
+   "title": "Dong Cheng Circular Saw 1100W DMY02-185",
+   "description": "Circular saw from Dong Cheng. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Circular saw from Dong Cheng.",
+   "brand": "Dong Cheng",
+   "category": "power-tools",
+   "model": "DMY02-185",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Power",
+     "value": "1100",
+     "unit": "W"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-DC-DSP03-180",
+   "slug": "dong-cheng-sander-polisher-1020w-dsp03-180",
+   "title": "Dong Cheng Sander Polisher 1020W DSP03-180",
+   "description": "Sander polisher from Dong Cheng. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Sander polisher from Dong Cheng.",
+   "brand": "Dong Cheng",
+   "category": "power-tools",
+   "model": "DSP03-180",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Power",
+     "value": "1020",
+     "unit": "W"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-DC-DCJZ10-10B",
+   "slug": "dong-cheng-cordless-drill-12v-dcjz10-10b",
+   "title": "Dong Cheng Cordless Drill 12V DCJZ10-10B",
+   "description": "Cordless drill from Dong Cheng. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Cordless drill from Dong Cheng.",
+   "brand": "Dong Cheng",
+   "category": "power-tools",
+   "model": "DCJZ10-10B",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Voltage",
+     "value": "12",
+     "unit": "V"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-BO-GBM-350",
+   "slug": "bosch-professional-rotary-drill-10mm-350w-gbm-350",
+   "title": "Bosch Professional Rotary Drill 10mm 350W GBM 350",
+   "description": "Bosch Professional power tool. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Bosch Professional power tool.",
+   "brand": "Bosch",
+   "category": "power-tools",
+   "model": "GBM 350",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Chuck",
+     "value": "10",
+     "unit": "mm"
+    },
+    {
+     "key": "Power",
+     "value": "350",
+     "unit": "W"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-BO-GSB-600",
+   "slug": "bosch-professional-impact-drill-13mm-600w-gsb-600",
+   "title": "Bosch Professional Impact Drill 13mm 600W GSB 600",
+   "description": "Bosch Professional power tool. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Bosch Professional power tool.",
+   "brand": "Bosch",
+   "category": "power-tools",
+   "model": "GSB 600",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Chuck",
+     "value": "13",
+     "unit": "mm"
+    },
+    {
+     "key": "Power",
+     "value": "600",
+     "unit": "W"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-BO-GSB-10RE",
+   "slug": "bosch-professional-impact-drill-10mm-500w-gsb-10-re",
+   "title": "Bosch Professional Impact Drill 10mm 500W GSB 10 RE",
+   "description": "Bosch Professional power tool. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Bosch Professional power tool.",
+   "brand": "Bosch",
+   "category": "power-tools",
+   "model": "GSB 10 RE",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Chuck",
+     "value": "10",
+     "unit": "mm"
+    },
+    {
+     "key": "Power",
+     "value": "500",
+     "unit": "W"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-BO-GWS-800",
+   "slug": "bosch-professional-angle-grinder-100mm-800w-gws-800",
+   "title": "Bosch Professional Angle Grinder 100mm 800W GWS 800",
+   "description": "Bosch Professional power tool. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Bosch Professional power tool.",
+   "brand": "Bosch",
+   "category": "power-tools",
+   "model": "GWS 800",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Disc",
+     "value": "100",
+     "unit": "mm"
+    },
+    {
+     "key": "Power",
+     "value": "800",
+     "unit": "W"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-BO-GWS-6-125",
+   "slug": "bosch-professional-angle-grinder-125mm-670w-gws-6-125",
+   "title": "Bosch Professional Angle Grinder 125mm 670W GWS 6-125",
+   "description": "Bosch Professional power tool. Sample listing for preview only. Colour, finish and availability: WhatsApp us to confirm.",
+   "short_description": "Bosch Professional power tool.",
+   "brand": "Bosch",
+   "category": "power-tools",
+   "model": "GWS 6-125",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Disc",
+     "value": "125",
+     "unit": "mm"
+    },
+    {
+     "key": "Power",
+     "value": "670",
+     "unit": "W"
+    }
+   ],
+   "active": true,
+   "is_sample": true,
+   "source_url": null,
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-BO-GWS-7-100ET",
+   "slug": "bosch-angle-grinder-gws-7-100et",
+   "title": "Bosch Angle Grinder GWS 7-100ET",
+   "description": "Bosch angle grinder, model GWS 7-100ET. Listed on the BIY Home Store online shop. Price and availability: WhatsApp us.",
+   "short_description": "Bosch angle grinder, model GWS 7-100ET.",
+   "brand": "Bosch",
+   "category": "power-tools",
+   "model": "GWS 7-100ET",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [],
+   "active": true,
+   "is_sample": false,
+   "source_url": "https://biyhomestore.com/",
+   "updated_at": "2026-11-26T06:00:00Z"
+  },
+  {
+   "sku": "SAMPLE-BO-GBM-320",
+   "slug": "bosch-electric-drill-6mm-gbm-320",
+   "title": "Bosch Electric Drill 6mm GBM 320",
+   "description": "Bosch electric drill 6mm, model GBM 320. Listed on the BIY Home Store online shop. Price and availability: WhatsApp us.",
+   "short_description": "Bosch electric drill 6mm, model GBM 320.",
+   "brand": "Bosch",
+   "category": "power-tools",
+   "model": "GBM 320",
+   "barcode": null,
+   "unit": "PCS",
+   "group": null,
+   "prices": [],
+   "stock": [],
+   "images": [],
+   "specs": [
+    {
+     "key": "Chuck",
+     "value": "6",
+     "unit": "mm"
+    }
+   ],
+   "active": true,
+   "is_sample": false,
+   "source_url": "https://biyhomestore.com/",
+   "updated_at": "2026-11-26T06:00:00Z"
+  }
+ ]
+}

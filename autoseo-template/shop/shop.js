@@ -5,6 +5,7 @@
 (function(){
 var d=document,w=window,RM=w.matchMedia&&w.matchMedia('(prefers-reduced-motion: reduce)').matches;
 w.dataLayer=w.dataLayer||[];function dl(o){try{w.dataLayer.push(o)}catch(e){}}
+w.shopDL=dl; /* shared helper: cart.js pushes add_to_cart / remove_from_cart / view_cart / begin_checkout through it */
 function $$(s,r){return Array.prototype.slice.call((r||d).querySelectorAll(s))}
 /* ---------- GA4 switch ---------- */
 var ga=d.body.getAttribute('data-ga4');if(ga){var s=d.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(ga);d.head.appendChild(s);w.gtag=function(){w.dataLayer.push(arguments)};w.gtag('js',new Date());w.gtag('config',ga)}

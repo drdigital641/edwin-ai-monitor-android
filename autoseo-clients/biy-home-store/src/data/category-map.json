@@ -1,0 +1,11 @@
+{
+ "_note": "AutoCount item group code or category path (lower-case match, spaces collapsed) -> site category slug. Unknown values are skipped and listed in the build report. A path 'A > B' falls back to its first part.",
+ "map": {
+  "paint": "paint-waterproofing", "paints": "paint-waterproofing", "paint & waterproofing": "paint-waterproofing",
+  "waterproofing": "paint-waterproofing", "coating": "paint-waterproofing", "coatings": "paint-waterproofing",
+  "sealant": "paint-waterproofing", "sealants": "paint-waterproofing", "paint accessories": "paint-waterproofing",
+  "power tools": "power-tools", "power-tools": "power-tools", "powertools": "power-tools", "power tool": "power-tools",
+  "hardware": "hardware", "hand tools": "hardware", "fasteners": "hardware", "adhesive": "hardware",
+  "building materials": "building-materials", "building-materials": "building-materials", "cement": "building-materials"
+ }
+}

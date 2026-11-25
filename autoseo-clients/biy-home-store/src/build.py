@@ -30,7 +30,21 @@ DATA = os.environ.get("BIY_DATA", os.path.join(HERE, "data"))
 SITE = json.load(open(os.path.join(HERE, "site.json")))
 CFG = golive.Cfg(SITE)
 P = CFG.base_path                       # '/preview/biy-home-store' on preview, '' when live
-CAT = shop.load_catalog(DATA)
+# v3 (26 Nov 2026): ONE resolver picks the product data (sample until the live AutoCount feed has products, then live only).
+SHOPCFG = json.load(open(os.path.join(DATA, "shop-config.json"), encoding="utf-8"))
+PRICE_MODE = SHOPCFG.get("price_mode", "whatsapp_only")
+_FETCH = None
+if os.environ.get("SHOP_TEST_FEED"):     # tests only: "404" or a path to a JSON fixture served as HTTP 200
+    _tf = os.environ["SHOP_TEST_FEED"]
+    _FETCH = (lambda url, key, to: (404, b"")) if _tf == "404" else (lambda url, key, to: (200, open(_tf, "rb").read()))
+RES = shop.resolve_products(DATA, fetch=_FETCH)
+MODE = RES["mode"]
+_BR_ALL = [b for b in json.load(open(os.path.join(DATA, "brands.json"), encoding="utf-8")) if b.get("published")]
+_CATS = [c["slug"] for c in json.load(open(os.path.join(DATA, "categories.json"), encoding="utf-8"))]
+GROUPS, SKIPPED = shop.normalize_products(RES["records"], json.load(open(os.path.join(DATA, "category-map.json"), encoding="utf-8")),
+                                          _BR_ALL, _CATS, MODE)
+CAT = shop.load_catalog(DATA, products=GROUPS)
+SAMPLE = MODE == "sample"
 F = CAT["facts"]
 SYN = json.load(open(os.path.join(DATA, "synonyms.json")))
 LANGS = I18N.build_langs(SITE.get("malaysian_address", True))
@@ -43,6 +57,8 @@ BR = F["branches"]
 HQ = next(b for b in BR if b.get("is_hq"))
 TODAY = datetime.date(2026, 11, 25).isoformat()
 MISSING = []
+import itertools
+_UID = itertools.count(1)
 
 
 def t(L, key, **kw):
@@ -95,6 +111,7 @@ IC = {
     "menu": svg('<path d="M4 7h16M4 12h16M4 17h16"/>'),
     "close": svg('<path d="M6 6l12 12M18 6 6 18"/>'),
     "fb": svg('<path d="M14.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4a21 21 0 0 0-2.3-.1c-2.3 0-3.9 1.4-3.9 4v2.2H8.8v3h2.6V21"/>'),
+    "cart": svg('<path d="M3 4h2.2l2.3 11.2a1.6 1.6 0 0 0 1.6 1.3h8.3a1.6 1.6 0 0 0 1.6-1.2L20.5 8H6.1"/><circle cx="9.5" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/>'),
     "list": svg('<path d="M9 6h11M9 12h11M9 18h11"/><rect x="3.5" y="4.5" width="3" height="3" rx=".8"/><rect x="3.5" y="10.5" width="3" height="3" rx=".8"/><rect x="3.5" y="16.5" width="3" height="3" rx=".8"/>'),
 }
 
@@ -161,7 +178,8 @@ def range_source(b):
 # ------------------------------------------------------------------ shared chrome
 def head(L, path, title, desc, graph, noindex=False):
     code = L["code"]
-    robots = '<meta name="robots" content="noindex,follow">\n' if noindex else ""
+    flag = noindex if isinstance(noindex, str) else "noindex"
+    robots = f'<meta name="robots" content="noindex,follow" data-flag="{flag}">\n' if noindex else ""
     css = f'{u("assets/site.css")}?v={VER["css"]}'
     return f"""<!doctype html>
 <html lang="{L['hreflang']}">
@@ -225,6 +243,7 @@ def header(L, path, home=False):
 <div class="hd-search">{sf}</div>
 <nav class="hd-nav" aria-label="{t(L, 'ui.main_nav')}">{nav}</nav>
 {sw}
+{cart_icon(L)}
 {wa(L, 'wa.general', 'whatsapp_header', t(L, 'ui.wa'), cls='btn btn-wa hd-wa')}
 <button class="mbtn" id="mopen" type="button" aria-controls="sheet" aria-expanded="false" aria-label="{t(L, 'ui.menu')}">{IC['menu']}</button>
 </div></header>
@@ -255,15 +274,110 @@ def footer(L, path):
 <li>{fb(L, 'facebook_footer')}</li>
 <li><small>{t(L, 'ui.hours_note')}</small></li></ul></div>
 </div>
-<div class="ft-bot"><span>{t(L, 'ui.copyright')}</span><span>{I18N.privacy_link(u, L)} <a href="https://autoseo.my/" target="_blank" rel="noopener">{t(L, 'ui.footer_credit')}</a></span></div>
+{sample_footer(L)}<div class="ft-bot"><span>{t(L, 'ui.copyright')}</span><span>{I18N.privacy_link(u, L)} <a href="https://autoseo.my/" target="_blank" rel="noopener">{t(L, 'ui.footer_credit')}</a></span></div>
 </div></footer>
 <nav class="mbar" aria-label="{t(L, 'ui.bottom_nav')}">{items}</nav>
 <script type="application/json" id="branches-data">{json.dumps({b['slug']: b['short'] for b in BR}, ensure_ascii=False)}</script>
+{cart_drawer(L, path)}
+<script type="application/json" id="shop-cfg">{shop_cfg(L)}</script>
 <script src="{u('assets/shop.js')}?v={VER['js']}" defer></script>
+<script src="{u('assets/cart.js')}?v={VER['cart']}" defer></script>
 <script src="{u('assets/p1-cta.js')}?v={VER['cta']}" defer></script>
 </body>
 </html>
 """
+
+
+# ------------------------------------------------------------------ cart + sample (v3, 26 Nov 2026): one place, every page
+CART_KEYS = ["add_to_cart", "added", "cart", "cart_items", "cart_items_one", "cart_empty", "browse_categories", "qty", "qty_dec",
+             "qty_inc", "remove", "clear_cart", "whatsapp_for_price", "pickup_branch", "no_preference", "your_name", "note",
+             "send_enquiry", "choose_size", "not_saved", "no_longer_listed", "cart_full", "cart_fine", "wa_intro", "wa_branch",
+             "wa_name", "wa_note", "wa_thanks", "wa_more", "wa_sep"]
+
+
+def cs(L, k, **kw):
+    return t(L, "cart." + k, **kw)
+
+
+def cart_icon(L):
+    return (f'<a class="hd-cart" href="{u(lp(L, "cart/"))}" data-cart-open data-cta="cart_open" data-ref="cart_open" '
+            f'aria-label="{E(cs(L, "cart_items").replace("{n}", "0"))}">{IC["cart"]}<span class="hd-cart-n" data-cart-count hidden>0</span></a>')
+
+
+def sample_chip(L, cls="smp-c"):
+    return f'<span class="{cls}">{t(L, "sample.chip")}</span>' if SAMPLE else ""
+
+
+def sample_bar(L):
+    return f'<div class="smp" role="note"><div class="wrap">{sample_chip(L)}</div></div>' if SAMPLE else ""
+
+
+def sample_footer(L):
+    return f'<p class="ft-smp">{t(L, "sample.footer")}</p>' if SAMPLE else ""
+
+
+def cart_ui(L, ref, uid):
+    return f'<div class="cart-ui" data-cart-ui data-ref-checkout="{ref}" data-uid="{uid}"></div>'
+
+
+def cart_drawer(L, path):
+    if path == "cart/":
+        return ""          # the cart page holds the same UI in its main content
+    return (f'<div class="cd" id="cart-drawer" hidden aria-hidden="true"><div class="cd-bg" data-cart-close></div>'
+            f'<div class="cd-in" role="dialog" aria-modal="true" aria-labelledby="cd-h-{L["code"]}">'
+            f'<div class="cd-top"><h2 id="cd-h-{L["code"]}">{IC["cart"]}<span>{cs(L, "cart")}</span></h2>'
+            f'<button type="button" class="cd-x" data-cart-close aria-label="{t(L, "cart.close")}">{IC["close"]}</button></div>'
+            f'<div class="cd-body">{sample_chip(L, "smp-c smp-in")}{cart_ui(L, "whatsapp_cart_checkout", "cd")}'
+            f'<a class="cd-page" href="{u(lp(L, "cart/"))}">{t(L, "cart.open_page")}{IC["arrow"]}</a></div></div></div>')
+
+
+def price_of(v):
+    if PRICE_MODE != "show":
+        return None
+    tier = SHOPCFG.get("price_tier", "retail")
+    for p in v.get("prices") or []:
+        if p.get("tier") == tier and p.get("amount"):
+            return p["amount"]
+    return None
+
+
+def money(a):
+    return f'{SHOPCFG.get("currency_label", "RM")} {float(a):.2f}'
+
+
+def shop_cfg(L):
+    c = {"pfx": SHOPCFG.get("cart", {}).get("storage_prefix", "biy"), "wa": WA_NUM, "mode": MODE, "price_mode": PRICE_MODE,
+         "cur": SHOPCFG.get("currency_label", "RM"), "max_lines": SHOPCFG.get("cart", {}).get("max_lines", 40),
+         "max_qty": SHOPCFG.get("cart", {}).get("max_qty", 99),
+         "ids": [v["sku"] for p in CAT["products"] for v in p["variants"]],
+         "branches": [{"id": b["id"], "name": b["short"]} for b in BR],
+         "cats_url": u(lp(L, "category/")), "wa_icon": IC["wa"],
+         "s": {k: cs(L, k) for k in CART_KEYS} | {"cart_items": cs(L, "cart_items"), "cart_full": cs(L, "cart_full")}}
+    if PRICE_MODE == "show":
+        c["prices"] = {v["sku"]: price_of(v) for p in CAT["products"] for v in p["variants"] if price_of(v)}
+    return json.dumps(c, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+
+
+def add_attrs(p, v):
+    b = CAT["brand"][p["brand"]]
+    a = {"data-sku": v["sku"], "data-group": p["id"], "data-name": p["name"], "data-brand": b["name"],
+         "data-model": v.get("model") or p.get("model") or "", "data-variant": v.get("label") or "", "data-unit": v.get("unit") or "",
+         "data-sample": "1" if p["is_sample"] else "0"}
+    return " ".join(f'{k}="{E(str(x))}"' for k, x in a.items())
+
+
+def opt_attrs(v):
+    return f'data-sku="{E(v["sku"])}" data-variant="{E(v["label"])}" data-unit="{E(v.get("unit") or "")}" data-model="{E(v.get("model") or "")}"'
+
+
+def sizes_text(p):
+    return " · ".join(v["label"] for v in p["variants"] if v["label"])
+
+
+def stock_key(p):
+    if not SAMPLE and any((s.get("qty") or 0) > 0 for v in p["variants"] for s in v.get("stock") or []):
+        return "in_stock"
+    return "check"
 
 
 # ------------------------------------------------------------------ blocks
@@ -291,14 +405,30 @@ def range_card(L, b, r, ref="whatsapp_range"):
 
 
 def product_card(L, p):
+    """Card: link (frame, brand, name, model or sizes) + stock label + [size select] + primary Add to cart + small
+    WhatsApp for price. Compact at 360 px (2 columns)."""
     b = CAT["brand"][p["brand"]]
     c = CAT["category"][p["category"]]
     url = u(lp(L, "product/" + p["slug"] + "/"))
-    img = [dict(i, src=u(i["src"])) for i in p.get("images") or []]
+    img = [dict(i, src=u(i["src"]) if not i["src"].startswith("http") else i["src"]) for i in p.get("images") or []]
+    vs = p["variants"]
+    sub = (f'{t(L, "ui.sizes")} {E(sizes_text(p))}' if len(vs) > 1 else
+           (f'{t(L, "ui.model")} {E(p.get("model") or "")}' if p.get("model") else ""))
+    sel = ""
+    if len(vs) > 1:
+        sid = "sz-" + shop.slugify(p["id"]) + "-" + L["code"] + "-" + str(next(_UID))
+        sel = (f'<label class="vh" for="{sid}">{t(L, "ui.size")}</label><select id="{sid}" class="pc-sel" data-variant-select>' +
+               "".join(f'<option {opt_attrs(v)}>{E(v["label"])}</option>' for v in vs) + "</select>")
+    pr = price_of(vs[0])
+    price = f'<span class="pc-price" data-price>{money(pr)}</span>' if pr else ""
+    wa_btn = wa(L, "wa.product_no_sku", "whatsapp_product_card", t(L, "ui.wa_price"), cls="pc-wa", brand=b["name"], name=pname(b, p),
+                url=absu(lp(L, "product/" + p["slug"] + "/")))
     return (f'<article class="pc"><a class="pc-a" href="{url}">{shop.product_frame(IC[c["icon"]], b["name"], img, alt=p["name"], cls="pf")}'
-            f'<small>{E(b["name"])}</small><h3>{E(p["name"])}</h3><span class="pc-m">{t(L, "ui.model")} {E(p.get("model") or "")}</span></a>'
-            f'<span class="stock">{t(L, "ui.stock." + shop.stock_label_key(p))}</span>'
-            f'{wa(L, "wa.product_no_sku" if not p.get("sku") else "wa.product", "whatsapp_product_card", t(L, "ui.wa_price"), cls="btn btn-wa btn-sm", brand=b["name"], name=pname(b, p), sku=p.get("sku") or "", variant="", url=absu(lp(L, "product/" + p["slug"] + "/")))}</article>')
+            f'<small>{E(b["name"])}</small><h3>{E(p["name"])}</h3><span class="pc-m">{sub}</span></a>'
+            f'<span class="stock">{t(L, "ui.stock." + stock_key(p))}</span>{price}'
+            f'<div class="pc-act" data-cart-item>{sel}<button type="button" class="btn btn-add btn-sm" data-add {add_attrs(p, vs[0])}>'
+            f'{IC["cart"]}<span>{cs(L, "add_to_cart")}</span></button><span class="added" data-added aria-live="polite"></span></div>'
+            f'{wa_btn}</article>')
 
 
 def branch_card(L, br, ref_wa="whatsapp_branch"):
@@ -327,14 +457,21 @@ PAGES = []          # (path, indexable)
 OUTFILES = {}       # site path -> html
 
 
-def emit(L, path, title, desc, graph, main, noindex=False, home=False):
-    html = head(L, path, title, desc, graph, noindex) + "\n" + header(L, path, home) + f'\n<main id="main">{main}</main>\n' + footer(L, path)
+def emit(L, path, title, desc, graph, main, noindex=False, home=False, sample=False):
+    html = head(L, path, title, desc, graph, noindex) + "\n" + header(L, path, home) + (sample_bar(L) if sample else "") + \
+        f'\n<main id="main">{main}</main>\n' + footer(L, path)
     OUTFILES[lp(L, path)] = html
 
 
 def home_feed(L, n=12):
     """Shopee-style 2-column feed: real products first, then brand ranges taken round-robin across brands."""
-    cards = [product_card(L, p) for p in products_of()]
+    by = [[p for p in products_of(brand=b["slug"])] for b in CAT["brands"]]
+    picked = []
+    while len(picked) < n and any(by):
+        for q in by:
+            if q and len(picked) < n:
+                picked.append(q.pop(0))
+    cards = [product_card(L, p) for p in picked]
     queues = [[(b, r) for r in b["ranges"]] for b in CAT["brands"]]
     while len(cards) < n and any(queues):
         for q in queues:
@@ -400,7 +537,7 @@ def p_home(L):
     graph = [org_ld(), shop.ld_website("BIY Home Store", absu(lp(L, "")), absu(lp(L, "search/")), L["hreflang"], absu("#website")),
              shop.ld_faq(faqs)]
     main = '<div class="hm">' + top + banner + icons + brands + feed + branches + steps + proof + faq + '</div>'
-    emit(L, "", t(L, "home.title"), t(L, "home.meta"), graph, main, home=True)
+    emit(L, "", t(L, "home.title"), t(L, "home.meta"), graph, main, home=True, sample=True)
 
 
 def p_cat_index(L):
@@ -416,21 +553,22 @@ def p_category(L, c):
     cta = wa(L, "wa.category", "whatsapp_category", t(L, "ui.wa_us"), category=cat_name(L, c))
     top = page_top(L, items, t(L, f"cat.{c['slug']}.h1"), t(L, f"cat.{c['slug']}.intro"), f'<div class="ptop-cta">{cta}</div>')
     body = ""
+    prods = products_of(category=c["slug"])
     if brands:
         body += band(f'<h2>{t(L, "ui.brands_in_cat")}</h2><div class="bw-row">{"".join(brand_card(L, b) for b in brands)}</div>', "band-rise")
+    if prods:
+        body += band(f'<h2>{t(L, "ui.products")}</h2><div class="pc-grid">{"".join(product_card(L, p) for p in prods)}</div><p class="fine">{t(L, "ui.note_price")}</p>', "band-white")
+    if brands:
         for b in brands:
             body += band(f'<div class="sec-h"><h2>{t(L, "ui.ranges_of", brand=b["name"])}</h2><p class="note">{t(L, "ui.stock_note")}</p></div>' +
                          shop.rail([range_card(L, b, r) for r in b["ranges"]], t(L, "ui.ranges_of", brand=b["name"])) +
-                         f'<p class="fine">{t(L, "ui.range_source", source=t(L, "brand." + b["slug"] + ".source"))}</p>', "band-white band-rail")
-    prods = products_of(category=c["slug"])
-    if prods:
-        body += band(f'<h2>{t(L, "ui.products")}</h2><div class="pc-grid">{"".join(product_card(L, p) for p in prods)}</div><p class="fine">{t(L, "ui.note_price")}</p>', "band-rise")
+                         f'<p class="fine">{t(L, "ui.range_source", source=t(L, "brand." + b["slug"] + ".source"))}</p>', "band-rise band-rail")
     if not brands and not prods:
         body += band(f'<div class="empty"><span class="tsq tsq-l">{IC[c["icon"]]}</span><p>{t(L, "cat.no_items")}</p>{cta}</div>', "band-rise")
     others = "".join(cat_tile(L, o) for o in CAT["categories"] if o is not c)
     body += band(f'<h2>{t(L, "ui.all_categories")}</h2><div class="ct-grid ct-grid-3">{others}</div>', "band-white")
     emit(L, path, t(L, f"cat.{c['slug']}.title"), t(L, f"cat.{c['slug']}.meta"), [org_ld(), crumbs_ld(L, items)], top + body,
-         noindex=not c.get("indexable", True))
+         noindex=False if c.get("indexable", True) else "held-category", sample=bool(prods))
 
 
 def p_brand_index(L):
@@ -447,63 +585,89 @@ def p_brand(L, b):
     ev = ext(b["evidence_url"], evl) if evl and "biyhomestore.com" not in b["evidence_url"] else ""
     cta = wa(L, "wa.brand", "whatsapp_brand", t(L, "ui.wa_ask_brand", brand=b["name"]), brand=b["name"])
     top = page_top(L, items, t(L, f"brand.{b['slug']}.h1"), t(L, f"brand.{b['slug']}.intro"), f'<div class="ptop-ev">{ev}</div><div class="ptop-cta">{cta}</div>')
-    body = band(f'<div class="sec-h"><h2>{t(L, "ui.ranges_of", brand=b["name"])}</h2><p class="note">{t(L, "ui.stock_note")}</p></div>' +
-                shop.rail([range_card(L, b, r) for r in b["ranges"]], t(L, "ui.ranges_of", brand=b["name"])) +
-                f'<p class="fine">{t(L, "ui.range_source", source=t(L, "brand." + b["slug"] + ".source"))}</p>', "band-rise band-rail")
     prods = products_of(brand=b["slug"])
+    body = ""
     if prods:
-        body += band(f'<h2>{t(L, "ui.products")}</h2><div class="pc-grid">{"".join(product_card(L, p) for p in prods)}</div><p class="fine">{t(L, "ui.note_price")}</p>', "band-white")
+        body += band(f'<h2>{t(L, "ui.products")}</h2><div class="pc-grid">{"".join(product_card(L, p) for p in prods)}</div><p class="fine">{t(L, "ui.note_price")}</p>', "band-rise")
+    body += band(f'<div class="sec-h"><h2>{t(L, "ui.ranges_of", brand=b["name"])}</h2><p class="note">{t(L, "ui.stock_note")}</p></div>' +
+                 shop.rail([range_card(L, b, r) for r in b["ranges"]], t(L, "ui.ranges_of", brand=b["name"])) +
+                 f'<p class="fine">{t(L, "ui.range_source", source=t(L, "brand." + b["slug"] + ".source"))}</p>', "band-white band-rail")
     c = CAT["category"][b["category"]]
     body += band(f'<h2>{t(L, "ui.other_brands")}</h2><div class="bw-row">{"".join(brand_card(L, o) for o in CAT["brands"] if o is not b)}</div>'
                  f'<div class="ct-grid ct-grid-1">{cat_tile(L, c)}</div>', "band-rise")
-    emit(L, path, t(L, f"brand.{b['slug']}.title"), t(L, f"brand.{b['slug']}.meta"), [org_ld(), crumbs_ld(L, items)], top + body)
+    emit(L, path, t(L, f"brand.{b['slug']}.title"), t(L, f"brand.{b['slug']}.meta"), [org_ld(), crumbs_ld(L, items)], top + body, sample=bool(prods))
 
 
 def p_product(L, p):
     path = f'product/{p["slug"]}/'
     b = CAT["brand"][p["brand"]]
     c = CAT["category"][p["category"]]
-    r = CAT["ranges"].get(p.get("range"), (None, None))[1]
+    vs = p["variants"]
     items = [(cat_name(L, c), f'category/{c["slug"]}/'), (p["name"], path)]
     url = absu(lp(L, path))
-    key = "wa.product" if p.get("sku") else "wa.product_no_sku"
-    img = [dict(i, src=u(i["src"])) for i in p.get("images") or []]
-    rows = [(t(L, "ui.brand"), f'<a href="{u(lp(L, "brand/" + b["slug"] + "/"))}">{E(b["name"])}</a>'),
-            (t(L, "ui.model"), E(p.get("model") or "")), (t(L, "ui.category"), f'<a href="{u(lp(L, "category/" + c["slug"] + "/"))}">{cat_name(L, c)}</a>')]
-    if p.get("sku"):
-        rows.insert(2, (t(L, "ui.sku"), E(p["sku"])))
-    if r:
-        rows.append((t(L, "ui.range"), E(dtx(L, r["name"]) if ("data." + r["name"]) in S["en"] else r["name"])))
-    dl = "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in rows)
+    img = [dict(i, src=u(i["src"]) if not i["src"].startswith("http") else i["src"]) for i in p.get("images") or []]
+    one_sku = vs[0]["real_sku"] if len(vs) == 1 else None
+    rows = [(t(L, "ui.brand"), f'<a href="{u(lp(L, "brand/" + b["slug"] + "/"))}">{E(b["name"])}</a>')]
+    if p.get("model"):
+        rows.append((t(L, "ui.model"), E(p["model"])))
+    if one_sku:
+        rows.append((t(L, "ui.sku"), E(one_sku)))
+    if len(vs) > 1:
+        rows.append((t(L, "ui.sizes"), E(sizes_text(p))))
+    rows.append((t(L, "ui.category"), f'<a href="{u(lp(L, "category/" + c["slug"] + "/"))}">{cat_name(L, c)}</a>'))
+    dlh = "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in rows)
     desc = f'<p>{E(p["description"])}</p>' if p.get("description") else f'<p class="pending">{t(L, "ui.details_pending")}</p>'
     specs = ""
     if p.get("specs"):
-        specs = f'<h2>{t(L, "ui.specs")}</h2><table class="spec">' + "".join(f'<tr><th>{E(s.get("key", ""))}</th><td>{E(str(s.get("value", "")))} {E(s.get("unit", ""))}</td></tr>' for s in p["specs"]) + "</table>"
-    seen = f'<p class="fine">{t(L, "ui.seen_on", date=p.get("seen_on", ""))}</p>' if "biyhomestore.com" in (p.get("source_url") or "") else ""
-    btn = wa(L, key, "whatsapp_product", t(L, "ui.wa_price"), cls="btn btn-wa btn-lg", brand=b["name"], name=pname(b, p), sku=p.get("sku") or "", variant="", url=url)
+        specs = f'<h2>{t(L, "ui.specs")}</h2><table class="spec">' + "".join(f'<tr><th>{E(s_.get("key", ""))}</th><td>{E(str(s_.get("value", "")))} {E(s_.get("unit", ""))}</td></tr>' for s_ in p["specs"]) + "</table>"
+    key = "wa.product" if one_sku else "wa.product_no_sku"
+    btn = wa(L, key, "whatsapp_product", t(L, "ui.wa_price"), cls="btn btn-line btn-lg pd-wa", brand=b["name"], name=pname(b, p), sku=one_sku or "", variant="", url=url)
+    # size selector (group.variant_label) -> Add to cart is disabled until a size is chosen when there is more than one
+    if len(vs) > 1:
+        chips = "".join(f'<label class="vs-c"><input type="radio" name="variant-{L["code"]}" data-vopt {opt_attrs(v)}><span>{E(v["label"])}</span></label>' for v in vs)
+        sizes = f'<fieldset class="vs"><legend>{cs(L, "choose_size")}</legend><div class="vs-row">{chips}</div></fieldset>'
+        dis = " disabled aria-disabled=\"true\""
+    else:
+        sizes, dis = "", ""
+    pr = price_of(vs[0]) if len(vs) == 1 else None
+    price = (f'<p class="pd-pr" data-price{"" if pr else " hidden"}>{money(pr) if pr else ""}</p>' if PRICE_MODE == "show" else "")
+    buy = (f'<div class="pd-buy" data-cart-item>{sizes}{price}<div class="pd-add"><button type="button" class="btn btn-add btn-lg" data-add {add_attrs(p, vs[0])}{dis}>'
+           f'{IC["cart"]}<span>{cs(L, "add_to_cart")}</span></button><span class="added" data-added aria-live="polite"></span></div></div>')
     main = f"""<section class="ptop ptop-p"><div class="wrap">{crumbs_html(L, items)}
 <div class="pd">
 <div class="pd-media">{shop.product_frame(IC[c['icon']], b['name'], img, alt=t(L, 'product.alt', name=p['name']), cls='pf')}</div>
-<div class="pd-info"><a class="pd-brand" href="{u(lp(L, 'brand/' + b['slug'] + '/'))}">{E(b['name'])}</a>
+<div class="pd-info">{sample_chip(L, 'smp-c smp-pd')}<a class="pd-brand" href="{u(lp(L, 'brand/' + b['slug'] + '/'))}">{E(b['name'])}</a>
 <h1>{E(p['name'])}</h1>
-<p class="pd-model">{t(L, 'ui.model')} {E(p.get('model') or '')}{(' · ' + t(L, 'ui.sku') + ' ' + E(p['sku'])) if p.get('sku') else ''}</p>
-<p class="stock">{t(L, 'ui.stock.' + shop.stock_label_key(p))}</p>
+<p class="pd-model">{(t(L, 'ui.model') + ' ' + E(p['model'])) if p.get('model') and p['model'].lower() not in p['name'].lower() else ''}{(' · ' + t(L, 'ui.sku') + ' ' + E(one_sku)) if one_sku else ''}</p>
+<p class="stock">{t(L, 'ui.stock.' + stock_key(p))}</p>
 <p class="pd-price">{t(L, 'ui.note_price')}</p>
+{buy}
 {branch_picker(L)}
 <div class="pd-cta">{btn}{call(L, 'call_product', t(L, 'ui.call'))}<a class="btn btn-line" href="{u(lp(L, 'stores/'))}">{IC['pin']}<span>{t(L, 'ui.stores')}</span></a></div>
 </div></div></div></section>"""
-    body = band(f'<div class="pd-body"><div>{desc}{specs}{seen}</div><dl class="pd-dl">{dl}</dl></div>', "band-rise")
-    if r:
-        body += band(f'<div class="sec-h"><h2>{E(b["name"])} {E(dtx(L, r["name"]) if ("data." + r["name"]) in S["en"] else r["name"])}</h2><p class="note">{t(L, "ui.stock_note")}</p></div>'
-                     f'<div class="rg-one">{range_card(L, b, r)}</div>', "band-white")
-    more = [o for o in products_of(category=c["slug"]) if o is not p]
-    if more:
-        body += band(f'<h2>{t(L, "ui.more_in", category=cat_name(L, c))}</h2><div class="pc-grid">{"".join(product_card(L, o) for o in more)}</div>', "band-rise")
-    vi = {"item_id": p.get("sku") or p["id"], "item_name": p["name"], "item_brand": b["name"], "item_category": c["name"]}
+    body = band(f'<div class="pd-body"><div>{desc}{specs}</div><dl class="pd-dl">{dlh}</dl></div>', "band-rise")
+    # related: same brand first, then same category, same mode (the catalogue only ever holds one mode)
+    rel = [o for o in products_of(brand=p["brand"]) if o is not p] + [o for o in products_of(category=c["slug"]) if o is not p and o["brand"] != p["brand"]]
+    if rel:
+        body += band(f'<h2>{t(L, "ui.more_in", category=cat_name(L, c))}</h2><div class="pc-grid">{"".join(product_card(L, o) for o in rel[:8])}</div>', "band-white")
+    vi = {"item_id": vs[0]["sku"], "item_name": p["name"], "item_brand": b["name"], "item_category": c["name"]}
     main += body + f'<script type="application/json" id="view-item">{json.dumps(vi, ensure_ascii=False)}</script>'
-    graph = [org_ld(), crumbs_ld(L, items), shop.ld_product(p, b["name"], url, image=[absu(i["src"]) for i in p.get("images") or []] or None)]
+    graph = [org_ld(), crumbs_ld(L, items)]
+    if not p["is_sample"]:   # sample records never get Product schema; real items get Product without offers
+        prod = dict(p, sku=one_sku)
+        graph.append(shop.ld_product(prod, b["name"], url, image=[i["src"] if i["src"].startswith("http") else absu(i["src"]) for i in p.get("images") or []] or None))
+    flag = "sample" if p["is_sample"] else (False if shop.product_indexable(p) else "no-photo")
     emit(L, path, t(L, "product.title", name=p["name"]), t(L, "product.meta", name=p["name"], model=p.get("model") or ""), graph, main,
-         noindex=not shop.product_indexable(p))
+         noindex=flag)
+
+
+def p_cart(L):
+    items = [(cs(L, "cart"), "cart/")]
+    nojs = (f'<noscript><div class="empty"><p>{t(L, "cart.nojs")}</p>'
+            f'{wa(L, "wa.general", "whatsapp_cart_nojs", t(L, "ui.wa_us"))}</div></noscript>')
+    main = page_top(L, items, t(L, "cart.h1"), t(L, "cart.lead")) + \
+        band(f'<div class="cart-page" data-cart-page>{sample_chip(L, "smp-c smp-in")}{cart_ui(L, "whatsapp_cart_page", "cp")}{nojs}</div>', "band-rise")
+    emit(L, "cart/", t(L, "cart.title"), t(L, "cart.meta"), [org_ld(), crumbs_ld(L, items)], main, noindex="cart")
 
 
 def store_ld(L, br):
@@ -583,7 +747,7 @@ def p_search(L):
     browse = (f'<h2>{t(L, "search.browse_brands")}</h2><div class="bw-row">{"".join(brand_card(L, b) for b in CAT["brands"])}</div>'
               f'<h2>{t(L, "search.browse_cats")}</h2><div class="ct-grid">{"".join(cat_tile(L, c) for c in CAT["categories"])}</div>')
     main = page_top(L, items, t(L, "search.h1"), "", f'<div class="ptop-search">{sf}</div>') + band(app, "band-rise") + band(browse, "band-white")
-    emit(L, "search/", t(L, "search.title"), t(L, "search.meta"), [org_ld(), crumbs_ld(L, items)], main, noindex=True)
+    emit(L, "search/", t(L, "search.title"), t(L, "search.meta"), [org_ld(), crumbs_ld(L, items)], main, noindex="search", sample=True)
 
 
 def p_articles(L):
@@ -601,6 +765,9 @@ def p_privacy(L):
     inner = privacy_page.render_main(L["code"], "my", pf)
     inner = inner.replace('data-cta="whatsapp_privacy" data-ref="privacy"', 'data-cta="whatsapp" data-ref="whatsapp_privacy"')
     inner = inner.replace('data-cta="call_privacy" data-ref="privacy"', 'data-cta="call" data-ref="call_privacy"')
+    k = inner.find("<h2", inner.find("<h2") + 1)
+    if k > 0:   # end of "What we collect": the cart line (browser only)
+        inner = inner[:k] + f'<p data-cart-privacy>{t(L, "privacy.cart_line")}</p>' + inner[k:]
     main = f'<section class="ptop"><div class="wrap">{crumbs_html(L, items)}<div class="prose">{inner}</div></div></section>'
     emit(L, "privacy/", t(L, "privacy.title"), t(L, "privacy.meta"), [org_ld(), crumbs_ld(L, items)], main)
 
@@ -621,7 +788,8 @@ def search_rows():
     for p in CAT["products"]:
         b = CAT["brand"][p["brand"]]
         rows.append({"t": "product", "p": f'product/{p["slug"]}/', "n": names(lambda L: p["name"]), "b": b["name"],
-                     "k": [p.get("model"), (p.get("model") or "").replace(" ", ""), p.get("sku"), p.get("autocount_item_code")] +
+                     "k": [p.get("model"), (p.get("model") or "").replace(" ", "")] + [v["real_sku"] for v in p["variants"]] +
+                          [v["label"] for v in p["variants"]] + [p.get("short") or ""] +
                           SYN["brand"].get(p["brand"], []) + SYN["category"].get(p["category"], [])})
     for br in BR:
         rows.append({"t": "store", "p": f'stores/{br["slug"]}/', "n": names(lambda L: br["short"]), "k": [br["city"], br["street"], "kedai hardware", "hardware shop", "五金店"]})
@@ -674,7 +842,12 @@ BANNED = [
     ("hours text", r"(?i)\b(9am|8:30am|7pm|6:30pm)\b", "raw"), ("branch phones", r"12-553 8961|12-863 8852|125538961|128638852", "raw"),
     ("delivery claim", r"(?i)\b(free delivery|we deliver|delivery available|warranty|wholesale price)", "text"),
     ("8959", r"8959", "raw"), ("Kota Masai FB", r"61557140841368", "raw"),
+    ("SAMPLE- sku shown", r"(?i)\bSAMPLE-[A-Z0-9]", "text"), ("ICI (Dulux) name", r"ICI \(Dulux\)", "raw"),
 ]
+if MODE == "live":   # once the feed is live, no sample record may survive anywhere in the output
+    BANNED += [("SAMPLE- anywhere (live)", r"(?i)SAMPLE-", "raw"), ("sample label (live)", r'class="smp|class="ft-smp', "raw")]
+if PRICE_MODE == "show":   # scratch test of the price switch only; never shipped
+    BANNED = [r for r in BANNED if r[0] not in ("RM price", "price number")]
 
 
 def check():
@@ -686,8 +859,17 @@ def check():
     for p, html in OUTFILES.items():
         if html.count("<h1") != 1:
             problems.append(f"/{p} has {html.count('<h1')} h1")
-        if 'name="robots" content="noindex' in html and ("search/" not in p) and not NOINDEX_OK(p):
-            problems.append(f"/{p} unexpected noindex")
+        for m in re.finditer(r'<meta name="robots"[^>]*>', html):
+            if "data-flag=" not in m.group(0):
+                problems.append(f"/{p} robots meta without data-flag")
+        if html.count("assets/cart.js") != 1:
+            problems.append(f"/{p} cart.js referenced {html.count('assets/cart.js')} times")
+        if 'href="https://autoseo.my/"' not in html:
+            problems.append(f"/{p} missing AutoSEO.my credit link")
+        if html.count('id="shop-cfg"') != 1:
+            problems.append(f"/{p} shop-cfg block count")
+        if p.endswith("cart/") and 'data-flag="cart"' not in html:
+            problems.append(f"/{p} cart page must be noindex")
         for m in re.finditer(r'data-cta="(whatsapp|call|facebook|directions)"(?! data-ref)', html):
             problems.append(f"/{p} CTA without data-ref")
         for m in re.finditer(r'href="(https://wa\.me/[^"]+)"', html):
@@ -729,15 +911,16 @@ def main():
     css = css.replace("@@FONT_ARCHIVO@@", u("assets/fonts/archivo.woff2")).replace("@@FONT_PUBLIC@@", u("assets/fonts/publicsans.woff2"))
     write("assets/site.css", css)
     shutil.copy(os.path.join(TPL, "shop", "shop.js"), os.path.join(OUT, "assets", "shop.js"))
+    shutil.copy(os.path.join(TPL, "shop", "cart.js"), os.path.join(OUT, "assets", "cart.js"))
     shutil.copy(os.path.join(HERE, "assets", "p1-cta.js"), os.path.join(OUT, "assets", "p1-cta.js"))
     rows = search_rows()
     write("search-index.json", shop.search_index(rows))
-    VER = {"css": ver("assets/site.css"), "js": ver("assets/shop.js"), "cta": ver("assets/p1-cta.js"), "idx": ver("search-index.json")}
+    VER = {"css": ver("assets/site.css"), "js": ver("assets/shop.js"), "cart": ver("assets/cart.js"), "cta": ver("assets/p1-cta.js"), "idx": ver("search-index.json")}
     BODY_ATTR = f' data-ga4="{E(SITE.get("ga4_id", ""))}"' if SITE.get("ga4_id") else ""
     index_paths = []
     for L in LANGS:
         p_home(L); p_cat_index(L); p_brand_index(L); p_stores(L); p_contractors(L); p_about(L); p_contact(L)
-        p_search(L); p_articles(L); p_privacy(L)
+        p_search(L); p_articles(L); p_privacy(L); p_cart(L)
         for c in CAT["categories"]:
             p_category(L, c)
         for b in CAT["brands"]:
@@ -767,6 +950,11 @@ def main():
                                           "icons": [{"src": u("images/icon-192.png"), "sizes": "192x192", "type": "image/png"},
                                                     {"src": u("images/favicon-512.png"), "sizes": "512x512", "type": "image/png"}]}, indent=1))
     problems, links = check()
+    rep = {"mode": MODE, "reason": RES["reason"], "feed_version": RES.get("feed_version"), "price_mode": PRICE_MODE,
+           "groups": len(CAT["products"]), "skus": sum(len(p["variants"]) for p in CAT["products"]), "skipped": SKIPPED}
+    print("RESOLVER", json.dumps(rep, ensure_ascii=False))
+    if "--report" in sys.argv:
+        open(sys.argv[sys.argv.index("--report") + 1], "w").write(json.dumps(rep, indent=1, ensure_ascii=False))
     n = sum(len(fs) for _, _, fs in os.walk(OUT))
     print(f"built {len(OUTFILES)} pages, {n} files into {OUT}; {len(index_paths)} indexable EN paths ({len(index_paths) * len(LANGS)} sitemap URLs); internal links checked: {links}")
     if problems:

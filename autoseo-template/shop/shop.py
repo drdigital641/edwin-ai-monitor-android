@@ -35,11 +35,13 @@ def _read(p):
         return json.load(f)
 
 
-def load_catalog(data_dir):
+def load_catalog(data_dir, products=None):
+    """products=None: legacy products.json rows. products=[...]: groups from resolve_products()+normalize_products()
+    (v3 feed path, used by BIY from 26 Nov 2026); the same brand/category/slug checks run on them."""
     facts = _read(os.path.join(data_dir, "facts.json"))
     brands_all = _read(os.path.join(data_dir, "brands.json"))
     cats = _read(os.path.join(data_dir, "categories.json"))
-    prod = _read(os.path.join(data_dir, "products.json"))
+    prod = {"products": products} if products is not None else _read(os.path.join(data_dir, "products.json"))
     errors = []
     published = set(facts.get("brands_published", []))
     brands = [b for b in brands_all if b.get("published") and b["slug"] in published]
@@ -231,3 +233,210 @@ def banned_hits(dist, rules, exts=(".html", ".xml", ".txt", ".json", ".js", ".cs
                     s = src[max(0, m.start() - 30): m.end() + 30].replace("\n", " ")
                     hits.append((os.path.relpath(fp, dist), name, s))
     return hits
+
+
+# ================================================================ PRODUCT FEED RESOLVER (26 Nov 2026, BIY v3)
+# ONE function decides which product data a build uses. Three states, same code path for every page:
+#   not configured   (shop-config.json live_feed.url null)            -> products.sample.json, mode "sample"
+#   configured, bad  (HTTP error / bad JSON / schema fail / < min_active / any is_sample) -> last good live snapshot if the
+#                    site was ever live (live-state.json live_seen), else products.sample.json, mode "sample"
+#   live             (200 + valid + >= min_active active + no is_sample) -> ONLY the live records, mode "live";
+#                    snapshot products.live.json + live-state.json written. Sample and live are never mixed.
+# Records use product-feed.schema.json (vendor push API fields). normalize_products() turns them into site product
+# groups (SKUs sharing group.code = sizes of ONE product page) through category-map.json + the brand allow-list.
+
+SCHEMA_TYPES = {"string": str, "boolean": bool, "number": (int, float), "integer": int, "object": dict, "array": list}
+
+
+def _type_ok(v, t):
+    ts = t if isinstance(t, list) else [t]
+    for x in ts:
+        if x == "null" and v is None:
+            return True
+        py = SCHEMA_TYPES.get(x)
+        if py and isinstance(v, py) and not (x in ("number", "integer") and isinstance(v, bool)):
+            return True
+    return False
+
+
+def validate_record(r, schema):
+    """Small JSON-schema subset (required, type, maxLength, pattern, enum, minimum, maxItems, nested items/required).
+    Returns a list of error strings (empty = valid). No third-party library needed on the build box."""
+    errs = []
+
+    def chk(v, sc, path):
+        if "type" in sc and not _type_ok(v, sc["type"]):
+            errs.append("%s: type" % path)
+            return
+        if v is None:
+            return
+        if isinstance(v, str):
+            if "maxLength" in sc and len(v) > sc["maxLength"]:
+                errs.append("%s: too long" % path)
+            if "pattern" in sc and not re.search(sc["pattern"], v):
+                errs.append("%s: pattern" % path)
+            if "enum" in sc and v not in sc["enum"]:
+                errs.append("%s: enum" % path)
+        if isinstance(v, (int, float)) and not isinstance(v, bool) and "minimum" in sc and v < sc["minimum"]:
+            errs.append("%s: minimum" % path)
+        if isinstance(v, dict):
+            for k in sc.get("required", []):
+                if k not in v:
+                    errs.append("%s.%s: required" % (path, k))
+            for k, sub in sc.get("properties", {}).items():
+                if k in v:
+                    chk(v[k], sub, "%s.%s" % (path, k))
+        if isinstance(v, list):
+            if "maxItems" in sc and len(v) > sc["maxItems"]:
+                errs.append("%s: maxItems" % path)
+            if "items" in sc:
+                for i, it in enumerate(v):
+                    chk(it, sc["items"], "%s[%d]" % (path, i))
+
+    if not isinstance(r, dict):
+        return ["record: not an object"]
+    chk(r, dict(schema, type="object"), r.get("sku") or "record")
+    return errs
+
+
+def _fetch_https(url, key, timeout):
+    import urllib.request
+    if not url.lower().startswith("https://"):
+        raise ValueError("feed url must be https")
+    req = urllib.request.Request(url, headers={"Authorization": "Bearer " + key, "Accept": "application/json",
+                                               "User-Agent": "autoseo-shop-build"})
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        return resp.status, resp.read()
+
+
+def _read_key(path):
+    p = os.path.expanduser(path or "")
+    if not p or not os.path.isfile(p):
+        return None
+    k = open(p, encoding="utf-8").read().strip()
+    return k if k and not k.startswith("#") and "FILL" not in k.upper() else None
+
+
+def resolve_products(data_dir, fetch=None, write_state=True, now=None):
+    """Returns {mode: 'sample'|'live', records: [...], feed_version, reason, report: [...]}.
+    fetch(url, key, timeout) -> (status, bytes) is injectable for tests; default = HTTPS GET with Bearer key."""
+    import datetime as _dt
+    cfg = _read(os.path.join(data_dir, "shop-config.json"))
+    schema = _read(os.path.join(data_dir, "product-feed.schema.json"))
+    lf = cfg.get("live_feed") or {}
+    state_p = os.path.join(data_dir, "live-state.json")
+    snap_p = os.path.join(data_dir, "products.live.json")
+    state = _read(state_p) if os.path.isfile(state_p) else {"live_seen": False}
+    report = []
+
+    def fallback(reason):
+        if state.get("live_seen") and os.path.isfile(snap_p):
+            snap = _read(snap_p)
+            return {"mode": "live", "records": snap.get("products", []), "feed_version": snap.get("feed_version"),
+                    "reason": reason + "; using last good live snapshot (site has been live, never back to sample)", "report": report}
+        smp = _read(os.path.join(data_dir, "products.sample.json"))
+        return {"mode": "sample", "records": smp.get("products", []), "feed_version": smp.get("feed_version"),
+                "reason": reason, "report": report}
+
+    url = lf.get("url")
+    if not url:
+        return fallback("live feed not configured (shop-config.json live_feed.url is null)")
+    key = _read_key(lf.get("key_file"))
+    if not key:
+        return fallback("live feed key file missing or not filled")
+    try:
+        status, body = (fetch or _fetch_https)(url, key, lf.get("timeout_s", 10))
+    except Exception as e:  # network, TLS, timeout
+        return fallback("feed fetch failed (%s)" % type(e).__name__)
+    if status != 200:
+        return fallback("feed HTTP %s" % status)
+    try:
+        feed = json.loads(body.decode("utf-8") if isinstance(body, bytes) else body)
+    except Exception:
+        return fallback("feed is not valid JSON")
+    prods = feed.get("products") if isinstance(feed, dict) else None
+    if not isinstance(prods, list):
+        return fallback("feed has no products list")
+    bad = [(r.get("sku") if isinstance(r, dict) else "?", e) for r in prods for e in validate_record(r, schema)]
+    if bad:
+        return fallback("feed failed schema on %d field(s), first: %s %s" % (len(bad), bad[0][0], bad[0][1]))
+    if any(r.get("is_sample") for r in prods):
+        return fallback("feed contains is_sample=true records")
+    active = [r for r in prods if r.get("active")]
+    if len(active) < int(lf.get("min_active", 1)):
+        return fallback("feed has %d active products (< min_active %s)" % (len(active), lf.get("min_active", 1)))
+    deleted = set(feed.get("deleted") or [])
+    active = [r for r in active if r.get("slug") not in deleted and r.get("sku") not in deleted]
+    at = now or _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    if write_state:
+        with open(snap_p, "w", encoding="utf-8") as f:
+            json.dump({"feed_version": feed.get("feed_version"), "generated_at": feed.get("generated_at"), "saved_at": at,
+                       "products": active}, f, ensure_ascii=False, indent=1)
+        with open(state_p, "w", encoding="utf-8") as f:
+            json.dump({"live_seen": True, "feed_version": feed.get("feed_version"), "at": at}, f, indent=1)
+    return {"mode": "live", "records": active, "feed_version": feed.get("feed_version"), "reason": "live feed OK", "report": report}
+
+
+def slugify(s):
+    s = re.sub(r"[\"'’]", "", str(s or "").lower())
+    return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+
+
+def real_sku(sku, is_sample):
+    """A SKU may be printed (UI, WhatsApp, schema) only when it is a real AutoCount code, never a SAMPLE- one."""
+    return sku if sku and not is_sample and not str(sku).upper().startswith("SAMPLE-") else None
+
+
+def normalize_products(records, cat_map, brands, category_slugs, mode):
+    """Feed records -> site product groups. brands: published brand dicts (slug, name, aliases). Unknown category or
+    non-allow-listed brand -> skipped and reported (non-allow-listed brands are never rendered anywhere)."""
+    bmap = {}
+    for b in brands:
+        for n in [b["name"], b["slug"]] + list(b.get("aliases", [])):
+            bmap[re.sub(r"[^a-z0-9]", "", n.lower())] = b["slug"]
+    cmap = {re.sub(r"\s+", " ", k.strip().lower()): v for k, v in (cat_map.get("map") or {}).items()}
+    groups, order, skipped = {}, [], []
+    for r in records:
+        if not r.get("active"):
+            continue
+        bslug = bmap.get(re.sub(r"[^a-z0-9]", "", str(r.get("brand") or "").lower()))
+        if not bslug:
+            skipped.append((r.get("sku"), "brand not on allow-list"))
+            continue
+        raw_c = re.sub(r"\s+", " ", str(r.get("category") or "").strip().lower())
+        cslug = cmap.get(raw_c) or (raw_c if raw_c in category_slugs else None)
+        if not cslug and ">" in raw_c:
+            cslug = cmap.get(raw_c.split(">")[0].strip())
+        if cslug not in category_slugs:
+            skipped.append((r.get("sku"), "unknown category %r" % r.get("category")))
+            continue
+        g = r.get("group") or None
+        gid = (g or {}).get("code") or r["sku"]
+        v = {"sku": r["sku"], "real_sku": real_sku(r["sku"], bool(r.get("is_sample"))), "label": (g or {}).get("variant_label") or "",
+             "unit": r.get("unit") or "", "model": r.get("model") or "",
+             "prices": [p for p in (r.get("prices") or []) if p.get("amount")], "stock": r.get("stock") or [],
+             "barcode": r.get("barcode")}
+        if gid not in groups:
+            name = (g or {}).get("name") or r.get("title")
+            slug = slugify(name) if g else (r.get("slug") or slugify(r.get("title")))
+            groups[gid] = {"id": gid, "slug": slug, "name": name, "brand": bslug, "category": cslug,
+                           "model": r.get("model") or "", "description": r.get("description"),
+                           "short": r.get("short_description"), "specs": [s for s in (r.get("specs") or []) if s.get("key") != "Pack size"],
+                           "images": [{"src": i["url"], "alt": i.get("alt", "")} for i in (r.get("images") or [])],
+                           "is_sample": bool(r.get("is_sample")), "status": "active", "variants": [],
+                           "indexable": not r.get("is_sample")}
+            order.append(gid)
+        grp = groups[gid]
+        grp["variants"].append(v)
+        if not grp["images"] and r.get("images"):
+            grp["images"] = [{"src": i["url"], "alt": i.get("alt", "")} for i in r["images"]]
+        grp["is_sample"] = grp["is_sample"] or bool(r.get("is_sample"))
+    out = [groups[g] for g in order]
+    seen = {}
+    for p in out:
+        if p["slug"] in seen:
+            p["slug"] = p["slug"] + "-" + slugify(p["id"])[-6:]
+        seen[p["slug"]] = 1
+        for v in p["variants"]:
+            v["sample"] = p["is_sample"]
+    return out, skipped
