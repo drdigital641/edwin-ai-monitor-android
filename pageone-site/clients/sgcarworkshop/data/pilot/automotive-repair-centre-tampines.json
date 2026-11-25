@@ -1,0 +1,46 @@
+{
+ "lede": "Automotive Repair Centre [Tampines] at 12 Tampines North Dr. 4, #05-12/13 is a car workshop for accident repair, insurance claims and general repairs.",
+ "chips": [
+  "Accident repair",
+  "Claims",
+  "Repairs"
+ ],
+ "services": [
+  "Accident claims and reporting",
+  "Paint and body work",
+  "Maintenance and repair, including oil changes and diagnostics",
+  "OBU installation"
+ ],
+ "themes": "Customers on Google Maps mention accident repair with claims handling and progress updates, advice on follow-up steps, a tyre pumped up for a visitor, and a worn valve gasket found when the engine oil was low.",
+ "faqs": [
+  [
+   "What does Automotive Repair Centre [Tampines] do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "Accident repair",
+  "Insurance claims handling",
+  "Engine fault diagnosis"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "Services listed on its website. Ask the workshop for its full list.",
+ "specialties": [
+  "Accident repair",
+  "Paint and body work"
+ ],
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Ask the workshop about your car.",
+ "good_to_know": [
+  "Says it works with a panel of insurers",
+  "Says it has 9 units across the North and West of Singapore",
+  "Says it has 13 years of experience"
+ ],
+ "good_to_know_note": "From its website."
+}

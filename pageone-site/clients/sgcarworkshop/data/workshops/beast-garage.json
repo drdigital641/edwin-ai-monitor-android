@@ -36,13 +36,39 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-25"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-25",
  "last_verified_at": "2026-11-25",
  "collector_version": "agent-v5",
- "geo_retry": "2026-11-25",
  "estate": "tampines-north-drive-1",
  "region": "east",
- "planning_area": "Tampines"
+ "planning_area": "Tampines",
+ "lat": 1.367509,
+ "lng": 103.9318704,
+ "geo_source": "google_places",
+ "geo_checked": "2026-11-25",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 24,
+  "checked": "2026-11-25",
+  "source": "Google Places",
+  "source_date": "2026-11-25"
+ }
 }

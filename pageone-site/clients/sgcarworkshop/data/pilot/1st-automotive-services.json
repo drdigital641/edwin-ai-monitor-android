@@ -1,0 +1,41 @@
+{
+ "lede": "1st Automotive Services at 12 Tampines North Dr4, #02-28A Stellar @ is a car workshop that also handles accident repairs and claims.",
+ "chips": [
+  "Servicing",
+  "Accident repair",
+  "BMW"
+ ],
+ "services": [
+  "General servicing",
+  "Accident repair and claims handling",
+  "Engine misfire diagnosis",
+  "Continental car servicing"
+ ],
+ "themes": "Customers on Google Maps mention BMW and other continental car work including a misfire fix, honest advice on which parts need replacing, servicing with detailed checks, and accident repair with claims handling and a replacement car.",
+ "faqs": [
+  [
+   "What does 1st Automotive Services do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "General servicing",
+  "Accident repair",
+  "Engine misfire diagnosis"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "BMW"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "good_to_know": [],
+ "good_to_know_note": ""
+}

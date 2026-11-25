@@ -76,7 +76,7 @@ def workshop_files():
     return sorted(_os.path.join(d, f) for f in _os.listdir(d) if f.endswith(".json")) if _os.path.isdir(d) else []
 
 
-GEO_SOURCES = ("onemap", "onemap_street", "onemap_same_postal", "google_maps_manual")
+GEO_SOURCES = ("google_places", "google_maps_manual", "onemap", "onemap_street", "onemap_same_postal")   # onemap* = legacy pins on older live cards only
 
 
 def record_problems(r):
@@ -92,9 +92,9 @@ def record_problems(r):
     bad = FORBIDDEN_KEYS & set(r)
     if bad:
         out.append("stores Google-only field(s) %s" % sorted(bad))
-    # Edwin 22 Nov 2026: geo_source=onemap is no longer the only option. OneMap building/postal point, OneMap street point, or the
-    # OneMap point of a live card at the same postal code, or a pin read by hand from Google Maps and given by Edwin (google_maps_manual).
-    # Lat/lng from the Places API answer is still never stored (Places terms).
+    # Edwin 26 Nov 2026: pins come from the Google Places API (Place Details "location", geo_source google_places), as he set up.
+    # OneMap is no longer called anywhere; onemap* values stay valid only for the older live cards that already carry them.
+    # google_maps_manual = a pin read by hand from Google Maps (Edwin's 22 Nov rule).
     if r.get("status") == "active" and r.get("geo_source") not in GEO_SOURCES:
         out.append("geo_source must be one of %s" % (GEO_SOURCES,))
     if r.get("status") not in ("active", "pending", "closed", "removed"):

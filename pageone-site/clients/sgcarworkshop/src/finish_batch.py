@@ -15,13 +15,11 @@ import argparse, glob, json, math, os, re, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__)); D = os.path.join(HERE, '..', 'data')
 BATCH = '/tmp/claude-0/s/batch.json'
-# Coordinates come from OneMap (Google's lat/lng may not be stored; it is used only to suggest the nearest estate during prep).
-# OneMap is blocked from this host: run the curl loop in the Controller sandbox and save {postal: [lat, lng]} here.
-# Edwin 22 Nov 2026: a OneMap 401 / missing coordinate is an infrastructure RETRY, never a hold. Fallback order: this cache, then the
-# coordinates of a live card with the same postal code (same building), else the record stays pending with geo_retry set (no hold code)
-# and is picked up again next run. OneMap postal search (searchVal=<postal>) still answers from the Controller sandbox without a token;
-# street-name search there needs a token (seen 22 Nov 2026).
-ONEMAP = '/tmp/claude-0/s/onemap_cache.json'
+# Coordinates (Edwin 26 Nov 2026): from the Google Places API, i.e. the "location" in the Place Details answer the night run already
+# fetched (no extra call), saved with geo_source "google_places" and geo_checked. OneMap is not used. A pin outside Singapore or more
+# than PIN_MAX_KM from its estate centre is not used: the record stays pending with geo_retry and is listed for a check.
+SG_BOX = (1.15, 1.48, 103.59, 104.10)   # lat min/max, lng min/max
+PIN_MAX_KM = 3.0
 # Card rules v2 (Edwin 5 Nov 2026, sources narrowed 22:23 SGT): sources are Google Place Details plus the workshop's own website ONLY
 # when Google lists one (websiteUri), never Facebook/Carousell/Instagram/other social pages; a blocked or failed site is skipped with no
 # retries. One PRIVATE source log per card (the repo is public), with a "pilot" section of own-words card fields
@@ -84,13 +82,16 @@ def listed():
     return out
 
 
-def same_postal_geo(postal):
-    """OneMap coordinates already on a live card with the same postal code (same building), or None."""
-    for f in glob.glob(D + '/workshops/*.json'):
-        r = jl(f, {})
-        if r.get('status') == 'active' and r.get('postal_code') == postal and r.get('lat') and r.get('geo_source', '').startswith('onemap'):
-            return [r['lat'], r['lng']]
-    return None
+def places_pin(g, est):
+    """[lat, lng] from a Place Details answer if it is inside Singapore and near its estate, else None."""
+    loc = (g or {}).get('location') or {}; la, lo = loc.get('latitude'), loc.get('longitude')
+    if la is None or lo is None: return None
+    if not (SG_BOX[0] <= la <= SG_BOX[1] and SG_BOX[2] <= lo <= SG_BOX[3]): return None
+    e = areas.ESTATES.get(est) or {}
+    if e.get('lat') and dist(la, lo, e['lat'], e.get('lon', e.get('lng'))) > PIN_MAX_KM:
+        # some estate centres are rough; also accept a pin within 1 km of a live card in the same estate
+        if not any(r.get('lat') and dist(la, lo, r['lat'], r['lng']) <= 1.0 for r in listed() if r.get('estate') == est): return None
+    return [round(la, 7), round(lo, 7)]
 
 
 def town_pa(est):
@@ -120,8 +121,6 @@ def prep(a):
                     'themes': '', 'mentioned': [], 'reviews': revs})
     jw(BATCH, out)
     print('%d records -> %s; no estate: %s' % (len(out), BATCH, [x['old'] for x in out if not x['estate']]))
-    om = jl(ONEMAP, {}); need = sorted({x['postal'] for x in out if x['postal'] and x['postal'] not in om})
-    print('postals needing OneMap: ' + ' '.join(need))
     for x in out:
         if x['name'] != x['google_name']: print('  name cleaned: %r -> %r' % (x['google_name'], x['name']))
 
@@ -144,14 +143,13 @@ def apply(a):
             os.rename('%s/google_cache/%s.json' % (D, x['old']), '%s/google_cache/%s.json' % (D, slug))
             for e in reg:
                 if e.get('place_id') == r['place_id']: e['slug'] = slug
-        est = x['estate']; geo = jl(ONEMAP, {}).get(r['postal_code']); gsrc = 'onemap'
-        if not geo: geo, gsrc = same_postal_geo(r['postal_code']), 'onemap_same_postal'
-        if not geo:   # infrastructure retry, not a hold (Edwin 22 Nov 2026)
+        est = x['estate']; geo = places_pin(g, est); gsrc = 'google_places'
+        if not geo:   # pin missing or failed the sanity check: retry/check, not a hold (Edwin 22 Nov 2026)
             r.update(slug=slug, name=x['name'], geo_retry=day); jw('%s/workshops/%s.json' % (D, slug), r); retry.append(slug); continue
         r.pop('geo_retry', None)
         for k in ('hold', 'hold_code', 'held_on'): r.pop(k, None)
         r.update(slug=slug, name=x['name'], status='active', estate=est, planning_area=town_pa(est), region=areas.ESTATES[est]['region'],
-                 lat=geo[0], lng=geo[1], geo_source=gsrc, blocks=blocks,
+                 lat=geo[0], lng=geo[1], geo_source=gsrc, geo_checked=day, blocks=blocks,
                  google_rating={'rating': g.get('rating'), 'count': g.get('userRatingCount'), 'checked': day, 'source': 'Google Places', 'source_date': day})
         jw('%s/workshops/%s.json' % (D, slug), r)
         gc = jl('%s/google_cache/%s.json' % (D, slug))

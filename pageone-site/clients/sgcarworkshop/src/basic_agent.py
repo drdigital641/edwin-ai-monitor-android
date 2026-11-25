@@ -13,7 +13,7 @@ COMMANDS  (Google key: ONLY the PLACES_SERVER_KEY environment variable of the pr
   discover  --estates kaki-bukit,ubi          Text Search, field mask places.id ONLY (free). Adds ids to data/queue.json (skips known, removed, pending, existing).
   stage     --place-id ID --slug S --estate E --planning-area "Jurong East" --categories SERV,GEAR --name N --block 48 --street "Toh Guan Road East"
             --unit "#02-140" --building "Enterprise Hub" --postal 608586 --services "a;b;c" --own-url URL [--own-url URL2] [--facebook URL] [--hours "text"]
-            Fetches the own page(s), saves the snapshot, checks the name and postal code appear on it, finds the mobile(s) on it, geocodes the postal code with OneMap,
+            Fetches the own page(s), saves the snapshot, checks the name and postal code appear on it, finds the mobile(s) on it, takes the pin later from Google Place Details,
             and writes data/workshops/<slug>.json as status "pending" (google_screen.passed null). NO Google call.
   screen    [--max-places 25]                 For every staged record: ONE Place Details call (nationalPhoneNumber,internationalPhoneNumber,businessStatus,primaryType).
             Pass = OPERATIONAL + car-repair primaryType + SG mobile on Google that equals the stored own-source mobile -> status "active". Otherwise the record
@@ -138,10 +138,8 @@ def fetch(url):
     return urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30).read().decode('utf-8', 'replace')
 
 
-def geocode(postal):
-    j = json.load(urllib.request.urlopen('https://www.onemap.gov.sg/api/common/elastic/search?searchVal=%s&returnGeom=Y&getAddrDetails=Y&pageNum=1' % postal, timeout=30))
-    r = j['results'][0]
-    return round(float(r['LATITUDE']), 7), round(float(r['LONGITUDE']), 7)
+# Pins (Edwin 26 Nov 2026): from the Google Places API only (Place Details "location", geo_source google_places), filled when the
+# record is promoted (finish_batch.py apply). OneMap is not called.
 
 
 def stage(a):
@@ -169,14 +167,12 @@ def stage(a):
     if a.postal not in blob.replace(' ', '') and a.postal not in blob: problems.append('postal code not found on the own page')
     if not mobiles: problems.append('no SG mobile on the own page')
     if problems: sys.exit('stage refused: ' + '; '.join(problems))
-    try: lat, lng = geocode(a.postal)
-    except Exception as e: sys.exit('OneMap geocode failed (%s); pass --lat/--lng from OneMap' % e) if a.lat is None else None
-    if a.lat is not None: lat, lng = a.lat, a.lng
+    lat, lng = a.lat, a.lng   # None until the Places pin is filled on promotion
     est = areas.ESTATES[a.estate]
     ph = [{'e164': k, 'kind': 'mobile', 'whatsapp': True, 'evidence': a.evidence or "Own page lists this mobile (snapshot %s)" % a.slug, 'source_url': u, 'checked_at': TODAY} for k, u in mobiles.items()]
     rec = {'schema_version': 1, 'slug': a.slug, 'place_id': a.place_id, 'place_id_checked_at': TODAY, 'name': a.name, 'name_source_url': a.own_url[0],
            'address': {'block': a.block, 'street': a.street, 'unit': a.unit, 'building': a.building}, 'postal_code': a.postal, 'address_source_url': a.own_url[0],
-           'lat': lat, 'lng': lng, 'geo_source': 'onemap', 'planning_area': a.planning_area, 'region': est['region'], 'estate': a.estate,
+           'lat': lat, 'lng': lng, 'geo_source': 'google_places' if lat is not None else None, 'planning_area': a.planning_area, 'region': est['region'], 'estate': a.estate,
            'categories': a.categories.split(','), 'services': [s.strip() for s in a.services.split(';') if s.strip()], 'services_source_url': a.own_url[0],
            'phones': ph, 'website_url': a.own_url[0], 'google_screen': {'passed': None, 'reason': 'staged, waiting for the Google screen', 'checked_at': None},
            'status': 'pending', 'tier': 'basic', 'first_seen_at': TODAY, 'last_verified_at': TODAY, 'collector_version': 'agent-v3'}
@@ -274,15 +270,11 @@ def unique_slug(name):
 
 
 def auto_place(r):
-    """Fill estate, planning area, region and OneMap coordinates when they are unambiguous; otherwise the record stays hidden for a manual fix."""
+    """Fill estate, planning area and region when they are unambiguous; coordinates come from Place Details on promotion."""
     import areas
     est = areas.estate_for(r['address']['street'], r.get('postal_code'))
     if est and est in PA_BY_ESTATE:
         r['estate'] = est; r['planning_area'] = PA_BY_ESTATE[est]; r['region'] = areas.ESTATES[est]['region']
-    try:
-        r['lat'], r['lng'] = geocode(r['postal_code']); r['geo_source'] = 'onemap'
-    except Exception:
-        pass   # OneMap unreachable from this host: the daily session fills lat/lng with WebFetch
 
 
 def make_stubs(limit):

@@ -39,6 +39,7 @@ https://sgcarworkshop.sg/areas/soon-lee-street-pioneer/
 https://sgcarworkshop.sg/areas/soon-lee-street-pioneer/spray-painting-bodywork/
 https://sgcarworkshop.sg/areas/tampines-industrial-park-a/
 https://sgcarworkshop.sg/areas/tampines-north-drive-1/
+https://sgcarworkshop.sg/areas/tampines/
 https://sgcarworkshop.sg/areas/toa-payoh-industrial-park/
 https://sgcarworkshop.sg/areas/toh-guan-enterprise-hub/
 https://sgcarworkshop.sg/areas/toh-guan-enterprise-hub/spray-painting-bodywork/
@@ -105,6 +106,7 @@ https://sgcarworkshop.sg/services/spray-painting-bodywork/
 https://sgcarworkshop.sg/services/wheel-alignment/
 https://sgcarworkshop.sg/terms/
 https://sgcarworkshop.sg/workshops/1-car-service/
+https://sgcarworkshop.sg/workshops/1st-automotive-services/
 https://sgcarworkshop.sg/workshops/3k-autocare-taman-jurong/
 https://sgcarworkshop.sg/workshops/4forwheel-auto/
 https://sgcarworkshop.sg/workshops/5d-solutions/
@@ -114,6 +116,7 @@ https://sgcarworkshop.sg/workshops/8337-premium-motorworks/
 https://sgcarworkshop.sg/workshops/833motorsports/
 https://sgcarworkshop.sg/workshops/88-auto-garage-woodlands/
 https://sgcarworkshop.sg/workshops/88-auto-garage/
+https://sgcarworkshop.sg/workshops/88-garage/
 https://sgcarworkshop.sg/workshops/89-motorwerkz/
 https://sgcarworkshop.sg/workshops/93-motorsports/
 https://sgcarworkshop.sg/workshops/96-jw-autohaus/
@@ -141,6 +144,7 @@ https://sgcarworkshop.sg/workshops/apex-battery-tyre/
 https://sgcarworkshop.sg/workshops/applied-performance/
 https://sgcarworkshop.sg/workshops/arc-motorworks/
 https://sgcarworkshop.sg/workshops/ardent-research-concept/
+https://sgcarworkshop.sg/workshops/asuroo-autocare/
 https://sgcarworkshop.sg/workshops/aurum-performance/
 https://sgcarworkshop.sg/workshops/auto-101/
 https://sgcarworkshop.sg/workshops/auto-dreamz/
@@ -151,12 +155,14 @@ https://sgcarworkshop.sg/workshops/auto-wheels-tg/
 https://sgcarworkshop.sg/workshops/autoapp-singapore/
 https://sgcarworkshop.sg/workshops/autobacs-car-care/
 https://sgcarworkshop.sg/workshops/automotive-repair-centre-jurong/
+https://sgcarworkshop.sg/workshops/automotive-repair-centre-tampines/
 https://sgcarworkshop.sg/workshops/autotex/
 https://sgcarworkshop.sg/workshops/autowheels-motorworks-bukit-batok-wcega-plaza/
 https://sgcarworkshop.sg/workshops/axwerkz-garage/
 https://sgcarworkshop.sg/workshops/b-motor-works/
 https://sgcarworkshop.sg/workshops/battery-rescue-sg/
 https://sgcarworkshop.sg/workshops/bavworks/
+https://sgcarworkshop.sg/workshops/beast-garage/
 https://sgcarworkshop.sg/workshops/beng-hai-motor-service/
 https://sgcarworkshop.sg/workshops/benz-service-autoserv/
 https://sgcarworkshop.sg/workshops/bl-garage/
@@ -216,6 +222,7 @@ https://sgcarworkshop.sg/workshops/ding-auto/
 https://sgcarworkshop.sg/workshops/doctor-cars/
 https://sgcarworkshop.sg/workshops/doctor-gearbox/
 https://sgcarworkshop.sg/workshops/dreamworks-garage/
+https://sgcarworkshop.sg/workshops/dzem-auto/
 https://sgcarworkshop.sg/workshops/e-care-auto-services/
 https://sgcarworkshop.sg/workshops/eco-sport/
 https://sgcarworkshop.sg/workshops/edge-garage/
@@ -365,6 +372,7 @@ https://sgcarworkshop.sg/workshops/lim-tan-motor/
 https://sgcarworkshop.sg/workshops/lk-performance-centre/
 https://sgcarworkshop.sg/workshops/lx-motors/
 https://sgcarworkshop.sg/workshops/lxh-trading/
+https://sgcarworkshop.sg/workshops/m-q-auto-works/
 https://sgcarworkshop.sg/workshops/m-s-llh/
 https://sgcarworkshop.sg/workshops/m-werkz/
 https://sgcarworkshop.sg/workshops/m6-garage/

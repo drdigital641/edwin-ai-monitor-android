@@ -1,0 +1,41 @@
+{
+ "lede": "M&Q Auto Works at Block 9004 #01-96, Tampines Street 93 is a car workshop that works on continental cars.",
+ "chips": [
+  "Continental cars",
+  "BMW",
+  "Inspection"
+ ],
+ "services": [
+  "General servicing",
+  "Car inspection",
+  "Continental car servicing"
+ ],
+ "themes": "Customers on Google Maps mention BMW servicing, a Honda Vezel inspection with a test drive to find the issue, and work on continental cars.",
+ "faqs": [
+  [
+   "What does M&Q Auto Works do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car inspection",
+  "BMW servicing",
+  "Continental car servicing"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "BMW",
+  "Honda"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "good_to_know": [],
+ "good_to_know_note": ""
+}
