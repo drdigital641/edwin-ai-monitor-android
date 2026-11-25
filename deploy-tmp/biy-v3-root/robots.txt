@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://autoseo.my/preview/biy-home-store/sitemap.xml
