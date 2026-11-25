@@ -34,6 +34,7 @@ Rule for the architecture: Stage 2 and 3 must not need a front-end rebuild (mast
 | 25 Nov 2026, 10:31pm | "Let's do the website first." Phase 1 preview only. Rule A0 (billing entry before build) overridden for the preview only. Billing stays "awaiting Edwin's fee". | Edwin |
 | 25 Nov 2026, ~10:40pm | Bridge drop unusable (BRIDGE_DROP_KEY not set), so files go to Drive folder `Client Photo Banks / biy-home-store`, anyone-with-link reader. | Grok (workaround) |
 | 25 Nov 2026, 10:50pm | Phase 1 defaults until Edwin answers: all 4 branches; WhatsApp 012-568 8961 (wa.me/60125688961); "WhatsApp for price", no prices anywhere; brands Jotun, Nippon Paint, Dong Cheng, Bosch only; ICI held (published:false); own orange/charcoal identity, not a Shopee look; preview noindex. | Grok defaults from Edwin's brief, **not yet confirmed by Edwin** |
+| 25 Nov 2026, 11:13pm | Home layout should be marketplace style, "very similar to Shopee because people are familiar": search first, small banner title, icon grid, brand row, 2-col product feed. Keep BIY's own colours and wordmark (no Shopee assets). Live as home v2 (Bridge log #0297). | Edwin (heard in Claude's thread "Build BIY Home Store preview") |
 | 25 to 26 Nov 2026 (time not recorded) | "Go live" on biyhomestore.com. Add-to-cart with browser memory. Dummy data for the preview that switches off automatically when the API is linked. | Edwin |
 | 26 Nov 2026, 6:44am | Verbatim: "biystore - implement add to cart button with browser memory. -prefill site with dummy data for client preview - which will automatically switch off with api is linked up." This relaxes the old "no cart" default. The cart is an enquiry basket: no prices, no payment, no login. | Edwin |
 | 26 Nov 2026, 6:51am | Brief v3 (cart + sample fallback) sent to Claude. | Grok |
@@ -57,7 +58,7 @@ Standing rules that apply to BIY: Base44 Publish only, never Activate. Never pub
 - Server folder (through the Bridge only): `public_html/autoseo.my/preview/biy-home-store/`. A future live domain points at this same folder (one-switch go-live, rule 15).
 - The site is built from the **shared AutoSEO trilingual template** (header, nav, language switch, footer, CTA, schema). Shop-specific parts (search-first header, category, brand, product and range templates, data loader, cart) are shared template pieces the next e-commerce client inherits. Repeated blocks live in one template; facts live in one data file (`facts.json`).
 - Server-rendered HTML stays complete without JavaScript. Adding or removing a product means the data changes and the site rebuilds; no hard-coded product HTML.
-- Identity: BIY's orange (#ED5623, sampled from the logo) with charcoal (#2B2B2B). Not a Shopee look.
+- Identity: BIY's orange (#ED5623, sampled from the logo) with charcoal (#2B2B2B). Home LAYOUT is marketplace style (Edwin 25 Nov 11:13pm), but colours, wordmark and assets are BIY's own, never Shopee's.
 - Brand allow-list on the site: Jotun, Nippon Paint, Dong Cheng, Bosch. Never shown: ICI (held), Makita, Hiltem, Stanley, Anchor, Riland, Atlas Copco, Daihuu.
 - Branch codes (use exactly): `kota-tinggi-hq`, `kota-tinggi-jth`, `kota-masai`, `pontian`. Pontian shows no postcode (the source typo "8200" is not published).
 
@@ -163,7 +164,7 @@ Standing rules that apply to BIY: Base44 Publish only, never Activate. Never pub
 | `logo-mark.png`, `logo-mark.webp`, `favicon-512.png`, `og.jpg` | `19JaSxBe0_Gm2mDN20aLn-O0yBVOg0BPR`, `1rzyvUFmFcQvAB0XDG-8BYhDhdXTO821y`, `1sRJldM0cQbuvZEWJ4bOxLIuugwJhGyVg`, `17XI9D7UZN14NwfXfuGBLwwF8whW4WZyX` |
 
 ### 5.3 Other systems
-- Claude's repo: this file is committed at `docs/BIY-PROJECT.md`. Repo name or URL: **OPEN** (not recorded in any source Grok holds; Claude to state it in its first report).
+- Claude's repo: `drdigital641/edwin-ai-monitor-android`, file `docs/BIY-PROJECT.md` (branch `claude/project-thread-khin6v`, not merged to main). Site source: `autoseo-clients/biy-home-store/` (src/build.py, src/data/*.json, src/strings/*.json, site/ = built output). Shared shop template: `autoseo-template/shop/` (shop.py, shop.js, shop.css, cart.js, test_shop.py).
 - Controller client slug: `biy-home-store` (Controller app 6ac7f2548a9c3877449e2772). Live domain, status and billing entry: see section 7.
 - Bluehost Bridge (Base44 app 6ac6d47b4ec84148578914c7): all reads and writes to Bluehost go through it, with fingerprints (`expected_sha256`), SITE-NOTES log lines and Publish only.
 - Site notes: the site's `SITE-NOTES` file on the server (read it through the Bridge before any edit, rule 0).
@@ -188,14 +189,16 @@ Standing rules that apply to BIY: Base44 Publish only, never Activate. Never pub
 
 **Stage 1: IN PROGRESS.**
 - Preview v2 (marketplace layout) is live: `/`, `/ms/`, `/zh/` return 200 (checked 26 Nov, 7:07am).
-- Cart: **not built yet.** `/cart/` returns 404 on the preview (checked 7:07am). Claude has had the v3 brief since 6:51am and the cart job is running in the thread "Add enquiry basket to BIY Home Store". Feed addendum follows in the same thread (relay status OPEN).
-- Sample data resolver and label: not live yet (part of the same job).
+- Cart: **LIVE on the preview** (26 Nov, 7:16am, Claude). Enquiry basket in localStorage, header badge, drawer, size selector, `/cart/` `/ms/cart/` `/zh/cart/` return 200 (checked 7:16am). WhatsApp checkout to wa.me/60125688961, no prices. Test taps with `?p1test=1` recorded 7:17am: `cart_open` and `whatsapp` (ref `whatsapp_cart_checkout`).
+- Sample data resolver and label: **LIVE.** Real state = (a) not configured (`live_feed.url` is null in `shop-config.json`), so 48 sample SKUs (28 product pages) with the label. Feed addendum was NOT received by Claude, so the feed URL and `key_env` are not in the config yet (see open items 15, 19, 20).
+- Rebuild trigger: neither mechanism exists. There is no scheduled BIY batch, and a Bridge publish does not rebuild (the site is built from the repo and synced). **OPEN** for Edwin: a runner with the read key must run `build.py` every 30 to 60 minutes and sync; no cron added.
+- Stage 1 quality gate (cart part): Claude self-checks passed (EN/MS/ZH browser tests, 360/390/1280 screenshots, decoded WhatsApp texts, pre-upload grep, build gates). Grok verification (item 16) and Edwin's OK still pending.
 - Go-live on biyhomestore.com: **not done.** Started on 25 Nov through the SiteGiant account (credentials are in the vault, not here); domain control is OPEN (section 8). Controller client record: live domain and status Live not set; billing-list entry: **OPEN** (awaiting Edwin's fee).
 
 **Stage 2: BACKEND BUILT, VENDOR NOT STARTED.**
 - BIY Catalogue API published and smoke-tested with the test key (26 Nov, ~7:00am). Live feed is empty (`count 0`).
 - Vendor doc (`.md` and `.pdf`) written with live base URL; not sent. Support contact and AutoCount edition still placeholders. No keys delivered.
-- Site resolver for the feed: in the Stage 1 cart job (config and tests only; no real live state until the vendor pushes).
+- Site resolver for the feed: built and tested with fixtures (not configured, failing, live, live-then-failing keeps snapshot). Not yet pointed at the real feed (url null, no key on the build machine). Resolver reads the key from `key_file` only; `key_env` (`BIY_FEED_READ_KEY`) support is **not built** yet.
 
 **Stage 3: NOT DEFINED (OPEN, Edwin).**
 
@@ -217,13 +220,15 @@ Standing rules that apply to BIY: Base44 Publish only, never Activate. Never pub
 | 10 | Billing-list amount for the Controller (rule A0 gate for go-live); the project is larger than a normal AutoSEO site | Edwin |
 | 11 | Product photos: who owns them (vendor may have none; Drive photo bank still works for hero images); stored copy of vendor photos is not built | Edwin and Grok |
 | 12 | Category mapping AutoCount item groups to site categories, and branch location codes in AutoCount (mapped when the first push arrives) | Grok with the vendor |
-| 13 | Cart build (v3 + feed addendum): finish, publish, report the three resolver results, decoded WhatsApp texts, screenshots, rebuild-trigger answer | Claude |
-| 14 | State the name of Claude's repo, then commit this file as `docs/BIY-PROJECT.md` (see sync brief) | Claude |
+| 13 | Cart build (v3): **DONE 26 Nov 7:16am** (published, resolver results, WhatsApp texts, screenshots and rebuild answer reported). Feed addendum part NOT done: addendum never reached Claude | Claude (addendum: waiting on relay) |
+| 14 | **DONE 26 Nov 7:25am.** Repo `drdigital641/edwin-ai-monitor-android`, branch `claude/project-thread-khin6v`, file `docs/BIY-PROJECT.md` | Claude |
 | 15 | Add `BIY_FEED_READ_KEY` to Claude's environment, or confirm the key-file route | Edwin or Grok (approved route) |
 | 16 | Verify the finished cart: phone screenshots at 360 and 390 (EN, MS, ZH), WhatsApp link decode, resolver states, grep for secrets and prices, live fetch of all pages | Website Manager (Grok) |
 | 17 | Refresh the Drive copy of `autocount-push-api.md` (older than the box copy) | Website Manager (Grok) |
 | 18 | Build still missing in the backend: photo copy, `BiyMapping` admin view, key rotation UI | Grok (after vendor starts) |
-| 19 | Confirm Claude received the feed addendum in the cart thread | Grok |
+| 19 | Confirm Claude received the feed addendum in the cart thread. **Claude: NOT received** (as of 26 Nov 7:25am). Relay `2026-11-26-biy-feed-addendum.txt` into the thread "Add enquiry basket to BIY Home Store" | Grok |
+| 20 | Rebuild trigger for live feed data: no scheduled BIY batch exists and a Bridge publish does not rebuild. Decide who runs `build.py` (with the read key) every 30 to 60 min and syncs, and allow that schedule | Edwin |
+| 21 | Repo branches are not merged to main: v1/v2 on `claude/project-thread-0j9ugi`, v3 + this file on `claude/project-thread-khin6v` | Edwin (merge) |
 
 ---
 
@@ -252,3 +257,4 @@ The 26 Nov stages (section 1) now govern. The enquiry cart from Phase 2 moved in
 | Date and time (SGT) | Who | What |
 |---|---|---|
 | 26 Nov 2026, 7:09am | Website Manager (Grok) | Created this file from the plan doc, vendor doc, three Claude briefs, memory and Edwin's messages. Drive mirror created (file ID `1RIV8N-XrxFeCmCXHA8VVr_1DWR_sw1Fx`). Sections 1 to 11 filled; Stage 3 OPEN; found Drive copy of `autocount-push-api.md` is older than the box copy; noted the key-name mapping `BIY_FEED_READ_KEY` = `BIY_SITE_FEED_READ_KEY`. |
+| 26 Nov 2026, 7:25am | Claude | Cart job (thread "Add enquiry basket to BIY Home Store"): v3 enquiry basket + sample products published through the Bridge from commit 71d3bed, 173 files, SITE-NOTES log #0306 (root), #0307 (ms), #0308 (zh); master notes sites/biy-home-store.md now master 1.13.0; done alert 6b076cf1f8f68b8fb8f7fbfc. No Base44 checkpoint (no Base44 change). Real feed state: (a) not configured. Rebuild trigger: neither an existing batch nor a Bridge publish (OPEN item 20). Added: shared `autoseo-template/shop/cart.js`, `resolve_products()` in shop.py, site `assets/cart.js`, `data/shop-config.json`, `data/category-map.json`, `data/products.sample.json`, `data/product-feed.schema.json`; removed `data/products.json`. Feed addendum not received (item 19). Committed this file to the repo; logged Edwin's 25 Nov 11:13pm layout decision. |
