@@ -273,6 +273,11 @@ def cat_tile(L, c):
             f'{IC["arrow"]}</a>')
 
 
+def cat_icon(L, c):
+    return (f'<a class="hi" href="{u(lp(L, "category/" + c["slug"] + "/"))}" data-select-category="{c["slug"]}">'
+            f'<span class="hi-i">{IC[c["icon"]]}</span><span class="hi-t">{cat_name(L, c, True)}</span></a>')
+
+
 def brand_card(L, b):
     return (f'<a class="bw bw-{b["slug"]}" href="{u(lp(L, "brand/" + b["slug"] + "/"))}"><span class="bw-mark">{E(b["name"])}</span>'
             f'<small>{t(L, "brand." + b["slug"] + ".tag")} · {len(b["ranges"])} {t(L, "ui.ranges").lower()}</small></a>')
@@ -327,40 +332,75 @@ def emit(L, path, title, desc, graph, main, noindex=False, home=False):
     OUTFILES[lp(L, path)] = html
 
 
+def home_feed(L, n=12):
+    """Shopee-style 2-column feed: real products first, then brand ranges taken round-robin across brands."""
+    cards = [product_card(L, p) for p in products_of()]
+    queues = [[(b, r) for r in b["ranges"]] for b in CAT["brands"]]
+    while len(cards) < n and any(queues):
+        for q in queues:
+            if q and len(cards) < n:
+                b, r = q.pop(0)
+                c = CAT["category"][b["category"]]
+                cards.append(f'<article class="pc pc-rg">{shop.product_frame(IC[c["icon"]], b["name"], None, cls="pf")}'
+                             f'<small class="pc-b">{E(b["name"])}</small><h3>{E(r["name"])}</h3><span class="pc-m">{dtx(L, r["type"])}</span>'
+                             f'<span class="stock">{t(L, "ui.stock.check")}</span>'
+                             f'{wa(L, "wa.range", "whatsapp_range", t(L, "ui.wa_price"), cls="btn btn-wa btn-sm", brand=b["name"], range=r["name"])}</article>')
+    return cards
+
+
+def sec_head(L, h, href):
+    return f'<div class="hm-h"><h2>{h}</h2><a href="{u(lp(L, href))}">{t(L, "ui.view_all")}{IC["arrow"]}</a></div>'
+
+
 def p_home(L):
     chips = [(f'category/{c["slug"]}/', cat_name(L, c, True), c["slug"]) for c in CAT["categories"]] + \
             [(f'brand/{b["slug"]}/', b["name"], "") for b in CAT["brands"]]
     chip_h = "".join(f'<a class="chip" href="{u(lp(L, p))}"{(" data-select-category=" + chr(34) + s + chr(34)) if s else ""}>{E(n)}</a>' for p, n, s in chips)
     sf = shop.search_form(u(lp(L, "search/")), t(L, "ui.search_label"), t(L, "ui.search_ph_short"),
                           IC["search"] + f'<span>{t(L, "ui.search_btn")}</span>', big=True, ref="search_home_hero")
-    hero = f"""<section class="hero"><div class="hero-motif" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="wrap">
-<h1>{t(L, 'home.h1')}</h1>
-<p class="hero-lead">{t(L, 'home.lead')}</p>
+    # 1. search first (the star), quick chips under it
+    top = f"""<section class="hm-top"><div class="wrap">
 <div id="hero-search">{sf}</div>
-<div class="hero-cta">{wa(L, 'wa.general', 'whatsapp_home_hero', t(L, 'ui.wa_us'), cls='btn btn-wa btn-lg')}</div>
 <nav class="chips" aria-label="{t(L, 'home.chips_label')}">{chip_h}</nav>
 </div></section>"""
-    cats = band(f'<h2>{t(L, "home.cats_h")}</h2><div class="ct-grid">{"".join(cat_tile(L, c) for c in CAT["categories"])}</div>', "band-rise")
-    brands = band(f'<div class="sec-h"><h2>{t(L, "home.brands_h")}</h2><p>{t(L, "home.brands_lead")}</p></div>' +
-                  shop.rail([brand_card(L, b) for b in CAT["brands"]], t(L, "home.brands_h")), "band-white band-rail")
+    # 2. banner row: main banner (small H1) + two side cards
+    banner = f"""<section class="hm-bnr"><div class="wrap hm-bnr-in">
+<div class="hm-bn"><div class="hero-motif" aria-hidden="true"><i></i><i></i><i></i></div>
+<h1>{t(L, 'home.h1')}</h1><p>{t(L, 'home.lead')}</p>
+{wa(L, 'wa.general', 'whatsapp_home_hero', t(L, 'ui.wa_us'), cls='btn btn-wa-w btn-sm')}</div>
+<div class="hm-side">
+<a class="hm-sc" href="{u(lp(L, 'stores/'))}"><span class="tsq tsq-s">{IC['store']}</span><b>{t(L, 'home.branches_h')}</b><small>{t(L, 'home.branches_lead')}</small></a>
+<div class="hm-sc hm-sc-d"><span class="tsq tsq-s">{IC['list']}</span><b>{t(L, 'home.trade_h')}</b>{wa(L, 'wa.contractor', 'whatsapp_contractors_home', t(L, 'ui.wa_quote'), cls='tlink', icon=False)}</div>
+</div></div></section>"""
+    # 3. icon grid (categories + shortcuts)
+    ic_items = [cat_icon(L, c) for c in CAT["categories"]]
+    for href, icon, key in [("brand/", "grid", "ui.brands"), ("stores/", "pin", "ui.stores"),
+                            ("contractors/", "list", "ui.contractors"), ("contact/", "phone", "ui.contact")]:
+        ic_items.append(f'<a class="hi" href="{u(lp(L, href))}"><span class="hi-i">{IC[icon]}</span><span class="hi-t">{t(L, key)}</span></a>')
+    icons = f'<section class="hm-sec"><div class="wrap"><div class="hm-card"><h2>{t(L, "home.cats_h")}</h2><div class="hi-grid">{"".join(ic_items)}</div></div></div></section>'
+    # 4. brands row
+    bt = "".join(f'<a class="hb" href="{u(lp(L, "brand/" + b["slug"] + "/"))}"><span class="hb-m">{E(b["name"])}</span><small>{t(L, "brand." + b["slug"] + ".tag")}</small></a>' for b in CAT["brands"])
+    brands = f'<section class="hm-sec"><div class="wrap"><div class="hm-card">{sec_head(L, t(L, "home.brands_h"), "brand/")}<div class="hb-grid">{bt}</div></div></div></section>'
+    # 5. product feed
+    feed = f'<section class="hm-sec"><div class="wrap"><div class="hm-feed-h">{sec_head(L, t(L, "ui.products") + " · " + t(L, "ui.ranges"), "brand/")}</div>' \
+           f'<div class="pc-grid hm-feed">{"".join(home_feed(L))}</div><p class="fine">{t(L, "ui.note_price")}</p></div></section>'
+    # 6. branches, how to enquire, proof, FAQ
+    strip = "".join(f'<a class="bs" href="{u(lp(L, "stores/" + b["slug"] + "/"))}"><b>{E(b["short"])}</b><small>{E(b["city"])}</small></a>' for b in BR)
+    branches = f'<section class="hm-sec"><div class="wrap"><div class="hm-card">{sec_head(L, t(L, "home.branches_h"), "stores/")}<div class="bs-strip">{strip}</div></div></div></section>'
     steps = "".join(f'<li><span class="sq-n">{i}</span><b>{t(L, f"home.step{i}_t")}</b><span>{t(L, f"home.step{i}_d")}</span></li>' for i in (1, 2, 3))
-    steps = band(f'<h2>{t(L, "home.steps_h")}</h2><ol class="track">{steps}</ol>', "band-rise")
-    ev = F["evidence_for_brand_claims"]
+    steps = f'<section class="hm-sec"><div class="wrap"><div class="hm-card"><h2>{t(L, "home.steps_h")}</h2><ol class="track">{steps}</ol></div></div></section>'
     proof_items = [("nippon-paint", "home.proof.nippon", CAT["brand"]["nippon-paint"]["evidence_url"]),
                    ("dong-cheng", "home.proof.dongcheng", CAT["brand"]["dong-cheng"]["evidence_url"]),
                    ("jotun", "home.proof.jotun", CAT["brand"]["jotun"]["evidence_url"])]
     pc = "".join(f'<li class="ev"><span class="ev-b">{E(CAT["brand"][s]["name"])}</span><p>{t(L, k)}</p>{ext(href, t(L, "home.proof.open"))}</li>' for s, k, href in proof_items)
-    strip = "".join(f'<a class="bs" href="{u(lp(L, "stores/" + b["slug"] + "/"))}"><b>{E(b["short"])}</b><small>{E(b["city"])}</small></a>' for b in BR)
-    proof = band(f'<div class="sec-h"><h2>{t(L, "home.proof_h")}</h2><p>{t(L, "home.proof_lead")}</p></div><ul class="ev-grid">{pc}</ul>'
-                 f'<div class="sec-h sec-h2"><h2>{t(L, "home.branches_h")}</h2><p>{t(L, "home.branches_lead")}</p></div><div class="bs-strip">{strip}</div>', "band-white")
-    trade = band(f'<div class="trade"><span class="tsq tsq-l">{IC["list"]}</span><div><h2>{t(L, "home.trade_h")}</h2><p>{t(L, "home.trade_p")}</p></div>'
-                 f'<div class="trade-cta">{wa(L, "wa.contractor", "whatsapp_contractors_home", t(L, "ui.wa_quote"))}<a class="tlink" href="{u(lp(L, "contractors/"))}">{t(L, "ui.contractors")}{IC["arrow"]}</a></div></div>', "band-rise band-trade")
+    proof = f'<section class="hm-sec"><div class="wrap"><div class="hm-card"><div class="sec-h"><h2>{t(L, "home.proof_h")}</h2><p>{t(L, "home.proof_lead")}</p></div><ul class="ev-grid">{pc}</ul></div></div></section>'
     faqs = [(t(L, f"faq.{k}_q"), t(L, f"faq.{k}_a")) for k in ("price", "branches", "hours", "biy", "brands")]
     fq = "".join(f'<details class="fq"><summary>{E(q)}</summary><p>{E(a)}</p></details>' for q, a in faqs)
-    faq = band(f'<h2>{t(L, "home.faq_h")}</h2><div class="fq-list">{fq}</div>', "band-white")
+    faq = f'<section class="hm-sec hm-last"><div class="wrap"><div class="hm-card"><h2>{t(L, "home.faq_h")}</h2><div class="fq-list">{fq}</div></div></div></section>'
     graph = [org_ld(), shop.ld_website("BIY Home Store", absu(lp(L, "")), absu(lp(L, "search/")), L["hreflang"], absu("#website")),
              shop.ld_faq(faqs)]
-    emit(L, "", t(L, "home.title"), t(L, "home.meta"), graph, hero + cats + brands + steps + proof + trade + faq, home=True)
+    main = '<div class="hm">' + top + banner + icons + brands + feed + branches + steps + proof + faq + '</div>'
+    emit(L, "", t(L, "home.title"), t(L, "home.meta"), graph, main, home=True)
 
 
 def p_cat_index(L):
