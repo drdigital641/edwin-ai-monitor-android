@@ -3,7 +3,7 @@
  "slug": "car-city-auto-centre-pte-ltd",
  "place_id": "ChIJCWQdrz492jEROf8upGcZCC0",
  "place_id_checked_at": "2026-11-25",
- "name": "Car City Auto Centre Pte Ltd",
+ "name": "Car City Auto Centre",
  "name_source_url": "google_profile",
  "name_checked_at": "2026-11-25",
  "address": {
@@ -36,15 +36,40 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-25"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-25",
  "last_verified_at": "2026-11-25",
  "collector_version": "agent-v5",
- "hold": "hold: complaint text in Google sample (OBU fault not fixed)",
- "hold_code": "complaints",
- "held_on": "2026-11-26",
  "estate": "tampines-industrial-park-a",
  "region": "east",
- "planning_area": "Tampines"
+ "planning_area": "Tampines",
+ "lat": 1.3400843,
+ "lng": 103.9428325,
+ "geo_source": "google_places",
+ "geo_checked": "2026-11-26",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.9,
+  "count": 63,
+  "checked": "2026-11-26",
+  "source": "Google Places",
+  "source_date": "2026-11-26"
+ },
+ "hold_exception": "one-time exception, Edwin 27 Nov 2026 7:23am SGT (see data/hold_exceptions.json); hold rule unchanged"
 }

@@ -1,0 +1,58 @@
+{
+ "lede": "Supertune Auto at 10 Kaki Bukit Rd 2, First East Centre, is an ECU and gearbox tuning workshop.",
+ "chips": [
+  "ECU tuning",
+  "Gearbox tuning",
+  "Dyno"
+ ],
+ "services": [
+  "ECU custom tuning on stock hardware",
+  "ECU tuning for cars with bolt-ons and turbo upgrades",
+  "TCU (gearbox) tuning",
+  "Custom tuning for naturally aspirated Japanese and Korean cars",
+  "ECU unlock and cloning"
+ ],
+ "themes": "Customers on Google Maps mention custom ECU and gearbox tunes on cars such as a Hyundai Avante, a Honda Civic and a BMW G30, smoother power delivery and throttle response, dyno tuning, and clear explanations of the tuning data.",
+ "faqs": [
+  [
+   "What does Supertune Auto do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "ECU tuning",
+  "Gearbox tuning",
+  "Dyno tuning"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "Services listed on its website. Ask the workshop for its full list.",
+ "specialties": [
+  "ECU and TCU calibration"
+ ],
+ "makes": [
+  "BMW",
+  "Mini",
+  "Mercedes-AMG",
+  "Audi",
+  "Volkswagen",
+  "Honda",
+  "Subaru",
+  "Mitsubishi",
+  "Toyota",
+  "Hyundai",
+  "Kia"
+ ],
+ "makes_note": "Makes listed on its website and named by customers on Google Maps. Ask the workshop about other makes.",
+ "good_to_know": [
+  "Its website says ECU and TCU calibration is done in-house, with turbo hardware and mechanical work handled by other workshops it works with",
+  "Its website says tunes are checked on a Dynojet roller or Dynapack hub dyno, and road tunes are refined from datalogs",
+  "Its website says it also runs tuning sessions in Malaysia by appointment"
+ ],
+ "good_to_know_note": "From its website."
+}

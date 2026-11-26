@@ -36,15 +36,40 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-24"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-24",
  "last_verified_at": "2026-11-24",
  "collector_version": "agent-v5",
- "hold": "hold: complaint text in Google sample (hiccups, wait)",
- "hold_code": "complaints",
- "held_on": "2026-11-25",
  "estate": "kaki-bukit-industrial-estate",
  "region": "east",
- "planning_area": "Bedok"
+ "planning_area": "Bedok",
+ "lat": 1.3384695,
+ "lng": 103.8991779,
+ "geo_source": "google_places",
+ "geo_checked": "2026-11-26",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.9,
+  "count": 149,
+  "checked": "2026-11-26",
+  "source": "Google Places",
+  "source_date": "2026-11-26"
+ },
+ "hold_exception": "one-time exception, Edwin 27 Nov 2026 7:23am SGT (see data/hold_exceptions.json); hold rule unchanged"
 }

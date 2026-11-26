@@ -36,15 +36,40 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-24"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-24",
  "last_verified_at": "2026-11-24",
  "collector_version": "agent-v5",
- "hold": "hold: complaint text in Google sample (wiring not reinstalled)",
- "hold_code": "complaints",
- "held_on": "2026-11-25",
  "estate": "bedok-industrial-park-e",
  "region": "east",
- "planning_area": "Bedok"
+ "planning_area": "Bedok",
+ "lat": 1.336756,
+ "lng": 103.9493531,
+ "geo_source": "google_places",
+ "geo_checked": "2026-11-26",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.8,
+  "count": 222,
+  "checked": "2026-11-26",
+  "source": "Google Places",
+  "source_date": "2026-11-26"
+ },
+ "hold_exception": "one-time exception, Edwin 27 Nov 2026 7:23am SGT (see data/hold_exceptions.json); hold rule unchanged"
 }

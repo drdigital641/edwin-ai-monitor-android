@@ -3,7 +3,7 @@
  "slug": "exquisite-marques-holding-pte-ltd",
  "place_id": "ChIJfcVAjU082jERyhial1iuo5k",
  "place_id_checked_at": "2026-11-24",
- "name": "Exquisite Marques Holding Pte Ltd",
+ "name": "Exquisite Marques Holding",
  "name_source_url": "google_profile",
  "name_checked_at": "2026-11-24",
  "address": {
@@ -36,15 +36,40 @@
   "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
   "checked_at": "2026-11-24"
  },
- "status": "pending",
+ "status": "active",
  "tier": "basic",
  "first_seen_at": "2026-11-24",
  "last_verified_at": "2026-11-24",
  "collector_version": "agent-v5",
- "hold": "hold: complaint review in Google sample",
- "hold_code": "complaints",
- "held_on": "2026-11-25",
  "estate": "bukit-merah-lane-3",
  "region": "central",
- "planning_area": "Bukit Merah"
+ "planning_area": "Bukit Merah",
+ "lat": 1.285148,
+ "lng": 103.8039982,
+ "geo_source": "google_places",
+ "geo_checked": "2026-11-26",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.7,
+  "count": 20,
+  "checked": "2026-11-26",
+  "source": "Google Places",
+  "source_date": "2026-11-26"
+ },
+ "hold_exception": "one-time exception, Edwin 27 Nov 2026 7:23am SGT (see data/hold_exceptions.json); hold rule unchanged"
 }

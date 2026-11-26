@@ -1,0 +1,12 @@
+{
+ "note": "One-time exception list (Edwin, 27 Nov 2026 7:23am SGT). These shops were held only for a single mild review in the Google sample and were published once as positive-only cards. This list is not read by any code and does not change the hold rule: any future shop with a complaint in the sample stays held.",
+ "approved": "2026-11-27",
+ "slugs": [
+  "car-city-auto-centre-pte-ltd",
+  "choon-huat-tyre-battery-co",
+  "exquisite-marques-holding-pte-ltd",
+  "green-star-spray-painting",
+  "ibrahim-auto",
+  "supertune-auto"
+ ]
+}
