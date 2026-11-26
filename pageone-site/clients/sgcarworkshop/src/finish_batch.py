@@ -82,11 +82,14 @@ def listed():
     return out
 
 
-def places_pin(g, est):
-    """[lat, lng] from a Place Details answer if it is inside Singapore and near its estate, else None."""
+def places_pin(g, est, postal=None):
+    """[lat, lng] from a Place Details answer if it is inside Singapore and matches the card (same postcode on Google, or near its
+    estate / a live card in it), else None."""
     loc = (g or {}).get('location') or {}; la, lo = loc.get('latitude'), loc.get('longitude')
     if la is None or lo is None: return None
     if not (SG_BOX[0] <= la <= SG_BOX[1] and SG_BOX[2] <= lo <= SG_BOX[3]): return None
+    gpc = re.findall(r'\b(\d{6})\b', (g or {}).get('formattedAddress', ''))
+    if postal and gpc and gpc[-1] == postal: return [round(la, 7), round(lo, 7)]
     e = areas.ESTATES.get(est) or {}
     if e.get('lat') and dist(la, lo, e['lat'], e.get('lon', e.get('lng'))) > PIN_MAX_KM:
         # some estate centres are rough; also accept a pin within 1 km of a live card in the same estate
@@ -143,7 +146,7 @@ def apply(a):
             os.rename('%s/google_cache/%s.json' % (D, x['old']), '%s/google_cache/%s.json' % (D, slug))
             for e in reg:
                 if e.get('place_id') == r['place_id']: e['slug'] = slug
-        est = x['estate']; geo = places_pin(g, est); gsrc = 'google_places'
+        est = x['estate']; geo = places_pin(g, est, r.get('postal_code')); gsrc = 'google_places'
         if not geo:   # pin missing or failed the sanity check: retry/check, not a hold (Edwin 22 Nov 2026)
             r.update(slug=slug, name=x['name'], geo_retry=day); jw('%s/workshops/%s.json' % (D, slug), r); retry.append(slug); continue
         r.pop('geo_retry', None)

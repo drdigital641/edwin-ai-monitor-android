@@ -1,0 +1,38 @@
+{
+ "lede": "AB ENGINEERING at 19 Senang Cres is a car servicing and repair workshop.",
+ "chips": [
+  "Servicing",
+  "Diagnosis",
+  "OBU"
+ ],
+ "services": [
+  "General car servicing",
+  "Fault diagnosis and repair",
+  "OBU replacement"
+ ],
+ "themes": "Customers on Google Maps mention general servicing with wear-and-tear checks, topping up fluids and tyre pressure checks, fault finding on a hard-to-trace problem, quotes given before work starts, and an OBU replacement done in under two hours.",
+ "faqs": [
+  [
+   "What does AB ENGINEERING do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "General servicing",
+  "Fault diagnosis",
+  "OBU replacement"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Ask the workshop about your car.",
+ "good_to_know": [],
+ "good_to_know_note": ""
+}

@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "slug": "mobil-hock-cheong-automec-pte-ltd",
+ "place_id": "ChIJK9w40GYZ2jERamd9MTijXFg",
+ "place_id_checked_at": "2026-11-26",
+ "name": "Mobil Hock Cheong Automec Pte Ltd",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-26",
+ "address": {
+  "block": "",
+  "street": "225 Guillemard Rd",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "399739",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-26",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6598533589",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-26"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-26"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-26",
+ "last_verified_at": "2026-11-26",
+ "collector_version": "agent-v5",
+ "hold": "hold: complaints (details in the private hold notes, not in the repo)",
+ "hold_code": "complaints",
+ "held_on": "2026-11-27",
+ "estate": "bukit-timah-road-newton",
+ "region": "central",
+ "planning_area": "Newton and Novena"
+}

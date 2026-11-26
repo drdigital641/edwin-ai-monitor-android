@@ -1,0 +1,35 @@
+{
+ "lede": "WTC Auto Care at 355 Commonwealth Ave is a car servicing workshop.",
+ "chips": [
+  "Servicing",
+  "Repairs"
+ ],
+ "services": [
+  "General car servicing",
+  "Car repair"
+ ],
+ "themes": "Customers on Google Maps mention fast service, reasonable prices, friendly service, and advice on keeping the car performing well.",
+ "faqs": [
+  [
+   "What does WTC Auto Care do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "General servicing",
+  "Car maintenance advice"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Ask the workshop about your car.",
+ "good_to_know": [],
+ "good_to_know_note": ""
+}

@@ -1,0 +1,35 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 259,
+ "websiteUri": "https://jnzdetailing.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:00 AM – 12:00 AM",
+  "Tuesday: 8:00 AM – 12:00 AM",
+  "Wednesday: 8:00 AM – 12:00 AM",
+  "Thursday: 8:00 AM – 12:00 AM",
+  "Friday: 8:00 AM – 12:00 AM",
+  "Saturday: 8:00 AM – 1:00 AM",
+  "Sunday: 8:00 AM – 12:00 AM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-26",
+ "place_id": "ChIJIymCOHEZ2jER2X-h8vvepY0",
+ "source": "google_places"
+}

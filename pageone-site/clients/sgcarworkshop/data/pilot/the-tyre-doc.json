@@ -1,0 +1,43 @@
+{
+ "lede": "The Tyre Doc at 60 Paya Lebar Rd, Paya Lebar Square is a tyre shop that also does tyre services on-site.",
+ "chips": [
+  "Tyres",
+  "On-site service"
+ ],
+ "services": [
+  "Tyre sales and fitting",
+  "Tyre puncture repair",
+  "Wheel balancing",
+  "On-site tyre replacement"
+ ],
+ "themes": "Customers on Google Maps mention tyre puncture repair with a water leak check and wheel balancing, on-site tyre replacement, quick response to a late-night message, and help after a tyre burst on the road.",
+ "faqs": [
+  [
+   "What does The Tyre Doc do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing and its website",
+ "stories": [],
+ "mentioned_services": [
+  "Tyre puncture repair",
+  "On-site tyre replacement",
+  "Wheel balancing"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "Services listed on its website. Ask the workshop for its full list.",
+ "specialties": [
+  "Tyres"
+ ],
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Ask the workshop about your car.",
+ "good_to_know": [
+  "Sells tyres online in brands including Bridgestone, Dunlop, Goodyear, Michelin, Pirelli and Toyo, according to its website",
+  "Has a car services booking page on its website"
+ ],
+ "good_to_know_note": "From its website."
+}

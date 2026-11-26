@@ -1,0 +1,74 @@
+{
+ "schema_version": 1,
+ "slug": "the-tyre-doc",
+ "place_id": "ChIJlRHwjIIX2jEREEeFrdrNEjw",
+ "place_id_checked_at": "2026-11-26",
+ "name": "The Tyre Doc",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-26",
+ "address": {
+  "block": "",
+  "street": "60 Paya Lebar Rd, Paya Lebar Square",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "409051",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-26",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6581688997",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-26"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-26"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-26",
+ "last_verified_at": "2026-11-26",
+ "collector_version": "agent-v5",
+ "estate": "paya-ubi-industrial-park",
+ "planning_area": "Geylang",
+ "region": "central",
+ "lat": 1.3192491,
+ "lng": 103.8927959,
+ "geo_source": "google_places",
+ "geo_checked": "2026-11-26",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.7,
+  "count": 27,
+  "checked": "2026-11-26",
+  "source": "Google Places",
+  "source_date": "2026-11-26"
+ }
+}

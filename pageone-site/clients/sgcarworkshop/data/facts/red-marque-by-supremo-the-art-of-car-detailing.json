@@ -1,0 +1,57 @@
+{
+ "slug": "red-marque-by-supremo-the-art-of-car-detailing",
+ "researched_at": "2026-11-26",
+ "researcher": "Claude, Google Places Details only (candidate from Google Places Text Search sweep at Edwin's request; name from Google Business Profile)",
+ "facts": [
+  {
+   "field": "displayName",
+   "value": "Red Marque by Supremo: The Art of Car Detailing",
+   "source_url": "google_places",
+   "retrieved": "2026-11-26"
+  },
+  {
+   "field": "rating",
+   "value": "5",
+   "source_url": "google_places",
+   "retrieved": "2026-11-26"
+  },
+  {
+   "field": "userRatingCount",
+   "value": "100",
+   "source_url": "google_places",
+   "retrieved": "2026-11-26"
+  },
+  {
+   "field": "websiteUri",
+   "value": "http://www.red-marque.com/",
+   "source_url": "google_places",
+   "retrieved": "2026-11-26"
+  },
+  {
+   "field": "types",
+   "value": "['car_wash', 'car_repair', 'service', 'point_of_interest', 'establishment']",
+   "source_url": "google_places",
+   "retrieved": "2026-11-26"
+  },
+  {
+   "field": "primaryType",
+   "value": "car_repair",
+   "source_url": "google_places",
+   "retrieved": "2026-11-26"
+  },
+  {
+   "field": "opening_hours",
+   "value": [
+    "Monday: Closed",
+    "Tuesday: 8:30 AM – 5:30 PM",
+    "Wednesday: 8:30 AM – 5:30 PM",
+    "Thursday: 8:30 AM – 5:30 PM",
+    "Friday: 8:30 AM – 5:30 PM",
+    "Saturday: 8:30 AM – 5:30 PM",
+    "Sunday: 8:30 AM – 2:00 PM"
+   ],
+   "source_url": "google_places",
+   "retrieved": "2026-11-26"
+  }
+ ]
+}

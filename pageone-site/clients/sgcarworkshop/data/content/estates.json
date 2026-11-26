@@ -335,5 +335,56 @@
    "pandan light industries"
   ],
   "intro": "Pandan Loop, with the Pandan Light Industries Park blocks, is a light industrial area in the west, near the Pandan Reservoir and the Ayer Rajah Expressway."
+ },
+ {
+  "slug": "penjuru-road",
+  "name": "Penjuru Road and Teban Gardens",
+  "town": "toh-guan-jurong-east",
+  "keywords": [
+   "penjuru",
+   "teban gardens"
+  ],
+  "intro": "Penjuru Road runs along the Jurong waterfront between Jurong East and the West Coast, with Teban Gardens Crescent next to it, and has workshops and vehicle service centres among its industrial units."
+ },
+ {
+  "slug": "commonwealth",
+  "name": "Commonwealth",
+  "town": "alexandra-bukit-merah",
+  "keywords": [
+   "commonwealth ln",
+   "commonwealth lane",
+   "commonwealth ave",
+   "commonwealth avenue"
+  ],
+  "intro": "Commonwealth, around Commonwealth Avenue and One Commonwealth on Commonwealth Lane, is in Queenstown in the middle-west of Singapore."
+ },
+ {
+  "slug": "geylang-road",
+  "name": "Geylang Road",
+  "town": "macpherson",
+  "keywords": [
+   "geylang rd",
+   "geylang road"
+  ],
+  "intro": "Geylang Road runs east from Kallang through Geylang towards Paya Lebar, with small car service shops along it."
+ },
+ {
+  "slug": "penhas-road-kallang",
+  "name": "Penhas Road, Kallang",
+  "town": "jalan-besar-kallang-bahru",
+  "keywords": [
+   "penhas"
+  ],
+  "intro": "Penhas Road is a short street of light industrial buildings in Kallang, off Kallang Bahru and close to Lavender."
+ },
+ {
+  "slug": "tiong-bahru",
+  "name": "Tiong Bahru",
+  "town": "alexandra-bukit-merah",
+  "keywords": [
+   "boon tiong",
+   "tiong bahru"
+  ],
+  "intro": "Tiong Bahru, around Boon Tiong Road and Tiong Bahru Road, is an older estate just west of the city centre."
  }
 ]

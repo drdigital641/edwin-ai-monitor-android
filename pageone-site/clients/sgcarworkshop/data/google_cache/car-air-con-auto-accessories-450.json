@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.4,
+ "userRatingCount": 22,
+ "websiteUri": "https://www.facebook.com/carauto.aircon450",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 7:00 PM",
+  "Tuesday: 9:30 AM – 7:00 PM",
+  "Wednesday: 9:30 AM – 7:00 PM",
+  "Thursday: 9:30 AM – 7:00 PM",
+  "Friday: 9:30 AM – 7:00 PM",
+  "Saturday: 9:30 AM – 7:00 PM",
+  "Sunday: 10:00 AM – 5:00 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention car aircon compressor replacement on a Kia, aircon faults diagnosed and fixed within a few hours, a Mercedes warning-system fault, and a quick brake light bulb change.",
+ "fetched_at": "2026-11-26",
+ "place_id": "ChIJHaZNmTwY2jERWNIhdu2V_8w",
+ "source": "google_places"
+}

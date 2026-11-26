@@ -2,6 +2,7 @@ https://sgcarworkshop.sg/
 https://sgcarworkshop.sg/about/
 https://sgcarworkshop.sg/areas/
 https://sgcarworkshop.sg/areas/admiralty-street/
+https://sgcarworkshop.sg/areas/alexandra-bukit-merah/
 https://sgcarworkshop.sg/areas/amk-industrial-park-2/
 https://sgcarworkshop.sg/areas/amk-industrial-park-2/spray-painting-bodywork/
 https://sgcarworkshop.sg/areas/bedok-industrial-park-e/
@@ -24,6 +25,7 @@ https://sgcarworkshop.sg/areas/kaki-bukit-industrial-estate/gearbox-repair/
 https://sgcarworkshop.sg/areas/kaki-bukit-industrial-estate/spray-painting-bodywork/
 https://sgcarworkshop.sg/areas/loyang-way/
 https://sgcarworkshop.sg/areas/macpherson-road/
+https://sgcarworkshop.sg/areas/macpherson/
 https://sgcarworkshop.sg/areas/mandai-estate/
 https://sgcarworkshop.sg/areas/mobile/
 https://sgcarworkshop.sg/areas/north-east/
@@ -122,6 +124,7 @@ https://sgcarworkshop.sg/workshops/93-motorsports/
 https://sgcarworkshop.sg/workshops/96-jw-autohaus/
 https://sgcarworkshop.sg/workshops/98-auto-werkz/
 https://sgcarworkshop.sg/workshops/a-e-auto-craft/
+https://sgcarworkshop.sg/workshops/ab-engineering/
 https://sgcarworkshop.sg/workshops/absolust-car-care/
 https://sgcarworkshop.sg/workshops/absolut-budget-workshop/
 https://sgcarworkshop.sg/workshops/accord-autocare/
@@ -180,6 +183,7 @@ https://sgcarworkshop.sg/workshops/caltex-havoline-autopro-car-workshop-bukit-me
 https://sgcarworkshop.sg/workshops/caltex-havoline-autopro-workshop-yishun-by-motoserv/
 https://sgcarworkshop.sg/workshops/calvin-auto-services/
 https://sgcarworkshop.sg/workshops/caps-autowerkz/
+https://sgcarworkshop.sg/workshops/car-air-con-auto-accessories-450/
 https://sgcarworkshop.sg/workshops/car-battery-tyre-recovery/
 https://sgcarworkshop.sg/workshops/car-body-repair/
 https://sgcarworkshop.sg/workshops/car-care-centre/
@@ -421,6 +425,7 @@ https://sgcarworkshop.sg/workshops/new-hock-teck-motor-workshop/
 https://sgcarworkshop.sg/workshops/new-zen-werkz/
 https://sgcarworkshop.sg/workshops/nightzconcepts/
 https://sgcarworkshop.sg/workshops/noir-autoworks/
+https://sgcarworkshop.sg/workshops/nsfw-autostyle/
 https://sgcarworkshop.sg/workshops/nxpress-performance/
 https://sgcarworkshop.sg/workshops/obs-prestige/
 https://sgcarworkshop.sg/workshops/ome-motor/
@@ -438,6 +443,7 @@ https://sgcarworkshop.sg/workshops/paradise-garage/
 https://sgcarworkshop.sg/workshops/paul-hoe-batteries-motor-services/
 https://sgcarworkshop.sg/workshops/peng-auto-care/
 https://sgcarworkshop.sg/workshops/pick-and-go-werkz/
+https://sgcarworkshop.sg/workshops/pitstop-club/
 https://sgcarworkshop.sg/workshops/pro-jex-v2d/
 https://sgcarworkshop.sg/workshops/profi-automotive/
 https://sgcarworkshop.sg/workshops/proline-autowerks/
@@ -449,6 +455,7 @@ https://sgcarworkshop.sg/workshops/racing-technik-exhaust-specialist/
 https://sgcarworkshop.sg/workshops/rage-performance-technik/
 https://sgcarworkshop.sg/workshops/rainbow-studios/
 https://sgcarworkshop.sg/workshops/ready-auto-care/
+https://sgcarworkshop.sg/workshops/red-marque-by-supremo-the-art-of-car-detailing/
 https://sgcarworkshop.sg/workshops/redline-autoworks/
 https://sgcarworkshop.sg/workshops/regnant-automotive/
 https://sgcarworkshop.sg/workshops/rev-district-autolutions/
@@ -514,6 +521,7 @@ https://sgcarworkshop.sg/workshops/tg-auto/
 https://sgcarworkshop.sg/workshops/the-ecu-clinic/
 https://sgcarworkshop.sg/workshops/the-local-workshop/
 https://sgcarworkshop.sg/workshops/the-right-workshop/
+https://sgcarworkshop.sg/workshops/the-tyre-doc/
 https://sgcarworkshop.sg/workshops/thiam-heng-huat/
 https://sgcarworkshop.sg/workshops/thiam-seng-autotronic/
 https://sgcarworkshop.sg/workshops/tian-yi-motor-service/
@@ -552,6 +560,7 @@ https://sgcarworkshop.sg/workshops/weng-kee-motor/
 https://sgcarworkshop.sg/workshops/wheelers/
 https://sgcarworkshop.sg/workshops/whitesnail-services/
 https://sgcarworkshop.sg/workshops/wrapstar-autostyle/
+https://sgcarworkshop.sg/workshops/wtc-auto-care/
 https://sgcarworkshop.sg/workshops/x-solut-autoworks/
 https://sgcarworkshop.sg/workshops/xado-singapore/
 https://sgcarworkshop.sg/workshops/xin-yun-auto/

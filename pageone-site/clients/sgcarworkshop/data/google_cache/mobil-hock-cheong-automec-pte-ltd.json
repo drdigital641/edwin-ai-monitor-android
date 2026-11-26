@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4,
+ "userRatingCount": 4,
+ "websiteUri": "https://workshop.sea.mobil.com/sg//mobil-hock-cheong-automec-pte-ltd-oil-change-service-guillemard-road-singapore-556865/Home",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:00 AM – 6:00 PM",
+  "Tuesday: 10:00 AM – 6:00 PM",
+  "Wednesday: 10:00 AM – 6:00 PM",
+  "Thursday: 10:00 AM – 6:00 PM",
+  "Friday: 10:00 AM – 6:00 PM",
+  "Saturday: 10:00 AM – 1:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 4,
+ "review_themes": null,
+ "fetched_at": "2026-11-26",
+ "place_id": "ChIJK9w40GYZ2jERamd9MTijXFg",
+ "source": "google_places"
+}

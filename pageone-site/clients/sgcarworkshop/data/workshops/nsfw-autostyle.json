@@ -1,0 +1,74 @@
+{
+ "schema_version": 1,
+ "slug": "nsfw-autostyle",
+ "place_id": "ChIJIeWcqmYb2jERcROQIvaPp_o",
+ "place_id_checked_at": "2026-11-26",
+ "name": "NSFW Autostyle",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-26",
+ "address": {
+  "block": "",
+  "street": "1 Commonwealth Ln, #04-15 One Commonwealth",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "149544",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-26",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6588948944",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-26"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-26"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-26",
+ "last_verified_at": "2026-11-26",
+ "collector_version": "agent-v5",
+ "estate": "commonwealth",
+ "planning_area": "Alexandra and Bukit Merah",
+ "region": "central",
+ "lat": 1.3044917,
+ "lng": 103.7967223,
+ "geo_source": "google_places",
+ "geo_checked": "2026-11-26",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 27,
+  "checked": "2026-11-26",
+  "source": "Google Places",
+  "source_date": "2026-11-26"
+ }
+}
