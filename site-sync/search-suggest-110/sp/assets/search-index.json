@@ -1,0 +1,190 @@
+{
+ "v": 1,
+ "site": "spprecisionparts.my",
+ "items": [
+  {
+   "t": "product",
+   "n": "M0307 Nano ceramic brake pads",
+   "f": "M0307",
+   "u": "#parts",
+   "c": "Audi RS4 Avant (B9/8W5/8WD) 17, Audi A6L (C8/488) 18, Audi A8L (D5/4N) 17, VW Touareg (CR7) 18",
+   "k": "m0307 audi rs4 avant (b9/8w5/8wd) 17 audi a6l (c8/488) 18 audi a8l (d5/4n) 17 vw touareg (cr7) 18"
+  },
+  {
+   "t": "product",
+   "n": "M0518 Nano ceramic brake pads",
+   "f": "M0518",
+   "u": "#parts",
+   "c": "BMW F40, F48, MINI F60",
+   "k": "m0518 bmw f40, f48 mini f60"
+  },
+  {
+   "t": "product",
+   "n": "M2505 Nano ceramic brake pads",
+   "f": "M2505",
+   "u": "#parts",
+   "c": "Proton X50 (front)",
+   "k": "m2505 proton x50 (front)"
+  },
+  {
+   "t": "product",
+   "n": "M6811 Nano ceramic brake pads",
+   "f": "M6811",
+   "u": "#parts",
+   "c": "Proton X70, Kia, Hyundai (rear)",
+   "k": "m6811 proton x70, kia, hyundai (rear)"
+  },
+  {
+   "t": "product",
+   "n": "M4305 Nano ceramic brake pads",
+   "f": "M4305",
+   "u": "#parts",
+   "c": "Toyota Estima ACR50, ANH20, AGH30 (front)",
+   "k": "m4305 toyota estima acr50, anh20, agh30 (front)"
+  },
+  {
+   "t": "product",
+   "n": "M5201 Nano ceramic brake pads",
+   "f": "M5201",
+   "u": "#parts",
+   "c": "Toyota / Lexus (rear)",
+   "k": "m5201 toyota / lexus (rear)"
+  },
+  {
+   "t": "product",
+   "n": "M6023 Nano ceramic brake pads",
+   "f": "M6023",
+   "u": "#parts",
+   "c": "Mazda 3 BP, 19 inch (front)",
+   "k": "m6023 mazda 3 bp, 19 inch (front)"
+  },
+  {
+   "t": "product",
+   "n": "M3037 Nano ceramic brake pads",
+   "f": "M3037",
+   "u": "#parts",
+   "c": "Ford Ranger T6, T7 (front)",
+   "k": "m3037 ford ranger t6, t7 (front)"
+  },
+  {
+   "t": "product",
+   "n": "MCK022 Nano ceramic brake pads",
+   "f": "MCK022",
+   "u": "#parts",
+   "c": "Perodua Myvi M300 05 (front)",
+   "k": "mck022 perodua myvi m300 05 (front)"
+  },
+  {
+   "t": "product",
+   "n": "M7612 Nano ceramic brake pads",
+   "f": "M7612",
+   "u": "#parts",
+   "c": "Brembo GT6 caliper 189.6 x 87.6 (front)",
+   "k": "m7612 brembo gt6 caliper 189.6 x 87.6 (front)"
+  },
+  {
+   "t": "product",
+   "n": "M0970 Nano ceramic brake pads",
+   "f": "M0970",
+   "u": "#parts",
+   "c": "Mercedes-Benz W177, C118, V167 (front)",
+   "k": "m0970 mercedes-benz w177, c118, v167 (front)"
+  },
+  {
+   "t": "product",
+   "n": "M0521 Nano ceramic brake pads",
+   "f": "M0521",
+   "u": "#parts",
+   "c": "BMW F10, F06 (front)",
+   "k": "m0521 bmw f10, f06 (front)"
+  },
+  {
+   "t": "product",
+   "n": "M8103 Nano ceramic brake pads",
+   "f": "M8103",
+   "u": "#parts",
+   "c": "Kia Optima K5 (front)",
+   "k": "m8103 kia optima k5 (front)"
+  },
+  {
+   "t": "product",
+   "n": "M2915 Nano ceramic brake pads",
+   "f": "M2915",
+   "u": "#parts",
+   "c": "Toyota Hilux",
+   "k": "m2915 toyota hilux"
+  },
+  {
+   "t": "brand",
+   "n": "Audi",
+   "f": "Audi",
+   "u": "#parts"
+  },
+  {
+   "t": "brand",
+   "n": "VW",
+   "f": "VW",
+   "u": "#parts"
+  },
+  {
+   "t": "brand",
+   "n": "BMW",
+   "f": "BMW",
+   "u": "#parts"
+  },
+  {
+   "t": "brand",
+   "n": "MINI",
+   "f": "MINI",
+   "u": "#parts"
+  },
+  {
+   "t": "brand",
+   "n": "Proton",
+   "f": "Proton",
+   "u": "#parts"
+  },
+  {
+   "t": "brand",
+   "n": "Toyota",
+   "f": "Toyota",
+   "u": "#parts"
+  },
+  {
+   "t": "brand",
+   "n": "Mazda",
+   "f": "Mazda",
+   "u": "#parts"
+  },
+  {
+   "t": "brand",
+   "n": "Ford",
+   "f": "Ford",
+   "u": "#parts"
+  },
+  {
+   "t": "brand",
+   "n": "Perodua",
+   "f": "Perodua",
+   "u": "#parts"
+  },
+  {
+   "t": "brand",
+   "n": "Brembo",
+   "f": "Brembo",
+   "u": "#parts"
+  },
+  {
+   "t": "brand",
+   "n": "Mercedes-Benz",
+   "f": "Mercedes-Benz",
+   "u": "#parts"
+  },
+  {
+   "t": "brand",
+   "n": "Kia",
+   "f": "Kia",
+   "u": "#parts"
+  }
+ ]
+}
