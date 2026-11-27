@@ -1,0 +1,26 @@
+name: SEO check 27 Nov screenshots (GET-only)
+on:
+  push:
+    branches: [claude/project-thread-0x4ndq]
+    paths: ['seo-check-2026-11-27/urls.txt','seo-check-2026-11-27/shoot.js','.github/workflows/seo-check-shots-1127.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  shots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm i --no-save playwright@1.48.2 && npx playwright install --with-deps chromium
+      - run: node seo-check-2026-11-27/shoot.js
+      - name: Commit shots
+        run: |
+          git config user.name 'github-actions'
+          git config user.email 'github-actions@users.noreply.github.com'
+          git add seo-check-2026-11-27/shots
+          git commit -m 'SEO check 27 Nov: screenshots [skip ci]' || echo nothing
+          git push
