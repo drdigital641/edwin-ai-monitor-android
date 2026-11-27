@@ -5,9 +5,11 @@ https://sgcarworkshop.sg/areas/admiralty-street/
 https://sgcarworkshop.sg/areas/alexandra-bukit-merah/
 https://sgcarworkshop.sg/areas/amk-industrial-park-2/
 https://sgcarworkshop.sg/areas/amk-industrial-park-2/spray-painting-bodywork/
+https://sgcarworkshop.sg/areas/ang-mo-kio/
 https://sgcarworkshop.sg/areas/bedok-industrial-park-e/
 https://sgcarworkshop.sg/areas/bukit-batok-crescent/
 https://sgcarworkshop.sg/areas/bukit-batok-crescent/car-tyres/
+https://sgcarworkshop.sg/areas/bukit-batok/
 https://sgcarworkshop.sg/areas/bukit-merah-lane-3/
 https://sgcarworkshop.sg/areas/carros-centre-jalan-lam-huat/
 https://sgcarworkshop.sg/areas/carros-centre-jalan-lam-huat/car-aircon-repair/
@@ -251,6 +253,7 @@ https://sgcarworkshop.sg/workshops/eurosports-performance-tuning/
 https://sgcarworkshop.sg/workshops/ev-body-parts/
 https://sgcarworkshop.sg/workshops/everest-garage/
 https://sgcarworkshop.sg/workshops/evs-garage/
+https://sgcarworkshop.sg/workshops/exceptional-mobile-car-detailing/
 https://sgcarworkshop.sg/workshops/exquisite-marques-holding-pte-ltd/
 https://sgcarworkshop.sg/workshops/f4-concept-speedy-care-bukit-merah/
 https://sgcarworkshop.sg/workshops/f9-motor/
@@ -356,6 +359,7 @@ https://sgcarworkshop.sg/workshops/kgc-workshop/
 https://sgcarworkshop.sg/workshops/kh-kinetics-autocare-night-friendly/
 https://sgcarworkshop.sg/workshops/khy-motors/
 https://sgcarworkshop.sg/workshops/kim-wah-seng-auto-services/
+https://sgcarworkshop.sg/workshops/kiraly-automobile-premier/
 https://sgcarworkshop.sg/workshops/kk-auto-m-e/
 https://sgcarworkshop.sg/workshops/kk-garage/
 https://sgcarworkshop.sg/workshops/klar-details/
@@ -391,6 +395,7 @@ https://sgcarworkshop.sg/workshops/major-autolution/
 https://sgcarworkshop.sg/workshops/man-garage/
 https://sgcarworkshop.sg/workshops/man-siew-auto/
 https://sgcarworkshop.sg/workshops/mao-yang/
+https://sgcarworkshop.sg/workshops/max-factor-garage-pte-ltd/
 https://sgcarworkshop.sg/workshops/maximus-auto-services/
 https://sgcarworkshop.sg/workshops/mayfair-garage/
 https://sgcarworkshop.sg/workshops/mcf-auto/
@@ -414,6 +419,7 @@ https://sgcarworkshop.sg/workshops/motoricarz-garage/
 https://sgcarworkshop.sg/workshops/motoserv-car-service-centre-bukit-batok/
 https://sgcarworkshop.sg/workshops/motoserv-car-service-centre-sembawang/
 https://sgcarworkshop.sg/workshops/motoserv-car-service-centre-serangoon-garden/
+https://sgcarworkshop.sg/workshops/motoserv-car-service-centre-upper-bukit-timah/
 https://sgcarworkshop.sg/workshops/motoserv-car-service-centre-upper-thomson-mobil-1-carcare/
 https://sgcarworkshop.sg/workshops/mr-gearbox-by-motoserv/
 https://sgcarworkshop.sg/workshops/mt-autoservice/
@@ -506,6 +512,7 @@ https://sgcarworkshop.sg/workshops/spray-paint-shop-singapore/
 https://sgcarworkshop.sg/workshops/squad-workshop/
 https://sgcarworkshop.sg/workshops/star-9-workshop/
 https://sgcarworkshop.sg/workshops/steadiaudio/
+https://sgcarworkshop.sg/workshops/stone-detailing/
 https://sgcarworkshop.sg/workshops/summer-motorworks/
 https://sgcarworkshop.sg/workshops/sunrise-auto-services/
 https://sgcarworkshop.sg/workshops/superior-motorsports/
@@ -547,6 +554,7 @@ https://sgcarworkshop.sg/workshops/tyreplus-toh-guan/
 https://sgcarworkshop.sg/workshops/u-auto-care/
 https://sgcarworkshop.sg/workshops/uber-garage/
 https://sgcarworkshop.sg/workshops/ubi-automobile-services/
+https://sgcarworkshop.sg/workshops/unicar-cosmetic-mobile-car-detailing-service/
 https://sgcarworkshop.sg/workshops/unicorn-automotive/
 https://sgcarworkshop.sg/workshops/v-shine-auto-spray-painting/
 https://sgcarworkshop.sg/workshops/v-tech-auto-service/

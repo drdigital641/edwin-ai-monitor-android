@@ -1,0 +1,22 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "point_of_interest",
+  "service",
+  "establishment"
+ ],
+ "rating": 4.4,
+ "userRatingCount": 8,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": null,
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-27",
+ "place_id": "ChIJA77IpJ8X2jERrNZ6as75kgw",
+ "source": "google_places"
+}

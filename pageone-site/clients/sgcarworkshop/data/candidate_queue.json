@@ -1,203 +1,5 @@
 [
  {
-  "place_id": "ChIJPxkQ5aEQ2jERgG_zNlIf0ZU",
-  "name_hint": "CM Auto Service",
-  "address_hint": "35 Upper Bukit Timah Rd",
-  "postal_code": "588166",
-  "mobile_hint": "+6597441346",
-  "source": "google_grid_sweep_2026-11-13 (Google phone, Edwin asked)",
-  "added": "2026-11-13"
- },
- {
-  "place_id": "ChIJsSlwdK8R2jER2vbDFDnmRv8",
-  "name_hint": "Motoserv Car Service Centre @Upper Bukit Timah",
-  "address_hint": "219 Upper Bukit Timah Rd, Shell Autoserv",
-  "postal_code": "588186",
-  "mobile_hint": "+6591283436",
-  "source": "google_grid_sweep_2026-11-13 (Google phone, Edwin asked)",
-  "added": "2026-11-13"
- },
- {
-  "place_id": "ChIJO1f2_6wR2jERCyqYdiJbCHo",
-  "name_hint": "Vantage Automotive @ Bukit Timah",
-  "address_hint": "35 Upper Bukit Timah Rd, In Shell Petrol Kiosk",
-  "postal_code": "588166",
-  "mobile_hint": "+6591142559",
-  "source": "google_grid_sweep_2026-11-13 (Google phone, Edwin asked)",
-  "added": "2026-11-13"
- },
- {
-  "place_id": "ChIJA77IpJ8X2jERrNZ6as75kgw",
-  "name_hint": "Teck Thye Company",
-  "address_hint": "12 Braddell Rd, 4a",
-  "postal_code": "359914",
-  "mobile_hint": "+6598178791",
-  "source": "google_grid_sweep_2026-11-13 (Google phone, Edwin asked)",
-  "added": "2026-11-13"
- },
- {
-  "place_id": "ChIJQVk0h8kX2jERD6YsWYXZgHg",
-  "name_hint": "Detail Lab",
-  "address_hint": "2 Defu South Street 1, #04-06 Defu Industrial City",
-  "postal_code": "533755",
-  "mobile_hint": "+6590881055",
-  "source": "google_grid_sweep_2026-11-13 (Google phone, Edwin asked)",
-  "added": "2026-11-13"
- },
- {
-  "place_id": "ChIJA3TQHvUX2jERAFTPKwF1b0o",
-  "name_hint": "KIRALY AUTOMOBILE @ Premier",
-  "address_hint": "8 Kaki Bukit Ave 4, #06-43",
-  "postal_code": "415875",
-  "mobile_hint": "+6597656059",
-  "source": "google_grid_sweep_2026-11-13 (Google phone, Edwin asked)",
-  "added": "2026-11-13"
- },
- {
-  "place_id": "ChIJn579CuEX2jERttjsPMg9-0M",
-  "name_hint": "Max Factor Garage Pte Ltd",
-  "address_hint": "8 Kaki Bukit Ave 4, #08-38, Premier@kb 415875",
-  "postal_code": "415875",
-  "mobile_hint": "+6592302438",
-  "source": "google_grid_sweep_2026-11-13 (Google phone, Edwin asked)",
-  "added": "2026-11-13"
- },
- {
-  "place_id": "ChIJ0a0_DgAX2jER4uE4tI0HEQI",
-  "name_hint": "Nitro SprayWerkz",
-  "address_hint": "8 Kaki Bukit Ave 4, #02-01",
-  "postal_code": "415874",
-  "mobile_hint": "+6589883125",
-  "source": "google_grid_sweep_2026-11-13 (Google phone, Edwin asked)",
-  "added": "2026-11-13"
- },
- {
-  "place_id": "ChIJKfgTZeQX2jERgwUBMJeKJ6Q",
-  "name_hint": "GT Garage Singapore",
-  "address_hint": "23 Kaki Bukit Ave 4, #03-01 Aa Vehicle Inspection Centre",
-  "postal_code": "415933",
-  "mobile_hint": "+6581270834",
-  "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
-  "added": "2026-11-15"
- },
- {
-  "place_id": "ChIJdUzpKtAR2jERop_AiA-Tb5I",
-  "name_hint": "WOW Wheels on Wheels SG (Mobile Motorcycle Tyre Change)",
-  "address_hint": "",
-  "postal_code": "690127",
-  "mobile_hint": "+6588811648",
-  "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
-  "added": "2026-11-15"
- },
- {
-  "place_id": "ChIJwWySJrAR2jERBO538yBiTEY",
-  "name_hint": "Motoserv Car Service Centre @Bukit Panjang",
-  "address_hint": "772 Upper Bukit Timah Rd",
-  "postal_code": "678122",
-  "mobile_hint": "+6591113832",
-  "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
-  "added": "2026-11-15"
- },
- {
-  "place_id": "ChIJu3Ejt4YR2jERDBHJ4JB7LyY",
-  "name_hint": "APEX Battery & Tyre – Car Battery Replacement & Tyre Repair",
-  "address_hint": "813 Bukit Batok West Ave. 5",
-  "postal_code": "659084",
-  "mobile_hint": "+6589119568",
-  "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
-  "added": "2026-11-15"
- },
- {
-  "place_id": "ChIJk859Z3UQ2jERJp72EHr6Mdg",
-  "name_hint": "Unicar Cosmetic (Mobile Car Detailing Service)",
-  "address_hint": "329 Bukit Batok Street 33",
-  "postal_code": "650329",
-  "mobile_hint": "+6586561118",
-  "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
-  "added": "2026-11-15"
- },
- {
-  "place_id": "ChIJp5xjUCQX2jERDT1Krxu_O1c",
-  "name_hint": "Aero Garage Pte Ltd",
-  "address_hint": "160 Sin Ming Dr, #08-01 Sin Ming AutoCity",
-  "postal_code": "575722",
-  "mobile_hint": "+6597116723",
-  "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
-  "added": "2026-11-15"
- },
- {
-  "place_id": "ChIJfRHZAJgX2jER5DoK32UrXOU",
-  "name_hint": "Mobil Pang & Tan Vehicle Service Centre",
-  "address_hint": "160 Sin Ming Dr, #04-03 Sin Ming AutoCity",
-  "postal_code": "575722",
-  "mobile_hint": "+6592701855",
-  "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
-  "added": "2026-11-15"
- },
- {
-  "place_id": "ChIJF6-zZIYX2jERT4CgrUr-4VM",
-  "name_hint": "Zen Car Services",
-  "address_hint": "105 Pasir Ris Street 12, #05-89",
-  "postal_code": "510105",
-  "mobile_hint": "+6598459289",
-  "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
-  "added": "2026-11-15"
- },
- {
-  "place_id": "ChIJa4SZLq0R2jERoFvd0RgUShg",
-  "name_hint": "Exceptional Mobile Car Detailing",
-  "address_hint": "483A Choa Chu Kang Ave 5",
-  "postal_code": "681483",
-  "mobile_hint": "+6580573511",
-  "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
-  "added": "2026-11-15"
- },
- {
-  "place_id": "ChIJezwI_uwP2jER1oMFT8ldE00",
-  "name_hint": "Stone Detailing",
-  "address_hint": "Blk 343 Choa Chu Kang Lp.",
-  "postal_code": "680343",
-  "mobile_hint": "+6596419394",
-  "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
-  "added": "2026-11-15"
- },
- {
-  "place_id": "ChIJKYBh-iUX2jERMGo0UsBDRA8",
-  "name_hint": "Brze",
-  "address_hint": "14 Tagore Ln",
-  "postal_code": "787475",
-  "mobile_hint": "+6596438722",
-  "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
-  "added": "2026-11-15"
- },
- {
-  "place_id": "ChIJDQLREGoX2jERfITiKSUaCr8",
-  "name_hint": "V3 Automotives",
-  "address_hint": "8 Tagore Ln",
-  "postal_code": "787471",
-  "mobile_hint": "+6592701898",
-  "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
-  "added": "2026-11-15"
- },
- {
-  "place_id": "ChIJ_99IrLYW2jERvznL3n4VIEk",
-  "name_hint": "RMS Raymotorsports Pte. Ltd.",
-  "address_hint": "453 Tagore Industrial Ave",
-  "postal_code": "787824",
-  "mobile_hint": "+6590900991",
-  "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
-  "added": "2026-11-15"
- },
- {
-  "place_id": "ChIJLSt1QcMP2jERZam_1DgxSDA",
-  "name_hint": "MONSTER SHINE PTE LTD",
-  "address_hint": "8 Tagore Ln",
-  "postal_code": "787471",
-  "mobile_hint": "+6586666866",
-  "source": "google_grid_sweep_2026-11-15 (Google phone, Edwin asked)",
-  "added": "2026-11-15"
- },
- {
   "place_id": "ChIJp42N-rwR2jERpHwOJbgfwkU",
   "name_hint": "Zhong Cheng Enterprise",
   "address_hint": "60 Jln Lam Huat, #04-53 Carros Centre",
@@ -340,5 +142,77 @@
   "mobile_hint": "+6594317373",
   "source": "google_grid_sweep_2026-11-26 \"car servicing\" (Google phone, Edwin asked)",
   "added": "2026-11-26"
+ },
+ {
+  "place_id": "ChIJQfesfXAP2jERcr13lAdtV3Q",
+  "name_hint": "Mila Motors",
+  "address_hint": "1 Soon Lee St, #05-06",
+  "postal_code": "627605",
+  "mobile_hint": "+6593834425",
+  "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
+  "added": "2026-11-27"
+ },
+ {
+  "place_id": "ChIJEawlCzYF2jER2cQLlrLoMrE",
+  "name_hint": "Puffing Trucks Trading",
+  "address_hint": "27A Jurong Port Rd, #01-13",
+  "postal_code": "619101",
+  "mobile_hint": "+6581232034",
+  "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
+  "added": "2026-11-27"
+ },
+ {
+  "place_id": "ChIJT9LgWW4F2jERqaEJAaF1oJg",
+  "name_hint": "Castrol Service - Palm Motorsports",
+  "address_hint": "1 Corporation Dr, #02/18 Revv West Enterprise Hub",
+  "postal_code": "619775",
+  "mobile_hint": "+6586848112",
+  "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
+  "added": "2026-11-27"
+ },
+ {
+  "place_id": "ChIJqciBPWAU2jERjf1h2-S-A3Y",
+  "name_hint": "New Age Polish Pte Ltd",
+  "address_hint": "11 Yishun Industrial Street 1, #01-112 North Spring BizHub",
+  "postal_code": "768089",
+  "mobile_hint": "+6581610131",
+  "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
+  "added": "2026-11-27"
+ },
+ {
+  "place_id": "ChIJt7nhUwAP2jERExMRS1_UjXM",
+  "name_hint": "TOTACHI EXPRESS SERVICE CENTER",
+  "address_hint": "7 Soon Lee St, #04-14",
+  "postal_code": "627608",
+  "mobile_hint": "+6581559746",
+  "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
+  "added": "2026-11-27"
+ },
+ {
+  "place_id": "ChIJZ9qGeXgP2jERfrrqnVYUzbQ",
+  "name_hint": "R&S Auto Solutions Pte Ltd",
+  "address_hint": "7 Soon Lee St, #01-33",
+  "postal_code": "627608",
+  "mobile_hint": "+6589181855",
+  "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
+  "added": "2026-11-27"
+ },
+ {
+  "place_id": "ChIJdSOfCEc92jERK7jr1-U8MMc",
+  "name_hint": "Prime Autocare Works Pte Ltd",
+  "address_hint": "2 Tampines North Drive 4, #04-24",
+  "postal_code": "529434",
+  "mobile_hint": "+6593860904",
+  "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
+  "added": "2026-11-27"
+ },
+ {
+  "place_id": "ChIJAQAAAOMX2jER3QIPsN8AXzk",
+  "name_hint": "The Brake Shop Pte. Ltd.",
+  "address_hint": "68 Kaki Bukit Ave 6, #03-19 The Ark @KB",
+  "postal_code": "417896",
+  "mobile_hint": "+6581235855",
+  "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
+  "added": "2026-11-27"
  }
 ]

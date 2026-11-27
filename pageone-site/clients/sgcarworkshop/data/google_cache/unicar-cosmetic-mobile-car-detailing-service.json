@@ -1,0 +1,35 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_wash",
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.9,
+ "userRatingCount": 21,
+ "websiteUri": "https://linktr.ee/unicarcosmetic?fbclid=PAY2xjawL8huNleHRuA2FlbQIxMQABp2d2hqhq8k2miHTM1QVVcWpTTMzqCWHWvnJt1AX6RSEFIdfdDvKMgXUwL6DH_aem_TWMl6SglJ_lLGMtAauQxpQ",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:30 AM – 5:30 PM",
+  "Tuesday: 9:30 AM – 5:30 PM",
+  "Wednesday: 9:30 AM – 5:30 PM",
+  "Thursday: 9:30 AM – 5:30 PM",
+  "Friday: 9:30 AM – 5:30 PM",
+  "Saturday: 9:30 AM – 3:30 PM",
+  "Sunday: 9:30 AM – 3:30 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention coating and detailing done at the customer's home, inside and out, regular cleaning for pet owners, and no hard selling.",
+ "fetched_at": "2026-11-27",
+ "place_id": "ChIJk859Z3UQ2jERJp72EHr6Mdg",
+ "source": "google_places"
+}

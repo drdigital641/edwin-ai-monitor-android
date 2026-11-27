@@ -1,0 +1,74 @@
+{
+ "schema_version": 1,
+ "slug": "exceptional-mobile-car-detailing",
+ "place_id": "ChIJa4SZLq0R2jERoFvd0RgUShg",
+ "place_id_checked_at": "2026-11-27",
+ "name": "Exceptional Mobile Car Detailing",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-27",
+ "address": {
+  "block": "",
+  "street": "483A Choa Chu Kang Ave 5",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "681483",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-27",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6580573511",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-27"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-27"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-27",
+ "last_verified_at": "2026-11-27",
+ "collector_version": "agent-v5",
+ "estate": "choa-chu-kang",
+ "planning_area": "Choa Chu Kang",
+ "region": "west",
+ "lat": 1.3761884,
+ "lng": 103.7373934,
+ "geo_source": "google_places",
+ "geo_checked": "2026-11-27",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.9,
+  "count": 54,
+  "checked": "2026-11-27",
+  "source": "Google Places",
+  "source_date": "2026-11-27"
+ }
+}

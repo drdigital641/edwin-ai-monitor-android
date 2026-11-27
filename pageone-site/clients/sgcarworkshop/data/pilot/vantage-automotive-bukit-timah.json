@@ -1,0 +1,36 @@
+{
+ "lede": "Vantage Automotive @ Bukit Timah, in the Shell petrol kiosk at 35 Upper Bukit Timah Rd, is a car servicing workshop that customers use for BYD cars.",
+ "chips": [
+  "Servicing",
+  "BYD"
+ ],
+ "services": [
+  "Car servicing",
+  "BYD car servicing"
+ ],
+ "themes": "Customers on Google Maps mention servicing for BYD cars, follow-ups on service requests, and quick, friendly service.",
+ "faqs": [
+  [
+   "What does Vantage Automotive @ Bukit Timah do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "BYD servicing",
+  "General servicing"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "BYD"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "good_to_know": []
+}

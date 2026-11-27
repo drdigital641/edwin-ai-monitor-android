@@ -1,0 +1,38 @@
+{
+ "lede": "Exceptional Mobile Car Detailing, based at 483A Choa Chu Kang Ave 5, is a mobile car detailing service.",
+ "chips": [
+  "Detailing",
+  "Coating",
+  "Mobile"
+ ],
+ "services": [
+  "Mobile car detailing",
+  "Ceramic coating",
+  "Leather coating",
+  "Wash, clay and polish"
+ ],
+ "themes": "Customers on Google Maps mention ceramic and leather coating, washing, claying and polishing done at the customer's home, a glossy finish that still repels water months later, and patient explanations of the packages.",
+ "faqs": [
+  [
+   "What does Exceptional Mobile Car Detailing do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Ceramic coating",
+  "Car polishing",
+  "Mobile car detailing"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Ask the workshop about your car.",
+ "good_to_know": []
+}

@@ -1,0 +1,37 @@
+{
+ "lede": "Unicar Cosmetic, based at 329 Bukit Batok Street 33, is a mobile car detailing service.",
+ "chips": [
+  "Detailing",
+  "Coating",
+  "Mobile"
+ ],
+ "services": [
+  "Mobile car detailing",
+  "Car coating",
+  "Interior cleaning"
+ ],
+ "themes": "Customers on Google Maps mention coating and detailing done at the customer's home, inside and out, regular cleaning for pet owners, and no hard selling.",
+ "faqs": [
+  [
+   "What does Unicar Cosmetic do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car coating",
+  "Interior detailing",
+  "Mobile car detailing"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Ask the workshop about your car.",
+ "good_to_know": []
+}

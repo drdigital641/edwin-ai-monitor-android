@@ -1169,7 +1169,15 @@
   "swept": "2026-11-09",
   "listings": 39,
   "new": 33,
-  "paid": 2
+  "paid": 2,
+  "q": {
+   "car servicing": {
+    "swept": "2026-11-27",
+    "listings": 34,
+    "new": 3,
+    "paid": 2
+   }
+  }
  },
  "r04c06": {
   "bbox": [
@@ -1265,7 +1273,15 @@
   "swept": "2026-11-08",
   "listings": 30,
   "new": 24,
-  "paid": 2
+  "paid": 2,
+  "q": {
+   "car servicing": {
+    "swept": "2026-11-27",
+    "listings": 14,
+    "new": 2,
+    "paid": 1
+   }
+  }
  },
  "r04c14": {
   "bbox": [
@@ -1841,7 +1857,15 @@
   "swept": "2026-11-11",
   "listings": 12,
   "new": 11,
-  "paid": 1
+  "paid": 1,
+  "q": {
+   "car servicing": {
+    "swept": "2026-11-27",
+    "listings": 13,
+    "new": 1,
+    "paid": 1
+   }
+  }
  },
  "r06c17": {
   "bbox": [
@@ -2869,7 +2893,15 @@
   "swept": "2026-11-09",
   "listings": 39,
   "new": 32,
-  "paid": 2
+  "paid": 2,
+  "q": {
+   "car servicing": {
+    "swept": "2026-11-27",
+    "listings": 33,
+    "new": 4,
+    "paid": 2
+   }
+  }
  },
  "r10c11": {
   "bbox": [
@@ -3143,7 +3175,15 @@
   "swept": "2026-11-09",
   "listings": 19,
   "new": 12,
-  "paid": 1
+  "paid": 1,
+  "q": {
+   "car servicing": {
+    "swept": "2026-11-27",
+    "listings": 17,
+    "new": 3,
+    "paid": 1
+   }
+  }
  },
  "r11c11": {
   "bbox": [
@@ -4381,7 +4421,15 @@
   "swept": "2026-11-07",
   "listings": 43,
   "new": 36,
-  "paid": 3
+  "paid": 3,
+  "q": {
+   "car servicing": {
+    "swept": "2026-11-27",
+    "listings": 41,
+    "new": 1,
+    "paid": 1
+   }
+  }
  },
  "r10c11b": {
   "bbox": [
@@ -4393,7 +4441,15 @@
   "swept": "2026-11-07",
   "listings": 15,
   "new": 8,
-  "paid": 1
+  "paid": 1,
+  "q": {
+   "car servicing": {
+    "swept": "2026-11-27",
+    "listings": 14,
+    "new": 1,
+    "paid": 1
+   }
+  }
  },
  "r10c11c": {
   "bbox": [
@@ -4521,7 +4577,15 @@
   "swept": "2026-11-07",
   "listings": 55,
   "new": 47,
-  "paid": 3
+  "paid": 3,
+  "q": {
+   "car servicing": {
+    "swept": "2026-11-27",
+    "listings": 48,
+    "new": 0,
+    "paid": 0
+   }
+  }
  },
  "r04c14db": {
   "bbox": [
@@ -4639,7 +4703,15 @@
   "swept": "2026-11-08",
   "listings": 43,
   "new": 21,
-  "paid": 3
+  "paid": 3,
+  "q": {
+   "car servicing": {
+    "swept": "2026-11-27",
+    "listings": 37,
+    "new": 3,
+    "paid": 2
+   }
+  }
  },
  "r04c04dd": {
   "bbox": [
@@ -4651,7 +4723,15 @@
   "swept": "2026-11-09",
   "listings": 10,
   "new": 6,
-  "paid": 1
+  "paid": 1,
+  "q": {
+   "car servicing": {
+    "swept": "2026-11-27",
+    "listings": 12,
+    "new": 2,
+    "paid": 1
+   }
+  }
  },
  "r07c13a": {
   "bbox": [
@@ -5109,7 +5189,15 @@
   "swept": "2026-11-10",
   "listings": 51,
   "new": 47,
-  "paid": 3
+  "paid": 3,
+  "q": {
+   "car servicing": {
+    "swept": "2026-11-27",
+    "listings": 49,
+    "new": 7,
+    "paid": 3
+   }
+  }
  },
  "r05c14bc": {
   "bbox": [
@@ -5181,7 +5269,15 @@
   "swept": "2026-11-10",
   "listings": 55,
   "new": 51,
-  "paid": 3
+  "paid": 3,
+  "q": {
+   "car servicing": {
+    "swept": "2026-11-27",
+    "listings": 43,
+    "new": 1,
+    "paid": 3
+   }
+  }
  },
  "r05c15adba": {
   "bbox": [
@@ -5205,7 +5301,15 @@
   "swept": "2026-11-10",
   "listings": 6,
   "new": 0,
-  "paid": 0
+  "paid": 0,
+  "q": {
+   "car servicing": {
+    "swept": "2026-11-27",
+    "listings": 8,
+    "new": 2,
+    "paid": 1
+   }
+  }
  },
  "r05c15adbc": {
   "bbox": [

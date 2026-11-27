@@ -1,0 +1,37 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "chauffeur_service",
+  "car_wash",
+  "car_repair",
+  "transportation_service",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 39,
+ "websiteUri": "http://www.detaillab.com.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-27",
+ "place_id": "ChIJQVk0h8kX2jERD6YsWYXZgHg",
+ "source": "google_places"
+}

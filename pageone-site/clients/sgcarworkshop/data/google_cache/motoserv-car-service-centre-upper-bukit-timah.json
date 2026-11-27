@@ -1,0 +1,38 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "tire_shop",
+  "auto_parts_store",
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "store",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 6,
+ "websiteUri": "https://motoserv.sg/car-servicing-bukit-timah/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention tyre rotation with the wheels torqued properly, friendly staff and clear pricing.",
+ "fetched_at": "2026-11-27",
+ "place_id": "ChIJsSlwdK8R2jER2vbDFDnmRv8",
+ "source": "google_places"
+}

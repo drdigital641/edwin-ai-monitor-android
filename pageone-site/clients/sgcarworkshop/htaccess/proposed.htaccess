@@ -3,9 +3,9 @@
 Options -Indexes
 
 RedirectMatch 301 ^/areas/alexandra\-bukit\-merah/general\-servicing\-repair/?$ /areas/alexandra-bukit-merah/
-RedirectMatch 301 ^/areas/ang\-mo\-kio/general\-servicing\-repair/?$ /areas/amk-industrial-park-2/
+RedirectMatch 301 ^/areas/ang\-mo\-kio/general\-servicing\-repair/?$ /areas/ang-mo-kio/
 RedirectMatch 301 ^/areas/bedok\-north/general\-servicing\-repair/?$ /areas/bedok-industrial-park-e/
-RedirectMatch 301 ^/areas/bukit\-batok/general\-servicing\-repair/?$ /areas/bukit-batok-crescent/
+RedirectMatch 301 ^/areas/bukit\-batok/general\-servicing\-repair/?$ /areas/bukit-batok/
 RedirectMatch 301 ^/areas/changi\-loyang/general\-servicing\-repair/?$ /areas/loyang-way/
 RedirectMatch 301 ^/areas/defu\-hougang/general\-servicing\-repair/?$ /areas/defu-industrial-estate/
 RedirectMatch 301 ^/areas/jalan\-besar\-kallang\-bahru/general\-servicing\-repair/?$ /areas/penhas-road-kallang/

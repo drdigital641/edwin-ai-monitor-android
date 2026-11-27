@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "slug": "brze",
+ "place_id": "ChIJKYBh-iUX2jERMGo0UsBDRA8",
+ "place_id_checked_at": "2026-11-27",
+ "name": "Brze",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-27",
+ "address": {
+  "block": "",
+  "street": "14 Tagore Ln",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "787475",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-27",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6596438722",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-27"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-27"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-27",
+ "last_verified_at": "2026-11-27",
+ "collector_version": "agent-v5",
+ "hold": "hold: not a car workshop (details in the private hold notes, not in the repo)",
+ "hold_code": "not_car_workshop",
+ "held_on": "2026-11-28",
+ "estate": "tagore-lane",
+ "region": "north-east",
+ "planning_area": "Ang Mo Kio"
+}

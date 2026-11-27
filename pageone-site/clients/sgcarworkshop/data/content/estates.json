@@ -386,5 +386,44 @@
    "tiong bahru"
   ],
   "intro": "Tiong Bahru, around Boon Tiong Road and Tiong Bahru Road, is an older estate just west of the city centre."
+ },
+ {
+  "slug": "tagore-lane",
+  "name": "Tagore Lane and Tagore Industrial Avenue",
+  "town": "ang-mo-kio",
+  "keywords": [
+   "tagore lane",
+   "tagore industrial",
+   "tagore ln"
+  ],
+  "intro": "Tagore Lane and Tagore Industrial Avenue form a small light industrial area off Yio Chu Kang Road, north of Ang Mo Kio."
+ },
+ {
+  "slug": "choa-chu-kang",
+  "name": "Choa Chu Kang",
+  "town": "bukit-batok",
+  "keywords": [
+   "choa chu kang"
+  ],
+  "intro": "Choa Chu Kang is a residential town in the west of Singapore, around Choa Chu Kang Avenue and Loop."
+ },
+ {
+  "slug": "bukit-batok-west",
+  "name": "Bukit Batok West",
+  "town": "bukit-batok",
+  "keywords": [
+   "bukit batok west",
+   "bukit batok street 3"
+  ],
+  "intro": "Bukit Batok West covers the housing estates around Bukit Batok West Avenue and Bukit Batok Street 31 to 34, in the west of Singapore."
+ },
+ {
+  "slug": "upper-bukit-timah-road",
+  "name": "Upper Bukit Timah Road",
+  "town": "bukit-batok",
+  "keywords": [
+   "upper bukit timah"
+  ],
+  "intro": "Upper Bukit Timah Road runs north-west from Bukit Timah towards Bukit Panjang, with petrol stations and shophouses along the way."
  }
 ]

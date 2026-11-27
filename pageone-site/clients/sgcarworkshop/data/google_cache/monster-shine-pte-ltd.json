@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.6,
+ "userRatingCount": 114,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 11:00 AM – 6:00 PM",
+  "Tuesday: 11:00 AM – 6:00 PM",
+  "Wednesday: 11:00 AM – 6:00 PM",
+  "Thursday: 11:00 AM – 6:00 PM",
+  "Friday: 11:00 AM – 6:00 PM",
+  "Saturday: 11:00 AM – 6:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": null,
+ "fetched_at": "2026-11-27",
+ "place_id": "ChIJLSt1QcMP2jERZam_1DgxSDA",
+ "source": "google_places"
+}

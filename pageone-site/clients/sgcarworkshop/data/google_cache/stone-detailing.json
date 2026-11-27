@@ -1,0 +1,24 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 260,
+ "websiteUri": null,
+ "paymentOptions": {
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": null,
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention dent and scratch touch-ups done in about an hour, a small husband-and-wife team, clear explanations of the expected result, and fair pricing.",
+ "fetched_at": "2026-11-27",
+ "place_id": "ChIJezwI_uwP2jER1oMFT8ldE00",
+ "source": "google_places"
+}

@@ -1,0 +1,40 @@
+{
+ "lede": "Max Factor Garage, at 8 Kaki Bukit Ave 4 (Premier@KB), is a car repair and performance workshop.",
+ "chips": [
+  "Repairs",
+  "Performance",
+  "Brakes"
+ ],
+ "services": [
+  "Car repair",
+  "Turbo upgrades",
+  "Brake upgrades",
+  "Gearbox repair"
+ ],
+ "themes": "Customers on Google Maps mention a turbo upgrade on a Volkswagen Golf, brake kit and brake pad upgrades, a gearbox chain repair, and frank advice on what needs fixing.",
+ "faqs": [
+  [
+   "What does Max Factor Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Turbo upgrade",
+  "Brake upgrade",
+  "Gearbox repair"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Volkswagen"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "good_to_know": []
+}

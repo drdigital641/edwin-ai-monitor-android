@@ -138,5 +138,11 @@
   "details": 22,
   "free_id_calls": 115,
   "sweep_calls": 20
+ },
+ "2026-11-27": {
+  "text_search": 0,
+  "details": 22,
+  "sweep_calls": 20,
+  "free_id_calls": 26
  }
 }

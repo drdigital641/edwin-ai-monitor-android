@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "slug": "zen-car-services",
+ "place_id": "ChIJF6-zZIYX2jERT4CgrUr-4VM",
+ "place_id_checked_at": "2026-11-27",
+ "name": "Zen Car Services",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-27",
+ "address": {
+  "block": "",
+  "street": "105 Pasir Ris Street 12, #05-89",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "510105",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-27",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6598459289",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-27"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-27"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-27",
+ "last_verified_at": "2026-11-27",
+ "collector_version": "agent-v5",
+ "hold": "hold: complaints (details in the private hold notes, not in the repo)",
+ "hold_code": "complaints",
+ "held_on": "2026-11-28",
+ "estate": "loyang-way",
+ "region": "east",
+ "planning_area": "Pasir Ris"
+}

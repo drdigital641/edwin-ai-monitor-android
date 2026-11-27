@@ -1,0 +1,41 @@
+{
+ "lede": "KIRALY AUTOMOBILE @ Premier, at 8 Kaki Bukit Ave 4, is a car repair workshop that customers use for hard-to-find engine and electrical faults.",
+ "chips": [
+  "Diagnosis",
+  "Engine",
+  "Continental cars"
+ ],
+ "services": [
+  "Fault diagnosis",
+  "ECU repair",
+  "Engine repair",
+  "Car servicing"
+ ],
+ "themes": "Customers on Google Maps mention a check engine light on a Mercedes traced and fixed, an ECU fault found, a water pump repair, rough idling on a BMW F10 sorted, and a job finished a day early with clear pricing.",
+ "faqs": [
+  [
+   "What does KIRALY AUTOMOBILE @ Premier do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Fault diagnosis",
+  "ECU repair",
+  "Engine repair"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Mercedes-Benz",
+  "BMW"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "good_to_know": []
+}
