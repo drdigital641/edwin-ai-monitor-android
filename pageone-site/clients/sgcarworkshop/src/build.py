@@ -592,15 +592,15 @@ def category(c):
     _nest = len({e['estate'] for e in es if e.get('estate') in ESTATES})
     cr, crld = crumbs(depth, [('Services', 'services/' + c['slug'] + '/'), (c['name'], None)][1:])
     body = f'''<div class="w">{cr}</div>
-<section class="hero" style="padding-top:20px"><div class="w"><h1>{E(c['name'])} in Singapore</h1>{answer_p('%d workshops on this site list %s, across %d industrial estates. The shortlist below shows %d with strong Google ratings; every one is listed by area further down.' % (len([e for e in es if not is_paid(e)]), c['name'].lower(), _nest, len(_sl)))}<p class="lede">{E(c['intro'])}</p>{chip_row(depth, c['slug'])}</div></section>
-{featured_sec(es, depth, 'services/%s/' % c['slug'], 'in ' + c['short'].lower())}
-<section><div class="w"><h2 class="rv">Shortlist</h2>{shortlist_note(len(_sl), free_n(es) + sum(1 for e in es if not is_paid(e) and e['tier'] != 'free'), depth, es)}<div class="grid">{''.join(card(e, depth, 'services/%s/' % c['slug']) for e in _sl)}{list_card(depth, c['short'].lower())}</div></div></section>'''
+<section class="hero" style="padding-top:20px"><div class="w"><h1>{E(SERVICE_SEO.get('services', {}).get(c['slug'], {}).get('h1_override') or c['name'] + ' in Singapore')}</h1>{answer_p('%d workshops on this site list %s, across %d industrial estates. The shortlist below shows %d with strong Google ratings; every one is listed by area further down.' % (len([e for e in es if not is_paid(e)]), svc_lc(c['name'], 'services'), _nest, len(_sl)))}<p class="lede">{E(c['intro'])}</p>{chip_row(depth, c['slug'])}</div></section>
+{featured_sec(es, depth, 'services/%s/' % c['slug'], 'in ' + svc_lc(c['short'], 'services'))}
+<section><div class="w"><h2 class="rv">Shortlist</h2>{shortlist_note(len(_sl), free_n(es) + sum(1 for e in es if not is_paid(e) and e['tier'] != 'free'), depth, es)}<div class="grid">{''.join(card(e, depth, 'services/%s/' % c['slug']) for e in _sl)}{list_card(depth, svc_lc(c['short'], 'services'))}</div></div></section>'''
     _bl = links_by_estate(es, depth, c['slug'])
     if _bl:
-        body += '<section><div class="w nar"><h2>%s workshops by area</h2><p>Every listed workshop for %s, grouped by industrial estate. Tap a name for its page with address, hours, WhatsApp and Call.</p>%s</div></section>' % (E(c['name']), E(c['name'].lower().replace('abs, ecu', 'ABS, ECU').replace('ppf', 'PPF')), _bl)
+        body += '<section><div class="w nar"><h2>%s workshops by area</h2><p>Every listed workshop for %s, grouped by industrial estate. Tap a name for its page with address, hours, WhatsApp and Call.</p>%s</div></section>' % (E(c['name']), E(svc_lc(c['name'], 'services') if ACRO_FIX.get('services') else svc_lc(c['name'], 'services').replace('abs, ecu', 'ABS, ECU').replace('ppf', 'PPF')), _bl)
     _sm = site_cat_matches(c['slug'], {e['slug'] for e in es})
     if _sm:
-        body += '<section><div class="w nar"><h2>Also listed on their own websites</h2><p>These workshops are filed under another service here, but their own website includes %s among its services: %s.</p></div></section>' % (E(c['name'].lower().replace('abs, ecu', 'ABS, ECU').replace('ppf', 'PPF')), and_list('<a href="%sworkshops/%s/">%s</a> (%s)' % (pre(depth), e['slug'], E(e['name']), E(ESTATES[e['estate']]['name'])) for e in sorted(_sm, key=lambda x: x['name'].lower())))
+        body += '<section><div class="w nar"><h2>Also listed on their own websites</h2><p>These workshops are filed under another service here, but their own website includes %s among its services: %s.</p></div></section>' % (E(svc_lc(c['name'], 'services') if ACRO_FIX.get('services') else svc_lc(c['name'], 'services').replace('abs, ecu', 'ABS, ECU').replace('ppf', 'PPF')), and_list('<a href="%sworkshops/%s/">%s</a> (%s)' % (pre(depth), e['slug'], E(e['name']), E(ESTATES[e['estate']]['name'])) for e in sorted(_sm, key=lambda x: x['name'].lower())))
     _sps = [sp for sp in SPOKES if sp['parent'] == c['slug']]
     if _sps:   # job pages under this service (10 Nov 2026), one plain link each
         body += '<section><div class="w nar"><h2>Specific jobs</h2><ul class="tick">%s</ul></div></section>' % ''.join('<li><a href="../%s/">%s</a></li>' % (sp['slug'], E(sp['name'])) for sp in _sps)
@@ -608,16 +608,20 @@ def category(c):
     if sc:   # audit 4 Nov 2026: service pages get a guide section, not only listings
         gl = [g for g in _guides.GUIDES if g['slug'] in sc['guides']]
         gl_html = ('<h3>Related car problem guides</h3><ul class="tick">%s</ul>' % ''.join('<li><a href="%s%s">%s</a></li>' % (pre(depth), _guides.gpath(g), E(g['h1'])) for g in gl)) if gl else ''
-        body += f'''<section class="alt"><div class="w nar"><h2>What {E(c['name'].lower())} involves</h2><p>{E(sc['involves'])}</p>
+        body += f'''<section class="alt"><div class="w nar"><h2>What {E(svc_lc(c['name'], 'services'))} involves</h2><p>{E(sc['involves'])}</p>
 <h3>Signs you may need it</h3><ul class="tick">{''.join('<li>%s</li>' % E(x) for x in sc['signs'])}</ul>
 <h3>What to ask the workshop</h3><ul class="tick">{''.join('<li>%s</li>' % E(x) for x in sc['ask'])}</ul>{gl_html}</div></section>'''
-        sfaqs = sc['faqs']; body += faq_block(sfaqs, 'Questions about %s' % c['name'].lower())
+        sfaqs = sc['faqs']; body += faq_block(sfaqs, 'Questions about %s' % svc_lc(c['name'], 'services'))
     itemlist = itemlist_ld(c['name'] + ' in Singapore', _sl)   # bounded: the visible shortlist only
     itemlist = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': c['name'] + ' in Singapore', 'url': abs_url('services/%s/' % c['slug']), 'description': c['blurb'],
                 'mainEntity': {k: v for k, v in itemlist.items() if k != '@context'}}
     FREECOUNT['services/%s/' % c['slug']] = free_n(es)
-    page('services/%s/' % c['slug'], '%s in Singapore | %s' % (c['name'], SITE_NAME), c['blurb'] + ' Browse Singapore listings by area.',
-         body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})] + ([faq_ld(sfaqs)] if sfaqs else []), h1=c['name'], index=free_n(es) >= MIN_FREE or ('services/%s/' % c['slug']) in INDEX_EXCEPTIONS, why='fewer than %d free workshops' % MIN_FREE)
+    _t, _d, _h1, _fx = service_seo(c['slug'], len([e for e in es if not is_paid(e)]), '%s in Singapore | %s' % (c['name'], SITE_NAME), c['blurb'] + ' Browse Singapore listings by area.', c['name'], [])
+    if _fx:   # faq_extra from service_seo.json: same list for the visible FAQ and the FAQPage JSON-LD
+        sfaqs = list(sfaqs) + _fx
+        body += faq_block(_fx, 'More questions about %s' % svc_lc(c['name'], 'services')) if sc else faq_block(_fx, 'Questions about %s' % svc_lc(c['name'], 'services'))
+    page('services/%s/' % c['slug'], _t, _d,
+         body, [itemlist, dict(crld, **{'@context': 'https://schema.org'})] + ([faq_ld(sfaqs)] if sfaqs else []), h1=_h1, index=free_n(es) >= MIN_FREE or ('services/%s/' % c['slug']) in INDEX_EXCEPTIONS, why='fewer than %d free workshops' % MIN_FREE)
 
 
 def cap(t, n):
@@ -630,6 +634,102 @@ def cap(t, n):
 def and_list(items):
     items = list(items)
     return items[0] if len(items) == 1 else ', '.join(items[:-1]) + ' and ' + items[-1]
+
+
+_WORD = re.compile(r"[A-Za-z][A-Za-z'’]*")
+
+
+def lc_name(s):
+    """Lower-case a service name for use mid-sentence, keeping acronyms (OBU, ERP, LTA, ECU, PPF, ABS, EV...) in capitals.
+    A word is kept as written when it has 2+ letters and is all upper case (29 Nov 2026 Search Console fix: "What oBU installation involves")."""
+    return _WORD.sub(lambda m: m.group(0) if len(m.group(0)) >= 2 and m.group(0).isupper() else m.group(0).lower(), s)
+
+
+ACRO_FIX = SETTINGS.get('acronym_case_fix', {})   # page types where service names keep acronyms when lower-cased (settings.json)
+
+
+def svc_lc(s, kind):
+    """Service name lower-cased mid-sentence on page type `kind` (services / areas): acronym-safe when settings say so, else the old plain lower()."""
+    return lc_name(s) if ACRO_FIX.get(kind) else s.lower()
+
+
+# ---- Search Console title / meta (Edwin, 29 Nov 2026). Data: data/content/service_seo.json and data/content/area_seo.json;
+# switches in settings.json (area_seo_rollout). Counts come from the live data at build time, never typed in.
+SERVICE_SEO = json.load(open(os.path.join(HERE, '..', 'data', 'content', 'service_seo.json')))
+AREA_SEO = json.load(open(os.path.join(HERE, '..', 'data', 'content', 'area_seo.json')))
+META_MAX, TITLE_MAX = 160, 60
+SEO_LOG = []   # (path, note) lines printed at the end of the build
+
+
+def service_seo(slug, n, title, desc, h1, faqs):
+    """Apply data/content/service_seo.json to one service page. Returns (title, desc, h1, faqs); a service with no entry comes back unchanged.
+    Meta = <meta_lead> [ (also called <synonyms>)], <meta_close>. Over 160 characters: the synonyms clause is dropped first."""
+    s = SERVICE_SEO.get('services', {}).get(slug)
+    if not s:
+        return title, desc, h1, faqs
+    if s.get('title'):
+        t = s['title'].format(n=n)
+        if len(t) <= TITLE_MAX:
+            title = t
+        else:
+            SEO_LOG.append(('services/%s/' % slug, 'title over %d, kept the old title: %s' % (TITLE_MAX, t)))
+    if s.get('meta_lead'):
+        lead = s['meta_lead'].format(n=n)
+        close = s.get('meta_close') or SERVICE_SEO['meta_close']
+        syn = ' (also called %s)' % s['synonyms'] if s.get('synonyms') else ''
+        d = '%s%s, %s' % (lead, syn, close)
+        if len(d) > META_MAX and syn:
+            d = '%s, %s' % (lead, close)
+            SEO_LOG.append(('services/%s/' % slug, 'meta over %d, synonyms dropped' % META_MAX))
+        if len(d) <= META_MAX:
+            desc = d
+        else:
+            SEO_LOG.append(('services/%s/' % slug, 'meta over %d even without synonyms, kept the old meta' % META_MAX))
+    h1 = s.get('h1_override') or h1
+    faqs = list(faqs) + [list(x) for x in s.get('faq_extra') or []]   # one list feeds the visible FAQ and the FAQPage JSON-LD
+    return title, desc, h1, faqs
+
+
+def _short_est(name, town):
+    """Estate name for a town-hub meta: the town prefix and any (building) note dropped ("Yishun Ring Road" -> "Ring Road")."""
+    n = re.sub(r'\s*\([^)]*\)', '', name).strip()
+    if n.lower().startswith(town.lower() + ' '):
+        rest = n[len(town) + 1:]
+        # keep the full name when the rest says nothing on its own ("Road", "Industrial Estate")
+        if not (rest.lower() in ('industrial estate', 'industrial area', 'industrial park', 'estate') or (' ' not in rest and not re.search(r'\d', rest))):
+            n = rest
+    return n
+
+
+def area_seo_on(slug, kind):
+    """True when the Search Console title/meta pattern applies to this area page. settings.json area_seo_rollout:
+    'listed' = only areas named in area_seo.json (today: Yishun, Woodlands); 'town_hubs' = every town hub (the pages whose old meta says
+    'Pick an industrial estate to compare.'); 'all' = town hubs, estates and regions."""
+    mode = os.environ.get('SGCW_AREA_SEO_ROLLOUT') or SETTINGS.get('area_seo_rollout', 'listed')   # env = preview a rollout for a diff, never for a publish
+    if slug in AREA_SEO.get('areas', {}):
+        return True
+    return mode == 'all' or (mode == 'town_hubs' and kind == 'town')
+
+
+def area_seo(slug, name, region_name, places, kind):
+    """(title, desc) from the area pattern. places = estate (or town) names in page order; the list is trimmed, never the closing sentence."""
+    a = AREA_SEO.get('areas', {}).get(slug, {})
+    word = a.get('title_word') or AREA_SEO['title_word']
+    who = name if kind != 'region' else '%s Singapore' % name
+    opts = ['%s Car Workshops & %s | %s' % (who, word, SITE_NAME), '%s Car Workshops & %s' % (who, word), '%s Car Workshops' % who]
+    title = next((o for o in opts if len(o) <= TITLE_MAX), opts[-1][:TITLE_MAX])
+    close = AREA_SEO['meta_close']
+    lead = ('Car workshops in the %s region' % region_name) if kind == 'region' else ('%s car workshops in the %s region' % (name, region_name))
+    places = a.get('places') or [p_ for p_ in places if p_.lower() != name.lower()][:3]   # a place that only repeats the area name is left out
+    desc = None
+    for k in range(len(places), 0, -1):
+        d = '%s: %s. %s' % (lead, and_list(places[:k]), close)
+        if len(d) <= META_MAX:
+            desc = d
+            break
+    if desc is None:
+        desc = '%s. %s' % (lead, close)
+    return title, desc
 
 
 def fit_title(*options):
@@ -720,7 +820,7 @@ def top_services(es, k=3):
     for e in es:
         for c in e.get('categories', [e['category']]):
             cnt[c] = cnt.get(c, 0) + 1
-    return [CAT[c]['name'].lower() for c, _ in sorted(cnt.items(), key=lambda x: (-x[1], x[0]))[:k] if c in CAT]
+    return [svc_lc(CAT[c]['name'], 'areas') for c, _ in sorted(cnt.items(), key=lambda x: (-x[1], x[0]))[:k] if c in CAT]
 
 
 def region(slug):
@@ -754,7 +854,10 @@ def region(slug):
     desc = ('Mobile car services that come to your car anywhere in Singapore, such as onsite batteries and mobile detailing. Message them directly.' if mobile else
             'Car workshops and car services in the %s region of Singapore, with estate pages and direct WhatsApp or call contact.' % name)
     FREECOUNT['areas/%s/' % slug] = free_n(es)
-    page('areas/%s/' % slug, title, cap(desc, 160), body, [itemlist_ld(h1, _rsl), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(rfaqs)], h1=h1, index=free_n(es) >= MIN_FREE or ('areas/%s/' % slug) in INDEX_EXCEPTIONS, why='fewer than %d free workshops' % MIN_FREE)
+    desc = cap(desc, 160)
+    if not mobile and area_seo_on(slug, 'region'):
+        title, desc = area_seo(slug, name, name, [TOWNS[t]['name'] for t in PUB_TOWNS if TOWNS[t]['region'] == slug], 'region')
+    page('areas/%s/' % slug, title, desc, body, [itemlist_ld(h1, _rsl), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(rfaqs)], h1=h1, index=free_n(es) >= MIN_FREE or ('areas/%s/' % slug) in INDEX_EXCEPTIONS, why='fewer than %d free workshops' % MIN_FREE)
 
 
 def faq_ld(faqs):
@@ -794,7 +897,10 @@ def town_hub(slug):
 {featured_sec(hub_es, depth, 'areas/%s/' % slug, 'in ' + t['name'])}
 <section><div class="w"><h2>Workshops in {E(t['name'])}</h2>{shortlist_note(len(_tsl), len([e for e in hub_es if not is_paid(e)]), depth, hub_es).replace('listed by area further down this page', 'shown below, past the shortlist as a short row')}<div class="grid">{''.join(card(e, depth, 'areas/%s/' % slug) for e in _tsl)}{''.join(mini_card(e, depth, 'areas/%s/' % slug) for e in hub_es if not is_paid(e) and e not in _tsl)}</div></div></section>'''
     desc = 'Car workshop areas in %s, %s region: %s. Pick an industrial estate to compare workshops and contact them on WhatsApp.' % (t['name'], rname, and_list(ESTATES[k]['name'] for k in ests))
-    page('areas/%s/' % slug, fit_title('Car Workshops in %s | %s' % (t['name'], SITE_NAME), 'Car Workshops in %s' % t['name']), cap(desc, 160), body,
+    title, desc = fit_title('Car Workshops in %s | %s' % (t['name'], SITE_NAME), 'Car Workshops in %s' % t['name']), cap(desc, 160)
+    if area_seo_on(slug, 'town'):
+        title, desc = area_seo(slug, t['name'], rname, [_short_est(ESTATES[k]['name'], t['name']) for k in ests], 'town')
+    page('areas/%s/' % slug, title, desc, body,
          [dict(crld, **{'@context': 'https://schema.org'}), itemlist_ld(h1, _tsl)], h1=h1, index=len(ests) >= 2 and total >= MIN_FREE, why='town hub with one estate or fewer than %d free workshops' % MIN_FREE)
 
 
@@ -928,7 +1034,7 @@ def estate(slug, es):
     cats = and_list(dict.fromkeys(CAT[e['category']]['name'] for e in es))
     faqs = [
         ('Which car workshops are in %s?' % a['name'], '%s currently lists %d workshop%s in %s: %s. Each has its own page with services, address and contact details.' % (SITE_NAME, n, '' if n == 1 else 's', a['name'], and_list(e['name'] for e in es))),
-        ('What car services can I find in %s?' % a['name'], 'Listings here cover %s. Open a workshop page to see the services it lists.' % cats.lower()),
+        ('What car services can I find in %s?' % a['name'], 'Listings here cover %s. Open a workshop page to see the services it lists.' % svc_lc(cats, 'areas')),
         ('How do I contact a workshop in %s?' % a['name'], 'Tap WhatsApp or Call on a workshop card or page. WhatsApp messages are prefilled with the workshop name and say you found them on %s, so you only need to add your car and what you need.' % SITE_NAME),
         ('Which region is %s in?' % a['name'], '%s is in the %s region of Singapore.%s Browse the <a href="%sareas/%s/">%s region page</a> for more workshops.' % (
             a['name'], rname, (' Nearby areas on %s: %s.' % (SITE_NAME, and_list(ESTATES[k]['name'] for k in near))) if near else '', pre(depth), a['region'], E(rname))),
@@ -938,7 +1044,7 @@ def estate(slug, es):
     near_links = ', '.join('<a href="%sareas/%s/">%s</a>' % (pre(depth), k, E(ESTATES[k]['name'])) for k in near)
     about_html = ('<section><div class="w nar"><h2>About %s</h2><p>%s</p>'
                   '<p>%s lists the workshops it has for this area on one page, so you can compare services, open each workshop page for its address and contact details, and message a workshop directly on WhatsApp or by phone. Listings show %s.%s</p></div></section>') % (
-        E(a['name']), E(para), E(SITE_NAME), E(cats.lower()),
+        E(a['name']), E(para), E(SITE_NAME), E(svc_lc(cats, 'areas')),
         (' If you want to compare more options nearby, see %s.' % near_links) if near_links else '')
     faq_html = ''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), t if '<a ' in t else E(t)) for q, t in faqs)
     etools = ''
@@ -965,13 +1071,16 @@ def estate(slug, es):
         desc = 'Compare %d car workshops in %s, ranked by Google rating and number of ratings. Open Sunday and late filters, WhatsApp and call.' % (n, a['name'])
     else:
         title = fit_title('Car Workshops in %s: WhatsApp & Directions' % a['name'], 'Car Workshops in %s | WhatsApp' % a['name'], 'Car Workshops in %s' % a['name'])
-        desc = 'Find %d car workshop%s in %s, %s region, Singapore: %s. Map, nearby areas and direct WhatsApp or call.' % (n, '' if n == 1 else 's', a['name'], rname, cats.lower())
+        desc = 'Find %d car workshop%s in %s, %s region, Singapore: %s. Map, nearby areas and direct WhatsApp or call.' % (n, '' if n == 1 else 's', a['name'], rname, svc_lc(cats, 'areas'))
     if len(desc) > 160:
         desc = 'Compare %d car workshops in %s with Google ratings, hours and distances. WhatsApp and call.' % (n, a['name'])
     ld = [itemlist_ld('Car workshops in %s' % a['name'], [x for x in es if not is_paid(x)][:SHORTLIST_N]), dict(crld, **{'@context': 'https://schema.org'}), faq_ld(faqs)]
     _ix = free_n(es) >= MIN_FREE or ('areas/%s/' % slug) in INDEX_EXCEPTIONS
     FREECOUNT['areas/%s/' % slug] = free_n(es)
-    page('areas/%s/' % slug, title, cap(desc, 160), body, ld, h1='Car workshops in %s' % a['name'], index=_ix, why='fewer than %d free workshops' % MIN_FREE)
+    desc = cap(desc, 160)
+    if area_seo_on(slug, 'estate'):
+        title, desc = area_seo(slug, a['name'], rname, [], 'estate')
+    page('areas/%s/' % slug, title, desc, body, ld, h1='Car workshops in %s' % a['name'], index=_ix, why='fewer than %d free workshops' % MIN_FREE)
 
 
 def estate_service(slug, cat, es):
@@ -989,18 +1098,18 @@ def estate_service(slug, cat, es):
     if near_s:
         near_html += ' %s is also listed in %s.' % (E(c['name']), ', '.join('<a href="%sareas/%s/%s/">%s</a>' % (pre(depth), k, cat, E(ESTATES[k]['name'])) for k in near_s))
     sfaqs = [
-        ('Which workshops offer %s in %s?' % (c['name'].lower(), a['name']), '%s lists %s for %s in %s.' % (SITE_NAME, and_list(e['name'] for e in es), c['name'].lower(), a['name'])),
+        ('Which workshops offer %s in %s?' % (svc_lc(c['name'], 'areas'), a['name']), '%s lists %s for %s in %s.' % (SITE_NAME, and_list(e['name'] for e in es), svc_lc(c['name'], 'areas'), a['name'])),
         ('How do I contact a workshop in %s?' % a['name'], 'Tap WhatsApp or Call on a workshop card or page. WhatsApp messages are prefilled with the workshop name and say you found them on %s, so you only need to add your car and what you need.' % SITE_NAME),
         ('What is near %s?' % a['name'], 'Nearby MRT stations include %s. Local landmarks include %s.' % (and_list(area_copy(slug)[1]), and_list(area_copy(slug)[2]))),
     ]
-    intro = '%d workshops in %s are listed for %s: %s. Each page shows the address, hours and how to contact the workshop.' % (n, a['name'], c['name'].lower(), and_list(e['name'] for e in es))
+    intro = '%d workshops in %s are listed for %s: %s. Each page shows the address, hours and how to contact the workshop.' % (n, a['name'], svc_lc(c['name'], 'areas'), and_list(e['name'] for e in es))
     body = f'''<div class="w">{cr}</div>
 <section class="hero" style="padding-top:14px"><div class="w"><h1>{E(h1)}</h1><p class="lede">{E(intro)}</p></div></section>
 {featured_sec(es, depth, 'areas/%s/%s/' % (slug, cat), 'in ' + a['name'])}
 <section><div class="w"><div class="grid">{''.join(card(e, depth, 'areas/%s/%s/' % (slug, cat)) for e in es if not is_paid(e))}</div>{shortlist_links(es, a['name'])}
-<p class="fine" style="margin-top:14px">More in this area: <a href="../">all workshops in {E(a['name'])}</a>, or <a href="{pre(depth)}services/{cat}/">{E(c['name'].lower())} across Singapore</a>.</p></div></section>
-<section class="alt"><div class="w nar"><h2>About {E(c['name'].lower())} in {E(a['name'])}</h2><p>{E(area_copy(slug)[0])}</p><p>{near_html}</p></div></section>
-{faq_block(sfaqs, 'Questions about %s in %s' % (c['name'].lower(), a['name']))}'''
+<p class="fine" style="margin-top:14px">More in this area: <a href="../">all workshops in {E(a['name'])}</a>, or <a href="{pre(depth)}services/{cat}/">{E(svc_lc(c['name'], 'areas'))} across Singapore</a>.</p></div></section>
+<section class="alt"><div class="w nar"><h2>About {E(svc_lc(c['name'], 'areas'))} in {E(a['name'])}</h2><p>{E(area_copy(slug)[0])}</p><p>{near_html}</p></div></section>
+{faq_block(sfaqs, 'Questions about %s in %s' % (svc_lc(c['name'], 'areas'), a['name']))}'''
     FREECOUNT['areas/%s/%s/' % (slug, cat)] = free_n(es)
     title = fit_title('%s in %s | %s' % (c['name'], a['name'], SITE_NAME), '%s in %s' % (c['name'], a['name']))
     desc = '%s in %s, %s region: %s. Compare listings and contact a workshop directly.' % (c['name'], a['name'], rname, and_list(e['name'] for e in es))
@@ -2516,20 +2625,21 @@ def spoke_page(sp):
     par = CAT.get(sp['parent'])
     allv = list(dict.fromkeys(e['slug'] for _, its in mem for e, _ in its))
     nfree = sum(1 for s in allv if BY_SLUG[s]['tier'] == 'free')
+    title, desc, h1, faqs = service_seo(sp['slug'], len(allv), sp['title'], sp['desc'], sp['h1'], sp['faqs'])   # count = workshops listed on this page
     body = f'''<div class="w nar guidepg">{cr}
-<h1 style="margin-top:14px">{E(sp['h1'])}</h1>
+<h1 style="margin-top:14px">{E(h1)}</h1>
 <p class="lede" style="font-size:1rem">{E(sp['intro'])}</p>
 <p class="fine howfound">{E(HOW_FOUND)}</p>
 {blocks}
-<h2>What {E(sp['name'][0].lower() + sp['name'][1:])} involves</h2><p>{E(sp['involves'])}</p>
+<h2>What {E(svc_lc(sp['name'], 'services') if ACRO_FIX.get('services') else sp['name'][0].lower() + sp['name'][1:])} involves</h2><p>{E(sp['involves'])}</p>
 <h2>Signs you may need it</h2><ul class="tick svc-plain">{''.join('<li>%s</li>' % E(x) for x in sp['signs'])}</ul>
 <h2>What to ask the workshop</h2><ul class="tick svc-plain">{''.join('<li>%s</li>' % E(x) for x in sp['ask'])}</ul>
 {related_links(sp, depth)}{('<p>More: <a href="../%s/">%s</a></p>' % (par['slug'], E(par['name']))) if par else ''}
-<h2>Questions</h2>{''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in sp['faqs'])}
+<h2>Questions</h2>{''.join('<details><summary>%s</summary><p>%s</p></details>' % (E(q), E(a)) for q, a in faqs)}
 </div>'''
     il = itemlist_ld(sp['h1'], [BY_SLUG[s] for s in allv])   # paid listings are never in an ItemList
     FREECOUNT[path] = nfree
-    page(path, sp['title'], sp['desc'], body, [dict(crld, **{'@context': 'https://schema.org'}), il, faq_ld(sp['faqs'])], h1=sp['h1'],
+    page(path, title, desc, body, [dict(crld, **{'@context': 'https://schema.org'}), il, faq_ld(faqs)], h1=h1,
          index=nfree >= MIN_FREE, why='fewer than %d free workshops' % MIN_FREE)
 
 
@@ -2817,6 +2927,8 @@ def build():
     _more = os.path.join(HERE, '..', 'data', 'llms_more.txt')
     open(OUT + '/llms.txt', 'w').write('\n'.join(lines) + (open(_more).read() if LIVE and os.path.exists(_more) else ''))
     print('built %d pages + 404 into %s (LIVE=%s, v=%s)' % (len(PAGES), OUT, LIVE, V))
+    for _p, _n in SEO_LOG:
+        print('SEO note: %s %s' % (_p, _n))
 
 
 OLD_REGIONS = ['north', 'north-east', 'east', 'west', 'central']

@@ -676,5 +676,48 @@ for _sp in _js.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__))
         for _m in re.finditer(r'\]\(([a-z0-9/-]+)\)', _t):
             if not os.path.exists(os.path.join(root, _m.group(1), 'index.html')):
                 print('related link target missing', _sp['slug'], _m.group(1)); bad += 1
+# ---- Search Console guards (Edwin, 29 Nov 2026) -------------------------------------------------------------
+# B1 snippet length: warn when a title is 66+ characters or a meta description 161+ (Google cuts them off).
+# A1 FAQ: the visible FAQ and the FAQPage JSON-LD must be the same list (questions and answers, in order).
+# B3 sitemap: sitemap.xml must not list a noindex page, and every indexable page of the main types must be in it.
+from html import unescape as _ue
+_TMAX, _DMAX = 65, 160
+_warn = 0
+_sm_locs = re.findall(r'<loc>([^<]+)</loc>', open(os.path.join(root, 'sitemap.xml')).read())
+_sm_paths = set()
+for _u in _sm_locs:
+    _pth = urlparse(_u).path
+    _pth = _pth[len('/preview/sgcarworkshop'):] if _pth.startswith('/preview/sgcarworkshop/') else _pth
+    _sm_paths.add(_pth.lstrip('/'))
+_MAIN = ('', 'areas/', 'services/', 'guides/', 'brands/', 'workshops/', 'about/', 'contact/', 'list-your-workshop/', 'privacy/', 'terms/', 'for-ai-agents/', 'regions/')
+for _dp, _dn, _fn in os.walk(root):
+    for _f in _fn:
+        if not _f.endswith('.html'):
+            continue
+        _rel = os.path.relpath(os.path.join(_dp, _f), root)
+        _src = open(os.path.join(_dp, _f), errors='ignore').read()
+        if _rel == '404.html' or 'http-equiv="refresh"' in _src or 'This folder is not a page' in _src:
+            continue
+        _page = _rel[:-10] if _rel.endswith('index.html') else _rel
+        _t = re.search(r'<title>(.*?)</title>', _src, re.S); _d = re.search(r'<meta name="description" content="([^"]*)"', _src)
+        _t = _ue(_t.group(1)) if _t else ''; _d = _ue(_d.group(1)) if _d else ''
+        if len(_t) > _TMAX: print('LENGTH WARNING title %d chars:' % len(_t), _rel, '|', _t); _warn += 1
+        if len(_d) > _DMAX: print('LENGTH WARNING meta %d chars:' % len(_d), _rel); _warn += 1
+        _ni = bool(re.search(r'<meta name="robots" content="[^"]*noindex', _src))
+        if _page in _sm_paths and _ni: print('SITEMAP lists a noindex page', _rel); bad += 1
+        _main = _page == '' or any(_page.startswith(m) for m in _MAIN if m)
+        if _main and not _ni and _page not in _sm_paths: print('SITEMAP is missing an indexable page', _rel); bad += 1
+        _fvis = [(_ue(re.sub(r'<[^>]+>', '', q)).strip(), _ue(re.sub(r'<[^>]+>', '', a_)).strip()) for q, a_ in re.findall(r'<details[^>]*>\s*<summary[^>]*>(.*?)</summary>\s*<p>(.*?)</p>\s*</details>', (re.search(r'<main.*?</main>', _src, re.S).group(0) if '<main' in _src else _src), re.S)]
+        for _ld in re.findall(r'<script type="application/ld\+json">(.*?)</script>', _src, re.S):
+            try: _j = json.loads(_ld.replace('<\\/', '</'))
+            except Exception: continue
+            for _o in (_j if isinstance(_j, list) else [_j]):
+                if isinstance(_o, dict) and _o.get('@type') == 'FAQPage':
+                    _ldq = [(_ue(x['name']).strip(), _ue(re.sub(r'<[^>]+>', '', x['acceptedAnswer']['text'])).strip()) for x in _o.get('mainEntity', [])]
+                    if [q for q, _ in _ldq] != [q for q, _ in _fvis][:len(_ldq)] and [q for q, _ in _ldq] != [q for q, _ in _fvis][-len(_ldq):]:
+                        print('FAQ JSON-LD questions differ from the visible FAQ', _rel); bad += 1
+                    elif dict(_ldq) != {q: a_ for q, a_ in _fvis if q in dict(_ldq)}:
+                        print('FAQ JSON-LD answers differ from the visible FAQ', _rel); bad += 1
+print('length warnings (title over %d / meta over %d):' % (_TMAX, _DMAX), _warn)
 print('pages checked:', len(files), 'problems:', bad)
 sys.exit(1 if bad else 0)

@@ -158,5 +158,11 @@
  "image_hosts_pending": {
   "note": "Edwin rule 3 Nov 2026: every image must be on sgcarworkshop.sg. These hosts still hotlink because the files could not be fetched from the build sandbox (network blocked). Copy them to src/img and remove the host here. Counted and printed on every check run.",
   "hosts": []
- }
+ },
+ "acronym_case_fix": {
+  "_about": "29 Nov 2026: service names keep acronyms (OBU, ECU, PPF, ABS, EV) when lower-cased mid-sentence. services = service pages (on). areas = area and area x service pages (off until Edwin approves the diff). Workshop pages are card text and are not switched here.",
+  "services": true,
+  "areas": false
+ },
+ "area_seo_rollout": "listed"
 }

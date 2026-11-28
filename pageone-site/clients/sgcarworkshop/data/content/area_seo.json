@@ -1,0 +1,9 @@
+{
+  "_about": "Search Console title/meta for area pages (Edwin, 29 Nov 2026; people search '<area> car repair / car workshop / car servicing'). Read by src/build.py area_seo(). Title: '<Area> Car Workshops & <title_word> | SG Car Workshop'. Meta: '<Area> car workshops in the <Region> region: <up to 3 estates>. <meta_close>'; the estate list is trimmed (never the closing sentence) to stay at 160 characters or fewer. Which pages use it: areas listed below always; settings.json area_seo_rollout = listed | town_hubs | all decides the rest (listed until Edwin chooses). Title and meta only; H1, body, cards and schema are unchanged. places = optional per-area estate names (page order is the default, town prefix and (building) notes dropped).",
+  "title_word": "Car Repair",
+  "meta_close": "Compare car repair and servicing, then WhatsApp or call direct.",
+  "areas": {
+    "yishun": {},
+    "woodlands": {"title_word": "Car Servicing", "places": ["Industrial Park E9", "Carros Centre"]}
+  }
+}
