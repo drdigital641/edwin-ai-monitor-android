@@ -1,0 +1,39 @@
+{
+ "lede": "Lek Motor Service is a car repair and servicing workshop at 25 Kaki Bukit Rd 4, #03-35, Synergy@KB 417800.",
+ "chips": [
+  "Bodywork",
+  "Servicing"
+ ],
+ "services": [
+  "Dent repair and respray",
+  "Regular servicing",
+  "Used car inspection",
+  "Insurance claims",
+  "Mobile battery replacement",
+  "Engine overhaul"
+ ],
+ "themes": "Customers on Google Maps mention a dented door repaired and resprayed by the next day, minor body and bumper fixes, regular servicing and insurance claims, and practical advice with no upselling.",
+ "faqs": [
+  [
+   "What does Lek Motor Service do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Dent repair",
+  "Spray painting",
+  "Car servicing"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Ask the workshop about your car.",
+ "good_to_know": []
+}

@@ -1,0 +1,30 @@
+{
+ "lede": "Zhong Cheng Enterprise is a car workshop at 60 Jln Lam Huat, #04-53 Carros Centre.",
+ "chips": [
+  "Car repair"
+ ],
+ "services": [
+  "General servicing and repair",
+  "Panel beating and spray painting"
+ ],
+ "themes": "",
+ "faqs": [
+  [
+   "What does Zhong Cheng Enterprise do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Ask the workshop about your car.",
+ "good_to_know": []
+}

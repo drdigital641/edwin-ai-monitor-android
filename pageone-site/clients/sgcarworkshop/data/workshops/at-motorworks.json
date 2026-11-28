@@ -1,0 +1,74 @@
+{
+ "schema_version": 1,
+ "slug": "at-motorworks",
+ "place_id": "ChIJ8TGoTPYT2jERPVr1PuUKu3c",
+ "place_id_checked_at": "2026-11-28",
+ "name": "AT Motorworks",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-28",
+ "address": {
+  "block": "",
+  "street": "60 Jln Lam Huat, #03-17 Carros Centre",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "737869",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-28",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6587007038",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-28"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-28"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-28",
+ "last_verified_at": "2026-11-28",
+ "collector_version": "agent-v5",
+ "estate": "carros-centre-jalan-lam-huat",
+ "planning_area": "Woodlands",
+ "region": "north",
+ "lat": 1.4310105,
+ "lng": 103.7529932,
+ "geo_source": "google_places",
+ "geo_checked": "2026-11-28",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 5,
+  "count": 7,
+  "checked": "2026-11-28",
+  "source": "Google Places",
+  "source_date": "2026-11-28"
+ }
+}

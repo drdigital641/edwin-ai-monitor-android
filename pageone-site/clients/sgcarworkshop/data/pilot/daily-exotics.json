@@ -1,0 +1,46 @@
+{
+ "lede": "Daily Exotics, at 60 Jln Lam Huat, #02-29, is a supercar and exotic car repair workshop.",
+ "chips": [
+  "Supercars",
+  "Repairs",
+  "Servicing"
+ ],
+ "services": [
+  "General and specialist repairs",
+  "Engine overhauls",
+  "Engine, gearbox and DCT oil servicing",
+  "Third-party accident claims"
+ ],
+ "themes": "Customers on Google Maps mention supercar and sports car work, a repair-before-replace approach, a Porsche engine overhaul, a sticky Ferrari 458 button fixed without a new panel, and reasonable prices.",
+ "faqs": [
+  [
+   "What does Daily Exotics do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website and its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Engine overhaul",
+  "Car servicing"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its own website and Google Maps listing. Ask the workshop for its full list.",
+ "specialties": [
+  "Supercar and exotic car repairs"
+ ],
+ "makes": [
+  "Ferrari",
+  "Lamborghini",
+  "Maserati",
+  "Porsche",
+  "Rolls-Royce",
+  "Bentley"
+ ],
+ "makes_note": "Named on its own website and by customers on Google Maps.",
+ "good_to_know": []
+}

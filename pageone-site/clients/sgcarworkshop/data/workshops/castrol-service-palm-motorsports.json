@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "slug": "castrol-service-palm-motorsports",
+ "place_id": "ChIJT9LgWW4F2jERqaEJAaF1oJg",
+ "place_id_checked_at": "2026-11-28",
+ "name": "Castrol Service - Palm Motorsports",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-28",
+ "address": {
+  "block": "",
+  "street": "1 Corporation Dr, #02/18 Revv West Enterprise Hub",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "619775",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-28",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6586848112",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-28"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-28"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-28",
+ "last_verified_at": "2026-11-28",
+ "collector_version": "agent-v5",
+ "hold": "hold: duplicate (same mobile as live card palm-motorsports)",
+ "hold_code": "duplicate",
+ "held_on": "2026-11-29",
+ "estate": "corporation-drive-jurong-east",
+ "planning_area": "Jurong East",
+ "region": "west"
+}

@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 4,
+ "websiteUri": null,
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 10:30 AM – 7:30 PM",
+  "Tuesday: 10:30 AM – 7:30 PM",
+  "Wednesday: 10:30 AM – 7:30 PM",
+  "Thursday: 10:30 AM – 7:30 PM",
+  "Friday: 10:30 AM – 7:30 PM",
+  "Saturday: 10:30 AM – 3:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 4,
+ "review_themes": "Customers on Google Maps mention brake pad, sensor and rotor replacement, suspension work, competitive prices and the team staying past hours to finish a job.",
+ "fetched_at": "2026-11-28",
+ "place_id": "ChIJafiQqxAX2jERkngOV1SYaBg",
+ "source": "google_places"
+}

@@ -1,203 +1,5 @@
 [
  {
-  "place_id": "ChIJp42N-rwR2jERpHwOJbgfwkU",
-  "name_hint": "Zhong Cheng Enterprise",
-  "address_hint": "60 Jln Lam Huat, #04-53 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6597506777",
-  "source": "google_grid_sweep_2026-11-16 (Google phone, Edwin asked)",
-  "added": "2026-11-16"
- },
- {
-  "place_id": "ChIJ40-6ASoT2jERWrFriZ1IavQ",
-  "name_hint": "Daily Exotics Pte Ltd",
-  "address_hint": "60 Jln Lam Huat, #02-29",
-  "postal_code": "737869",
-  "mobile_hint": "+6596583575",
-  "source": "google_grid_sweep_2026-11-16 (Google phone, Edwin asked)",
-  "added": "2026-11-16"
- },
- {
-  "place_id": "ChIJ8TGoTPYT2jERPVr1PuUKu3c",
-  "name_hint": "AT Motorworks",
-  "address_hint": "60 Jln Lam Huat, #03-17 Carros Centre",
-  "postal_code": "737869",
-  "mobile_hint": "+6587007038",
-  "source": "google_grid_sweep_2026-11-16 (Google phone, Edwin asked)",
-  "added": "2026-11-16"
- },
- {
-  "place_id": "ChIJl9n751wS2jERZpdBfaftapM",
-  "name_hint": "Munich Autocare Pte Ltd",
-  "address_hint": "07-43 Jln Lam Huat",
-  "postal_code": "737870",
-  "mobile_hint": "+6596826300",
-  "source": "google_grid_sweep_2026-11-16 (Google phone, Edwin asked)",
-  "added": "2026-11-16"
- },
- {
-  "place_id": "ChIJSYwXNWsT2jER2TKYYPEYTYo",
-  "name_hint": "Conqueror Engineering",
-  "address_hint": "38 Woodlands Industrial Park E1, #07-12",
-  "postal_code": "757700",
-  "mobile_hint": "+6597726193",
-  "source": "google_grid_sweep_2026-11-17 (Google phone, Edwin asked)",
-  "added": "2026-11-17"
- },
- {
-  "place_id": "ChIJa4hZRzca2jERvI20sp4_L8c",
-  "name_hint": "ADAS Calibration Centre",
-  "address_hint": "60 Jln Lam Huat, #05-55",
-  "postal_code": "737869",
-  "mobile_hint": "+6591133832",
-  "source": "google_grid_sweep_2026-11-26 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-26"
- },
- {
-  "place_id": "ChIJsdBim2QR2jERungkWYpFE5I",
-  "name_hint": "Castrol Auto Service - Tyreplus Toh Guan",
-  "address_hint": "48 Toh Guan Rd E, #01-102",
-  "postal_code": "608586",
-  "mobile_hint": "+6593655498",
-  "source": "google_grid_sweep_2026-11-26 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-26"
- },
- {
-  "place_id": "ChIJpVoF5hUQ2jEROFCO_W4R1l4",
-  "name_hint": "F&K Way Aircon Servicing",
-  "address_hint": "296B Bukit Batok Street 22",
-  "postal_code": "652296",
-  "mobile_hint": "+6591808113",
-  "source": "google_grid_sweep_2026-11-26 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-26"
- },
- {
-  "place_id": "ChIJJRbTeJcX2jER2qq8yA2_mjM",
-  "name_hint": "WB Auto Service Center",
-  "address_hint": "13 Kaki Bukit Rd 4, #03-25 Bartley Biz Centre",
-  "postal_code": "417807",
-  "mobile_hint": "+6597847689",
-  "source": "google_grid_sweep_2026-11-26 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-26"
- },
- {
-  "place_id": "ChIJIQjHWAMX2jERfSiPtowIrY8",
-  "name_hint": "Rounding Garage",
-  "address_hint": "15 Kaki Bukit Rd 4, #01-46 Bartley Biz Centre",
-  "postal_code": "417808",
-  "mobile_hint": "+6589794331",
-  "source": "google_grid_sweep_2026-11-26 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-26"
- },
- {
-  "place_id": "ChIJafiQqxAX2jERkngOV1SYaBg",
-  "name_hint": "Seven Garage PTE LTD",
-  "address_hint": "25 Kaki Bukit Rd 4, #05-73",
-  "postal_code": "417800",
-  "mobile_hint": "+6582646878",
-  "source": "google_grid_sweep_2026-11-26 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-26"
- },
- {
-  "place_id": "ChIJjZT3rFBXYkQRh8mxehc-3_Q",
-  "name_hint": "Lek Motor Service",
-  "address_hint": "25 Kaki Bukit Rd 4, #03-35, Synergy@KB 417800",
-  "postal_code": "417800",
-  "mobile_hint": "+6598331285",
-  "source": "google_grid_sweep_2026-11-26 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-26"
- },
- {
-  "place_id": "ChIJlV--KgIX2jEReZIzL3Vy0A4",
-  "name_hint": "Castrol Service - City Tyreauto (Kaki Bukit)",
-  "address_hint": "219 Kaki Bukit Ave 1, Shun Li Industrial Park Kaki Bukit",
-  "postal_code": "416044",
-  "mobile_hint": "+6593480219",
-  "source": "google_grid_sweep_2026-11-26 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-26"
- },
- {
-  "place_id": "ChIJY8NGQAAR2jERX5fbgd5P07Y",
-  "name_hint": "Castrol Service - Icon Technik Pte Ltd",
-  "address_hint": "1 Bukit Batok Cres, #05-60/61",
-  "postal_code": "658064",
-  "mobile_hint": "+6581988889",
-  "source": "google_grid_sweep_2026-11-26 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-26"
- },
- {
-  "place_id": "ChIJc5ZPymUX2jERAE16VTVK8KU",
-  "name_hint": "JW AUTO PTE LTD",
-  "address_hint": "3022A Ubi Rd 1, #01-49",
-  "postal_code": "408716",
-  "mobile_hint": "+6596968531",
-  "source": "google_grid_sweep_2026-11-26 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-26"
- },
- {
-  "place_id": "ChIJXUy85lEX2jERF2FOKkxDZu0",
-  "name_hint": "Qmo Engineering",
-  "address_hint": "10 Kaki Bukit Rd 2",
-  "postal_code": "417868",
-  "mobile_hint": "+6594317373",
-  "source": "google_grid_sweep_2026-11-26 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-26"
- },
- {
-  "place_id": "ChIJQfesfXAP2jERcr13lAdtV3Q",
-  "name_hint": "Mila Motors",
-  "address_hint": "1 Soon Lee St, #05-06",
-  "postal_code": "627605",
-  "mobile_hint": "+6593834425",
-  "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-27"
- },
- {
-  "place_id": "ChIJEawlCzYF2jER2cQLlrLoMrE",
-  "name_hint": "Puffing Trucks Trading",
-  "address_hint": "27A Jurong Port Rd, #01-13",
-  "postal_code": "619101",
-  "mobile_hint": "+6581232034",
-  "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-27"
- },
- {
-  "place_id": "ChIJT9LgWW4F2jERqaEJAaF1oJg",
-  "name_hint": "Castrol Service - Palm Motorsports",
-  "address_hint": "1 Corporation Dr, #02/18 Revv West Enterprise Hub",
-  "postal_code": "619775",
-  "mobile_hint": "+6586848112",
-  "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-27"
- },
- {
-  "place_id": "ChIJqciBPWAU2jERjf1h2-S-A3Y",
-  "name_hint": "New Age Polish Pte Ltd",
-  "address_hint": "11 Yishun Industrial Street 1, #01-112 North Spring BizHub",
-  "postal_code": "768089",
-  "mobile_hint": "+6581610131",
-  "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-27"
- },
- {
-  "place_id": "ChIJt7nhUwAP2jERExMRS1_UjXM",
-  "name_hint": "TOTACHI EXPRESS SERVICE CENTER",
-  "address_hint": "7 Soon Lee St, #04-14",
-  "postal_code": "627608",
-  "mobile_hint": "+6581559746",
-  "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-27"
- },
- {
-  "place_id": "ChIJZ9qGeXgP2jERfrrqnVYUzbQ",
-  "name_hint": "R&S Auto Solutions Pte Ltd",
-  "address_hint": "7 Soon Lee St, #01-33",
-  "postal_code": "627608",
-  "mobile_hint": "+6589181855",
-  "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
-  "added": "2026-11-27"
- },
- {
   "place_id": "ChIJdSOfCEc92jERK7jr1-U8MMc",
   "name_hint": "Prime Autocare Works Pte Ltd",
   "address_hint": "2 Tampines North Drive 4, #04-24",
@@ -214,5 +16,59 @@
   "mobile_hint": "+6581235855",
   "source": "google_grid_sweep_2026-11-27 \"car servicing\" (Google phone, Edwin asked)",
   "added": "2026-11-27"
+ },
+ {
+  "place_id": "ChIJoXCVH1cT2jERIjoBGKdNvZI",
+  "name_hint": "I Motor Service Pte Ltd",
+  "address_hint": "184 Woodlands Industrial Park E5, #01-08",
+  "postal_code": "757514",
+  "mobile_hint": "+6597733778",
+  "source": "google_grid_sweep_2026-11-28 \"car servicing\" (Google phone, Edwin asked)",
+  "added": "2026-11-28"
+ },
+ {
+  "place_id": "ChIJlX86kSwT2jERdfM5qq-Uzvc",
+  "name_hint": "Castrol Service - SHH Tyres Woodlands",
+  "address_hint": "Blk 184 Woodlands Industrial Park E5, #01-05",
+  "postal_code": "757514",
+  "mobile_hint": "+6581814866",
+  "source": "google_grid_sweep_2026-11-28 \"car servicing\" (Google phone, Edwin asked)",
+  "added": "2026-11-28"
+ },
+ {
+  "place_id": "ChIJR5qteLEb2jERF7iAyXWZXEI",
+  "name_hint": "Castrol Service - Exquisite Marques Holding PTE LTD",
+  "address_hint": "1010 Bukit Merah Lane 3, #01/119",
+  "postal_code": "159724",
+  "mobile_hint": "+6592358911",
+  "source": "google_grid_sweep_2026-11-28 \"car servicing\" (Google phone, Edwin asked)",
+  "added": "2026-11-28"
+ },
+ {
+  "place_id": "ChIJiwb_BqIb2jERdFn1eTQ5pdQ",
+  "name_hint": "APEX Battery & Tyre – Car Battery Replacement & Tyre Repair",
+  "address_hint": "490 Commonwealth Ave",
+  "postal_code": "149736",
+  "mobile_hint": "+6589119568",
+  "source": "google_grid_sweep_2026-11-28 \"car servicing\" (Google phone, Edwin asked)",
+  "added": "2026-11-28"
+ },
+ {
+  "place_id": "ChIJG03UAQAZ2jERGlAevMKq9lg",
+  "name_hint": "MO TAI Aircon Solution",
+  "address_hint": "60 Paya Lebar Rd, #07-54 Paya Lebar Square",
+  "postal_code": "409051",
+  "mobile_hint": "+6593534423",
+  "source": "google_grid_sweep_2026-11-28 \"car servicing\" (Google phone, Edwin asked)",
+  "added": "2026-11-28"
+ },
+ {
+  "place_id": "ChIJ7T6hMh4Y2jERTOuGE9DjGkg",
+  "name_hint": "Neudinamix",
+  "address_hint": "1 Ubi Cres, #05-04",
+  "postal_code": "408563",
+  "mobile_hint": "+6591086335",
+  "source": "google_grid_sweep_2026-11-28 \"car servicing\" (Google phone, Edwin asked)",
+  "added": "2026-11-28"
  }
 ]

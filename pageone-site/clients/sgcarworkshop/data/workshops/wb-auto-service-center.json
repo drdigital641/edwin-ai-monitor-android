@@ -1,0 +1,74 @@
+{
+ "schema_version": 1,
+ "slug": "wb-auto-service-center",
+ "place_id": "ChIJJRbTeJcX2jER2qq8yA2_mjM",
+ "place_id_checked_at": "2026-11-28",
+ "name": "WB Auto Service Center",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-28",
+ "address": {
+  "block": "",
+  "street": "13 Kaki Bukit Rd 4, #03-25 Bartley Biz Centre",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "417807",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-28",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6597847689",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-28"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-28"
+ },
+ "status": "active",
+ "tier": "basic",
+ "first_seen_at": "2026-11-28",
+ "last_verified_at": "2026-11-28",
+ "collector_version": "agent-v5",
+ "estate": "kaki-bukit-industrial-estate",
+ "planning_area": "Bedok",
+ "region": "east",
+ "lat": 1.3390965,
+ "lng": 103.9113679,
+ "geo_source": "google_places",
+ "geo_checked": "2026-11-28",
+ "blocks": [
+  "hero",
+  "contact",
+  "services",
+  "good_for",
+  "problems",
+  "reviews",
+  "comparison",
+  "hours",
+  "stories",
+  "location",
+  "tips",
+  "faq",
+  "claim",
+  "sources"
+ ],
+ "google_rating": {
+  "rating": 4.9,
+  "count": 7,
+  "checked": "2026-11-28",
+  "source": "Google Places",
+  "source_date": "2026-11-28"
+ }
+}

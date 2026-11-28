@@ -1,0 +1,35 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_wash",
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.7,
+ "userRatingCount": 82,
+ "websiteUri": "https://www.newagepolish.sg/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsNfc": true
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: Closed",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: 9:00 AM – 6:00 PM"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention STEK paint protection film, solar film tint and ceramic coating, installs done in about three days, and photo and video updates during the job.",
+ "fetched_at": "2026-11-28",
+ "place_id": "ChIJqciBPWAU2jERjf1h2-S-A3Y",
+ "source": "google_places"
+}

@@ -1,0 +1,36 @@
+{
+ "lede": "Seven Garage is a car repair and servicing workshop at 25 Kaki Bukit Rd 4, #05-73.",
+ "chips": [
+  "Brakes",
+  "Suspension",
+  "Servicing"
+ ],
+ "services": [
+  "Brake pad and rotor replacement",
+  "Suspension",
+  "Car servicing"
+ ],
+ "themes": "Customers on Google Maps mention brake pad, sensor and rotor replacement, suspension work, competitive prices and the team staying past hours to finish a job.",
+ "faqs": [
+  [
+   "What does Seven Garage do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Brake repair",
+  "Suspension repair"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [],
+ "makes_note": "No makes named on Google Maps. Ask the workshop about your car.",
+ "good_to_know": []
+}

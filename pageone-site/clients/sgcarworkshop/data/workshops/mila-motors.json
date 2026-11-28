@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "slug": "mila-motors",
+ "place_id": "ChIJQfesfXAP2jERcr13lAdtV3Q",
+ "place_id_checked_at": "2026-11-28",
+ "name": "Mila Motors",
+ "name_source_url": "google_profile",
+ "name_checked_at": "2026-11-28",
+ "address": {
+  "block": "",
+  "street": "1 Soon Lee St, #05-06",
+  "unit": "",
+  "building": ""
+ },
+ "postal_code": "627605",
+ "address_source_url": "google_profile",
+ "address_checked_at": "2026-11-28",
+ "categories": [
+  "SERV"
+ ],
+ "services": [
+  "General servicing and repair"
+ ],
+ "services_source_url": "google_profile",
+ "phones": [
+  {
+   "e164": "+6593834425",
+   "kind": "mobile",
+   "whatsapp": true,
+   "source": "google_profile",
+   "checked_at": "2026-11-28"
+  }
+ ],
+ "google_screen": {
+  "passed": true,
+  "reason": "OPERATIONAL, car repair, SG mobile on Google profile",
+  "checked_at": "2026-11-28"
+ },
+ "status": "pending",
+ "tier": "basic",
+ "first_seen_at": "2026-11-28",
+ "last_verified_at": "2026-11-28",
+ "collector_version": "agent-v5",
+ "hold": "hold: not a car workshop (details in the private hold notes)",
+ "hold_code": "not_car_workshop",
+ "held_on": "2026-11-29",
+ "estate": "soon-lee-street-pioneer",
+ "planning_area": "Pioneer",
+ "region": "west"
+}

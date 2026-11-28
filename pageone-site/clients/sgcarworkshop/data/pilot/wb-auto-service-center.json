@@ -1,0 +1,40 @@
+{
+ "lede": "WB Auto Service Center is a car repair and servicing workshop at 13 Kaki Bukit Rd 4, #03-25 Bartley Biz Centre.",
+ "chips": [
+  "Repairs",
+  "Servicing",
+  "Continental"
+ ],
+ "services": [
+  "Car servicing",
+  "Car repair",
+  "Gearbox adaptation",
+  "Walnut blasting"
+ ],
+ "themes": "Customers on Google Maps mention Mercedes-Benz and continental car repairs, a gearbox adaptation after a fluid change, walnut blasting for a rough idle, and parts changed only when needed.",
+ "faqs": [
+  [
+   "What does WB Auto Service Center do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing",
+  "Gearbox repair",
+  "Engine carbon cleaning"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Mercedes-Benz"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "good_to_know": []
+}

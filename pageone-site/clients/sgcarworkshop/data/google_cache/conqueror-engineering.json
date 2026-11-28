@@ -1,0 +1,33 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 4.8,
+ "userRatingCount": 9,
+ "websiteUri": "https://conquerorengineering.com/",
+ "paymentOptions": {
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention tracing a recurring dashboard warning light on a Nissan after other visits, a quick fix for a diesel pick-up with a major leak, clear advice with no hard selling, and customers of more than 10 years.",
+ "fetched_at": "2026-11-28",
+ "place_id": "ChIJSYwXNWsT2jER2TKYYPEYTYo",
+ "source": "google_places"
+}

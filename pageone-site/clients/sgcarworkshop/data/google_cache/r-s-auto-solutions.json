@@ -1,0 +1,30 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": null,
+ "userRatingCount": null,
+ "websiteUri": "https://www.facebook.com/profile.php?id=61579842773052",
+ "paymentOptions": null,
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 9:00 AM – 6:00 PM",
+  "Tuesday: 9:00 AM – 6:00 PM",
+  "Wednesday: 9:00 AM – 6:00 PM",
+  "Thursday: 9:00 AM – 6:00 PM",
+  "Friday: 9:00 AM – 6:00 PM",
+  "Saturday: 9:00 AM – 6:00 PM",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 0,
+ "review_themes": null,
+ "fetched_at": "2026-11-28",
+ "place_id": "ChIJZ9qGeXgP2jERfrrqnVYUzbQ",
+ "source": "google_places"
+}

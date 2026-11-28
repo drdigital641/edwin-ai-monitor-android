@@ -1,0 +1,54 @@
+{
+ "lede": "Conqueror Engineering is a car repair and servicing workshop at 38 Woodlands Industrial Park E1, #07-12.",
+ "chips": [
+  "Servicing",
+  "Diagnostics",
+  "Aircon"
+ ],
+ "services": [
+  "Car servicing",
+  "Car repair",
+  "Car aircon repair",
+  "Gearbox repair",
+  "Suspension repair",
+  "Brake repair",
+  "Car diagnostics"
+ ],
+ "themes": "Customers on Google Maps mention tracing a recurring dashboard warning light on a Nissan after other visits, a quick fix for a diesel pick-up with a major leak, clear advice with no hard selling, and customers of more than 10 years.",
+ "faqs": [
+  [
+   "What does Conqueror Engineering do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its own website and its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car diagnostics",
+  "Car repair"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its own website and Google Maps listing. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "BMW",
+  "Mercedes-Benz",
+  "Audi",
+  "Volkswagen",
+  "Porsche",
+  "Toyota",
+  "Honda",
+  "Mazda",
+  "Hyundai",
+  "Kia",
+  "BYD",
+  "MG",
+  "Nissan"
+ ],
+ "makes_note": "Listed on its own website, plus a Nissan named by a customer on Google Maps.",
+ "good_to_know": []
+}

@@ -1,0 +1,35 @@
+{
+ "lede": "Castrol Service - Icon Technik is a car repair and servicing workshop at 1 Bukit Batok Cres, #05-60/61.",
+ "chips": [
+  "Car repair",
+  "Tyres"
+ ],
+ "services": [
+  "General servicing and repair",
+  "Tyres"
+ ],
+ "themes": "Customers on Google Maps mention skilled technicians and servicing on a Mercedes-Benz.",
+ "faqs": [
+  [
+   "What does Castrol Service - Icon Technik do?",
+   "Google Maps lists it as a car repair workshop."
+  ],
+  [
+   "What are the opening hours?",
+   "The hours are listed in the Google Maps section above. Please see Google Maps for current hours."
+  ]
+ ],
+ "sources": "its Google Maps listing",
+ "stories": [],
+ "mentioned_services": [
+  "Car servicing"
+ ],
+ "card_rules": "2026-11-05",
+ "services_note": "From its Google Maps listing and what customers mention there. Ask the workshop for its full list.",
+ "specialties": [],
+ "makes": [
+  "Mercedes-Benz"
+ ],
+ "makes_note": "Named by customers on Google Maps. Ask the workshop about other makes.",
+ "good_to_know": []
+}

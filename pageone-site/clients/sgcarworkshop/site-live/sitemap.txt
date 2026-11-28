@@ -151,6 +151,7 @@ https://sgcarworkshop.sg/workshops/applied-performance/
 https://sgcarworkshop.sg/workshops/arc-motorworks/
 https://sgcarworkshop.sg/workshops/ardent-research-concept/
 https://sgcarworkshop.sg/workshops/asuroo-autocare/
+https://sgcarworkshop.sg/workshops/at-motorworks/
 https://sgcarworkshop.sg/workshops/aurum-performance/
 https://sgcarworkshop.sg/workshops/auto-101/
 https://sgcarworkshop.sg/workshops/auto-dreamz/
@@ -216,6 +217,7 @@ https://sgcarworkshop.sg/workshops/codewerx/
 https://sgcarworkshop.sg/workshops/colourkraze-spray-painting-specialist-singapore/
 https://sgcarworkshop.sg/workshops/comland-auto-leather/
 https://sgcarworkshop.sg/workshops/concours-singapore/
+https://sgcarworkshop.sg/workshops/conqueror-engineering/
 https://sgcarworkshop.sg/workshops/conti-meister/
 https://sgcarworkshop.sg/workshops/contiexpert-volt-autocare/
 https://sgcarworkshop.sg/workshops/contiwhiz-automotive/
@@ -225,6 +227,7 @@ https://sgcarworkshop.sg/workshops/csl-car-accessories/
 https://sgcarworkshop.sg/workshops/d-auto-access/
 https://sgcarworkshop.sg/workshops/da-sheng-motoring/
 https://sgcarworkshop.sg/workshops/daiha-auto-service/
+https://sgcarworkshop.sg/workshops/daily-exotics/
 https://sgcarworkshop.sg/workshops/de-sheng-trading/
 https://sgcarworkshop.sg/workshops/dhm-otomotive-werkz/
 https://sgcarworkshop.sg/workshops/ding-auto/
@@ -433,6 +436,7 @@ https://sgcarworkshop.sg/workshops/my-car-garage/
 https://sgcarworkshop.sg/workshops/my-tyre-autoservice/
 https://sgcarworkshop.sg/workshops/nam-bee-trading/
 https://sgcarworkshop.sg/workshops/ncs-motorwerkz/
+https://sgcarworkshop.sg/workshops/new-age-polish/
 https://sgcarworkshop.sg/workshops/new-hock-teck-motor-workshop/
 https://sgcarworkshop.sg/workshops/new-zen-werkz/
 https://sgcarworkshop.sg/workshops/nightzconcepts/
@@ -543,6 +547,7 @@ https://sgcarworkshop.sg/workshops/top-fuel-automotive/
 https://sgcarworkshop.sg/workshops/toren-technik/
 https://sgcarworkshop.sg/workshops/tos-auto-motorwerk/
 https://sgcarworkshop.sg/workshops/tos-auto-spraywerk/
+https://sgcarworkshop.sg/workshops/totachi-express-service-center/
 https://sgcarworkshop.sg/workshops/trust-fellas-auto-service/
 https://sgcarworkshop.sg/workshops/tt-motorsport-jurong/
 https://sgcarworkshop.sg/workshops/tt-motorsport-ubi-car-service/
@@ -567,6 +572,7 @@ https://sgcarworkshop.sg/workshops/vhoh-werkz/
 https://sgcarworkshop.sg/workshops/vim-auto-servicing-aircon/
 https://sgcarworkshop.sg/workshops/vt-power/
 https://sgcarworkshop.sg/workshops/w-autoworks/
+https://sgcarworkshop.sg/workshops/wb-auto-service-center/
 https://sgcarworkshop.sg/workshops/we-garage/
 https://sgcarworkshop.sg/workshops/wee-gim-auto-service/
 https://sgcarworkshop.sg/workshops/wei-car-spray-painting/

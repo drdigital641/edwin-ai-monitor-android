@@ -1,0 +1,34 @@
+{
+ "businessStatus": "OPERATIONAL",
+ "primaryType": "car_repair",
+ "types": [
+  "car_repair",
+  "service",
+  "point_of_interest",
+  "establishment"
+ ],
+ "rating": 5,
+ "userRatingCount": 26,
+ "websiteUri": "https://www.dailyexoticssg.com/",
+ "paymentOptions": {
+  "acceptsCreditCards": true,
+  "acceptsDebitCards": true,
+  "acceptsCashOnly": false
+ },
+ "parkingOptions": null,
+ "editorialSummary": null,
+ "weekdayDescriptions": [
+  "Monday: 8:00 AM – 6:00 PM",
+  "Tuesday: 8:00 AM – 6:00 PM",
+  "Wednesday: 8:00 AM – 6:00 PM",
+  "Thursday: 8:00 AM – 6:00 PM",
+  "Friday: 8:00 AM – 6:00 PM",
+  "Saturday: Closed",
+  "Sunday: Closed"
+ ],
+ "review_count_seen": 5,
+ "review_themes": "Customers on Google Maps mention supercar and sports car work, a repair-before-replace approach, a Porsche engine overhaul, a sticky Ferrari 458 button fixed without a new panel, and reasonable prices.",
+ "fetched_at": "2026-11-28",
+ "place_id": "ChIJ40-6ASoT2jERWrFriZ1IavQ",
+ "source": "google_places"
+}
