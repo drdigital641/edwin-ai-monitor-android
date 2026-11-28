@@ -23,7 +23,7 @@ Maison works with these Singapore suppliers for materials, flooring, lighting an
 - [Commercial fit-out](https://maisoninteriordesign.sg/services/commercial-fit-out/): Commercial interior design and fit-out in Singapore for offices, shops, cafés and showrooms: how the work runs, the approvals that apply and realistic timelines.
 
 ## New launches (renovation and fit-out guides; facts from public sources, Maison is not appointed by any developer or HDB)
-- [New launches hub]({DOMAIN}/new-launches/)
+- [New launches hub](https://maisoninteriordesign.sg/new-launches/)
 - [39 Robinson Road Fit-Out & Interior Design](https://maisoninteriordesign.sg/new-launches/39-robinson-road/): Office, Raffles Place. Year only: expected 2026, as reported by EdgeProp.
 - [8@BT Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/8-bt/): Private condominium, Bukit Timah. Q4 2027 expected TOP.
 - [Altura Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/altura/): Executive condominium, Bukit Batok. Key dates not confirmed.
