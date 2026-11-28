@@ -28,7 +28,7 @@ Maison works with these Singapore suppliers for materials, flooring, lighting an
 - [8@BT Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/8-bt/): Private condominium, Bukit Timah. Q4 2027 expected TOP.
 - [Altura Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/altura/): Executive condominium, Bukit Batok. Key dates not confirmed.
 - [Amberwood At Holland Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/amberwood-at-holland/): Private condominium, Holland. Key dates not confirmed.
-- [AMO Residence Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/amo-residence/): Private condominium, Ang Mo Kio. Year only: expected 2026, as reported by Stacked Homes.
+- [AMO Residence Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/amo-residence/): Private condominium, Ang Mo Kio. TOP obtained October 2025, per UOL FY2025 results release.
 - [Bayshore Oasis Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/bayshore-oasis/): HDB BTO, Bedok. November 2026 launch.
 - [Bayshore Sails Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/bayshore-sails/): HDB BTO, Bedok. November 2026 launch.
 - [Bedok North Springs Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/bedok-north-springs/): HDB flat, Bedok. Key dates not confirmed.
@@ -90,7 +90,7 @@ Maison works with these Singapore suppliers for materials, flooring, lighting an
 - [Plantation Dew Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/plantation-dew/): HDB BTO, Tengah. November 2026 launch.
 - [Plantation Edge I & II Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/plantation-edge-i-and-ii/): HDB flat, Tengah. Key dates not confirmed.
 - [Plantation Verge Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/plantation-verge/): HDB flat, Tengah. Key dates not confirmed.
-- [Pollen Collection Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/pollen-collection/): Landed homes, Seletar. Reported: 2026.
+- [Pollen Collection Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/pollen-collection/): Landed homes, Seletar. TOP obtained June 2026 (Bukit Sembawang AGM slides, 31 Jul 2026).
 - [Queen's Arc Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/queens-arc/): HDB flat, Queenstown. Key dates not confirmed.
 - [Rivelle Tampines Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/rivelle-tampines/): Executive condominium, Tampines. Key dates not confirmed.
 - [River Modern Renovation & Interior Design](https://maisoninteriordesign.sg/new-launches/river-modern/): Private condominium, District 9. Key dates not confirmed.
@@ -125,6 +125,7 @@ Maison works with these Singapore suppliers for materials, flooring, lighting an
 ## Projects
 - [Bedok Reservoir Blk 715](https://maisoninteriordesign.sg/portfolio/bedok-reservoir-road/): Residential, HDB home.
 - [Landed Home Holland](https://maisoninteriordesign.sg/portfolio/landed-home-holland/): Landed, Landed house.
+- [Light & Stone](https://maisoninteriordesign.sg/portfolio/light-and-stone/): Landed, Landed home.
 - [Jimmy Monkey One-North](https://maisoninteriordesign.sg/portfolio/jimmy-monkey-one-north/): Commercial, Café.
 - [River Place 62 Havelock Road](https://maisoninteriordesign.sg/portfolio/62-havelock-road-river-place/): Residential, Condominium.
 - [Teck Whye Crescent Blk 10](https://maisoninteriordesign.sg/portfolio/teck-whye-crescent/): Residential, HDB 3-bedroom.
@@ -132,3 +133,21 @@ Maison works with these Singapore suppliers for materials, flooring, lighting an
 - [Jimmy Monkey Paya Lebar Quarter](https://maisoninteriordesign.sg/portfolio/jimmy-monkey-plq/): Commercial, Café.
 - [Commonwealth Road Blk 52](https://maisoninteriordesign.sg/portfolio/commonwealth-road/): 3D Design, Home, 3D visualisation.
 - [Tampines Street 22 Blk 296](https://maisoninteriordesign.sg/portfolio/tampines-street-22/): 3D Design, HDB, 3D visualisation.
+
+## Articles
+- [Articles hub](https://maisoninteriordesign.sg/articles/)
+- [Interior Design Consultation Singapore: What to Prepare](https://maisoninteriordesign.sg/articles/prepare-for-interior-design-consultation/): Booking an interior design consultation in Singapore? What to bring, what happens at the first meeting, and the questions worth asking before work starts.
+- [Itemised Renovation Quotation: What to Check | Maison](https://maisoninteriordesign.sg/articles/itemised-renovation-quotation/): Comparing designers? What an itemised renovation quotation should show, how to read each line, and the questions to ask before you sign in Singapore.
+- [3D Interior Design Drawings: What to Check | Maison](https://maisoninteriordesign.sg/articles/3d-interior-design-drawings-check/): 3D interior design drawings let you see each room before work starts. What to check in the layout, finishes and carpentry before you approve a design.
+- [Privacy Policy | Maison Interior Design](https://maisoninteriordesign.sg/privacy/): How Maison Interior Design uses the name and mobile number you send through the enquiry form on this website.
+- [HDB renovation permit: what homeowners should check](https://maisoninteriordesign.sg/articles/hdb-renovation-permit-what-to-check/): What an HDB renovation permit is for, what to check before work starts, and where to confirm current rules, fees and timelines on the official HDB site.
+- [New Launch Condo Renovation Singapore: Plan from the Floor Plan Up](https://maisoninteriordesign.sg/articles/new-launch-condo-renovation-planning-guide/): New launch condo renovation in Singapore: what Maison's new condo page says to plan for, from storage and lighting to condo rules and the defects check.
+- [Small Condo Renovation Ideas for a Compact Unit](https://maisoninteriordesign.sg/articles/small-condo-renovation-ideas-60-sqm/): Small condo renovation ideas for Singapore owners: storage, lighting, defects checks, condo rules and timeline stages for a new condo.
+- [Landed House Renovation Singapore: What to Consider First](https://maisoninteriordesign.sg/articles/landed-house-renovation-or-rebuild-guide/): Planning a landed house renovation in Singapore? Here is what Maison's site says about scope, approvals and timelines.
+- [Cafe Restaurant Interior Design Singapore: Planning Guide](https://maisoninteriordesign.sg/articles/cafe-restaurant-interior-design-planning-guide/): Planning cafe restaurant interior design in Singapore? Start with your brief, layout, seating and look. See how Maison approaches commercial spaces.
+
+## More pages
+- [Interior Design Portfolio Singapore | HDB, Condo & Café Projects | Maison](https://maisoninteriordesign.sg/portfolio/): Completed HDB, condominium, café and restaurant interiors by Maison Interior Design, plus 3D design visuals. See Jimmy Monkey, River Place, Teck Whye and more.
+- [New Launches Singapore 2026-2027 | BTO, Condo, Office & Shop Fit-Out Guides | Maison](https://maisoninteriordesign.sg/new-launches/): Renovation and fit-out guides for new BTO, EC, condo, landed, office and retail projects in Singapore reaching TOP or keys in 2026-27, from public sources.
+- [About Maison Interior Design | Singapore Interior Designers Since 2018](https://maisoninteriordesign.sg/about/): Maison Interior Design was founded in 2018 by Managing Director Roland Ng to design and build homes, commercial spaces and offices across Singapore.
+- [Contact Maison Interior Design | Book an Interior Design Consultation](https://maisoninteriordesign.sg/contact/): WhatsApp or call Roland Ng on +65 9339 1185, email the studio, or send your floor plan for an interior design consultation in Singapore.
