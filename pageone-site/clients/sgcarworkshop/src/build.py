@@ -2607,6 +2607,15 @@ def related_links(sp, depth):
     return '<h2>Related pages</h2>' + ''.join('<p>%s</p>' % one(t) for t in rel)
 
 
+def _spoke_top(sp, blocks):
+    """Intro, how-we-found note and the workshop list. service_seo.json list_first = the list goes straight under the H1
+    (matches the live OBU and wheel alignment pages, 29 Nov 2026); other job pages keep the intro first."""
+    intro = '<p class="lede" style="font-size:1rem">%s</p>\n<p class="fine howfound">%s</p>\n' % (E(sp['intro']), E(HOW_FOUND))
+    if SERVICE_SEO.get('services', {}).get(sp['slug'], {}).get('list_first'):
+        return blocks + intro
+    return intro + blocks
+
+
 def spoke_page(sp):
     depth = 2
     path = 'services/%s/' % sp['slug']
@@ -2628,9 +2637,7 @@ def spoke_page(sp):
     title, desc, h1, faqs = service_seo(sp['slug'], len(allv), sp['title'], sp['desc'], sp['h1'], sp['faqs'])   # count = workshops listed on this page
     body = f'''<div class="w nar guidepg">{cr}
 <h1 style="margin-top:14px">{E(h1)}</h1>
-<p class="lede" style="font-size:1rem">{E(sp['intro'])}</p>
-<p class="fine howfound">{E(HOW_FOUND)}</p>
-{blocks}
+{_spoke_top(sp, blocks)}
 <h2>What {E(svc_lc(sp['name'], 'services') if ACRO_FIX.get('services') else sp['name'][0].lower() + sp['name'][1:])} involves</h2><p>{E(sp['involves'])}</p>
 <h2>Signs you may need it</h2><ul class="tick svc-plain">{''.join('<li>%s</li>' % E(x) for x in sp['signs'])}</ul>
 <h2>What to ask the workshop</h2><ul class="tick svc-plain">{''.join('<li>%s</li>' % E(x) for x in sp['ask'])}</ul>

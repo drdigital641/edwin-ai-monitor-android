@@ -1,24 +1,38 @@
 {
-  "_about": "Search Console title/meta/H1/extra FAQs per service page (Edwin, 29 Nov 2026). Read by src/build.py service_seo(). {n} = workshops listed on the page, counted from the live data at build time (never typed in). Meta = meta_lead [ (also called <synonyms>)], meta_close; over 160 characters the synonyms clause is dropped first. faq_extra is appended after the page's own FAQs and goes into the same FAQPage JSON-LD list. A service with no entry here builds exactly as before.",
+  "_about": "Search Console title/meta/H1/extra FAQs per service page (Edwin, 29 Nov 2026). Read by src/build.py service_seo(). {n} = workshops listed on the page, counted from the live data at build time (never typed in). Meta = meta_lead [ (also called <synonyms>)], meta_close; over 160 characters the synonyms clause is dropped first. faq_extra is appended after the page's own FAQs and goes into the same FAQPage JSON-LD list. A service with no entry here builds exactly as before. list_first = the workshop list sits straight under the H1, above the intro (as on the live page).",
   "meta_close": "found from Google reviews and their own websites. WhatsApp or call direct.",
   "services": {
     "obu-installation": {
       "title": "OBU Installation Workshop List Singapore: {n} Workshops",
+      "list_first": true,
       "meta_lead": "List of {n} Singapore workshops that have done OBU installation",
       "meta_close": "found from Google reviews and their own websites. Tap WhatsApp or Call direct.",
       "h1_override": "OBU installation workshops in Singapore",
       "faq_extra": [
-        ["Where can I get an OBU installed in Singapore?", "The workshops listed on this page have done OBU installation, according to Google reviews or their own websites. Tap WhatsApp or Call to confirm that they can fit the OBU on your car before you go. This is not a list of LTA-appointed installation centres."],
-        ["What is an OBU?", "The on-board unit (OBU) is the in-car device for ERP 2.0 in Singapore. For a car it is usually a processing unit, an antenna and an optional touchscreen, mounted and wired into the car."]
+        [
+          "Where can I get an OBU installed in Singapore?",
+          "The workshops listed on this page have done OBU installation, according to Google reviews or their own websites. Tap WhatsApp or Call to confirm that they can fit the OBU on your car before you go. This is not a list of LTA-appointed installation centres."
+        ],
+        [
+          "What is an OBU?",
+          "The on-board unit (OBU) is the in-car device for ERP 2.0 in Singapore. For a car it is usually a processing unit, an antenna and an optional touchscreen, mounted and wired into the car."
+        ]
       ]
     },
     "wheel-alignment": {
       "title": "Wheel Alignment Singapore: {n} Workshops, WhatsApp Direct",
+      "list_first": true,
       "meta_lead": "{n} Singapore workshops for wheel alignment",
       "synonyms": "tyre or car alignment",
       "faq_extra": [
-        ["Is tyre alignment the same as wheel alignment?", "Yes. Drivers often say tyre alignment or car alignment when they mean wheel alignment. The workshop measures the angles of the wheels against the maker's settings and adjusts the steering and suspension links; the tyres themselves are not changed."],
-        ["How do I choose a wheel alignment workshop in Singapore?", "Compare the workshops on this page, then tap WhatsApp or Call. Ask whether you get a before-and-after printout of the readings and whether they check for worn suspension parts first."]
+        [
+          "Is tyre alignment the same as wheel alignment?",
+          "Yes. Drivers often say tyre alignment or car alignment when they mean wheel alignment. The workshop measures the angles of the wheels against the maker's settings and adjusts the steering and suspension links; the tyres themselves are not changed."
+        ],
+        [
+          "How do I choose a wheel alignment workshop in Singapore?",
+          "Compare the workshops on this page, then tap WhatsApp or Call. Ask whether you get a before-and-after printout of the readings and whether they check for worn suspension parts first."
+        ]
       ]
     }
   }
